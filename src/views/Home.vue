@@ -3,7 +3,7 @@
     <router-view></router-view>
   <mu-container style="max-width: 400px; width:100%;" color="primary">
     <mu-bottom-nav :value.sync="shift"  >
-      <mu-bottom-nav-item value="movies" title="首页" icon="home"></mu-bottom-nav-item>
+      <mu-bottom-nav-item value="movies" title="首页" icon="iconwode"></mu-bottom-nav-item>
       <mu-bottom-nav-item value="music" title="公告" icon="assignment"></mu-bottom-nav-item>
       <mu-bottom-nav-item value="books" title="我的"  icon="person"></mu-bottom-nav-item>
     </mu-bottom-nav>
@@ -20,7 +20,7 @@ export default {
     }
   },
   components: {
-    
+
   }
 }
 </script>
