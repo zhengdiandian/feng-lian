@@ -10,11 +10,7 @@
 </template>
 
 <script>
-import './Mycenter'
 export default {
-  name: 'home',
-  components: {
-    
-  }
+  name: 'home'
 }
 </script>
