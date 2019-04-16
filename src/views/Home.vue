@@ -1,8 +1,6 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+   <mu-button color="primary">Primary</mu-button>
+
 </template>
 
 <script>
