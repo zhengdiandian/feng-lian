@@ -19,6 +19,12 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path: '/login',
+      component: function () {
+        return import('./views/Login.vue')
+      }
     }
   ]
 })

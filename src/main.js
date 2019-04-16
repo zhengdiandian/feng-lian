@@ -3,13 +3,21 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'muse-ui/lib/styles/base.less'
-import { Button, Select, BottomNav } from 'muse-ui'
+import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField } from 'muse-ui'
 import 'muse-ui/lib/styles/theme.less'
 import 'muse-ui/dist/muse-ui.css'
 import theme from 'muse-ui/lib/theme'
 import 'material-design-icons/iconfont/material-icons.css'
+import * as colors from 'muse-ui/lib/theme/colors'
+
+theme.add('custom-theme', {
+  primaryColor: '#fff',
+  primary: colors.indigo,
+  secondary: colors.pinkA200,
+})
+theme.use('custom-theme')
 theme.add('teal', {
-  primary: '#2196f3',
+  primary: '#fff',
   secondary: '#ff4081',
   success: '#4caf50',
   warning: '#fdd835',
@@ -27,7 +35,8 @@ theme.add('teal', {
   background: {
     paper: '#fff',
     chip: '#e0e0e0',
-    default: '#fafafa'
+    default: '#fafafa',
+    navBar: '#fff'
   }
 }, 'light')
 
@@ -36,7 +45,10 @@ theme.use('teal')
 Vue.use(Button)
 Vue.use(Select)
 Vue.use(BottomNav)
-
+Vue.use(Carousel)
+Vue.use(AppBar)
+Vue.use(Icon)
+Vue.use(TextField)
 Vue.config.productionTip = false
 
 new Vue({
