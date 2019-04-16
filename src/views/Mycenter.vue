@@ -2,7 +2,7 @@
 <div id="MyCenter">
     <header>
         <div class="header-title">我的蜂链</div>
-        <div class="personal">
+        <div class="personal" v-on:click="jump">
           <section class="personal-img"><img src="" alt=""></section>
           <section class="personal-name-number">
             <div class="name">Bryant.zZ</div>
@@ -44,7 +44,7 @@
 </template>
 <script>
 export default {
-  name: 'MyCenter',
+  name: 'mycenter',
   data() {
     return {
       list: [
@@ -60,6 +60,11 @@ export default {
         "通知",
         "设置"
       ]
+    }
+  },
+  methods: {
+    jump() {
+       this.$router.push('/per')
     }
   }
 }
