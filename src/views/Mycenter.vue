@@ -26,21 +26,19 @@
           </section>
         </div>
     </header>
-    <div style="margin-bottom: 5px;">
-      <div class="list" v-for="item in list" :key="item">
+    <div class="list" v-for="item in list" :key="item">
         <div class="list-img-single">
           <div class="list-img"><img src="" alt=""></div>
           <div class="list-single">{{item}}</div>
         </div>
+    </div>
+    <div style="margin: 5px 0 20px 0;">
+      <div class="list" v-for="item in listSet" :key="item">
+          <div class="list-img-single">
+            <div class="list-img"><img src="" alt=""></div>
+            <div class="list-single">{{item}}</div>
+          </div>
       </div>
-    </div>
-    <div style="margin-bottom: 20px;">
-    <div class="list" v-for="item in listSet" :key="item">
-        <div class="list-img-single">
-          <div class="list-img"><img src="" alt=""></div>
-          <div class="list-single">{{item}}</div>
-        </div>
-    </div>
     </div>
 </div>
 </template>
