@@ -7,7 +7,7 @@ import { Button, Select, BottomNav } from 'muse-ui'
 import 'muse-ui/lib/styles/theme.less'
 import 'muse-ui/dist/muse-ui.css'
 import theme from 'muse-ui/lib/theme'
-import 'material-design-icons/iconfont/material-icons.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 theme.add('teal', {
   primary: '#2196f3',
   secondary: '#ff4081',
