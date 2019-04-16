@@ -41,6 +41,12 @@ export default new Router({
     //   ]
     // },
     {
+      path: '/forgetPassword',
+      component: function () {
+        return import('./views/ForgetPassword.vue')
+      }
+    },
+    {
       path: '/',
       name: PerInfor,
       component: PerInfor
