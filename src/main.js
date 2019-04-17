@@ -8,9 +8,9 @@ import 'muse-ui/lib/styles/theme.less'
 import 'muse-ui/dist/muse-ui.css'
 import theme from 'muse-ui/lib/theme'
 // import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import 'material-design-icons/iconfont/material-icons.css'
+// import 'material-design-icons/iconfont/material-icons.css'
 import * as colors from 'muse-ui/lib/theme/colors'
-
+import './assets/font/iconfont.css'
 theme.add('custom-theme', {
   primaryColor: '#fff',
   primary: colors.indigo,
