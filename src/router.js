@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import MyCenter from './views/MyCenter.vue'
+import PerInfor from './views/PerInfor.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +28,18 @@ export default new Router({
         return import('./views/Login.vue')
       }
     },
+    // {
+    //   path: '/',
+    //   name: MyCenter,
+    //   component: MyCenter,
+    //   children: [
+    //     {
+    //       path: '/per',
+    //       name: PerInfor,
+    //       component: PerInfor
+    //     }
+    //   ]
+    // },
     {
       path: '/forgetPassword',
       component: function () {
@@ -35,8 +48,8 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'MyCenter',
-      component: MyCenter
+      name: PerInfor,
+      component: PerInfor
     }
     // {
     //   path: '/home',
