@@ -1,40 +1,33 @@
 <template>
     <div>
-<<<<<<< HEAD
-      <mu-appbar style="width: 100%;" color="primary" text-color="#666" z-depth="0" >
-        <mu-button icon slot="left" @click="$router.go(-1)">
-          <mu-icon value=":iconfont iconfanhui"@click="$router.go(-1)"></mu-icon>
-        </mu-button>
-        <div class="text-center">忘记密码</div>
-        <mu-button flat slot="right">跳过此步骤</mu-button>
-      </mu-appbar>
-=======
         <header>
             <pageHeader :title="title"></pageHeader>
         </header>
         <main>
             <mu-text-field
             v-model="value13"
-            label="请输入您的手机号码"
+            label="请设置新密码"
             label-float
-            error-text="您输入的手机号码有误，请重新输入"
+            error-text="您输入的密码不够安全，请慎重"
             icon=":iconfont iconmima"
+            :type="visibility ? 'text' : 'password'"
             >
+            <div slot="append">
+                <mu-icon value=":iconfont iconbiyan"></mu-icon>
+                </div>
             </mu-text-field>
             <mu-text-field
                 v-model="value14"
-                label="请输入验证码"
+                label="请确认密码"
                 label-float
-                error-text="您输入的验证码有误，请重新输入"
+                error-text="您两次输入的密码不用，请重新输入"
                 icon=":iconfont iconmima"
-                >
-                <div slot="append">
-                    <div style="color: #347fe8" >获取验证码</div>
-                </div>
-                </mu-text-field>
-                <mu-button round class="login-btn" color="success">完&nbsp;成</mu-button>
+                :action-icon="visibility ? 'visibility_off' : 'visibility'"
+                :action-click="() => (visibility = !visibility)"
+                :type="visibility ? 'text' : 'password'"
+                ></mu-text-field>
+                <mu-button round class="login-btn" color="success">修&nbsp;改&nbsp;并&nbsp;登&nbsp;陆</mu-button>
         </main>
->>>>>>> fd312d92d08b6b04924c348863427b4b9055ce21
     </div>
 </template>
 <script>
@@ -43,7 +36,7 @@ export default {
     name: 'setpassword',
     data() {
         return {
-            title: '忘记密码',
+            title: '重新设置密码',
             pwd: "",
             visibility: false,
             pwdErr: "123",

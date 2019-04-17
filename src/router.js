@@ -23,23 +23,21 @@ export default new Router({
       ]
     },
     {
-      path: '/login',
+      path: '/',
       component: function () {
         return import('./views/Login.vue')
       }
     },
-    // {
-    //   path: '/',
-    //   name: MyCenter,
-    //   component: MyCenter,
-    //   children: [
-    //     {
-    //       path: '/per',
-    //       name: PerInfor,
-    //       component: PerInfor
-    //     }
-    //   ]
-    // },
+    {
+      path: '/my',
+      name: MyCenter,
+      component: MyCenter
+    },
+    {
+      path: '/perinfor',
+      name: PerInfor,
+      component: PerInfor
+    },
     {
       path: '/forgetPassword',
       component: function () {
@@ -47,9 +45,27 @@ export default new Router({
       }
     },
     {
-      path: '/',
+      path: '/real',
       component: function () {
         return import('./views/RealName.vue')
+      }
+    },
+    {
+      path: '/register',
+      component: function () {
+        return import('./views/register.vue')
+      }
+    },
+    {
+      path: '/setpwd',
+      component: function () {
+        return import('./views/SetPassword.vue')
+      }
+    },
+    {
+      path: '/reset',
+      component: function () {
+        return import('./views/ResetPassword.vue')
       }
     }
     // {
