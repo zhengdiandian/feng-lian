@@ -78,5 +78,11 @@ export default {
             }
         }
     }
+  .routers-wrap{
+
+    .router-item {
+      width: 25%;
+    }
+  }
 }
 </style>

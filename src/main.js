@@ -3,12 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'muse-ui/lib/styles/base.less'
-import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField } from 'muse-ui'
+import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField,Divider,List, SubHeader } from 'muse-ui'
 import 'muse-ui/lib/styles/theme.less'
 import 'muse-ui/dist/muse-ui.css'
 import theme from 'muse-ui/lib/theme'
 // import 'material-design-icons-iconfont/dist/material-design-icons.css'
-// import 'material-design-icons/iconfont/material-icons.css'
+import 'material-design-icons/iconfont/material-icons.css'
 import * as colors from 'muse-ui/lib/theme/colors'
 import './assets/font/iconfont.css'
 theme.add('custom-theme', {
@@ -49,7 +49,10 @@ Vue.use(BottomNav)
 Vue.use(Carousel)
 Vue.use(AppBar)
 Vue.use(Icon)
+Vue.use(Divider)
 Vue.use(TextField)
+Vue.use(List)
+Vue.use(SubHeader)
 Vue.config.productionTip = false
 
 new Vue({

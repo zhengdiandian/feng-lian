@@ -11,7 +11,7 @@
 
           label-float
           placeholder="用户名为6-12长度的字符"
-          icon="account_circle"
+          icon=":iconfont iconzhanghao"
         >
           <div slot="append">
             <router-link to="/">注册</router-link>
@@ -21,20 +21,18 @@
       <div class="pwd-wrap">
         <mu-text-field
           v-model="pwd"
-          icon="person"
+          icon=":iconfont iconmima"
           :error-text="pwdErr"
-          :action-icon="visibility ? 'visibility_off' : 'visibility'"
+          :action-icon="visibility ? ':iconfont iconyanjing' : ':iconfont iconyanjing'"
           :action-click="() => (visibility = !visibility)"
           :type="visibility ? 'text' : 'password'"
         ></mu-text-field>
       </div>
       <div class="bottom-nav">
           <router-link to="/">忘记密码?</router-link>
-          <router-link to="/">忘记密码?</router-link>
+          <router-link to="/forgetPassword">忘记密码?</router-link>
       </div>
       <mu-button round class="login-btn" color="success" @click="login">登入</mu-button>
-
-
     </div>
   </div>
 </template>

@@ -1,26 +1,104 @@
 <template>
   <div>
-    <mu-appbar style="width: 100%;" color="primary" text-color='#666'>
-      <mu-button icon slot="left">
-        <mu-icon value="menu"></mu-icon>
+    <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+      <mu-button icon slot="right">
+        <mu-icon value=":iconfont iconxinxi"></mu-icon>
       </mu-button>
-        <h3>shouye</h3>
-      <mu-button flat slot="right">LOGIN</mu-button>
+        <h3>链接你我他 &nbsp;&nbsp;守护千万家</h3>
     </mu-appbar>
-    <mu-carousel class="banner">
-      <mu-carousel-item>
-        <img src="https://i0.hdslb.com/bfs/live/10096926.jpg@.webp?04161413">
-      </mu-carousel-item>
-      <mu-carousel-item>
-        <img src="https://i0.hdslb.com/bfs/live/10096926.jpg@.webp?04161413">
-      </mu-carousel-item>
-      <mu-carousel-item>
-        <img src="https://i0.hdslb.com/bfs/live/10096926.jpg@.webp?04161413">
-      </mu-carousel-item>
-      <mu-carousel-item>
-        <img src="https://i0.hdslb.com/bfs/live/10096926.jpg@.webp?04161413">
-      </mu-carousel-item>
-    </mu-carousel>
+    <div class="wrap">
+
+      <mu-carousel class="banner">
+        <mu-carousel-item v-for="i in 4" :key="i">
+          <img src="http://placehold.it/350x200/">
+        </mu-carousel-item>
+      </mu-carousel>
+      <div class="content">
+        <div class="btn-wrap">
+          <mu-button  class="btn" color="success" @click="">登入</mu-button>
+          <mu-button round class="btn" color="success" @click="">登入</mu-button>
+        </div>
+        <div class="chat-wrap">
+          <div class="chat-content item-content">
+            <div class="chat-img"></div>
+            <div class="chat-title">699900</div>
+            <div class="chat-info">全平台用户 (人)</div>
+          </div>
+          <div class="xian"></div>
+          <div class="chat-content item-content">
+            <div class="chat-img"></div>
+            <div class="chat-title">699900</div>
+            <div class="chat-info">全平台用户 (人)</div>
+          </div>
+        </div>
+        <div class="routers-wrap">
+          <div class="router-item item-content" v-for="i in 4" :key="i">
+            <div class="iconfont iconpeifu"></div>
+            <div class="text">秒到赔付</div>
+          </div>
+        </div>
+        <mu-carousel class="banner">
+          <mu-carousel-item v-for="i in 4" :key="i">
+            <img src="http://placehold.it/350x200/">
+          </mu-carousel-item>
+        </mu-carousel>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="invite-wrap">
+        <div class="like iconfont iconliebiaodaohang_gongyi"></div>
+        <div class="invite-content">
+          成功邀请一人&nbsp;&nbsp;就得二十元红包  <span>邀请 <span class="iconfont iconyou"></span></span>
+        </div>
+      </div>
+      <div class="plan-wrap" v-for="i in 3" :key="i" >
+        <div class="plan-left" >
+          <img src="http:\\placehold.it/80x80" alt="">
+          <div class="plan-left-content">
+            <div class="title">百万真的舒服的</div>
+            <div class="info">Lorem ipsum dolor sit amet, consectetur adipisicing?</div>
+          </div>
+          <div class="plan-right-content">
+            <mu-button  class="btn" color="success" @click="">再次加入</mu-button>
+          </div>
+        </div>
+        <mu-divider></mu-divider>
+
+      </div>
+    </div>
+    <div class="wrap">
+      <mu-carousel class="banner">
+        <mu-carousel-item v-for="i in 4" :key="i">
+          <img src="http://placehold.it/350x200/">
+        </mu-carousel-item>
+      </mu-carousel>
+      <div class="help-wrap">
+        <mu-sub-header>常见问题</mu-sub-header>
+
+        <mu-list  class="list" >
+          <mu-list-item   style="border-bottom: 1px solid #666666; padding: 0px ;margin: 0 20px;" class="list-item"   v-for="i in 7" :key="i">
+            <mu-list-item-title>{{i}}、Lorem ipsum dolor sit.</mu-list-item-title>
+            <mu-list-item-action>
+              <mu-icon class="toggle-icon" size="24" value=":iconfont iconyou1" ></mu-icon>
+            </mu-list-item-action>
+
+
+          </mu-list-item>
+
+        </mu-list>
+        <div class="help-btn-wrap">
+          <div class="btn">
+            <span class="iconfont iconlianxikefu"></span>
+            联系客服
+          </div>
+          <div class="btn">
+            <span class="iconfont iconlianxikefu"></span>
+            联系客服
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </template>
 
@@ -31,18 +109,166 @@ export default {
   name: "homePage",
   data() {
     return {
-      shift: "movies"
+      shift: "movies",
+      open: false
     };
   },
   components: {}
 };
 </script>
 <style lang="scss" scoped>
+  .wrap{
+    box-sizing: border-box;
+    width: $gw;
+    padding: 0 5px;
+    border-bottom: 4px solid #666666;
+  }
+  .item-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
 .banner {
-  width: $gw;
-  height: 270px;
+  width: 100%;
+  height: 160px;
+  border-radius: 20px;
 }
 h3{
+  font-weight: 300;
+  font-size: 16px;
     text-align: center;
 }
+  .content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
+    .btn-wrap{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .btn{
+        width: 160px;
+        border-radius: 10px;
+      }
+    }
+    .chat-wrap{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: center;
+      .chat-content{
+        width: 50%;
+        margin-left: -1px;
+      }
+      .chat-img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: red;
+      }
+      .chat-title{
+        width: 100%;
+        text-align: center;
+      }
+      .xian{
+        /*margin-top: 25%;*/
+        width: 0px;
+        box-sizing: border-box;
+        height: 50%;
+        align-self: center;
+        /*justify-items: center;*/
+        border-left: 1px solid #666666;
+      }
+    }
+  }
+
+
+  .routers-wrap{
+    display: flex;
+    justify-content: space-between;
+    .text{
+
+    }
+    .iconfont{
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 50px;
+    }
+  }
+  .invite-wrap{
+    position: relative;
+    padding: 30px 0px;
+    .like{
+      position: absolute;
+      left: 0px;
+      top: 10px;
+      width: 50px;
+      height: 50px;
+      font-size: 50px;
+      line-height: 50px;
+    }
+    .invite-content{
+      width: 100%;
+      height: 40px;
+      /*line-height: 50px;*/
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 20px;
+      background-color: azure;
+
+      .iconliebiaodaohang_gongyi{
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  .plan-wrap{
+    img{
+      width: 80px;
+      height: 80px;
+      /*align-self: center;*/
+      /*width: 50px;*/
+      /*height: 50px;*/
+    }
+    .plan-left{
+
+      display: flex;
+      flex-wrap: nowrap;
+      padding: 5px;
+
+
+    }
+    .plan-right-content{
+      align-self: center;
+    }
+  }
+
+
+
+.help-wrap{
+  & /deep/ .mu-item{
+    border-bottom: .5px solid $c-hui;
+    padding: 0px;
+  }
+}
+  .help-btn-wrap{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .btn{
+      width: 100px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      border: 1px solid $c-cheng;
+      color: $c-cheng;
+      border-radius: 10px;
+    }
+  }
 </style>
