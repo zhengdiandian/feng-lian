@@ -48,9 +48,15 @@ export default new Router({
     },
     {
       path: '/',
-      name: PerInfor,
-      component: PerInfor
+      component: function () {
+        return import('./views/RealName.vue')
+      }
     }
+    // {
+    //   path: '/',
+    //   name: PerInfor,
+    //   component: PerInfor
+    // }
     // {
     //   path: '/home',
     //   name: 'home',
