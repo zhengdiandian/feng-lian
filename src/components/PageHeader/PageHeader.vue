@@ -1,7 +1,9 @@
 <template>
     <header>
         <nav>
-            
+            <router-link tag="div" to="/">
+                <mu-icon value=":iconfont iconfanhui"></mu-icon>
+            </router-link>
             <div class="title">{{title}}</div>
         </nav>
     </header>
@@ -23,10 +25,10 @@ nav {
     height: 50px;
     display: flex;
     align-items: center;
-    img {
-        width: 30px;
-        height: 30px;
+    .iconfanhui{
+        font-size: 25px;
         margin-left: 5px;
+        margin-top: -20px;
     }
     .title {
         width: 80%;

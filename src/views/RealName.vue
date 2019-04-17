@@ -11,24 +11,22 @@
             </div>
             <div class="upload">
                 <div class="uptitle"><span>上传身份证正反面照片</span></div>
-                <div style="width: $gw;">
-                    <div class="uploadimg">
-                        <input class="justID" type="file">
-                    </div>
-                    <div class="uploadimg">
-                        <input class="backID" type="file">
-                    </div>
-                </div>
+                <section>
+                    <upload></upload>
+                    <upload></upload>
+                </section>
             </div>
         </main>
     </div>
 </template>
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
+import upload from '../components/UpLoad/UpLoad'
 export default {
     name: 'RealName',
     components: {
-        PageHeader
+        PageHeader,
+        upload
     },
     data() {
         return {
@@ -59,41 +57,11 @@ input {
     width: $gw;
     margin-top: 10px;
     .uptitle {
+        margin-left: 20px;
         span{
             font-weight: bold;
             font-size: 16px;
         }
-    }
-    .uploadimg{
-        width: 40%;
-        padding: 4px 10px;
-        height: 100px;
-        line-height: 20px;
-        position: relative;
-        cursor: pointer;
-        color: #888;
-        background: #fafafa;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        overflow: hidden;
-        display: inline-block;
-        *display: inline;
-        *zoom: 1;
-        input {
-            position: absolute;
-            font-size: 100px;
-            right: 0;
-            top: 0;
-            opacity: 0;
-            filter: alpha(opacity=0);
-            cursor: pointer
-        }
-    }
-    .uploadimg:hover {
-        color: #444;
-        background: #eee;
-        border-color: #ccc;
-        text-decoration: none
     }
 }
 </style>
