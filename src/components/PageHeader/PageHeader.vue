@@ -1,9 +1,7 @@
 <template>
     <header>
         <nav>
-            <router-link tag="div" to="/">
-                <mu-icon value=":iconfont iconfanhui"></mu-icon>
-            </router-link>
+            <mu-icon value=":iconfont iconfanhui" @click="openReturn"></mu-icon>
             <div class="title">{{title}}</div>
         </nav>
     </header>
@@ -16,6 +14,11 @@ export default {
             type: String,
             default: "Bryant.zZ"
         },
+    },
+    methods: {
+        openReturn() {
+            this.$router.go(-1)
+        }
     }
 }
 </script>
@@ -28,12 +31,11 @@ nav {
     .iconfanhui{
         font-size: 25px;
         margin-left: 5px;
-        margin-top: -20px;
     }
     .title {
         width: 80%;
         text-align: center;
-        font-weight: bold;
+        // font-weight: bold;
         font-size: 16px;
     }
 }

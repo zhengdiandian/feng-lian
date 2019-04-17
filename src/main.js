@@ -11,6 +11,10 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 // import 'material-design-icons/iconfont/material-icons.css'
 import * as colors from 'muse-ui/lib/theme/colors'
 import './assets/font/iconfont.css'
+import 'muse-ui-message/dist/muse-ui-message.css'
+import Message from 'muse-ui-message'
+Vue.use(Message)
+
 theme.add('custom-theme', {
   primaryColor: '#fff',
   primary: colors.indigo,
