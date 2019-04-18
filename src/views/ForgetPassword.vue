@@ -32,7 +32,6 @@
                 </mu-text-field>
                 <mu-button round class="login-btn" color="success">完&nbsp;成</mu-button>
         </main>
->>>>>>> fd312d92d08b6b04924c348863427b4b9055ce21
     </div>
 </template>
 <script>

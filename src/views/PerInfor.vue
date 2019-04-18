@@ -1,33 +1,35 @@
 <template>
     <div>
         <header>
-            <PerInforHeader></PerInforHeader>
+            <PerInforHeader ></PerInforHeader>
+            <img class="erweima" src="" alt="">
         </header>
         <main>
            <div class="detaInfo">
-               <section class="datalist">
-                   <div class="listtext"><span>会员ＩＤ</span></div>
-                   <div class="listInfo">{{datalist.ID}}</div>
-               </section>
-               <section class="datalist">
-                   <div class="listtext"><span>邮箱</span></div>
-                   <div class="listInfo">{{datalist.email}}</div>
-               </section>
-               <section class="datalist" style="height: 100px; position: relative; align-items: stretch;" >
-                   <div class="listtext" style="margin-top: 10px;"><span>个人信息</span></div>
-                   <div class="listInfo" style="margin-top: 30px;">{{datalist.gender}} {{datalist.age}} {{datalist.constellation}} {{datalist.address}}</div>
-                   <div class="details"><span>详细信息</span><img src="../assets/you.png" alt=""></div>
-               </section>
-               <section class="datalist">
-                   <div class="listtext"><span>体检报告</span></div>
-                   <div class="listInfo"><span>体检报告</span></div>
-                   <div class="states"><span>{{states.upload}}</span><img src="../assets/you.png" alt=""></div>
-               </section>
-               <section class="datalist">
-                   <div class="listtext"><span>体检报告</span></div>
-                   <div class="listInfo"><span>实名认证</span></div>
-                   <div class="states"><span>{{states.atication}}</span><img src="../assets/you.png" alt=""></div>
-               </section>
+                <section class="datalist">
+                    <div class="listtext"><span>会员ID：</span></div>
+                    <div class="listInfo">{{datalist.ID}}</div>
+                </section>
+                <section class="datalist">
+                    <div class="listtext"><span>邮箱：</span></div>
+                    <div class="listInfo">{{datalist.email}}</div>
+                </section>
+                <section class="datalist" >
+                    <div class="listtext" ><span>个人信息</span></div>
+                    <div class="listInfo" >{{datalist.gender}} {{datalist.age}} {{datalist.constellation}} {{datalist.address}}</div> 
+                    <span style="font-size: 12px; color: #ccc; margin-left: 8px;">详细信息</span>
+                    <mu-icon value=":iconfont iconyou1"></mu-icon>
+                </section>
+                <div style="margin-top: 10px;">
+                <section class="datalist">
+                    <div class="listtext"><span>体检报告</span></div>
+                    <mu-icon value=":iconfont iconyou1"></mu-icon>
+                </section>
+                <section class="datalist">
+                    <div class="listtext"><span>体检报告</span></div>
+                    <mu-icon value=":iconfont iconyou1"></mu-icon>
+                </section>
+                </div>
            </div>
         </main>
     </div>
@@ -61,70 +63,45 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+header{
+    position: relative;
+    .erweima{
+    width: 20px;
+    height: 20px;
+    background: #000;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+}
+}
 .detaInfo {
-    width: $gw;
-    background-color: #fff;
+    width: 90%;
     display: flex;
     flex-direction: column;
+    margin: auto;
+    border-radius: 20px;
+    background: #fff;
+    margin-bottom: 10px;
     .datalist{
         display: flex;
-        width: $gw;
         height: 60px;
         align-items: center;
         .listtext{
-            width: 50px;
+            width: 60px;
             height: 50px;
-            border: 1px solid black;
-            border-radius: 50%;
             display: flex;
-            justify-content: center;
-            align-items: center;
             margin-left: 30px;
-            span {
-                display: inline-block;
-                width: 30px;
-            }
+            align-items: center;
         }
         .listInfo {
             margin-left: 10px;
         }
-        .details {
-            position: absolute;
-            top: 55px;
-            left: 30px;
-            width: 85%;
-            padding: 0 0 5px 60px;
-            border-bottom: 1px solid #9999AF;
-            color: #9999AF;
-            font-size: 12px;
-            img {
-                width: 20px;
-                height: 20px;
-                position: absolute;
-                right: -10px;
-            }
-        }
-        .states {
-            display: flex;
-            position: absolute;
-            right: 0;
-            span {
-                position: relative;
-                top: 3px;
-                font-size: 16px;
-                font-weight: bold;
-                color: #9999AF;
-            }
-            img {
-                width: 30px;
-                height: 30px;
-            }
-        }
+        .iconyou1{
+        position: absolute;
+        right: 20px;
+        font-size: 20px;
+        color: yellow;
+      }
     }
-  .routers-wrap{
-    .router-item {
-      width: 25%;
-    }
-  }
 }
 </style>

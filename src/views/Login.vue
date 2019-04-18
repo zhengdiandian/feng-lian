@@ -9,8 +9,9 @@
         <mu-text-field
           v-model="account"
           label-float
-          placeholder="用户名为6-12长度的字符"
-          icon=":iconfont iconzhanghao"
+          label="请输入您的手机号码"
+          icon="account_circle"
+          :error-text="accountErr"
         >
           <div slot="append">
             <router-link tag="div" to="/register" style="color: #347fe8">立即注册</router-link>

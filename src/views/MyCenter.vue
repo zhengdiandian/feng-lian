@@ -2,44 +2,44 @@
 <div id="MyCenter">
     <header>
         <div class="header-title">我的蜂链</div>
-        <div class="personal" v-on:click="jump">
-          <section class="personal-img"><img src="" alt=""></section>
-          <section class="personal-name-number">
-            <div class="name">Bryant.zZ</div>
-            <span class="real-name"></span>
-            <span class="number">188 9900 2266</span>
-            <section class="integral">
-              <div class="integral-number">积分 5000</div>
-              <span>海内存知已，天涯若比邻</span>
-            </section>
-          </section>
-          <div class="icon-you">
-            <img style="width: 50px; " src="../assets/you.png" alt="">
-          </div>
-        </div>
-        <div class="apply">
-          <section class="apply-img"><img src="" alt=""></section>
-          <section class="apply-text">
-            <div style="font-weight: bolder">申请即可成为爱心大使</div>
-            <div class="line"></div>
-            <div style="font-weight: bolder; color: #cc9933">立即申请</div>
-          </section>
-        </div>
     </header>
-    <div class="list" v-for="item in list" :key="item">
-        <div class="list-img-single">
-          <div class="list-img"><img src="" alt=""></div>
-          <div class="list-single">{{item}}</div>
+    <main>
+      <div class="headerNav">
+        <div class="headerLogin"><img src="" alt=""></div>
+        <section class="information">
+          <span>姓名：{{name}}</span><span class="state">已实名</span>
+          <div class="number">188 5001 6569</div>
+          <div class="integral">积分 {{5000}}</div>
+          <div class="autograph">海内存知己，天涯若比邻</div>
+        </section>
+        <div class="you">
+         <mu-icon value=":iconfont iconyou1"></mu-icon>
         </div>
-    </div>
-    <div style="margin: 5px 0 20px 0;">
-      <div class="list" v-for="item in listSet" :key="item">
-          <div class="list-img-single">
-            <div class="list-img"><img src="" alt=""></div>
-            <div class="list-single">{{item}}</div>
-          </div>
       </div>
-    </div>
+      <div class="apply">
+        <mu-icon value=":iconfont iconaixin" color="red"></mu-icon>
+        <span>申请成为爱心大使</span>
+        <div class="apply-click">立即申请</div>
+      </div>
+      <section class="please-list" style="margin: 10px auto; width: 90%">
+          <div class="list-li" v-for="li in list" :key="li">
+            <div style="width: 30px;height: 30px;background-color: #ccc;">
+              <img src="" alt="">
+            </div>
+            <span>{{li}}</span>
+            <mu-icon value=":iconfont iconyou1"></mu-icon>
+          </div>
+        </section>
+        <section class="please-list" style="margin: 10px auto; width: 90%">
+          <div class="list-li" v-for="li in listSet" :key="li">
+            <div style="width: 30px;height: 30px;background-color: #ccc;">
+              <img src="" alt="">
+            </div>
+            <span>{{li}}</span>
+            <mu-icon value=":iconfont iconyou1"></mu-icon>
+          </div>
+        </section>
+    </main>
 </div>
 </template>
 <script>
@@ -47,6 +47,7 @@ export default {
   name: 'mycenter',
   data() {
     return {
+      name: 'Bryant.zZ',
       list: [
         "福利社",
         "我的卡包",
@@ -70,111 +71,92 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-#MyCenter {
-  background: #f2f2f2;
-}
 header {
 width: $gw;
-height: 250px;
-// background-color: #f2f2f2;
 .header-title {
   width: $gw;
   text-align: center;
   height: 50px;
   line-height: 50px;
   font-size: 16px;
-  font-weight: bolder;
+  background-color: #fff;
 }
-.personal {
+}
+.headerNav{
+  width: 90%;
+  height: 100px;
+  background: #fff;
+  margin: 10px auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: $gw;
-  height: 120px;
-  .personal-img {
-    width: 100px;
-    height: 100px;
+  position: relative;
+  .headerLogin{
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
     border-radius: 50%;
-    background-color: white;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+    margin-right: 10px;
+    border: 2px solid yellow;
   }
-  .personal-name-number {
+  .state{
+    display: inline-block;
+    width: 40px;
+    height: 15px;
+    background-color: black;
+    color: #fff;
+    font-size: 12px;
+  }
+  .you{
+    width: 30px;
+    height: 100%;
     display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-    .name {
-      font-weight: bolder;
-      font-size: 16px;
-    }
-    .number {
-      font-size: 10px;
-      font-weight: bolder;
-    }
-    .integral {
-      margin-top: 20px;
-      .integral-number {
-        font-weight: bolder;
-        font-size: 16px;
-      }
-      span {
-        color: #99a4af;
-        font-size: 12px;
-      }
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    color: blue;
+    .iconyou1{
+      font-size: 30px;
     }
   }
 }
 .apply {
-  width: $gw;
-  height: 80px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  .apply-img {
-    width: 60px;
-    height: 60px;
-    background-color: white;
-    border-radius: 50%;
+  width: 90%;
+  height: 30px;
+  background-color: rgb(243, 172, 172);
+  border-radius: 20px;
+  margin: auto;
+  position: relative;
+  span {
+    font-size: 12px;
+    color: red;
+    margin-left: 15px;
   }
-  .apply-text{
-    width: 70%;
-    height: 40px;
-    background-color: white;
-    margin-left: -8px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .iconaixin{
+    font-size: 40px;
+    position: relative;
+    top: -12px;
   }
-  .line {
-    height: 40px;
-    width: 1px;
-    background-color: black;
-    margin: 0 15px 0 15px;
-  }
-}
-}
-.list {
-  background-color: white;
-  .list-img-single{
-    display: flex;
-    align-items: center;
-    width: 90%;
-    height: 50px;
-    margin: auto;
-    border-bottom: 1px solid #e6e6e6;
-  }
-  .list-single{
-    margin-left: 10px;
-  }
-  .list-img{
-    width: 30px;
-    height: 30px;
-    border: 1px solid #e6e6e6;
-    border-radius: 50%;
+  .apply-click{
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    right: 25px;
   }
 }
+.list-li {
+      width: 90%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      .iconyou1{
+        position: absolute;
+        right: 20px;
+        font-size: 20px;
+        color: yellow;
+      }
+    }
 </style>
