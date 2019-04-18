@@ -86,6 +86,7 @@
 
     data() {
       return {
+        open: false,
         itemRowData: [
           {
             icon: ' iconfanweiguang-',
