@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div class="">
 
     <mu-appbar style="width: 100%;" color="primary" text-color="#666" z-depth="0" >
       <mu-button icon slot="left" @click="$router.go(-1)">
@@ -8,41 +8,84 @@
       <div class="text-center">互助计划</div>
     </mu-appbar>
     <banner-img></banner-img>
-    <mu-sub-header>终身重大疾病互助计划</mu-sub-header>
-    <div class="chat-wrap">
-      <div class="chat-content item-content">
-        <div class="chat-title">已加入人数 (人)</div>
-        <div class="chat-info">23124</div>
+    <div class="wrap">
+      <mu-sub-header>终身重大疾病互助计划</mu-sub-header>
+      <div class="chat-wrap">
+        <div class="chat-content item-content">
+          <div class="chat-title">已加入人数 (人)</div>
+          <div class="chat-info">23124</div>
+        </div>
+        <div class="xian"></div>
+        <div class="chat-content item-content">
+          <div class="chat-title">已互助金额 (元)</div>
+          <div class="chat-info">936000</div>
+        </div>
+        <div class="chat-content item-content">
+          <div class="chat-title">互助事件</div>
+          <div class="chat-info">492</div>
+        </div>
       </div>
-      <div class="xian"></div>
-      <div class="chat-content item-content">
-        <div class="chat-title">已互助金额 (元)</div>
-        <div class="chat-info">936000</div>
-      </div>
-      <div class="chat-content item-content">
-        <div class="chat-title">互助事件</div>
-        <div class="chat-info">492</div>
+      <icon-bar left-text="预存48元加入" right-text="加入" >
+        <span class="hot"></span>
+      </icon-bar>
+      <item-row :datas="itemRowData" ></item-row>
+      <mu-divider></mu-divider>
+      <div class="hlep-rule">
+        <mu-sub-header>互助规则</mu-sub-header>
+        <div class="rule"  v-for="i in 7" :key="i">
+          <span class="rule-title">人群范围</span> Lorem ipsum dolor sit amet.
+          <mu-divider></mu-divider>
+        </div>
       </div>
     </div>
-    <icon-bar left-text="预存48元加入" right-text="加入" >
-      <span class="hot"></span>
-    </icon-bar>
   </div>
 </template>
 
 <script>
   import BannerImg from '../components/BannerImg/BannerImg'
   import IconBar from '../components/IocnBar/IConBar'
+  import ItemRow from '../components/ItemRow/ItemRow'
   export default {
     name: 'hlepPlan',
     components: {
       BannerImg,
-      IconBar
+      IconBar,
+      ItemRow
+    },
+
+    data() {
+      return {
+        itemRowData: [
+          {
+            icon: ' iconfanweiguang-',
+            title: '互助范围',
+            text: '60 (大病) + 20(轻症)'
+          },
+          {
+            icon: ' iconfanweiguang-',
+            title: '互助范围',
+            text: '60 (大病) + 20(轻症)'
+          },
+          {
+            icon: ' iconfanweiguang-',
+            title: '互助范围',
+            text: '60 (大病) + 20(轻症)'
+          },
+          {
+            icon: ' iconfanweiguang-',
+            title: '互助范围',
+            text: '60(大病)+20(轻症)'
+          }
+        ]
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
+  .wrap{
+    padding: 5px;
+  }
   .hot{
     display: inline-block;
     width: 30px;
@@ -93,6 +136,11 @@
       height: 100%;
       /*justify-items: center;*/
       border-left: 1px solid #666666;
+    }
+  }
+  .hlep-rule{
+    .rule{
+
     }
   }
 </style>
