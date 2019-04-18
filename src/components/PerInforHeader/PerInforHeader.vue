@@ -1,12 +1,17 @@
 <template>
     <div>
         <header>
-            <nav><img src="@/assets/图标/返 回.png" alt=""></nav>
+            <nav>
+                <img src="@/assets/图标/返 回.png" alt="">
+                <div class="title">{{title}}</div>
+            </nav>
             <div class="head-infor">
                 <section class="head-portrait"><img :src="imgUrl" alt=""></section>
-                <span style="font-weight: bolder; font-size: 20px; margin: 5px 0 5px 0;">{{name}}</span>
-                <span style="font-weight: bolder; font-size: 20px; color: #9999af; margin-bottom: -20px;">{{autograph}}</span>
-                <span class="division"></span>
+                <div>
+                    <span class="name">{{name}}</span>
+                    <span class="stata">{{stata}}</span>
+                </div>
+                <div style="color: #ccc; font-size: 14px; margin-top: 5px;">{{autograph}}</div>
             </div>
         </header>
     </div>
@@ -18,11 +23,19 @@ export default {
         imgUrl: [String],
         name: {
             type: String,
-            default: "Bryant.zZ"
+            default: ""
+        },
+        stata: {
+            type: String,
+            default: ''
         },
         autograph: {
             type: String,
-            default: "海内存知已，天涯若比邻"
+            default: ""
+        },
+        title: {
+            type: String,
+            default: ""
         }
     }
 }
@@ -37,34 +50,38 @@ nav {
     display: flex;
     align-items: center;
     img {
-        width: 30px;
-        height: 30px;
+        width: 20px;
+        height: 20px;
         margin-left: 5px;
+    }
+    .title{
+        width: 85%;
+        text-align: center;
     }
 }
 .head-infor {
     width: $gw;
-    height: 180px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     position: relative;
     .head-portrait{
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
         border: 1px solid black;
         border-radius: 50%;
         background-color: #fff;
         position: relative;
         z-index: 99;
     }
-    .division {
-        width: $gw;
-        height: 1px;
-        border: 0.1px solid black;
-        position: absolute;
-        top: 70px;
+    .stata{
+        display: inline-block;
+        width: 50px;
+        text-align: center;
+        font-size: 12px;
+        background-color: yellow;
     }
 }
 </style>

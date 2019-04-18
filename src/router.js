@@ -34,6 +34,12 @@ export default new Router({
       component: MyCenter
     },
     {
+      path: '/mynot',
+      component: function () {
+        return import('./views/MyNotLogin.vue')
+      }
+    },
+    {
       path: '/perinfor',
       name: PerInfor,
       component: PerInfor
@@ -66,6 +72,18 @@ export default new Router({
       path: '/reset',
       component: function () {
         return import('./views/ResetPassword.vue')
+      }
+    },
+    {
+      path: '/qr',
+      component: function () {
+        return import('./views/QRcode.vue')
+      }
+    },
+    {
+      path: '/report',
+      component: function () {
+        return import('./views/UploadReport.vue')
       }
     }
     // {

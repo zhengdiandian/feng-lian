@@ -9,14 +9,9 @@
         <mu-text-field
           v-model="account"
           label-float
-<<<<<<< HEAD
-          placeholder="用户名为6-12长度的字符"
-          icon=":iconfont iconzhanghao"
-=======
           label="请输入您的手机号码"
           icon="account_circle"
           :error-text="accountErr"
->>>>>>> fd312d92d08b6b04924c348863427b4b9055ce21
         >
           <div slot="append">
             <router-link tag="div" to="/register" style="color: #347fe8">立即注册</router-link>
@@ -27,11 +22,7 @@
         <mu-text-field
           label="请输入密码"
           v-model="pwd"
-<<<<<<< HEAD
-          icon=":iconfont iconmima"
-=======
           icon="locked"
->>>>>>> fd312d92d08b6b04924c348863427b4b9055ce21
           :error-text="pwdErr"
           :action-icon="visibility ? ':iconfont iconyanjing' : ':iconfont iconyanjing'"
           :action-click="() => (visibility = !visibility)"
@@ -39,12 +30,6 @@
         ></mu-text-field>
       </div>
       <div class="bottom-nav">
-<<<<<<< HEAD
-          <router-link to="/">忘记密码?</router-link>
-          <router-link to="/forgetPassword">忘记密码?</router-link>
-      </div>
-      <mu-button round class="login-btn" color="success" @click="login">登入</mu-button>
-=======
           <router-link tag="div" to="/register" style="color: #347fe8; font-size: 14px">短信验证码登陆</router-link>
           <router-link tag="div" to="/forgetPassword" style="color: #347fe8; font-size: 14px">忘记密码?</router-link>
       </div>
@@ -52,7 +37,6 @@
       <div class="show" v-show="show">
         <span>网络异常</span>
       </div>
->>>>>>> fd312d92d08b6b04924c348863427b4b9055ce21
     </div>
   </div>
 </template>

@@ -2,7 +2,7 @@
     <div>
         <div style="display: flex;justify-content: center;">
             <div class="uploadimg">
-                <span>上传证件正面照</span>
+                <span>{{upload}}</span>
                 <input class="justID" type="file">
             </div>
         </div>
@@ -10,12 +10,18 @@
 </template>
 <script>
 export default {
-    name: 'UpLoad'
+    name: 'UpLoad',
+    props:{
+        upload: {
+            type: String,
+            default: '上传身份证正面'
+        }
+    }
 }
 </script>
 <style scoped lang="scss">
 .uploadimg{
-        width: 40%;
+        width: 100%;
         padding: 4px 10px;
         height: 100px;
         line-height: 20px;
@@ -25,8 +31,10 @@ export default {
         border: 1px solid #ddd;
         border-radius: 4px;
         overflow: hidden;
-        display: inline-block;
-        margin: 10px 10px 0 10px;
+         display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ccc;
         input {
             position: absolute;
             font-size: 100px;
