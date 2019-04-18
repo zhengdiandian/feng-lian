@@ -37,6 +37,37 @@
           <mu-divider></mu-divider>
         </div>
       </div>
+       <div class="help-wrap">
+        <mu-sub-header>常见问题</mu-sub-header>
+
+        <mu-list  class="list" toggle-nested="">
+          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="i in 7" :key="i">
+            <mu-list-item-title>{{i}}、Lorem ipsum dolor sit.</mu-list-item-title>
+            <mu-list-item-action>
+              <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
+            </mu-list-item-action>
+            <mu-list-item button :ripple="false" slot="nested">
+              <mu-list-item-title>List Item 1</mu-list-item-title>
+            </mu-list-item>
+            <mu-list-item button :ripple="false" slot="nested">
+              <mu-list-item-title>List Item 2</mu-list-item-title>
+            </mu-list-item>
+            <mu-list-item button :ripple="false" slot="nested">
+              <mu-list-item-title>List Item 3</mu-list-item-title>
+            </mu-list-item>
+
+          </mu-list-item>
+
+        </mu-list>
+        <div class="help-btn-wrap">
+          <div class="btn">
+            <span class="iconfont iconlianxikefu"></span>
+            联系客服
+          </div>
+          
+        </div>
+      </div>
+      <div class="bottom-btn">立即加入</div>
     </div>
   </div>
 </template>
@@ -142,5 +173,37 @@
     .rule{
 
     }
+  }
+  .help-wrap{
+  & /deep/ .mu-item{
+    // border-bottom: .5px solid $c-hui;
+    // padding: 0px;
+  }
+}
+  .help-btn-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn{
+      width: 100px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      border: 1px solid $c-cheng;
+      color: $c-cheng;
+      border-radius: 10px;
+    }
+  }
+
+  .bottom-btn{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $c-cheng;
+    color: #fff;
+
   }
 </style>
