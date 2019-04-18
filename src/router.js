@@ -85,6 +85,20 @@ export default new Router({
       component: function () {
         return import('./views/UploadReport.vue')
       }
+    },
+    {
+      path: '/joinPlan',
+      name: 'joinPlan',
+      component: function () {
+        return import('./views/joinPlan')
+      }
+    },
+    {
+      path: '/hlepPlan',
+      name: 'hlepPlan',
+      component: function () {
+        return import('./views/hlepPlan')
+      }
     }
     // {
     //   path: '/',
