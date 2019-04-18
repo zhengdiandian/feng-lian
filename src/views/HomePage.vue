@@ -37,11 +37,7 @@
             <div class="text">秒到赔付</div>
           </div>
         </div>
-        <mu-carousel class="banner">
-          <mu-carousel-item v-for="i in 4" :key="i">
-            <img src="http://placehold.it/350x200/">
-          </mu-carousel-item>
-        </mu-carousel>
+        <banner-img></banner-img>
       </div>
     </div>
     <div class="wrap">
@@ -67,11 +63,7 @@
       </div>
     </div>
     <div class="wrap">
-      <mu-carousel class="banner">
-        <mu-carousel-item v-for="i in 4" :key="i">
-          <img src="http://placehold.it/350x200/">
-        </mu-carousel-item>
-      </mu-carousel>
+      <banner-img></banner-img>
       <div class="help-wrap">
         <mu-sub-header>常见问题</mu-sub-header>
 
@@ -117,7 +109,7 @@
 
 <script>
 // @ is an alias to /src
-
+import BannerImg from '../components/BannerImg/BannerImg'
 export default {
   name: "homePage",
   data() {
@@ -126,7 +118,9 @@ export default {
       open: false
     };
   },
-  components: {}
+  components: {
+    BannerImg
+  }
 };
 </script>
 <style lang="scss" scoped>
