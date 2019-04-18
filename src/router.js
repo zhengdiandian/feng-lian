@@ -87,6 +87,30 @@ export default new Router({
       }
     },
     {
+      path: '/wa',
+      component: function () {
+        return import('./views/WelfareAgency.vue')
+      }
+    },
+    {
+      path: '/share',
+      component: function () {
+        return import('./views/ShareUser.vue')
+      }
+    },
+    {
+      path: '/myplan',
+      component: function () {
+        return import('./views/MyPlan.vue')
+      }
+    },
+    {
+      path: '/myreward',
+      component: function () {
+        return import('./views/MyReward.vue')
+      }
+    },
+    {
       path: '/joinPlan',
       name: 'joinPlan',
       component: function () {

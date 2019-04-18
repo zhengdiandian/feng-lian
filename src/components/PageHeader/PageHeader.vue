@@ -28,6 +28,7 @@ nav {
     height: 50px;
     display: flex;
     align-items: center;
+    background-color: #fff;
     .iconfanhui{
         font-size: 25px;
         margin-left: 5px;
