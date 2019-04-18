@@ -15,8 +15,8 @@
       </mu-carousel>
       <div class="content">
         <div class="btn-wrap">
-          <mu-button  class="btn" color="success" @click="">登入</mu-button>
-          <mu-button round class="btn" color="success" @click="">登入</mu-button>
+          <mu-button  class="btn" color="success" @click="">感恩有你</mu-button>
+          <mu-button round class="btn" color="success" @click="">查看我的互助计划</mu-button>
         </div>
         <div class="chat-wrap">
           <div class="chat-content item-content">
@@ -59,7 +59,7 @@
             <div class="info">Lorem ipsum dolor sit amet, consectetur adipisicing?</div>
           </div>
           <div class="plan-right-content">
-            <mu-button  class="btn" color="success" @click="">再次加入</mu-button>
+            <mu-button  class="btn" color="success" @click="$router.push('/joinPlan')">再次加入</mu-button>
           </div>
         </div>
         <mu-divider></mu-divider>
@@ -75,13 +75,21 @@
       <div class="help-wrap">
         <mu-sub-header>常见问题</mu-sub-header>
 
-        <mu-list  class="list" >
-          <mu-list-item   style="border-bottom: 1px solid #666666; padding: 0px ;margin: 0 20px;" class="list-item"   v-for="i in 7" :key="i">
+        <mu-list  class="list" toggle-nested="">
+          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="i in 7" :key="i">
             <mu-list-item-title>{{i}}、Lorem ipsum dolor sit.</mu-list-item-title>
             <mu-list-item-action>
-              <mu-icon class="toggle-icon" size="24" value=":iconfont iconyou1" ></mu-icon>
+              <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
-
+            <mu-list-item button :ripple="false" slot="nested">
+              <mu-list-item-title>List Item 1</mu-list-item-title>
+            </mu-list-item>
+            <mu-list-item button :ripple="false" slot="nested">
+              <mu-list-item-title>List Item 2</mu-list-item-title>
+            </mu-list-item>
+            <mu-list-item button :ripple="false" slot="nested">
+              <mu-list-item-title>List Item 3</mu-list-item-title>
+            </mu-list-item>
 
           </mu-list-item>
 
@@ -92,12 +100,17 @@
             联系客服
           </div>
           <div class="btn">
-            <span class="iconfont iconlianxikefu"></span>
-            联系客服
+            <span class="iconfont iconguanyu"></span>
+            了解我们
           </div>
         </div>
       </div>
-
+      <div class="partner wrap">
+        <mu-sub-header>平台运营安全可靠</mu-sub-header>
+        <div class="partner-content">
+          <img v-for=" i in 10" :key="i" src="http:\\placehold.it\70x70" alt="">
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -269,6 +282,19 @@ h3{
       border: 1px solid $c-cheng;
       color: $c-cheng;
       border-radius: 10px;
+    }
+  }
+
+
+  .partner-content{
+    height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-between;
+    img{
+      /*width: 70px;*/
+      /*height: 70px;*/
     }
   }
 </style>
