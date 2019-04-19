@@ -26,7 +26,7 @@
 </template>
 <script>
 export default {
-  name: 'mycenter',
+  name: 'mynotlogin',
   data() {
     return {
       list: [

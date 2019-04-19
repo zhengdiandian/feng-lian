@@ -21,7 +21,7 @@
 <script>
 import PerInforHeader from '../components/PerInforHeader/PerInforHeader'
 export default {
-    name: 'PerInfor',
+    name: 'qrcode',
     components: {
         PerInforHeader
     },

@@ -6,12 +6,14 @@
     <main>
       <div class="headerNav">
         <div class="headerLogin"><img src="" alt=""></div>
+        <router-link tag="div" to="/perinfor">
         <section class="information">
           <span>姓名：{{name}}</span><span class="state">已实名</span>
           <div class="number">188 5001 6569</div>
           <div class="integral">积分 {{5000}}</div>
           <div class="autograph">海内存知己，天涯若比邻</div>
         </section>
+        </router-link>
         <div class="you">
          <mu-icon value=":iconfont iconyou1"></mu-icon>
         </div>
@@ -22,22 +24,89 @@
         <div class="apply-click">立即申请</div>
       </div>
       <section class="please-list" style="margin: 10px auto; width: 90%">
-          <div class="list-li" v-for="li in list" :key="li">
+        <router-link tag="div" to="/welfareagency">
+          <div class="list-li">
             <div style="width: 30px;height: 30px;background-color: #ccc;">
               <img src="" alt="">
             </div>
-            <span>{{li}}</span>
+            <span>福利社</span>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
+        </router-link>
+          <router-link tag="div" to="/">
+          <div class="list-li">
+            <div style="width: 30px;height: 30px;background-color: #ccc;">
+              <img src="" alt="">
+            </div>
+            <span>我的卡包</span>
+            <mu-icon value=":iconfont iconyou1"></mu-icon>
+          </div>
+        </router-link>
+        <router-link tag="div" to="/myplan">
+          <div class="list-li">
+            <div style="width: 30px;height: 30px;background-color: #ccc;">
+              <img src="" alt="">
+            </div>
+            <span>我的计划</span>
+            <mu-icon value=":iconfont iconyou1"></mu-icon>
+          </div>
+        </router-link>
+        <router-link tag="div" to="/">
+          <div class="list-li">
+            <div style="width: 30px;height: 30px;background-color: #ccc;">
+              <img src="" alt="">
+            </div>
+            <span>我的申请</span>
+            <mu-icon value=":iconfont iconyou1"></mu-icon>
+          </div>
+        </router-link>
+        <router-link tag="div" to="/">
+          <div class="list-li">
+            <div style="width: 30px;height: 30px;background-color: #ccc;">
+              <img src="" alt="">
+            </div>
+            <span>我的蜂蜜</span>
+            <mu-icon value=":iconfont iconyou1"></mu-icon>
+          </div>
+        </router-link>
+        <router-link tag="div" to="/assis">
+          <div class="list-li">
+            <div style="width: 30px;height: 30px;background-color: #ccc;">
+              <img src="" alt="">
+            </div>
+            <span>互助记录</span>
+            <mu-icon value=":iconfont iconyou1"></mu-icon>
+          </div>
+        </router-link>
+        <router-link tag="div" to="/">
+          <div class="list-li">
+            <div style="width: 30px;height: 30px;background-color: #ccc;">
+              <img src="" alt="">
+            </div>
+            <span>邀请好友</span>
+            <mu-icon value=":iconfont iconyou1"></mu-icon>
+          </div>
+        </router-link>
         </section>
         <section class="please-list" style="margin: 10px auto; width: 90%">
-          <div class="list-li" v-for="li in listSet" :key="li">
-            <div style="width: 30px;height: 30px;background-color: #ccc;">
-              <img src="" alt="">
+          <router-link tag="div" to="/">
+            <div class="list-li">
+              <div style="width: 30px;height: 30px;background-color: #ccc;">
+                <img src="" alt="">
+              </div>
+              <span>通知</span>
+              <mu-icon value=":iconfont iconyou1"></mu-icon>
             </div>
-            <span>{{li}}</span>
-            <mu-icon value=":iconfont iconyou1"></mu-icon>
-          </div>
+          </router-link>
+          <router-link tag="div" to="/setup">
+            <div class="list-li">
+              <div style="width: 30px;height: 30px;background-color: #ccc;">
+                <img src="" alt="">
+              </div>
+              <span>设置</span>
+              <mu-icon value=":iconfont iconyou1"></mu-icon>
+            </div>
+          </router-link>
         </section>
     </main>
 </div>

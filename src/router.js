@@ -23,91 +23,115 @@ export default new Router({
       ]
     },
     {
-      path: '/',
+      path: '/login', // 登陆
       component: function () {
         return import('./views/Login.vue')
       }
     },
     {
-      path: '/my',
-      name: MyCenter,
-      component: MyCenter
-    },
-    {
-      path: '/mynot',
-      component: function () {
-        return import('./views/MyNotLogin.vue')
-      }
-    },
-    {
-      path: '/perinfor',
-      name: PerInfor,
-      component: PerInfor
-    },
-    {
-      path: '/forgetPassword',
+      path: '/forgetPassword', // 忘记密码
       component: function () {
         return import('./views/ForgetPassword.vue')
       }
     },
     {
-      path: '/real',
-      component: function () {
-        return import('./views/RealName.vue')
-      }
-    },
-    {
-      path: '/register',
+      path: '/register', // 注册
       component: function () {
         return import('./views/register.vue')
       }
     },
     {
-      path: '/setpwd',
+      path: '/setpwd', // 设置密码
       component: function () {
         return import('./views/SetPassword.vue')
       }
     },
     {
-      path: '/reset',
+      path: '/reset', // 重新设置密码
       component: function () {
         return import('./views/ResetPassword.vue')
       }
     },
     {
-      path: '/qr',
+      path: '/my', // 我的
+      name: MyCenter,
+      component: MyCenter
+    },
+    {
+      path: '/mynot', // 我的未登录
+      component: function () {
+        return import('./views/MyNotLogin.vue')
+      }
+    },
+    {
+      path: '/perinfor', // 个人信息
+      name: PerInfor,
+      component: PerInfor
+    },
+    {
+      path: '/real', // 实名认证
+      component: function () {
+        return import('./views/RealName.vue')
+      }
+    },
+    {
+      path: '/code', // 二维码
       component: function () {
         return import('./views/QRcode.vue')
       }
     },
     {
-      path: '/report',
+      path: '/report', // 上传体检报告
       component: function () {
         return import('./views/UploadReport.vue')
       }
     },
     {
-      path: '/wa',
+      path: '/welfareagency', // 福利社
       component: function () {
         return import('./views/WelfareAgency.vue')
       }
     },
     {
-      path: '/share',
+      path: '/share', // 我的共享用户
       component: function () {
         return import('./views/ShareUser.vue')
       }
     },
     {
-      path: '/myplan',
+      path: '/myplan', // 我的计划
       component: function () {
         return import('./views/MyPlan.vue')
       }
     },
     {
-      path: '/myreward',
+      path: '/myreward', // 我的奖励
       component: function () {
         return import('./views/MyReward.vue')
+      }
+    },
+    {
+      path: '/MyIntegral', // 我的积分
+      component: function () {
+        return import('./views/MyIntegral.vue')
+      }
+    },
+    {
+      path: '/assis', // 互助记录
+      component: function () {
+        return import('./views/AssistanceRecord.vue')
+      }
+    },
+    {
+      path: '/palnned', // 计划充值
+      component: function () {
+        return import('./views/PlannedRecharge.vue')
+      }
+    },
+    {
+      path: '/setup', // 设置
+      component: function () {
+        return import('./views/SetUp.vue')
       }
     },
     {
