@@ -12,7 +12,9 @@
       <router-link class="select" to="/notice/newNotice">最新公示</router-link>
       <router-link class="select" to="/notice/oldNotice">往期公示</router-link>
     </div>
+
     <router-view></router-view>
+
   </div>
 </template>
 

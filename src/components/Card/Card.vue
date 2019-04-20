@@ -47,12 +47,12 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     /*box-sizing: border-box;*/
-    width: 328px;
+    width: 351px;
     /*height: 140px;*/
     background: url("../../assets/PNG/8-1我的互助计划_03.png") center no-repeat;
     border-radius: 5px;
     background-size: 100%;
-    padding: 11px 11px 13px;
+    padding: 12px;
     margin-bottom: 10px;
     color:rgba(255,255,255,1);
 
@@ -75,14 +75,14 @@
       font-family:SourceHanSansCN-Normal;
       font-weight:400;
       .tow{
-        padding-left: 12px;
+        padding-left: 13px;
         /*&>div{*/
           /*padding-bottom: 10px;*/
         /*}*/
       }
       .one ,.tow{
         &>div{
-          line-height: 1.5;
+          line-height: 1.75;
         }
       }
       .btn-wrap{
@@ -96,8 +96,8 @@
         justify-self: flex-end;
         /*justify-self: self-end;*/
         align-self: flex-end;
-        width:75px;
-        height:31px;
+        width:80px;
+        height:33px;
         /*margin-left: 74px;*/
         background:rgba(255,255,255,1);
         border-radius:9px;
@@ -106,21 +106,21 @@
     }
 
     .touXiang img{
-      width:41px;
-      height:41px;
+      width:44px;
+      height:44px;
       border-radius:50%;
     }
     .right-wrap{
-      padding-left: 11px;
+      padding-left: 12px;
       .name{
         font-size:13px;
         font-family:SourceHanSansCN-Normal;
         font-weight:bold;
         color:rgba(255,255,255,1);
-        padding-bottom: 6px;
+        padding-bottom: 7px;
         span{
           margin-left: 6px;
-          font-size:11px;
+          font-size:12px;
           font-family:SourceHanSansCN-Normal;
           font-weight:400;
           border:1px solid rgba(255,255,255,1);
@@ -129,11 +129,11 @@
       }
       .date{
 
-        width:140px;
-        height:21px;
+        width:150px;
+        height:22px;
         background:rgba(246,176,59,1);
-        border-radius:10px;
-        font-size:11px;
+        border-radius:11px;
+        font-size:12px;
         font-family:SourceHanSansCN-Normal;
         font-weight:400;
       }
