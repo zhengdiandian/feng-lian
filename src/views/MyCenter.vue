@@ -5,29 +5,30 @@
     </header>
     <main>
       <div class="headerNav">
-        <div class="headerLogin"><img src="" alt=""></div>
+        <div class="headerLogin"><img src="../assets/切图PNG/个人资料头像.png" alt=""></div>
         <router-link tag="div" to="/perinfor">
         <section class="information">
-          <span>姓名：{{name}}</span><span class="state">已实名</span>
-          <div class="number">188 5001 6569</div>
+          <span class="name">姓名：{{name}}</span><span class="state">已实名</span>
+          <div class="number"><span>18800004239</span></div>
           <div class="integral">积分 {{5000}}</div>
           <div class="autograph">海内存知己，天涯若比邻</div>
         </section>
         </router-link>
-        <div class="you">
          <mu-icon value=":iconfont iconyou1"></mu-icon>
-        </div>
       </div>
       <div class="apply">
-        <mu-icon value=":iconfont iconaixin" color="red"></mu-icon>
+        <mu-icon value=":iconfont iconaixin"></mu-icon>
         <span>申请成为爱心大使</span>
-        <div class="apply-click">立即申请</div>
+        <div class="apply-click">
+          <span>立即申请</span>
+          <mu-icon value=":iconfont iconyou"></mu-icon>
+        </div>
       </div>
       <section class="please-list" style="margin: 10px auto; width: 90%">
         <router-link tag="div" to="/welfareagency">
           <div class="list-li">
-            <div style="width: 30px;height: 30px;background-color: #ccc;">
-              <img src="" alt="">
+            <div style="text-align: center;">
+              <mu-icon value=":iconfont iconfulihui"></mu-icon>
             </div>
             <span>福利社</span>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -35,8 +36,8 @@
         </router-link>
           <router-link tag="div" to="/">
           <div class="list-li">
-            <div style="width: 30px;height: 30px;background-color: #ccc;">
-              <img src="" alt="">
+            <div style="text-align: center;">
+              <mu-icon value=":iconfont iconqiabao"></mu-icon>
             </div>
             <span>我的卡包</span>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -44,8 +45,8 @@
         </router-link>
         <router-link tag="div" to="/myplan">
           <div class="list-li">
-            <div style="width: 30px;height: 30px;background-color: #ccc;">
-              <img src="" alt="">
+            <div style="text-align: center;">
+              <mu-icon value=":iconfont iconjihua"></mu-icon>
             </div>
             <span>我的计划</span>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -53,8 +54,8 @@
         </router-link>
         <router-link tag="div" to="/">
           <div class="list-li">
-            <div style="width: 30px;height: 30px;background-color: #ccc;">
-              <img src="" alt="">
+            <div style="text-align: center;">
+              <mu-icon value=":iconfont iconshenqing"></mu-icon>
             </div>
             <span>我的申请</span>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -62,8 +63,8 @@
         </router-link>
         <router-link tag="div" to="/">
           <div class="list-li">
-            <div style="width: 30px;height: 30px;background-color: #ccc;">
-              <img src="" alt="">
+            <div style="text-align: center;">
+              <mu-icon value=":iconfont iconkehu"></mu-icon>
             </div>
             <span>我的蜂蜜</span>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -71,8 +72,8 @@
         </router-link>
         <router-link tag="div" to="/assis">
           <div class="list-li">
-            <div style="width: 30px;height: 30px;background-color: #ccc;">
-              <img src="" alt="">
+            <div style="text-align: center;">
+              <mu-icon value=":iconfont iconjilu"></mu-icon>
             </div>
             <span>互助记录</span>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -80,8 +81,8 @@
         </router-link>
         <router-link tag="div" to="/">
           <div class="list-li">
-            <div style="width: 30px;height: 30px;background-color: #ccc;">
-              <img src="" alt="">
+            <div style="text-align: center;">
+              <mu-icon value=":iconfont iconyaoqing"></mu-icon>
             </div>
             <span>邀请好友</span>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -91,8 +92,8 @@
         <section class="please-list" style="margin: 10px auto; width: 90%">
           <router-link tag="div" to="/">
             <div class="list-li">
-              <div style="width: 30px;height: 30px;background-color: #ccc;">
-                <img src="" alt="">
+              <div style="text-align: center;">
+                <mu-icon value=":iconfont icontongzhi"></mu-icon>
               </div>
               <span>通知</span>
               <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -100,8 +101,8 @@
           </router-link>
           <router-link tag="div" to="/setup">
             <div class="list-li">
-              <div style="width: 30px;height: 30px;background-color: #ccc;">
-                <img src="" alt="">
+              <div style="text-align: center;">
+                <mu-icon value=":iconfont iconshezhi"></mu-icon>
               </div>
               <span>设置</span>
               <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -145,49 +146,93 @@ width: $gw;
 .header-title {
   width: $gw;
   text-align: center;
-  height: 50px;
-  line-height: 50px;
+  height: 41px;
+  line-height: 41px;
   font-size: 16px;
   background-color: #fff;
 }
 }
 .headerNav{
-  width: 90%;
-  height: 100px;
-  background: #fff;
-  margin: 10px auto;
+  width:328px;
+  height:100px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 20px auto;
   display: flex;
   align-items: center;
   position: relative;
   .headerLogin{
-    width: 50px;
-    height: 50px;
-    background-color: #ccc;
-    border-radius: 50%;
-    margin-right: 10px;
-    border: 2px solid yellow;
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    background:rgba(207,207,207,1);
+    border:2px solid rgba(239, 162, 32, 1);
+    margin-left: 11px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .information{
+    margin-left: 13px;
+    .name{
+      width:108px;
+      height:14px;
+      font-size:13px;
+      font-family:SourceHanSansCN-Normal;
+      font-weight:bold;
+      color:rgba(51,51,51,1);
+    }
+    .number{
+      width: 75px;
+      height: 10px;
+      font-size:10px;
+      font-family:SourceHanSansCN-Normal;
+      font-weight:bold;
+      color:rgba(112,112,112,1);
+      font-size: 10px;
+    }
+    .integral{
+      width:62px;
+      height:12px;
+      font-size:12px;
+      font-family:SourceHanSansCN-Normal;
+      font-weight:bold;
+      color:rgba(239,162,32,1);
+      margin-top: 10px;
+    }
+    .autograph{
+      width:130px;
+      height:11px;
+      font-size:11px;
+      font-family:SourceHanSansCN-Normal;
+      font-weight:bold;
+      color:rgba(112,112,112,1);
+      margin-top: 5px;
+    }
   }
   .state{
     display: inline-block;
-    width: 40px;
-    height: 15px;
-    background-color: black;
-    color: #fff;
-    font-size: 12px;
+    width:40px;
+    height:15px;
+    line-height: 15px;
+    background:rgba(239,162,32,1);
+    border:0px solid rgba(255,255,255,1);
+    font-size:11px;
+    font-family:SourceHanSansCN-Normal;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    text-align: center;
+    margin-left: 6px;
   }
-  .you{
-    width: 30px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 0;
-    color: blue;
     .iconyou1{
-      font-size: 30px;
+      width:6px;
+      height:11px;
+      position: absolute;
+      right: 13px;
+      color: #EF9B1E;
     }
-  }
 }
 .apply {
   display: flex;
@@ -199,28 +244,59 @@ width: $gw;
   margin: auto;
   position: relative;
   span {
-    font-size: 12px;
-    color: red;
-    margin-left: 15px;
+    display: inline-block;
+    width:124px;
+    height:12px;
+    font-size:12px;
+    font-family:SourceHanSansCN-Normal;
+    font-weight:400;
+    color:rgba(255,0,0,1);
+    text-align: center;
+    margin-left: 12px;
+    line-height: 12px;
   }
   .iconaixin{
-    font-size: 40px;
+    font-size: 49px;
     position: relative;
-    top: -12px;
+    bottom: 15px;
   }
   .apply-click{
-    font-size: 12px;
-    color: red;
-    position: absolute;
-    right: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    span{
+      width:50px;
+      height:12px;
+      font-size:12px;
+      font-family:SourceHanSansCN-Normal;
+      font-weight:bold;
+      color:rgba(255,0,0,1);
+      line-height: 12px;
+      margin-right: 5px;
+    }
+    .iconyou{
+      font-size: 20px;
+      color:rgba(255,0,0,1);
+    }
   }
 }
+.please-list{
+  width:328px;
+  height:323px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
+  border-radius:5px;
+}
 .list-li {
-      width: 90%;
       height: 50px;
       display: flex;
       align-items: center;
       background-color: #fff;
+      .iconfont {
+        color: #358EFD;
+        font-size: 20px;
+      }
       .iconyou1{
         position: absolute;
         right: 20px;

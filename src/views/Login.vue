@@ -76,7 +76,7 @@ export default {
 .img {
   width: 100px;
   height: 100px;
-  background-color: red;
+  background-color: $c-cheng;
 }
 .bottom-nav{
     width: 100%;
