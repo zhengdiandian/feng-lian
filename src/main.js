@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'muse-ui/lib/styles/base.less'
-import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField, Divider, List, SubHeader, Slider } from 'muse-ui'
+import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField, Divider, List, SubHeader, Slider, Stepper } from 'muse-ui'
 import 'muse-ui/lib/styles/theme.less'
 import 'muse-ui/dist/muse-ui.css'
 import theme from 'muse-ui/lib/theme'
@@ -58,6 +58,7 @@ Vue.use(TextField)
 Vue.use(List)
 Vue.use(SubHeader)
 Vue.use(Slider)
+Vue.use(Stepper)
 Vue.config.productionTip = false
 
 new Vue({

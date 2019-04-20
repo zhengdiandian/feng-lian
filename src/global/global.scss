@@ -1,13 +1,14 @@
-@import './fuXie.scss';
 //@import url('//at.alicdn.com/t/font_1145003_aygyl5ubc2o.css');
 //全局变量
 $gw: 350px;
 $banner-h: 160px;
 $primaryColor: '#fff';
-$c-black: red;
+$c-black: #333333;
 $c-hui: #666;
-$c-cheng: yellow;
+$c-cheng: #EFA220;
 $c-warning: red;
 .text-center{
   text-align: center;
 }
+
+@import './fuXie.scss';

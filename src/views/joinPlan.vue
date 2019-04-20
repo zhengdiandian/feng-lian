@@ -49,8 +49,24 @@
       </div>
       <mu-sub-header>选择关系</mu-sub-header>
       <!--<mu-slider class="demo-slider" v-model="normal.value1"></mu-slider>-->
-      <mu-slider class="demo-slider" :display-value="false" :step="10" v-model="sliderVal"></mu-slider>
+      <!--<mu-slider class="demo-slider" :display-value="false" :step="10" v-model="sliderVal"></mu-slider>-->
       <!--<mu-slider class="demo-slider" disabled v-model="normal.value3"></mu-slider>-->
+      <div class="stepper-wrap">
+        <mu-stepper :linear="false" :active-step="activeStep"  class="mu-stepper">
+          <mu-step v-for="i in 5" :key="i" @click="activeStep=i-1">
+            <mu-step-label >
+            </mu-step-label>
+          </mu-step>
+
+        </mu-stepper>
+        <ul class="stepper-step">
+          <li>20元</li>
+          <li>20元</li>
+          <li>20元</li>
+          <li>20元</li>
+          <li>20元</li>
+        </ul>
+      </div>
       <div class="buy-info">
         使用时间: <span>10个月</span>
         <mu-divider></mu-divider>
@@ -67,7 +83,7 @@
         <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span> <<互助计划公约>></span>
       </div>
     </div>
-    <div class="big-btn">去支付</div>
+    <div class="big-btn" @click="$router.push('/orderInfo')">去支付</div>
   </div>
 </template>
 
@@ -77,7 +93,8 @@ export default {
   data() {
     return {
       sliderVal: '',
-      tongYi: false
+      tongYi: false,
+      activeStep: 0
     }
   },
   computed:{
@@ -89,13 +106,27 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+  .stepper-step{
+    margin: -25px -10px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    li{
+    padding: 0;
+      margin-left: -10px;
+      color: $c-black;
+    }
+  }
 .wrap {
   padding: 0 20px;
 }
-ul {
+ul.plan-info  {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   li {
     width: 50%;
     color: $c-cheng;
@@ -183,5 +214,8 @@ ul {
     align-items: center;
     background-color: $c-cheng;
     color: #fff;
+  }
+  .stepper{
+    width: 100%;
   }
 </style>

@@ -2,9 +2,9 @@
   <div>
     <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
       <mu-button icon slot="right">
-        <mu-icon value=":iconfont iconxinxi"></mu-icon>
+        <mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>
       </mu-button>
-        <h3>链接你我他 &nbsp;&nbsp;守护千万家</h3>
+        链接你我他 &nbsp;&nbsp;守护千万家
     </mu-appbar>
     <div class="wrap">
 
