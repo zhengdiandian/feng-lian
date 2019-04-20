@@ -137,21 +137,21 @@ export default new Router({
       }
     },
     {
-      path: '/joinPlan',
+      path: '/joinPlan',//加入计划
       name: 'joinPlan',
       component: function () {
         return import('./views/joinPlan')
       }
     },
     {
-      path: '/hlepPlan',
+      path: '/hlepPlan', //帮助计划
       name: 'hlepPlan',
       component: function () {
         return import('./views/hlepPlan')
       }
     },
     {
-      path: '/orderInfo',
+      path: '/orderInfo', //订单确认
       name: 'orderInfo',
       component: function () {
         return import('./views/orderInfo')
