@@ -26,18 +26,17 @@
                 <span>我的购买计划</span>
             </div>
         </main>
-        <footer>
-            <div class="ordinary-claims">申请理赔</div>
-            <div class="Second-claims">申请秒赔</div>
-        </footer>
+        <footerBtn></footerBtn>
     </div>
 </template>
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
+import footerBtn from '../components/footerBtn/FooterBtn'
 export default {
-    name: 'RealName',
+    name: 'myplan',
     components: {
-        PageHeader
+        PageHeader,
+        footerBtn
     },
     data() {
         return {
@@ -68,25 +67,5 @@ export default {
     }
 }
 }
-footer{
-    width: 100%;
-    height: 50px;
-    // border: 1px solid black;
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    text-align: center;
-    line-height: 50px;
-    color: #fff;
-    .ordinary-claims{
-        width: 70%;
-        height: 100%;
-        background-color: #eea31f;
-    }
-    .Second-claims{
-        width: 30%;
-        height: 100%;
-        background-color: #f26d00;
-    }
-}
+
 </style>

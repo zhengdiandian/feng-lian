@@ -19,7 +19,7 @@
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
 export default {
-    name: 'RealName',
+    name: 'shareuser',
     components: {
         PageHeader
     },

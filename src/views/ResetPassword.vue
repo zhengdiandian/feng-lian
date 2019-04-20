@@ -33,7 +33,7 @@
 <script>
 import pageHeader from '../components/PageHeader/PageHeader'
 export default {
-    name: 'setpassword',
+    name: 'resetpassword',
     data() {
         return {
             title: '重新设置密码',

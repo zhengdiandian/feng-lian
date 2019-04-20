@@ -2,7 +2,10 @@
     <div>
         <header>
             <PerInforHeader ></PerInforHeader>
-            <img class="erweima" src="" alt="">
+            <router-link tag="div" to="/code">
+                <img class="erweima" src="" alt="">
+            </router-link>
+            
         </header>
         <main>
            <div class="detaInfo">
@@ -21,14 +24,18 @@
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </section>
                 <div style="margin-top: 10px;">
-                <section class="datalist">
-                    <div class="listtext"><span>体检报告</span></div>
-                    <mu-icon value=":iconfont iconyou1"></mu-icon>
-                </section>
-                <section class="datalist">
-                    <div class="listtext"><span>体检报告</span></div>
-                    <mu-icon value=":iconfont iconyou1"></mu-icon>
-                </section>
+                <router-link tag="div" to="/report">
+                    <section class="datalist">
+                        <div class="listtext"><span>体检报告</span></div>
+                        <mu-icon value=":iconfont iconyou1"></mu-icon>
+                    </section>
+                </router-link>
+                <router-link tag="div" to="/real">
+                    <section class="datalist">
+                        <div class="listtext"><span>体检报告</span></div>
+                        <mu-icon value=":iconfont iconyou1"></mu-icon>
+                    </section>
+                </router-link>
                 </div>
            </div>
         </main>

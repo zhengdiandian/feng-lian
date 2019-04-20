@@ -24,7 +24,7 @@
 import PageHeader from '../components/PageHeader/PageHeader'
 import upload from '../components/UpLoad/UpLoad'
 export default {
-    name: 'RealName',
+    name: 'uploadrepost',
     components: {
         PageHeader,
         upload

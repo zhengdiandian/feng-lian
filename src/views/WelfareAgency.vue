@@ -17,7 +17,7 @@
                    </div>
                </section>
            </div>
-           <div class="my-coupon">
+           <!-- <div class="my-coupon">
                <span>我的优惠劵</span>
                <section class="coupon">
                    <div class="coupon-list">
@@ -30,14 +30,14 @@
                        <div class="use">立即使用</div>
                    </div>
                </section>
-           </div>
+           </div> -->
         </main>
     </div>
 </template>
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
 export default {
-    name: 'RealName',
+    name: 'welfareAgency',
     components: {
         PageHeader
     },

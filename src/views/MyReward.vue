@@ -27,6 +27,9 @@
             </div>
         </div>
     </main>
+    <footer>
+        <button @click="open">提现</button>
+    </footer>
     <div class="show" v-if="show">
         <div class="show-main">
             <div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>您还没有绑定银行卡</span></div>
@@ -40,7 +43,7 @@
 </template>
 <script>
 export default {
-    name: 'PageHeader',
+    name: 'myreward',
     data() {
         return {
             title: '我的奖励',
@@ -148,6 +151,18 @@ header{
     }
     input:active{
         background-color: #cccccc;
+    }
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    button{
+        width: $gw;
+        height: 50px;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: red;
     }
 }
 </style>
