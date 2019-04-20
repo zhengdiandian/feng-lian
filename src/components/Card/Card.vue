@@ -2,7 +2,7 @@
     <div class="card">
       <div class="top-content">
        <div class="touXiang">
-         <img src="http:\\placehold.it\41x41" alt="">
+         <img src="@/assets/PNG/头像.png" alt="">
        </div>
         <div class="right-wrap">
           <div class="name">姓名：Bryant.ZZ <span>已实名</span></div>

@@ -50,9 +50,10 @@
                     </div>
                 </section>
             </div>
-            <!-- <div class="purchase-plan">
-                <span>我的购买计划</span>
-            </div> -->
+            <div class="purchase-plan">
+                <span style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
+                <section class="card"><card></card></section>
+            </div>
         </main>
         <footerBtn></footerBtn>
     </div>
@@ -60,11 +61,13 @@
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
 import footerBtn from '../components/footerBtn/FooterBtn'
+import card from '../components/Card/Card'
 export default {
     name: 'myplan',
     components: {
         PageHeader,
-        footerBtn
+        footerBtn,
+        card
     },
     data() {
         return {
@@ -80,6 +83,10 @@ span{
 }
 .add-family{
     margin-bottom: 10px;
+}
+.card{
+    margin: auto;
+    margin-top: 12px;
 }
 .add-family-list{
     display: flex;

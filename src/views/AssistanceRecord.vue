@@ -20,6 +20,7 @@
                 <div style="font-size:15px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
                 <div style="font-size:9px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(112,112,112,1);">2019.04.04</div>
             </div>
+            <section class="card"><card></card></section>
         </section>
     </main>
     <footer>
@@ -32,10 +33,12 @@
 </template>
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
+import card from '../components/Card/Card'
 export default {
     name: 'AssistanceReacord',
     components: {
-        PageHeader
+        PageHeader,
+        card
     },
     data() {
         return {
@@ -74,6 +77,9 @@ export default {
     font-weight:bold;
     color:rgba(51,51,51,1);
     margin: 12px auto;
+}
+.card{
+    margin: auto;
 }
 footer{
     position: absolute;
