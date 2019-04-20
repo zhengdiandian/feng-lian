@@ -17,6 +17,7 @@ export default new Router({
         {
           path: '/home',
           component: function () {
+            //首页
             return import('./views/HomePage.vue')
           }
         }
@@ -25,6 +26,7 @@ export default new Router({
     {
       path: '/',
       component: function () {
+        //登入
         return import('./views/Login.vue')
       }
     },
@@ -129,6 +131,13 @@ export default new Router({
       name: 'orderInfo',
       component: function () {
         return import('./views/orderInfo')
+      }
+    },
+    {
+      path: '/minePlan',
+      name: 'minePlan',
+      component: function () {
+        return import('./views/minePlan')
       }
     }
     // {
