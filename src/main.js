@@ -23,7 +23,7 @@ theme.add('custom-theme', {
 theme.use('custom-theme')
 theme.add('teal', {
   primary: '#fff',
-  secondary: '#ff4081',
+  secondary: '#333333',
   success: '#4caf50',
   warning: '#fdd835',
   info: '#2196f3',
