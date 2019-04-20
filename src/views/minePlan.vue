@@ -4,25 +4,32 @@
         <mu-button icon slot="left" @click="$router.go(-1)" >
           <mu-icon value=":iconfont iconfanhui" size="24" @click.stop="$router.go(-1)"></mu-icon>
         </mu-button>
-        加入计划
-        <mu-button icon slot="right">
-          <mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>
+        我的互助计划
+        <mu-button icon slot="right" :ripple="false">
         </mu-button>
       </mu-appbar>
       <div class="wrap">
         <mu-sub-header>我的购买计划</mu-sub-header>
+        <card v-for="i in 2" :key="i"></card>
       </div>
     </div>
 </template>
 
 <script>
+  import Card from '../components/Card/Card'
   export default {
-    name: 'minePlan'
+    name: 'minePlan',
+    components: {
+      Card
+    }
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrap{
   padding: 0 11px;
+  .mu-sub-header {
+    padding: 11px 0;
+  }
 }
 </style>

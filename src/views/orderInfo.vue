@@ -1,10 +1,13 @@
 <template>
   <div>
-    <mu-appbar style="width: 100%;" color="primary" text-color="#666" z-depth="0">
-      <mu-button icon slot="left" @click="$router.go(-1)">
-        <mu-icon value=":iconfont iconfanhui" @click="$router.go(-1)"></mu-icon>
+    <mu-appbar style="width: 100%;" color="primary" text-color="#666"  z-depth="0">
+      <mu-button icon slot="left"  @click="$router.go(-1)">
+        <mu-icon value=":iconfont iconfanhui" @click="$router.go(-1)" size="24"></mu-icon>
       </mu-button>
-      <div class="text-center">订单确认</div>
+      订单确认
+      <mu-button icon slot="right"  :ripple="false">
+
+      </mu-button>
     </mu-appbar>
     <div class="title">
       <mu-sub-header>订单详情</mu-sub-header>
@@ -21,7 +24,7 @@
       <mu-sub-header>支付方式</mu-sub-header>
     </div>
     <ul>
-      <li><span class="iconfont iconweixin" ></span>微信支付      <mu-divider></mu-divider>
+      <li><span class="iconfont iconweixin"  ></span>微信支付      <mu-divider></mu-divider>
       </li>
       <li><span class="iconfont iconzhifubao"></span>支付宝支付      <mu-divider></mu-divider>
       </li>
@@ -47,6 +50,12 @@
     .iconfont{
       vertical-align: middle;
     }
+    span{
+      display: inline-block;
+
+      font-size: 24px;
+      vertical-align: middle;
+    }
   }
   .big-btn{
     display: flex;
@@ -56,4 +65,11 @@
     background-color: $c-cheng;
     color: #fff;
   }
+  .iconweixin{
+    color: rgb(53,178,25);
+  }
+  .iconzhifubao{
+    color: rgb(17, 159, 233);
+  }
+
 </style>
