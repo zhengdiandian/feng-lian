@@ -15,7 +15,7 @@ export default new Router({
       component: Home,
       children: [
         {
-          path: '/home',
+          path: '/home', // 首页
           component: function () {
             // 首页
             return import('./views/HomePage.vue')
@@ -113,7 +113,7 @@ export default new Router({
       }
     },
     {
-      path: '/MyIntegral', // 我的积分
+      path: '/myintegral', // 我的积分
       component: function () {
         return import('./views/MyIntegral.vue')
       }
@@ -163,6 +163,27 @@ export default new Router({
       component: function () {
         return import('./views/minePlan')
       }
+    },
+    {
+      path: '/notice', // 公告
+      name: 'notice',
+      component: function () {
+        return import('./views/Notice')
+      },
+      children: [
+        {
+          path: 'newNotice',
+          component: function () {
+            return import('./views/notice/NewNotice') // 新公告
+          }
+        },
+        {
+          path: 'oldNotice',
+          component: function () {
+            return import('./views/notice/OldNotice') // 老公告
+          }
+        }
+      ]
     }
     // {
     //   path: '/',
