@@ -1,3 +1,53 @@
 .mu-input.mu-input__focus {
     color: #666;
 }
+.mu-step-label {
+    height: 20.571vw;
+    color: rgba(0,0,0,.87);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 4vw;
+    padding-left: 0vw;
+    padding-right: 0vw;
+    content: "viewport-units-buggyfill; height: 20.571vw; font-size: 4vw; padding-left: 4vw; padding-right: 4vw";
+}
+ .mu-step-label-icon-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    z-index: 6;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-right: 0vw !important;
+    width: auto !important;
+    content: "viewport-units-buggyfill; margin-right: 2.286vw; width: 6.857vw";
+}
+.mu-step-label-circle{
+
+}
+
+
+.mu-stepper .mu-step-label.active{
+    color: $c-cheng;
+}
+.mu-stepper {
+    .mu-step-label.active .mu-step-label-circle, .mu-step-label.completed .mu-step-label-circle {
+        background-color: $c-cheng;
+    }
+    .mu-step-label-circle {
+        width: 10px;
+        height: 10px;
+        font-size: 3.429vw;
+        line-height: 5.714vw;
+        text-align: center;
+        overflow: hidden;
+        border-radius: 100%;
+        color: transparent;
+        content: "viewport-units-buggyfill; width: 5.714vw; height: 5.714vw; font-size: 3.429vw; line-height: 5.714vw";
+    }
+}

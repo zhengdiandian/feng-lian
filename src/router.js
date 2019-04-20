@@ -123,6 +123,13 @@ export default new Router({
       component: function () {
         return import('./views/hlepPlan')
       }
+    },
+    {
+      path: '/orderInfo',
+      name: 'orderInfo',
+      component: function () {
+        return import('./views/orderInfo')
+      }
     }
     // {
     //   path: '/',
