@@ -15,8 +15,9 @@ export default new Router({
       component: Home,
       children: [
         {
-          path: '/home', // 首页
+          path: '/home',
           component: function () {
+            //首页
             return import('./views/HomePage.vue')
           }
         }
@@ -25,6 +26,7 @@ export default new Router({
     {
       path: '/login', // 登陆
       component: function () {
+        //登入
         return import('./views/Login.vue')
       }
     },
@@ -111,7 +113,7 @@ export default new Router({
       }
     },
     {
-      path: '/myintegral', // 我的积分
+      path: '/MyIntegral', // 我的积分
       component: function () {
         return import('./views/MyIntegral.vue')
       }
@@ -135,53 +137,32 @@ export default new Router({
       }
     },
     {
-      path: '/joinPlan', // 加入计划
+      path: '/joinPlan',//加入计划
       name: 'joinPlan',
       component: function () {
         return import('./views/joinPlan')
       }
     },
     {
-      path: '/hlepPlan', // 帮助计划
+      path: '/hlepPlan', //帮助计划
       name: 'hlepPlan',
       component: function () {
         return import('./views/hlepPlan')
       }
     },
     {
-      path: '/orderInfo', // 订单确认
+      path: '/orderInfo', //订单确认
       name: 'orderInfo',
       component: function () {
         return import('./views/orderInfo')
       }
     },
     {
-      path: '/minePlan',
+      path: '/minePlan',//我的计划
       name: 'minePlan',
       component: function () {
         return import('./views/minePlan')
       }
-    },
-    {
-      path: '/notice',//公告
-      name: 'notice',
-      component: function () {
-        return import('./views/Notice')
-      },
-      children: [
-        {
-          path: 'newNotice',
-          component: function () {
-            return import('./views/notice/NewNotice') //新公告
-          }
-        },
-        {
-          path: 'oldNotice',
-          component: function () {
-            return import('./views/notice/OldNotice') //老公告
-          }
-        },
-      ]
     }
     // {
     //   path: '/',
