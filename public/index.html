@@ -7,6 +7,7 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" -->
       <!-- rel="stylesheet"> -->
+    <link href="https://cdn.bootcss.com/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <script src="//g.alicdn.com/fdilab/lib3rd/viewport-units-buggyfill/0.6.2/??viewport-units-buggyfill.hacks.min.js,viewport-units-buggyfill.min.js"></script>
     <title>cheout-counter</title>
   </head>
@@ -18,12 +19,12 @@
           window.onload = loadFn
         } else {
           window.onload = function () {
-            loadeFn() 
+            loadeFn()
             fn()
           }
         }
       }
-     function viweInit() { 
+     function viweInit() {
        window.viewportUnitsBuggyfill.init({ hacks: window.viewportUnitsBuggyfillHacks })
        }
      addLoadEvent(viweInit)
