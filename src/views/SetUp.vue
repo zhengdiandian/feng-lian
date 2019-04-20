@@ -5,10 +5,8 @@
         </header>
         <main>
             <div class="setList">
-                <div class="setList">
-                    <span>版本号</span>
-                    <span style="float: right;">1.0.0.1</span>
-                </div>
+                    <span class="version-number">当前版本</span>
+                    <span class="number" style="float: right;">1.0.0.1</span>
             </div>
             <!-- <div style="margin-top: 10px;">
                 <div class="setList">
@@ -57,18 +55,42 @@ export default {
 </script>
 <style lang="scss" scoped>
 .setList {
-    width: 100%;
-    height: 30px;
-    background-color: #fff;
+    width:350px;
+    height:41px;
+    background:rgba(255,255,255,1);
+    line-height: 41px;
+    margin-top: 6px;
+    .version-number{
+        display: inline-block;
+        width:48px;
+        height:12px;
+        font-size:12px;
+        font-family:SourceHanSansCN-Normal;
+        font-weight:400;
+        color:rgba(51,51,51,1);
+        margin-left: 15px;
+    }
+    .number{
+        width:38px;
+        height:9px;
+        font-size:12px;
+        font-family:SourceHanSansCN-Normal;
+        font-weight:400;
+        color:rgba(51,51,51,1);
+        margin-right: 12px;
+    }
     .iconyou1{
         float: right;
     }
 }
 .setBtn{
-    width: 100%;
-    background: #fff;
+    width:350px;
+    height:41px;
+    background:rgba(255,255,255,1);
     border: none;
     outline: none;
     margin-top: 10px;
+    font-size:12px;
+    font-family:SourceHanSansCN-Normal;
 }
 </style>

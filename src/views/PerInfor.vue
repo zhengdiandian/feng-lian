@@ -1,31 +1,29 @@
 <template>
     <div>
         <header>
-            <PerInforHeader ></PerInforHeader>
-            <router-link tag="div" to="/code">
-                <img class="erweima" src="" alt="">
-            </router-link>
-            
+            <PerInforHeader :imgUrl="imgUrl"></PerInforHeader>
+            <router-link tag="div" to="/code"><mu-icon value=":iconfont iconerweima"></mu-icon></router-link>
         </header>
         <main>
            <div class="detaInfo">
                 <section class="datalist">
                     <div class="listtext"><span>会员ID：</span></div>
-                    <div class="listInfo">{{datalist.ID}}</div>
+                    <div class="listInfo" style="color:rgba(53,142,253,1);">{{datalist.ID}}</div>
                 </section>
                 <section class="datalist">
                     <div class="listtext"><span>邮箱：</span></div>
                     <div class="listInfo">{{datalist.email}}</div>
                 </section>
                 <section class="datalist" >
-                    <div class="listtext" ><span>个人信息</span></div>
+                    <div class="listtext" style="width: 75px;"><span>个人信息：</span></div>
                     <div class="listInfo" >{{datalist.gender}} {{datalist.age}} {{datalist.constellation}} {{datalist.address}}</div> 
-                    <span style="font-size: 12px; color: #ccc; margin-left: 8px;">详细信息</span>
+                    <span style="width:50px;height:18px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:#707070;">详细信息</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </section>
-                <div style="margin-top: 10px;">
+            </div>
+                <div class="detaInfo" style="height: 120px;">
                 <router-link tag="div" to="/report">
-                    <section class="datalist">
+                    <section class="datalist" style="height: 50px;">
                         <div class="listtext"><span>体检报告</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
                     </section>
@@ -37,7 +35,6 @@
                     </section>
                 </router-link>
                 </div>
-           </div>
         </main>
     </div>
 </template>
@@ -61,7 +58,8 @@ export default {
                 states: {
                     "upload": "已上传",
                     "atication": "已完成"
-                }
+                },
+                imgUrl: require('../assets/PNG/head.png')
         }
     },
     mounted(){
@@ -72,43 +70,55 @@ export default {
 <style scoped lang="scss">
 header{
     position: relative;
-    .erweima{
-    width: 20px;
-    height: 20px;
-    background: #000;
+    .iconerweima{
+    font-size: 20px;
+    color: #fff;
     position: absolute;
     top: 13px;
     right: 10px;
 }
 }
 .detaInfo {
-    width: 90%;
+    width:328px;
+    height:133px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
+    border-radius:5px;
     display: flex;
     flex-direction: column;
     margin: auto;
     border-radius: 20px;
     background: #fff;
     margin-bottom: 10px;
+}
     .datalist{
         display: flex;
         height: 60px;
         align-items: center;
         .listtext{
-            width: 60px;
-            height: 50px;
+            width:58px;
+            height:11px;
+            font-size:12px;
+            font-family:SourceHanSansCN-Normal;
+            font-weight:400;
+            color:rgba(51,51,51,1);
             display: flex;
-            margin-left: 30px;
+            margin-left: 14px;
             align-items: center;
         }
         .listInfo {
-            margin-left: 10px;
+            width: 150px;
+            height: 18px;
+            font-size:12px;
+            font-family:SourceHanSansCN-Normal;
+            font-weight:400;
+            margin-left: 12px;
         }
         .iconyou1{
         position: absolute;
         right: 20px;
         font-size: 20px;
-        color: yellow;
+        color: #EF9B1E;
       }
     }
-}
 </style>

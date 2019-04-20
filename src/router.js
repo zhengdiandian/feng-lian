@@ -111,7 +111,7 @@ export default new Router({
       }
     },
     {
-      path: '/MyIntegral', // 我的积分
+      path: '/myintegral', // 我的积分
       component: function () {
         return import('./views/MyIntegral.vue')
       }

@@ -29,15 +29,22 @@ nav {
     display: flex;
     align-items: center;
     background-color: #fff;
+    position: relative;
     .iconfanhui{
-        font-size: 25px;
+        font-size: 20px;
         margin-left: 5px;
     }
     .title {
-        width: 80%;
-        text-align: center;
-        // font-weight: bold;
-        font-size: 16px;
+        position: absolute;
+        left: 144px;
+        span{
+            width:62px;
+            height:14px;
+            font-size:15px;
+            font-family:SourceHanSansCN-Normal;
+            font-weight:bold;
+            color:rgba(51,51,51,1);
+        }
     }
 }
 </style>

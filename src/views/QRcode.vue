@@ -6,6 +6,7 @@
             :name="name"
             :stata="stata"
             :autograph="autograph"
+            :imgUrl="imgUrl"
             ></PerInforHeader>
             <img class="erweima" src="" alt="">
         </header>
@@ -31,7 +32,7 @@ export default {
            name: 'Bryant.zZ',
            stata: '已实名',
            autograph: '海内存知己，天涯若比邻',
-           imgUrl: ''
+           imgUrl: require('../assets/PNG/head.png')
         }
     },
 }

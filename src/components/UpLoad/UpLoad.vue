@@ -2,6 +2,7 @@
     <div>
         <div style="display: flex;justify-content: center;">
             <div class="uploadimg">
+                <mu-icon value=":iconfont iconshouye1"></mu-icon>
                 <span>{{upload}}</span>
                 <input class="justID" type="file">
             </div>
@@ -21,20 +22,25 @@ export default {
 </script>
 <style scoped lang="scss">
 .uploadimg{
-        width: 100%;
+        width:350px;
+        height:93px;
+        background:rgba(255,255,255,1);
+        border:1px solid rgba(220,220,220,1);
         padding: 4px 10px;
-        height: 100px;
         line-height: 20px;
         position: relative;
         cursor: pointer;
-        background: #fff;
-        border: 1px solid #ddd;
         border-radius: 4px;
         overflow: hidden;
-         display: flex;
+        display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         color: #ccc;
+        .iconshouye1{
+            font-size: 30px;
+            margin-bottom: 11px;
+        }
         input {
             position: absolute;
             font-size: 100px;

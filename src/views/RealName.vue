@@ -5,8 +5,8 @@
         </header>
         <main>
             <div class="information">
-                <div class="infor-name-id">姓名：<input type="text" placeholder="请输入姓名"></div>
-                <div class="infor-name-id">身份证号码：<input type="text" placeholder="请输入身份证号码"></div>
+                <div class="infor-name-id">姓名<input style="padding-left: 65px;" type="text" placeholder="请输入姓名"></div>
+                <div class="infor-name-id">身份证号码<input type="text" placeholder="请输入身份证号码"></div>
             </div>
             <div class="upload">
                 <div class="uptitle"><span>上传身份证正反面照片</span></div>
@@ -44,20 +44,30 @@ input {
 }
 .information{
     width: $gw;
-    height: 100px;
-    background-color: #fff;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     .infor-name-id{
-        width: 80%;
-        margin: auto;
+        width:350px;
+        height:41px;
+        background:rgba(255,255,255,1);
+        font-size:12px;
+        font-family:SourceHanSansCN-Normal;
+        font-weight:400;
+        color:rgba(51,51,51,1);
+        padding-left: 12px;
+        line-height: 41px;
     }
 }
 .upload {
     width: $gw;
     margin-top: 10px;
     .uptitle {
-        margin-left: 20px;
+        font-size:12px;
+        font-family:SourceHanSansCN-Normal;
+        font-weight:bold;
+        color:rgba(51,51,51,1);
+        padding: 12px 0 10px 10px;
     }
 }
 </style>

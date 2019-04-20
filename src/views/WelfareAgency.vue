@@ -4,19 +4,19 @@
             <PageHeader :title="upload"></PageHeader>
         </header>
         <main>
-           <div class="my-profit">
-               <span>我的收益</span>
-               <section class="profit">
-                   <div class="users">
-                       <span class="number">123</span>
-                       <span>我分享的用户(人)</span>
-                   </div>
-                   <div class="users">
-                       <span class="number">456</span>
-                       <span>我的奖励(元)</span>
-                   </div>
-               </section>
-           </div>
+            <div>
+                <div style="width:54px;height:13px;font-size:13px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin: 12px 0 12px 12px;">我的收益</div>
+                <section class="profit">
+                    <div class="users">
+                        <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
+                        <span style="font-size: 12px;">已帮助人数</span>
+                    </div>
+                    <div class="users">
+                        <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
+                        <span style="font-size: 12px;">已加入蜂链天数</span>
+                    </div>
+                </section>
+            </div>
            <!-- <div class="my-coupon">
                <span>我的优惠劵</span>
                <section class="coupon">
@@ -50,14 +50,16 @@ export default {
 </script>
 <style scoped lang="scss">
 .profit{
-    width: 90%;
-    height: 70px;
-    margin: auto;
-    background-color: aquamarine;
-    border-radius: 10px;
+    width:328px;
+    height:56px;
+    background:rgba(239,162,32,1);
+    border-radius:5px;
+    margin: 11px auto;
     overflow: hidden;
     display: flex;
     .users{
+        font-family:ArialMT;
+        color:rgba(51,51,51,1);
         width: 50%;
         height: 100%;
         display: flex;

@@ -6,20 +6,20 @@
             <div class="title">{{title}}</div>
         </nav>
         <div class="reward">
-            <span style="font-size: 50px;">0</span>
-            <span style="font-size: 14px;">近7天获得奖励{{20}}元</span>
+            <span style="width:57px;height:26px;font-size:34px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1);">670</span>
+            <div style="letter-spacing:3px;font-size:10px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1); padding-top: 30px;">近7天获得奖励{{20}}元</div>
         </div>
     </header>
     <main>
         <div class="historical-bill">历史账单</div>
         <div>
-            <div>2019年4月</div>
-            <div>共获得￥80.00</div>
+            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">2019年4月</div>
+            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥80.00</div>
             <div class="reward-money">
-                <div class="headimg"><img src="" alt=""></div>
+                <div class="headimg"><img src="../assets/PNG/分享头像.png" alt=""></div>
                 <div style="display: flex; flex-direction: column;">
-                    <span>大兵</span>
-                    <span> 4月9日 0000</span>
+                    <span style="font-size:12px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);">大兵</span>
+                    <span style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(51,51,51,1);"> 4月9日 0000</span>
                 </div>
                 <div class="right">
                     <span>+20.00元</span>
@@ -62,10 +62,10 @@ export default {
 </script>
 <style scoped lang="scss">
 header{
-    width: $gw;
-    height: 200px;
-    background-color: #eea31f;
-    box-sizing: border-box;
+    width:350px;
+    height:142px;
+    background:rgba(242,181,77,1);
+    background-image: url('../assets/PNG/我的奖励背景.png');
     nav{
         display: flex;
         height: 50px;
@@ -85,25 +85,24 @@ header{
     .reward{
         display: flex;
         flex-direction: column;
-        width: $gw;
-        height: 160px;
+        justify-content: center;
         align-items: center;
-        padding-top: 60px;
-        color: white;
+        margin-top: 20px;
     }
 }
 .historical-bill{
-    width: 100%;
-    height: 50px;
-    background-color: #fff;
+    width:350px;
+    height:41px;
+    background:rgba(255,255,255,1);
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 6px 0 10px 0;
 }
 .reward-money{
-    width: 100%;
-    height: 50px;
-    background-color: #eea31f;
+    width:350px;
+    height:47px;
+    background:rgba(255,255,255,1);
     display: flex;
     align-items: center;
     position: relative;
@@ -112,6 +111,11 @@ header{
         height: 30px;
         background: #ccc;
         border-radius: 50%;
+        margin-left: 12px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 .right{

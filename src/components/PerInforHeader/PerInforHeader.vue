@@ -2,11 +2,11 @@
     <div>
         <header>
             <nav>
-                <img src="@/assets/图标/返 回.png" alt="">
+                <mu-icon value=":iconfont iconfanhui" @click="open"></mu-icon>
                 <div class="title">{{title}}</div>
             </nav>
             <div class="head-infor">
-                <section class="head-portrait"><img :src="imgUrl.img" alt=""></section>
+                <section class="head-portrait"><img :src="imgUrl" alt=""></section>
                 <div>
                     <span class="name">{{name}}</span>
                     <span class="stata">{{stata}}</span>
@@ -20,6 +20,7 @@
 export default {
     name: 'PerInfor',
     props: {
+        imgUrl: [String],
         name: {
             type: String,
             default: ""
@@ -37,18 +38,16 @@ export default {
             default: ""
         }
     },
-    data() {
-        return{
-            imgUrl: {
-                img: '../../assets/PNG/head.png'
-            }
+    methods: {
+        open() {
+            this.$router.go(-1)
         }
     }
 }
 </script>
 <style scoped lang="scss">
 header {
-    background-image: url('../../assets/PNG/head.png');
+    background-image: url('../../assets/PNG/个人资料背景.png');
     background-size: 100% 120px;
     background-repeat:no-repeat;
 }
@@ -57,9 +56,9 @@ nav {
     height: 50px;
     display: flex;
     align-items: center;
-    img {
-        width: 20px;
-        height: 20px;
+    .iconfanhui {
+        font-size: 20px;
+        color: #fff;
         margin-left: 5px;
     }
     .title{

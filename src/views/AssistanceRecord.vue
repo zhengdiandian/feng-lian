@@ -6,19 +6,19 @@
     <main>
         <section class="profit">
             <div class="users">
-                <span class="number">123</span>
-                <span>已帮助人数</span>
+                <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
+                <span style="font-size: 12px;">已帮助人数</span>
             </div>
             <div class="users">
-                <span class="number">456</span>
-                <span>已加入蜂链天数</span>
+                <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
+                <span style="font-size: 12px;">已加入蜂链天数</span>
             </div>
         </section>
         <section>
             <div class="assis-title">链接你我他 &nbsp; &nbsp; 守护千万家</div>
-            <div>
-                <span>互助记录</span>
-                <div>2019.04.04</div>
+            <div style="margin: 11px 0px 11px 11px">
+                <div style="font-size:15px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
+                <div style="font-size:9px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(112,112,112,1);">2019.04.04</div>
             </div>
         </section>
     </main>
@@ -47,14 +47,16 @@ export default {
 </script>
 <style scoped lang="scss">
 .profit{
-    width: 90%;
-    height: 70px;
-    margin: auto;
-    background-color: aquamarine;
-    border-radius: 10px;
+    width:328px;
+    height:56px;
+    background:rgba(239,162,32,1);
+    border-radius:5px;
+    margin: 11px auto;
     overflow: hidden;
     display: flex;
     .users{
+        font-family:ArialMT;
+        color:rgba(51,51,51,1);
         width: 50%;
         height: 100%;
         display: flex;
@@ -65,24 +67,31 @@ export default {
     }
 }
 .assis-title{
-    width: $gw;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
+    width:164px;
+    height:14px;
+    font-size:14px;
+    font-family:SourceHanSansCN-Normal;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin: 11px auto;
 }
 footer{
-    width: $gw;
-    height: 50px;
     position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    bottom: 0px;
     .customer{
-        border: 1px solid rebeccapurple;
-        width: 100px;
-        border-radius: 20px;
+        width:123px;
+        height:33px;
+        border:1px solid rgba(239,162,32,1);
+        border-radius:15px;
+        position: absolute;
+        bottom: 13px;
+        left: 113px;
         text-align: center;
+        line-height: 33px;
+        color: #EFA220;
+        .iconlianxikefu{
+            padding-right: 6px;
+        }
     }
 }
 </style>
