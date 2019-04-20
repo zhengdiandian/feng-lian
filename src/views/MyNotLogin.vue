@@ -6,20 +6,58 @@
     <main>
         <section class="please-login">
             <div class="login-img">
-                <div style="width: 50px;height: 50px;background-color: #ccc; border-radius: 50%;">
-                  <img src="" alt="">
+                <div class="icon">
+                  <mu-icon value=":iconfont iconwode1"></mu-icon>
                 </div>
                 <span>请登录</span>
             </div>
         </section>
-        <section class="please-list">
-          <div class="list-li" v-for="li in list" :key="li">
-            <div style="width: 30px;height: 30px;background-color: #ccc;">
-              <img src="" alt="">
+        <section class="please-list-tongzhi">
+          <router-link tag="div" to="/myplan">
+            <div class="list-li">
+              <div style="text-align: center;">
+                <mu-icon value=":iconfont iconjihua"></mu-icon>
+                <span style="margin-left:12px">我的计划</span>
+              </div>
+              <mu-icon value=":iconfont iconyou1"></mu-icon>
             </div>
-            <span>{{li}}</span>
-            <mu-icon value=":iconfont iconyou1"></mu-icon>
-          </div>
+          </router-link>
+          <router-link tag="div" to="/assis">
+            <div class="list-li">
+              <div style="text-align: center;">
+                <mu-icon value=":iconfont iconjilu"></mu-icon>
+                <span style="margin-left:12px">互助记录</span>
+              </div>
+              <mu-icon value=":iconfont iconyou1"></mu-icon>
+            </div>
+          </router-link>
+          <router-link tag="div" to="/">
+            <div class="list-li">
+              <div style="text-align: center;">
+                <mu-icon value=":iconfont iconyaoqing"></mu-icon>
+                <span style="margin-left:12px">邀请好友</span>
+              </div>
+              <mu-icon value=":iconfont iconyou1"></mu-icon>
+            </div>
+          </router-link>
+            <router-link tag="div" to="/">
+              <div class="list-li">
+                <div style="text-align: center;">
+                  <mu-icon value=":iconfont icontongzhi"></mu-icon>
+                  <span style="margin-left:12px">通知</span>
+                </div>
+                <mu-icon value=":iconfont iconyou1"></mu-icon>
+              </div>
+            </router-link>
+            <router-link tag="div" to="/setup">
+              <div class="list-li">
+                <div style="text-align: center;">
+                  <mu-icon value=":iconfont iconshezhi"></mu-icon>
+                  <span style="margin-left:12px">设置</span>
+                </div>
+                <mu-icon value=":iconfont iconyou1"></mu-icon>
+              </div>
+            </router-link>
         </section>
     </main>
 </div>
@@ -53,29 +91,65 @@ width: $gw;
 }
 main {
   background-color: #f5f5f5;
+  .icon{
+    width:47px;
+    height:47px;
+    background:rgba(207,207,207,1);
+    border:2px solid rgba(207, 207, 207, 1);
+    border-radius:50%;
+    margin-left: 14px;
+  }
     .login-img {
-      width: 90%;
-      height: 65px;
-      background-color: #fff;
+      width:328px;
+      height:69px;
+      background:rgba(255,255,255,1);
+      box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
+      border-radius:5px;
       margin: 10px auto;
       display: flex;
       align-items: center;
+      .iconwode1{
+        font-size: 32px;
+        color: #FFFFFF;
+        position: relative;
+        top: 8px;
+        left: 6px;
+      }
       span {
-        color: yellow;
+        display: inline-block;
+        width:40px;
+        height:12px;
+        font-size:13px;
+        font-family:Adobe Heiti Std R;
+        font-weight:normal;
+        color:rgba(239,162,32,1);
+        margin-left: 12px;
       }
     }
-    .list-li {
-      width: 90%;
-      height: 50px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      background-color: #fff;
-      .iconyou1{
-        position: absolute;
-        right: 20px;
-        font-size: 20px;
-      }
+.please-list-tongzhi{
+width:328px;
+height:93px;
+background:rgba(255,255,255,1);
+box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
+border-radius:5px;
+margin: 10px auto;
+}
+.list-li {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    .iconfont {
+      color: #358EFD;
+      font-size: 20px;
+      margin-left: 14px;
     }
+    .iconyou1{
+      position: absolute;
+      right: 20px;
+      font-size: 20px;
+      color: #EF9B1E;
+    }
+  }
 }
 </style>

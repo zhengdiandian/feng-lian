@@ -6,7 +6,7 @@
                 <div class="title">{{title}}</div>
             </nav>
             <div class="head-infor">
-                <section class="head-portrait"><img :src="imgUrl" alt=""></section>
+                <section class="head-portrait"><img :src="imgUrl.img" alt=""></section>
                 <div>
                     <span class="name">{{name}}</span>
                     <span class="stata">{{stata}}</span>
@@ -20,7 +20,6 @@
 export default {
     name: 'PerInfor',
     props: {
-        imgUrl: [String],
         name: {
             type: String,
             default: ""
@@ -37,12 +36,21 @@ export default {
             type: String,
             default: ""
         }
+    },
+    data() {
+        return{
+            imgUrl: {
+                img: '../../assets/PNG/head.png'
+            }
+        }
     }
 }
 </script>
 <style scoped lang="scss">
 header {
-    background-color: #f2f2f2;
+    background-image: url('../../assets/PNG/head.png');
+    background-size: 100% 120px;
+    background-repeat:no-repeat;
 }
 nav {
     width: $gw;
@@ -68,13 +76,15 @@ nav {
     flex-direction: column;
     position: relative;
     .head-portrait{
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         border: 1px solid black;
         border-radius: 50%;
         background-color: #fff;
-        position: relative;
-        z-index: 99;
+        img{
+            width: 100%;
+            height: 100%;
+        }
     }
     .stata{
         display: inline-block;

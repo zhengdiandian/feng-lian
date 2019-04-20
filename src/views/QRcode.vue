@@ -1,7 +1,7 @@
 <template>
     <div>
         <header>
-            <PerInforHeader 
+            <PerInforHeader
             :title="title"
             :name="name"
             :stata="stata"
@@ -30,7 +30,8 @@ export default {
            title: '我的二维码',
            name: 'Bryant.zZ',
            stata: '已实名',
-           autograph: '海内存知己，天涯若比邻'
+           autograph: '海内存知己，天涯若比邻',
+           imgUrl: ''
         }
     },
 }

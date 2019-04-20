@@ -5,7 +5,7 @@
     </header>
     <main>
       <div class="headerNav">
-        <div class="headerLogin"><img src="../assets/切图PNG/个人资料头像.png" alt=""></div>
+        <div class="headerLogin"><img src="../assets/PNG/head.png" alt=""></div>
         <router-link tag="div" to="/perinfor">
         <section class="information">
           <span class="name">姓名：{{name}}</span><span class="state">已实名</span>

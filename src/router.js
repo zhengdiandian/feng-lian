@@ -15,9 +15,8 @@ export default new Router({
       component: Home,
       children: [
         {
-          path: '/home',
+          path: '/home', // 首页
           component: function () {
-            //首页
             return import('./views/HomePage.vue')
           }
         }
@@ -26,7 +25,6 @@ export default new Router({
     {
       path: '/login', // 登陆
       component: function () {
-        //登入
         return import('./views/Login.vue')
       }
     },
@@ -137,21 +135,21 @@ export default new Router({
       }
     },
     {
-      path: '/joinPlan',//加入计划
+      path: '/joinPlan', // 加入计划
       name: 'joinPlan',
       component: function () {
         return import('./views/joinPlan')
       }
     },
     {
-      path: '/hlepPlan', //帮助计划
+      path: '/hlepPlan', // 帮助计划
       name: 'hlepPlan',
       component: function () {
         return import('./views/hlepPlan')
       }
     },
     {
-      path: '/orderInfo', //订单确认
+      path: '/orderInfo', // 订单确认
       name: 'orderInfo',
       component: function () {
         return import('./views/orderInfo')
