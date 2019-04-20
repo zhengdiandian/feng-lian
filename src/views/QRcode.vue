@@ -3,9 +3,6 @@
         <header>
             <PerInforHeader
             :title="title"
-            :name="name"
-            :stata="stata"
-            :autograph="autograph"
             :imgUrl="imgUrl"
             ></PerInforHeader>
             <img class="erweima" src="" alt="">
@@ -14,7 +11,7 @@
             <div class="QRcode">
                 <img src="" alt="">
             </div>
-            <div style="margin: 10px auto;color: yellow;">保存二维码</div>
+            <div style="margin: 10px auto;color: #EFA220;">保存二维码</div>
             <div style="margin: 10px auto;">我的邀请码：666 666</div>
         </main>
     </div>
@@ -44,9 +41,9 @@ main{
     flex-direction: column;
     justify-content: center;
     .QRcode{
-        width: 150px;
-        height: 150px;
-        border: 10px solid plum;
+        width: 180px;
+        height: 180px;
+        border: 10px solid #FFA2E4;
         margin: auto;
         img{
             width: 100%;

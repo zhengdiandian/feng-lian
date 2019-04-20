@@ -55,10 +55,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .setList {
-    width:350px;
-    height:41px;
+    width:375px;
+    height:44px;
     background:rgba(255,255,255,1);
-    line-height: 41px;
+    line-height: 44px;
     margin-top: 6px;
     .version-number{
         display: inline-block;
@@ -84,8 +84,8 @@ export default {
     }
 }
 .setBtn{
-    width:350px;
-    height:41px;
+    width:375px;
+    height:44px;
     background:rgba(255,255,255,1);
     border: none;
     outline: none;

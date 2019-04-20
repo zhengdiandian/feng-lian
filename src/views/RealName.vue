@@ -5,7 +5,7 @@
         </header>
         <main>
             <div class="information">
-                <div class="infor-name-id">姓名<input style="padding-left: 65px;" type="text" placeholder="请输入姓名"></div>
+                <div class="infor-name-id">姓名<input style="padding-left: 55px;" type="text" placeholder="请输入姓名"></div>
                 <div class="infor-name-id">身份证号码<input type="text" placeholder="请输入身份证号码"></div>
             </div>
             <div class="upload">
@@ -48,15 +48,15 @@ input {
     display: flex;
     flex-direction: column;
     .infor-name-id{
-        width:350px;
-        height:41px;
+        width:375px;
+        height:44px;
         background:rgba(255,255,255,1);
         font-size:12px;
         font-family:SourceHanSansCN-Normal;
         font-weight:400;
         color:rgba(51,51,51,1);
         padding-left: 12px;
-        line-height: 41px;
+        line-height: 42px;
     }
 }
 .upload {

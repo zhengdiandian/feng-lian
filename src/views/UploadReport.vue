@@ -40,20 +40,18 @@ export default {
 .report{
     span{
         display: inline-block;
-        width:74px;
-        height:12px;
-        font-size:12px;
+        font-size:13px;
         font-family:SourceHanSansCN-Normal;
         font-weight:400;
         color:rgba(51,51,51,1);
-        margin: 11px 0 11px 11px;
+        margin: 12px 0 12px 12px;
     }
 }
 .pictures{
-    width:79px;
-    height:45px;
+    width:85px;
+    height:50px;
     border-radius:5px;
     background-color: #ccc;
-    margin: 0 11px 11px;
+    margin: 0 12px 12px;
 }
 </style>

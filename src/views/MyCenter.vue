@@ -146,15 +146,15 @@ width: $gw;
 .header-title {
   width: $gw;
   text-align: center;
-  height: 41px;
-  line-height: 41px;
+  height: 44px;
+  line-height: 44px;
   font-size: 16px;
   background-color: #fff;
 }
 }
 .headerNav{
-  width:328px;
-  height:100px;
+  width:351px;
+  height:107px;
   background:rgba(255,255,255,1);
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -163,12 +163,12 @@ width: $gw;
   align-items: center;
   position: relative;
   .headerLogin{
-    width:56px;
-    height:56px;
+    width:60px;
+    height:60px;
     border-radius:50%;
     background:rgba(207,207,207,1);
     border:2px solid rgba(239, 162, 32, 1);
-    margin-left: 11px;
+    margin-left: 12px;
     img{
       width: 100%;
       height: 100%;
@@ -177,25 +177,18 @@ width: $gw;
   .information{
     margin-left: 13px;
     .name{
-      width:108px;
-      height:14px;
       font-size:13px;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
       color:rgba(51,51,51,1);
     }
     .number{
-      width: 75px;
-      height: 10px;
-      font-size:10px;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
       color:rgba(112,112,112,1);
       font-size: 10px;
     }
     .integral{
-      width:62px;
-      height:12px;
       font-size:12px;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
@@ -203,9 +196,7 @@ width: $gw;
       margin-top: 10px;
     }
     .autograph{
-      width:130px;
-      height:11px;
-      font-size:11px;
+      font-size:12px;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
       color:rgba(112,112,112,1);
@@ -219,7 +210,7 @@ width: $gw;
     line-height: 15px;
     background:rgba(239,162,32,1);
     border:0px solid rgba(255,255,255,1);
-    font-size:11px;
+    font-size:12px;
     font-family:SourceHanSansCN-Normal;
     font-weight:400;
     color:rgba(255,255,255,1);
@@ -228,7 +219,7 @@ width: $gw;
   }
     .iconyou1{
       width:6px;
-      height:11px;
+      height:12px;
       position: absolute;
       right: 13px;
       color: #EF9B1E;
@@ -237,23 +228,20 @@ width: $gw;
 .apply {
   display: flex;
   align-items: center;
-  width: 90%;
-  height: 30px;
+  width: 351px;
+  height: 44px;
   background-color: rgb(243, 172, 172);
   border-radius: 20px;
   margin: auto;
   position: relative;
   span {
-    display: inline-block;
-    width:124px;
-    height:12px;
     font-size:12px;
     font-family:SourceHanSansCN-Normal;
     font-weight:400;
     color:rgba(255,0,0,1);
     text-align: center;
-    margin-left: 12px;
     line-height: 12px;
+    padding-left: 20px;
   }
   img{
     width: 50px;
@@ -265,10 +253,9 @@ width: $gw;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 30px;
+    position: relative;
+    left: 65px;
     span{
-      width:50px;
-      height:12px;
       font-size:12px;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
@@ -277,13 +264,13 @@ width: $gw;
       margin-right: 5px;
     }
     .iconyou{
-      font-size: 20px;
+      font-size: 16px;
       color:rgba(255,0,0,1);
     }
   }
 }
 .please-list{
-  width:328px;
+  width:351px;
   height:323px;
   background:rgba(255,255,255,1);
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
@@ -291,7 +278,7 @@ width: $gw;
   margin: 20px auto;
 }
 .please-list-tongzhi{
-  width:328px;
+  width:351px;
   height:93px;
   background:rgba(255,255,255,1);
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
@@ -311,7 +298,7 @@ width: $gw;
       }
       .iconyou1{
         position: absolute;
-        right: 20px;
+        right: 12px;
         font-size: 20px;
         color: #EF9B1E;
       }

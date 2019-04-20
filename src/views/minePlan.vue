@@ -27,9 +27,9 @@
 
 <style lang="scss" scoped>
 .wrap{
-  padding: 0 11px;
+  padding: 0 12px;
   .mu-sub-header {
-    padding: 11px 0;
+    padding: 12px 0;
   }
 }
 </style>

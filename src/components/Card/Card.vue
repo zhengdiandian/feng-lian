@@ -47,7 +47,7 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     /*box-sizing: border-box;*/
-    width: 328px;
+    width:351px;
     /*height: 140px;*/
     background: url("../../assets/PNG/8-1我的互助计划_03.png") center no-repeat;
     border-radius: 5px;
@@ -106,8 +106,8 @@
     }
 
     .touXiang img{
-      width:41px;
-      height:41px;
+      width:44px;
+      height:44px;
       border-radius:50%;
     }
     .right-wrap{

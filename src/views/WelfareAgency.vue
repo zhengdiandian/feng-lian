@@ -9,11 +9,11 @@
                 <section class="profit">
                     <div class="users">
                         <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
-                        <span style="font-size: 12px;">已帮助人数</span>
+                        <span style="font-size: 12px;">我分享的用户 &nbsp; (人)</span>
                     </div>
                     <div class="users">
                         <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
-                        <span style="font-size: 12px;">已加入蜂链天数</span>
+                        <span style="font-size: 12px;">我的奖励 &nbsp; (元)</span>
                     </div>
                 </section>
             </div>
@@ -50,11 +50,11 @@ export default {
 </script>
 <style scoped lang="scss">
 .profit{
-    width:328px;
-    height:56px;
+    width:351px;
+    height:60px;
     background:rgba(239,162,32,1);
     border-radius:5px;
-    margin: 11px auto;
+    margin: 12px auto;
     overflow: hidden;
     display: flex;
     .users{

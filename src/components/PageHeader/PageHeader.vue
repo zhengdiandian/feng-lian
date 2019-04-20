@@ -25,18 +25,19 @@ export default {
 <style scoped lang="scss">
 nav {
     width: $gw;
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
     background-color: #fff;
     position: relative;
+    justify-content: center;
     .iconfanhui{
         font-size: 20px;
         margin-left: 5px;
+        position: absolute;
+        left: 12px;
     }
     .title {
-        position: absolute;
-        left: 144px;
         span{
             width:62px;
             height:14px;
