@@ -30,10 +30,10 @@
     <div class="wrap">
       <mu-sub-header>蜂链互助资金公示</mu-sub-header>
       <div class="notice-card">
-        <!--<p class="card-row">-->
-          <!--<div>截止2019年3月31日</div>-->
-          <!--<div>共互助2832人，分摊3.19亿元</div>-->
-        <!--</p>-->
+        <div class="card-row">
+          <div>截止2019年3月31日</div>
+          <div>共互助2832人，分摊3.19亿元</div>
+        </div>
         <p class="card-row">本期剩余互助金 <span>￥531,178,925.73元</span></p>
         <div class="card-btn">点击查看详情</div>
       </div>
@@ -168,13 +168,17 @@ export default {
     width:351px;
     height:136px;
     background:rgba(255,255,255,1);
-    border:1px solid rgba(220,220,220,1);
+    /*border:1px solid rgba(220,220,220,1);*/
     border-radius:5px;
-    background: url("../../assets/PNG/资金公示banner.png") center no-repeat;
+    background: url("../../assets/PNG/资金公示背景.png") center no-repeat;
     background-size: 100% 100%;
+    p.card-row{
+      margin: 0px;
+    }
     .card-row{
+
       width: 100%;
-      margin-top: 60px;
+      /*margin-top: 60px;*/
       text-align: center;
       span{
         color: $c-cheng;
