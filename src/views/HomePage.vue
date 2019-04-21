@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-margin-top">
     <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
       <mu-button icon slot="right">
         <mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>
@@ -99,7 +99,7 @@
           </div>
         </div>
       </div>
-      <div class="partner wrap">
+      <div class="partner">
         <mu-sub-header>平台运营安全可靠</mu-sub-header>
         <div class="partner-content">
           <img v-for=" i in 10" :key="i" src="http:\\placehold.it\70x70" alt="">
@@ -130,7 +130,7 @@ export default {
     box-sizing: border-box;
     width: $gw;
     padding: 0 5px;
-    border-bottom: 4px solid #666666;
+    /*border-bottom: 4px solid #666666;*/
   }
   .item-content{
     display: flex;

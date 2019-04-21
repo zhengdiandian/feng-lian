@@ -69,6 +69,9 @@
 }
 
 .mu-appbar{
+    position: fixed;
+    top: 0px;
+    left: 0px;
     height: 44px;
     font-family:SourceHanSansCN-Normal;
     .mu-appbar-title{
