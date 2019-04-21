@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-      <mu-sub-header>蜂链互助公示</mu-sub-header>
+      <div class="title">蜂链互助公示</div>
       <div class="dateInfo">2019年4月1期</div>
       <div class="info-wrap">
         <div>
@@ -28,17 +28,25 @@
 </script>
 
 <style lang="scss" scoped>
-
-  .mu-appbar .mu-appbar-title, .wrap .mu-sub-header {
+  .mu-sub-header {
+    color: $c-bai;
+    font-size: 3.733vw;
+    line-height: 1.5;
+    padding-left: 4.267vw;
+    width: 100%;
+    content: "viewport-units-buggyfill; font-size: 3.733vw; line-height: 12.8vw; padding-left: 4.267vw";
+  }
+  .card  .title {
     color: #fff;
     font-family: SourceHanSansCN-Normal;
     font-weight: 700;
-    padding: 0px;
+    padding: 0px !important;
     font-size: 14px;
   }
   .card{
+    color: #fff ;
     font-size: 12px;
-    width:351px;
+    /*width:351px;*/
     /*max-height:126px;*/
     background:rgba(239,162,32,1);
     border-radius:5px;

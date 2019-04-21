@@ -5,6 +5,9 @@
         <mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>
       </mu-button>
         链接你我他 &nbsp;&nbsp;守护千万家
+      <mu-button icon slot="left" :ripple="false">
+        <!--<mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>-->
+      </mu-button>
     </mu-appbar>
     <div class="wrap">
 
