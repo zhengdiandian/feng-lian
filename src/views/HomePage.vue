@@ -20,15 +20,17 @@
         </div>
         <div class="chat-wrap">
           <div class="chat-content item-content">
-            <div class="chat-img"></div>
+            <div class="chat-img">
+              <!-- <mu-icon value=":iconfont iconshuju"></mu-icon> -->
+            </div>
             <div class="chat-title">699900</div>
-            <div class="chat-info">全平台用户 (人)</div>
+            <div class="chat-info">全平台用户(人)</div>
           </div>
           <div class="xian"></div>
           <div class="chat-content item-content">
             <div class="chat-img"></div>
             <div class="chat-title">699900</div>
-            <div class="chat-info">全平台用户 (人)</div>
+            <div class="chat-info">本期互助金規模(元)</div>
           </div>
         </div>
         <div class="routers-wrap">
@@ -137,9 +139,10 @@ export default {
     align-content: center;
   }
 .banner {
-  width: 100%;
-  height: 160px;
-  border-radius: 20px;
+    width:351px;
+    height:130px;
+    border-radius:10px;
+    margin: 12px auto;
 }
 h3{
   font-weight: 300;
@@ -156,8 +159,12 @@ h3{
       display: flex;
       justify-content: space-between;
       .btn{
-        width: 160px;
-        border-radius: 10px;
+        width:170px;
+        height:44px;
+        background:linear-gradient(180deg,rgba(229,141,15,1) 0%,rgba(252,188,52,1) 100%);
+        border-radius:15px;
+        margin: auto;
+        margin-bottom: 12px;
       }
     }
     .chat-wrap{
@@ -166,19 +173,30 @@ h3{
       flex-wrap: wrap;
       justify-content: space-between;
       align-content: center;
+      margin-bottom: 12px;
       .chat-content{
         width: 50%;
         margin-left: -1px;
       }
       .chat-img{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+        width:60px;
+        height:60px;
+        background:rgba(239,155,30,1);
         background-color: red;
+        margin-bottom: 12px;
       }
       .chat-title{
         width: 100%;
         text-align: center;
+        font-size:30px;
+        font-family:SourceHanSansCN-Normal;
+        font-weight:400;
+        color:rgba(51,51,51,1);
+      }
+      .chat-info{
+        font-size:12px;
+        color:rgba(112,112,112,1);
+        letter-spacing:2px
       }
       .xian{
         /*margin-top: 25%;*/
@@ -186,8 +204,8 @@ h3{
         box-sizing: border-box;
         height: 50%;
         align-self: center;
-        /*justify-items: center;*/
-        border-left: 1px solid #666666;
+        // justify-items: center;
+        border-left: 1px solid rgba(234,234,234,1);
       }
     }
   }

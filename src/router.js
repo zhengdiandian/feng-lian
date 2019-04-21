@@ -20,6 +20,32 @@ export default new Router({
             // 首页
             return import('./views/HomePage.vue')
           }
+        },
+        {
+          path: '/notice',//公告
+          name: 'notice',
+          component: function () {
+            return import('./views/Notice')
+          },
+          children: [
+            {
+              path: 'newNotice',
+              component: function () {
+                return import('./views/notice/NewNotice') //新公告
+              }
+            },
+            {
+              path: 'oldNotice',
+              component: function () {
+                return import('./views/notice/OldNotice') //老公告
+              }
+            }
+          ]
+        },
+        {
+          path: '/my', // 我的
+          name: MyCenter,
+          component: MyCenter
         }
       ]
     },
@@ -54,11 +80,7 @@ export default new Router({
         return import('./views/ResetPassword.vue')
       }
     },
-    {
-      path: '/my', // 我的
-      name: MyCenter,
-      component: MyCenter
-    },
+
     {
       path: '/mynot', // 我的未登录
       component: function () {
@@ -163,27 +185,6 @@ export default new Router({
       component: function () {
         return import('./views/minePlan')
       }
-    },
-    {
-      path: '/notice', // 公告
-      name: 'notice',
-      component: function () {
-        return import('./views/Notice')
-      },
-      children: [
-        {
-          path: 'newNotice',
-          component: function () {
-            return import('./views/notice/NewNotice') // 新公告
-          }
-        },
-        {
-          path: 'oldNotice',
-          component: function () {
-            return import('./views/notice/OldNotice') // 老公告
-          }
-        }
-      ]
     }
     // {
     //   path: '/',
