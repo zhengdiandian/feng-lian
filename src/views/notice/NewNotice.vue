@@ -64,7 +64,7 @@ export default {
   .hlep-notice {
     width: 351px;
     height: 41px;
-
+    margin-top: 8px;
     background: rgba(255, 227, 179, 1);
     border-radius: 2px;
     line-height: 1.5;
