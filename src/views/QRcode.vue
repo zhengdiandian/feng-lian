@@ -1,24 +1,38 @@
 <template>
     <div class="card">
-        
+        <header>
+            <nav>
+                <mu-icon value=":iconfont iconfanhui"></mu-icon>
+                <div class="title">{{title}}</div>
+            </nav>
+        </header>
+        <main>
+            <div class="head-name">
+                <section class="hear-infor">
+                    <img src="../assets/PNG/头像.png" alt="">
+                    <div>
+                        <span style="font-size:14px;">{{name}}</span>
+                        <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1); line-height: 20px;" >{{stata}}</span>
+                    </div>
+                    <span style="color:rgba(112,112,112,1);">{{autograph}}</span>
+                </section>
+                <section class="code"></section>
+            </div>
+        </main>
     </div>
 </template>
 <script>
-import pageHeader from '../components/PageHeader/PageHeader'
 export default {
     name: 'qrcode',
-    components: {
-        pageHeader
+    data() {
+        return {
+           title: '我的二维码',
+           name: 'Bryant.zZ',
+           stata: '已实名',
+           autograph: '海内存知己，天涯若比邻',
+           imgUrl: require('../assets/PNG/head.png')
+        }
     },
-    // data() {
-    //     return {
-    //        title: '我的二维码',
-    //        name: 'Bryant.zZ',
-    //        stata: '已实名',
-    //        autograph: '海内存知己，天涯若比邻',
-    //        imgUrl: require('../assets/PNG/head.png')
-    //     }
-    // },
 }
 </script>
 <style scoped lang="scss">
@@ -27,11 +41,62 @@ html,body{
     height: 100%;
 }
 .card{
-    
     width: 375px;
     height: 100%;
     background: url("../assets/PNG/codebackground.png") center no-repeat;
-    // background-size: 100% ;
     background-size: 100% 100%;
+}
+nav {
+    width: $gw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    color: #fff;
+    .iconfanhui{
+        font-size: 20px;
+        margin-left: 5px;
+        position: absolute;
+        left: 12px;
+    }
+    .title {
+        span{
+            width:62px;
+            height:14px;
+            font-size:15px;
+            font-family:SourceHanSansCN-Normal;
+            font-weight:bold;
+            color:rgba(51,51,51,1);
+        }
+    }
+}
+main{
+    width: 100%;
+    .head-name{
+        height: 150px;
+        .hear-infor{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 53px;
+        }
+        img{
+            width:75px;
+            height:75px;
+            background:rgba(255,255,255,1);
+            border:2px solid rgba(255,255,255,1);
+            border-radius:50%;
+        }
+    }
+    .code{
+        width:180px;
+        height:180px;
+        background:rgba(255,255,255,1);
+        border:10px solid rgba(255,162,228,1);
+        opacity:0.5;
+        margin: auto;
+        margin-top: 37px;
+    }
 }
 </style>

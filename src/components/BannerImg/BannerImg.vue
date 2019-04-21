@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <img src="http:\\placehold.it\350x160" alt="">
+    <img src="../../assets/PNG/视频.png" alt="">
   </div>
 </template>
 
