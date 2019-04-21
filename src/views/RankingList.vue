@@ -3,7 +3,7 @@
         <header>
             <pageHeader :title="title"></pageHeader>
         </header>
-        <main class="page-margin-top">
+        <main class="">
             <div class="list-noe">
                 <div class="tow">
                     <img src="../assets/PNG/公示头像5.png" alt="">

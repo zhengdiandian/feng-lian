@@ -18,8 +18,8 @@
       </mu-carousel>
       <div class="content">
         <div class="btn-wrap">
-          <mu-button  class="btn" color="success" @click="">感恩有你</mu-button>
-          <mu-button round class="btn" color="success" @click="$router('/minePlan')">查看我的互助计划</mu-button>
+          <mu-button  class="btn" color="success" @click="$router.push('/owe')">感恩有你</mu-button>
+          <mu-button round class="btn" color="success" @click="$router.push('/minePlan')">查看我的互助计划</mu-button>
         </div>
         <div class="chat-wrap">
           <div class="chat-content item-content">

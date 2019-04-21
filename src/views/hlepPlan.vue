@@ -98,7 +98,7 @@
         </mu-list>
         
       </div>
-      <div class="bottom-btn">立即加入</div>
+      <div class="bottom-btn" @click="$router.push('/joinPlan')">立即加入</div>
     </div>
   </div>
 </template>

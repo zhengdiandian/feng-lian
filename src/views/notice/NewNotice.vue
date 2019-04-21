@@ -64,7 +64,7 @@ export default {
   .hlep-notice {
     width: 351px;
     height: 41px;
-
+    margin-top: 8px;
     background: rgba(255, 227, 179, 1);
     border-radius: 2px;
     line-height: 1.5;
@@ -203,7 +203,11 @@ export default {
     justify-content: center;
   }
   .contact{
-
+    span.iconfont{
+      font-size: 24px;
+      vertical-align: middle;
+      padding-right: 13px;
+    }
     width:132px;
     height:35px;
     line-height: 35px;
