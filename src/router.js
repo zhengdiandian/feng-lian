@@ -185,6 +185,20 @@ export default new Router({
       component: function () {
         return import('./views/minePlan')
       }
+    },
+    {
+      path: '/owe',
+      name: 'owe',
+      component: function () {
+        return import('./views/Owe')
+      }
+    },
+    {
+      path: '/planInitial',
+      name: 'planInitial',
+      component: function () {
+        return import('./views/PlanInitial')
+      }
     }
     // {
     //   path: '/',

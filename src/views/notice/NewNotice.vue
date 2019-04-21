@@ -203,7 +203,11 @@ export default {
     justify-content: center;
   }
   .contact{
-
+    span.iconfont{
+      font-size: 24px;
+      vertical-align: middle;
+      padding-right: 13px;
+    }
     width:132px;
     height:35px;
     line-height: 35px;
