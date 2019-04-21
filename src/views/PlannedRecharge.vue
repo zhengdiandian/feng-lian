@@ -13,7 +13,7 @@
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
 export default {
-    name: 'welfareAgency',
+    name: 'plannedRecharge',
     components: {
         PageHeader
     },

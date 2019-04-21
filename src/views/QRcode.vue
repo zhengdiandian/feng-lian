@@ -1,57 +1,31 @@
 <template>
-    <div>
-        <header>
-            <PerInforHeader
-            :title="title"
-            :name="name"
-            :stata="stata"
-            :autograph="autograph"
-            :imgUrl="imgUrl"
-            ></PerInforHeader>
-            <img class="erweima" src="" alt="">
-        </header>
-        <main>
-            <div class="QRcode">
-                <img src="" alt="">
-            </div>
-            <div style="margin: 10px auto;color: yellow;">保存二维码</div>
-            <div style="margin: 10px auto;">我的邀请码：666 666</div>
-        </main>
+    <div class="card">
+        
     </div>
 </template>
 <script>
-import PerInforHeader from '../components/PerInforHeader/PerInforHeader'
+import pageHeader from '../components/PageHeader/PageHeader'
 export default {
     name: 'qrcode',
     components: {
-        PerInforHeader
+        pageHeader
     },
-    data() {
-        return {
-           title: '我的二维码',
-           name: 'Bryant.zZ',
-           stata: '已实名',
-           autograph: '海内存知己，天涯若比邻',
-           imgUrl: require('../assets/PNG/head.png')
-        }
-    },
+    // data() {
+    //     return {
+    //        title: '我的二维码',
+    //        name: 'Bryant.zZ',
+    //        stata: '已实名',
+    //        autograph: '海内存知己，天涯若比邻',
+    //        imgUrl: require('../assets/PNG/head.png')
+    //     }
+    // },
 }
 </script>
 <style scoped lang="scss">
-main{
+.card{
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    .QRcode{
-        width: 150px;
-        height: 150px;
-        border: 10px solid plum;
-        margin: auto;
-        img{
-            width: 100%;
-            height: 100%;
-        }
-    }
+    height: 100%;
+    background: url("~@/assets/PNG/codebackground.png");
+    background-size: 100% 100%;
 }
 </style>

@@ -34,8 +34,8 @@ export default {
 </script>
 <style scoped lang="scss">
 .headerNav{
-  width:328px;
-  height:79px;
+  width:351px;
+  height:85px;
   background:rgba(255,255,255,1);
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -44,12 +44,12 @@ export default {
   align-items: center;
   position: relative;
   .headerLogin{
-    width:56px;
-    height:56px;
+    width:60px;
+    height:60px;
     border-radius:50%;
     background:rgba(207,207,207,1);
     border:2px solid rgba(239, 162, 32, 1);
-    margin-left: 11px;
+    margin-left: 12px;
     img{
       width: 100%;
       height: 100%;
@@ -66,8 +66,6 @@ export default {
       color:rgba(51,51,51,1);
     }
     .number{
-      width: 75px;
-      height: 10px;
       font-size:10px;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
@@ -75,9 +73,7 @@ export default {
       font-size: 10px;
     }
     .autograph{
-      width:130px;
-      height:11px;
-      font-size:11px;
+      font-size:12px;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
       color:rgba(112,112,112,1);
@@ -91,7 +87,7 @@ export default {
     line-height: 15px;
     background:rgba(239,162,32,1);
     border:0px solid rgba(255,255,255,1);
-    font-size:11px;
+    font-size:12px;
     font-family:SourceHanSansCN-Normal;
     font-weight:400;
     color:rgba(255,255,255,1);

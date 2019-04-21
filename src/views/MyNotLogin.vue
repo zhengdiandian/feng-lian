@@ -92,24 +92,24 @@ width: $gw;
 main {
   background-color: #f5f5f5;
   .icon{
-    width:47px;
-    height:47px;
+    width:50px;
+    height:50px;
     background:rgba(207,207,207,1);
     border:2px solid rgba(207, 207, 207, 1);
     border-radius:50%;
     margin-left: 14px;
   }
     .login-img {
-      width:328px;
-      height:69px;
+      width:351px;
+      height:74px;
       background:rgba(255,255,255,1);
       box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
       border-radius:5px;
-      margin: 10px auto;
+      margin: 11px auto;
       display: flex;
       align-items: center;
       .iconwode1{
-        font-size: 32px;
+        font-size: 35px;
         color: #FFFFFF;
         position: relative;
         top: 8px;
@@ -117,9 +117,8 @@ main {
       }
       span {
         display: inline-block;
-        width:40px;
         height:12px;
-        font-size:13px;
+        font-size:14px;
         font-family:Adobe Heiti Std R;
         font-weight:normal;
         color:rgba(239,162,32,1);
@@ -127,7 +126,7 @@ main {
       }
     }
 .please-list-tongzhi{
-width:328px;
+width:351px;
 height:93px;
 background:rgba(255,255,255,1);
 box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);

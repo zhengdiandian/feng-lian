@@ -31,7 +31,7 @@ export default {
 
 footer{
     width: 100%;
-    height: 50px;
+    height: 49px;
     // border: 1px solid black;
     position: fixed;
     bottom: 0;

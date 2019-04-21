@@ -17,6 +17,7 @@ export default new Router({
         {
           path: '/home', // 首页
           component: function () {
+            // 首页
             return import('./views/HomePage.vue')
           }
         },
@@ -45,12 +46,13 @@ export default new Router({
           path: '/my', // 我的
           name: MyCenter,
           component: MyCenter
-        },
+        }
       ]
     },
     {
       path: '/login', // 登陆
       component: function () {
+        // 登入
         return import('./views/Login.vue')
       }
     },
@@ -178,12 +180,12 @@ export default new Router({
       }
     },
     {
-      path: '/minePlan',
+      path: '/minePlan', // 我的计划
       name: 'minePlan',
       component: function () {
         return import('./views/minePlan')
       }
-    },
+    }
     // {
     //   path: '/',
     //   name: PerInfor,

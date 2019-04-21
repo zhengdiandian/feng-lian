@@ -75,8 +75,8 @@ nav {
     flex-direction: column;
     position: relative;
     .head-portrait{
-        width: 70px;
-        height: 70px;
+        width: 75px;
+        height: 75px;
         border: 1px solid black;
         border-radius: 50%;
         background-color: #fff;

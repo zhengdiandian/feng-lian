@@ -22,7 +22,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .uploadimg{
-        width:350px;
+        width:375px;
         height:93px;
         background:rgba(255,255,255,1);
         border:1px solid rgba(220,220,220,1);
@@ -39,7 +39,7 @@ export default {
         color: #ccc;
         .iconshouye1{
             font-size: 30px;
-            margin-bottom: 11px;
+            margin-bottom: 12px;
         }
         input {
             position: absolute;

@@ -16,10 +16,11 @@
         </section>
         <section>
             <div class="assis-title">链接你我他 &nbsp; &nbsp; 守护千万家</div>
-            <div style="margin: 11px 0px 11px 11px">
+            <div style="margin: 12px 0px 12px 12px">
                 <div style="font-size:15px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
                 <div style="font-size:9px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(112,112,112,1);">2019.04.04</div>
             </div>
+            <section class="card"><card></card></section>
         </section>
     </main>
     <footer>
@@ -32,10 +33,12 @@
 </template>
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
+import card from '../components/Card/Card'
 export default {
     name: 'AssistanceReacord',
     components: {
-        PageHeader
+        PageHeader,
+        card
     },
     data() {
         return {
@@ -47,11 +50,11 @@ export default {
 </script>
 <style scoped lang="scss">
 .profit{
-    width:328px;
-    height:56px;
+    width:351px;
+    height:60px;
     background:rgba(239,162,32,1);
     border-radius:5px;
-    margin: 11px auto;
+    margin: 12px auto;
     overflow: hidden;
     display: flex;
     .users{
@@ -67,13 +70,16 @@ export default {
     }
 }
 .assis-title{
-    width:164px;
-    height:14px;
-    font-size:14px;
+    width:176px;
+    height:15px;
+    font-size:15px;
     font-family:SourceHanSansCN-Normal;
     font-weight:bold;
     color:rgba(51,51,51,1);
-    margin: 11px auto;
+    margin: 12px auto;
+}
+.card{
+    margin: auto;
 }
 footer{
     position: absolute;

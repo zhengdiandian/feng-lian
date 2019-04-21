@@ -17,11 +17,11 @@
                 <section class="datalist" >
                     <div class="listtext" style="width: 75px;"><span>个人信息：</span></div>
                     <div class="listInfo" >{{datalist.gender}} {{datalist.age}} {{datalist.constellation}} {{datalist.address}}</div> 
-                    <span style="width:50px;height:18px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:#707070;">详细信息</span>
+                    <span style="width:50px;height:18px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:#707070; margin-left: 14px;">详细信息</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </section>
             </div>
-                <div class="detaInfo" style="height: 120px;">
+                <div class="detaInfo" style="height: 94px;">
                 <router-link tag="div" to="/report">
                     <section class="datalist" style="height: 50px;">
                         <div class="listtext"><span>体检报告</span></div>
@@ -71,16 +71,16 @@ export default {
 header{
     position: relative;
     .iconerweima{
-    font-size: 20px;
+    font-size: 22px;
     color: #fff;
     position: absolute;
-    top: 13px;
-    right: 10px;
+    top: 10px;
+    right: 14px;
 }
 }
 .detaInfo {
-    width:328px;
-    height:133px;
+    width:351px;
+    height:143px;
     background:rgba(255,255,255,1);
     box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
     border-radius:5px;
@@ -93,11 +93,11 @@ header{
 }
     .datalist{
         display: flex;
-        height: 60px;
+        height: 48px;
         align-items: center;
         .listtext{
             width:58px;
-            height:11px;
+            height:12px;
             font-size:12px;
             font-family:SourceHanSansCN-Normal;
             font-weight:400;

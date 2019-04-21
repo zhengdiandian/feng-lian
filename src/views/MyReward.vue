@@ -6,8 +6,8 @@
             <div class="title">{{title}}</div>
         </nav>
         <div class="reward">
-            <span style="width:57px;height:26px;font-size:34px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1);">670</span>
-            <div style="letter-spacing:3px;font-size:10px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1); padding-top: 30px;">近7天获得奖励{{20}}元</div>
+            <span style="width:57px;height:26px;font-size:36px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1);">670</span>
+            <div style="letter-spacing:3px;font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 25px;">近7天获得奖励{{20}}元</div>
         </div>
     </header>
     <main>
@@ -17,9 +17,9 @@
             <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥80.00</div>
             <div class="reward-money">
                 <div class="headimg"><img src="../assets/PNG/分享头像.png" alt=""></div>
-                <div style="display: flex; flex-direction: column;">
-                    <span style="font-size:12px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);">大兵</span>
-                    <span style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(51,51,51,1);"> 4月9日 0000</span>
+                <div style="display: flex; flex-direction: column; font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(51,51,51,1); margin-left: 12px;">
+                    <span style="font-weight:bold;">大兵</span>
+                    <span > 4月9日 0000</span>
                 </div>
                 <div class="right">
                     <span>+20.00元</span>
@@ -62,8 +62,8 @@ export default {
 </script>
 <style scoped lang="scss">
 header{
-    width:350px;
-    height:142px;
+    width:375px;
+    height:152px;
     background:rgba(242,181,77,1);
     background-image: url('../assets/PNG/我的奖励背景.png');
     nav{
@@ -87,12 +87,12 @@ header{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 20px;
+        margin-top: 15px;
     }
 }
 .historical-bill{
-    width:350px;
-    height:41px;
+    width:375px;
+    height:44px;
     background:rgba(255,255,255,1);
     display: flex;
     align-items: center;
@@ -100,15 +100,15 @@ header{
     margin: 6px 0 10px 0;
 }
 .reward-money{
-    width:350px;
-    height:47px;
+    width:375px;
+    height:50px;
     background:rgba(255,255,255,1);
     display: flex;
     align-items: center;
     position: relative;
     .headimg{
-        width: 30px;
-        height: 30px;
+        width: 33px;
+        height: 33px;
         background: #ccc;
         border-radius: 50%;
         margin-left: 12px;
@@ -161,12 +161,12 @@ footer{
     position: absolute;
     bottom: 0;
     button{
-        width: $gw;
-        height: 50px;
+        width:375px;
+        height:49px;
+        background:rgba(239,162,32,1);
         margin: auto;
         border: none;
         outline: none;
-        background-color: red;
     }
 }
 </style>
