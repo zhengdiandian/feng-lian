@@ -4,7 +4,7 @@
       <mu-button icon slot="left" @click="$router.go(-1)" >
         <mu-icon value=":iconfont iconfanhui" size="24" @click.stop="$router.go(-1)"></mu-icon>
       </mu-button>
-      计划生成
+      计划充值
       <mu-button icon slot="right" :ripple="false">
       </mu-button>
     </mu-appbar>
@@ -54,7 +54,9 @@
         </mu-list-item>
       </mu-list>
     </div>
-    <div class="next-btn"></div>
+    <router-link tag="div" to="/recharge">
+    <div class="next-btn">立即充值</div>
+    </router-link>
   </div>
 </template>
 

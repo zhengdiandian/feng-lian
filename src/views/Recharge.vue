@@ -106,7 +106,7 @@ export default {
       sliderVal: '',
       tongYi: false,
       activeStep: 0,
-      title: '加入计划'
+      title: '充值'
     }
   },
   computed:{

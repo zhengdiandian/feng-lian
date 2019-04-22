@@ -2,7 +2,7 @@
     <div>
         <div style="display: flex;justify-content: center;">
             <div class="uploadimg">
-                <mu-icon value=":iconfont iconshouye1"></mu-icon>
+                <img src="../../assets/img/相机.svg" alt="">
                 <span>{{upload}}</span>
                 <input class="justID" type="file">
             </div>
@@ -37,6 +37,10 @@ export default {
         align-items: center;
         flex-direction: column;
         color: #ccc;
+        img{
+            width: 32px;
+            height: 32px;
+        }
         .iconshouye1{
             font-size: 30px;
             margin-bottom: 12px;

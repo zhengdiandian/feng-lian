@@ -11,10 +11,10 @@
                         <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
                         <span style="font-size: 12px;">我分享的用户 &nbsp; (人)</span>
                     </div>
-                    <div class="users">
+                    <router-link class="users" tag="div" to="/myreward">
                         <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
                         <span style="font-size: 12px;">我的奖励 &nbsp; (元)</span>
-                    </div>
+                    </router-link>
                 </section>
             </div>
            <!-- <div class="my-coupon">
