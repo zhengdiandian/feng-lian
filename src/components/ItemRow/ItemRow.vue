@@ -35,20 +35,35 @@
     &-icon{
       /*width: 50px;*/
       /*height: 50px;*/
-      font-size: 50px;
+      font-size: 40px;
+      color: #EFA220;
 
     }
     /*flex-wrap: wrap;*/
   }
   .item{
     width: 25%;
+    height: 120px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
+    text-align: center;
+    margin-bottom: 12px;
+    .title{
+      font-size:14px;
+      font-family:SourceHanSansCN-Normal;
+      font-weight:bold;
+      color:rgba(51,51,51,1);
+    }
     .text{
-      /*text-align: center;*/
-
+      display: inline-block;
+      width:59px;
+      height:28px;
+      font-size:12px;
+      font-family:SourceHanSansCN-Normal;
+      font-weight:400;
+      color:rgba(51,51,51,1);
     }
   }
 

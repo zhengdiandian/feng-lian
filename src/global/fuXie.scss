@@ -92,3 +92,31 @@
     font-weight:bold;
 
 }
+
+.margin-left{
+    margin-left: 12px;
+}
+.margin-auto{
+    margin: 12px 0 12px 12px;
+}
+.margin-top{
+    margin-top:12px;
+}
+.margin-bottom{
+    margin-bottom: 12px;
+}
+.margin-right{
+    margin-right: 12px;
+}
+.font{
+    font-size:14px;
+    font-family:SourceHanSansCN-Normal;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+}
+.font-min{
+    font-size:12px;
+    font-family:SourceHanSansCN-Normal;
+    font-weight:400;
+    color:rgba(112,112,112,1);
+}
