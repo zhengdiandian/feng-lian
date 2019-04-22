@@ -187,7 +187,7 @@ export default new Router({
       }
     },
     {
-      path: '/rank', // 我的计划
+      path: '/ranklist', // 排行榜
       name: 'rankinglist',
       component: function () {
         return import('./views/RankingList.vue')

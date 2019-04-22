@@ -15,48 +15,48 @@
         <section class="please-list-tongzhi">
           <router-link tag="div" to="/myplan">
             <div class="list-li">
-              <div style="text-align: center;">
-                <mu-icon value=":iconfont iconjihua"></mu-icon>
-                <span style="margin-left:12px">我的计划</span>
-              </div>
-              <mu-icon value=":iconfont iconyou1"></mu-icon>
+            <div style="text-align: center;">
+              <img src="../assets/图标/我的计划-选中.svg" alt="">
+              <span class="position-r" style="margin-left:12px">我的计划</span>
             </div>
+            <mu-icon value=":iconfont iconyou1"></mu-icon>
+          </div>
           </router-link>
           <router-link tag="div" to="/assis">
             <div class="list-li">
-              <div style="text-align: center;">
-                <mu-icon value=":iconfont iconjilu"></mu-icon>
-                <span style="margin-left:12px">互助记录</span>
-              </div>
-              <mu-icon value=":iconfont iconyou1"></mu-icon>
+            <div style="text-align: center;">
+              <img src="../assets/图标/记录.svg" alt="">
+              <span class="position-r" style="margin-left:12px">互助记录</span>
             </div>
+            <mu-icon value=":iconfont iconyou1"></mu-icon>
+          </div>
           </router-link>
           <router-link tag="div" to="/">
             <div class="list-li">
-              <div style="text-align: center;">
-                <mu-icon value=":iconfont iconyaoqing"></mu-icon>
-                <span style="margin-left:12px">邀请好友</span>
-              </div>
-              <mu-icon value=":iconfont iconyou1"></mu-icon>
+            <div style="text-align: center;">
+              <img src="../assets/图标/邀请.svg" alt="">
+              <span class="position-r" style="margin-left:12px">邀请好友</span>
             </div>
+            <mu-icon value=":iconfont iconyou1"></mu-icon>
+          </div>
           </router-link>
             <router-link tag="div" to="/">
               <div class="list-li">
-                <div style="text-align: center;">
-                  <mu-icon value=":iconfont icontongzhi"></mu-icon>
-                  <span style="margin-left:12px">通知</span>
-                </div>
-                <mu-icon value=":iconfont iconyou1"></mu-icon>
+              <div style="text-align: center;">
+              <img src="../assets/图标/通知.svg" alt="">
+                <span class="position-r" style="margin-left:12px">通知</span>
               </div>
+              <mu-icon value=":iconfont iconyou1"></mu-icon>
+            </div>
             </router-link>
             <router-link tag="div" to="/setup">
               <div class="list-li">
-                <div style="text-align: center;">
-                  <mu-icon value=":iconfont iconshezhi"></mu-icon>
-                  <span style="margin-left:12px">设置</span>
-                </div>
-                <mu-icon value=":iconfont iconyou1"></mu-icon>
+              <div style="text-align: center;">
+              <img src="../assets/图标/设置.svg" alt="">
+                <span class="position-r" style="margin-left:12px">设置</span>
               </div>
+              <mu-icon value=":iconfont iconyou1"></mu-icon>
+            </div>
             </router-link>
         </section>
     </main>
@@ -138,6 +138,11 @@ margin: 10px auto;
     display: flex;
     align-items: center;
     background-color: #fff;
+    img{
+        width: 20px;
+        height: 20px;
+        margin-left: 14px;
+    }
     .iconfont {
       color: #358EFD;
       font-size: 20px;

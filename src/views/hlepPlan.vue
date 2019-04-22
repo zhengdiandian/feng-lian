@@ -35,7 +35,7 @@
         <span class="hot"></span>
       </icon-bar> -->
       <div class="apply">
-        <mu-icon value=":iconfont iconaixin"></mu-icon>
+        <img src="../assets/图标/加入我们.svg" alt="">
         <span>预存48元加入</span>
         <div class="apply-click">
           <span>加入</span>
@@ -295,10 +295,9 @@
     font-size: 50px;
   }
   img{
-    width: 50px;
-    height: 50px;
-    position: relative;
-    bottom: 15px;
+    width: 34px;
+    height: 34px;
+    margin-left: 6px;
   }
   .apply-click{
     display: flex;
