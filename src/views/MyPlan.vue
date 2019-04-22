@@ -53,7 +53,7 @@
             </div>
             <div class="purchase-plan">
                 <span style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
-                <section class="card"><card></card></section>
+                <section class="card"><card :open="open"></card></section>
             </div>
         </main>
         <footerBtn></footerBtn>
@@ -74,6 +74,11 @@ export default {
         return {
             upload: '我的计划',
             name: 'Bytan.zZ'
+        }
+    },
+    methods: {
+        open() {
+            this.$router.push('/palnned')
         }
     }
 }

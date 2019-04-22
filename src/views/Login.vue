@@ -14,24 +14,19 @@
           :error-text="accountErr"
         >
           <div slot="append">
-            <router-link tag="div" to="/register" style="color: #347fe8">立即注册</router-link>
+            <router-link tag="div" to="/register" style="color: #347fe8;">立即注册</router-link>
           </div>
         </mu-text-field>
       </div>
       <div class="pwd-wrap">
-        <mu-text-field
-          label="请输入密码"
-          v-model="pwd"
-          icon=":iconfont iconmima"
-          :error-text="pwdErr"
-          :action-icon="visibility ? ':iconfont iconyanjing' : ':iconfont iconyanjing'"
-          :action-click="() => (visibility = !visibility)"
-          :type="visibility ? 'text' : 'password'"
-        ></mu-text-field>
+       <mu-text-field v-model="pwd" label="请输入密码" label-float  icon=":iconfont iconmima"
+       :action-icon="visibility ? 'visibility_off' : 'visibility'" :action-click="() => (visibility = !visibility)" :type="visibility ? 'text' : 'password'"
+       >
+       </mu-text-field>
       </div>
       <div class="bottom-nav">
-          <router-link tag="div" to="/register" style="color: #347fe8; font-size: 14px">短信验证码登陆</router-link>
-          <router-link tag="div" to="/forgetPassword" style="color: #347fe8; font-size: 14px">忘记密码?</router-link>
+          <router-link tag="div" to="/register" style="color: #347fe8; font-size: 13px">短信验证码登陆</router-link>
+          <router-link tag="div" to="/forgetPassword" style="color: #347fe8; font-size: 13px">忘记密码?</router-link>
       </div>
       <mu-button round class="login-btn" color="success" @click="login">登 &nbsp; 陆</mu-button>
       <div class="show" v-show="show">
@@ -41,6 +36,7 @@
   </div>
 </template>
 <script>
+
 export default {
   name: "Loing",
   data() {
@@ -74,10 +70,12 @@ export default {
   background-color: #fff;
 }
 .img {
-  width: 100px;
-  height: 100px;
+  width: 76px;
+  height: 70px;
   background-image: url('../assets/PNG/logo图.png');
   background-size: 100% 100%;
+  margin-bottom: 64px;
+  margin-top: 75px;
 }
 .bottom-nav{
     width: 100%;
@@ -109,6 +107,12 @@ export default {
     align-items: center;
     color: #fff;
   }
+//   .mu-input.has-icon{
+//     padding: 25px 30px 0px 40px;
+// }
+.login-btn{
+  background: linear-gradient(to right, #e99317 , #fbb830) !important;
+}
 </style>
 
 

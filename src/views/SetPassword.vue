@@ -4,29 +4,29 @@
             <pageHeader :title="title"></pageHeader>
         </header>
         <main class="page-margin-top">
-            <mu-text-field
-            v-model="value13"
-            label="请设置密码"
-            label-float
-            error-text="您输入的密码不够安全，请重新输入"
-            icon=":iconfont iconmima"
-            :type="visibility ? 'text' : 'password'"
-            >
-            <div slot="append">
-                <mu-icon value=":iconfont iconbiyan"></mu-icon>
-                </div>
-            </mu-text-field>
-            <mu-text-field
-                v-model="value14"
-                label="请确认密码"
+            <div class="user-wrap pwd-wrap">
+                <mu-text-field
+                v-model="account"
                 label-float
-                error-text="您两次输入的密码不用，请重新输入"
+                label="请输入新密码"
                 icon=":iconfont iconmima"
-                :action-icon="visibility ? 'visibility_off' : 'visibility'"
-                :action-click="() => (visibility = !visibility)"
-                :type="visibility ? 'text' : 'password'"
-                ></mu-text-field>
+                error-text="您输入的密码不够安全，请慎重"
+                >
+                    <div slot="append">
+                        <mu-icon value=":iconfont iconbiyan"></mu-icon>
+                    </div>
+                </mu-text-field>
+            </div>
+            <div class="pwd-wrap">
+                <mu-text-field v-model="pwd" label="请确认密码" label-float  icon=":iconfont iconmima"
+                :action-icon="visibility ? 'visibility_off' : 'visibility'" :action-click="() => (visibility = !visibility)" :type="visibility ? 'text' : 'password'"
+                error-text="您两次输入的密码不同，请重新输入"
+                >
+                </mu-text-field>
+            </div>
+            <router-link style="width: 75%" tag="div" to="/home">
                 <mu-button round class="login-btn" color="success">注&nbsp;册&nbsp;并&nbsp;登&nbsp;陆</mu-button>
+            </router-link>
         </main>
     </div>
 </template>
@@ -70,6 +70,6 @@ main {
 .login-btn{
     background: linear-gradient(to right, #e99317 , #fbb830) !important;
     margin-top: 40px;
-    width: 80%;
+    width: 100%;
 }
 </style>

@@ -57,7 +57,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .mu-input {
-    width: 95%;
+    width: 80%;
     margin: auto;
     font-size: 12px !important;
     border: none !important;
@@ -76,5 +76,8 @@ main {
     background: linear-gradient(to right, #e99317 , #fbb830) !important;
     margin-top: 40px;
     width: 80%;
+}
+.mu-input.has-icon{
+    padding: 25px 30px 0px 40px;
 }
 </style>

@@ -21,7 +21,7 @@
           <div>10元</div>
         </div>
         <div class="btn-wrap">
-          <div class="btn content-center">查看计划</div>
+          <div class="btn content-center" @click="open">查看计划</div>
 
         </div>
       </div>
@@ -35,6 +35,9 @@
       title: {
         type: String,
         default: '峰链互助公式'
+      },
+      open: {
+        type: Function
       }
     }
   }

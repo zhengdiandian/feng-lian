@@ -37,7 +37,7 @@ export default new Router({
             {
               path: 'oldNotice',
               component: function () {
-                return import('./views/notice/OldNotice') //老公告
+                return import('./views/notice/OldNotice') // 老公告
               }
             }
           ]
@@ -196,11 +196,11 @@ export default new Router({
       path: '/owe',
       name: 'owe',
       component: function () {
-        return import('./views/Owe') //感恩
+        return import('./views/Owe') // 感恩
       }
     },
     {
-      path: '/planInitial',//计划生成
+      path: '/planInitial', // 计划生成
       name: 'planInitial',
       component: function () {
         return import('./views/PlanInitial')

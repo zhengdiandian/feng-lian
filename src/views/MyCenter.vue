@@ -35,7 +35,7 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
         </router-link>
-          <router-link tag="div" to="/">
+          <!-- <router-link tag="div" to="/"> -->
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/卡包.svg" alt="">
@@ -43,8 +43,8 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-        </router-link>
-        <router-link tag="div" to="/myplan">
+        <!-- </router-link> -->
+        <router-link tag="div" to="/palnned">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/我的计划-选中.svg" alt="">
@@ -53,7 +53,7 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
         </router-link>
-        <router-link tag="div" to="/">
+        <router-link tag="div" to="/hlepPlan">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/申请.svg" alt="">
@@ -62,7 +62,7 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
         </router-link>
-        <router-link tag="div" to="/">
+        <!-- <router-link tag="div" to="/"> -->
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/客户.svg" alt="">
@@ -70,7 +70,7 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-        </router-link>
+        <!-- </router-link> -->
         <router-link tag="div" to="/assis">
           <div class="list-li">
             <div style="text-align: center;">
@@ -80,7 +80,7 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
         </router-link>
-        <router-link tag="div" to="/">
+        <router-link tag="div" to="/code">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/邀请.svg" alt="">
@@ -91,7 +91,7 @@
         </router-link>
         </section>
         <section class="please-list-tongzhi">
-          <router-link tag="div" to="/">
+          <!-- <router-link tag="div" to="/"> -->
             <div class="list-li">
               <div style="text-align: center;">
               <img src="../assets/图标/通知.svg" alt="">
@@ -99,7 +99,7 @@
               </div>
               <mu-icon value=":iconfont iconyou1"></mu-icon>
             </div>
-          </router-link>
+          <!-- </router-link> -->
           <router-link tag="div" to="/setup">
             <div class="list-li">
               <div style="text-align: center;">
