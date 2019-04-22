@@ -142,7 +142,7 @@
     </div>
     <div class="btn-wrap">
       <div class="btn">不符合条件</div>
-      <div class="btn">符合条件, 继续</div>
+      <div class="btn" @click="$router.push('/joinPlan')">符合条件, 继续</div>
     </div>
   </div>
 

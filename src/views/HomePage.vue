@@ -74,7 +74,7 @@
             <div class="info">最高可获得30万抗癌互助金18~50周岁可加入</div>
           </div>
           <div class="plan-right-content">
-            <mu-button  class="btn" color="success" @click="$router.push('/joinPlan')">再次加入</mu-button>
+            <mu-button  class="btn" color="success" @click="$router.push('/hlepPlan')">再次加入</mu-button>
           </div>
         </div>
         <mu-divider></mu-divider>

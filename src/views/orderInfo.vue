@@ -32,7 +32,7 @@
       <li><span class="iconfont iconweixin"></span>银联支付<mu-divider></mu-divider>
       </li>
     </div>
-    <div class="big-btn">去支付</div>
+    <div class="big-btn" @click="$router.push('/planInitial')"> 去支付</div>
   </div>
 </template>
 

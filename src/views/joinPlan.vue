@@ -162,7 +162,7 @@ export default {
     padding-left: 20px;
     outline: none;
     font-size: 12px;
-    
+
   }
 }
 .warning {
