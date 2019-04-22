@@ -54,7 +54,7 @@
         </mu-list-item>
       </mu-list>
     </div>
-    <div class="next-btn"></div>
+    <div class="next-btn" @click="$router.push('/home')">再去看看</div>
   </div>
 </template>
 
