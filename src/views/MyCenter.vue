@@ -1,5 +1,17 @@
 <template>
 <div id="MyCenter">
+  <PopBox v-if="showPoP">
+    <div class="pop-content">
+      <div>
+        <div>
+          <div class="heart">
+          </div>
+        </div>
+        一大批爱心人士正在赶来
+      </div>
+      <div @click="showPoP=false">我知道了</div>
+    </div>
+  </PopBox>
     <header>
         <div class="header-title">我的蜂链</div>
     </header>
@@ -35,7 +47,7 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
         </router-link>
-          <router-link tag="div" to="/">
+          <div tag="div" to="/" @click="showPoP=true">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/卡包.svg" alt="">
@@ -43,7 +55,7 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-        </router-link>
+        </div>
         <router-link tag="div" to="/myplan">
           <div class="list-li">
             <div style="text-align: center;">
@@ -114,10 +126,12 @@
 </div>
 </template>
 <script>
-export default {
+  import PopBox from '../components/PopBox/PopBox'
+  export default {
   name: 'mycenter',
   data() {
     return {
+      showPoP: false,
       name: 'Bryant.zZ',
       list: [
         "福利社",
@@ -138,10 +152,48 @@ export default {
     jump() {
        this.$router.push('/per')
     }
-  }
+  },
+    components: {
+    PopBox
+    }
 }
 </script>
 <style scoped lang="scss">
+
+  .pop-content{
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    text-align: center;
+    & >div:last-child{
+      height: 40px;
+      background-color: $c-cheng;
+      color: $c-bai;
+      line-height: 40px;
+      font-size: 18px;
+      align-self: flex-end;
+    }
+    &>div{
+      width: 100%;
+      text-align: center;
+    }
+    align-items: center;
+    .iconfont{
+      font-size: 45px;
+    }
+    .heart{
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      background: url("../assets/img/爱心.svg") center no-repeat;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%;
+    }
+  }
+
+
 header {
 width: $gw;
 position: fixed;

@@ -17,7 +17,7 @@ export default {
     mounted() {
         document.documentElement.style.overflow = 'hidden'
 
-        // debugger        
+        // debugger
         // this.$refs.shadom.style.height = document.documentElement.style.height
 
     },
@@ -43,7 +43,7 @@ export default {
     background-color:rgba(0, 0, 0, .7);
     .center{
       background-color: #fff;
-      
+
 line-height: 20px;
 border-radius: 4px;
 border: 1px solid rgba(187, 187, 187, 1);

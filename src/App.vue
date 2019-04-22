@@ -6,6 +6,9 @@
 
 <style lang="scss">
 @import url('./global/fuXie.scss');
+#app>div{
+  height: 100%;
+}
 #app {
   height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

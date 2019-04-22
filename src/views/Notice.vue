@@ -1,10 +1,25 @@
 <template>
-  <div>
-    <mu-appbar style="width: 100%;" color="primary" text-color="#666" z-depth="0">
+  <div class="pop-wrap">
+    <PopBox style="bottom: 6.2%">
+      <div class="pop-content">
+
+        <div>
+          <div>
+            <div class="heart">
+
+            </div>
+          </div>
+          一大批爱心人士正在赶来
+        </div>
+        <div>敬请期待</div>
+      </div>
+    </PopBox>
+
+    <mu-appbar style="width: 100%; position: initial" color="primary" text-color="#666" z-depth="0">
       <mu-button icon slot="right" @click="$router.go(-1)" >
         <mu-icon value=":iconfont iconxinxi" size="24" @click.stop="$router.go(-1)"></mu-icon>
       </mu-button>
-      我的互助计划
+      公示
       <mu-button icon slot="left" :ripple="false">
       </mu-button>
     </mu-appbar>
@@ -14,17 +29,53 @@
     </div>
 
     <router-view class=""></router-view>
-
   </div>
 </template>
 
 <script>
+  import PopBox from '../components/PopBox/PopBox'
   export default {
-    name: 'Notice'
+    name: 'Notice',
+    components: {
+      PopBox
+    }
   }
 </script>
 
 <style lang="scss" scoped>
+  .pop-wrap{
+    position: relative;
+    height: 100%;
+
+  }
+  .pop-content{
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    text-align: center;
+    & >div:last-child{
+      color: $c-cheng;
+      font-size: 18px;
+    }
+    &>div{
+      width: 100%;
+      text-align: center;
+    }
+    align-items: center;
+    .iconfont{
+      font-size: 45px;
+    }
+    .heart{
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      background: url("../assets/img/爱心.svg") center no-repeat;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%;
+    }
+  }
   .notice-select{
 
     width: $gw;
