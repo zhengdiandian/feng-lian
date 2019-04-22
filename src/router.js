@@ -207,6 +207,13 @@ export default new Router({
       component: function () {
         return import('./views/RankingList.vue')
       }
+    },
+    {
+      path: '/inform',
+      name: 'inform',
+      component: function () {
+        return import('./views/Inform')
+      }
     }
     // {
     //   path: '/',
