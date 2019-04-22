@@ -153,6 +153,12 @@ export default new Router({
       }
     },
     {
+      path: '/recharge', // 充值
+      component: function () {
+        return import('./views/Recharge.vue')
+      }
+    },
+    {
       path: '/setup', // 设置
       component: function () {
         return import('./views/SetUp.vue')

@@ -3,7 +3,7 @@
         <header>
             <pageHeader :title="title"></pageHeader>
         </header>
-        <main>
+        <main class="page-margin-top">
             <mu-text-field v-model="value13" label="请输入您的手机号码" label-float error-text="请输入正确的手机号码" icon="account_circle"></mu-text-field><br/>
             <mu-text-field v-model="value14" label="请输入验证码" label-float error-text="请输入密码" icon=":iconfont iconyanzhengma" style="font-size: 30px;">
                 <div slot="append">

@@ -3,7 +3,7 @@
         <header>
             <PageHeader :title="upload"></PageHeader>
         </header>
-        <main>
+        <main class="page-margin-top">
             <div class="headerNav">
                 <div class="headerLogin"><img src="../assets/PNG/head.png" alt=""></div>
                 <router-link tag="div" to="/perinfor">

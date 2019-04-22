@@ -3,7 +3,7 @@
     <header>
         <PageHeader :title="title"></PageHeader>
     </header>
-    <main>
+    <main class="page-margin-top">
         <section class="profit">
             <div class="users">
                 <span class="number" style="font-weight:bold; font-size: 20px;">3</span>

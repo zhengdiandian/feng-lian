@@ -3,7 +3,7 @@
         <header>
             <pageHeader :title="title"></pageHeader>
         </header>
-        <main>
+        <main class="page-margin-top">
             <div class="setList">
                     <span class="version-number">当前版本</span>
                     <span class="number" style="float: right;">1.0.0.1</span>
