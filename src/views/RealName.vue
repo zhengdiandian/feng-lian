@@ -3,7 +3,7 @@
         <header>
             <PageHeader :title="title"></PageHeader>
         </header>
-        <main>
+        <main class="page-margin-top">
             <div class="information">
                 <div class="infor-name-id">姓名<input style="padding-left: 55px;" type="text" placeholder="请输入姓名"></div>
                 <div class="infor-name-id">身份证号码<input type="text" placeholder="请输入身份证号码"></div>

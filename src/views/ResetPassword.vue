@@ -3,7 +3,7 @@
         <header>
             <pageHeader :title="title"></pageHeader>
         </header>
-        <main>
+        <main class="page-margin-top">
             <mu-text-field
             v-model="value13"
             label="请设置新密码"

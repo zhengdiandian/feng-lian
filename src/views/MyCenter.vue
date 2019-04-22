@@ -3,6 +3,7 @@
     <header>
         <div class="header-title">我的蜂链</div>
     </header>
+    <div class="page-margin-top"></div>
     <main>
       <div class="headerNav">
         <div class="headerLogin"><img src="../assets/PNG/head.png" alt=""></div>
@@ -143,6 +144,10 @@ export default {
 <style scoped lang="scss">
 header {
 width: $gw;
+position: fixed;
+top: 0;
+left: 0;
+z-index: 99;
 .header-title {
   width: $gw;
   text-align: center;

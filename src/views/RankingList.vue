@@ -28,7 +28,6 @@
                         <span style="font-size:14px; font-weight:bold; ">李军</span>
                         <span style="font-size:14px; font-weight:bold;">22700分</span>
                     </div>
-                    
                 </div>
             </div>
             <div class="headerNav">

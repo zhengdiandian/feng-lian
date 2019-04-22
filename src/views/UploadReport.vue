@@ -3,7 +3,7 @@
         <header>
             <PageHeader :title="upload"></PageHeader>
         </header>
-        <main>
+        <main class="page-margin-top">
             <div class="report">
                 <span>{{upload}}</span>
                 <div class="pictures">

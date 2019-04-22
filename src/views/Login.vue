@@ -10,7 +10,7 @@
           v-model="account"
           label-float
           label="请输入您的手机号码"
-          icon="account_circle"
+          icon=":iconfont iconzhanghao"
           :error-text="accountErr"
         >
           <div slot="append">
@@ -22,7 +22,7 @@
         <mu-text-field
           label="请输入密码"
           v-model="pwd"
-          icon="locked"
+          icon=":iconfont iconmima"
           :error-text="pwdErr"
           :action-icon="visibility ? ':iconfont iconyanjing' : ':iconfont iconyanjing'"
           :action-click="() => (visibility = !visibility)"
@@ -76,7 +76,8 @@ export default {
 .img {
   width: 100px;
   height: 100px;
-  background-color: $c-cheng;
+  background-image: url('../assets/PNG/logo图.png');
+  background-size: 100% 100%;
 }
 .bottom-nav{
     width: 100%;

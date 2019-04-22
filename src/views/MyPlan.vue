@@ -3,6 +3,7 @@
         <header>
             <PageHeader :title="upload"></PageHeader>
         </header>
+        <div class="page-margin-top"></div>
         <main>
             <div class="add-family">
                 <span style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的家人</span>
@@ -44,7 +45,7 @@
                     </div>
                     <div class="list">
                         <div class="list-img">
-                            <mu-icon value=":iconfont iconjiahaotianjia"></mu-icon>
+                            <img src="../assets/PNG/添加家人.png" alt="">
                         </div>
                         <span style="font-size:12px;">添加家人</span>
                     </div>
