@@ -3,29 +3,53 @@
         <header>
             <pageHeader :title="title"></pageHeader>
         </header>
-        <main class="">
+        <main class="page-margin-top">
             <div class="list-noe">
                 <div class="tow">
                     <img src="../assets/PNG/公示头像5.png" alt="">
+                    <span class="an-crown"><img src="../assets/PNG/皇冠3.png" alt=""></span>
+                    <div class="list-name-number" style="left: 8px; top: 85px;">
+                        <span style="font-size:14px; font-weight:bold;">陈梅</span>
+                        <span style="font-size:14px; font-weight:bold;">22800分</span>
+                    </div>
                 </div>
                 <div class="noe">
                     <img src="../assets/PNG/公示头像2.png" alt="">
+                    <span class="an-crown" style="top: -138px;"><img src="../assets/PNG/皇冠1.png" alt=""></span>
+                    <div class="list-name-number">
+                        <span style="font-size:14px; font-weight:bold;">韩世忠</span>
+                        <span style="font-size:14px; font-weight:bold;">22900分</span>
+                    </div>
                 </div>
                 <div class="three">
                     <img src="../assets/PNG/公示头像4.png" alt="">
+                    <span class="an-crown" style="top: -114px;"><img src="../assets/PNG/皇冠2.png" alt=""></span>
+                    <div class="list-name-number" style="left: 8px; top: 80px;">
+                        <span style="font-size:14px; font-weight:bold; ">李军</span>
+                        <span style="font-size:14px; font-weight:bold;">22700分</span>
+                    </div>
+                    
                 </div>
             </div>
             <div class="headerNav">
-                <div class="headerLogin"><img src="../assets/PNG/head.png" alt=""></div>
+                <div class="headerLogin"><img src="../assets/PNG/积分头像.png" alt=""></div>
                     <section class="information">
                         <span class="name">姓名：{{name}}</span><span class="state">已实名</span>
                         <div class="number"><span>18800004239</span></div>
                         <div class="autograph">海内存知己，天涯若比邻</div>
                     </section>
-                    <div class="integral">
-                        <span class="font">5000分</span>
-                        <span class="font-min">排名：168</span>
-                    </div>
+                <div class="integral">
+                    <span style="font-size: 16px; font-weight: 100; letter-spacing: 3px;">5000分</span>
+                    <span class="font-min">排名：168</span>
+                </div>
+            </div>
+            <div class="ranklist">
+                <div class="list" v-for="i in 20" :key="i">
+                    <span style="margin-left: 24px;">{{i}}</span>
+                    <span class="list-img"><img src="../assets/PNG/积分头像2.png" alt=""></span>
+                    <span style="position: absolute;left: 85px;">小强</span>
+                    <span style="position: absolute;right: 20px;">18900分</span>
+                </div>
             </div>
         </main>
     </div>
@@ -33,7 +57,7 @@
 <script>
 import pageHeader from '../components/PageHeader/PageHeader'
 export default {
-    name: 'setup',
+    name: 'RankingList',
     data() {
         return {
             title: '排行榜'
@@ -46,9 +70,35 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.list{
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border-bottom: 1px solid $c-hui;
+    line-height: 50px;
+    font-weight: bold;
+    position: relative;
+    .list-img{
+        width: 33px;
+        height: 33px;
+        border-radius: 50px;
+        display: inline-block;
+        position: absolute;
+        top: 8px;
+        left: 45px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+.an-crown{
+    position: relative;
+    top: -120px;
+}
 .list-noe{
     width: 100%;
-    height: 200px;
+    height: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,27 +107,50 @@ export default {
         width: 100%;
         height: 100%;
     }
+    span {
+    display: inline-block;
+    width: 60px;
+    margin-bottom: 10px;
+}
 }
 .noe{
-    width: 95px;
-    height: 95px;
+    width: 98px;
+    height: 98px;
     border-radius: 50%;
     margin: auto;
+    // border: 1px solid #EFA220;
+    text-align: center;
+    position: relative;
 }
 .tow{
-    width: 79px;
-    height: 79px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     margin: auto;
-
+    // border: 1px solid #EFA220;
+    text-align: center;
+    position: relative;
 }
 .three{
-    width: 72px;
-    height: 72px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     margin: auto;
-
+    // border: 1px solid #EFA220;
+    background-image: url('../assets/PNG/季军.png');
+    text-align: center;
+    position: relative;
 }
+.list-name-number{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 105px;
+    left: 18px;
+}
+    
 .headerNav{
   width:351px;
   height:85px;
@@ -100,7 +173,6 @@ export default {
     height:60px;
     border-radius:50%;
     background:rgba(207,207,207,1);
-    border:2px solid rgba(239, 162, 32, 1);
     margin-left: 12px;
     img{
       width: 100%;

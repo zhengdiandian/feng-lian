@@ -34,6 +34,7 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 99;
     .iconfanhui{
         font-size: 20px;
         margin-left: 5px;
