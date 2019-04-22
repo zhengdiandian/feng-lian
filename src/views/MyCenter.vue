@@ -47,11 +47,7 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
         </router-link>
-<<<<<<< HEAD
           <div tag="div" to="/" @click="showPoP=true">
-=======
-          <!-- <router-link tag="div" to="/"> -->
->>>>>>> 74b7ff6334d5a7cc34e354066684bbe4b5f4f599
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/卡包.svg" alt="">
@@ -59,13 +55,8 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-<<<<<<< HEAD
-        </div>
-        <router-link tag="div" to="/myplan">
-=======
-        <!-- </router-link> -->
+          </div>
         <router-link tag="div" to="/palnned">
->>>>>>> 74b7ff6334d5a7cc34e354066684bbe4b5f4f599
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/我的计划-选中.svg" alt="">
