@@ -55,11 +55,13 @@
 
 
 .mu-button.mu-carousel-indicator-button.mu-icon-button.mu-carousel-indicator-button__active{
+        
     .mu-carousel-indicator-icon {
         display: inline-block;
         width: 3.429vw;
         height: 3.429vw;
         background-color: $c-cheng;
+        font-size: 18px;
         border-radius: 50%;
         opacity: .5;
         -webkit-transition: opacity .3s cubic-bezier(.23,1,.32,1);
