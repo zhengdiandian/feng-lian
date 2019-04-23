@@ -47,11 +47,8 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
         </router-link>
-<<<<<<< HEAD
-          <div tag="div" to="/" @click="showPoP=true">
-=======
-          <!-- <router-link tag="div" to="/"> -->
->>>>>>> 74b7ff6334d5a7cc34e354066684bbe4b5f4f599
+
+          <div tag="div" @click="showPoP=true">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/卡包.svg" alt="">
@@ -59,13 +56,9 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-<<<<<<< HEAD
         </div>
+
         <router-link tag="div" to="/myplan">
-=======
-        <!-- </router-link> -->
-        <router-link tag="div" to="/palnned">
->>>>>>> 74b7ff6334d5a7cc34e354066684bbe4b5f4f599
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/我的计划-选中.svg" alt="">
@@ -74,6 +67,7 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
         </router-link>
+
         <router-link tag="div" to="/hlepPlan">
           <div class="list-li">
             <div style="text-align: center;">
@@ -83,7 +77,8 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
         </router-link>
-        <!-- <router-link tag="div" to="/"> -->
+
+        <div tag="div" @click="showPoP=true">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/客户.svg" alt="">
@@ -91,7 +86,8 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-        <!-- </router-link> -->
+        </div>
+
         <router-link tag="div" to="/assis">
           <div class="list-li">
             <div style="text-align: center;">
@@ -101,6 +97,7 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
         </router-link>
+
         <router-link tag="div" to="/code">
           <div class="list-li">
             <div style="text-align: center;">
@@ -110,9 +107,10 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
         </router-link>
+
         </section>
         <section class="please-list-tongzhi">
-          <!-- <router-link tag="div" to="/"> -->
+          <div  @click="showPoP=true">
             <div class="list-li">
               <div style="text-align: center;">
               <img src="../assets/图标/通知.svg" alt="">
@@ -120,7 +118,8 @@
               </div>
               <mu-icon value=":iconfont iconyou1"></mu-icon>
             </div>
-          <!-- </router-link> -->
+          </div>
+
           <router-link tag="div" to="/setup">
             <div class="list-li">
               <div style="text-align: center;">
@@ -130,6 +129,7 @@
               <mu-icon value=":iconfont iconyou1"></mu-icon>
             </div>
           </router-link>
+
         </section>
     </main>
 </div>

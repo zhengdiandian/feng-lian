@@ -66,6 +66,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 79px !important;
     .pwd-wrap{
         width: 80%;
     }
@@ -78,7 +79,7 @@ main {
 }
 .login-btn{
     background: linear-gradient(to right, #e99317 , #fbb830) !important;
-    margin-top: 40px;
+    margin-top: 85px;
     width: 100%;
 }
 .show {

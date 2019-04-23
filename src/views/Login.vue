@@ -18,7 +18,7 @@
           </div>
         </mu-text-field>
       </div>
-      <div class="pwd-wrap">
+      <div class="pwd">
        <mu-text-field v-model="pwd" label="请输入密码" label-float  icon=":iconfont iconmima"
        :action-icon="visibility ? 'visibility_off' : 'visibility'" :action-click="() => (visibility = !visibility)" :type="visibility ? 'text' : 'password'"
        >
@@ -112,6 +112,7 @@ export default {
 // }
 .login-btn{
   background: linear-gradient(to right, #e99317 , #fbb830) !important;
+  margin-top: 51px;
 }
 </style>
 

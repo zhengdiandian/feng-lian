@@ -25,7 +25,7 @@ export default {
         width:375px;
         height:93px;
         background:rgba(255,255,255,1);
-        border:1px solid rgba(220,220,220,1);
+        border:1px solid rgba(234,234,234,1);
         padding: 4px 10px;
         line-height: 20px;
         position: relative;

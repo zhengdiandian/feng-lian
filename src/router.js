@@ -22,7 +22,7 @@ export default new Router({
           }
         },
         {
-          path: '/notice',//公告
+          path: '/notice', // 公告
           name: 'notice',
           component: function () {
             return import('./views/Notice')
@@ -31,7 +31,7 @@ export default new Router({
             {
               path: 'newNotice',
               component: function () {
-                return import('./views/notice/NewNotice') //新公告
+                return import('./views/notice/NewNotice') // 新公告
               }
             },
             {
