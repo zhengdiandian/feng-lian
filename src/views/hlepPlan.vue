@@ -201,7 +201,7 @@
       font-family:SourceHanSansCN-Normal;
       font-weight:400;
       color:rgba(51,51,51,1);
-      letter-spacing: 2px;
+      // letter-spacing: 2px;
     }
     .chat-info{
       font-size:18px;
@@ -315,7 +315,7 @@
     }
     .iconyou{
       font-size: 16px;
-      color:rgba(255,0,0,1);
+      color:#FF0000;
     }
   }
 }
