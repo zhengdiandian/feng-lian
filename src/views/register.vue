@@ -20,19 +20,19 @@
                     </div>
                 </mu-text-field>
             </div>
-            <router-link style="width: 75%" tag="div" to="/home">
+            <div style="width: 75%">
                 <mu-button round class="login-btn" color="success" @click="open">完 &nbsp; 成</mu-button>
-            </router-link>
-        </main>
-        <div class="show" v-if="show">
-            <div class="show-main">
-                <div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>您还没有设置登录密码请您确认是否离开</span></div>
-                <div style="position: absolute;bottom: 0; width: 100%;">
-                    <input style="color: #707070" type="button" value="去意已决" @click="open">
-                    <input style="color: #4999f5" type="button" value="去设置密码" @click="open">
-                </div>
             </div>
-        </div>
+        </main>
+        <!--<div class="show" v-if="show">-->
+            <!--<div class="show-main">-->
+                <!--<div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>您还没有设置登录密码请您确认是否离开</span></div>-->
+                <!--<div style="position: absolute;bottom: 0; width: 100%;">-->
+                    <!--<input style="color: #707070" type="button" value="去意已决" @click="open">-->
+                    <!--<input style="color: #4999f5" type="button" value="去设置密码" @click="open">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </template>
 <script>
@@ -52,7 +52,9 @@ export default {
     },
     methods: {
         open() {
-            this.show = true
+          // debugger
+          this.$router.push('/setpwd')
+            // this.show = true
         },
         setCode() {
           console.log(11)
