@@ -26,6 +26,7 @@
           <div class="chat-title">已互助金额 (元)</div>
           <div class="chat-info">936000</div>
         </div>
+        <div class="xian"></div>
         <div class="chat-content item-content">
           <div class="chat-title">互助事件</div>
           <div class="chat-info">492</div>

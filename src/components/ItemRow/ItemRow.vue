@@ -50,6 +50,7 @@
     // align-items: center;
     text-align: center;
     margin-bottom: 12px;
+    overflow: hidden;
     .title{
       font-size:14px;
       font-family:SourceHanSansCN-Normal;
