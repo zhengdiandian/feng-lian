@@ -2,11 +2,9 @@
   <div class="pop-wrap">
     <PopBox style="bottom: 6.2%">
       <div class="pop-content">
-
         <div>
           <div>
             <div class="heart">
-
             </div>
           </div>
           一大批爱心人士正在赶来

@@ -1,7 +1,28 @@
 <template>
     <div>
-        <header>
-            <pageHeader :title="title"></pageHeader>
+      <p-op-box v-if="showPop">
+        <div class="pop-content">
+          <div>
+            <div>
+              您还没有设置登录密码
+            </div>
+            请您确认是否离开
+          </div>
+          <div>
+            <div @click="$router.go(-1)">去意已决</div>
+            <div @click="showPop=false">去设置密码</div>
+          </div>
+        </div>
+      </p-op-box>
+        <header @click="showPop=true">
+           <mu-appbar style="width: 100%;position: initial" color="primary" text-color="#666" z-depth="0">
+            <mu-button icon slot="left" @click="showPop=true">
+              <mu-icon value=":iconfont iconfanhui" ></mu-icon>
+            </mu-button>
+             <mu-button icon slot="right"  :ripple="false">
+            </mu-button>
+      <div class="text-center">加入计划</div>
+    </mu-appbar>
         </header>
         <main class="page-margin-top">
             <div class="user-wrap pwd-wrap">
@@ -24,18 +45,20 @@
                 >
                 </mu-text-field>
             </div>
-            <router-link style="width: 75%" tag="div" to="/home">
-                <mu-button round class="login-btn" color="success">注&nbsp;册&nbsp;并&nbsp;登&nbsp;陆</mu-button>
-            </router-link>
+            <div style="width: 75%" >
+                <mu-button round class="login-btn" color="success" >注&nbsp;册&nbsp;并&nbsp;登&nbsp;陆</mu-button>
+            </div>
         </main>
     </div>
 </template>
 <script>
 import pageHeader from '../components/PageHeader/PageHeader'
+import POpBox from '../components/PopBox/PopBox'
 export default {
     name: 'setpassword',
     data() {
         return {
+            showPop: false,
             title: '设置密码',
             pwd: "",
             visibility: false,
@@ -45,12 +68,72 @@ export default {
         }
     },
     components: {
-        pageHeader
+        pageHeader,
+        POpBox
     },
 
 }
 </script>
 <style lang="scss" scoped>
+  .nav-bar /deep/ nav{
+    position: initial;
+  }
+  .pop-content{
+    width:315px;
+    height:180px;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(220,220,220,1);
+    border-radius:2px;
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-items: stretch;*/
+    /*align-items: center;*/
+    text-align: center;
+    font-size:16px;
+    font-family:SourceHanSansCN-Normal;
+    font-weight:400;
+    &>div:first-child{
+      align-self:center;
+      padding-top: 20px;
+      line-height: 1.5;
+      color:rgba(51,51,51,1)
+    }
+    & >div:last-child{
+      align-self: flex-end;
+      color:rgba(112,112,112,1);
+      &>div{
+        border:1px solid rgba(220,220,220,1);
+        display: inline-block;
+        width: 50%;
+        height:48px;
+        line-height: 48px;
+      }
+      & div:last-child{
+        color: $c-lang;
+        border-left: 0px solid transparent;
+      }
+
+
+    }
+    &>div{
+      width: 100%;
+      text-align: center;
+    }
+    align-items: center;
+    .iconfont{
+      font-size: 45px;
+    }
+    .heart{
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      background: url("../assets/img/爱心.svg") center no-repeat;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%;
+    }
+  }
+
+
 .mu-input {
     width: 95%;
     margin: auto;
