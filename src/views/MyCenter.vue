@@ -29,6 +29,7 @@
         </router-link>
          <mu-icon value=":iconfont iconyou1"></mu-icon>
       </div>
+      <router-link tag="div" to="/scale">
       <div class="apply">
         <img src="../assets/图标/爱心.png" alt="">
         <span>申请成为爱心大使</span>
@@ -37,6 +38,7 @@
           <mu-icon value=":iconfont iconyou"></mu-icon>
         </div>
       </div>
+      </router-link>
       <section class="please-list">
         <router-link tag="div" to="/welfareagency">
           <div class="list-li">
