@@ -11,6 +11,7 @@
 export default {
     name: 'popBox',
     created() {
+        document.getElementsByTagName('body')[0].setAttribute('style', 'position:fixed; width:100%;')
         document.documentElement.style.overflow = 'hidden'
 
     },
@@ -23,6 +24,7 @@ export default {
     },
     beforeDestroy() {
         document.documentElement.style.overflow = 'auto'
+        document.getElementsByTagName('body')[0].setAttribute('style', 'position:relative;')
     }
 }
 </script>
@@ -39,14 +41,14 @@ export default {
     justify-content: center;
     align-items: center;
     // width: 375px;
-    // height: 100%;
+    height: 100%;
     background-color:rgba(0, 0, 0, .7);
     .center{
       background-color: #fff;
 
-line-height: 20px;
-border-radius: 4px;
-border: 1px solid rgba(187, 187, 187, 1);
+    line-height: 20px;
+    border-radius: 4px;
+    border: 1px solid rgba(187, 187, 187, 1);
     }
 }
 </style>

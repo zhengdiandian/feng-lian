@@ -54,19 +54,21 @@
 
 
 
-.mu-button.mu-carousel-indicator-button.mu-icon-button.mu-carousel-indicator-button__active{
-        
+.bottom-nav.mu-bottom-nav{
+    z-index: 99999;
+    .iconfont{
+         height: 20px;
+         line-height: 18px;
+
+        font-size: 26px;
+    }
+}
+.mu-button.mu-carousel-indicator-button.mu-icon-button.mu-carousel-indicator-button__active{ 
+    padding: 0px;
     .mu-carousel-indicator-icon {
         display: inline-block;
-        width: 3.429vw;
-        height: 3.429vw;
         background-color: $c-cheng;
-        font-size: 18px;
-        border-radius: 50%;
-        opacity: .5;
-        -webkit-transition: opacity .3s cubic-bezier(.23,1,.32,1);
-        transition: opacity .3s cubic-bezier(.23,1,.32,1);
-        content: "viewport-units-buggyfill; width: 3.429vw; height: 3.429vw";
+        
     }
 }
 
