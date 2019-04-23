@@ -70,7 +70,7 @@ export default {
     }
 }
 .assis-title{
-    width:176px;
+    width:200px;
     height:15px;
     font-size:15px;
     font-family:SourceHanSansCN-Normal;

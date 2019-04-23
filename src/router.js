@@ -220,6 +220,13 @@ export default new Router({
       component: function () {
         return import('./views/Inform')
       }
+    },
+    {
+      path: '/scale',
+      name: 'CurrentScale',
+      component: function () {
+        return import('./views/CurrentScale')
+      }
     }
     // {
     //   path: '/',
