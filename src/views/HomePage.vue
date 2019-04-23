@@ -4,7 +4,7 @@
       <mu-button icon slot="right">
         <mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>
       </mu-button>
-        链接你我他 &nbsp;&nbsp;守护千万家
+        <span style="font-size:16px;font-family:SourceHanSansCN-Normal;font-weight:bold;">链接你我他 &nbsp;&nbsp;守护千万家</span> 
       <mu-button icon slot="left" :ripple="false">
         <!--<mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>-->
       </mu-button>

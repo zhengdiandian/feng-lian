@@ -2,7 +2,8 @@
 <div>
     <header>
         <nav>
-            <mu-icon value=":iconfont iconfanhui" @click="openReturn"></mu-icon>
+            <span style="display: inline-block; width: 20px; height: 50px; text-align: center; line-height: 50px; " @click="returnx"><mu-icon value=":iconfont iconfanhui"></mu-icon></span>
+            
             <div class="title">{{title}}</div>
         </nav>
         <div class="reward">
@@ -34,7 +35,7 @@
         <div class="show-main">
             <div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>您还没有绑定银行卡</span></div>
             <div style="position: absolute;bottom: 0; width: 100%;">
-                <input style="color: #707070" type="button" value="再等等">
+                <input style="color: #707070" type="button" value="再等等" @click="out">
                 <input style="color: #4999f5" type="button" value="现在绑卡">
             </div>
         </div>
@@ -51,12 +52,15 @@ export default {
         }
     },
     methods: {
-        openReturn() {
+        returnx() {
             this.$router.go(-1)
         },
         open() {
             this.show = true
         },
+        out() {
+            this.$router.go(-1)
+        }
     }
 }
 </script>

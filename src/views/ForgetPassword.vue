@@ -67,6 +67,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 79px !important;
 }
 .iconbiyan {
     margin-right: 8px;
@@ -74,7 +75,7 @@ main {
 }
 .login-btn{
     background: linear-gradient(to right, #e99317 , #fbb830) !important;
-    margin-top: 40px;
+    margin-top: 85px;
     width: 80%;
 }
 .mu-input.has-icon{

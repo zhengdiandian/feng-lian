@@ -25,7 +25,8 @@
     "postcss-write-svg": "^3.0.1",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "yarn": "^1.15.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^3.5.0",
