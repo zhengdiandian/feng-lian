@@ -24,6 +24,7 @@ export default {
     },
     beforeDestroy() {
         document.documentElement.style.overflow = 'auto'
+        document.getElementsByTagName('body')[0].setAttribute('style', 'position:relative;')
     }
 }
 </script>
