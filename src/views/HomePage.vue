@@ -68,7 +68,7 @@
       </div>
       <div class="plan-wrap" v-for="i in 3" :key="i" >
         <div class="plan-left" >
-          <img src="../assets/PNG/百万计划banner.png" alt="">
+          <img src="../assets/PNG/百万抗癌计划.png" alt="">
           <div class="plan-left-content">
             <div class="title">中青年健康互助计划</div>
             <div class="info">最高可获得30万抗癌互助金18~50周岁可加入</div>
@@ -254,14 +254,16 @@ h3{
       margin-bottom: 12px;
       .chat-content{
         width: 50%;
+
         margin-left: -1px;
       }
       .chat-img{
         width:60px;
         height:60px;
-        background:rgba(239,155,30,1);
-        background-color: red;
-        margin-bottom: 12px;
+        background: url("../assets/img/饼状图.svg") center no-repeat;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+        margin-bottom: 8px;
       }
       .chat-title{
         width: 100%;
@@ -295,7 +297,7 @@ h3{
       color:rgba(51,51,51,1);
     }
     .info{
-      margin: 12px auto;
+      /*margin: 12px auto;*/
       font-size:13px;
       font-family:SourceHanSansCN-Normal;
       font-weight:400;
@@ -344,6 +346,7 @@ h3{
     }
   }
   .plan-wrap{
+
     img{
       width: 80px;
       height: 80px;
@@ -356,7 +359,9 @@ h3{
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
-      padding: 5px;
+      /*padding: 5px;*/
+      padding: 18px 0;
+
       img{
         width:60px;
         height:60px;

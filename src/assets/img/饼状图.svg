@@ -1,0 +1,24 @@
+<svg id="饼状图" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ef9b1e;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #347ee8;
+      }
+
+      .cls-3 {
+        fill: #094;
+      }
+    </style>
+  </defs>
+  <path id="矩形_17_拷贝" data-name="矩形 17 拷贝" class="cls-1" d="M93.841,190.6a85.126,85.126,0,0,1,0-170.25v85.125l51.366,67.737A84.27,84.27,0,0,1,93.841,190.6Z"/>
+  <path id="矩形_15" data-name="矩形 15" class="cls-2" d="M102.325,9a84.984,84.984,0,0,1,84.841,85.125H102.325V9Z"/>
+  <path id="矩形_17" data-name="矩形 17" class="cls-3" d="M191.408,105.475a85.072,85.072,0,0,1-33.475,67.737l-51.366-67.737h84.841Z"/>
+</svg>
