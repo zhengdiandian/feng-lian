@@ -80,7 +80,7 @@
           </div>
         </router-link>
 
-        <div tag="div" @click="showPoP=true">
+        <router-link tag="div" to="/share">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/客户.svg" alt="">
@@ -88,7 +88,7 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-        </div>
+        </router-link>
 
         <router-link tag="div" to="/assis">
           <div class="list-li">
