@@ -26,6 +26,7 @@
           <div class="chat-title">已互助金额 (元)</div>
           <div class="chat-info">936000</div>
         </div>
+        <div class="xian"></div>
         <div class="chat-content item-content">
           <div class="chat-title">互助事件</div>
           <div class="chat-info">492</div>
@@ -200,7 +201,7 @@
       font-family:SourceHanSansCN-Normal;
       font-weight:400;
       color:rgba(51,51,51,1);
-      letter-spacing: 2px;
+      // letter-spacing: 2px;
     }
     .chat-info{
       font-size:18px;
@@ -314,7 +315,7 @@
     }
     .iconyou{
       font-size: 16px;
-      color:rgba(255,0,0,1);
+      color:#FF0000;
     }
   }
 }

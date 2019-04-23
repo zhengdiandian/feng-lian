@@ -38,19 +38,19 @@
         </div>
         <div class="routers-wrap">
           <div class="router-item item-content">
-            <div class="iconfont iconpeifu"></div>
+            <div class="iconfont iconpeifu" style="font-size: 30px;"></div>
             <div class="text">秒到赔付</div>
           </div>
           <div class="router-item item-content">
-            <div class="iconfont iconzijin"></div>
+            <div class="iconfont iconzijin" style="font-size: 30px;"></div>
             <div class="text">资金共管</div>
           </div>
           <div class="router-item item-content">
-            <div class="iconfont iconshequ"></div>
+            <div class="iconfont iconshequ" style="font-size: 30px;"></div>
             <div class="text">社区共建</div>
           </div>
           <div class="router-item item-content">
-            <div class="iconfont iconshuju"></div>
+            <div class="iconfont iconshuju" style="font-size: 30px;"></div>
             <div class="text">数据上链</div>
           </div>
         </div>
@@ -58,14 +58,16 @@
       </div>
     </div>
     <div class="wrap">
+      <router-link tag="div" to="/scale">
       <div class="apply">
         <img src="../assets/图标/爱心.png" alt="">
-        <span>成功邀请1人 &nbsp; 就获取20元现金</span>
+        <span>申请成为爱心大使</span>
         <div class="apply-click">
-          <span>邀请</span>
+          <span>立即申请</span>
           <mu-icon value=":iconfont iconyou"></mu-icon>
         </div>
       </div>
+      </router-link>
       <div class="plan-wrap" v-for="i in 3" :key="i" >
         <div class="plan-left" >
           <img src="../assets/PNG/百万抗癌计划.png" alt="">
@@ -127,8 +129,6 @@
           <img src="../assets/PNG/首旅集团.png" alt="">
           <img src="../assets/PNG/长安银行.png" alt="">
           <img src="../assets/PNG/SinoKing.png" alt="">
-          <img src="../assets/PNG/海印集团.png" alt="">
-          <img src="../assets/PNG/华香如莲.png" alt="">
         </div>
       </div>
     </div>
@@ -166,7 +166,6 @@ export default {
     .iconfont{
       color:#FCBC34;
       font-size: 30px;
-      margin-bottom: 12px;
     }
   }
 .banner {
@@ -191,8 +190,9 @@ h3{
   height: 44px;
   background-color: rgb(243, 172, 172);
   border-radius: 20px;
-  margin: 27px auto;
+  margin: 18px auto;
   position: relative;
+  color: rgba(255,0,0,1);
   span {
     font-size:12px;
     font-family:SourceHanSansCN-Normal;
@@ -202,11 +202,14 @@ h3{
     line-height: 12px;
     padding-left: 20px;
   }
+  .iconfont{
+    font-size: 50px;
+  }
   img{
     width: 50px;
     height: 50px;
     position: relative;
-    bottom: 15px;
+    top: -15px;
   }
   .apply-click{
     display: flex;
@@ -268,7 +271,7 @@ h3{
       .chat-title{
         width: 100%;
         text-align: center;
-        font-size:30px;
+        font-size:20px;
         font-family:SourceHanSansCN-Normal;
         font-weight:400;
         color:rgba(51,51,51,1);
@@ -307,6 +310,8 @@ h3{
   .routers-wrap{
     display: flex;
     justify-content: space-between;
+    text-align: center;
+    margin-bottom: 0px;
     .text{
         font-size: 12px;
     }
@@ -413,7 +418,6 @@ h3{
     }
   }
 
-
   .partner-content{
     height: 150px;
     display: flex;
@@ -421,7 +425,7 @@ h3{
     justify-content: space-around;
     align-content: space-between;
     img{
-      width: 20%;
+      width: 25%;
       height: 50%;
     }
   }

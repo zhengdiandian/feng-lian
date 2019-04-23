@@ -2,13 +2,14 @@
 <div>
     <header>
         <nav>
-            <span style="display: inline-block; width: 20px; height: 50px; text-align: center; line-height: 50px; " @click="returnx"><mu-icon value=":iconfont iconfanhui"></mu-icon></span>
-            
-            <div class="title">{{title}}</div>
+            <mu-icon value=":iconfont iconfanhui" @click="openReturn"></mu-icon>
+            <div class="title" style="font-size: 16px;">{{title}}</div>
         </nav>
         <div class="reward">
             <span style="width:57px;height:26px;font-size:36px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1);">670</span>
-            <div style="letter-spacing:3px;font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 25px;">近7天获得奖励{{20}}元</div>
+            <div style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 40px;">
+                共有{{39003}}人参与分摊，人均分摊{{0.11}}元
+            </div>
         </div>
     </header>
     <main>
@@ -52,7 +53,7 @@ export default {
         }
     },
     methods: {
-        returnx() {
+        openReturn() {
             this.$router.go(-1)
         },
         open() {
@@ -66,33 +67,40 @@ export default {
 </script>
 <style scoped lang="scss">
 header{
-    width:375px;
-    height:152px;
-    background:rgba(242,181,77,1);
+    height: 155px;
     background-image: url('../assets/PNG/我的奖励背景.png');
-    nav{
-        display: flex;
-        height: 50px;
-        align-items: center;
-        justify-content: center;
-        .iconfanhui{
-            font-size: 20px;
-            color: white;
-        }
-        .title{
-            width: 95%;
-            text-align: center;
-            color: white;
-            margin-left: -20px;
+    background-size: 100% 100%;
+}
+nav {
+    width: $gw;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    color: white;
+    .iconfanhui{
+        font-size: 20px;
+        margin-left: 5px;
+        position: absolute;
+        left: 12px;
+    }
+    .title {
+        span{
+            width:62px;
+            height:14px;
+            font-family:SourceHanSansCN-Normal;
+            font-weight: bold;
+            color:rgba(51,51,51,1);
         }
     }
-    .reward{
+}
+.reward{
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        margin-top: 15px;
-    }
+        color: #ffffff;
+        margin-top: 20px;
 }
 .historical-bill{
     width:375px;

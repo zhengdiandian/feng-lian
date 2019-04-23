@@ -4,17 +4,17 @@
       <div class="dateInfo">2019年4月1期</div>
       <div class="info-wrap">
         <div>
-          <div><span>88 </span> 人</div>
+          <div><span>0</span> 人</div>
           <div>本期公示人数</div>
         </div>
         <div class="xian"></div>
         <div>
-          <div><span>88 </span> 人</div>
+          <div><span>0</span> 人</div>
           <div>预计分摊总额</div>
         </div>
         <div class="xian"></div>
         <div>
-          <div><span>88 </span> 人</div>
+          <div><span>0</span> 人</div>
           <div>分摊人数</div>
         </div>
       </div>

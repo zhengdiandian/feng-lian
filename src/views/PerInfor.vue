@@ -30,7 +30,7 @@
                 </router-link>
                 <router-link tag="div" to="/real">
                     <section class="datalist">
-                        <div class="listtext"><span>体检报告</span></div>
+                        <div class="listtext"><span>实名认证</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
                     </section>
                 </router-link>

@@ -225,7 +225,7 @@ export default new Router({
       }
     },
     {
-      path: '/scale',
+      path: '/scale', // 本期互助金规模
       name: 'CurrentScale',
       component: function () {
         return import('./views/CurrentScale')
