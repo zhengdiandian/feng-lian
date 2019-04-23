@@ -62,7 +62,15 @@
 
 <script>
   export default {
-    name: 'PlanInitial'
+    name: 'PlanInitial',
+    data() {
+      return {open: ''}
+    },
+    methods: {
+      // open() {
+
+      // }
+    }
   }
 </script>
 

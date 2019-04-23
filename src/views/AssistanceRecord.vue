@@ -20,7 +20,7 @@
                 <div style="font-size:15px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
                 <div style="font-size:9px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(112,112,112,1);">2019.04.04</div>
             </div>
-            <section class="card"><card></card></section>
+            <section class="card"><card :open="() => {$router.push('/palnned')}"></card></section>
         </section>
     </main>
     <footer>
@@ -45,7 +45,7 @@ export default {
             title: '互助记录',
             name: 'yyy.zZ'
         }
-    }
+    },
 }
 </script>
 <style scoped lang="scss">

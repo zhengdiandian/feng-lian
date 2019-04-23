@@ -37,9 +37,9 @@
         default: '峰链互助公式'
       },
       open: {
-        type: Function
+        type: Function,
       }
-    }
+    },
   }
 </script>
 

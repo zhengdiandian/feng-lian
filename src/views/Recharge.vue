@@ -18,7 +18,7 @@
       </div>
         <div class="margin-top margin-left">
             <span class="font margin-bottom" style="display: inline-block">充值计划</span>
-            <card></card>
+            <card :open="()=>{}"></card>
         </div>
       <!-- <mu-divider style="height:5px"></mu-divider> -->
       <!-- <div class="info-form margin-left">
