@@ -15,7 +15,7 @@
     <header>
         <div class="header-title">我的蜂链</div>
     </header>
-    <div class="page-margin-top"></div>
+    <!-- <div class="page-margin-top"></div> -->
     <main>
       <div class="headerNav">
         <div class="headerLogin"><img src="../assets/PNG/head.png" alt=""></div>
@@ -227,6 +227,7 @@ z-index: 99;
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin: 20px auto;
+  margin-top: 56px;
   display: flex;
   align-items: center;
   position: relative;

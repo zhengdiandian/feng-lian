@@ -100,7 +100,7 @@
 import headpage from '../components/PageHeader/PageHeader'
 import card from '../components/Card/Card'
 export default {
-  name: "joinPlan",
+  name: "recharge",
   data() {
     return {
       sliderVal: '',
