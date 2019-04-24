@@ -240,7 +240,7 @@ z-index: 99;
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin: 20px auto;
-  margin-top: 56px;
+  margin-top: 60px;
   display: flex;
   align-items: center;
   position: relative;
