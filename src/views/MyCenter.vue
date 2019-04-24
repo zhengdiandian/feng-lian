@@ -18,13 +18,13 @@
     <!-- <div class="page-margin-top"></div> -->
     <main>
       <div class="headerNav">
-        <div class="headerLogin"><img src="../assets/PNG/head.png" alt=""></div>
+        <div class="headerLogin"><img :src="preinfo.headPortrait" alt=""></div>
         <router-link tag="div" to="/perinfor">
         <section class="information">
-          <span class="name">姓名：{{name}}</span><span class="state">已实名</span>
-          <div class="number"><span>18800004239</span></div>
-          <div class="integral">积分 {{5000}}</div>
-          <div class="autograph">海内存知己，天涯若比邻</div>
+          <span class="name">姓名：{{preinfo.nickname}}</span><span class="state">已实名</span>
+          <div class="number"><span>{{preinfo.account}}}</span></div>
+          <div class="integral">积分 {{preinfo.totalScore}}</div>
+          <div class="autograph">{{preinfo.motto}}</div>
         </section>
         </router-link>
          <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -137,6 +137,7 @@
 </div>
 </template>
 <script>
+import axios from 'axios'
   import PopBox from '../components/PopBox/PopBox'
   export default {
   name: 'mycenter',
@@ -144,6 +145,7 @@
     return {
       showPoP: false,
       name: 'Bryant.zZ',
+      preinfo: [],
       list: [
         "福利社",
         "我的卡包",
@@ -166,6 +168,12 @@
   },
     components: {
     PopBox
+    },
+    mounted() {
+      axios.post('http://47.110.79.190:8080/mockjsdata/31/v1/user/user/index').then((res) =>{
+            this.preinfo = res.data.data
+            console.log(this.preinfo)
+        })
     }
 }
 </script>
@@ -238,6 +246,7 @@ z-index: 99;
     background:rgba(207,207,207,1);
     border:2px solid rgba(239, 162, 32, 1);
     margin-left: 12px;
+    overflow: hidden;
     img{
       width: 100%;
       height: 100%;

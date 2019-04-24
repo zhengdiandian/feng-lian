@@ -1,14 +1,14 @@
 <template>
     <div>
         <header>
-            <PerInforHeader :imgUrl="imgUrl"></PerInforHeader>
+            <PerInforHeader :imgUrl="datalist.headPortrait"></PerInforHeader>
             <router-link tag="div" to="/code"><mu-icon value=":iconfont iconerweima"></mu-icon></router-link>
         </header>
         <main>
            <div class="detaInfo">
                 <section class="datalist">
                     <div class="listtext"><span>会员ID：</span></div>
-                    <div class="listInfo" style="color:rgba(53,142,253,1);">{{datalist.ID}}</div>
+                    <div class="listInfo" style="color:rgba(53,142,253,1);">{{datalist.userCode}}</div>
                 </section>
                 <section class="datalist">
                     <div class="listtext"><span>邮箱：</span></div>
@@ -16,8 +16,8 @@
                 </section>
                 <section class="datalist" >
                     <div class="listtext" style="width: 75px;"><span>个人信息：</span></div>
-                    <div class="listInfo" >{{datalist.gender}} {{datalist.age}} {{datalist.constellation}} {{datalist.address}}</div> 
-                    <span style="width:50px;height:18px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:#707070; margin-left: 14px;">详细信息</span>
+                    <div class="listInfo" >{{datalist.personalInfo}}</div> 
+                    <span style="font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:#707070; margin-left: 14px;">详细信息</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </section>
             </div>
@@ -26,12 +26,14 @@
                     <section class="datalist" style="height: 50px;">
                         <div class="listtext"><span>体检报告</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
+                        <!-- <span>{{datalist.healthyState}}</span> -->
                     </section>
                 </router-link>
                 <router-link tag="div" to="/real">
                     <section class="datalist">
                         <div class="listtext"><span>实名认证</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
+                        <!-- <span>{{datalist.state}}</span> -->
                     </section>
                 </router-link>
                 </div>
@@ -39,6 +41,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
 import PerInforHeader from '../components/PerInforHeader/PerInforHeader'
 export default {
     name: 'PerInfor',
@@ -47,23 +50,24 @@ export default {
     },
     data() {
         return {
-            datalist: {
-                    "ID": '8888 9999 001',
-                    "email": '758384567@qq.com',
-                    "gender": '男',
-                    "age": 46,
-                    "constellation": "天蝎座",
-                    "address": "北京-朝阳"
-                },
-                states: {
-                    "upload": "已上传",
-                    "atication": "已完成"
-                },
-                imgUrl: require('../assets/PNG/head.png')
+            datalist: [],
+            states: {
+                "upload": "已上传",
+                "atication": "已完成"
+            },
+            imgUrl: require('../assets/PNG/head.png')
         }
     },
-    mounted(){
-        console.log(this.datalist);
+    created(){
+        this.getlist()
+    },
+    methods: {
+        getlist() {
+            axios.post('http://47.110.79.190:8080/mockjsdata/31/v1/user/user/personalInfo').then( (res) => {
+                this.datalist = res.data.data
+                console.log(res.data.data)
+            })
+        }
     }
 }
 </script>

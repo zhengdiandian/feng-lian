@@ -62,7 +62,7 @@ Vue.use(Slider)
 Vue.use(Stepper)
 Vue.config.productionTip = false
 Vue.prototype.$axios = Axios.create({
-  baseURL: 'http://47.110.79.190:8080/mockjs/31/'
+  baseURL: 'http://47.110.79.190:8080/mockjs/31'
 })
 new Vue({
   router,
