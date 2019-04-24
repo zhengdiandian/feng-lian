@@ -8,11 +8,11 @@
                 <div style="width:54px;height:13px;font-size:13px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin: 12px 0 12px 12px;">我的收益</div>
                 <section class="profit">
                     <div class="users">
-                        <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
+                        <span class="number" style="font-weight:bold; font-size: 20px;">{{welf.sharedCount}}</span>
                         <span style="font-size: 12px;">我分享的用户 &nbsp; (人)</span>
                     </div>
                     <router-link class="users" tag="div" to="/myreward">
-                        <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
+                        <span class="number" style="font-weight:bold; font-size: 20px;">{{welf.balance}}</span>
                         <span style="font-size: 12px;">我的奖励 &nbsp; (元)</span>
                     </router-link>
                 </section>
@@ -43,8 +43,14 @@ export default {
     },
     data() {
         return {
-            upload: '福利社'
+            upload: '福利社',
+            welf: []
         }
+    },
+    mounted() {
+        this.$axios.post('/v1/finance/profit/index').then((res)=> {
+            this.welf = res.data.data
+        })
     }
 }
 </script>

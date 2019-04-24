@@ -21,7 +21,7 @@
         <div class="headerLogin"><img :src="preinfo.headPortrait" alt=""></div>
         <router-link tag="div" to="/perinfor">
         <section class="information">
-          <span class="name">姓名：{{preinfo.nickname}}</span><span class="state">已实名</span>
+          <span class="name">姓名：{{preinfo.nickname}}</span><span class="state">{{preinfo.state==100 ? '未实名': '已实名' }}</span>
           <div class="number"><span>{{preinfo.account}}}</span></div>
           <div class="integral">积分 {{preinfo.totalScore}}</div>
           <div class="autograph">{{preinfo.motto}}</div>
@@ -29,7 +29,7 @@
         </router-link>
          <mu-icon value=":iconfont iconyou1"></mu-icon>
       </div>
-      <router-link tag="div" to="/scale">
+      <router-link tag="div" to="/code">
       <div class="apply">
         <img src="../assets/图标/爱心.png" alt="">
         <span>申请成为爱心大使</span>
@@ -80,7 +80,7 @@
           </div>
         </router-link>
 
-        <router-link tag="div" to="/share">
+        <div tag="div" @click="showPoP=true">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/客户.svg" alt="">
@@ -88,7 +88,7 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-        </router-link>
+        </div>
 
         <router-link tag="div" to="/assis">
           <div class="list-li">
@@ -165,6 +165,11 @@ import axios from 'axios'
     jump() {
        this.$router.push('/per')
     }
+  },
+  created() {
+    this.$axios.post('/v1/user/user/personalInfo').then(res => {
+      console.log(res)
+    })
   },
     components: {
     PopBox

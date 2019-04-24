@@ -21,13 +21,13 @@
             </mu-button>
              <mu-button icon slot="right"  :ripple="false">
             </mu-button>
-      <div class="text-center">加入计划</div>
+      <div class="text-center">设置密码</div>
     </mu-appbar>
         </header>
         <main class="page-margin-top">
             <div class="user-wrap pwd-wrap">
                 <mu-text-field
-                v-model="account"
+                v-model="value13"
                 label-float
                 label="请输入新密码"
                 icon=":iconfont iconmima"
@@ -71,6 +71,14 @@ export default {
         pageHeader,
         POpBox
     },
+    mounted() {
+      this.$axios.post('/v1/user/login/setPwd',{
+        "authToken": "",	//登陆token	string
+        "newPwd": ""	//新密码
+      }).then(res=>{
+        console.log(res);
+      })
+    }
 
 }
 </script>

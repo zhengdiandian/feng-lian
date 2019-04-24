@@ -11,17 +11,17 @@
                 <section class="hear-infor">
                     <img :src="code.headPortrait" alt="">
                     <div>
-                        <span style="font-size:14px;">{{name}}</span>
-                        <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1); line-height: 20px;" >{{stata}}</span>
+                        <span style="font-size:14px;">{{code.nickname}}</span>
+                        <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1); line-height: 20px;" >{{code.state == 100 ? '未认证':'已认证'}}</span>
                     </div>
-                    <span style="color:rgba(112,112,112,1);">{{autograph}}</span>
+                    <span style="color:rgba(112,112,112,1);">{{code.motto}}</span>
                 </section>
                 <section class="code">
                     <img src="../assets/PNG/中青年.png" alt="">
                 </section>
                 <section class="preservation">
                     <span class="margin-top margin-bottom" style="color: #EFA220">保存二维码</span>
-                    <span style="font-weight:bold;">我的邀请码：{{123456}}</span>
+                    <span style="font-weight:bold;">我的邀请码：{{code.inviteCode}}</span>
                 </section>
             </div>
         </main>
@@ -48,7 +48,7 @@ export default {
     },
     mounted(){
         this.$axios.post('/v1/user/user/myQrcode').then((res)=>{
-            // this.code = res.data.data
+            this.code = res.data.data
             console.log(res)
         })
     }
@@ -109,7 +109,7 @@ main{
             border:2px solid rgba(255,255,255,1);
             border-radius:50%;
             position: relative;
-            left: 40px;
+            left: 30px;
         }
         }
         

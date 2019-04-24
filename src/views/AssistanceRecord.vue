@@ -6,11 +6,11 @@
     <main class="page-margin-top">
         <section class="profit">
             <div class="users">
-                <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
+                <span class="number" style="font-weight:bold; font-size: 20px;">{{helped.helpedCount}}</span>
                 <span style="font-size: 12px;">已帮助人数</span>
             </div>
             <div class="users">
-                <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
+                <span class="number" style="font-weight:bold; font-size: 20px;">{{helped.joinedDays}}</span>
                 <span style="font-size: 12px;">已加入蜂链天数</span>
             </div>
         </section>
@@ -20,11 +20,7 @@
                 <div style="font-size:15px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
                 <div style="font-size:9px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(112,112,112,1);">2019.04.04</div>
             </div>
-<<<<<<< HEAD
-            <section class="card"><card :open="()=>{$router.push('/home')}"></card></section>
-=======
-            <section class="card"><card :open="() => {$router.push('/palnned')}"></card></section>
->>>>>>> be948d8d4106b12e67a229bad0cea09afdd091b0
+            <section class="card"><card :supporlist="supporlist" :open="() => {$router.push('/palnned')}"></card></section>
         </section>
     </main>
     <footer>
@@ -47,9 +43,18 @@ export default {
     data() {
         return {
             title: '互助记录',
-            name: 'yyy.zZ'
+            name: 'yyy.zZ',
+            helped: [],
+            supporlist: []
         }
     },
+    mounted() {
+        this.$axios.post('/v1/support/plan/supportList').then((res) => {
+            console.log(res.data.data)
+            this.helped = res.data.data
+            this.supporlist = res.data.data.list
+        })
+    }
 }
 </script>
 <style scoped lang="scss">

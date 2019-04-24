@@ -14,12 +14,12 @@
       <mu-sub-header>订单详情</mu-sub-header>
     </div>
     <div class="order">
-      <div class="order-list">商品名称: <span class="margin-left">终身重大疾病互助计划</span></div>
-      <div class="order-list">订单编号: <span class="margin-left">BC2019040913256432</span></div>
-      <div class="order-list">商品价格: <span class="margin-left">48.00元</span></div>
+      <div class="order-list">商品名称: <span class="margin-left">{{order.goodsName}}}</span></div>
+      <div class="order-list">订单编号: <span class="margin-left">{{order.orderNo}}}</span></div>
+      <div class="order-list">商品价格: <span class="margin-left">{{order.unitPrice}}元</span></div>
       <mu-divider></mu-divider>
-      <div class="order-list">支付金额: <span class="margin-left">48.00元</span></div>
-      <div class="order-list">奖励金: <span style="margin-left: 22px;">0.00元</span></div>
+      <div class="order-list">支付金额: <span class="margin-left">{{order.payAmount}}元</span></div>
+      <div class="order-list">奖励金: <span style="margin-left: 22px;">{{order.bounty}}元</span></div>
     </div>
     <div class="title">
       <mu-sub-header>支付方式</mu-sub-header>
@@ -45,8 +45,26 @@ import pageHeader from '../components/PageHeader/PageHeader'
     },
     data() {
       return {
-        title: '订单确认'
+        title: '订单确认',
+        order: [],
+        payment: []
       }
+    },
+    mounted() {
+      this.$axios.post('/v1/support/plan/checkOrder',{
+        "contacs": "",  // 姓名
+        "contacsIdNo": "", // 身份证
+        "inviteCode": "", // 邀请码
+        "orderAmount": 123, // 金额
+        "productId": 456, // 产品ID
+        "relationShip": 0, // 0=自己 1=父母
+        "type": 1, //0 = 年费 1= 互助金
+      }).then((res)=>{
+        this.order = res.data.data
+      })
+      // this.$axios.post(' /v1/pay/pay/channelList').then(res=>{
+      //   console.log(res);
+      // })
     }
   }
 </script>

@@ -122,6 +122,7 @@
       return {
         open: false,
         title: '互助计划',
+        helpAssis: [],
         itemRowData: [
           {
             icon: ' iconfanweiguang-',
@@ -145,6 +146,11 @@
           }
         ]
       }
+    },
+    mounted() {
+      this.$axios.post('/v1/product/product/productDetail').then(res=>{
+        this.helpAssis = res.data.data
+      })
     }
   }
 </script>
