@@ -119,6 +119,11 @@ export default {
   },
   components: {
     headpage
+  },
+  mounted() {
+    this.$axios.post('/v1/support/plan/checkOrder').then((res)=> {
+      console.log(res)
+    })
   }
 };
 </script>

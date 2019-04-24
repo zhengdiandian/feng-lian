@@ -70,10 +70,10 @@
       </router-link>
       <div class="plan-wrap" v-for="i in 3" :key="i" >
         <div class="plan-left" >
-          <img src="../assets/PNG/百万抗癌计划.png" alt="">
+          <img :src="product[0].icon" alt="">
           <div class="plan-left-content">
-            <div class="title">中青年健康互助计划</div>
-            <div class="info">最高可获得30万抗癌互助金18~50周岁可加入</div>
+            <div class="title">{{product[0].title}}</div>
+            <div class="info">{{product[0].content}}</div>
           </div>
           <div class="plan-right-content">
             <mu-button  class="btn" color="success" @click="$router.push('/hlepPlan')">再次加入</mu-button>
@@ -143,11 +143,21 @@ export default {
   data() {
     return {
       shift: "movies",
-      open: false
+      open: false,
+      product: []
     };
   },
   components: {
     BannerImg
+  },
+  mounted() {
+    this.$axios.post('/v1/manage/post/index').then((res)=>{
+      // console.log(res)
+    }),
+    this.$axios.post('/v1/product/product/tags').then((res)=>{
+          this.product = res.data.data
+          console.log(this.product)
+    })
   }
 };
 </script>

@@ -6,7 +6,7 @@
         <main class="page-margin-top">
             <div class="user-wrap pwd-wrap">
                 <mu-text-field
-                v-model="account"
+                v-model="user"
                 label-float
                 label="请输入您的手机号码"
                 icon=":iconfont iconzhanghao"
@@ -45,8 +45,8 @@ export default {
     data() {
         return {
             title: '注册',
-            value13: '',
-            value14: '',
+            user: '',
+            pwd: '',
             show: false
         }
     },
@@ -59,6 +59,15 @@ export default {
         setCode() {
           console.log(11)
         }
+    },
+    mounted(){
+        this.$axios.post('/v1/user/login/register',{
+            "account":this.user, // 手机
+            "smsCode":this.pwd,  // 短信验证码
+            "token": "123456"  // 短信token
+        }).then((res)=> {
+            console.log(res)
+        })
     }
 }
 </script>

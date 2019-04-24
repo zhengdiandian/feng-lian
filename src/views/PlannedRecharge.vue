@@ -14,7 +14,7 @@
           <div class="title">
             账户余额（元）
           </div>
-          <div class="balance">10.00</div>
+          <div class="balance">{{panned.balance}}</div>
           <div class="balance-warning">余额充足</div>
           <div class="btn-wrap">
             <div class="btn">计划充值</div>
@@ -26,14 +26,14 @@
         电子凭证
       </div>
 
-      <div class="text-info"><span>凭证编号：</span><span>FL20190115490963220251</span></div>
-      <div class="title">终身重大疾病互助计划 | 等待期剩余180天</div>
-      <div class="text-info"><span>凭证编号:</span><span>FL20190115490963220251</span></div>
-      <div class="text-info"><span>最高获取:</span><span>FL20190115490963220251</span></div>
+      <div class="text-info"><span>凭证编号：</span><span>{{panned.planNo}}</span></div>
+      <div class="title">终身重大疾病互助计划 | 等待期剩余{{panned.leftWattingDays}}天</div>
+      <div class="text-info"><span>凭证编号:</span><span>{{panned.planNo}}</span></div>
+      <div class="text-info"><span>最高获取:</span><span>{{panned.highestHelped}}</span></div>
       <div class="text-info"><span>互助会员:</span><span>FL20190115490963220251</span></div>
-      <div class="text-info"><span>身份证号:</span><span>FL20190115490963220251</span></div>
-      <div class="text-info"><span>购买日:</span><span>FL20190115490963220251</span></div>
-      <div class="text-info"><span>支付方式:</span><span>FL20190115490963220251</span></div>
+      <div class="text-info"><span>身份证号:</span><span>{{panned.contacsIdNo}}</span></div>
+      <div class="text-info"><span>购买日:</span><span>{{panned.joinDate}}</span></div>
+      <div class="text-info"><span>支付方式:</span><span>{{panned.payType}}</span></div>
     </div>
     <div class="help-list">
       <mu-list  class="list" toggle-nested="">
@@ -64,12 +64,19 @@
   export default {
     name: 'PlanInitial',
     data() {
-      return {open: ''}
+      return {
+        panned: []
+      }
     },
-    methods: {
-      // open() {
+    mounted() {
+      this.$axios.post('/v1/support/plan/planDetail').then((res)=> {
+        this.panned = res.data.data
+      })
+    },
+    methods:{
+      open(){
 
-      // }
+      }
     }
   }
 </script>

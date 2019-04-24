@@ -55,6 +55,18 @@ export default {
       this.pwdErr = '密码错误'
       this.show = true
     }
+},
+mounted() {
+  this.$axios.post('/v1/user/login/login',{
+      "account": "",	//手机号码
+      "appId": "",	//appid,用于直接登录
+      "loginPassword": "",	//登陆密码
+      "smsCode": "",	//type=0时，短信验证码
+      "token": "",	//type=0时，短信token
+      "type": 0,	//0=短信登陆，1=密码登陆
+  }).then(res=>{
+    console.log(res)
+  })
 }
 
 };

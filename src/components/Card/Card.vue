@@ -4,8 +4,9 @@
        <div class="touXiang">
          <img src="@/assets/PNG/头像.png" alt="">
        </div>
-        <div class="right-wrap">
-          <div class="name">姓名：Bryant.ZZ <span>已实名</span></div>
+        <div class="right-wrap" >
+          <div class="name" >姓名：{{supporlist[0].contacs}} <span>已实名</span></div>
+          <slot name="data"></slot>
           <div class="date content-center">购买日：2019.03.20</div>
         </div>
       </div>
@@ -22,7 +23,6 @@
         </div>
         <div class="btn-wrap">
           <div class="btn content-center" @click="open">查看计划</div>
-
         </div>
       </div>
     </div>
@@ -35,6 +35,10 @@
       title: {
         type: String,
         default: '峰链互助公式'
+      },
+      supporlist: {
+        type: Array,
+        default: {}
       },
       open: {
         type: Function,

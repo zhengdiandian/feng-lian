@@ -13,11 +13,11 @@
     <main class="page-margin-top">
         <section class="profit">
             <div class="users">
-                <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
+                <span class="number" style="font-weight:bold; font-size: 20px;">{{helped.helpedCount}}</span>
                 <span style="font-size: 12px;">已帮助人数</span>
             </div>
             <div class="users">
-                <span class="number" style="font-weight:bold; font-size: 20px;">3</span>
+                <span class="number" style="font-weight:bold; font-size: 20px;">{{helped.joinedDays}}</span>
                 <span style="font-size: 12px;">已加入蜂链天数</span>
             </div>
         </section>
@@ -27,7 +27,7 @@
                 <div style="font-size:15px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
                 <div style="font-size:9px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(112,112,112,1);">2019.04.04</div>
             </div>
-            <section class="card"><card :open="() => {$router.push('/palnned')}"></card></section>
+            <section class="card"><card :supporlist="supporlist" :open="() => {$router.push('/palnned')}"></card></section>
         </section>
     </main>
     <footer>
@@ -49,10 +49,24 @@ export default {
     },
     data() {
         return {
+<<<<<<< HEAD
 
             name: 'yyy.zZ'
+=======
+            title: '互助记录',
+            name: 'yyy.zZ',
+            helped: [],
+            supporlist: []
+>>>>>>> ff31b6b1afa623cbb1c73a31cc5a9e24e4d7a4d1
         }
     },
+    mounted() {
+        this.$axios.post('/v1/support/plan/supportList').then((res) => {
+            console.log(res.data.data)
+            this.helped = res.data.data
+            this.supporlist = res.data.data.list
+        })
+    }
 }
 </script>
 <style scoped lang="scss">

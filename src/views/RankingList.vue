@@ -12,26 +12,26 @@
         </header>
         <main class="page-margin-top">
             <div class="list-noe">
-                <div class="tow">
+                <div class="tow" style="position: relative;">
                     <img src="../assets/PNG/公示头像5.png" alt="">
-                    <span class="an-crown"><img src="../assets/PNG/皇冠3.png" alt=""></span>
-                    <div class="list-name-number" style="left: 8px; top: 85px;">
+                    <span class="an-crown" style="top: -38px;left:12px;"><img src="../assets/PNG/皇冠3.png" alt=""></span>
+                    <div class="list-name-number" style="left: 8px; top: 95px;">
                         <span style="font-size:14px; font-weight:bold;">陈梅</span>
                         <span style="font-size:14px; font-weight:bold;">22800分</span>
                     </div>
                 </div>
-                <div class="noe">
+                <div class="noe" style="position: relative;">
                     <img src="../assets/PNG/公示头像2.png" alt="">
-                    <span class="an-crown" style="top: -138px;"><img src="../assets/PNG/皇冠1.png" alt=""></span>
+                    <span class="an-crown" style="top: -38px;left:20px;"><img src="../assets/PNG/皇冠1.png" alt=""></span>
                     <div class="list-name-number">
                         <span style="font-size:14px; font-weight:bold;">韩世忠</span>
                         <span style="font-size:14px; font-weight:bold;">22900分</span>
                     </div>
                 </div>
-                <div class="three">
+                <div class="three" style="position: relative;">
                     <img src="../assets/PNG/公示头像4.png" alt="">
-                    <span class="an-crown" style="top: -114px;"><img src="../assets/PNG/皇冠2.png" alt=""></span>
-                    <div class="list-name-number" style="left: 8px; top: 80px;">
+                    <span class="an-crown" style="top: -36px;left:10px;"><img src="../assets/PNG/皇冠2.png" alt=""></span>
+                    <div class="list-name-number" style="left: 8px; top: 90px;">
                         <span style="font-size:14px; font-weight:bold; ">李军</span>
                         <span style="font-size:14px; font-weight:bold;">22700分</span>
                     </div>
@@ -52,9 +52,9 @@
             <div class="ranklist">
                 <div class="list" v-for="i in 20" :key="i">
                     <span style="margin-left: 24px;">{{i}}</span>
-                    <span class="list-img"><img src="../assets/PNG/积分头像2.png" alt=""></span>
-                    <span style="position: absolute;left: 85px;">小强</span>
-                    <span style="position: absolute;right: 20px;">18900分</span>
+                    <span class="list-img"><img :src="rank.img" alt=""></span>
+                    <span style="position: absolute;left: 85px;">{{rank.nickname}}</span>
+                    <span style="position: absolute;right: 20px;">{{rank.score}}分</span>
                 </div>
             </div>
         </main>
@@ -66,13 +66,20 @@ export default {
     name: 'RankingList',
     data() {
         return {
-            title: '排行榜'
+            title: '排行榜',
+            name: 'maskd',
+            rank: []
         }
     },
     components: {
         pageHeader
     },
-
+    mounted() {
+        this.$axios.post('/v1/finance/account/scoreRank').then((res)=>{
+            this.rank = res.data.data[0]
+            console.log(this.rank)
+        })
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -91,7 +98,8 @@ export default {
         display: inline-block;
         position: absolute;
         top: 8px;
-        left: 45px;
+        left: 40px;
+        overflow: hidden;
         img{
             width: 100%;
             height: 100%;
@@ -99,8 +107,7 @@ export default {
     }
 }
 .an-crown{
-    position: relative;
-    top: -120px;
+    position: absolute;
 }
 .list-noe{
     width: 100%;
