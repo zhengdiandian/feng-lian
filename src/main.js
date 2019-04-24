@@ -13,6 +13,7 @@ import * as colors from 'muse-ui/lib/theme/colors'
 import './assets/font/iconfont.css'
 import 'muse-ui-message/dist/muse-ui-message.css'
 import Message from 'muse-ui-message'
+import Axios from 'axios'
 Vue.use(Message)
 
 theme.add('custom-theme', {
@@ -60,7 +61,9 @@ Vue.use(SubHeader)
 Vue.use(Slider)
 Vue.use(Stepper)
 Vue.config.productionTip = false
-
+Vue.prototype.$axios = Axios.create({
+  baseURL: 'http://47.110.79.190:8080/mockjs/31/'
+})
 new Vue({
   router,
   store,
