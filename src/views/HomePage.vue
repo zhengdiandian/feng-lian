@@ -4,7 +4,7 @@
       <mu-button icon slot="right">
         <mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>
       </mu-button>
-        <span style="font-size:16px;font-family:SourceHanSansCN-Normal;font-weight:bold;">链接你我他 &nbsp;&nbsp;守护千万家</span> 
+        链接你我他 &nbsp;&nbsp;守护千万家
       <mu-button icon slot="left" :ripple="false">
         <!--<mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>-->
       </mu-button>
@@ -22,18 +22,18 @@
           <mu-button round class="btn" color="success" @click="$router.push('/minePlan')">查看我的互助计划</mu-button>
         </div>
         <div class="chat-wrap">
-          <div class="chat-content item-content">
-            <div class="chat-img">
+          <div class="chat-content item-content" @click="$router.push('/ranklist')">
+            <div class="chat-img" >
               <!-- <mu-icon value=":iconfont iconshuju"></mu-icon> -->
             </div>
             <div class="chat-title">699900</div>
             <div class="chat-info">全平台用户(人)</div>
           </div>
           <div class="xian"></div>
-          <div class="chat-content item-content">
+          <div class="chat-content item-content" @click="$router.push('/scale')">
             <div class="chat-img"></div>
             <div class="chat-title">699900</div>
-            <div class="chat-info">本期互助金規模(元)</div>
+            <div class="chat-info" >本期互助金規模(元)</div>
           </div>
         </div>
         <div class="routers-wrap">
@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="wrap">
-      <router-link tag="div" to="/scale">
+      <router-link tag="div" to="/code">
       <div class="apply">
         <img src="../assets/图标/爱心.png" alt="">
         <span>申请成为爱心大使</span>

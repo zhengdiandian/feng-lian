@@ -1,8 +1,13 @@
 <template>
     <div>
-        <header>
-            <PageHeader :title="upload"></PageHeader>
-        </header>
+      <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+        <mu-button icon slot="left" @click="$router.go(-1)">
+          <mu-icon value=":iconfont iconfanhui"></mu-icon>
+        </mu-button>
+        福利社
+        <mu-button icon slot="right"  :ripple="false">
+        </mu-button>
+      </mu-appbar>
         <main class="page-margin-top">
             <div>
                 <div style="width:54px;height:13px;font-size:13px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin: 12px 0 12px 12px;">我的收益</div>

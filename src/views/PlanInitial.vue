@@ -25,16 +25,29 @@
       <div class="title">
         电子凭证
       </div>
-
       <div class="text-info"><span>凭证编号：</span><span>FL20190115490963220251</span></div>
       <div class="title">终身重大疾病互助计划 | 等待期剩余180天</div>
-      <div class="text-info"><span>凭证编号:</span><span>FL20190115490963220251</span></div>
-      <div class="text-info"><span>最高获取:</span><span>FL20190115490963220251</span></div>
-      <div class="text-info"><span>互助会员:</span><span>FL20190115490963220251</span></div>
-      <div class="text-info"><span>身份证号:</span><span>FL20190115490963220251</span></div>
-      <div class="text-info"><span>购买日:</span><span>FL20190115490963220251</span></div>
-      <div class="text-info"><span>支付方式:</span><span>FL20190115490963220251</span></div>
-    </div>
+      <div class="bai-content">
+        <div class="info-wrap">
+          <div class="text-info"><span>凭证编号:</span><span>FL20190115490963220251</span></div>
+        </div>
+        <div class="info-wrap">
+          <div class="text-info"><span>最高获取:</span><span>FL20190115490963220251</span></div>
+        </div>
+        <div class="info-wrap">
+          <div class="text-info"><span>互助会员:</span><span>FL20190115490963220251</span></div>
+        </div>
+        <div class="info-wrap">
+          <div class="text-info"><span>身份证号:</span><span>FL20190115490963220251</span></div>
+        </div>
+        <div class="info-wrap">
+          <div class="text-info"><span>购买日:</span><span>FL20190115490963220251</span></div>
+        </div>
+        <div class="info-wrap">
+          <div class="text-info"><span>支付方式:</span><span>FL20190115490963220251</span></div>
+        </div>
+      </div>
+      </div>
     <div class="help-list">
       <mu-list  class="list" toggle-nested="">
         <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="i in 7" :key="i">
@@ -74,6 +87,9 @@
     background-color: $c-hui;
 
   }
+  .bai-content{
+    background-color: #fff;
+  }
 
     .wrap{
       padding: 12px 12px 0px;
@@ -98,7 +114,7 @@
 
     .btn-wrap{
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-between;
       .btn{
         width:150px;
         height:33px;
@@ -119,11 +135,18 @@
 
   }
   }
+  .info-wrap{
+    margin: 0 12px;
+    height:33px;
+    line-height: 33px;
+    border-bottom: .5px solid $c-hui;
+    background-color: #fff;
+
+  }
     .text-info{
-      padding: 0 12px;
-      width:375px;
-      height:33px;
-      line-height: 33px;
+      /*padding:  0 12px;*/
+      height: 100%;
+
       background:rgba(255,255,255,1);
       & span:first-child{
         min-width: 60px;
@@ -137,7 +160,7 @@
     font-family:SourceHanSansCN-Normal;
     font-weight:bold;
     &+.text-info{
-      width:375px;
+      padding: 0 12px;
       height:33px;
       background:rgba(255,255,255,1);
       &+.title{
@@ -145,7 +168,6 @@
         color: $c-cheng;
         text-align: right;
         &~.text-info{
-          border: 0.5px solid $c-hui;
 
         }
       }

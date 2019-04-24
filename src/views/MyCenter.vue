@@ -13,9 +13,14 @@
     </div>
   </PopBox>
     <header>
-        <div class="header-title">我的蜂链</div>
+      <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+        <mu-button icon slot="right" :ripple="false">
+        </mu-button>
+        我的蜂链
+        <mu-button icon slot="left" :ripple="false">
+        </mu-button>
+      </mu-appbar>
     </header>
-    <!-- <div class="page-margin-top"></div> -->
     <main>
       <div class="headerNav">
         <div class="headerLogin"><img src="../assets/PNG/head.png" alt=""></div>

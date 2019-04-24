@@ -1,7 +1,14 @@
 <template>
     <div>
         <header>
-            <pageHeader :title="title"></pageHeader>
+          <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+            <mu-button icon slot="left" @click="$router.go(-1)">
+            <mu-icon value=":iconfont iconfanhui"></mu-icon>
+            </mu-button>
+          排行榜
+          <mu-button icon slot="right" :ripple="false">
+          </mu-button>
+          </mu-appbar>
         </header>
         <main class="page-margin-top">
             <div class="list-noe">
@@ -149,7 +156,7 @@ export default {
     top: 105px;
     left: 18px;
 }
-    
+
 .headerNav{
   width:351px;
   height:85px;
@@ -203,7 +210,7 @@ export default {
       color:rgba(112,112,112,1);
       margin-top: 20px;
     }
-    
+
   }
   .state{
     display: inline-block;

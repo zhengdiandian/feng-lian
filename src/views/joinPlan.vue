@@ -7,7 +7,14 @@
       <div class="text-center">加入计划</div>
     </mu-appbar> -->
     <header>
-      <headpage :title="title"></headpage>
+      <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+        <mu-button icon slot="left" @click="$router.go(-1)">
+          <mu-icon value=":iconfont iconfanhui"></mu-icon>
+        </mu-button>
+        加入计划
+        <mu-button icon slot="right" :ripple="false">
+        </mu-button>
+      </mu-appbar>
     </header>
     <main>
       <div class="page-margin-top mu-header">终身重大疾病互助计划</div>
@@ -25,7 +32,7 @@
         </div>
         <div class="input-wrap">
           <label for>身份证：</label>
-          <input type="text" placeholder="请输入您的姓名">
+          <input type="text" placeholder="请输入您的身份证号">
         </div>
         <div class="warning">
           <mu-icon value=":iconfont icontanhao" size="24"></mu-icon> &nbsp; 身份证信息不可修改, 请正确填写
@@ -46,10 +53,8 @@
     <div class="select-wrap">
       <div class="font margin-bottom margin-top">选择关系</div>
       <div class="select-items">
-        <div class="item">自己</div>
-        <div class="item">父母</div>
-        <div class="item">配偶</div>
-        <div class="item">子女</div>
+        <div class="item" v-for="(item, i) in btnList"  :key="i" :class="{'active': activeIndex == i}" @click="activeIndex=i">{{item}}</div>
+
       </div>
       <div class="font margin-top">预计使用10个月</div>
       <!--<mu-slider class="demo-slider" v-model="normal.value1"></mu-slider>-->
@@ -57,7 +62,7 @@
       <!--<mu-slider class="demo-slider" disabled v-model="normal.value3"></mu-slider>-->
       <div class="stepper-wrap">
         <mu-stepper :linear="false" :active-step="activeStep"  class="mu-stepper">
-          <mu-step v-for="i in 5" :key="i" @click="activeStep=i-1">
+          <mu-step v-for="i in 5" :key="i" @click="activeStep=i-1" >
             <mu-step-label >
             </mu-step-label>
           </mu-step>
@@ -84,7 +89,7 @@
         <mu-divider></mu-divider>
       </div>
       <div class="tongYi">
-        <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span> <<互助计划公约>></span>
+        <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span> <<互助计划公约>> </span>
       </div>
     </div>
   </main>
@@ -101,7 +106,10 @@ export default {
       sliderVal: '',
       tongYi: false,
       activeStep: 0,
-      title: '加入计划'
+      btnList: [
+        '自己', '父母', '配偶', '子女'
+      ],
+      activeIndex: 0
     }
   },
   computed:{
@@ -220,9 +228,13 @@ export default {
       justify-content: center;
       align-items: center;
       width: 20%;
+      background-color: $c-hui;
       border-radius: 5px;
-      background-color: $c-cheng;
       color: #fff;
+    }
+    .item.active{
+      background-color: $c-cheng;
+
     }
   }
   .buy-info{

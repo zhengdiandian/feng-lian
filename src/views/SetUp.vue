@@ -1,8 +1,15 @@
 <template>
     <div>
-        <header>
-            <pageHeader :title="title"></pageHeader>
-        </header>
+      <div class="title page-margin-top">
+        <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+          <mu-button icon slot="left" @click="$router.go(-1)">
+            <mu-icon value=":iconfont iconfanhui"></mu-icon>
+          </mu-button>
+          设置
+          <mu-button icon slot="right" :ripple="false">
+          </mu-button>
+        </mu-appbar>
+      </div>
         <main class="page-margin-top">
             <div class="setList">
                     <span class="version-number">当前版本</span>
@@ -44,7 +51,6 @@ export default {
     name: 'setup',
     data() {
         return {
-            title: '设置'
         }
     },
     components: {

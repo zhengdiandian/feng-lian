@@ -2,7 +2,7 @@
     <header>
         <nav>
             <mu-icon value=":iconfont iconfanhui" @click="openReturn"></mu-icon>
-            <div class="title">{{title}}</div>
+            <div class="title mu-appbar-title">{{title}}</div>
         </nav>
     </header>
 </template>
@@ -42,14 +42,19 @@ nav {
         left: 12px;
     }
     .title {
-        span{
-            width:62px;
-            height:14px;
-            font-size:15px;
-            font-family:SourceHanSansCN-Normal;
-            font-weight:bold;
-            color:rgba(51,51,51,1);
-        }
+      font-size: 16px;
+      font-weight:bold;
+      color:rgba(51,51,51,1)
+        /*span{*/
+            /*width:62px;*/
+            /*height:14px;*/
+            /*!*font-size:15px;*!*/
+          /*font-size: 16px;*/
+          /*font-weight:bold;*/
+            /*font-family:SourceHanSansCN-Normal;*/
+            /*font-weight:bold;*/
+            /*color:rgba(51,51,51,1);*/
+        /*}*/
     }
 }
 </style>

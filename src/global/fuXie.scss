@@ -63,16 +63,18 @@
         font-size: 26px;
     }
 }
-.mu-button.mu-carousel-indicator-button.mu-icon-button.mu-carousel-indicator-button__active{ 
+.mu-button.mu-carousel-indicator-button.mu-icon-button.mu-carousel-indicator-button__active{
     padding: 0px;
     .mu-carousel-indicator-icon {
         display: inline-block;
         background-color: $c-cheng;
-        
     }
 }
 
 .mu-appbar{
+    .mu-appbar-left {
+        padding-right: 0px;
+    }
     position: fixed;
     top: 0px;
     left: 0px;

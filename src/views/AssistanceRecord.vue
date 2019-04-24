@@ -1,8 +1,15 @@
 <template>
 <div id="myrewardinteg">
-    <header>
-        <PageHeader :title="title"></PageHeader>
-    </header>
+  <div class="title page-margin-top">
+    <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+      <mu-button icon slot="left" @click="$router.go(-1)">
+        <mu-icon value=":iconfont iconfanhui"></mu-icon>
+      </mu-button>
+      订单详情
+      <mu-button icon slot="right" :ripple="false">
+      </mu-button>
+    </mu-appbar>
+  </div>
     <main class="page-margin-top">
         <section class="profit">
             <div class="users">
@@ -42,7 +49,7 @@ export default {
     },
     data() {
         return {
-            title: '互助记录',
+
             name: 'yyy.zZ'
         }
     },

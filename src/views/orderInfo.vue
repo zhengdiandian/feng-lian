@@ -9,9 +9,16 @@
 
       </mu-button>
     </mu-appbar> -->
-    <pageHeader :title="title"></pageHeader>
+
     <div class="title page-margin-top">
-      <mu-sub-header>订单详情</mu-sub-header>
+      <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+        <mu-button icon slot="left" @click="$router.go(-1)">
+          <mu-icon value=":iconfont iconfanhui"></mu-icon>
+        </mu-button>
+        订单详情
+        <mu-button icon slot="right" :ripple="false">
+        </mu-button>
+      </mu-appbar>
     </div>
     <div class="order">
       <div class="order-list">商品名称: <span class="margin-left">终身重大疾病互助计划</span></div>
@@ -24,24 +31,23 @@
     <div class="title">
       <mu-sub-header>支付方式</mu-sub-header>
     </div>
-    <div>
+    <ul>
       <li><span class="iconfont iconweixin"></span>微信支付<mu-divider></mu-divider>
       </li>
       <li><span class="iconfont iconzhifubao" style="margin-left: 30px;"></span>支付宝支付<mu-divider></mu-divider>
       </li>
-      <li><span class="iconfont iconweixin"></span>银联支付<mu-divider></mu-divider>
+      <li><span class=" iconfont"> <span class="icon"></span></span>银联支付<mu-divider></mu-divider>
       </li>
-    </div>
+    </ul>
     <div class="big-btn" @click="$router.push('/planInitial')"> 去支付</div>
   </div>
 </template>
 
 <script>
-import pageHeader from '../components/PageHeader/PageHeader'
+// import pageHeader from '../components/PageHeader/PageHeader'
   export default {
     name: 'orderInfo',
     components:{
-      pageHeader
     },
     data() {
       return {
@@ -52,6 +58,10 @@ import pageHeader from '../components/PageHeader/PageHeader'
 </script>
 
 <style lang="scss" scoped>
+  ul{
+    margin: 0px;
+    padding: 0px;
+  }
 .order {
   font-size:12px;
   font-family:SourceHanSansCN-Normal;
@@ -72,10 +82,24 @@ import pageHeader from '../components/PageHeader/PageHeader'
     height: 50px;
     line-height: 50px;
     background: #fff;
+    span{
+      display: inline-block;
+      width: 50px;
+    }
     .iconfont{
       vertical-align: middle;
       margin-left: 25px;
       margin-right: 18px;
+
+    }
+    .icon{
+      /*width: 50px;*/
+      display: inline-block;
+      width:37px;
+      height:25px;
+      background: url("../assets/img/银联.svg" ) center no-repeat;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%;
     }
     span{
       display: inline-block;

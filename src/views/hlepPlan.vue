@@ -10,7 +10,7 @@
       <mu-button icon slot="right" @click="$router.go(-1)">
         <mu-icon value=":iconfont iconshubanshenglvehao" @click="$router.go(-1)"></mu-icon>
       </mu-button>
-      <div class="text-center">互助计划</div>
+      互助计划
     </mu-appbar>
     <div class="page-margin-top"></div>
     <banner-img></banner-img>

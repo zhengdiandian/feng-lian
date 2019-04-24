@@ -10,7 +10,7 @@
       </mu-appbar>
       <div class="wrap">
         <mu-sub-header>我的购买计划</mu-sub-header>
-        <card v-for="i in 2" :key="i"></card>
+        <card :open="()=>{$router.push('/planInitial')}" v-for="i in 2" :key="i"></card>
       </div>
     </div>
 </template>
