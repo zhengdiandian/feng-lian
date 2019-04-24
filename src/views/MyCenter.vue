@@ -80,7 +80,7 @@
           </div>
         </router-link>
 
-        <router-link tag="div" to="/share">
+        <div tag="div" @click="showPoP=true">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/客户.svg" alt="">
@@ -88,7 +88,7 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-        </router-link>
+        </div>
 
         <router-link tag="div" to="/assis">
           <div class="list-li">
@@ -164,6 +164,11 @@
        this.$router.push('/per')
     }
   },
+  created() {
+    this.$axios.post('/v1/user/user/personalInfo').then(res => {
+      console.log(res)
+    })
+  },
     components: {
     PopBox
     }
@@ -227,7 +232,6 @@ z-index: 99;
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin: 20px auto;
-  margin-top: 56px;
   display: flex;
   align-items: center;
   position: relative;

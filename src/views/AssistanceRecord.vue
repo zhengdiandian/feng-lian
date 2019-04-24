@@ -20,11 +20,7 @@
                 <div style="font-size:15px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
                 <div style="font-size:9px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(112,112,112,1);">2019.04.04</div>
             </div>
-<<<<<<< HEAD
-            <section class="card"><card :open="()=>{$router.push('/home')}"></card></section>
-=======
             <section class="card"><card :open="() => {$router.push('/palnned')}"></card></section>
->>>>>>> be948d8d4106b12e67a229bad0cea09afdd091b0
         </section>
     </main>
     <footer>

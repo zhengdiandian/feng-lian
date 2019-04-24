@@ -61,8 +61,9 @@ Vue.use(SubHeader)
 Vue.use(Slider)
 Vue.use(Stepper)
 Vue.config.productionTip = false
+// Axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 Vue.prototype.$axios = Axios.create({
-  baseURL: 'http://47.110.79.190:8080/mockjs/31/'
+  baseURL: 'http://47.110.79.190:8080/mockjsdata/31'
 })
 new Vue({
   router,
