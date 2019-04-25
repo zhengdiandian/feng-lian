@@ -64,7 +64,7 @@ export default {
             visibility: false,
             pwdErr: "123",
             value13: '',
-            value14: ''
+            value14: '',
         }
     },
     components: {
@@ -73,8 +73,8 @@ export default {
     },
     mounted() {
       this.$axios.post('/v1/user/login/setPwd',{
-        "authToken": "",	//登陆token	string
-        "newPwd": ""	//新密码
+        "authToken": this.$route.params.token,	//登陆token	string
+        "newPwd": this.value14	//新密码
       }).then(res=>{
         console.log(res);
       })

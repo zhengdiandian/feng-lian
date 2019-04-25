@@ -21,8 +21,8 @@
       </mu-appbar>
     </div>
     <div class="order">
-      <div class="order-list">商品名称: <span class="margin-left">{{order.goodsName}}}</span></div>
-      <div class="order-list">订单编号: <span class="margin-left">{{order.orderNo}}}</span></div>
+      <div class="order-list">商品名称: <span class="margin-left">{{order.goodsName}}</span></div>
+      <div class="order-list">订单编号: <span class="margin-left">{{order.orderNo}}</span></div>
       <div class="order-list">商品价格: <span class="margin-left">{{order.unitPrice}}元</span></div>
       <mu-divider></mu-divider>
       <div class="order-list">支付金额: <span class="margin-left">{{order.payAmount}}元</span></div>
@@ -31,12 +31,20 @@
     <div class="title">
       <mu-sub-header>支付方式</mu-sub-header>
     </div>
-    <ul>
+    <!-- <ul>
       <li><span class="iconfont iconweixin"></span>微信支付<mu-divider></mu-divider>
       </li>
       <li><span class="iconfont iconzhifubao" style="margin-left: 30px;"></span>支付宝支付<mu-divider></mu-divider>
       </li>
       <li><span class=" iconfont"> <span class="icon"></span></span>银联支付<mu-divider></mu-divider>
+      </li>
+    </ul> -->
+    <ul>
+      <li> <img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="payment.icon" alt=""> 微信支付<mu-divider></mu-divider>
+      </li>
+      <li><img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="payment.icon" alt=""> 支付宝支付<mu-divider></mu-divider>
+      </li>
+      <li><img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="payment.icon" alt=""> 银联支付<mu-divider></mu-divider>
       </li>
     </ul>
     <div class="big-btn" @click="$router.push('/planInitial')"> 去支付</div>
@@ -57,7 +65,7 @@
       }
     },
     mounted() {
-      this.$axios.post('/v1/support/plan/checkOrder',{
+      this.$axios.post('/v1/mutually/plan/checkOrder',{
         "contacs": "",  // 姓名
         "contacsIdNo": "", // 身份证
         "inviteCode": "", // 邀请码
@@ -68,9 +76,10 @@
       }).then((res)=>{
         this.order = res.data.data
       })
-      // this.$axios.post(' /v1/pay/pay/channelList').then(res=>{
-      //   console.log(res);
-      // })
+      this.$axios.post('/v1/pay/channel/channelList').then(res=>{
+        this.payment = res.data.data[0]
+        console.log(this.payment)
+      })
     }
   }
 </script>

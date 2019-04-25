@@ -47,26 +47,35 @@ export default {
             title: '注册',
             user: '',
             pwd: '',
-            show: false
+            show: false,
+            token: ''
         }
     },
     methods: {
         open() {
-          // debugger
-          this.$router.push('/setpwd')
-            // this.show = true
+        // debugger
+        // this.show = true
+        
+        this.$router.push({
+            name: 'setpwd',
+            params: {
+                token: this.token
+            }
+        })
         },
-        setCode() {
-          console.log(11)
-        }
+        // setCode() {
+        //   console.log(11)
+        // }
     },
     mounted(){
         this.$axios.post('/v1/user/login/register',{
-            "account":this.user, // 手机
-            "smsCode":this.pwd,  // 短信验证码
-            "token": "123456"  // 短信token
+            "openId": "",          // 微信appid
+            "account": this.user, // 手机
+            "smsCode": this.pwd,  // 短信验证码
+            "token": ""  // 短信token
         }).then((res)=> {
-            console.log(res)
+            this.token = res.data.data.authToken
+            console.log(this.token)
         })
     }
 }

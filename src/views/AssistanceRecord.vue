@@ -27,7 +27,17 @@
                 <div style="font-size:15px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
                 <div style="font-size:9px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(112,112,112,1);">2019.04.04</div>
             </div>
-            <section class="card"><card :supporlist="supporlist" :open="() => {$router.push('/palnned')}"></card></section>
+            <section class="card" v-for="item in supporlist" :key="item.orderNo">
+                <card
+                    :open="() => {$router.push('/palnned')}"
+                    :name="item.contacs"
+                    :state="item.payState==100?'未实名':'以实名'"
+                    :productName="item.productName"
+                    :amount="amount"
+                    :amountMoney="item.amount"
+                    >
+                </card>
+            </section>
         </section>
     </main>
     <footer>
@@ -49,22 +59,18 @@ export default {
     },
     data() {
         return {
-<<<<<<< HEAD
-
-            name: 'yyy.zZ'
-=======
             title: '互助记录',
-            name: 'yyy.zZ',
-            helped: [],
-            supporlist: []
->>>>>>> ff31b6b1afa623cbb1c73a31cc5a9e24e4d7a4d1
+            amount: '互助余额',
+            helped: [], //帮助数据
+            supporlist: [] //card数据
         }
     },
     mounted() {
-        this.$axios.post('/v1/support/plan/supportList').then((res) => {
-            console.log(res.data.data)
+        this.$axios.post('/v1/mutually/plan/supportList').then((res) => {
+            // console.log(res.data.data)
             this.helped = res.data.data
             this.supporlist = res.data.data.list
+            console.log(this.supporlist)
         })
     }
 }

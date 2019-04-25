@@ -70,13 +70,13 @@
       </router-link>
       <div class="plan-wrap" v-for="i in 3" :key="i" >
         <div class="plan-left" >
-          <img :src="product[0].icon" alt="">
+          <img :src="product.img" alt="">
           <div class="plan-left-content">
-            <div class="title">{{product[0].title}}</div>
-            <div class="info">{{product[0].content}}</div>
+            <div class="title">{{product.title}}</div>
+            <div class="info">{{product.subtitle}}</div>
           </div>
           <div class="plan-right-content">
-            <mu-button  class="btn" color="success" @click="$router.push('/hlepPlan')">再次加入</mu-button>
+            <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code}})">再次加入</mu-button>
           </div>
         </div>
         <mu-divider></mu-divider>
@@ -154,8 +154,8 @@ export default {
     this.$axios.post('/v1/manage/post/index').then((res)=>{
       // console.log(res)
     }),
-    this.$axios.post('/v1/product/product/tags').then((res)=>{
-          this.product = res.data.data
+    this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
+          this.product = res.data.data[0]
           console.log(this.product)
     })
   }
