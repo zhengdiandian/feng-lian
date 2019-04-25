@@ -53,7 +53,9 @@ export default {
     methods: {
         open() {
           // debugger
-          this.$router.push('/setpwd')
+          this.$router.push({
+
+          })
             // this.show = true
         },
         setCode() {

@@ -12,7 +12,7 @@
             <div>
                 <div style="width:54px;height:13px;font-size:13px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin: 12px 0 12px 12px;">我的收益</div>
                 <section class="profit">
-                    <div class="users">
+                    <div class="users" @click="$router.push('/share')">
                         <span class="number" style="font-weight:bold; font-size: 20px;">{{welf.sharedCount}}</span>
                         <span style="font-size: 12px;">我分享的用户 &nbsp; (人)</span>
                     </div>
