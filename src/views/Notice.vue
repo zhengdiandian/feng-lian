@@ -21,7 +21,7 @@
       <mu-button icon slot="left" :ripple="false">
       </mu-button>
     </mu-appbar>
-    <div class="notice-select page-margin-top" >
+    <div class="notice-select" >
       <router-link class="select" to="/notice/newNotice">最新公示</router-link>
       <router-link class="select" to="/notice/oldNotice">往期公示</router-link>
     </div>

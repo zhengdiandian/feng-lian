@@ -1,15 +1,14 @@
 <template>
 <div id="myrewardinteg">
-  <div class="title page-margin-top">
+
     <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
       <mu-button icon slot="left" @click="$router.go(-1)">
         <mu-icon value=":iconfont iconfanhui"></mu-icon>
       </mu-button>
-      订单详情
+      互助记录
       <mu-button icon slot="right" :ripple="false">
       </mu-button>
     </mu-appbar>
-  </div>
     <main class="page-margin-top">
         <section class="profit">
             <div class="users">
@@ -76,6 +75,9 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+  .page-margin-top{
+    margin-top: 56px;
+  }
 .profit{
     width:351px;
     height:60px;
@@ -88,7 +90,8 @@ export default {
         font-family:ArialMT;
         color:rgba(51,51,51,1);
         width: 50%;
-        height: 100%;
+      font-weight: 700;
+        /*height: 100%;*/
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -97,9 +100,9 @@ export default {
     }
 }
 .assis-title{
-    width:200px;
+    text-align: center;
     height:15px;
-    font-size:15px;
+    font-size:18px;
     font-family:SourceHanSansCN-Normal;
     font-weight:bold;
     color:rgba(51,51,51,1);
