@@ -5,7 +5,7 @@
          <img src="@/assets/PNG/头像.png" alt="">
        </div>
         <div class="right-wrap" >
-          <div class="name" >姓名：{{supporlist[0].contacs}} <span>已实名</span></div>
+          <div class="name" >姓名：{{name}} <span>{{state}}</span></div>
           <slot name="data"></slot>
           <div class="date content-center">购买日：2019.03.20</div>
         </div>
@@ -14,12 +14,12 @@
         <div class="one">
           <div>产品名称:</div>
           <div>等待期:</div>
-          <div>余额:</div>
+          <div>{{amount}}:</div>
         </div>
         <div class="tow">
-          <div>终身重大疾病互助计划</div>
+          <div>{{productName}}</div>
           <div>180天</div>
-          <div>10元</div>
+          <div>{{amountMoney}}元</div>
         </div>
         <div class="btn-wrap">
           <div class="btn content-center" @click="open">查看计划</div>
@@ -31,15 +31,39 @@
 <script>
   export default {
     name: 'Card',
+    data() {
+      return {
+      }
+    },
     props: {
       title: {
         type: String,
         default: '峰链互助公式'
       },
-      supporlist: {
-        type: Array,
-        default: {}
+      name:{
+        type: String,
+        default: 'Bywz.zZ'
       },
+      state:{
+        type: String,
+        default: '已实名'
+      },
+      productName:{
+        type: String,
+        default: '终身重大疾病互助计划'
+      },
+      amount:{
+        type: String,
+        default: '余额'
+      },
+      amountMoney:{
+        type: Number,
+        default: 10
+      },
+      // supporlist: {
+      //   type: Array,
+      //   default: {}
+      // },
       open: {
         type: Function,
       }

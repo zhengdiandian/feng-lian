@@ -19,17 +19,17 @@
       <div class="chat-wrap margin-bottom">
         <div class="chat-content item-content">
           <div class="chat-title">已加入人数 (人)</div>
-          <div class="chat-info">23124</div>
+          <div class="chat-info">{{MutualRule.joinCount}}</div>
         </div>
         <div class="xian"></div>
         <div class="chat-content item-content">
           <div class="chat-title">已互助金额 (元)</div>
-          <div class="chat-info">936000</div>
+          <div class="chat-info">{{MutualRule.supportAmount}}</div>
         </div>
         <div class="xian"></div>
         <div class="chat-content item-content">
           <div class="chat-title">互助事件</div>
-          <div class="chat-info">492</div>
+          <div class="chat-info">{{MutualRule.supportCount}}</div>
         </div>
       </div>
       <!-- <icon-bar left-text="预存48元加入" right-text="加入" >
@@ -47,8 +47,28 @@
       <mu-divider></mu-divider>
       <div class="hlep-rule">
         <div class="font margin-left margin-top ">互助规则</div>
-        <div class="rule margin-left"  v-for="i in 7" :key="i">
-          <span class="rule-title font-min margin-right">人群范围</span> Lorem ipsum dolor sit amet.
+        <div class="rule margin-left">
+          <span class="rule-title font-min margin-right">人群范围</span>{{MutualRule.crowdRange}}
+          <mu-divider></mu-divider>
+        </div>
+        <div class="rule margin-left">
+          <span class="rule-title font-min margin-right">互助范围</span>{{MutualRule.mutualRange}}
+          <mu-divider></mu-divider>
+        </div>
+        <div class="rule margin-left">
+          <span class="rule-title font-min margin-right">加入费用</span>{{MutualRule.joinAmount}}
+          <mu-divider></mu-divider>
+        </div>
+        <div class="rule margin-left">
+          <span class="rule-title font-min margin-right">最高获取</span>{{MutualRule.highestHelped}}
+          <mu-divider></mu-divider>
+        </div>
+        <div class="rule margin-left">
+          <span class="rule-title font-min margin-right">均摊规则</span>{{MutualRule.sharingRule}}
+          <mu-divider></mu-divider>
+        </div>
+        <div class="rule margin-left">
+          <span class="rule-title font-min margin-right">等&nbsp;待&nbsp;期</span>{{MutualRule.wattingStage}}
           <mu-divider></mu-divider>
         </div>
       </div>
@@ -57,18 +77,18 @@
 
         <mu-list  class="list" toggle-nested="">
           <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="i in 7" :key="i">
-            <mu-list-item-title>{{i}}、Lorem ipsum dolor sit.</mu-list-item-title>
+            <mu-list-item-title>{{i}}、{{problem.content}}</mu-list-item-title>
             <mu-list-item-action>
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
             <mu-list-item button :ripple="false" slot="nested">
-              <mu-list-item-title>List Item 1</mu-list-item-title>
+              <mu-list-item-title>{{problem.title}}</mu-list-item-title>
             </mu-list-item>
             <mu-list-item button :ripple="false" slot="nested">
-              <mu-list-item-title>List Item 2</mu-list-item-title>
+              <mu-list-item-title>{{problem.title}}</mu-list-item-title>
             </mu-list-item>
             <mu-list-item button :ripple="false" slot="nested">
-              <mu-list-item-title>List Item 3</mu-list-item-title>
+              <mu-list-item-title>{{problem.title}}</mu-list-item-title>
             </mu-list-item>
           </mu-list-item>
         </mu-list>
@@ -99,7 +119,7 @@
         </mu-list>
 
       </div>
-      <div class="bottom-btn" @click="$router.push( '/inform')">立即加入</div>
+      <div class="bottom-btn" @click="$router.push('/inform')">立即加入</div>
     </div>
   </div>
 </template>
@@ -122,7 +142,8 @@
       return {
         open: false,
         title: '互助计划',
-        helpAssis: [],
+        MutualRule: [],
+        problem: {},
         itemRowData: [
           {
             icon: ' iconfanweiguang-',
@@ -148,8 +169,22 @@
       }
     },
     mounted() {
-      this.$axios.post('/v1/product/product/productDetail').then(res=>{
-        this.helpAssis = res.data.data
+      this.$axios.post('/v1/product/product/tags',{  // 产品标签列表
+        "productCode": this.$route.params.productCode
+      }).then(res=>{
+        // this.itemRowData = res.data.data
+      }),
+      this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
+        "productCode": this.$route.params.productCode
+      }).then(res=>{
+        this.MutualRule = res.data.data
+        // console.log(this.MutualRule)
+      }),
+      this.$axios.post('/v1/product/product/issue',{
+        "productCode": this.$route.params.productCode
+      }).then(res=>{
+        this.problem = res.data.data[0]
+        console.log(this.problem)
       })
     }
   }
@@ -214,6 +249,7 @@
       font-family:ArialMT;
       font-weight:400;
       color:rgba(239,162,32,1);
+      overflow: hidden;
     }
     .xian{
       /*margin-top: 25%;*/
@@ -324,5 +360,8 @@
       color:#FF0000;
     }
   }
+}
+.rule{
+  overflow: hidden;
 }
 </style>

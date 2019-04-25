@@ -72,7 +72,8 @@ export default new Router({
       }
     },
     {
-      path: '/setpwd', // 设置密码
+      path: '/setpwd/:token',
+      name: 'setpwd', // 设置密码
       component: function () {
         return import('./views/SetPassword.vue')
       }
@@ -94,6 +95,12 @@ export default new Router({
       path: '/perinfor', // 个人信息
       name: PerInfor,
       component: PerInfor
+    },
+    {
+      path: '/mydetails', // 我的详细资料
+      component: function () {
+        return import('./views/MyDetails')
+      }
     },
     {
       path: '/real', // 实名认证
@@ -175,10 +182,17 @@ export default new Router({
       }
     },
     {
-      path: '/hlepPlan', // 帮助计划
+      path: '/hlepPlan/:productCode', // 帮助计划
       name: 'hlepPlan',
       component: function () {
         return import('./views/hlepPlan')
+      }
+    },
+    {
+      path: '/myhlepPlan', // 我的帮助计划
+      name: 'myhlepPlan',
+      component: function () {
+        return import('./views/MyHelpPlan')
       }
     },
     {

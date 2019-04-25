@@ -14,7 +14,7 @@
                     <div class="listtext"><span>邮箱：</span></div>
                     <div class="listInfo">{{datalist.email}}</div>
                 </section>
-                <section class="datalist" >
+                <section class="datalist" @click="$router.push('/mydetails')">
                     <div class="listtext" style="width: 75px;"><span>个人信息：</span></div>
                     <div class="listInfo" >{{datalist.personalInfo}}</div> 
                     <span style="font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:#707070; margin-left: 14px;">详细信息</span>

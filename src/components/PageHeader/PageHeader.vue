@@ -44,7 +44,8 @@ nav {
     .title {
       font-size: 16px;
       font-weight:bold;
-      color:rgba(51,51,51,1)
+      color:rgba(51,51,51,1);
+      text-align: center;
         /*span{*/
             /*width:62px;*/
             /*height:14px;*/
