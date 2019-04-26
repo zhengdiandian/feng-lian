@@ -143,16 +143,21 @@ export default {
   data() {
     return {
       shift: "movies",
-      open: false,
+      // open: true,
       product: []
     };
+  },
+  methods: {
+    open() {
+
+    }
   },
   components: {
     BannerImg
   },
   mounted() {
-    this.$axios.post('/v1/manage/post/index').then((res)=>{
-      console.log(res)
+    this.$axios.post('/v1/manage/post/index').then((res)=>{ // 没数据
+      // console.log(res)
     }),
     this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
           this.product = res.data.data[0]

@@ -140,7 +140,8 @@
 
     data() {
       return {
-        open: false,
+        // open: false,
+        open: 'send',
         title: '互助计划',
         MutualRule: [],
         problem: {},

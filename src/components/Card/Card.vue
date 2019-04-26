@@ -8,6 +8,7 @@
           <div class="name" >姓名：{{name}} <span>{{state}}</span></div>
           <slot name="data"></slot>
           <div class="date content-center"> <span>{{purchase}}</span>{{date}}</div>
+          <slot name="FilingDate"></slot>
         </div>
       </div>
       <slot name="lable"></slot>
@@ -103,7 +104,6 @@
     padding: 12px;
     margin-bottom: 10px;
     color:rgba(255,255,255,1);
-
     .top-content{
       display: flex;
       justify-items: flex-start;
@@ -178,7 +178,7 @@
       .date{
 
         width:150px;
-        height:22px;
+        height:10px;
         background:rgba(246,176,59,1);
         border-radius:11px;
         font-size:12px;

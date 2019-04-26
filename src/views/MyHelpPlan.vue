@@ -22,6 +22,9 @@
                             <img src="../assets/img/驳回.svg" alt="">
                         </div>
                     </template>
+                    <template v-slot:FilingDate>
+                        <div class="dates"><span>申请日：</span>2019.01.01</div>
+                    </template>
                     </card>
                     <card
                     :open="() => {$router.push('/palnned')}"
@@ -59,10 +62,22 @@ main{
     img{
         position: absolute;
         right: 10px;
-        top: 30px;
+        top: 31px;
         width: 50px;
         height: 50px;
         z-index: 99;
     }
 }
+.dates{
+        margin-top: 5px;
+        width:150px;
+        height:10px;
+        background:rgba(246,176,59,1);
+        border-radius:11px;
+        font-size:10px;
+        font-family:SourceHanSansCN-Normal;
+        font-weight:400;
+        text-align: center;
+        line-height: 10px;
+      }
 </style>
