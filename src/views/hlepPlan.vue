@@ -178,13 +178,13 @@
         "productCode": this.$route.params.productCode
       }).then(res=>{
         this.MutualRule = res.data.data
-        // console.log(this.MutualRule)
+        console.log(this.MutualRule)
       }),
       this.$axios.post('/v1/product/product/issue',{
         "productCode": this.$route.params.productCode
       }).then(res=>{
         this.problem = res.data.data[0]
-        console.log(this.problem)
+        // console.log(this.problem)
       })
     }
   }

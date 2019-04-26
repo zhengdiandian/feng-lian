@@ -108,7 +108,7 @@
           @toggle-nested="open = arguments[0] ? 'list2' : ''"
         >
           <mu-list-item-action>
-            二级级分享
+            二级分享
           </mu-list-item-action>
           <mu-list-item-title></mu-list-item-title>
           <mu-list-item-action>
