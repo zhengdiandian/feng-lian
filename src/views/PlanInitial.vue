@@ -4,7 +4,7 @@
       <mu-button icon slot="left" @click="$router.go(-1)" >
         <mu-icon value=":iconfont iconfanhui" size="24" @click.stop="$router.go(-1)"></mu-icon>
       </mu-button>
-      计划生成
+      生成计划
       <mu-button icon slot="right" :ripple="false">
       </mu-button>
     </mu-appbar>
@@ -14,10 +14,10 @@
           <div class="title">
             账户余额（元）
           </div>
-          <div class="balance">10.00</div>
+          <div class="balance">{{panned.balance}}</div>
           <div class="balance-warning">余额充足</div>
           <div class="btn-wrap">
-            <div class="btn">计划充值</div>
+            <div class="btn" @click="$router.push('/recharge')">计划充值</div>
             <div class="btn" @click="$router.push('/owe')">感恩有你</div>
           </div>
         </div>
@@ -25,29 +25,16 @@
       <div class="title">
         电子凭证
       </div>
-      <div class="text-info"><span>凭证编号：</span><span>FL20190115490963220251</span></div>
-      <div class="title">终身重大疾病互助计划 | 等待期剩余180天</div>
-      <div class="bai-content">
-        <div class="info-wrap">
-          <div class="text-info"><span>凭证编号:</span><span>FL20190115490963220251</span></div>
-        </div>
-        <div class="info-wrap">
-          <div class="text-info"><span>最高获取:</span><span>FL20190115490963220251</span></div>
-        </div>
-        <div class="info-wrap">
-          <div class="text-info"><span>互助会员:</span><span>FL20190115490963220251</span></div>
-        </div>
-        <div class="info-wrap">
-          <div class="text-info"><span>身份证号:</span><span>FL20190115490963220251</span></div>
-        </div>
-        <div class="info-wrap">
-          <div class="text-info"><span>购买日:</span><span>FL20190115490963220251</span></div>
-        </div>
-        <div class="info-wrap">
-          <div class="text-info"><span>支付方式:</span><span>FL20190115490963220251</span></div>
-        </div>
-      </div>
-      </div>
+
+      <div class="text-info"><span>凭证编号：</span><span>{{panned.planNo}}</span></div>
+      <div class="title">终身重大疾病互助计划 | 等待期剩余{{panned.leftWattingDays}}天</div>
+      <div class="text-info"><span>凭证编号:</span><span>{{panned.planNo}}</span></div>
+      <div class="text-info"><span>最高获取:</span><span>{{panned.highestHelped}}</span></div>
+      <div class="text-info"><span>互助会员:</span><span>FL20190115490963220251</span></div>
+      <div class="text-info"><span>身份证号:</span><span>{{panned.contacsIdNo}}</span></div>
+      <div class="text-info"><span>购买日:</span><span>{{panned.joinDate}}</span></div>
+      <div class="text-info"><span>支付方式:</span><span>{{panned.payType}}</span></div>
+    </div>
     <div class="help-list">
       <mu-list  class="list" toggle-nested="">
         <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="i in 7" :key="i">
@@ -67,16 +54,32 @@
         </mu-list-item>
       </mu-list>
     </div>
-    <div class="next-btn" @click="$router.push('/home')">再去看看</div>
+    
+    <router-link tag="div" to="/recharge">
+    <div class="next-btn">再去看看</div>
+    </router-link>
   </div>
 </template>
 
 <script>
   export default {
     name: 'PlanInitial',
-    data(){
+    data() {
       return {
-        open
+        panned: []
+      }
+    },
+    mounted() {
+      this.$axios.post('/v1/mutually/plan/planDetail',{
+        "planNo": this.$route.params.planNo
+      }).then((res)=> {
+        this.panned = res.data.data
+        console.log(this.panned)
+      })
+    },
+    methods:{
+      open(){
+
       }
     }
   }
@@ -86,9 +89,6 @@
   .g-bg{
     background-color: $c-hui;
 
-  }
-  .bai-content{
-    background-color: #fff;
   }
 
     .wrap{
@@ -114,7 +114,7 @@
 
     .btn-wrap{
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
       .btn{
         width:150px;
         height:33px;
@@ -135,18 +135,11 @@
 
   }
   }
-  .info-wrap{
-    margin: 0 12px;
-    height:33px;
-    line-height: 33px;
-    border-bottom: .5px solid $c-hui;
-    background-color: #fff;
-
-  }
     .text-info{
-      /*padding:  0 12px;*/
-      height: 100%;
-
+      padding: 0 12px;
+      width:375px;
+      height:33px;
+      line-height: 33px;
       background:rgba(255,255,255,1);
       & span:first-child{
         min-width: 60px;
@@ -160,7 +153,7 @@
     font-family:SourceHanSansCN-Normal;
     font-weight:bold;
     &+.text-info{
-      padding: 0 12px;
+      width:375px;
       height:33px;
       background:rgba(255,255,255,1);
       &+.title{
@@ -168,6 +161,7 @@
         color: $c-cheng;
         text-align: right;
         &~.text-info{
+          border: 0.5px solid $c-hui;
 
         }
       }

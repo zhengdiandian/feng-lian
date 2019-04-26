@@ -6,7 +6,7 @@
             <div class="title" style="font-size: 16px;">{{title}}</div>
         </nav>
         <div class="reward">
-            <span style="width:57px;height:26px;font-size:36px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1);">670</span>
+            <span style="height:26px;font-size:36px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1);">{{reward.balance}}</span>
             <div style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 40px;">
                 共有{{39003}}人参与分摊，人均分摊{{0.11}}元
             </div>
@@ -15,50 +15,30 @@
     <main>
         <div class="historical-bill">历史账单</div>
         <div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{reward.list.lastMonth.date}}</div>
+            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{lastdate.date}}</div>
             <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥80.00</div>
             <div class="reward-money">
-                <div class="headimg"><img src="../assets/PNG/分享头像.png" alt=""></div>
+                <div class="headimg"><img :src="lastMonth.icon" alt=""></div>
                 <div style="display: flex; flex-direction: column; font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(51,51,51,1); margin-left: 12px;">
-                    <span style="font-weight:bold;">大兵</span>
-                    <span > 4月9日 0000</span>
+                    <span style="font-weight:bold;">{{lastMonth.contacs}}</span>
+                    <span > {{lastMonth.profitDate}}</span>
                 </div>
                 <div class="right">
-                    <span>+20.00元</span>
-                </div>
-            </div>
-            <div class="reward-money">
-                <div class="headimg"><img src="../assets/PNG/分享头像.png" alt=""></div>
-                <div style="display: flex; flex-direction: column; font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(51,51,51,1); margin-left: 12px;">
-                    <span style="font-weight:bold;">大兵</span>
-                    <span > 4月9日 0000</span>
-                </div>
-                <div class="right">
-                    <span>+20.00元</span>
+                    <span>+{{lastMonth.profitAmount}}元</span>
                 </div>
             </div>
         </div>
         <div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">2019年4月</div>
+            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{thisdate.date}}</div>
             <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥80.00</div>
             <div class="reward-money">
-                <div class="headimg"><img src="../assets/PNG/分享头像.png" alt=""></div>
+                <div class="headimg"><img :src="thisMonth.icon" alt=""></div>
                 <div style="display: flex; flex-direction: column; font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(51,51,51,1); margin-left: 12px;">
-                    <span style="font-weight:bold;">大兵</span>
-                    <span > 4月9日 0000</span>
+                    <span style="font-weight:bold;">{{thisMonth.contacs}}</span>
+                    <span > {{thisMonth.profitDate}}</span>
                 </div>
                 <div class="right">
-                    <span>+20.00元</span>
-                </div>
-            </div>
-            <div class="reward-money">
-                <div class="headimg"><img src="../assets/PNG/分享头像.png" alt=""></div>
-                <div style="display: flex; flex-direction: column; font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(51,51,51,1); margin-left: 12px;">
-                    <span style="font-weight:bold;">大兵</span>
-                    <span > 4月9日 0000</span>
-                </div>
-                <div class="right">
-                    <span>+20.00元</span>
+                    <span>+{{thisMonth.profitAmount}}元</span>
                 </div>
             </div>
         </div>
@@ -85,8 +65,10 @@ export default {
             title: '我的奖励',
             show: false,
             reward: [],
-            lastMonthM: [],
-            thisMonthM: []
+            lastMonth: [],
+            thisMonth: [],
+            lastdate:[],
+            thisdate:[]
         }
     },
     methods: {
@@ -103,9 +85,12 @@ export default {
     mounted() {
         this.$axios.post('/v1/finance/profit/profitList').then(res=>{
             this.reward = res.data.data
+            console.log(this.reward);
             this.lastMonth = res.data.data.list.lastMonth.profitList[0]
             this.thisMonth = res.data.data.list.thisMonth.profitList[0]
-            console.log(this.lastMonth)
+            this.lastdate = res.data.data.list.lastMonth
+            this.thisdate = res.data.data.list.thisMonth
+            // console.log(this.lastMonthm)
         })
     }
 }
@@ -169,6 +154,7 @@ nav {
         background: #ccc;
         border-radius: 50%;
         margin-left: 12px;
+        overflow: hidden;
         img {
             width: 100%;
             height: 100%;

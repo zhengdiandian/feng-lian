@@ -75,7 +75,7 @@
           </div>
         </router-link>
 
-        <router-link tag="div" to="/hlepPlan">
+        <router-link tag="div" to="/myhlepPlan">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/申请.svg" alt="">

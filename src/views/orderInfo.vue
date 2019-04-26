@@ -47,7 +47,7 @@
       <li><img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="payment.icon" alt=""> 银联支付<mu-divider></mu-divider>
       </li>
     </ul>
-    <div class="big-btn" @click="$router.push('/planInitial')"> 去支付</div>
+    <div class="big-btn" @click="topay"> 去支付</div>
   </div>
 </template>
 
@@ -61,26 +61,48 @@
       return {
         title: '订单确认',
         order: [],
-        payment: []
+        payment: [],
+        planId: '',
+        productId: ''
+      }
+    },
+    methods:{
+      topay() {
+        this.$axios.post('/v1/mutually/plan/addPayOrder',{
+          "orderNo":this.order.orderNo,
+          "channelId": 123465 //支付渠道ID
+        }).then(res=>{
+          console.log(res)
+          this.planId = res.data.data.planId
+          this.productId = res.data.data.productId
+          console.log(this.planId)
+          this.$router.push({
+            name: 'planInitial',
+            params:{
+              planNo: this.planId
+            }
+          })
+        })
+        
       }
     },
     mounted() {
-      this.$axios.post('/v1/mutually/plan/checkOrder',{
-        "contacs": "",  // 姓名
-        "contacsIdNo": "", // 身份证
-        "inviteCode": "", // 邀请码
-        "orderAmount": 123, // 金额
-        "productId": 456, // 产品ID
-        "relationShip": 0, // 0=自己 1=父母
-        "type": 1, //0 = 年费 1= 互助金
-      }).then((res)=>{
-        this.order = res.data.data
-      })
-      this.$axios.post('/v1/pay/channel/channelList').then(res=>{
-        this.payment = res.data.data[0]
-        console.log(this.payment)
-        console.log(this.$store.state.setorder)
-      })
+      // this.$axios.post('/v1/mutually/plan/checkOrder',{
+      //   "contacs": "",  // 姓名
+      //   "contacsIdNo": "", // 身份证
+      //   "inviteCode": "", // 邀请码
+      //   "orderAmount": 123, // 金额
+      //   "productId": 456, // 产品ID
+      //   "relationShip": 0, // 0=自己 1=父母
+      //   "type": 1, //0 = 年费 1= 互助金
+      // }).then((res)=>{
+      //   this.order = res.data.data
+      // })
+      // this.$axios.post('/v1/pay/channel/channelList').then(res=>{
+      //   this.payment = res.data.data[0]
+      //   // console.log(this.payment)
+      // })
+      this.order = this.$route.params.order
     }
   }
 </script>

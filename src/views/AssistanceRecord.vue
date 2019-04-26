@@ -34,6 +34,7 @@
                     :productName="item.productName"
                     :amount="amount"
                     :amountMoney="item.amount"
+                    :purchase="item.payState==0?'未划款':'已划款'"
                     >
                 </card>
             </section>

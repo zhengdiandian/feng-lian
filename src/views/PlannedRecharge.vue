@@ -69,7 +69,7 @@
       }
     },
     mounted() {
-      this.$axios.post('/v1/support/plan/planDetail').then((res)=> {
+      this.$axios.post('/v1/mutually/plan/planDetail').then((res)=> {
         this.panned = res.data.data
       })
     },
