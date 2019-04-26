@@ -28,11 +28,11 @@
         <span class="margin-top" style="display: inline-block;">资料填写</span>
         <div class="input-wrap">
           <label for>姓 &nbsp; 名：</label>
-          <input type="text" placeholder="请输入您的姓名">
+          <input type="text" placeholder="请输入您的姓名" v-model="name">
         </div>
         <div class="input-wrap">
           <label for>身份证：</label>
-          <input type="text" placeholder="请输入您的身份证号">
+          <input type="text" placeholder="请输入您的身份证号" v-model="ID">
         </div>
         <div class="warning">
           <mu-icon value=":iconfont icontanhao" size="24"></mu-icon> &nbsp; 身份证信息不可修改, 请正确填写
@@ -42,7 +42,7 @@
       <div class="yaoQing margin-top wrap">
         <div class="input-wrap">
           <label for>邀请码</label>
-          <input type="text" placeholder="请输入邀请码">
+          <input type="text" placeholder="请输入邀请码" v-model="InvitationCode">
           <span class="margin-left">获取邀请码</span>
         </div>
         <div class="warning">
@@ -93,23 +93,28 @@
       </div>
     </div>
   </main>
-    <div class="big-btn" @click="$router.push('/orderInfo')">去支付</div>
+    <div class="big-btn" @click="btnHandleClick">去支付</div>
   </div>
 </template>
 
 <script>
 import headpage from '../components/PageHeader/PageHeader'
+import { debug } from 'util';
 export default {
   name: "joinPlan",
   data() {
     return {
+      name:'',
+      ID:'',
+      InvitationCode:'',
       sliderVal: '',
       tongYi: false,
       activeStep: 0,
       btnList: [
         '自己', '父母', '配偶', '子女'
       ],
-      activeIndex: 0
+      activeIndex: 0,
+      order:{},
     }
   },
   computed:{
@@ -117,13 +122,29 @@ export default {
       return this.tongYi ? {color: 'blue'}: {}
     }
   },
+  methods: {
+      btnHandleClick (i) {
+        this.$axios.post('/v1/mutually/plan/checkOrder',{
+              "contacs":this.name,
+              "contacsIdNo":this.ID,
+              "inviteCode":this.inviteCode,
+              "orderAmount": this.activeStep, // 金额
+              "productCode": this.$route.params.productCode,
+              "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
+              "type": 0
+            }).then((res)=> {
+              this.order = res.data.data
+              // console.log(this.order)
+              this.$router.push('/orderInfo')
+              localStorage.setItem('order',this.order)
+            })
+      },
+  },
   components: {
     headpage
   },
   mounted() {
-    this.$axios.post('/v1/support/plan/checkOrder').then((res)=> {
-      console.log(res)
-    })
+    
   }
 };
 </script>

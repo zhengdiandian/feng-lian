@@ -10,14 +10,47 @@
       </mu-appbar>
         <main>
             <section class="details">
-                <div class="rule margin-left"  v-for="i in 5" :key="i">
-                    <span>昵称：</span><span style="margin-left: 30px;">一壶清酒</span>
+                <div class="rule margin-left">
+                    <span>昵称：</span><span style="margin-left: 30px;">{{detalis.nickname}}</span>
                     <mu-divider></mu-divider>
                 </div>
+                <div class="rule margin-left">
+                    <span>性别：</span><span style="margin-left: 30px;">{{detalis.sex}}</span>
+                    <mu-divider></mu-divider>
+                </div>
+                <div class="rule margin-left">
+                    <span>年龄：</span><span style="margin-left: 30px;">{{detalis.age}}</span>
+                    <mu-divider></mu-divider>
+                </div>
+                <div class="rule margin-left">
+                    <span>生日：</span><span style="margin-left: 30px;">{{detalis.birth}}</span>
+                    <mu-divider></mu-divider>
+                </div>
+                <div class="rule margin-left">
+                    <span>星座：</span><span style="margin-left: 30px;">{{detalis.constellation}}</span>
+                    <mu-divider></mu-divider>
+                </div>
+
             </section>
             <section class="details">
-                <div class="rule margin-left"  v-for="i in 5" :key="i">
-                    <span>职业：</span><span style="margin-left: 30px;">互联网开发</span>
+                <div class="rule margin-left">
+                    <span>职业：</span><span style="margin-left: 30px;">{{detalis.job}}</span>
+                    <mu-divider></mu-divider>
+                </div>
+                <div class="rule margin-left">
+                    <span>学校/公司：</span><span style="margin-left: 0px;">{{detalis.workingPlace}}</span>
+                    <mu-divider></mu-divider>
+                </div>
+                <div class="rule margin-left">
+                    <span>所在地：</span><span style="margin-left: 20px;">{{detalis.address}}</span>
+                    <mu-divider></mu-divider>
+                </div>
+                <div class="rule margin-left">
+                    <span>故乡：</span><span style="margin-left: 30px;">{{detalis.hometown}}</span>
+                    <mu-divider></mu-divider>
+                </div>
+                <div class="rule margin-left">
+                    <span>邮箱：</span><span style="margin-left: 30px;">{{detalis.email}}</span>
                     <mu-divider></mu-divider>
                 </div>
             </section>
@@ -29,7 +62,14 @@ export default {
     name: 'mydetails',
     data() {
         return {
+            detalis:[]
         }
+    },
+    mounted() {
+        this.$axios.post('/v1/user/user/infoDetail').then(res=>{
+            this.detalis = res.data.data
+            console.log(this.detalis)
+        })
     },
 }
 </script>

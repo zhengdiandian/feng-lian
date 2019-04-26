@@ -79,6 +79,7 @@
       this.$axios.post('/v1/pay/channel/channelList').then(res=>{
         this.payment = res.data.data[0]
         console.log(this.payment)
+        console.log(this.$store.state.setorder)
       })
     }
   }

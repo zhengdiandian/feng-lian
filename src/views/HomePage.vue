@@ -152,11 +152,11 @@ export default {
   },
   mounted() {
     this.$axios.post('/v1/manage/post/index').then((res)=>{
-      // console.log(res)
+      console.log(res)
     }),
     this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
           this.product = res.data.data[0]
-          console.log(this.product)
+          // console.log(this.product)
     })
   }
 };
