@@ -53,7 +53,7 @@
                 <div class="list" v-for="i in 20" :key="i">
                     <span style="margin-left: 24px;">{{i}}</span>
                     <span class="list-img"><img :src="rank.img" alt=""></span>
-                    <span style="position: absolute;left: 85px;">{{rank.nickname}}</span>
+                    <span style="position: absolute;left: 95px;">{{rank.nickname}}</span>
                     <span style="position: absolute;right: 20px;">{{rank.score}}分</span>
                 </div>
             </div>
@@ -98,7 +98,7 @@ export default {
         display: inline-block;
         position: absolute;
         top: 8px;
-        left: 40px;
+        left: 50px;
         overflow: hidden;
         img{
             width: 100%;

@@ -61,9 +61,9 @@
       <router-link tag="div" to="/code">
       <div class="apply">
         <img src="../assets/图标/爱心.png" alt="">
-        <span>申请成为爱心大使</span>
+        <span>成功邀请一人，就得20元红包</span>
         <div class="apply-click">
-          <span>立即申请</span>
+          <span>邀请</span>
           <mu-icon value=":iconfont iconyou"></mu-icon>
         </div>
       </div>
@@ -76,7 +76,7 @@
             <div class="info">{{product.subtitle}}</div>
           </div>
           <div class="plan-right-content">
-            <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code}})">再次加入</mu-button>
+            <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code}})"><span>再次加入</span></mu-button>
           </div>
         </div>
         <mu-divider></mu-divider>
@@ -401,7 +401,7 @@ h3{
       /*flex-direction: column;*/
 
       .btn{
-      width:90px;
+      // width:90px;
       height:25px;
       background:rgba(255,129,37,1);
       border-radius:13px;
