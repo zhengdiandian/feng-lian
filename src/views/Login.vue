@@ -54,10 +54,7 @@ export default {
       this.accountErr = '账号错误'
       this.pwdErr = '密码错误'
       this.show = true
-    }
-},
-mounted() {
-  this.$axios.post('/v1/user/login/login',{
+      this.$axios.post('/v1/user/login/login',{
       "account": "",	//手机号码
       "appId": "",	//appid,用于直接登录
       "loginPassword": "",	//登陆密码
@@ -67,7 +64,8 @@ mounted() {
   }).then(res=>{
     console.log(res)
   })
-}
+    }
+},
 
 };
 </script>

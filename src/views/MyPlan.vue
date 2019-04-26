@@ -58,7 +58,7 @@
             </div>
             <div class="purchase-plan">
                 <span style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
-                <section class="card"><card :open="() => {$router.push('/recharge')}"></card></section>
+                <section class="card"><card :open="() => {$router.push('/planInitial')}"></card></section>
             </div>
         </main>
         <footerBtn></footerBtn>

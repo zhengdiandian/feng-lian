@@ -35,7 +35,7 @@
           <input type="text" placeholder="请输入您的身份证号" v-model="ID">
         </div>
         <div class="warning">
-          <mu-icon value=":iconfont icontanhao" size="24"></mu-icon> &nbsp; 身份证信息不可修改, 请正确填写
+          <mu-icon value=":iconfont icontanhao" size="24"></mu-icon> &nbsp; 邀请码信息不可修改, 请正确填写
         </div>
       </div>
       <!-- <mu-divider style="height:5px;"></mu-divider> -->
@@ -137,7 +137,6 @@ export default {
             }).then((res)=> {
               this.order = res.data.data
               console.log(this.order)
-              debugger
               localStorage.setItem('order',this.order)
             })
       },
