@@ -109,7 +109,6 @@ export default {
       btnList: [
         '自己', '父母', '配偶', '子女'
       ],
-<<<<<<< HEAD
       sums:[
         10,
         20,
@@ -118,10 +117,6 @@ export default {
         200
       ],
       activeIndex: 0
-=======
-      activeIndex: 0,
-      order:{},
->>>>>>> 5bf46c881e41758e379f6106c0413fc8d2e650fb
     }
   },
   computed:{
@@ -135,7 +130,7 @@ export default {
               "contacs":this.name,
               "contacsIdNo":this.ID,
               "inviteCode":this.inviteCode,
-              "orderAmount": this.activeStep, // 金额
+              "orderAmount": this.sums[this.activeStep], // 金额
               "productCode": this.$route.params.productCode,
               "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
               "type": 0
