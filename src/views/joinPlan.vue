@@ -137,16 +137,13 @@ export default {
             }).then((res)=> {
               this.order = res.data.data
               console.log(this.order)
-<<<<<<< HEAD
               localStorage.setItem('order',this.order)
-=======
               this.$router.push({
                 name: 'orderInfo',
                 params: {
                   order: this.order
                 }
               })
->>>>>>> bfb1742b4cd4de2477d65997a6f11868787c05a3
             })
       },
   },
