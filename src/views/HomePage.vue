@@ -380,7 +380,7 @@ h3{
       flex-wrap: nowrap;
       align-items: center;
       /*padding: 5px;*/
-      padding: 18px 0 18px 14px;
+      padding: 18px 14px 18px 0px;
 
       img{
         width:60px;

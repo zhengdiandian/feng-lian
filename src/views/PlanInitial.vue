@@ -54,7 +54,7 @@
         </mu-list-item>
       </mu-list>
     </div>
-    
+
     <router-link tag="div" to="/recharge">
     <div class="next-btn">再去看看</div>
     </router-link>
@@ -114,7 +114,7 @@
 
     .btn-wrap{
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-between;
       .btn{
         width:150px;
         height:33px;
