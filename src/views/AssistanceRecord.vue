@@ -110,7 +110,7 @@ export default {
     margin: 12px auto;
 }
 .card{
-    margin: auto;
+    margin: 12px auto;
 }
 footer{
     position: absolute;

@@ -110,7 +110,7 @@
 
     .btn-wrap{
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-between;
       .btn{
         width:150px;
         height:33px;
