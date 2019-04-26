@@ -129,15 +129,15 @@ export default {
         this.$axios.post('/v1/mutually/plan/checkOrder',{
               "contacs":this.name,
               "contacsIdNo":this.ID,
-              "inviteCode":this.inviteCode,
-              "orderAmount": this.activeStep, // 金额
+              "inviteCode":this.InvitationCode,
+              "orderAmount": this.sums[this.activeStep], // 金额
               "productCode": this.$route.params.productCode,
               "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
               "type": 0
             }).then((res)=> {
               this.order = res.data.data
-              // console.log(this.order)
-              this.$router.push('/orderInfo')
+              console.log(this.order)
+              debugger
               localStorage.setItem('order',this.order)
             })
       },
