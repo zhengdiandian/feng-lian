@@ -69,11 +69,7 @@
 
         </mu-stepper>
         <ul class="stepper-step">
-          <li>10元</li>
-          <li>20元</li>
-          <li>50元</li>
-          <li>100元</li>
-          <li>200元</li>
+          <li v-for="sum in sums" :kye="sum">{{sum}}元</li>
         </ul>
       </div>
       <div class="buy-info margin-top">
@@ -108,6 +104,13 @@ export default {
       activeStep: 0,
       btnList: [
         '自己', '父母', '配偶', '子女'
+      ],
+      sums:[
+        10,
+        20,
+        50,
+        100,
+        200
       ],
       activeIndex: 0
     }

@@ -375,7 +375,7 @@ h3{
       flex-wrap: nowrap;
       align-items: center;
       /*padding: 5px;*/
-      padding: 18px 0;
+      padding: 18px 0 18px 14px;
 
       img{
         width:60px;
@@ -387,7 +387,14 @@ h3{
 
     }
     .plan-right-content{
-      align-self: center;
+      /*float: 6;*/
+      /*width: 200px;*/
+      flex: 5;
+      /*width: auto;*/
+      justify-content: flex-end;
+      display: flex;
+      /*flex-direction: column;*/
+
       .btn{
       width:90px;
       height:25px;
