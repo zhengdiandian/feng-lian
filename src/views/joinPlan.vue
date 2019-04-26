@@ -130,7 +130,7 @@ export default {
               "contacs":this.name,
               "contacsIdNo":this.ID,
               "inviteCode":this.inviteCode,
-              "orderAmount": this.sums[this.activeStep], // 金额
+              "orderAmount": this.activeStep, // 金额
               "productCode": this.$route.params.productCode,
               "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
               "type": 0
@@ -146,7 +146,7 @@ export default {
     headpage
   },
   mounted() {
-    
+
   }
 };
 </script>
