@@ -7,18 +7,19 @@
         <div class="right-wrap" >
           <div class="name" >姓名：{{name}} <span>{{state}}</span></div>
           <slot name="data"></slot>
-          <div class="date content-center">购买日：2019.03.20</div>
+          <div class="date content-center"> <span>{{purchase}}</span>{{date}}</div>
         </div>
       </div>
+      <slot name="lable"></slot>
       <div class="bottom-content">
         <div class="one">
           <div>产品名称:</div>
-          <div>等待期:</div>
+          <div>{{waitingperiod}}</div>
           <div>{{amount}}:</div>
         </div>
         <div class="tow">
           <div>{{productName}}</div>
-          <div>180天</div>
+          <div>{{waiting}}天</div>
           <div>{{amountMoney}}元</div>
         </div>
         <div class="btn-wrap">
@@ -59,6 +60,22 @@
       amountMoney:{
         type: Number,
         default: 10
+      },
+      waiting:{
+        type: Number,
+        default: 180
+      },
+      purchase: {
+        type: String,
+        default: '购买日'
+      },
+      date:{
+        type: String,
+        default: ''
+      },
+      waitingperiod:{
+        type: String,
+        default: '等待期：'
       },
       // supporlist: {
       //   type: Array,

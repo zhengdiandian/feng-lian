@@ -12,8 +12,22 @@
             <div style="margin: auto;width:92%;">
                 <span class="font">我的购买计划</span>
                 <div style="margin-top: 8px;">
-                    <card :open="() => {$router.push('/palnned')}"></card>
-                    <card :open="() => {$router.push('/palnned')}"></card>
+                    <card 
+                    :open="() => {$router.push('/palnned')}"
+                    :date="': 2019.01.02'"
+                    >
+
+                    <template v-slot:lable>
+                        <div class="slot-lable">
+                            <img src="../assets/img/驳回.svg" alt="">
+                        </div>
+                    </template>
+                    </card>
+                    <card
+                    :open="() => {$router.push('/palnned')}"
+                    :date="': 2019.01.02'"
+                    >
+                    </card>
                 </div>
             </div>
         </main>
@@ -36,5 +50,19 @@ export default {
 main{
     margin: auto;
     margin-top: 60px;
+    position: relative;
+}
+.slot-lable{
+    // width: 100px;
+    // height: 500px;
+    // position: relative;
+    img{
+        position: absolute;
+        right: 10px;
+        top: 30px;
+        width: 50px;
+        height: 50px;
+        z-index: 99;
+    }
 }
 </style>
