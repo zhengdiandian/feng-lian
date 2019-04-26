@@ -1,6 +1,16 @@
 .mu-input.mu-input__focus {
     color: #666;
 }
+.mu-item__open .toggle-icon {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.toggle-icon {
+    color: $c-cheng;
+}
+.mu-bottom-item-active{
+    color: rgba(0, 0, 0, 0.54);
+}
 .mu-step-label {
     height: 20.571vw;
     color: rgba(0,0,0,.87);

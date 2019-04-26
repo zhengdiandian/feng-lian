@@ -9,7 +9,7 @@
       <mu-button icon slot="left" @click="$router.go(-1)">
         <mu-icon value=":iconfont iconfanhui"></mu-icon>
       </mu-button>
-      订单详情
+      我分享的用户
       <mu-button icon slot="right" :ripple="false"> </mu-button>
     </mu-appbar>
     <main class="page-margin-top">
