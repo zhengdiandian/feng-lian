@@ -42,7 +42,7 @@
       <div class="yaoQing margin-top wrap">
         <div class="input-wrap">
           <label for>邀请码</label>
-          <input type="text" placeholder="请输入邀请码" v-model="InvitationCode">
+          <input type="text" placeholder="请输入邀请码" v-model="InvitationCode" disabled="disabled">
           <span class="margin-left">获取邀请码</span>
         </div>
         <div class="warning">
@@ -203,6 +203,7 @@ export default {
     padding-left: 20px;
     outline: none;
     font-size: 12px;
+    background-color: #fff;
 
   }
 }

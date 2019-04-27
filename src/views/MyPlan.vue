@@ -66,7 +66,7 @@
                         :amount="amount"
                         :amountMoney="myplan.balance"
                         :waiting="myplan.leftWattingDays"
-                        :date="'2019.01.03'"
+                        :date="': 2019.01.03'"
                     >
                     </card>
                     </section>

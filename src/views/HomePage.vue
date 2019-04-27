@@ -61,9 +61,9 @@
       <router-link tag="div" to="/code">
       <div class="apply">
         <img src="../assets/图标/爱心.png" alt="">
-        <span>申请成为爱心大使</span>
+        <span>成功邀请一人，就得20元红包</span>
         <div class="apply-click">
-          <span>立即申请</span>
+          <span>邀请</span>
           <mu-icon value=":iconfont iconyou"></mu-icon>
         </div>
       </div>
@@ -76,7 +76,7 @@
             <div class="info">{{product.subtitle}}</div>
           </div>
           <div class="plan-right-content">
-            <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code}})">再次加入</mu-button>
+            <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code}})"><span>再次加入</span></mu-button>
           </div>
         </div>
         <mu-divider></mu-divider>
@@ -143,16 +143,21 @@ export default {
   data() {
     return {
       shift: "movies",
-      open: false,
+      // open: true,
       product: []
     };
+  },
+  methods: {
+    open() {
+
+    }
   },
   components: {
     BannerImg
   },
   mounted() {
-    this.$axios.post('/v1/manage/post/index').then((res)=>{
-      console.log(res)
+    this.$axios.post('/v1/manage/post/index').then((res)=>{ // 没数据
+      // console.log(res)
     }),
     this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
           this.product = res.data.data[0]
@@ -396,7 +401,7 @@ h3{
       /*flex-direction: column;*/
 
       .btn{
-      width:90px;
+      // width:90px;
       height:25px;
       background:rgba(255,129,37,1);
       border-radius:13px;
