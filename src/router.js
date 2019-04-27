@@ -48,7 +48,10 @@ export default new Router({
         {
           path: '/my', // 我的
           name: MyCenter,
-          component: MyCenter
+          component: MyCenter,
+          meta: {
+            requiresAuth: true
+          }
         }
       ]
     },
@@ -136,6 +139,9 @@ export default new Router({
       path: '/myplan', // 我的计划
       component: function () {
         return import('./views/MyPlan.vue')
+      },
+      meta: {
+        requiresAuth: true
       }
     },
     {
@@ -207,6 +213,9 @@ export default new Router({
       name: 'minePlan',
       component: function () {
         return import('./views/minePlan')
+      },
+      meta: {
+        requiresAuth: true
       }
     },
     {
@@ -265,3 +274,5 @@ export default new Router({
     // }
   ]
 })
+
+
