@@ -15,6 +15,7 @@
                 <span class="number" style="font-weight:bold; font-size: 20px;">{{helped.helpedCount}}</span>
                 <span style="font-size: 12px;">已帮助人数</span>
             </div>
+            <div class="xian" style="width: 1px;align-self: center;border-left: 1px solid #eaeaea;height:30px;"></div>
             <div class="users">
                 <span class="number" style="font-weight:bold; font-size: 20px;">{{helped.joinedDays}}</span>
                 <span style="font-size: 12px;">已加入蜂链天数</span>
@@ -30,7 +31,7 @@
                 <card
                     :open="() => {$router.push('/palnned')}"
                     :name="item.contacs"
-                    :state="item.payState==100?'未实名':'以实名'"
+                    :state="item.payState==100?'未实名':'已实名'"
                     :productName="item.productName"
                     :amount="amount"
                     :amountMoney="item.amount"
@@ -66,7 +67,10 @@ export default {
         }
     },
     mounted() {
-        this.$axios.post('/v1/mutually/plan/supportList').then((res) => {
+        this.$axios.post('/v1/mutually/plan/supportList',{
+            "page": 1,
+            "pageSize": 1
+        }).then((res) => {
             // console.log(res.data.data)
             this.helped = res.data.data
             this.supporlist = res.data.data.list
@@ -110,7 +114,8 @@ export default {
     margin: 12px auto;
 }
 .card{
-    margin: 12px auto;
+    margin: auto;
+    height: 180px;
 }
 footer{
     position: absolute;

@@ -11,10 +11,30 @@
         <main>
             <div style="margin: auto;width:92%;">
                 <span class="font">我的购买计划</span>
-                <div style="margin-top: 8px;">
+                <div  style="margin-top: 8px;">
+                  <section class="card">
                     <card 
                     :open="() => {$router.push('/palnned')}"
                     :date="': 2019.01.02'"
+                    :waitingperiod="waitingperiod"
+                    :waiting="waiting"
+                    >
+
+                    <template v-slot:lable>
+                        <div class="slot-lable">
+                            <img src="../assets/img/审核中.svg" alt="">
+                        </div>
+                    </template>
+                    <template v-slot:FilingDate>
+                        <div class="dates"><span>申请日：</span>2019.01.01</div>
+                    </template>
+                    </card>
+                    </section>
+                    <card
+                    :open="() => {$router.push('/palnned')}"
+                    :date="': 2019.01.02'"
+                    :waitingperiod="waitingperiod"
+                    :waiting="waiting"
                     >
 
                     <template v-slot:lable>
@@ -25,11 +45,9 @@
                     <template v-slot:FilingDate>
                         <div class="dates"><span>申请日：</span>2019.01.01</div>
                     </template>
-                    </card>
-                    <card
-                    :open="() => {$router.push('/palnned')}"
-                    :date="': 2019.01.02'"
-                    >
+                    <!-- <template v-slot:AuditPass>
+                      <div class="slot-AuditPass"><img src="../assets/img/审核通过.svg" alt=""></div>
+                    </template> -->
                     </card>
                 </div>
             </div>
@@ -45,6 +63,8 @@ export default {
     },
     data() {
         return {
+            waitingperiod: '等待期:',
+            waiting: '180天'
         }
     },
 }
@@ -55,14 +75,21 @@ main{
     margin-top: 60px;
     position: relative;
 }
+.card{
+  // width: 100%;
+
+  height: 180px;
+  display: flex;
+  flex-grow: 1;
+}
 .slot-lable{
     // width: 100px;
     // height: 500px;
     // position: relative;
     img{
         position: absolute;
-        right: 10px;
-        top: 31px;
+        right: 0px;
+        top: 16px;
         width: 50px;
         height: 50px;
         z-index: 99;
@@ -70,14 +97,28 @@ main{
 }
 .dates{
         margin-top: 5px;
-        width:150px;
-        height:10px;
+        width:fit-content;
+        // width:-webkit-fit-content;
+        // width:-moz-fit-content;
+        max-width: 300px;
+        min-width: 50px;
+        word-wrap: break-word;
+        height:22px;
         background:rgba(246,176,59,1);
         border-radius:11px;
         font-size:10px;
         font-family:SourceHanSansCN-Normal;
         font-weight:400;
         text-align: center;
-        line-height: 10px;
+        line-height: 22px;
+      }
+      .slot-AuditPass{
+        position: absolute;
+        right: -100px;
+        top: 30px;
+        img{
+          width: 72px;
+          height: 54px;;
+        }
       }
 </style>

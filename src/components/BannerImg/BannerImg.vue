@@ -6,7 +6,13 @@
 
 <script>
   export default {
-    name: 'BannerImg'
+    name: 'BannerImg',
+    props:{
+      videoImg:{
+        type: String,
+        default: '../../assets/PNG/视频.png'
+      }
+    }
   }
 </script>
 

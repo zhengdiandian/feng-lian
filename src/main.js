@@ -64,7 +64,7 @@ Vue.use(Avatar)
 Vue.config.productionTip = false
 // Axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 Vue.prototype.$axios = Axios.create({
-  baseURL: 'http://47.110.79.190:8080/mockjsdata/31'
+  baseURL: 'http://47.110.79.190:8080/mockjsdata/31/h5'
 })
 new Vue({
   router,

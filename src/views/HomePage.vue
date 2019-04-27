@@ -1,7 +1,7 @@
 <template>
   <div class="page-margin-top">
     <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
-      <mu-button icon slot="right">
+      <mu-button icon slot="right" @click="$router.push('/myPlanNews')">
         <mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>
       </mu-button>
         链接你我他 &nbsp;&nbsp;守护千万家
@@ -13,7 +13,7 @@
 
       <mu-carousel class="banner">
         <mu-carousel-item v-for="i in 4" :key="i">
-          <img src="../assets/PNG/首页banner.png">
+          <img :src="bannerlist.img" @click="See">
         </mu-carousel-item>
       </mu-carousel>
       <div class="content">
@@ -54,7 +54,7 @@
             <div class="text">数据上链</div>
           </div>
         </div>
-        <banner-img></banner-img>
+        <banner-img :videoImg="videoImg"></banner-img>
       </div>
     </div>
     <div class="wrap">
@@ -76,7 +76,10 @@
             <div class="info">{{product.subtitle}}</div>
           </div>
           <div class="plan-right-content">
-            <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code}})"><span>再次加入</span></mu-button>
+            <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code}})">
+              <span v-if="type == 0">加入</span>
+              <span v-if="type == 1">再次加入</span>
+            </mu-button>
           </div>
         </div>
         <mu-divider></mu-divider>
@@ -88,14 +91,14 @@
       <div class="help-wrap">
         <mu-sub-header>常见问题</mu-sub-header>
 
-        <mu-list  class="list" toggle-nested="">
-          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="i in 7" :key="i">
-            <mu-list-item-title>{{i}}、谁可以加入蜂链互助计划？</mu-list-item-title>
+        <mu-list  class="list" toggle-nested="" v-for="(item,i) in homeinfor.issueList" :key="i">
+          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     >
+            <mu-list-item-title>{{i+1}}、{{item.title}}</mu-list-item-title>
             <mu-list-item-action>
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
             <mu-list-item button :ripple="false" slot="nested">
-              <mu-list-item-title>List Item 1</mu-list-item-title>
+              <mu-list-item-title>{{item.content}}</mu-list-item-title>
             </mu-list-item>
             <mu-list-item button :ripple="false" slot="nested">
               <mu-list-item-title>List Item 2</mu-list-item-title>
@@ -138,26 +141,36 @@
 <script>
 // @ is an alias to /src
 import BannerImg from '../components/BannerImg/BannerImg'
+import { debug } from 'util';
 export default {
   name: "homePage",
   data() {
     return {
       shift: "movies",
       // open: true,
-      product: []
+      product: [],
+      homeinfor: [],
+      bannerlist:[],
+      type: 0,
+      videoImg: '../../assets/PNG/视频.png'
     };
   },
   methods: {
     open() {
 
-    }
+    },
+  See() {
+    window.location.href = this.bannerlist.linkUrl
+  }
   },
   components: {
     BannerImg
   },
   mounted() {
-    this.$axios.post('/v1/manage/post/index').then((res)=>{ // 没数据
-      // console.log(res)
+    this.$axios.post('/v1/manage/post/index').then((res)=>{
+      this.homeinfor = res.data.data
+      this.bannerlist = res.data.data.bannerList[0]
+      console.log(this.homeinfor)
     }),
     this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
           this.product = res.data.data[0]

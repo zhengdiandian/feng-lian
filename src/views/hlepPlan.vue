@@ -119,7 +119,7 @@
         </mu-list>
 
       </div>
-      <div class="bottom-btn" @click="$router.push('/inform')">立即加入</div>
+      <div class="bottom-btn" @click="joinInform">立即加入</div>
     </div>
   </div>
 </template>
@@ -167,6 +167,11 @@
             text: '满足条件拨款秒结'
           }
         ]
+      }
+    },
+    methods: {
+      joinInform() {
+        this.$router.push('/inform')
       }
     },
     mounted() {

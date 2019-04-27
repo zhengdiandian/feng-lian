@@ -189,10 +189,17 @@ export default new Router({
       }
     },
     {
-      path: '/myhlepPlan', // 我的帮助计划
+      path: '/myhlepPlan', // 我的 申请   帮助计划
       name: 'myhlepPlan',
       component: function () {
         return import('./views/MyHelpPlan')
+      }
+    },
+    {
+      path: '/myPlanNews', // 我的计划消息
+      name: 'myplannews',
+      component: function () {
+        return import('./views/MyPlanNews')
       }
     },
     {
@@ -203,7 +210,7 @@ export default new Router({
       }
     },
     {
-      path: '/minePlan', // 我的计划
+      path: '/minePlan', // 我的帮助计划
       name: 'minePlan',
       component: function () {
         return import('./views/minePlan')

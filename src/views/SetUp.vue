@@ -41,6 +41,7 @@
                     <span style="float: right;">1.0.0.1</span>
                 </div>
             </div> -->
+            <button class="setBtn">解除绑定</button>
             <button class="setBtn">安全退出</button>
         </main>
     </div>
