@@ -11,7 +11,7 @@
                 <section class="hear-infor">
                     <img :src="code.headPortrait" alt="">
                     <div>
-                        <span style="font-size:14px;">dsfdsa</span>
+                        <span style="font-size:14px;">{{code.nickname}}</span>
                         <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1); line-height: 20px;" >{{code.state == 100 ? '未认证':'已认证'}}</span>
                     </div>
                     <span style="color:rgba(112,112,112,1);">{{code.motto}}</span>
@@ -47,7 +47,7 @@ export default {
         }
     },
     mounted(){
-        this.$axios.post('/v1/user/user/myQrcode').then((res)=>{
+        this.$axios.post('/v1/user/userInfo/myQrcode').then((res)=>{
             this.code = res.data.data
             console.log(res)
         })

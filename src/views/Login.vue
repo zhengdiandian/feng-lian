@@ -46,17 +46,51 @@ export default {
       pwd: "",
       visibility: false,
       pwdErr: "",
-      show: false
+      show: false,
+      usernameRules: [
+        { validate: (val) => !!val, message: '必须填写用户名'},
+        { validate: (val) => val.length >= 3, message: '用户名长度大于3'}
+      ],
+      passwordRules: [
+        { validate: (val) => !!val, message: '必须填写密码'},
+        { validate: (val) => val.length >= 3 && val.length <= 10, message: '密码长度大于3小于10'}
+      ],
+    }
+  },
+  watch: {
+    show () {
+      if(this.show) {
+        setTimeout(() =>{
+          this.show = false
+        },3000)
+      }
     }
   },
   methods: {
     login() {
-      this.accountErr = '账号错误'
-      this.pwdErr = '密码错误'
-      this.show = true
-      setInterval(() => {
-      this.show = false
-      }, 2000);
+      // if(!this.account){
+      //   this.accountErr = '用户名不能为空'
+      //   return
+      // }
+      // if(!this.pwd){
+      //   this.pwd = '密码不能为空'
+      //   return
+      // }
+      // const accountReg = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/
+      // if(!accountReg.test(this.account)) {
+      //   this.accountErr = '请输入正确的手机号码'
+      //   return
+      // }
+      // if(this.pwd.length < 6 ) {
+      //   this.pwdErr = '账号长度必须大于6位'
+      //   return
+      // }
+      // if(this.pwd.length > 16 ) {
+      //   this.pwdErr = '账号长度必须小于16位'
+      //   return
+      // }
+      // this.accountErr = '账号错误'
+      // this.pwdErr = '密码错误'
       this.$axios.post('/v1/user/login/login',{
       "account": "",	//手机号码
       "appId": "",	//appid,用于直接登录
@@ -65,8 +99,13 @@ export default {
       "token": "",	//type=0时，短信token
       "type": 0,	//0=短信登陆，1=密码登陆
   }).then(res=>{
+    const {authToken} = res.data.data
     console.log(res)
-  })
+        this.$store.commit('set_authToken', authToken)
+        this.$router.push(this.$route.query.redirect)
+  }).catch(err => {
+    this.show = true
+      })
     }
 },
 
