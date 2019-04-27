@@ -9,7 +9,7 @@
         <main>
             <div class="head-name">
                 <section class="hear-infor">
-                    <img :src="code.headPortrait" alt="">
+                    <!--<img :src="code.headPortrait" alt="">-->
                     <div>
                         <span style="font-size:14px;">{{code.nickname}}</span>
                         <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1); line-height: 20px;" >{{code.state == 100 ? '未认证':'已认证'}}</span>
@@ -17,7 +17,8 @@
                     <span style="color:rgba(112,112,112,1);">{{code.motto}}</span>
                 </section>
                 <section class="code">
-                    <img src="../assets/PNG/中青年.png" alt="">
+                  <div ref="qr"></div>
+                  <!--<img src="../assets/PNG/中青年.png" alt="">-->
                 </section>
                 <section class="preservation">
                     <span class="margin-top margin-bottom" style="color: #EFA220">保存二维码</span>
@@ -28,9 +29,11 @@
     </div>
 </template>
 <script>
+import Qrcode from 'qrcodejs2'
 import axios from 'axios'
+console.log(Qrcode)
 export default {
-    name: 'qrcode',
+    name: 'Qrcode',
     data() {
         return {
            title: '我的二维码',
@@ -51,6 +54,14 @@ export default {
             this.code = res.data.data
             console.log(res)
         })
+    new Qrcode(this.$refs.qr, {
+        text: 'https://www.qtshe.com',
+        width: 160,
+        height: 160,
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: Qrcode.CorrectLevel.H
+      })
     }
 }
 </script>
@@ -109,10 +120,10 @@ main{
             border:2px solid rgba(255,255,255,1);
             border-radius:50%;
             position: relative;
-            left: 30px;
+            /*left: 30px;*/
         }
         }
-        
+
     }
     .code{
         width:180px;
@@ -122,6 +133,10 @@ main{
         opacity:0.5;
         margin: auto;
         margin-top: 180px;
+        div{
+          width: 100%;
+          height: 100%;
+        }
         img{
             width: 100%;
             height: 100%;
