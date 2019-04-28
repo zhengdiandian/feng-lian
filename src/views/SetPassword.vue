@@ -54,6 +54,7 @@
 <script>
 import pageHeader from '../components/PageHeader/PageHeader'
 import POpBox from '../components/PopBox/PopBox'
+import { debug } from 'util';
 export default {
     name: 'setpassword',
     data() {
@@ -71,13 +72,23 @@ export default {
         pageHeader,
         POpBox
     },
-    mounted() {
-      this.$axios.post('/v1/user/login/setPwd',{
-        "authToken": this.$route.params.token,	//登陆token	string
-        "newPwd": this.value14	//新密码
+    methods: {
+      setPwd () {
+        this.$axios.post('/v1/user/login/setPwd',{
+        "token": decodeURIComponent(this.token),	//登陆token	string
+        "newPwd": this.value14,	//新密码,
+        smsCode: decodeURIComponent(this.	smsCode),
+        account: decodeURIComponent(this.account)
       }).then(res=>{
+        debug,
+        sessionStorage.setItem('token', res.data.data)
         console.log(res);
+        
       })
+      }
+    },
+    mounted() {
+      
     }
 
 }

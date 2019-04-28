@@ -75,11 +75,12 @@ export default new Router({
       }
     },
     {
-      path: '/setpwd/:token',
+      path: '/setpwd/:token/:smsCode/:account',
       name: 'setpwd', // 设置密码
       component: function () {
         return import('./views/SetPassword.vue')
-      }
+      },
+      props: true
     },
     {
       path: '/reset', // 重新设置密码

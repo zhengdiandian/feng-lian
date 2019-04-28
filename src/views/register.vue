@@ -59,10 +59,20 @@ export default {
             "openId": "test",          // 微信appid
             "account": this.user, // 手机
             "smsCode": this.pwd,  // 短信验证码
-            "token": this.msgToken // 短信token
+            "token": this.msgToken, // 短信token
+            "inviteCode	":  136750423931
           }).then((res)=> {
+              debugger
             this.token = res.data.data.authToken
             console.log(this.token)
+            this.$router.push({
+            name: 'setpwd',
+            params: {
+                token: encodeURIComponent(this.token),
+                account: encodeURIComponent(this.user),
+                smsCode: encodeURIComponent(this.pwd)   
+            }
+        })
           })
         },
         getMsgHandleClick() {
@@ -84,7 +94,7 @@ export default {
         this.$router.push({
             name: 'setpwd',
             params: {
-                token: this.token
+                token: this.token,
             }
         })
         },
