@@ -16,7 +16,8 @@
             <div class="pwd-wrap">
                 <mu-text-field v-model="pwd" label="请输入验证码" label-float  icon=":iconfont iconmima">
                     <div slot="append">
-                        <router-link tag="div" to="/register" style="color: #347fe8;">获取验证码</router-link>
+                        <div v-show="show" @click="getCode" style="color: #347fe8;">获取验证码</div>
+                        <span v-show="!show" class="count">{{count}} s</span>
                     </div>
                 </mu-text-field>
             </div>
@@ -48,14 +49,16 @@ export default {
             user: '',
             pwd: '',
             show: false,
-            token: ''
+            token: '',
+            show: true,
+            count: '',
+            timer: null,
         }
     },
     methods: {
         open() {
         // debugger
         // this.show = true
-        
         this.$router.push({
             name: 'setpwd',
             params: {
@@ -63,6 +66,22 @@ export default {
             }
         })
         },
+        getCode(){
+            const TIME_COUNT = 60;
+            if (!this.timer) {
+            this.count = TIME_COUNT;
+            this.show = false;
+            this.timer = setInterval(() => {
+            if (this.count > 0 && this.count <= TIME_COUNT) {
+                this.count--;
+                } else {
+                this.show = true;
+                clearInterval(this.timer);
+                this.timer = null;
+                }
+            }, 1000)
+            }
+        }
         // setCode() {
         //   console.log(11)
         // }
