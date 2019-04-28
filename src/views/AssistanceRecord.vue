@@ -21,13 +21,13 @@
                 <span style="font-size: 12px;">已加入蜂链天数</span>
             </div>
         </section>
-        <section>
             <div class="assis-title">链接你我他 &nbsp; &nbsp; 守护千万家</div>
-            <div style="margin: 12px 0px 12px 12px">
-                <div style="font-size:15px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
-                <div style="font-size:9px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(112,112,112,1);">2019.04.04</div>
+            <div class="margin-left" style="font-size:15px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
+        <section v-for="item in supporlist" :key="item.orderNo">
+            <div style="margin: 12px 0px 12px 12px" >
+                <div style="font-size:9px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(112,112,112,1);">{{item.createTime}}</div>
             </div>
-            <section class="card" v-for="item in supporlist" :key="item.orderNo">
+            <section class="card" >
                 <card
                     :open="() => {$router.push('/palnned')}"
                     :name="item.contacs"
@@ -118,16 +118,18 @@ export default {
     height: 180px;
 }
 footer{
-    position: absolute;
-    bottom: 0px;
+    // position: absolute;
+    // bottom: 0px;
+    width: 100%;
     .customer{
         width:123px;
         height:33px;
         border:1px solid rgba(239,162,32,1);
         border-radius:15px;
-        position: absolute;
-        bottom: 13px;
-        left: 113px;
+        // position: absolute;
+        // bottom: 0px;
+        // left: 113px;
+        margin: 12px auto;
         text-align: center;
         line-height: 33px;
         color: #EFA220;

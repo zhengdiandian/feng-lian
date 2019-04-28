@@ -73,7 +73,7 @@
         </ul>
       </div>
       <div class="buy-info margin-top">
-        使用时间: <span class="margin-left font-min">{{this.sums[this.activeStep]}}元</span>
+        使用时间: <span class="margin-left font-min">{{this.sums[this.activeStep]}}个月</span>
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
@@ -137,7 +137,7 @@ export default {
             }).then((res)=> {
               this.order = res.data.data
               console.log(this.order)
-              localStorage.setItem('order',this.order)
+              // localStorage.setItem('order',this.order)
               this.$router.push({
                 name: 'orderInfo',
                 params: {
@@ -157,6 +157,9 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+main{
+  margin-bottom: 50px;
+}
 .mu-header{
   margin: 56px 0 12px 12px;
 }
@@ -228,6 +231,8 @@ export default {
     border:1px solid rgba(239,162,32,1);
     border-radius:17px;
     line-height: 33px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   input {
     // width: 150px;
@@ -285,6 +290,7 @@ export default {
   .tongYi{
     input[type=checkbox]{
       visibility: hidden;
+      margin-bottom: 20px;
     }
     span{
       color: cornflowerblue;

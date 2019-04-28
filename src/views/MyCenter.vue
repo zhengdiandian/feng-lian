@@ -180,7 +180,7 @@ import axios from 'axios'
     PopBox
     },
     mounted() {
-      axios.post('http://47.110.79.190:8080/mockjsdata/31/v1/user/user/index').then((res) =>{
+      this.$axios.post('/v1/user/user/index').then((res) =>{
             this.preinfo = res.data.data
             console.log(this.preinfo)
         })
@@ -374,8 +374,9 @@ z-index: 99;
   background:rgba(255,255,255,1);
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius:5px;
-  margin: 20px auto;
-  margin-top: 40px;
+  margin: 40px auto;
+  // margin-top: 40px;
+  margin-bottom: 60px;
 }
 .list-li {
       height: 50px;

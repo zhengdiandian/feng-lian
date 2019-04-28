@@ -17,7 +17,7 @@
                 <section class="datalist" @click="$router.push('/mydetails')">
                     <div class="listtext" style="width: 75px;"><span>个人信息：</span></div>
                     <div class="listInfo" >{{datalist.personalInfo}}</div> 
-                    <span style="font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:#707070; margin-left: 14px;">详细信息</span>
+                    <span style="font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:#707070; ">详细信息</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </section>
             </div>
@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         getlist() {
-            axios.post('http://47.110.79.190:8080/mockjsdata/31/v1/user/user/personalInfo').then( (res) => {
+            this.$axios.post('/v1/user/userInfo/personalInfo').then( (res) => {
                 this.datalist = res.data.data
                 console.log(res.data.data)
             })
@@ -100,7 +100,7 @@ header{
         height: 48px;
         align-items: center;
         .listtext{
-            width:58px;
+            // width:58px;
             height:12px;
             font-size:12px;
             font-family:SourceHanSansCN-Normal;

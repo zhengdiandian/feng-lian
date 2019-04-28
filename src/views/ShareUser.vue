@@ -139,7 +139,7 @@
               nested-list-class="user-item"
               @toggle-nested="open = arguments[0] ? 'send' : ''"
             >
-              <mu-list-item tag="div" avatar :ripple="false" v-for="({contacs,headPortrait, nickname},i) in prefixData">
+              <mu-list-item tag="div" avatar :ripple="false" v-for="({contacs,headPortrait, nickname}, i) in prefixData" :key="i">
                 <mu-list-item-action>
                   <mu-avatar size="33">
                     <img :src="headPortrait" />
@@ -202,6 +202,9 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.mu-item-action{
+  width: 100%;
+}
 li {
   list-style: none;
 }
@@ -261,7 +264,7 @@ li {
   .information {
     margin-left: 13px;
     .name {
-      width: 108px;
+      // width: 108px;
       height: 14px;
       font-size: 13px;
       font-family: SourceHanSansCN-Normal;
@@ -285,7 +288,7 @@ li {
   }
   .state {
     display: inline-block;
-    width: 40px;
+    // width: 40px;
     height: 15px;
     line-height: 15px;
     background: rgba(239, 162, 32, 1);

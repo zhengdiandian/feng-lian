@@ -281,5 +281,3 @@ export default new Router({
     // }
   ]
 })
-
-

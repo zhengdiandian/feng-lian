@@ -2,7 +2,7 @@
     <div class="card">
       <div class="top-content">
        <div class="touXiang">
-         <img src="@/assets/PNG/头像.png" alt="">
+         <img :src="img" alt="">
        </div>
         <div class="right-wrap" >
           <div class="name" >姓名：{{name}} <span>{{state}}</span></div>
@@ -43,6 +43,9 @@
         type: String,
         default: '峰链互助公式'
       },
+      img:{
+        default: require('@/assets/PNG/头像.png')
+      },
       name:{
         type: String,
         default: 'Bywz.zZ'
@@ -64,7 +67,7 @@
         default: 10
       },
       waiting:{
-        type: String
+        
       },
       purchase: {
         type: String,
@@ -94,7 +97,7 @@
     display: flex;
     // justify-items: flex-start;
     // justify-content: flex-start;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     /*box-sizing: border-box;*/
     width: 351px;
     /*height: 140px;*/
@@ -105,6 +108,7 @@
     // margin-bottom: 10px;
     color:rgba(255,255,255,1);
     position: relative;
+    margin: 0;
     .top-content{
       display: flex;
       // justify-items: flex-start;
@@ -124,7 +128,7 @@
       // flex-wrap: nowrap;
       /*padding-left: 12px;*/
       position: absolute;
-      top: 100px;
+      top: 90px;
       
       font-size:11px;
       font-family:SourceHanSansCN-Normal;
@@ -193,8 +197,8 @@
         width:fit-content;
         // width:-webkit-fit-content;
         // width:-moz-fit-content;
-        max-width: 300px;
-        min-width: 50px;
+        // max-width: 300px;
+        min-width: 150px;
         word-wrap: break-word;
         height:22px;
         background:rgba(246,176,59,1);

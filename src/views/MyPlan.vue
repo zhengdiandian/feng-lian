@@ -56,18 +56,20 @@
                     </div>
                 </section>
             </div> -->
-            <div class="purchase-plan">
-                <span style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
-                <section class="card">
+            <div class="purchase-plan" style="margin-top: 50px;">
+                <span  style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
+                <section class="card" style="margin:0;">
                     <card
                         :open="() => {$router.push('/recharge')}"
+                        :img="myplan.headPortrait"
                         :state="myplan.payState==100?'未实名':'以实名'"
                         :productName="myplan.productName"
                         :amount="amount"
                         :amountMoney="myplan.balance"
-                        :waiting="myplan.leftWattingDays"
+                        :waiting="myplan.leftWattingDays + '天'"
                         :waitingperiod="waitingperiod"
-                        :date="': 2019.01.03'"
+                        :date=" ':' +myplan.joinDate"
+                        :name="myplan.contacs"
                     >
                     </card>
                     </section>
@@ -90,14 +92,14 @@ export default {
     data() {
         return {
             amount: '余额',
-            waitingperiod: '等待期',
+            waitingperiod: '等待期:',
             name: 'Bytan.zZ',
             myplan: []
         }
     },
     mounted() {
         this.$axios.post('/v1/mutually/plan/planList').then(res=>{
-            this.myplan = res.data.data[0]
+            this.myplan = res.data.data[0].list[0]
             console.log(this.myplan)
         })
     }

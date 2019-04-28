@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <img src="../../assets/PNG/视频.png" alt="">
+    <img :src="videoImg" alt="">
   </div>
 </template>
 
@@ -9,8 +9,12 @@
     name: 'BannerImg',
     props:{
       videoImg:{
-        type: String,
-        default: '../../assets/PNG/视频.png'
+        default: require('../../assets/PNG/视频.png')
+      }
+    },
+    data() {
+      return {
+        // videoImg: require('../../assets/PNG/视频.png')
       }
     }
   }
