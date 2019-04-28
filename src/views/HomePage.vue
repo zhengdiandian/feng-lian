@@ -69,7 +69,26 @@
             <div class="text">数据上链</div>
           </div>
         </div>
-        <banner-img :videoImg="operateItem.img"></banner-img>
+        <div class="videobox banner" ontouchmove="return false;">
+          <video
+
+            id="video"
+            src="https://upos-hz-mirrorcosu.acgvideo.com/upgcxcode/15/36/64393615/64393615-1-6.mp4?e=ig8euxZM2rNcNbuBhwdVtWuBhwdVNEVEuCIv29hEn0l5QK==&deadline=1556439941&gen=playurl&nbs=1&oi=2015669759&os=cosu&platform=html5&trid=6bcb749044f44c5f9730204131d4ac6a&uipk=5&upsig=e9255c3cde85d784847601530e00803f&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk"
+            controls = "true"
+            preload="auto"
+            poster="../assets/PNG/视频.png"
+            webkit-playsinline="true"
+            playsinline="true"
+            x-webkit-airplay="allow"
+            x5-video-player-type="h5"
+
+            x5-video-orientation="landscape"
+            style="object-fit:fill"
+          >
+          </video>
+        </div>
+
+        <!--<banner-img :videoImg="videoImg"></banner-img>-->
       </div>
     </div>
     <div class="wrap">
@@ -164,6 +183,9 @@ export default {
     return {
       shift: "movies",
       // open: true,
+      open1: '',
+      open2: '',
+
       product: [],
       homeinfor: [],
       bannerlist:[],
@@ -195,19 +217,42 @@ export default {
   },
   mounted() {
     this.$axios.post('/v1/manage/post/index').then((res)=>{
-      this.homeinfor = res.data.data
-      this.operateItem = res.data.data.operateItem
-      this.bannerlist = res.data.data.bannerList[0]
-      console.log(this.homeinfor)
+      // this.homeinfor = res.data.data
+      // this.operateItem = res.data.data.operateItem
+      // this.bannerlist = res.data.data.bannerList[0]
+      console.log(res)
     }),
     this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
           this.product = res.data.data[0]
+          console.log(res)
           // console.log(this.product)
     })
   }
 };
 </script>
 <style lang="scss" scoped>
+  .videobox{
+    /*overflow: hidden;*/
+    &:before{
+      content: '';
+      display: inline-block;
+
+    }
+    video{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  /*.videobox {*/
+    /*!*width: 100%;*!*/
+    /*!*height: 100%;*!*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*overflow: hidden;*/
+  /*}*/
+
+  /*video {width: 1px;display: block;}*/
 .pop-content{
     width: 300px;
     height: 200px;

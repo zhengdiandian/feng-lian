@@ -106,7 +106,7 @@ export default new Router({
       }
     },
     {
-      path: '/Editdetails', // 我的详细资料
+      path: '/Editdetails', // 编辑我的详细资料
       component: function () {
         return import('./views/EditDetalis')
       }

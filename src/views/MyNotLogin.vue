@@ -5,7 +5,7 @@
     </header>
     <main>
         <section class="please-login">
-            <div class="login-img">
+            <div class="login-img" @click="$router.push('/login')">
                 <div class="icon">
                   <mu-icon value=":iconfont iconwode1"></mu-icon>
                 </div>
