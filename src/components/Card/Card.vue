@@ -97,7 +97,7 @@
     display: flex;
     // justify-items: flex-start;
     // justify-content: flex-start;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     /*box-sizing: border-box;*/
     width: 351px;
     /*height: 140px;*/
@@ -108,6 +108,7 @@
     // margin-bottom: 10px;
     color:rgba(255,255,255,1);
     position: relative;
+    margin: 0;
     .top-content{
       display: flex;
       // justify-items: flex-start;
@@ -127,7 +128,7 @@
       // flex-wrap: nowrap;
       /*padding-left: 12px;*/
       position: absolute;
-      top: 100px;
+      top: 90px;
       
       font-size:11px;
       font-family:SourceHanSansCN-Normal;

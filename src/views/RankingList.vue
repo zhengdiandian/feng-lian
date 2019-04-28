@@ -14,7 +14,7 @@
             <div class="list-noe">
                 <div class="tow" style="position: relative;">
                     <img src="../assets/PNG/公示头像5.png" alt="">
-                    <span class="an-crown" style="top: -38px;left:12px;"><img src="../assets/PNG/皇冠3.png" alt=""></span>
+                    <span class="an-crown-3"><img src="../assets/PNG/皇冠3.png" alt=""></span>
                     <div class="list-name-number" style="left: 8px; top: 95px;">
                         <span style="font-size:14px; font-weight:bold;">陈梅</span>
                         <span style="font-size:14px; font-weight:bold;">22800分</span>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="noe" style="position: relative;">
                     <img src="../assets/PNG/公示头像2.png" alt="">
-                    <span class="an-crown" style="top: -38px;left:20px;"><img src="../assets/PNG/皇冠1.png" alt=""></span>
+                    <span class="an-crown"><img src="../assets/PNG/皇冠1.png" alt=""></span>
                     <div class="list-name-number">
                         <span style="font-size:14px; font-weight:bold;">韩世忠</span>
                         <span style="font-size:14px; font-weight:bold;">22900分</span>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="three" style="position: relative;">
                     <img src="../assets/PNG/公示头像4.png" alt="">
-                    <span class="an-crown" style="top: -36px;left:10px;"><img src="../assets/PNG/皇冠2.png" alt=""></span>
+                    <span class="an-crown-2"><img src="../assets/PNG/皇冠2.png" alt=""></span>
                     <div class="list-name-number" style="left: 8px; top: 90px;">
                         <span style="font-size:14px; font-weight:bold; ">李军</span>
                         <span style="font-size:14px; font-weight:bold;">22700分</span>
@@ -107,7 +107,17 @@ export default {
     }
 }
 .an-crown{
-    position: absolute;
+    width: 90px;
+    position: relative;
+    top: -155px;
+}
+.an-crown-2{
+    position: relative;
+    top: -120px;
+}
+.an-crown-3{
+    position: relative;
+    top: -130px;
 }
 .list-noe{
     width: 100%;
@@ -122,7 +132,7 @@ export default {
     }
     span {
     display: inline-block;
-    width: 60px;
+    // width: 60px;
     margin-bottom: 10px;
 }
 }
@@ -133,7 +143,7 @@ export default {
     margin: auto;
     // border: 1px solid #EFA220;
     text-align: center;
-    position: relative;
+    // position: relative;
 }
 .tow{
     width: 80px;
@@ -142,7 +152,7 @@ export default {
     margin: auto;
     // border: 1px solid #EFA220;
     text-align: center;
-    position: relative;
+    // position: relative;
 }
 .three{
     width: 75px;
@@ -152,7 +162,7 @@ export default {
     // border: 1px solid #EFA220;
     background-image: url('../assets/PNG/季军.png');
     text-align: center;
-    position: relative;
+    // position: relative;
 }
 .list-name-number{
     position: absolute;
@@ -166,11 +176,11 @@ export default {
 
 .headerNav{
   width:351px;
-  height:85px;
+//   height:85px;
   background:rgba(255,255,255,1);
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  margin: 12px auto;
+  margin: 20px auto;
   display: flex;
   align-items: center;
   position: relative;
@@ -196,7 +206,7 @@ export default {
     margin-left: 13px;
     position: relative;
     .name{
-      width:108px;
+    //   width:108px;
       height:14px;
       font-size:13px;
       font-family:SourceHanSansCN-Normal;
@@ -221,7 +231,7 @@ export default {
   }
   .state{
     display: inline-block;
-    width:40px;
+    // width:40px;
     height:15px;
     line-height: 15px;
     background:rgba(239,162,32,1);

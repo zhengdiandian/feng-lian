@@ -1,5 +1,20 @@
 <template>
   <div class="page-margin-top">
+    <PopBox v-if="showPoP">
+    <div class="pop-content">
+      <div>
+        <div>
+          <div class="heart">
+            您为成为爱心大使暂不能邀请
+          </div>
+        </div>
+      </div>
+      <div style="position: absolute;width: 100%;bottom: 0;">
+        <button @click="showPoP=false">取消</button>
+        <button class="btn-join" @click="$router.push('/joinplan')">成为会员大使</button>
+      </div>
+    </div>
+  </PopBox>
     <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
       <mu-button icon slot="right" @click="$router.push('/myPlanNews')">
         <mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>
@@ -58,7 +73,7 @@
       </div>
     </div>
     <div class="wrap">
-      <router-link tag="div" to="/code">
+      <div @click="invitation">
       <div class="apply">
         <img src="../assets/图标/爱心.png" alt="">
         <span>成功邀请一人，就得20元红包</span>
@@ -67,7 +82,7 @@
           <mu-icon value=":iconfont iconyou"></mu-icon>
         </div>
       </div>
-      </router-link>
+      </div>
       <div class="plan-wrap" v-for="i in 3" :key="i" >
         <div class="plan-left" >
           <img :src="product.img" alt="">
@@ -140,6 +155,7 @@
 
 <script>
 // @ is an alias to /src
+import PopBox from '../components/PopBox/PopBox'
 import BannerImg from '../components/BannerImg/BannerImg'
 import { debug } from 'util';
 export default {
@@ -153,6 +169,7 @@ export default {
       bannerlist:[],
       operateItem: [],
       type: 0,
+      showPoP: false,
       videoImg: require('../assets/PNG/视频.png')
     };
   },
@@ -162,10 +179,19 @@ export default {
     },
   See() {
     window.location.href = this.bannerlist.linkUrl
+  },
+  invitation(){
+      if (this.type == 1) {
+        this.showPoP = true
+      } else {
+        this.$router.push('/code')
+      }
+      // this.$router.push('/code')
   }
   },
   components: {
-    BannerImg
+    BannerImg,
+    PopBox
   },
   mounted() {
     this.$axios.post('/v1/manage/post/index').then((res)=>{
@@ -182,6 +208,49 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.pop-content{
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    text-align: center;
+    position: relative;
+    & >div:last-child{
+      // height: 40px;
+      // background-color: $c-cheng;
+      // color: $c-bai;
+      // line-height: 40px;
+      // font-size: 18px;
+      // align-self: flex-end;
+    }
+    &>div{
+      width: 100%;
+      text-align: center;
+    }
+    align-items: center;
+    .iconfont{
+      font-size: 45px;
+    }
+    .heart{
+      display: inline-block;
+      width: 140px;
+      height: 80px;
+      font-size: 16px;
+    }
+    button{
+      border: none;
+      width: 50%;
+      height: 50px;
+      border-top: 1px solid $c-hui;
+      background-color: #fff;
+      border-right: 1px solid $c-hui;
+    }
+    .btn-join{
+      color: $c-lang
+    }
+  }
+
   .wrap{
     box-sizing: border-box;
     width: $gw;

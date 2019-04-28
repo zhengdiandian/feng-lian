@@ -118,16 +118,18 @@ export default {
     height: 180px;
 }
 footer{
-    position: absolute;
-    bottom: 0px;
+    // position: absolute;
+    // bottom: 0px;
+    width: 100%;
     .customer{
         width:123px;
         height:33px;
         border:1px solid rgba(239,162,32,1);
         border-radius:15px;
-        position: absolute;
-        bottom: 13px;
-        left: 113px;
+        // position: absolute;
+        // bottom: 0px;
+        // left: 113px;
+        margin: 12px auto;
         text-align: center;
         line-height: 33px;
         color: #EFA220;

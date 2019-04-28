@@ -76,7 +76,7 @@ export default {
 </script>
 <style scoped lang="scss">
 header{
-    height: 155px;
+    // height: 155px;
     background-image: url('../assets/PNG/我的奖励背景.png');
     background-size: 100% 100%;
 }
@@ -120,7 +120,7 @@ nav {
     width: 95%;
     margin: auto;
     .parent-wrap{
-        width: 45px;
+        // width: 45px;
         margin: auto;
         // padding: 12px 12px 18px;
         display: flex;
@@ -157,7 +157,7 @@ nav {
     .sharing{
         display: flex;
         margin: auto;
-        margin-top: 58px;
+        margin-top: 78px;
         justify-content: center;
         align-items: center;
         width: 70%;
@@ -176,7 +176,7 @@ nav {
                 height: 31px;
             }
             .position-a{
-                width: 60px;
+                width: 70px;
                 position: absolute;
                 top: 45px;
             }

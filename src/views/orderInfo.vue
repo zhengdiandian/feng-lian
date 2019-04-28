@@ -40,11 +40,14 @@
       </li>
     </ul> -->
     <ul v-for="icon in pay" :key="icon.id">
-      <li> <img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 微信支付<mu-divider></mu-divider>
+      <li>
+        <img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 微信支付 <mu-divider></mu-divider>
       </li>
-      <li><img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 支付宝支付<mu-divider></mu-divider>
+      <li>
+        <img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 支付宝支付 <mu-divider></mu-divider>
       </li>
-      <li><img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 银联支付<mu-divider></mu-divider>
+      <li>
+        <img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 银联支付 <mu-divider></mu-divider>
       </li>
     </ul>
     <div class="big-btn" @click="topay"> 去支付</div>

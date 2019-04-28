@@ -374,8 +374,9 @@ z-index: 99;
   background:rgba(255,255,255,1);
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius:5px;
-  margin: 20px auto;
-  margin-top: 40px;
+  margin: 40px auto;
+  // margin-top: 40px;
+  margin-bottom: 60px;
 }
 .list-li {
       height: 50px;

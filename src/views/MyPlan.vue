@@ -56,9 +56,9 @@
                     </div>
                 </section>
             </div> -->
-            <div class="purchase-plan">
-                <span style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
-                <section class="card">
+            <div class="purchase-plan" style="margin-top: 50px;">
+                <span  style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
+                <section class="card" style="margin:0;">
                     <card
                         :open="() => {$router.push('/recharge')}"
                         :img="myplan.headPortrait"

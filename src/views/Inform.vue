@@ -10,7 +10,7 @@
     </mu-appbar>
     <div class="page-margin-top">
       <img src=".././assets/PNG/百万计划banner.png" alt="">
-      <div class="wrap">
+      <div class="wrap" style="margin-bottom:50px;">
         <div class="importance">
           <span class="icon">
             重要

@@ -157,6 +157,9 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+main{
+  margin-bottom: 50px;
+}
 .mu-header{
   margin: 56px 0 12px 12px;
 }
@@ -228,6 +231,8 @@ export default {
     border:1px solid rgba(239,162,32,1);
     border-radius:17px;
     line-height: 33px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   input {
     // width: 150px;
@@ -285,6 +290,7 @@ export default {
   .tongYi{
     input[type=checkbox]{
       visibility: hidden;
+      margin-bottom: 20px;
     }
     span{
       color: cornflowerblue;

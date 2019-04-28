@@ -75,23 +75,19 @@
 
         </mu-stepper>
         <ul class="stepper-step">
-          <li>10元</li>
-          <li>20元</li>
-          <li>50元</li>
-          <li>100元</li>
-          <li>200元</li>
+          <li v-for="sum in sums" :key="sum">{{sum}}元</li>
         </ul>
       </div>
       <div class="buy-info margin-top">
-        使用时间: <span class="margin-left font-min">10个月</span>
+        使用时间: <span class="margin-left font-min">{{this.sums[this.activeStep]}}个月</span>
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
-        服务费: <span class="margin-left font-min"> &nbsp;&nbsp;&nbsp;10个月</span>
+        服务费: <span class="margin-left font-min"> &nbsp;&nbsp;68元</span>
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
-        合计: <span class="margin-left font-min">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10个月</span>
+        合计: <span class="margin-left font-min">&nbsp;&nbsp;&nbsp;&nbsp;10个月</span>
         <mu-divider></mu-divider>
       </div>
       <div class="tongYi">
@@ -99,7 +95,7 @@
       </div>
     </div>
   </main>
-    <div class="big-btn" @click="$router.push('/orderInfo')">去支付</div>
+    <div class="big-btn" @click="btnHandleClick">去支付</div>
   </div>
 </template>
 
@@ -113,7 +109,14 @@ export default {
       sliderVal: '',
       tongYi: false,
       activeStep: 0,
-      title: '充值'
+      title: '充值',
+      sums:[
+        10,
+        20,
+        50,
+        100,
+        200
+      ],
     }
   },
   computed:{
@@ -124,13 +127,36 @@ export default {
   components: {
     headpage,
     card
-  }
+  },
+  methods: {
+      btnHandleClick (i) {
+        this.$axios.post('/v1/mutually/plan/checkOrder',{
+              // "contacs":this.name,
+              // "contacsIdNo":this.ID,
+              // "inviteCode":this.InvitationCode,
+              "orderAmount": this.sums[this.activeStep], // 金额
+              // "productCode": this.$route.params.productCode,
+              // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
+              // "type": 0
+            }).then((res)=> {
+              this.order = res.data.data
+              console.log(this.order)
+              // localStorage.setItem('order',this.order)
+              this.$router.push({
+                name: 'orderInfo',
+                params: {
+                  order: this.order
+                }
+              })
+            })
+      },
+  },
 };
 </script>
 
 <style scoped lang='scss'>
 .card{
-  height: 180px;
+  height: 190px;
   margin-bottom: 20px;
 }
 main{

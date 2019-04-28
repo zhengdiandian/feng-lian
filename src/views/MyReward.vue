@@ -7,7 +7,7 @@
         </nav>
         <div class="reward">
             <span style="height:26px;font-size:36px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1);">{{reward.balance}}</span>
-            <div style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 40px;">
+            <div style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 40px; padding-bottom: 20px;">
                 共有{{39003}}人参与分摊，人均分摊{{0.11}}元
             </div>
         </div>
@@ -97,7 +97,7 @@ export default {
 </script>
 <style scoped lang="scss">
 header{
-    height: 155px;
+    // height: 155px;
     background-image: url('../assets/PNG/我的奖励背景.png');
     background-size: 100% 100%;
 }
