@@ -78,6 +78,8 @@ Axios.interceptors.response.use(function (response) {
   return Promise.reject(error)
 })
 Axios.defaults.baseURL = 'http://test.wxapi.fenglianhz.com:8888/h5'
+// Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 //   .create({
 //   baseURL: 'http://47.110.79.190:8080/mockjsdata/31'
 // })
@@ -90,11 +92,11 @@ Axios.interceptors.request.use(
     if(config.method=='post'){
       config.data = {
         ...config.data,
-        _t: Date.parse(new Date())/1000,
+        // _t: Date.parse(new Date())/1000,
       }
     }else if(config.method=='get'){
       config.params = {
-        _t: Date.parse(new Date())/1000,
+        // _t: Date.parse(new Date())/1000,
         ...config.params
       }
     }

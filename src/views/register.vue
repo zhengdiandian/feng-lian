@@ -15,13 +15,13 @@
             </div>
             <div class="pwd-wrap">
                 <mu-text-field v-model="pwd" label="请输入验证码" label-float  icon=":iconfont iconmima">
-                    <div slot="append">
-                        <router-link tag="div" to="/register" style="color: #347fe8;">获取验证码</router-link>
+                    <div @click="getMsgHandleClick" slot="append">
+                        <div  style="color: #347fe8;">获取验证码</div>
                     </div>
                 </mu-text-field>
             </div>
             <div style="width: 75%">
-                <mu-button round class="login-btn" color="success" @click="open">完 &nbsp; 成</mu-button>
+                <mu-button round class="login-btn" color="success" @click="registerHandleClick">完 &nbsp; 成</mu-button>
             </div>
         </main>
         <!--<div class="show" v-if="show">-->
@@ -48,14 +48,39 @@ export default {
             user: '',
             pwd: '',
             show: false,
-            token: ''
+            token: '',
+            msgToken: ''
         }
     },
     methods: {
+        registerHandleClick() {
+
+          this.$axios.post('/v1/user/login/register',{
+            "openId": "test",          // 微信appid
+            "account": this.user, // 手机
+            "smsCode": this.pwd,  // 短信验证码
+            "token": this.msgToken // 短信token
+          }).then((res)=> {
+            this.token = res.data.data.authToken
+            console.log(this.token)
+          })
+        },
+        getMsgHandleClick() {
+          debugger
+          if(!this.user)return
+          this.$axios.post('/v1/manage/common/sendMsg',{
+            type: 0,
+            account: this.user
+          }).then(res =>{
+            debugger
+            console.log(res)
+            this.msgToken = res.data.data.token
+          })
+        },
         open() {
         // debugger
         // this.show = true
-        
+
         this.$router.push({
             name: 'setpwd',
             params: {
@@ -68,15 +93,7 @@ export default {
         // }
     },
     mounted(){
-        this.$axios.post('/v1/user/login/register',{
-            "openId": "",          // 微信appid
-            "account": this.user, // 手机
-            "smsCode": this.pwd,  // 短信验证码
-            "token": ""  // 短信token
-        }).then((res)=> {
-            this.token = res.data.data.authToken
-            console.log(this.token)
-        })
+
     }
 }
 </script>
