@@ -183,6 +183,9 @@ export default {
     return {
       shift: "movies",
       // open: true,
+      open1: '',
+      open2: '',
+
       product: [],
       homeinfor: [],
       bannerlist:[],

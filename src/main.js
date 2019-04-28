@@ -77,7 +77,7 @@ Axios.interceptors.response.use(function (response) {
   // Do something with response error
   return Promise.reject(error)
 })
-Axios.defaults.baseURL = 'http://47.110.79.190:8080/mockjsdata/31/h5'
+Axios.defaults.baseURL = 'http://test.wxapi.fenglianhz.com:8888/h5'
 //   .create({
 //   baseURL: 'http://47.110.79.190:8080/mockjsdata/31'
 // })
