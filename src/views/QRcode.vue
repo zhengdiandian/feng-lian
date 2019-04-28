@@ -16,8 +16,9 @@
                     </div>
                     <span style="color:rgba(112,112,112,1);">{{code.motto}}</span>
                 </section>
-                <section class="code">
-                    <img src="../assets/PNG/中青年.png" alt="">
+                <section ref="qrWrap" class="code">
+                  <div ref="qr"></div>
+                  <!--<img src="../assets/PNG/中青年.png" alt="">-->
                 </section>
                 <section class="preservation">
                     <span class="margin-top margin-bottom" style="color: #EFA220">保存二维码</span>
@@ -28,9 +29,11 @@
     </div>
 </template>
 <script>
+import Qrcode from 'qrcodejs2'
 import axios from 'axios'
+console.log(Qrcode)
 export default {
-    name: 'qrcode',
+    name: 'Qrcode',
     data() {
         return {
            title: '我的二维码',
@@ -44,13 +47,27 @@ export default {
     methods: {
         open() {
             this.$router.go(-1)
-        }
+        },
+      createQrcode() {
+        const width = this.$refs.qrWrap.clientHeight
+        new Qrcode(this.$refs.qr, {
+          text: 'https://www.qtshe.com',
+          width,
+          height: width,
+          colorDark: '#000000',
+          colorLight: '#ffffff',
+          correctLevel: Qrcode.CorrectLevel.H
+        })
+      }
     },
     mounted(){
         this.$axios.post('/v1/user/userInfo/myQrcode').then((res)=>{
             this.code = res.data.data
             console.log(res)
+          this.createQrcode()
         })
+      console.log(this.$refs.qrWrap.clientHeight)
+
     }
 }
 </script>
@@ -111,7 +128,7 @@ main{
             margin: auto;
         }
         }
-        
+
     }
     .code{
         width:180px;
