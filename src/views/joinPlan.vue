@@ -35,18 +35,18 @@
           <input type="text" placeholder="请输入您的身份证号" v-model="ID">
         </div>
         <div class="warning">
-          <mu-icon value=":iconfont icontanhao" size="24"></mu-icon> &nbsp; 邀请码信息不可修改, 请正确填写
+          <mu-icon value=":iconfont icontanhao" size="24"></mu-icon> &nbsp; 身份证信息不可修改, 请正确填写
         </div>
       </div>
       <!-- <mu-divider style="height:5px;"></mu-divider> -->
       <div class="yaoQing margin-top wrap">
         <div class="input-wrap">
           <label for>邀请码</label>
-          <input type="text" placeholder="请输入邀请码" v-model="InvitationCode" disabled="disabled">
+          <input type="text" placeholder="请联系客服获得邀请码" v-model="InvitationCode" disabled="disabled">
           <span class="margin-left">获取邀请码</span>
         </div>
         <div class="warning">
-          <mu-icon value=":iconfont icontanhao" size="24"></mu-icon>身份证信息不可修改, 请正确填写
+          <mu-icon value=":iconfont icontanhao" size="24"></mu-icon>邀请码信息不可修改, 请正确填写
         </div>
       </div>
     <!-- <mu-divider style="height:5px;"></mu-divider> -->
@@ -88,8 +88,8 @@
         <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span> <<互助计划公约>> </span>
       </div>
     </div>
-  </main>
-    <div class="big-btn" @click="btnHandleClick">去支付</div>
+      <div class="big-btn" @click="btnHandleClick">去支付</div>
+    </main>
   </div>
 </template>
 

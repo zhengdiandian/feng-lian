@@ -107,7 +107,6 @@ Axios.interceptors.request.use(
 Vue.prototype.$axios = Axios
 router.beforeEach((to, from, next) => {
   if (to.matched.some(to => to.meta.requiresAuth)) {
-    //对matched不了解的建议看官方api文档,或我7.1节的说明
     //数组some方法,如果meta.requiresAuth为ture,则返回true.此时,说明进入该路由前需要判断用户是否已经登录
     console.log(this)
     if (!window.sessionStorage.getItem('token')) {   //如果没登录,则跳转到登录页
