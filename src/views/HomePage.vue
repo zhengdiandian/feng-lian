@@ -26,13 +26,13 @@
             <div class="chat-img" >
               <!-- <mu-icon value=":iconfont iconshuju"></mu-icon> -->
             </div>
-            <div class="chat-title">699900</div>
+            <div class="chat-title">{{homeinfor.memberCount}}</div>
             <div class="chat-info">全平台用户(人)</div>
           </div>
           <div class="xian"></div>
           <div class="chat-content item-content" @click="$router.push('/scale')">
             <div class="chat-img"></div>
-            <div class="chat-title">699900</div>
+            <div class="chat-title">{{homeinfor.stageAmount}}</div>
             <div class="chat-info" >本期互助金規模(元)</div>
           </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="text">数据上链</div>
           </div>
         </div>
-        <banner-img :videoImg="videoImg"></banner-img>
+        <banner-img :videoImg="operateItem.img"></banner-img>
       </div>
     </div>
     <div class="wrap">
@@ -87,7 +87,7 @@
       </div>
     </div>
     <div class="wrap">
-      <banner-img></banner-img>
+      <banner-img ></banner-img>
       <div class="help-wrap">
         <mu-sub-header>常见问题</mu-sub-header>
 
@@ -151,8 +151,9 @@ export default {
       product: [],
       homeinfor: [],
       bannerlist:[],
+      operateItem: [],
       type: 0,
-      videoImg: '../../assets/PNG/视频.png'
+      videoImg: require('../assets/PNG/视频.png')
     };
   },
   methods: {
@@ -169,6 +170,7 @@ export default {
   mounted() {
     this.$axios.post('/v1/manage/post/index').then((res)=>{
       this.homeinfor = res.data.data
+      this.operateItem = res.data.data.operateItem
       this.bannerlist = res.data.data.bannerList[0]
       console.log(this.homeinfor)
     }),

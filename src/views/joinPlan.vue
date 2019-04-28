@@ -73,7 +73,7 @@
         </ul>
       </div>
       <div class="buy-info margin-top">
-        使用时间: <span class="margin-left font-min">{{this.sums[this.activeStep]}}元</span>
+        使用时间: <span class="margin-left font-min">{{this.sums[this.activeStep]}}个月</span>
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
@@ -137,7 +137,7 @@ export default {
             }).then((res)=> {
               this.order = res.data.data
               console.log(this.order)
-              localStorage.setItem('order',this.order)
+              // localStorage.setItem('order',this.order)
               this.$router.push({
                 name: 'orderInfo',
                 params: {

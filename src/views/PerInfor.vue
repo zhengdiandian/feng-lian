@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         getlist() {
-            axios.post('http://47.110.79.190:8080/mockjsdata/31/v1/user/user/personalInfo').then( (res) => {
+            this.$axios.post('/v1/user/userInfo/personalInfo').then( (res) => {
                 this.datalist = res.data.data
                 console.log(res.data.data)
             })

@@ -180,7 +180,7 @@ import axios from 'axios'
     PopBox
     },
     mounted() {
-      axios.post('http://47.110.79.190:8080/mockjsdata/31/v1/user/user/index').then((res) =>{
+      this.$axios.post('/v1/user/user/index').then((res) =>{
             this.preinfo = res.data.data
             console.log(this.preinfo)
         })

@@ -66,7 +66,7 @@ export default {
         }
     },
     mounted() {
-        this.$axios.post('/v1/user/user/infoDetail').then(res=>{
+        this.$axios.post('/v1/user/userInfo/infoDetail').then(res=>{
             this.detalis = res.data.data
             console.log(this.detalis)
         })

@@ -171,7 +171,13 @@
     },
     methods: {
       joinInform() {
-        this.$router.push('/inform')
+        this.$router.push({
+          name: 'inform',
+          params: {
+            "writingImg":this.MutualRule.healthyImg,
+            "writing": this.MutualRule.healthyText
+          }
+        })
       }
     },
     mounted() {

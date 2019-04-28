@@ -16,9 +16,16 @@
           <span>加入年龄：出生28天-65周岁</span>
         </li>
       </div>
-        <div class="margin-top margin-left">
-            <span class="font margin-bottom" style="display: inline-block">充值计划</span>
-            <card :open="()=>{}"></card>
+        <div class="margin-top margin-left card">
+            <span class="font" style="display: inline-block">充值计划</span>
+            <card
+            :open="()=>{}"
+            :date="'：2019.01.02'"
+            :waitingperiod="'等待期:'"
+            :waiting="'180天'"
+              >
+
+            </card>
         </div>
       <!-- <mu-divider style="height:5px"></mu-divider> -->
       <!-- <div class="info-form margin-left">
@@ -122,6 +129,10 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+.card{
+  height: 180px;
+  margin-bottom: 20px;
+}
 main{
     background-color: #fff;
 }
