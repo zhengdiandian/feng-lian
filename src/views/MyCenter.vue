@@ -85,7 +85,7 @@
           </div>
         </router-link>
 
-        <div tag="div" @click="showPoP=true">
+        <div @click="$router.push('/share')">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/客户.svg" alt="">
@@ -288,12 +288,12 @@ z-index: 99;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
       color:rgba(112,112,112,1);
-      margin-top: 5px;
+      // margin-top: 5px;
     }
   }
   .state{
     display: inline-block;
-    width:40px;
+    // width:40px;
     height:15px;
     line-height: 15px;
     background:rgba(239,162,32,1);

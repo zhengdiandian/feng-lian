@@ -10,7 +10,7 @@
       </mu-appbar>
         <div class="page-margin-top"></div>
         <main>
-            <div class="add-family">
+            <!-- <div class="add-family">
                 <span style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的家人</span>
                 <section class="add-family-list">
                     <div class="list">
@@ -55,24 +55,25 @@
                         <span style="font-size:12px;">添加家人</span>
                     </div>
                 </section>
-            </div>
+            </div> -->
             <div class="purchase-plan">
                 <span style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
                 <section class="card">
-                    <card 
+                    <card
                         :open="() => {$router.push('/recharge')}"
                         :state="myplan.payState==100?'未实名':'以实名'"
                         :productName="myplan.productName"
                         :amount="amount"
                         :amountMoney="myplan.balance"
                         :waiting="myplan.leftWattingDays"
+                        :waitingperiod="waitingperiod"
                         :date="': 2019.01.03'"
                     >
                     </card>
                     </section>
             </div>
         </main>
-        <footerBtn></footerBtn>
+        <!-- <footerBtn></footerBtn> -->
     </div>
 </template>
 <script>
@@ -89,6 +90,7 @@ export default {
     data() {
         return {
             amount: '余额',
+            waitingperiod: '等待期',
             name: 'Bytan.zZ',
             myplan: []
         }
@@ -102,6 +104,9 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.card{
+    height: 180px;
+}
 span{
     font-family:SourceHanSansCN-Normal;
 }

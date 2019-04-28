@@ -9,19 +9,20 @@
           <slot name="data"></slot>
           <div class="date content-center"> <span>{{purchase}}</span>{{date}}</div>
           <slot name="FilingDate"></slot>
+          <slot name="AuditPass"></slot>
         </div>
       </div>
       <slot name="lable"></slot>
       <div class="bottom-content">
         <div class="one">
-          <div>产品名称:</div>
-          <div>{{waitingperiod}}</div>
-          <div>{{amount}}:</div>
+          <div style="height:20px;">产品名称:</div>
+          <div style="height:20px;">{{waitingperiod}}</div>
+          <div style="height:20px;">{{amount}}:</div>
         </div>
         <div class="tow">
-          <div>{{productName}}</div>
-          <div>{{waiting}}天</div>
-          <div>{{amountMoney}}元</div>
+          <div style="height:20px;">{{productName}}</div>
+          <div style="height:20px;">{{waiting}}</div>
+          <div style="height:20px;">{{amountMoney}}元</div>
         </div>
         <div class="btn-wrap">
           <div class="btn content-center" @click="open">查看计划</div>
@@ -63,8 +64,7 @@
         default: 10
       },
       waiting:{
-        type: Number,
-        default: 180
+        type: String
       },
       purchase: {
         type: String,
@@ -76,7 +76,7 @@
       },
       waitingperiod:{
         type: String,
-        default: '等待期：'
+        // default: '等待期：'
       },
       // supporlist: {
       //   type: Array,
@@ -92,8 +92,8 @@
 <style lang="scss" scoped>
   .card {
     display: flex;
-    justify-items: flex-start;
-    justify-content: flex-start;
+    // justify-items: flex-start;
+    // justify-content: flex-start;
     flex-wrap: wrap;
     /*box-sizing: border-box;*/
     width: 351px;
@@ -102,23 +102,30 @@
     border-radius: 5px;
     background-size: 100%;
     padding: 12px;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
     color:rgba(255,255,255,1);
+    position: relative;
     .top-content{
       display: flex;
-      justify-items: flex-start;
-      justify-content: flex-start;
-      flex-wrap: nowrap;
+      // justify-items: flex-start;
+      // justify-content: flex-start;
+      // flex-wrap: nowrap;
+      // padding-top: 12px;
+      position: absolute;
+      top: 20px;
 
     }
     .bottom-content{
       width: 100%;
-      padding-top: 16px;
+      // padding-top: 16px;
       display: flex;
-      justify-items: flex-start;
-      justify-content: flex-start;
-      flex-wrap: nowrap;
+      // justify-items: flex-start;
+      // justify-content: flex-start;
+      // flex-wrap: nowrap;
       /*padding-left: 12px;*/
+      position: absolute;
+      top: 100px;
+      
       font-size:11px;
       font-family:SourceHanSansCN-Normal;
       font-weight:400;
@@ -137,13 +144,16 @@
         flex: 2;
         /*width: 100%;*/
         display: flex;
-        justify-content: flex-end;
+        // justify-content: flex-end;
+        position: absolute;
+        right: 20px;
       }
       .btn{
         padding: 0px;
-        justify-self: flex-end;
-        /*justify-self: self-end;*/
-        align-self: flex-end;
+        // justify-self: flex-end;
+        // justify-self: self-end;
+        // align-self: flex-end;
+        margin-top: 24px;
         width:80px;
         height:33px;
         /*margin-left: 74px;*/
@@ -175,16 +185,22 @@
           color:rgba(255,255,255,1);
         }
       }
-      .date{
-
-        width:150px;
-        height:10px;
+      
+    }
+  }
+  .date{
+        // width:150px;
+        width:fit-content;
+        // width:-webkit-fit-content;
+        // width:-moz-fit-content;
+        max-width: 300px;
+        min-width: 50px;
+        word-wrap: break-word;
+        height:22px;
         background:rgba(246,176,59,1);
         border-radius:11px;
         font-size:12px;
         font-family:SourceHanSansCN-Normal;
         font-weight:400;
       }
-    }
-  }
 </style>

@@ -51,11 +51,11 @@
       </div>
     <!-- <mu-divider style="height:5px;"></mu-divider> -->
     <div class="select-wrap">
-      <div class="font margin-bottom margin-top">选择关系</div>
+      <!-- <div class="font margin-bottom margin-top">选择关系</div>
       <div class="select-items">
         <div class="item" v-for="(item, i) in btnList"  :key="i" :class="{'active': activeIndex == i}" @click="activeIndex=i">{{item}}</div>
 
-      </div>
+      </div> -->
       <div class="font margin-top">预计使用10个月</div>
       <!--<mu-slider class="demo-slider" v-model="normal.value1"></mu-slider>-->
       <!--<mu-slider class="demo-slider" :display-value="false" :step="10" v-model="sliderVal"></mu-slider>-->
@@ -73,15 +73,15 @@
         </ul>
       </div>
       <div class="buy-info margin-top">
-        使用时间: <span class="margin-left font-min">10个月</span>
+        使用时间: <span class="margin-left font-min">{{this.sums[this.activeStep]}}元</span>
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
-        服务费: <span class="margin-left font-min"> &nbsp;&nbsp;&nbsp;10个月</span>
+        服务费: <span class="margin-left font-min"> &nbsp;&nbsp;68元</span>
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
-        合计: <span class="margin-left font-min">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10个月</span>
+        合计: <span class="margin-left font-min">&nbsp;&nbsp;&nbsp;&nbsp;10个月</span>
         <mu-divider></mu-divider>
       </div>
       <div class="tongYi">
@@ -132,7 +132,7 @@ export default {
               "inviteCode":this.InvitationCode,
               "orderAmount": this.sums[this.activeStep], // 金额
               "productCode": this.$route.params.productCode,
-              "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
+              // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
               "type": 0
             }).then((res)=> {
               this.order = res.data.data
@@ -298,6 +298,9 @@ export default {
     align-items: center;
     background-color: $c-cheng;
     color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
   }
   .stepper{
     width: 100%;

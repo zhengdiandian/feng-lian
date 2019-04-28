@@ -9,14 +9,14 @@
         <main>
             <div class="head-name">
                 <section class="hear-infor">
-                    <!--<img :src="code.headPortrait" alt="">-->
+                    <img :src="code.headPortrait" alt="">
                     <div>
                         <span style="font-size:14px;">{{code.nickname}}</span>
                         <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1); line-height: 20px;" >{{code.state == 100 ? '未认证':'已认证'}}</span>
                     </div>
                     <span style="color:rgba(112,112,112,1);">{{code.motto}}</span>
                 </section>
-                <section class="code">
+                <section ref="qrWrap" class="code">
                   <div ref="qr"></div>
                   <!--<img src="../assets/PNG/中青年.png" alt="">-->
                 </section>
@@ -47,21 +47,27 @@ export default {
     methods: {
         open() {
             this.$router.go(-1)
-        }
+        },
+      createQrcode() {
+        const width = this.$refs.qrWrap.clientHeight
+        new Qrcode(this.$refs.qr, {
+          text: 'https://www.qtshe.com',
+          width,
+          height: width,
+          colorDark: '#000000',
+          colorLight: '#ffffff',
+          correctLevel: Qrcode.CorrectLevel.H
+        })
+      }
     },
     mounted(){
-        this.$axios.post('/v1/user/user/myQrcode').then((res)=>{
+        this.$axios.post('/v1/user/userInfo/myQrcode').then((res)=>{
             this.code = res.data.data
             console.log(res)
+          this.createQrcode()
         })
-    new Qrcode(this.$refs.qr, {
-        text: 'https://www.qtshe.com',
-        width: 160,
-        height: 160,
-        colorDark: '#000000',
-        colorLight: '#ffffff',
-        correctLevel: Qrcode.CorrectLevel.H
-      })
+      console.log(this.$refs.qrWrap.clientHeight)
+
     }
 }
 </script>
@@ -119,8 +125,7 @@ main{
             background:rgba(255,255,255,1);
             border:2px solid rgba(255,255,255,1);
             border-radius:50%;
-            position: relative;
-            /*left: 30px;*/
+            margin: auto;
         }
         }
 
@@ -132,11 +137,7 @@ main{
         border:10px solid rgba(255,162,228,1);
         opacity:0.5;
         margin: auto;
-        margin-top: 180px;
-        div{
-          width: 100%;
-          height: 100%;
-        }
+        margin-top: 200px;
         img{
             width: 100%;
             height: 100%;

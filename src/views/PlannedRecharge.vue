@@ -28,7 +28,7 @@
 
       <div class="text-info"><span>凭证编号：</span><span>{{panned.planNo}}</span></div>
       <div class="title">终身重大疾病互助计划 | 等待期剩余{{panned.leftWattingDays}}天</div>
-      <div class="text-info"><span>凭证编号:</span><span>{{panned.planNo}}</span></div>
+      <div class="text-info"><span>互助计划:</span><span>{{panned.productName}}</span></div>
       <div class="text-info"><span>最高获取:</span><span>{{panned.highestHelped}}</span></div>
       <div class="text-info"><span>互助会员:</span><span>FL20190115490963220251</span></div>
       <div class="text-info"><span>身份证号:</span><span>{{panned.contacsIdNo}}</span></div>
@@ -71,6 +71,7 @@
     mounted() {
       this.$axios.post('/v1/mutually/plan/planDetail').then((res)=> {
         this.panned = res.data.data
+        console.log(this.panned)
       })
     },
     methods:{
