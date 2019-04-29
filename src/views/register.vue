@@ -16,7 +16,9 @@
             <div class="pwd-wrap">
                 <mu-text-field v-model="pwd" label="请输入验证码" label-float  icon=":iconfont iconmima">
                     <div @click="getMsgHandleClick" slot="append">
-                        <div  style="color: #347fe8;">获取验证码</div>
+
+                        <div v-show="show" style="color: #347fe8;" @click="getCode">获取验证码</div>
+                        <span v-show="!show" class="count">{{count}} s</span>
                     </div>
                 </mu-text-field>
             </div>
@@ -49,7 +51,10 @@ export default {
             pwd: '',
             show: false,
             token: '',
-            msgToken: ''
+            msgToken: '',
+            show: true,
+            count: '',
+            timer: null,
         }
     },
     methods: {
@@ -62,7 +67,7 @@ export default {
             "token": this.msgToken, // 短信token
             "inviteCode	":  136750423931
           }).then((res)=> {
-              debugger
+            //   debugger
             this.token = res.data.data.authToken
             console.log(this.token)
             this.$router.push({
@@ -76,13 +81,13 @@ export default {
           })
         },
         getMsgHandleClick() {
-          debugger
+        //   debugger
           if(!this.user)return
           this.$axios.post('/v1/manage/common/sendMsg',{
             type: 0,
             account: this.user
           }).then(res =>{
-            debugger
+            // debugger
             console.log(res)
             this.msgToken = res.data.data.token
           })
