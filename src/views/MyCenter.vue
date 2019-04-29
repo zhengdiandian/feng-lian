@@ -197,7 +197,7 @@ import axios from 'axios'
   }
   },
   created() {
-    this.$axios.post('/v1/user/user/personalInfo').then(res => {
+    this.$axios.post('/v1/user/info/personalInfo').then(res => {
       console.log(res)
     })
   },
@@ -205,8 +205,8 @@ import axios from 'axios'
     PopBox
     },
     mounted() {
-      this.$axios.post('/v1/user/user/index').then((res) =>{
-            debugger
+      this.$axios.post('/v1/user/info/index').then((res) =>{
+            // debugger
             this.preinfo = res.data.data
             console.log(this.preinfo)
         })

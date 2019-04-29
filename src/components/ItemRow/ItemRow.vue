@@ -1,9 +1,9 @@
 <template>
     <div class="item-row">
       <div class="item" v-for="(data,i) in datas" :key="i">
-        <span :class="'iconfont '+ data.icon"  class="item-row-icon"></span>
+        <img item-row-icon :src="data.img" alt="">
         <div class="title">{{data.title}}</div>
-        <div class="text">{{data.text}}</div>
+        <div class="text">{{data.content}}</div>
       </div>
     </div>
 </template>
@@ -43,14 +43,18 @@
   }
   .item{
     width: 25%;
-    height: 120px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     // align-items: center;
     text-align: center;
     margin-bottom: 12px;
-    overflow: hidden;
+    line-height: 15px;
+    // overflow: hidden;
+    img{
+      width: 50px;
+      height: 50px;
+    }
     .title{
       font-size:14px;
       font-family:SourceHanSansCN-Normal;

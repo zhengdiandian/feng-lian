@@ -19,13 +19,19 @@
         </mu-text-field>
       </div>
       <div class="pwd">
-       <mu-text-field v-model="pwd" label="请输入密码" label-float  icon=":iconfont iconmima"
+       <mu-text-field v-if="codepwd" v-model="pwd" label="请输入密码" label-float  icon=":iconfont iconmima"
        :action-icon="visibility ? 'visibility_off' : 'visibility'" :action-click="() => (visibility = !visibility)" :type="visibility ? 'text' : 'password'"
        >
        </mu-text-field>
+       <mu-text-field v-if="codepwd1" v-model="pwd" label="请输入验证码" label-float  icon=":iconfont iconmima">
+                    <div @click="getMsgHandleClick" slot="append">
+                        <div v-show="show1" style="color: #347fe8;" @click="getCode">获取验证码</div>
+                        <span v-show="!show1" class="count">{{count}} s</span>
+                    </div>
+                </mu-text-field>
       </div>
       <div class="bottom-nav">
-          <router-link tag="div" to="/register" style="color: #347fe8; font-size: 13px">短信验证码登陆</router-link>
+          <div style="color: #347fe8; font-size: 13px" @click="codepwd = false;codepwd1 = true">短信验证码登陆</div>
           <router-link tag="div" to="/forgetPassword" style="color: #347fe8; font-size: 13px">忘记密码?</router-link>
       </div>
       <mu-button round class="login-btn" color="success" @click="login">登 &nbsp; 陆</mu-button>
@@ -48,6 +54,11 @@ export default {
       visibility: false,
       pwdErr: "",
       show: false,
+      show1: true,
+      count: '',
+      timer: null,
+      codepwd: true,
+      codepwd1: false,
       usernameRules: [
         { validate: (val) => !!val, message: '必须填写用户名'},
         { validate: (val) => val.length >= 3, message: '用户名长度大于3'}
@@ -69,27 +80,27 @@ export default {
   },
   methods: {
     login() {
-      // if(!this.account){
-      //   this.accountErr = '用户名不能为空'
-      //   return
-      // }
-      // if(!this.pwd){
-      //   this.pwd = '密码不能为空'
-      //   return
-      // }
-      // const accountReg = /^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/
-      // if(!accountReg.test(this.account)) {
-      //   this.accountErr = '请输入正确的手机号码'
-      //   return
-      // }
-      // if(this.pwd.length < 6 ) {
-      //   this.pwdErr = '账号长度必须大于6位'
-      //   return
-      // }
-      // if(this.pwd.length > 16 ) {
-      //   this.pwdErr = '账号长度必须小于16位'
-      //   return
-      // }
+      if(!this.account){
+        this.accountErr = '用户名不能为空'
+        return
+      }
+      if(!this.pwd){
+        this.pwd = '密码不能为空'
+        return
+      }
+      const accountReg = /^1[34578]\d{9}$/
+      if(!accountReg.test(this.account)) {
+        this.accountErr = '请输入正确的手机号码'
+        return
+      }
+      if(this.pwd.length < 6 ) {
+        this.pwdErr = '账号长度必须大于6位'
+        return
+      }
+      if(this.pwd.length > 16 ) {
+        this.pwdErr = '账号长度必须小于16位'
+        return
+      }
       // this.accountErr = '账号错误'
       // this.pwdErr = '密码错误'
       this.$axios.post('/v1/user/login/login',{
@@ -108,6 +119,34 @@ export default {
   }).catch(err => {
     this.show = true
       })
+    },
+    getMsgHandleClick() {
+        //   debugger
+          if(!this.user)return
+          this.$axios.post('/v1/manage/common/sendMsg',{
+            type: 0,
+            account: this.user
+          }).then(res =>{
+            // debugger
+            console.log(res)
+            this.msgToken = res.data.data.token
+          })
+        },
+    getCode() {
+      const TIME_COUNT = 60;
+            if (!this.timer) {
+            this.count = TIME_COUNT;
+            this.show1 = false;
+            this.timer = setInterval(() => {
+            if (this.count > 0 && this.count <= TIME_COUNT) {
+                this.count--;
+                } else {
+                this.show1 = true;
+                clearInterval(this.timer);
+                this.timer = null;
+                }
+            }, 1000)
+            }
     }
 },
 
