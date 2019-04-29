@@ -181,6 +181,7 @@ import axios from 'axios'
     },
     mounted() {
       this.$axios.post('/v1/user/user/index').then((res) =>{
+            debugger
             this.preinfo = res.data.data
             console.log(this.preinfo)
         })

@@ -54,26 +54,28 @@ export default {
     },
     methods: {
         registerHandleClick() {
-
-          this.$axios.post('/v1/user/login/register',{
-            "openId": "test",          // 微信appid
-            "account": this.user, // 手机
-            "smsCode": this.pwd,  // 短信验证码
-            "token": this.msgToken, // 短信token
-            "inviteCode	":  136750423931
-          }).then((res)=> {
-              debugger
-            this.token = res.data.data.authToken
-            console.log(this.token)
-            this.$router.push({
+             this.$router.push({
             name: 'setpwd',
             params: {
-                token: encodeURIComponent(this.token),
-                account: encodeURIComponent(this.user),
-                smsCode: encodeURIComponent(this.pwd)   
+                token: this.msgToken,
+                account: this.user,
+                smsCode: this.pwd,
+                // Token: encodeURIComponent(this.token)
             }
         })
-          })
+        //   this.$axios.post('/v1/user/login/register',{
+        //     "openId": "test",          // 微信appid
+        //     "account": this.user, // 手机
+        //     "smsCode": this.pwd,  // 短信验证码
+        //     "token": this.msgToken, // 短信token
+        //     "inviteCode":  '136750423931',
+        //     'loginPwd': '12345678'
+        //   }).then((res)=> {
+        //       debugger
+        //     // this.token = res.data.data.authToken
+        //     console.log(this.token)
+           
+        //   })
         },
         getMsgHandleClick() {
           debugger

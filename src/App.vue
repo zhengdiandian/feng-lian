@@ -3,7 +3,14 @@
     <router-view/>
   </div>
 </template>
-
+<script>
+export default {
+  name: 'app',
+  created () {
+    
+  }
+}
+</script>
 <style lang="scss">
 @import url('./global/fuXie.scss');
 #app>div{
