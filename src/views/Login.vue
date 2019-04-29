@@ -36,6 +36,7 @@
   </div>
 </template>
 <script>
+import { decode } from 'punycode';
 
 export default {
   name: "Loing",
@@ -92,13 +93,14 @@ export default {
       // this.accountErr = '账号错误'
       // this.pwdErr = '密码错误'
       this.$axios.post('/v1/user/login/login',{
-      "account": "",	//手机号码
-      "appId": "",	//appid,用于直接登录
-      "loginPassword": "",	//登陆密码
-      "smsCode": "",	//type=0时，短信验证码
-      "token": "",	//type=0时，短信token
-      "type": 0,	//0=短信登陆，1=密码登陆
+      "account": this.account,	//手机号码
+      // "appId": "test",	//appid,用于直接登录
+      "loginPassword": this.pwd,	//登陆密码
+      // "smsCode": "",	//type=0时，短信验证码
+      // "token": "",	//type=0时，短信token
+      "type": 1,	//0=短信登陆，1=密码登陆
   }).then(res=>{
+    debugger
     const {authToken} = res.data.data
     console.log(res)
         this.$store.commit('set_authToken', authToken)

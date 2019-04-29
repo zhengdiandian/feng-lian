@@ -46,7 +46,7 @@
                 </mu-text-field>
             </div>
             <div style="width: 75%" >
-                <mu-button round class="login-btn" color="success" >注&nbsp;册&nbsp;并&nbsp;登&nbsp;陆</mu-button>
+                <mu-button round class="login-btn" @click.self="setPwd"  color="success" >注&nbsp;册&nbsp;并&nbsp;登&nbsp;陆</mu-button>
             </div>
         </main>
     </div>
@@ -68,27 +68,44 @@ export default {
             value14: '',
         }
     },
+    props: ['account', "smsCode", 'token'],
     components: {
         pageHeader,
         POpBox
     },
     methods: {
       setPwd () {
-        this.$axios.post('/v1/user/login/setPwd',{
-        "token": decodeURIComponent(this.token),	//登陆token	string
-        "newPwd": this.value14,	//新密码,
-        smsCode: decodeURIComponent(this.	smsCode),
-        account: decodeURIComponent(this.account)
-      }).then(res=>{
-        debug,
-        sessionStorage.setItem('token', res.data.data)
-        console.log(res);
-        
-      })
+         this.$axios.post('/v1/user/login/register',{
+            "openId": "test",          // 微信appid
+            "account": this.account, // 手机
+            "smsCode": this.smsCode,  // 短信验证码
+            "token": this.token, // 短信token
+            "inviteCode":  '136750423931',
+            'loginPwd': this.pwd
+          }).then((res)=> {
+              debugger
+            // this.token = res.data.data.authToken
+            console.log(res)
+            sessionStorage.setItem('token', res.data.data.authToken)
+            this.$router.replace('/login')
+
+
+          })
+      //   this.$axios.post('/v1/user/login/setPwd',{
+      //   "token": decodeURIComponent(this.token),	//登陆token	string
+      //   "newPwd": this.value14,	//新密码,
+      //   smsCode: decodeURIComponent(this.	smsCode),
+      //   account: decodeURIComponent(this.account)
+      // }).then(res=>{
+      //   debugger
+      //   sessionStorage.setItem('token', res.data.data)
+      //   console.log(res);
+
+      // })
       }
     },
     mounted() {
-      
+
     }
 
 }
