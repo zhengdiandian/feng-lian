@@ -15,6 +15,8 @@ import 'muse-ui-message/dist/muse-ui-message.css'
 import Message from 'muse-ui-message'
 import Axios from 'axios'
 import qs from 'qs'
+import Util from '@/assets/js/unit.js'
+Vue.prototype.Util = Util
 Vue.use(Message)
 console.log('store',store)
 theme.add('custom-theme', {
@@ -69,7 +71,7 @@ Axios.interceptors.response.use(function (response) {
   if (response.data.code == 4){
     localStorage.clear()
     router.replace({
-      path: '/signin',
+      path: '/login',
       query: {redirect: router.currentRoute.fullPath}
     })
   }
@@ -88,7 +90,6 @@ Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 // })
 Axios.interceptors.request.use(
   config => {
-    // debugger
     var xtoken = window.sessionStorage.getItem('token')
     if(xtoken != null){
       config.headers['authToken'] = xtoken
