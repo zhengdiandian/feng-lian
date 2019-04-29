@@ -14,6 +14,7 @@ import './assets/font/iconfont.css'
 import 'muse-ui-message/dist/muse-ui-message.css'
 import Message from 'muse-ui-message'
 import Axios from 'axios'
+import qs from 'qs'
 Vue.use(Message)
 console.log('store',store)
 theme.add('custom-theme', {
@@ -79,6 +80,8 @@ Axios.interceptors.response.use(function (response) {
 })
 Axios.defaults.baseURL = 'http://test.wxapi.fenglianhz.com:8888/h5'
 // Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+// Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// Axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 //   .create({
 //   baseURL: 'http://47.110.79.190:8080/mockjsdata/31'
@@ -90,15 +93,15 @@ Axios.interceptors.request.use(
       config.headers['authToken'] = xtoken
     }
     if(config.method=='post'){
-      config.data = {
+      config.data = qs.stringify( {
         ...config.data,
         // _t: Date.parse(new Date())/1000,
-      }
+      })
     }else if(config.method=='get'){
-      config.params = {
+      config.params = qs.stringify({
         // _t: Date.parse(new Date())/1000,
         ...config.params
-      }
+      })
     }
     return config
   },function(error){
