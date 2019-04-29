@@ -15,9 +15,9 @@ import 'muse-ui-message/dist/muse-ui-message.css'
 import Message from 'muse-ui-message'
 import Axios from 'axios'
 import qs from 'qs'
-// import { Upload } from 'element-ui'
+import { Upload } from 'element-ui'
 
-// Vue.use(Upload)
+Vue.use(Upload)
 Vue.use(Message)
 console.log('store',store)
 theme.add('custom-theme', {
