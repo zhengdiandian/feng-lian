@@ -42,7 +42,7 @@
         <router-link tag="div" to="/perinfor">
         <section class="information">
           <span class="name">姓名：{{preinfo.nickname}}</span><span class="state">{{preinfo.state==100 ? '未实名': '已实名' }}</span>
-          <div class="number"><span>{{preinfo.account}}}</span></div>
+          <div class="number"><span>{{preinfo.account}}</span></div>
           <div class="integral">积分 {{preinfo.totalScore}}</div>
           <div class="autograph">{{preinfo.motto}}</div>
         </section>

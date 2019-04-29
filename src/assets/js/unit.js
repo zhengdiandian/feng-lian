@@ -1,7 +1,7 @@
 /* eslint-disable no-redeclare */
 import CryptoJS from 'crypto-js'
 // 秘钥
-const CRYPTOJSKEY = 'abcdefghighkml'
+const CRYPTOJSKEY = 'abcdefgabcdefg12'
 
 export default {
 
