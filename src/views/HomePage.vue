@@ -217,13 +217,14 @@ export default {
   },
   mounted() {
     this.$axios.post('/v1/manage/post/index').then((res)=>{
-      this.homeinfor = res.data.data
-      this.operateItem = res.data.data.operateItem
-      this.bannerlist = res.data.data.bannerList[0]
-      console.log(this.homeinfor)
+      // this.homeinfor = res.data.data
+      // this.operateItem = res.data.data.operateItem
+      // this.bannerlist = res.data.data.bannerList[0]
+      console.log(res)
     }),
     this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
           this.product = res.data.data[0]
+          console.log(res)
           // console.log(this.product)
     })
   }

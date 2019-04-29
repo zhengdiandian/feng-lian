@@ -1,7 +1,7 @@
 <template>
   <div class="g-bg">
     <mu-appbar style="width: 100%;" color="primary" text-color="#666" z-depth="0">
-      <mu-button icon slot="left" @click="$router.go(-1)" >
+      <mu-button icon slot="left" @click="$router.push('/home')" >
         <mu-icon value=":iconfont iconfanhui" size="24" @click.stop="$router.go(-1)"></mu-icon>
       </mu-button>
       生成计划
@@ -55,7 +55,7 @@
       </mu-list>
     </div>
 
-    <router-link tag="div" to="/recharge">
+    <router-link tag="div" to="/home">
     <div class="next-btn">再去看看</div>
     </router-link>
   </div>

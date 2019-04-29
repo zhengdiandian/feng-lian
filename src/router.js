@@ -107,6 +107,12 @@ export default new Router({
       }
     },
     {
+      path: '/Editdetails', // 编辑我的详细资料
+      component: function () {
+        return import('./views/EditDetalis')
+      }
+    },
+    {
       path: '/real', // 实名认证
       component: function () {
         return import('./views/RealName.vue')

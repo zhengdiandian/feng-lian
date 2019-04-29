@@ -12,6 +12,21 @@
       <div @click="showPoP=false">我知道了</div>
     </div>
   </PopBox>
+  <PopBox v-if="showpop">
+    <div class="pop">
+      <div>
+        <div>
+          <div class="heart">
+            您为成为爱心大使暂不能邀请
+          </div>
+        </div>
+      </div>
+      <div style="position: absolute;width: 100%;bottom: 0;">
+        <button @click="showpop=false">取消</button>
+        <button class="btn-join" @click="$router.push('/joinplan')">成为会员大使</button>
+      </div>
+    </div>
+  </PopBox>
     <header>
       <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
         <mu-button icon slot="right" :ripple="false">
@@ -34,7 +49,7 @@
         </router-link>
          <mu-icon value=":iconfont iconyou1"></mu-icon>
       </div>
-      <router-link tag="div" to="/code">
+      <div @click="invitation">
       <div class="apply">
         <img src="../assets/图标/爱心.png" alt="">
         <span>申请成为爱心大使</span>
@@ -43,7 +58,7 @@
           <mu-icon value=":iconfont iconyou"></mu-icon>
         </div>
       </div>
-      </router-link>
+      </div>
       <section class="please-list">
         <router-link tag="div" to="/welfareagency">
           <div class="list-li">
@@ -149,8 +164,10 @@ import axios from 'axios'
   data() {
     return {
       showPoP: false,
+      showpop: false,
       name: 'Bryant.zZ',
       preinfo: [],
+      type: 100,
       list: [
         "福利社",
         "我的卡包",
@@ -169,7 +186,15 @@ import axios from 'axios'
   methods: {
     jump() {
        this.$router.push('/per')
-    }
+    },
+    invitation(){
+      if (this.type == 100) {
+        this.showpop = true
+      } else {
+        this.$router.push('/code')
+      }
+      // this.$router.push('/code')
+  }
   },
   created() {
     this.$axios.post('/v1/user/user/personalInfo').then(res => {
@@ -189,6 +214,48 @@ import axios from 'axios'
 }
 </script>
 <style scoped lang="scss">
+.pop{
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    text-align: center;
+    position: relative;
+    & >div:last-child{
+      // height: 40px;
+      // background-color: $c-cheng;
+      // color: $c-bai;
+      // line-height: 40px;
+      // font-size: 18px;
+      // align-self: flex-end;
+    }
+    &>div{
+      width: 100%;
+      text-align: center;
+    }
+    align-items: center;
+    .iconfont{
+      font-size: 45px;
+    }
+    .heart{
+      display: inline-block;
+      width: 140px;
+      height: 80px;
+      font-size: 16px;
+    }
+    button{
+      border: none;
+      width: 50%;
+      height: 50px;
+      border-top: 1px solid $c-hui;
+      background-color: #fff;
+      border-right: 1px solid $c-hui;
+    }
+    .btn-join{
+      color: $c-lang
+    }
+  }
 
   .pop-content{
     width: 300px;

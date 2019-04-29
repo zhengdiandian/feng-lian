@@ -87,8 +87,9 @@ export default {
             // this.token = res.data.data.authToken
             console.log(res)
             sessionStorage.setItem('token', res.data.data.authToken)
+            this.$router.replace('/login')
 
-           
+
           })
       //   this.$axios.post('/v1/user/login/setPwd',{
       //   "token": decodeURIComponent(this.token),	//登陆token	string
@@ -99,12 +100,12 @@ export default {
       //   debugger
       //   sessionStorage.setItem('token', res.data.data)
       //   console.log(res);
-        
+
       // })
       }
     },
     mounted() {
-      
+
     }
 
 }

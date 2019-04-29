@@ -88,7 +88,7 @@ Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 // })
 Axios.interceptors.request.use(
   config => {
-    debugger
+    // debugger
     var xtoken = window.sessionStorage.getItem('token')
     if(xtoken != null){
       config.headers['authToken'] = xtoken

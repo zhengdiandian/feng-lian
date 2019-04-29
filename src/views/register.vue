@@ -16,7 +16,9 @@
             <div class="pwd-wrap">
                 <mu-text-field v-model="pwd" label="请输入验证码" label-float  icon=":iconfont iconmima">
                     <div @click="getMsgHandleClick" slot="append">
-                        <div  style="color: #347fe8;">获取验证码</div>
+
+                        <div v-show="show" style="color: #347fe8;" @click="getCode">获取验证码</div>
+                        <span v-show="!show" class="count">{{count}} s</span>
                     </div>
                 </mu-text-field>
             </div>
@@ -49,7 +51,10 @@ export default {
             pwd: '',
             show: false,
             token: '',
-            msgToken: ''
+            msgToken: '',
+            show: true,
+            count: '',
+            timer: null,
         }
     },
     methods: {
@@ -78,13 +83,13 @@ export default {
         //   })
         },
         getMsgHandleClick() {
-          debugger
+        //   debugger
           if(!this.user)return
           this.$axios.post('/v1/manage/common/sendMsg',{
             type: 0,
             account: this.user
           }).then(res =>{
-            debugger
+            // debugger
             console.log(res)
             this.msgToken = res.data.data.token
           })
@@ -92,7 +97,6 @@ export default {
         open() {
         // debugger
         // this.show = true
-
         this.$router.push({
             name: 'setpwd',
             params: {
@@ -100,6 +104,22 @@ export default {
             }
         })
         },
+        getCode(){
+            const TIME_COUNT = 60;
+            if (!this.timer) {
+            this.count = TIME_COUNT;
+            this.show = false;
+            this.timer = setInterval(() => {
+            if (this.count > 0 && this.count <= TIME_COUNT) {
+                this.count--;
+                } else {
+                this.show = true;
+                clearInterval(this.timer);
+                this.timer = null;
+                }
+            }, 1000)
+            }
+        }
         // setCode() {
         //   console.log(11)
         // }
