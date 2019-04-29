@@ -12,9 +12,12 @@
             </div>
             <div class="upload">
                 <section>
+                    <!-- <upload :upload="upload"></upload>
                     <upload :upload="upload"></upload>
-                    <upload :upload="upload"></upload>
-                    <upload :upload="upload"></upload>
+                    <upload :upload="upload"></upload> -->
+                    <!-- <div class="upload">
+                        <picture-input ref="pictureInput" @change="onChange" width="375" height="200" margin="16" accept="image/jpeg,image/png" size="10"></picture-input>
+                    </div> -->
                 </section>
             </div>
         </main>
@@ -23,17 +26,29 @@
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
 import upload from '../components/UpLoad/UpLoad'
+import PictureInput from 'vue-picture-input'
 export default {
     name: 'uploadrepost',
     components: {
         PageHeader,
-        upload
+        upload,
+        PictureInput
     },
     data() {
         return {
             upload: '上传体检报告'
         }
-    }
+    },
+    methods: {
+        // onChange () {
+        //     console.log('New picture selected!')
+        //     if (this.$refs.pictureInput.image) {
+        //         console.log('Picture loaded.')
+        //     } else {
+        //         console.log('FileReader API not supported: use the <form>, Luke!')
+        //     }
+        // }
+  }
 }
 </script>
 <style scoped lang="scss">

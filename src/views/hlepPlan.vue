@@ -174,8 +174,9 @@
         this.$router.push({
           name: 'inform',
           params: {
-            "writingImg":this.MutualRule.healthyImg,
-            "writing": this.MutualRule.healthyText
+            "writingImg":this.MutualRule.healthyImg, //健康文案图片
+            "writing": this.MutualRule.healthyText, //健康文案
+            "MutualRule": this.MutualRule // 产品详情--传到加入计划
           }
         })
       }
