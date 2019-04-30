@@ -20,7 +20,7 @@
                     <!-- <span><input type="text" v-model="sex"></span> -->
                     <!-- <mu-form-item prop="select" label="Select"> -->
                         <mu-select v-model="form.select" :active-step="activeStep" >
-                            <mu-option v-for="(option,index) in options" :key="index" :label="option" :value="option" @click="activeStep = index + 1"></mu-option>
+                            <mu-option v-for="(option,index) in options" :key="index" :label="option.label" :value="option.id" @click="activeStep = index + 1"></mu-option>
                         </mu-select>
                     <!-- </mu-form-item> -->
                     <mu-divider></mu-divider>
@@ -82,7 +82,9 @@ export default {
             city: '123',
             activeStep: 0,
             options: [
-                '男', '女'
+              {label:'男',
+              id: 1}, {label:'女',
+              id: 2}
             ],
             form: {
                 select: ''
@@ -94,7 +96,7 @@ export default {
             console.log(this.options[length])
             this.$axios.post('/v1/user/info/updateInfo',{
             "nickname":this.nickname,
-            "sex":this.options[index],
+            "sex":this.form.select,
             "age":this.age,
             "birth":this.birth,
             "constellation":this.constellation,
