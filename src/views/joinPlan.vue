@@ -153,7 +153,7 @@ export default {
               "contacsIdNo": this.ID,
               "inviteCode":"136750423931",
               "orderAmount": "1",
-              // "orderAmount": this.sums[this.activeStep], // 金额
+              "orderAmount": this.sums[this.activeStep], // 金额
               // "productCode": this.$route.params.productCode,
               "productCode": "test1234567890",
               "relationShip": "0",
@@ -162,7 +162,7 @@ export default {
               "type": 2
             }).then((res)=> {
               this.order = res.data.data
-              console.log(this.order)
+              console.log(res)
               // localStorage.setItem('order',this.order)
               this.$router.push({
                 name: 'orderInfo',
@@ -183,29 +183,29 @@ export default {
     //     this.$router.push('/real')
     //   }
     // })
-    this.$axios.post('/v1/mutually/plan/checkOrder',{
-              "contacs":"黄溢东",
-              "contacsIdNo":"124124243",
-              "inviteCode":"136750423931",
-              "orderAmount": "1",
-              // "orderAmount": this.sums[this.activeStep], // 金额
-              // "productCode": this.$route.params.productCode,
-              "productCode": "test1234567890",
-              "relationShip": "0",
-              "stageCount": "1",
-              // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
-              "type": 2
-            }).then((res)=> {
-              this.order = res.data.data
-              console.log(this.order)
-              // localStorage.setItem('order',this.order)
-              // this.$router.push({
-              //   name: 'orderInfo',
-              //   params: {
-              //     order: this.order
-              //   }
-              // })
-            })
+    // this.$axios.post('/v1/mutually/plan/checkOrder',{
+    //           "contacs":"黄溢东",
+    //           "contacsIdNo":"124124243",
+    //           "inviteCode":"136750423931",
+    //           "orderAmount": "1",
+    //           // "orderAmount": this.sums[this.activeStep], // 金额
+    //           // "productCode": this.$route.params.productCode,
+    //           "productCode": "test1234567890",
+    //           "relationShip": "0",
+    //           "stageCount": "1",
+    //           // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
+    //           "type": 2
+    //         }).then((res)=> {
+    //           this.order = res.data.data
+    //           console.log(this.order)
+    //           // localStorage.setItem('order',this.order)
+    //           // this.$router.push({
+    //           //   name: 'orderInfo',
+    //           //   params: {
+    //           //     order: this.order
+    //           //   }
+    //           // })
+    //         })
   }
 };
 </script>

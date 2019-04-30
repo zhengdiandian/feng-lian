@@ -31,7 +31,7 @@
                     </template>
                     </card>
                     <!-- <span>您于2019年4月9日申请的互助，在初审阶段已审核通过，请继续关注该申请的动态消息。</span>
-                    <div>如有疑问请咨询客服热线 010-xxxxxxxxx</div> -->
+                    <div>如有疑问请咨询客服热线 010-xxxxxxxxx</div> --> -->
                     </section>
                     <card
                     :open="() => {$router.push('/palnned')}"
@@ -40,12 +40,12 @@
                     :waiting="waiting"
                     >
 
-                    <!-- <template v-slot:lable>
+                     <template v-slot:lable>
                         <div class="slot-lable">
                             <img src="../assets/img/驳回.svg" alt="">
                         </div>
-                    </template> -->
-                    <template v-slot:FilingDate>
+                    </template>
+                     <template v-slot:FilingDate>
                         <div class="dates"><span>申请日：</span>2019.01.01</div>
                     </template>
                     <template v-slot:AuditPass>
@@ -97,7 +97,7 @@ main{
 }
 .dates{
         margin-top: 5px;
-        width:fit-content;
+        // width:fit-content;
         // width:-webkit-fit-content;
         // width:-moz-fit-content;
         max-width: 300px;

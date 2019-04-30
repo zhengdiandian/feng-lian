@@ -61,7 +61,7 @@ export default {
       }
     },
     mounted(){
-        this.$axios.post('/v1/user/userInfo/myQrcode').then((res)=>{
+        this.$axios.post('/v1/user/info/myQrcode').then((res)=>{
             this.code = res.data.data
             console.log(res)
           this.createQrcode()

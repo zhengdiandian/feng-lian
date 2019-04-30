@@ -19,10 +19,10 @@
         </div>
         <router-link tag="div" to="/perinfor">
           <section class="information">
-            <span class="name">姓名：{{ name }}</span
-            ><span class="state">已实名</span>
-            <div class="number"><span>18800004239</span></div>
-            <div class="autograph">海内存知己，天涯若比邻</div>
+            <span class="name">姓名：{{ info.nickname }}</span
+            ><span class="state">{{info.state==100?'未认证':'已认证'}}</span>
+            <div class="number"><span>{{info.account}}</span></div>
+            <div class="autograph">{{info.motto}}</div>
           </section>
         </router-link>
       </div>
@@ -74,7 +74,7 @@
               nested-list-class="user-item"
               @toggle-nested="open = arguments[0] ? 'send' : ''"
             >
-              <mu-list-item tag="div" avatar :ripple="false" v-for="({contacs,headPortrait, nickname},i) in prefixData">
+              <mu-list-item tag="div" avatar :ripple="false" v-for="({contacs,headPortrait, nickname},i) in prefixData" :key="i">
                 <mu-list-item-action>
                   <mu-avatar size="33">
                     <img :src="headPortrait" />
@@ -176,6 +176,7 @@ export default {
       name: "yangsda",
       oneList: [],
       towList: [],
+      info: [],
       amount: 0
     };
   },
@@ -186,7 +187,7 @@ export default {
     this.$axios.post('/v1/user/share/shareList', {
       type: 0
     }).then(res =>{
-      console.log(res)
+      // console.log(res)
       this.oneList = res.data.data
       this.amount +=res.data.data.list.length
 
@@ -194,9 +195,13 @@ export default {
     this.$axios.post('/v1/user/share/shareList', {
       type: 1
     }).then(res =>{
-      console.log(res)
+      // console.log(res)
       this.towList = res.data.data
       this.amount +=res.data.data.list.length
+    })
+    this.$axios.post('/v1/user/info/index').then(res=>{
+      console.log(res)
+      this.info = res.data.data
     })
   }
 };

@@ -71,10 +71,10 @@ export default {
             "page": 1,
             "pageSize": 1
         }).then((res) => {
-            // console.log(res.data.data)
+            console.log(res)
             this.helped = res.data.data
             this.supporlist = res.data.data.list
-            console.log(this.supporlist)
+            // console.log(this.supporlist)
         })
     }
 }

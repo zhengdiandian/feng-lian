@@ -73,7 +73,7 @@
       this.$axios.post('/v1/mutually/plan/planDetail',{
         "planNo": this.$route.params.planNo
       }).then((res)=> {
-        this.panned = res.data.data
+        // this.panned = res.data.data
         console.log(this.panned)
       }) 
     },

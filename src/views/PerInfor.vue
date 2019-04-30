@@ -63,9 +63,9 @@ export default {
     },
     methods: {
         getlist() {
-            this.$axios.post('/v1/user/userInfo/personalInfo').then( (res) => {
+            this.$axios.post('/v1/user/info/personalInfo').then( (res) => {
                 this.datalist = res.data.data
-                console.log(res.data.data)
+                console.log(this.datalist)
             })
         }
     }

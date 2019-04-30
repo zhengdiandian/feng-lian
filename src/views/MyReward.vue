@@ -8,14 +8,14 @@
         <div class="reward">
             <span style="height:26px;font-size:36px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1);">{{reward.balance}}</span>
             <div style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 40px; padding-bottom: 20px;">
-                共有{{39003}}人参与分摊，人均分摊{{0.11}}元
+                共有{{0}}人参与分摊，人均分摊{{0}}元
             </div>
         </div>
     </header>
     <main>
         <div class="historical-bill">历史账单</div>
         <div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{lastdate.date}}</div>
+            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{lastdate}}</div>
             <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥80.00</div>
             <div class="reward-money">
                 <div class="headimg"><img :src="lastMonth.icon" alt=""></div>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{thisdate.date}}</div>
+            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{thisdate}}</div>
             <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥80.00</div>
             <div class="reward-money">
                 <div class="headimg"><img :src="thisMonth.icon" alt=""></div>
@@ -86,10 +86,11 @@ export default {
         this.$axios.post('/v1/finance/profit/profitList').then(res=>{
             this.reward = res.data.data
             console.log(this.reward);
-            this.lastMonth = res.data.data.list.lastMonth.profitList[0]
-            this.thisMonth = res.data.data.list.thisMonth.profitList[0]
-            this.lastdate = res.data.data.list.lastMonth
-            this.thisdate = res.data.data.list.thisMonth
+            this.lastdate = res.data.data.list.lastMonth.date
+            this.thisdate = res.data.data.list.thisMonth.date
+            console.log(res.data.data.list.lastMonth.date)
+            // this.lastMonth = res.data.data.list.lastMonth.profitList[0]
+            // this.thisMonth = res.data.data.list.thisMonth.profitList[0]
             // console.log(this.lastMonthm)
         })
     }

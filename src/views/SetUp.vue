@@ -69,8 +69,8 @@ export default {
     margin-top: 6px;
     .version-number{
         display: inline-block;
-        width:48px;
-        height:12px;
+        // width:50px;
+        line-height:12px;
         font-size:12px;
         font-family:SourceHanSansCN-Normal;
         font-weight:400;

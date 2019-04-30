@@ -5,53 +5,53 @@
           <mu-icon value=":iconfont iconfanhui"></mu-icon>
         </mu-button>
         编辑资料
-        <mu-button icon slot="right" >
+        <mu-button icon slot="right" @click="editdeta">
            <span style="font-size:12px;">保</span><span style="font-size:12px;">存</span>
         </mu-button>
       </mu-appbar>
         <main>
             <section class="details">
                 <div class="rule margin-left">
-                    <span>昵称：</span><span ><input type="text"></span>
+                    <span>昵称：</span><span ><input type="text" v-model="nickname"></span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>性别：</span><span ><input type="text"></span>
+                    <span>性别：</span><span ><input type="text" v-model="sex"></span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>年龄：</span><span ><input type="text"></span>
+                    <span>年龄：</span><span ><input type="text" v-model="age"></span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>生日：</span><span ><input type="text"></span>
+                    <span>生日：</span><span ><input type="text" v-model="birth"></span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>星座：</span><span ><input type="text"></span>
+                    <span>星座：</span><span ><input type="text" v-model="constellation"></span>
                     <mu-divider></mu-divider>
                 </div>
 
             </section>
             <section class="details">
                 <div class="rule margin-left">
-                    <span>职业：</span><span ><input type="text"></span>
+                    <span>职业：</span><span ><input type="text" v-model="job"></span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>学校/公司：</span><span><input type="text"></span>
+                    <span>学校/公司：</span><span><input type="text" v-model="working_place"></span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>所在地：</span><span><input type="text"></span>
+                    <span>所在地：</span><span><input type="text" v-model="address"></span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>故乡：</span><span><input type="text"></span>
+                    <span>故乡：</span><span><input type="text" v-model="province"></span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>邮箱：</span><span><input type="text"></span>
+                    <span>邮箱：</span><span><input type="text" v-model="email"></span>
                     <mu-divider></mu-divider>
                 </div>
             </section>
@@ -63,14 +63,38 @@ export default {
     name: 'editdetails',
     data() {
         return {
-            detalis:[]
+            nickname: '',
+            sex: '',
+            age: '',
+            birth: '',
+            constellation: '',
+            job: '',
+            working_place: '',
+            address: '',
+            email: '',
+            province: '',
+            city: '123'
         }
     },
-    mounted() {
-        // this.$axios.post('/v1/user/userInfo/infoDetail').then(res=>{
-        //     this.detalis = res.data.data
-        //     console.log(this.detalis)
-        // })
+    methods:{
+        editdeta() {
+            this.$axios.post('/v1/user/info/updateInfo',{
+            "nickname":this.nickname,
+            "sex":this.sex,
+            "age":this.age,
+            "birth":this.birth,
+            "constellation":this.constellation,
+            "job": this.job,
+            "working_place":this.working_place,
+            "address":this.address,
+            "email":this.email,
+            "province":this.province,
+            "city":this.city
+        }).then(res=>{
+            // this.detalis = res.data.data
+            console.log(res)
+        })
+        }
     },
 }
 </script>

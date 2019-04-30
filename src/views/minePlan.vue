@@ -13,21 +13,21 @@
                 <span class="font">我的购买计划</span>
                 <div  style="margin-top: 8px;">
                   <section class="card">
-                    <card 
+                    <card
                     :open="() => {$router.push('/palnned')}"
                     :date="': 2019.01.02'"
                     :waitingperiod="waitingperiod"
                     :waiting="waiting"
                     >
 
-                    <!-- <template v-slot:lable>
+                    <template v-slot:lable>
                         <div class="slot-lable">
                             <img src="../assets/img/审核中.svg" alt="">
                         </div>
                     </template>
                     <template v-slot:FilingDate>
                         <div class="dates"><span>申请日：</span>2019.01.01</div>
-                    </template> -->
+                    </template>
                     </card>
                     </section>
                     <card
@@ -37,7 +37,7 @@
                     :waiting="waiting"
                     >
 
-                    <!-- <template v-slot:lable>
+                    <template v-slot:lable>
                         <div class="slot-lable">
                             <img src="../assets/img/驳回.svg" alt="">
                         </div>
@@ -47,7 +47,7 @@
                     </template>
                     <template v-slot:AuditPass>
                       <div class="slot-AuditPass"><img src="../assets/img/审核通过.svg" alt=""></div>
-                    </template> -->
+                    </template>
                     </card>
                 </div>
             </div>
@@ -97,7 +97,7 @@ main{
 }
 .dates{
         margin-top: 5px;
-        width:150px;
+        // width:150px;
         height:22px;
         background:rgba(246,176,59,1);
         border-radius:11px;

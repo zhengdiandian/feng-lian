@@ -15,7 +15,7 @@
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>性别：</span><span style="margin-left: 30px;">{{detalis.sex}}</span>
+                    <span>性别：</span><span style="margin-left: 30px;">{{detalis.sex == 1?'男':'女'}}</span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
@@ -55,6 +55,7 @@
                 </div>
             </section>
         </main>
+        <section class="btn-edit"><div class="btn" @click="edit">编辑资料</div></section>
     </div>
 </template>
 <script>
@@ -65,8 +66,13 @@ export default {
             detalis:[]
         }
     },
+    methods:{
+        edit(){
+            this.$router.push('/Editdetails')
+        }
+    },
     mounted() {
-        this.$axios.post('/v1/user/userInfo/infoDetail').then(res=>{
+        this.$axios.post('/v1/user/info/infoDetail').then(res=>{
             this.detalis = res.data.data
             console.log(this.detalis)
         })
@@ -83,6 +89,23 @@ main{
             height: 50px;
             line-height: 50px;
         }
+    }
+}
+.btn-edit{
+    width: 100%;
+    height: 50px;
+    // background: red;
+    // margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .btn{
+        width: 80%;
+        height: 30px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 </style>

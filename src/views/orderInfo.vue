@@ -72,21 +72,21 @@
     },
     methods:{
       topay() {
-        this.$axios.post('/v1/mutually/plan/addPayOrder',{
-          "orderNo":this.order.orderNo,
-          "channelId": 123465 //支付渠道ID
-        }).then(res=>{
-          console.log(res)
-          this.planId = res.data.data.planId
-          this.productId = res.data.data.productId
-          console.log(this.planId)
+        // this.$axios.post('/v1/mutually/plan/addPayOrder',{
+        //   "orderNo":this.order.orderNo,
+        //   "channelId": 123465 //支付渠道ID
+        // }).then(res=>{
+        //   console.log(res)
+        //   this.planId = res.data.data.planId
+        //   this.productId = res.data.data.productId
+        //   console.log(this.planId)
           this.$router.push({
             name: 'planInitial',
             params:{
               planNo: this.planId
             }
           })
-        })
+        // })
       }
     },
     mounted() {

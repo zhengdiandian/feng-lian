@@ -97,7 +97,7 @@ main{
 }
 .dates{
         margin-top: 5px;
-        width:fit-content;
+        // width:fit-content;
         // width:-webkit-fit-content;
         // width:-moz-fit-content;
         max-width: 300px;

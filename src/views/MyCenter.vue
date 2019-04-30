@@ -188,18 +188,18 @@ import axios from 'axios'
        this.$router.push('/per')
     },
     invitation(){
-      if (this.type == 100) {
-        this.showpop = true
-      } else {
+      if (this.type == 200) {
         this.$router.push('/code')
+      } else {
+        this.showpop = true
       }
       // this.$router.push('/code')
   }
   },
   created() {
-    this.$axios.post('/v1/user/info/personalInfo').then(res => {
-      console.log(res)
-    })
+    // this.$axios.post('/v1/user/info/personalInfo').then(res => {
+    //   console.log(res)
+    // })
   },
     components: {
     PopBox
@@ -208,7 +208,8 @@ import axios from 'axios'
       this.$axios.post('/v1/user/info/index').then((res) =>{
             // debugger
             this.preinfo = res.data.data
-            console.log(this.preinfo)
+            // this.type = res.data.data.type
+            console.log(res)
         })
     }
 }
