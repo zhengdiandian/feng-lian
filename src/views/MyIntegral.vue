@@ -20,7 +20,7 @@
             </div>
             <button class="exchangeBtn">积分兑换</button>
         </section>
-        <section>
+        <!-- <section>
             <div>蜂链福利</div>
             <div class="card-roll">
                 <div class="card-roll-list">
@@ -36,8 +36,8 @@
                     <span class="date">2019.04.19</span>
                 </div>
             </div>
-        </section>
-        <section>
+        </section> -->
+        <!-- <section>
             <div>蜂链积分商城</div>
             <mu-carousel hide-controls hide-indicators="true">
                 <mu-carousel-item>
@@ -53,8 +53,8 @@
                     <img src="4">
                 </mu-carousel-item>
             </mu-carousel>
-        </section>
-        <section>
+        </section> -->
+        <!-- <section>
             <div>帮助中心</div>
             <mu-list>
                 <mu-list-item>
@@ -78,7 +78,7 @@
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </mu-list-item>
             </mu-list>
-        </section>
+        </section> -->
     </main>
 </div>
 </template>

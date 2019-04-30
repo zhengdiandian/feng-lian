@@ -83,6 +83,7 @@
           this.$router.push({
             name: 'planInitial',
             params:{
+              // productCode: this.$route.params.productCode
               planNo: this.planId
             }
           })

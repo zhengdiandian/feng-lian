@@ -172,6 +172,11 @@
     },
     methods: {
       joinInform() {
+        var xtoken = window.sessionStorage.getItem('token')
+        // console.log(xtoken)
+        if (xtoken == null) {
+          return
+        }
         this.$router.push({
           name: 'inform',
           params: {

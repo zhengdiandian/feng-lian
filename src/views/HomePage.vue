@@ -5,7 +5,7 @@
       <div>
         <div>
           <div class="heart">
-            您为成为爱心大使暂不能邀请
+            您未成为爱心大使暂不能邀请
           </div>
         </div>
       </div>
@@ -217,12 +217,12 @@ export default {
       this.homeinfor = res.data.data
       this.operateItem = res.data.data.operateItem
       this.bannerlist = res.data.data.bannerList[0]
-      console.log(res)
+      // console.log(res)
     }),
     this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
           this.product = res.data.data[0]
           this.joinFlag = this.product.joinFlag
-          console.log(this.joinFlag)
+          console.log(this.product)
           // console.log(this.product)
     })
   }
