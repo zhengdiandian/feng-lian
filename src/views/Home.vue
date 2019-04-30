@@ -2,11 +2,11 @@
   <div>
     <router-view class="home-wrap"></router-view>
   <!--<mu-container style="max-width: 400px; width:100%;" name="home" color="primary" z-depth="0">-->
-    <mu-bottom-nav class="bottom-nav"  :value.sync="shift" >
+    <mu-bottom-nav class="bottom-nav" @change="open" :value.sync="shift" >
 
       <mu-bottom-nav-item value="movies" active-class="active-item" title="首页" to="/home"  icon=":iconfont iconshouye1 " ></mu-bottom-nav-item>
       <mu-bottom-nav-item value="music"  active-class="active-item" title="公告" to="/notice/newNotice" icon=":iconfont icongonggao"></mu-bottom-nav-item>
-      <mu-bottom-nav-item value="books" active-class="active-item" title="我的" to="/my"  icon=":iconfont iconwode"></mu-bottom-nav-item>
+      <mu-bottom-nav-item value="my" active-class="active-item" title="我的" @click="open"   to="/my"   icon=":iconfont iconwode"></mu-bottom-nav-item>
     </mu-bottom-nav>
 
   <!--</mu-container>-->
@@ -21,7 +21,21 @@ export default {
       shift: 'movies'
     }
   },
+  methods:{
+    open(value){
+      if(value !=='my')return
+      let token = sessionStorage.getItem('token')
+      if(token){
+        this.$router.push('/my')
+      } else{
+        this.$router.push('/mynot')
+      }
+    }
+  },
   components: {
+
+  },
+  mounted() {
 
   }
 }

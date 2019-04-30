@@ -20,7 +20,7 @@
                     <!-- <span><input type="text" v-model="sex"></span> -->
                     <!-- <mu-form-item prop="select" label="Select"> -->
                         <mu-select v-model="form.select" :active-step="activeStep" >
-                            <mu-option v-for="(option,index) in options" :key="index" :label="option.label" :value="option.id" @click="activeStep = index + 1"></mu-option>
+                            <mu-option v-for="(option,index) in options" :key="index" :label="option.label" :value="option.id"></mu-option>
                         </mu-select>
                     <!-- </mu-form-item> -->
                     <mu-divider></mu-divider>
@@ -60,6 +60,10 @@
                     <span>邮箱：</span><span><input type="text" v-model="email"></span>
                     <mu-divider></mu-divider>
                 </div>
+                <div class="rule margin-left">
+                    <span>个性签名：</span><span><input type="text" v-model="motto"></span>
+                    <mu-divider></mu-divider>
+                </div>
             </section>
         </main>
     </div>
@@ -80,7 +84,8 @@ export default {
             email: '',
             province: '',
             city: '123',
-            activeStep: 0,
+            motto: '',
+            activeStep: '',
             options: [
               {label:'男',
               id: 1}, {label:'女',
@@ -93,7 +98,12 @@ export default {
     },
     methods:{
         editdeta() {
-            console.log(this.options[length])
+            // console.log(this.options[length])
+            var ePattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            if (!ePattern.test(this.email)) {
+                // alert("’邮箱错误")
+                return
+            }
             this.$axios.post('/v1/user/info/updateInfo',{
             "nickname":this.nickname,
             "sex":this.form.select,
@@ -105,11 +115,11 @@ export default {
             "address":this.address,
             "email":this.email,
             "province":this.province,
-            "city":this.city
+            "city":this.city,
+            "motto": this.motto
         }).then(res=>{
             // this.detalis = res.data.data
             console.log(res)
-            console.log(this.options[this.activeStep])
         })
         }
     },

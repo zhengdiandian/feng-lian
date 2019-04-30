@@ -1,5 +1,20 @@
 <template>
 <div id="MyCenter">
+  <PopBox v-if="showPoP">
+    <div class="pop">
+      <div>
+        <div>
+          <div class="heart">
+            您还没有登录您的账号现在去登录吗？
+          </div>
+        </div>
+      </div>
+      <div style="position: absolute;width: 100%;bottom: 0;">
+        <button @click="showpop=false">不，谢谢</button>
+        <button class="btn-join" @click="$router.push('/login')">现在登陆</button>
+      </div>
+    </div>
+  </PopBox>
     <header>
         <div class="header-title">我的蜂链</div>
     </header>
@@ -13,7 +28,7 @@
             </div>
         </section>
         <section class="please-list-tongzhi">
-          <router-link tag="div" to="/myplan">
+          <div  @click="showPoP=true">
             <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/我的计划-选中.svg" alt="">
@@ -21,8 +36,8 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-          </router-link>
-          <router-link tag="div" to="/assis">
+          </div>
+          <div  @click="showPoP=true">
             <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/记录.svg" alt="">
@@ -30,8 +45,8 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-          </router-link>
-          <router-link tag="div" to="/">
+          </div>
+          <div  @click="showPoP=true">
             <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/邀请.svg" alt="">
@@ -39,8 +54,8 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-          </router-link>
-            <router-link tag="div" to="/">
+          </div>
+            <div  @click="showPoP=true">
               <div class="list-li">
               <div style="text-align: center;">
               <img src="../assets/图标/通知.svg" alt="">
@@ -48,8 +63,8 @@
               </div>
               <mu-icon value=":iconfont iconyou1"></mu-icon>
             </div>
-            </router-link>
-            <router-link tag="div" to="/setup">
+            </div>
+            <div  @click="showPoP=true">
               <div class="list-li">
               <div style="text-align: center;">
               <img src="../assets/图标/设置.svg" alt="">
@@ -57,12 +72,13 @@
               </div>
               <mu-icon value=":iconfont iconyou1"></mu-icon>
             </div>
-            </router-link>
+            </div>
         </section>
     </main>
 </div>
 </template>
 <script>
+import PopBox from '../components/PopBox/PopBox'
 export default {
   name: 'mynotlogin',
   data() {
@@ -73,12 +89,58 @@ export default {
         "邀请好友",
         "通知",
         "设置"
-      ]
+      ],
+      showPoP: false
     }
+  },
+  components: {
+    PopBox
   }
 }
 </script>
 <style scoped lang="scss">
+.pop{
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    text-align: center;
+    position: relative;
+    & >div:last-child{
+      // height: 40px;
+      // background-color: $c-cheng;
+      // color: $c-bai;
+      // line-height: 40px;
+      // font-size: 18px;
+      // align-self: flex-end;
+    }
+    &>div{
+      width: 100%;
+      text-align: center;
+    }
+    align-items: center;
+    .iconfont{
+      font-size: 45px;
+    }
+    .heart{
+      display: inline-block;
+      width: 170px;
+      height: 80px;
+      font-size: 16px;
+    }
+    button{
+      border: none;
+      width: 50%;
+      height: 50px;
+      border-top: 1px solid $c-hui;
+      background-color: #fff;
+      border-right: 1px solid $c-hui;
+    }
+    .btn-join{
+      color: $c-lang
+    }
+  }
 header {
 width: $gw;
 .header-title {

@@ -51,7 +51,7 @@
           <input type="text" placeholder="请输入您的身份证号" v-model="ID">
         </div>
         <div class="warning">
-          <mu-icon value=":iconfont icontanhao" size="24"></mu-icon> &nbsp; 身份证信息不可修改, 请正确填写
+          <mu-icon v-show="ShowID" value=":iconfont icontanhao" size="24"></mu-icon>  <span v-show="ShowID" style="color: #FF0C0C">身份证信息不可修改, 请正确填写</span>
         </div>
       </div>
       <!-- <mu-divider style="height:5px;"></mu-divider> -->
@@ -62,7 +62,7 @@
           <span class="margin-left" @click="obtain">获取邀请码</span>
         </div>
         <div class="warning">
-          <mu-icon value=":iconfont icontanhao" size="24"></mu-icon>邀请码信息不可修改, 请正确填写
+          <mu-icon  value=":iconfont icontanhao" size="24"></mu-icon> <span>邀请码信息不可修改, 请正确填写</span>
         </div>
       </div>
     <!-- <mu-divider style="height:5px;"></mu-divider> -->
@@ -123,6 +123,7 @@ export default {
       sliderVal: '',
       tongYi: false,
       activeStep: 0,
+      ShowID: false,
       btnList: [
         '自己', '父母', '配偶', '子女'
       ],
@@ -148,7 +149,11 @@ export default {
     
     },
       btnHandleClick (i) {
-        
+        var cPReg = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+        if (!cPReg.test(this.ID)) {
+          this.ShowID = true
+          return
+        }
         this.$axios.post('/v1/mutually/plan/checkOrder',{
               "contacs": this.name,
               "contacsIdNo": this.ID,
