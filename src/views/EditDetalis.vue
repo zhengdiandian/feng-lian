@@ -16,7 +16,13 @@
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>性别：</span><span ><input type="text" v-model="sex"></span>
+                    <span>性别：</span>
+                    <!-- <span><input type="text" v-model="sex"></span> -->
+                    <!-- <mu-form-item prop="select" label="Select"> -->
+                        <mu-select v-model="form.select" :active-step="activeStep" >
+                            <mu-option v-for="(option,index) in options" :key="index" :label="option" :value="option" @click="activeStep = index + 1"></mu-option>
+                        </mu-select>
+                    <!-- </mu-form-item> -->
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
@@ -73,14 +79,22 @@ export default {
             address: '',
             email: '',
             province: '',
-            city: '123'
+            city: '123',
+            activeStep: 0,
+            options: [
+                '男', '女'
+            ],
+            form: {
+                select: ''
+            }
         }
     },
     methods:{
         editdeta() {
+            console.log(this.options[length])
             this.$axios.post('/v1/user/info/updateInfo',{
             "nickname":this.nickname,
-            "sex":this.sex,
+            "sex":this.options[index],
             "age":this.age,
             "birth":this.birth,
             "constellation":this.constellation,
@@ -93,9 +107,13 @@ export default {
         }).then(res=>{
             // this.detalis = res.data.data
             console.log(res)
+            console.log(this.options[this.activeStep])
         })
         }
     },
+    // mounted() {
+    //     console.log(this.options[this.activeStep])
+    // }
 }
 </script>
 <style scoped lang="scss">
@@ -107,6 +125,7 @@ main{
         .rule{
             height: 50px;
             line-height: 50px;
+            position: relative;
             span{
                 display: inline-block;
                 width: 80px;
@@ -121,5 +140,12 @@ input{
     background-color: rgba(234,234,234,0.3);
     outline: none;
     border: none;
+}
+.mu-input{
+    width: 60px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 10px;
 }
 </style>

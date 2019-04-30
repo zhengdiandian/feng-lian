@@ -100,7 +100,7 @@
           </div>
         </router-link>
 
-        <div @click="$router.push('/share')">
+        <div @click="$router.push('/myintegral')">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/客户.svg" alt="">

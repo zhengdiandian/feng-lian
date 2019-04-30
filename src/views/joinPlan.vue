@@ -148,6 +148,7 @@ export default {
     
     },
       btnHandleClick (i) {
+        
         this.$axios.post('/v1/mutually/plan/checkOrder',{
               "contacs": this.name,
               "contacsIdNo": this.ID,
@@ -167,6 +168,7 @@ export default {
               this.$router.push({
                 name: 'orderInfo',
                 params: {
+                  productCode: this.$route.params.productCode,
                   order: this.order
                 }
               })

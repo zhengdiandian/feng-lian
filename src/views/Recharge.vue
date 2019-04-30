@@ -130,17 +130,17 @@ export default {
   },
   methods: {
       btnHandleClick (i) {
-        this.$axios.post('/v1/mutually/plan/checkOrder',{
-              // "contacs":this.name,
-              // "contacsIdNo":this.ID,
-              // "inviteCode":this.InvitationCode,
-              "orderAmount": this.sums[this.activeStep], // 金额
-              // "productCode": this.$route.params.productCode,
-              // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
-              // "type": 0
-            }).then((res)=> {
-              this.order = res.data.data
-              console.log(this.order)
+        // this.$axios.post('/v1/mutually/plan/checkOrder',{
+        //       // "contacs":this.name,
+        //       // "contacsIdNo":this.ID,
+        //       // "inviteCode":this.InvitationCode,
+        //       "orderAmount": this.sums[this.activeStep], // 金额
+        //       // "productCode": this.$route.params.productCode,
+        //       // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
+        //       // "type": 0
+        //     }).then((res)=> {
+        //       this.order = res.data.data
+        //       console.log(this.order)
               // localStorage.setItem('order',this.order)
               this.$router.push({
                 name: 'orderInfo',
@@ -148,7 +148,7 @@ export default {
                   order: this.order
                 }
               })
-            })
+            // })
       },
   },
 };
@@ -156,7 +156,7 @@ export default {
 
 <style scoped lang='scss'>
 .card{
-  height: 190px;
+  height: 175px;
   margin-bottom: 20px;
 }
 main{
