@@ -6,17 +6,22 @@
         <main class="page-margin-top">
             <div class="report">
                 <span>{{upload}}</span>
-                <div class="pictures">
-                    <img src="" alt="">
+                <div class="img-wrap">
+                  <div class="pictures" v-for="(img, i ) in imgArr">
+                    <img :src="img" alt="">
+                  </div>
                 </div>
+
             </div>
             <div class="upload">
                 <section>
-                    <upload :upload="upload"></upload>
-                    <upload :upload="upload"></upload>
-                    <upload :upload="upload"></upload>
+                    <upload :show-img="false" :upload="upload" @getFile="getFile"></upload>
+                    <!--<upload :upload="upload"></upload>-->
+                    <!--<upload :upload="upload"></upload>-->
                 </section>
             </div>
+          <div class="bottom-btn" @click="submit">提交</div>
+
         </main>
     </div>
 </template>
@@ -27,12 +32,35 @@ export default {
     name: 'uploadrepost',
     components: {
         PageHeader,
-        upload
+        upload,
     },
     data() {
         return {
-            upload: '上传体检报告'
+            upload: '上传体检报告',
+          imgArr: [],
+          urlList: [],
+          file1: '',
+
+
         }
+    },
+    methods:{
+      getFile(file,img, imgURL) {
+        // this[params] = file
+        this.urlList.push(file)
+        debugger
+        this.imgArr.push(img)
+      },
+      submit() {
+        if(!this.urlList.length)return
+        debugger
+        let images = this.urlList.toString()
+        this.$axios.post('v1/user/info/uploadHealthyReport',{
+          images
+        }).then(res => {
+          console.log(res)
+        })
+      }
     }
 }
 </script>
@@ -47,11 +75,37 @@ export default {
         margin: 12px 0 12px 12px;
     }
 }
+.img-wrap{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 .pictures{
-    width:85px;
+    width:25%;
     height:50px;
     border-radius:5px;
-    background-color: #ccc;
     margin: 0 12px 12px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+}
+.bottom-btn{
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $c-cheng;
+  color: #fff;
+  line-height: 50px;
+  font-size:15px;
+  font-family:SourceHanSansCN-Normal;
+  font-weight:400;
+  color:rgba(255,255,255,1);
 }
 </style>
