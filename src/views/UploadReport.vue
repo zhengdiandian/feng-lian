@@ -6,20 +6,22 @@
         <main class="page-margin-top">
             <div class="report">
                 <span>{{upload}}</span>
-                <div class="pictures">
-                    <img src="" alt="">
+                <div class="img-wrap">
+                  <div class="pictures" v-for="(img, i ) in imgArr" :key="i">
+                    <img :src="img" alt="">
+                  </div>
                 </div>
+
             </div>
             <div class="upload">
                 <section>
-                    <!-- <upload :upload="upload"></upload>
-                    <upload :upload="upload"></upload>
-                    <upload :upload="upload"></upload> -->
-                    <!-- <div class="upload">
-                        <picture-input ref="pictureInput" @change="onChange" width="375" height="200" margin="16" accept="image/jpeg,image/png" size="10"></picture-input>
-                    </div> -->
+                    <upload :show-img="false" :upload="upload" @getFile="getFile"></upload>
+                    <!--<upload :upload="upload"></upload>-->
+                    <!--<upload :upload="upload"></upload>-->
                 </section>
             </div>
+          <div class="bottom-btn" @click="submit">提交</div>
+
         </main>
     </div>
 </template>
@@ -32,23 +34,33 @@ export default {
     components: {
         PageHeader,
         upload,
-        PictureInput
     },
     data() {
         return {
-            upload: '上传体检报告'
+            upload: '上传体检报告',
+          imgArr: [],
+          urlList: [],
+          file1: '',
+
+
         }
     },
-    methods: {
-        // onChange () {
-        //     console.log('New picture selected!')
-        //     if (this.$refs.pictureInput.image) {
-        //         console.log('Picture loaded.')
-        //     } else {
-        //         console.log('FileReader API not supported: use the <form>, Luke!')
-        //     }
-        // }
-  }
+    methods:{
+      getFile(file,img, imgURL) {
+        // this[params] = file
+        this.urlList.push(file)
+        this.imgArr.push(img)
+      },
+      submit() {
+        if(!this.urlList.length)return
+        let images = this.urlList.toString()
+        this.$axios.post('v1/user/info/uploadHealthyReport',{
+          images
+        }).then(res => {
+          console.log(res)
+        })
+      }
+    }
 }
 </script>
 <style scoped lang="scss">
@@ -62,11 +74,37 @@ export default {
         margin: 12px 0 12px 12px;
     }
 }
+.img-wrap{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 .pictures{
-    width:85px;
+    width:25%;
     height:50px;
     border-radius:5px;
-    background-color: #ccc;
     margin: 0 12px 12px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+}
+.bottom-btn{
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $c-cheng;
+  color: #fff;
+  line-height: 50px;
+  font-size:15px;
+  font-family:SourceHanSansCN-Normal;
+  font-weight:400;
+  color:rgba(255,255,255,1);
 }
 </style>

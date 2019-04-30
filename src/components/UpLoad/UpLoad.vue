@@ -5,7 +5,7 @@
                 <img src="../../assets/img/相机.svg" alt="">
                 <span>{{upload}}</span>
                 <input class="justID" type="file" ref="file" @change="uploadIMG($event)" accept="image/*">
-                <img :src="imgUrl" v-if="imgUrl" @click="delImg" alt="" class="img-file">
+                <img :src="imgUrl" v-if="imgUrl&&showImg" @click="delImg" alt="" class="img-file">
             </div>
         </div>
     </div>
@@ -20,6 +20,10 @@ export default {
             type: String,
             default: '上传身份证正面',
         },
+      showImg: {
+          type: Boolean,
+          default: true
+      }
         // file: {
         //     type : Object,
         //     default: function () {
@@ -107,7 +111,7 @@ export default {
                 }
               }).then(res => {
               debugger
-              self.$emit('getFile', res.data.data.url)
+              self.$emit('getFile', res.data.data.url, self.imgUrl)
 
             })
             // axios.post('v1/manage/common/uploadImg',

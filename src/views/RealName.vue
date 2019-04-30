@@ -16,7 +16,7 @@
                 </section>
             </div>
         </main>
-      <div class="bottom-btn" @click="submit">立即加入</div>
+      <div class="bottom-btn" @click="submit">提交</div>
 
     </div>
 </template>
