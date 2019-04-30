@@ -125,21 +125,38 @@ export default {
   },
   methods: {
     typeLogin(type) {
-      this.$axios
-        .post("/v1/user/login/login", {
+      var data ={
+        account: this.account, //手机号码
+        // "appId": "test",	//appid,用于直接登录
+        loginPassword: this.pwd, //登陆密码
+        // smsCode:  this.pwd,	//type=0时，短信验证码
+        	//type=0时，短信token
+        type:  type //0=短信登陆，1=密码登陆
+      }
+      debugger
+      if(type===0) {
+         data = {
           account: this.account, //手机号码
-          // "appId": "test",	//appid,用于直接登录
-          loginPassword: this.pwd, //登陆密码
-          // "smsCode": "",	//type=0时，短信验证码
-          // "token": "",	//type=0时，短信token
+            // "appId": "test",	//appid,用于直接登录
+            // loginPassword: this.pwd, //登陆密码
+          smsCode:  this.pwd,	//type=0时，短信验证码
+           token:  this.msgToken,                    // "token": "",	//type=0时，短信token
           type:  type //0=短信登陆，1=密码登陆
-        })
+        }
+      }
+      this.$axios
+        .post("/v1/user/login/login", data)
         .then(res => {
           debugger;
           const { authToken } = res.data.data;
           console.log(res);
           this.$store.commit("set_authToken", authToken);
-          this.$router.replace(this.$route.query.redirect);
+          if(this.$route.query.redirect){
+            this.$router.replace(this.$route.query.redirect);
+          }else {
+            this.$router.replace('/home');
+
+          }
         })
         .catch(err => {
           this.show = true;
@@ -215,6 +232,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+  .wrap{
+    height: 100%;
+    background-color: $c-bai;
+  }
 .content {
   width: $gw;
   padding: 60px;
