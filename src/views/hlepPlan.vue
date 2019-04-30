@@ -183,22 +183,31 @@
         })
       },
       open(){
-        
+
       }
     },
     mounted() {
-      this.$axios.post('/v1/product/product/tags',{  // 产品标签列表
-        "productCode": this.productCode
-      }).then(res=>{
-        this.itemRowData = res.data.data
-        // console.log(res)
-      }),
+      let time = +new Date()
+      let fn = async () =>{
+        let res= await this.$axios.post('/v1/product/product/tags',{  // 产品标签列表
+          "productCode": this.productCode
+        })
+          // res.then(res=>{
+
+          this.itemRowData = res
+          // console.log(res)
+        // })
+      }
+      console.log(+ new Date() -time)
+      fn()
+      console.log(+ new Date() -time)
       this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
         "productCode": this.productCode
       }).then(res=>{
         this.MutualRule = res.data.data
         // console.log(this.MutualRule)
-      }),
+      })
+
       this.$axios.post('/v1/product/product/issue',{ //常见问题
         "productCode": this.productCode
       }).then(res=>{

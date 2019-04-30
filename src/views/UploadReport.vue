@@ -28,7 +28,7 @@
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
 import upload from '../components/UpLoad/UpLoad'
-import PictureInput from 'vue-picture-input'
+// import PictureInput from 'vue-picture-input'
 export default {
     name: 'uploadrepost',
     components: {
