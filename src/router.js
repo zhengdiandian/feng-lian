@@ -199,6 +199,9 @@ export default new Router({
       name: 'hlepPlan',
       component: function () {
         return import('./views/hlepPlan')
+      },
+      meta: {
+        requiresAuth: true
       }
     },
     {
