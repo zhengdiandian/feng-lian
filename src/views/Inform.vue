@@ -9,7 +9,8 @@
       </mu-button>
     </mu-appbar>
     <div class="page-margin-top">
-      <img src=".././assets/PNG/百万计划banner.png" alt="">
+      <!-- <img :src="this.writingImg" alt=""> -->
+      <img src="../assets/PNG/底部banner.png" alt="" srcset="">
       <div class="wrap" style="margin-bottom:50px;">
         <div class="importance">
           <span class="icon">
@@ -141,8 +142,8 @@
 
     </div>
     <div class="btn-wrap">
-      <div class="btn">不符合条件</div>
-      <div class="btn" @click="$router.push('/joinPlan')">符合条件, 继续</div>
+      <div class="btn" >不符合条件</div>
+      <div class="btn" @click="ToJoinPlan">符合条件, 继续</div>
     </div>
   </div>
 
@@ -150,7 +151,26 @@
 
 <script>
   export default {
-    name: 'Inform'
+    name: 'Inform',
+    data() {
+      return {
+        writingImg: this.$route.params.writingImg,
+        writing: this.$route.params.writing,
+        MutualRule: this.$route.params.MutualRule,
+        productCode: this.$route.params.productCode
+      }
+    },
+    methods:{
+      ToJoinPlan() {
+        this.$router.push({
+          name: 'joinPlan',
+          params:{
+            productCode:this.productCode,
+            MutualRule: this.MutualRule
+          }
+        })
+      }
+    }
   }
 </script>
 

@@ -75,7 +75,7 @@
       }).then((res)=> {
         this.panned = res.data.data
         console.log(this.panned)
-      })
+      }) 
     },
     methods:{
       open(){

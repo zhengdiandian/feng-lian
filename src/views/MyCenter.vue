@@ -42,7 +42,7 @@
         <router-link tag="div" to="/perinfor">
         <section class="information">
           <span class="name">姓名：{{preinfo.nickname}}</span><span class="state">{{preinfo.state==100 ? '未实名': '已实名' }}</span>
-          <div class="number"><span>{{preinfo.account}}}</span></div>
+          <div class="number"><span>{{preinfo.account}}</span></div>
           <div class="integral">积分 {{preinfo.totalScore}}</div>
           <div class="autograph">{{preinfo.motto}}</div>
         </section>
@@ -197,7 +197,7 @@ import axios from 'axios'
   }
   },
   created() {
-    this.$axios.post('/v1/user/user/personalInfo').then(res => {
+    this.$axios.post('/v1/user/info/personalInfo').then(res => {
       console.log(res)
     })
   },
@@ -205,8 +205,8 @@ import axios from 'axios'
     PopBox
     },
     mounted() {
-      this.$axios.post('/v1/user/user/index').then((res) =>{
-            debugger
+      this.$axios.post('/v1/user/info/index').then((res) =>{
+            // debugger
             this.preinfo = res.data.data
             console.log(this.preinfo)
         })

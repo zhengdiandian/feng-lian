@@ -28,7 +28,7 @@
 
       <mu-carousel class="banner">
         <mu-carousel-item v-for="i in 4" :key="i">
-          <img :src="bannerlist.img" @click="See">
+          <img :src="bannerlist.img">
         </mu-carousel-item>
       </mu-carousel>
       <div class="content">
@@ -111,8 +111,8 @@
           </div>
           <div class="plan-right-content">
             <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code}})">
-              <span v-if="type == 0">加入</span>
-              <span v-if="type == 1">再次加入</span>
+              <span v-if="joinFlag == 0">加入</span>
+              <span v-if="joinFlag == 1">再次加入</span>
             </mu-button>
           </div>
         </div>
@@ -121,7 +121,7 @@
       </div>
     </div>
     <div class="wrap">
-      <banner-img ></banner-img>
+      <banner-img :videoImg="videoImg"></banner-img>
       <div class="help-wrap">
         <mu-sub-header>常见问题</mu-sub-header>
 
@@ -185,25 +185,22 @@ export default {
       // open: true,
       open1: '',
       open2: '',
-
       product: [],
       homeinfor: [],
       bannerlist:[],
       operateItem: [],
       type: 0,
       showPoP: false,
-      videoImg: require('../assets/PNG/视频.png')
+      videoImg: require('../assets/PNG/视频.png'),
+      joinFlag: ''
     };
   },
   methods: {
     open() {
 
     },
-  See() {
-    window.location.href = this.bannerlist.linkUrl
-  },
   invitation(){
-      if (this.type == 1) {
+      if (this.type == 0) {
         this.showPoP = true
       } else {
         this.$router.push('/code')
@@ -217,14 +214,15 @@ export default {
   },
   mounted() {
     this.$axios.post('/v1/manage/post/index').then((res)=>{
-      // this.homeinfor = res.data.data
-      // this.operateItem = res.data.data.operateItem
-      // this.bannerlist = res.data.data.bannerList[0]
+      this.homeinfor = res.data.data
+      this.operateItem = res.data.data.operateItem
+      this.bannerlist = res.data.data.bannerList[0]
       console.log(res)
     }),
     this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
           this.product = res.data.data[0]
-          console.log(res)
+          this.joinFlag = this.product.joinFlag
+          console.log(this.joinFlag)
           // console.log(this.product)
     })
   }

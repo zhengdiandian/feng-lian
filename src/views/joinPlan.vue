@@ -19,9 +19,25 @@
     <main>
       <div class="page-margin-top mu-header">终身重大疾病互助计划</div>
       <div class="plan-info wrap">
-        <li v-for="(item, index) in 6" :key="index">
-          <span>加入年龄：出生28天-65周岁</span>
+        <li>
+          <span>互助内容：{{MutualRule.content}}</span>
         </li>
+        <li>
+          <span>加入年龄：{{MutualRule.crowdRange}}</span>
+        </li>
+        <li>
+          <span>最高互助金：{{MutualRule.highestHelped}}</span>
+        </li>
+        <li>
+          <span>加入人数：{{MutualRule.joinCount}}</span>
+        </li>
+        <li>
+          <span>已捐助：{{MutualRule.supportCount}}人</span>
+        </li>
+        <li>
+          <span>已捐助金额：{{MutualRule.supportAmount}}</span>
+        </li>
+
       </div>
       <!-- <mu-divider style="height:5px"></mu-divider> -->
       <div class="info-form margin-left">
@@ -43,7 +59,7 @@
         <div class="input-wrap">
           <label for>邀请码</label>
           <input type="text" placeholder="请联系客服获得邀请码" v-model="InvitationCode" disabled="disabled">
-          <span class="margin-left">获取邀请码</span>
+          <span class="margin-left" @click="obtain">获取邀请码</span>
         </div>
         <div class="warning">
           <mu-icon value=":iconfont icontanhao" size="24"></mu-icon>邀请码信息不可修改, 请正确填写
@@ -72,8 +88,9 @@
           <li v-for="sum in sums" :key="sum">{{sum}}元</li>
         </ul>
       </div>
-      <div class="buy-info margin-top">
+      <div class="buy-info margin-top" style="position: relative;">
         使用时间: <span class="margin-left font-min">{{this.sums[this.activeStep]}}个月</span>
+        <div class="estimate"><span style="font-size: 12px;">预计到期时间2020年2月9日</span></div>
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
@@ -109,6 +126,7 @@ export default {
       btnList: [
         '自己', '父母', '配偶', '子女'
       ],
+      MutualRule: this.$route.params.MutualRule,
       sums:[
         10,
         20,
@@ -116,7 +134,8 @@ export default {
         100,
         200
       ],
-      activeIndex: 0
+      activeIndex: 0,
+      order: []
     }
   },
   computed:{
@@ -125,15 +144,22 @@ export default {
     }
   },
   methods: {
+    obtain(){
+    
+    },
       btnHandleClick (i) {
         this.$axios.post('/v1/mutually/plan/checkOrder',{
-              "contacs":this.name,
-              "contacsIdNo":this.ID,
-              "inviteCode":this.InvitationCode,
-              "orderAmount": this.sums[this.activeStep], // 金额
-              "productCode": this.$route.params.productCode,
+              "contacs": this.name,
+              "contacsIdNo": this.ID,
+              "inviteCode":"136750423931",
+              "orderAmount": "1",
+              // "orderAmount": this.sums[this.activeStep], // 金额
+              // "productCode": this.$route.params.productCode,
+              "productCode": "test1234567890",
+              "relationShip": "0",
+              "stageCount": "1",
               // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
-              "type": 0
+              "type": 2
             }).then((res)=> {
               this.order = res.data.data
               console.log(this.order)
@@ -151,7 +177,35 @@ export default {
     headpage
   },
   mounted() {
-
+    // this.$axios.post('/v1/user/info/getCertifyInfo').then(res=>{
+    //   if(res.data.code == 900) {
+    //     alert('还没实名认证')
+    //     this.$router.push('/real')
+    //   }
+    // })
+    this.$axios.post('/v1/mutually/plan/checkOrder',{
+              "contacs":"黄溢东",
+              "contacsIdNo":"124124243",
+              "inviteCode":"136750423931",
+              "orderAmount": "1",
+              // "orderAmount": this.sums[this.activeStep], // 金额
+              // "productCode": this.$route.params.productCode,
+              "productCode": "test1234567890",
+              "relationShip": "0",
+              "stageCount": "1",
+              // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
+              "type": 2
+            }).then((res)=> {
+              this.order = res.data.data
+              console.log(this.order)
+              // localStorage.setItem('order',this.order)
+              // this.$router.push({
+              //   name: 'orderInfo',
+              //   params: {
+              //     order: this.order
+              //   }
+              // })
+            })
   }
 };
 </script>
@@ -179,6 +233,16 @@ main{
   }
 .wrap {
   padding: 0 20px;
+}
+.estimate{
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+  width: 85px;
+  // background-color: red;
+  font-size: 12px;
+  text-align: center;
+  line-height: 15px;
 }
 .plan-info  {
   display: flex;

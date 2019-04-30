@@ -106,7 +106,7 @@
       //   // console.log(this.payment)
       // })
       this.order = this.$route.params.order
-      this.$axios.post('/v1/pay/channel/channelList').then(res=>{
+      this.$axios.post('/v1/mutually/plan/addPayOrder').then(res=>{
         this.pay = res.data.data
       })
     }

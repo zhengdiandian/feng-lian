@@ -68,7 +68,7 @@
           <mu-divider></mu-divider>
         </div>
         <div class="rule margin-left">
-          <span class="rule-title font-min margin-right">等&nbsp;待&nbsp;期</span>{{MutualRule.wattingStage}}
+          <span class="rule-title font-min margin-right">等&nbsp;待&nbsp;期</span>{{MutualRule.wattingStage}}天
           <mu-divider></mu-divider>
         </div>
       </div>
@@ -141,31 +141,32 @@
     data() {
       return {
         // open: false,
-        open: 'send',
+        // open: 'send',
         title: '互助计划',
         MutualRule: [],
         problem: {},
+        productCode:this.$route.params.productCode,
         itemRowData: [
-          {
-            icon: ' iconfanweiguang-',
-            title: '互助范围',
-            text: '60 (大病) + 20(轻症)'
-          },
-          {
-            icon: ' iconedu',
-            title: '互助额度',
-            text: '最高55万'
-          },
-          {
-            icon: ' iconbaozhang',
-            title: '终身保障',
-            text: '28天~100周岁'
-          },
-          {
-            icon: ' iconpeifu',
-            title: '赔付秒结',
-            text: '满足条件拨款秒结'
-          }
+          // {
+          //   icon: ' iconfanweiguang-',
+          //   title: '互助范围',
+          //   text: '60 (大病) + 20(轻症)'
+          // },
+          // {
+          //   icon: ' iconedu',
+          //   title: '互助额度',
+          //   text: '最高55万'
+          // },
+          // {
+          //   icon: ' iconbaozhang',
+          //   title: '终身保障',
+          //   text: '28天~100周岁'
+          // },
+          // {
+          //   icon: ' iconpeifu',
+          //   title: '赔付秒结',
+          //   text: '满足条件拨款秒结'
+          // }
         ]
       }
     },
@@ -174,30 +175,37 @@
         this.$router.push({
           name: 'inform',
           params: {
-            "writingImg":this.MutualRule.healthyImg,
-            "writing": this.MutualRule.healthyText
+            "writingImg":this.MutualRule.healthyImg, //健康文案图片
+            "writing": this.MutualRule.healthyText, //健康文案
+            "MutualRule": this.MutualRule, // 产品详情--传到加入计划
+            "productCode": this.productCode
           }
         })
+      },
+      open(){
+        
       }
     },
     mounted() {
       this.$axios.post('/v1/product/product/tags',{  // 产品标签列表
-        "productCode": this.$route.params.productCode
+        "productCode": this.productCode
       }).then(res=>{
-        // this.itemRowData = res.data.data
+        this.itemRowData = res.data.data
+        // console.log(res)
       }),
       this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
-        "productCode": this.$route.params.productCode
+        "productCode": this.productCode
       }).then(res=>{
         this.MutualRule = res.data.data
-        console.log(this.MutualRule)
+        // console.log(this.MutualRule)
       }),
-      this.$axios.post('/v1/product/product/issue',{
-        "productCode": this.$route.params.productCode
+      this.$axios.post('/v1/product/product/issue',{ //常见问题
+        "productCode": this.productCode
       }).then(res=>{
         this.problem = res.data.data[0]
-        // console.log(this.problem)
+        console.log(this.problem)
       })
+      console.log(this.$route.params.productCode)
     }
   }
 </script>

@@ -46,7 +46,7 @@
                 </mu-text-field>
             </div>
             <div style="width: 75%" >
-                <mu-button round class="login-btn" @click.self="setPwd"  color="success" >注&nbsp;册&nbsp;并&nbsp;登&nbsp;陆</mu-button>
+                <mu-button round class="login-btn" @click="setPwd"  color="success" >注&nbsp;册&nbsp;并&nbsp;登&nbsp;陆</mu-button>
             </div>
         </main>
     </div>
@@ -86,7 +86,7 @@ export default {
               debugger
             // this.token = res.data.data.authToken
             console.log(res)
-            sessionStorage.setItem('token', res.data.data.authToken)
+            // sessionStorage.setItem('token', res.data.data.authToken)
             this.$router.replace('/login')
 
 

@@ -7,7 +7,7 @@
             <div class="report">
                 <span>{{upload}}</span>
                 <div class="img-wrap">
-                  <div class="pictures" v-for="(img, i ) in imgArr">
+                  <div class="pictures" v-for="(img, i ) in imgArr" :key="i">
                     <img :src="img" alt="">
                   </div>
                 </div>
@@ -28,6 +28,7 @@
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
 import upload from '../components/UpLoad/UpLoad'
+import PictureInput from 'vue-picture-input'
 export default {
     name: 'uploadrepost',
     components: {
@@ -48,12 +49,10 @@ export default {
       getFile(file,img, imgURL) {
         // this[params] = file
         this.urlList.push(file)
-        debugger
         this.imgArr.push(img)
       },
       submit() {
         if(!this.urlList.length)return
-        debugger
         let images = this.urlList.toString()
         this.$axios.post('v1/user/info/uploadHealthyReport',{
           images
