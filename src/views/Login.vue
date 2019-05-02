@@ -139,7 +139,11 @@ export default {
           const { authToken } = res.data.data;
           console.log(res);
           this.$store.commit("set_authToken", authToken);
-          this.$router.replace(this.$route.query.redirect);
+          if(this.$route.query.redirect){
+            this.$router.replace(this.$route.query.redirect);
+          }else {
+            this.$router.push('/home')
+          }
         })
         .catch(err => {
           this.show = true;
@@ -189,7 +193,7 @@ export default {
           debugger
           console.log(res);
           this.msgToken = res.data.data.token;
-          // this.getCode()
+          this.getCode()
         });
     },
     getCode() {

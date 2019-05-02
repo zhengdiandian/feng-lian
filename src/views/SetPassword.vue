@@ -68,19 +68,20 @@ export default {
             value14: '',
         }
     },
-    props: ['account', "smsCode", 'token'],
+    props: ['account', "smsCode", 'token', 'code'],
     components: {
         pageHeader,
         POpBox
     },
     methods: {
       setPwd () {
+        if(this.pwd&&this.value13&&this.value13===this.pwd)return      
          this.$axios.post('/v1/user/login/register',{
             "openId": "test",          // 微信appid
             "account": this.account, // 手机
             "smsCode": this.smsCode,  // 短信验证码
             "token": this.token, // 短信token
-            "inviteCode":  '136750423931',
+            "inviteCode":  this.code,
             'loginPwd': this.pwd
           }).then((res)=> {
               debugger

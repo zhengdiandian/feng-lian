@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import MyCenter from './views/MyCenter.vue'
-import PerInfor from './views/PerInfor.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -13,11 +10,19 @@ export default new Router({
   },
   routes: [
     {
+      path: '*',
+      component: function () {
+        return import('./views/HomePage.vue')
+      }
+    },
+    {
       path: '/home',
       name: 'home',
-      component: Home,
+      component: function () {
+        return import('./views/Home.vue')
+      },
       children: [
-        {
+        { 
           path: '/home', // 首页
           component: function () {
             // 首页
@@ -47,8 +52,10 @@ export default new Router({
         },
         {
           path: '/my', // 我的
-          name: MyCenter,
-          component: MyCenter,
+          name: 'MyCenter',
+          component: function(){
+            return import('./views/MyCenter.vue')
+          },
           meta: {
             requiresAuth: true
           }
@@ -75,7 +82,7 @@ export default new Router({
       }
     },
     {
-      path: '/setpwd/:token/:smsCode/:account',
+      path: '/setpwd/:token/:smsCode/:account/:code',
       name: 'setpwd', // 设置密码
       component: function () {
         return import('./views/SetPassword.vue')
@@ -98,7 +105,9 @@ export default new Router({
     {
       path: '/perinfor', // 个人信息
       name: PerInfor,
-      component: PerInfor
+      component: function () {
+        return import('./views/PerInfor.vue')
+      }
     },
     {
       path: '/mydetails', // 我的详细资料
@@ -270,7 +279,14 @@ export default new Router({
       component: function () {
         return import('./views/CurrentScale')
       }
-    }
+    },
+    // {
+    //   path: '*',
+    //   name: '*',
+    //   component: function () {
+    //     // 首页
+    //     return import('./views/Home.vue')
+    //   }
     // {
     //   path: '/',
     //   name: PerInfor,

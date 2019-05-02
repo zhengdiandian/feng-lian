@@ -48,10 +48,10 @@ export default {
         open() {
             this.$router.go(-1)
         },
-      createQrcode() {
+      createQrcode(url) {
         const width = this.$refs.qrWrap.clientHeight
         new Qrcode(this.$refs.qr, {
-          text: 'https://www.qtshe.com',
+          text: url,
           width,
           height: width,
           colorDark: '#000000',
@@ -60,11 +60,22 @@ export default {
         })
       }
     },
+    created() {
+        this.$axios.post('v1/user/info/personalInfo').then(res => {
+            console.log('userinfo', res.data.data)
+            let data = res.data.data
+            this.name = data.nickname
+            this.autograph= data.motto
+            this.state = data.state == '100'? '未认证' : '已认证'
+            this.imgUrl = data.headPortrait
+        }) 
+    },
     mounted(){
-        this.$axios.post('/v1/user/info/myQrcode').then((res)=>{
+        this.$axios.post('/v1/user/share/getShareUrl').then((res)=>{
+            debugger
             this.code = res.data.data
             console.log(res)
-          this.createQrcode()
+          this.createQrcode('http://192.168.56.1:8080/code?user_code=1111111')
         })
       console.log(this.$refs.qrWrap.clientHeight)
 
