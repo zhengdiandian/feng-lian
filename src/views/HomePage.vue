@@ -159,13 +159,13 @@
         <mu-sub-header style="margin-bottom: 12px;">平台运营安全可靠</mu-sub-header>
         <div class="partner-content">
           <img src="../assets/PNG/平安.png" alt="">
-          <img src="../assets/PNG/太平洋.png" alt="">
+          <!-- <img src="../assets/PNG/太平洋.png" alt="">
           <img src="../assets/PNG/银联.png" alt="">
           <img src="../assets/PNG/环迅支付.png" alt="">
           <img src="../assets/PNG/锦江国际.png" alt="">
           <img src="../assets/PNG/首旅集团.png" alt="">
           <img src="../assets/PNG/长安银行.png" alt="">
-          <img src="../assets/PNG/SinoKing.png" alt="">
+          <img src="../assets/PNG/SinoKing.png" alt=""> -->
         </div>
       </div>
     </div>
