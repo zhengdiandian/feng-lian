@@ -42,7 +42,7 @@
                 </div>
             </div> -->
             <button class="setBtn">解除绑定</button>
-            <button class="setBtn">安全退出</button>
+            <button class="setBtn" @click="quit">安全退出</button>
         </main>
     </div>
 </template>
@@ -57,6 +57,12 @@ export default {
     components: {
         pageHeader
     },
+    methods: {
+        quit(){
+            sessionStorage.clear()
+            this.$router.replace('/home')
+        }
+    }
 
 }
 </script>

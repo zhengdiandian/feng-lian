@@ -75,13 +75,14 @@ export default {
             if (!pwdReg.test(this.pwd)) {
                 return
             }
-
-        this.$router.push({
+            debugger
+        this.$router.push({    
             name: 'setpwd',
             params: {
                 token: this.msgToken,
                 account: this.user,
                 smsCode: this.pwd,
+                code: this.$route.query.auth_token
                 // Token: encodeURIComponent(this.token)
             }
         })

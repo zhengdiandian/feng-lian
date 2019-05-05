@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'muse-ui/lib/styles/base.less'
-import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField, Divider, List, SubHeader, Slider, Stepper,Avatar } from 'muse-ui'
+import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField, Divider, List, SubHeader, Slider, Stepper, Avatar } from 'muse-ui'
 import 'muse-ui/lib/styles/theme.less'
 import 'muse-ui/dist/muse-ui.css'
 import theme from 'muse-ui/lib/theme'
@@ -18,7 +18,7 @@ import qs from 'qs'
 import Util from '@/assets/js/unit.js'
 Vue.prototype.Util = Util
 Vue.use(Message)
-console.log('store',store)
+console.log('store', store)
 theme.add('custom-theme', {
   primaryColor: '#fff',
   primary: colors.indigo,
@@ -68,11 +68,11 @@ Vue.config.productionTip = false
 // Axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 Axios.interceptors.response.use(function (response) {
   // token 已过期，重定向到登录页面
-  if (response.data.code == 4){
+  if (response.data.code == 402 || response.data.code == 400) {
     localStorage.clear()
     router.replace({
       path: '/login',
-      query: {redirect: router.currentRoute.fullPath}
+      query: { redirect: router.currentRoute.fullPath }
     })
   }
   return response
@@ -80,33 +80,33 @@ Axios.interceptors.response.use(function (response) {
   // Do something with response error
   return Promise.reject(error)
 })
-Axios.defaults.baseURL = 'http://test.wxapi.fenglianhz.com:8888/h5'
+Axios.defaults.baseURL = 'http://test.wxapi.fenglianhz.com/h5'
 // Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 // Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 // Axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 //   .create({
 //   baseURL: 'http://47.110.79.190:8080/mockjsdata/31'
 // })
 Axios.interceptors.request.use(
   config => {
     var xtoken = window.sessionStorage.getItem('token')
-    if(xtoken != null){
+    if (xtoken != null) {
       config.headers['authToken'] = xtoken
     }
-    if(config.method=='post'){
-      config.data = qs.stringify( {
-        ...config.data,
+    if (config.method == 'post') {
+      config.data = qs.stringify({
+        ...config.data
         // _t: Date.parse(new Date())/1000,
       })
-    }else if(config.method=='get'){
+    } else if (config.method == 'get') {
       config.params = qs.stringify({
         // _t: Date.parse(new Date())/1000,
         ...config.params
       })
     }
     return config
-  },function(error){
+  }, function (error) {
     return Promise.reject(error)
   }
 )
@@ -114,12 +114,12 @@ Axios.interceptors.request.use(
 Vue.prototype.$axios = Axios
 router.beforeEach((to, from, next) => {
   if (to.matched.some(to => to.meta.requiresAuth)) {
-    //数组some方法,如果meta.requiresAuth为ture,则返回true.此时,说明进入该路由前需要判断用户是否已经登录
+    // 数组some方法,如果meta.requiresAuth为ture,则返回true.此时,说明进入该路由前需要判断用户是否已经登录
     console.log(this)
-    if (!window.sessionStorage.getItem('token')) {   //如果没登录,则跳转到登录页
+    if (!window.sessionStorage.getItem('token')) { // 如果没登录,则跳转到登录页
       next({
         path: '/login',
-        query: { redirect: to.fullPath }  //官方例子的这个小细节很好,通过query将要跳转的路由路径保存下来,待完成登录后,就可以直接获取该路径,直接跳转到登录前要去的路由
+        query: { redirect: to.fullPath } // 官方例子的这个小细节很好,通过query将要跳转的路由路径保存下来,待完成登录后,就可以直接获取该路径,直接跳转到登录前要去的路由
       })
     } else {
       next()

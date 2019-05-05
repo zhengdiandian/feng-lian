@@ -31,7 +31,7 @@
                 label-float
                 label="请输入新密码"
                 icon=":iconfont iconmima"
-                error-text="您输入的密码不够安全，请慎重"
+                :error-text="err1"
                 >
                     <div slot="append">
                         <mu-icon value=":iconfont iconbiyan"></mu-icon>
@@ -41,7 +41,7 @@
             <div class="pwd-wrap">
                 <mu-text-field v-model="pwd" label="请确认密码" label-float  icon=":iconfont iconmima"
                 :action-icon="visibility ? 'visibility_off' : 'visibility'" :action-click="() => (visibility = !visibility)" :type="visibility ? 'text' : 'password'"
-                error-text="您两次输入的密码不同，请重新输入"
+                :error-text="err2"
                 >
                 </mu-text-field>
             </div>
@@ -66,21 +66,39 @@ export default {
             pwdErr: "123",
             value13: '',
             value14: '',
+            err1: '',
+            err2: ''
         }
     },
-    props: ['account', "smsCode", 'token'],
+    props: ['account', "smsCode", 'token', 'code'],
     components: {
         pageHeader,
         POpBox
     },
     methods: {
       setPwd () {
+        this.err1 = this.err2 = ''
+        if(this.value13.length < 6){
+          return this.err1 = '密码长度需要大于6个字符'
+        }
+        if(this.value13.length > 16){ 
+          return this.err = '密码长度需要小于16个字符'
+        } 
+        if(!this.value13.length){
+          return this.err1 = '密码不可以为空'      
+        }
+        if(!this.pwd.length){
+          return this.err2 = '密码不可以为空'      
+        }
+        if(this.value13===this.pwd){
+          return '您两次输入的密码不同，请重新输入'
+        }
          this.$axios.post('/v1/user/login/register',{
             "openId": "test",          // 微信appid
             "account": this.account, // 手机
             "smsCode": this.smsCode,  // 短信验证码
             "token": this.token, // 短信token
-            "inviteCode":  '136750423931',
+            "inviteCode":  this.code,
             'loginPwd': this.pwd
           }).then((res)=> {
               debugger

@@ -32,6 +32,7 @@
           label="请输入密码"
           label-float
           icon=":iconfont iconmima"
+          :error-text="pwdErr"
           :action-icon="visibility ? 'visibility_off' : 'visibility'"
           :action-click="() => (visibility = !visibility)"
           :type="visibility ? 'text' : 'password'"
@@ -42,6 +43,7 @@
           label="请输入验证码"
           label-float
           icon=":iconfont iconmima"
+
         >
           <div  slot="append">
             <div v-show="show1" style="color: #347fe8;" @click="getMsgHandleClick">
@@ -72,7 +74,7 @@
         >登 &nbsp; 陆</mu-button
       >
       <div class="show" v-show="show">
-        <span>网络异常</span>
+        <span>{{errorMsg}}</span>
       </div>
     </div>
   </div>
@@ -95,6 +97,7 @@ export default {
       timer: null,
       codepwd: true,
       codepwd1: false,
+      errorMsg: '',
       usernameRules: [
         { validate: val => !!val, message: "必须填写用户名" },
         { validate: val => val.length >= 3, message: "用户名长度大于3" }
@@ -147,6 +150,12 @@ export default {
       this.$axios
         .post("/v1/user/login/login", data)
         .then(res => {
+          debugger
+          if(res.data.code!==200){
+            this.show = true;
+            this.errorMsg = res.data.msg
+            return
+          }
           debugger;
           const { authToken } = res.data.data;
           console.log(res);
@@ -154,13 +163,14 @@ export default {
           if(this.$route.query.redirect){
             this.$router.replace(this.$route.query.redirect);
           }else {
-            this.$router.replace('/home');
-
+            this.$router.push('/home')
           }
         })
-        .catch(err => {
-          this.show = true;
-        });
+        // .catch(err => {
+        //   debugger
+        //   this.show = true;
+        //   this.errorMsg = err.data.msg
+        // });
     },
     msgLogin() {},
     login() {
@@ -178,14 +188,15 @@ export default {
         return;
       }
       if (this.pwd.length < 6) {
-        this.pwdErr = "账号长度必须大于6位";
+        this.pwdErr = "密码长度必须大于6位";
         return;
       }
       if (this.pwd.length > 16) {
-        this.pwdErr = "账号长度必须小于16位";
+        this.pwdErr = "密码长度必须小于16位";
         return;
       }
       debugger
+  
       let type
       this.codepwd? type=1: type = 0
       this.typeLogin(type)
@@ -206,7 +217,7 @@ export default {
           debugger
           console.log(res);
           this.msgToken = res.data.data.token;
-          // this.getCode()
+          this.getCode()
         });
     },
     getCode() {

@@ -212,6 +212,11 @@ export default {
     BannerImg,
     PopBox
   },
+  created() {
+    if(this.$route.query.auth_token){
+      sessionStorage.setItem('token', this.$route.query.auth_token)
+    }
+  },
   mounted() {
     this.$axios.post('/v1/manage/post/index').then((res)=>{
       this.homeinfor = res.data.data
