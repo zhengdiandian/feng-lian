@@ -15,6 +15,11 @@
       </div>
     </div>
   </PopBox>
+  <pop-box style="z-index: 8">
+    <div class="qrcode-wrap">
+      <img src="https://placehold.it/180" alt="" class="qrcode-img">
+    </div>
+  </pop-box>
     <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
       <mu-button icon slot="right" @click="$router.push('/myPlanNews')">
         <mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>
@@ -238,6 +243,21 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.qrcode-wrap{
+  width:200px;
+  height:200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 200px;
+  text-align: center;
+  .qrcode-img{
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    background-color: red;
+  }
+}
   .videobox{
     /*overflow: hidden;*/
     &:before{
