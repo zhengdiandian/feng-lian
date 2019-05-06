@@ -66,10 +66,11 @@ Vue.use(Stepper)
 Vue.use(Avatar)
 Vue.config.productionTip = false
 // Axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
-Axios.interceptors.response.use(function (response) {
+Axios.interceptors.response.use( (response) => {
   // token 已过期，重定向到登录页面
   if (response.data.code == 402 || response.data.code == 400) {
     localStorage.clear()
+    window.alert('登入失效请从新登入')
     router.replace({
       path: '/login',
       query: { redirect: router.currentRoute.fullPath }

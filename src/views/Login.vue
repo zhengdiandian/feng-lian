@@ -12,7 +12,7 @@
       <div class="img"></div>
       <div class="user-wrap">
         <mu-text-field
-          v-model="account"
+          v-model.number="account"
           label-float
           label="请输入您的手机号码"
           icon=":iconfont iconzhanghao"
@@ -39,7 +39,7 @@
         ></mu-text-field>
         <mu-text-field
           v-else
-          v-model="pwd"
+          v-model.number="pwd"
           label="请输入验证码"
           label-float
           icon=":iconfont iconmima"
@@ -196,7 +196,7 @@ export default {
         return;
       }
       debugger
-  
+
       let type
       this.codepwd? type=1: type = 0
       this.typeLogin(type)

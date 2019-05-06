@@ -102,7 +102,7 @@
         </div>
       </div>
       </div>
-      <div class="plan-wrap" v-for="i in 3" :key="i" >
+      <div class="plan-wrap" v-for="(product, i) in products" :key="i" >
         <div class="plan-left" >
           <img :src="product.img" alt="">
           <div class="plan-left-content">
@@ -110,9 +110,9 @@
             <div class="info">{{product.subtitle}}</div>
           </div>
           <div class="plan-right-content">
-            <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code}})">
-              <span v-if="joinFlag == 0">加入</span>
-              <span v-if="joinFlag == 1">再次加入</span>
+            <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code,issueList:homeinfor.issueList}})">
+              <span v-if="product.joinFlag == 0">加入</span>
+              <span v-if="product.joinFlag == 1">再次加入</span>
             </mu-button>
           </div>
         </div>
@@ -131,15 +131,15 @@
             <mu-list-item-action>
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
-            <mu-list-item button :ripple="false" slot="nested">
+            <mu-list-item  button :ripple="false" slot="nested">
               <mu-list-item-title>{{item.content}}</mu-list-item-title>
             </mu-list-item>
-            <mu-list-item button :ripple="false" slot="nested">
+            <!-- <mu-list-item button :ripple="false" slot="nested">
               <mu-list-item-title>List Item 2</mu-list-item-title>
             </mu-list-item>
             <mu-list-item button :ripple="false" slot="nested">
               <mu-list-item-title>List Item 3</mu-list-item-title>
-            </mu-list-item>
+            </mu-list-item> -->
 
           </mu-list-item>
 
@@ -158,7 +158,9 @@
       <div class="partner">
         <mu-sub-header style="margin-bottom: 12px;">平台运营安全可靠</mu-sub-header>
         <div class="partner-content">
-          <img src="../assets/PNG/平安.png" alt="">
+          <a :href="item.linkUrl" v-for="(item,i) in homeinfor.operateItem" :key="i">
+            <img :src="item.img" alt="">
+          </a>
           <!-- <img src="../assets/PNG/太平洋.png" alt="">
           <img src="../assets/PNG/银联.png" alt="">
           <img src="../assets/PNG/环迅支付.png" alt="">
@@ -185,7 +187,7 @@ export default {
       // open: true,
       open1: '',
       open2: '',
-      product: [],
+      products: [],
       homeinfor: [],
       bannerlist:[],
       operateItem: [],
@@ -219,14 +221,16 @@ export default {
   },
   mounted() {
     this.$axios.post('/v1/manage/post/index').then((res)=>{
+      console.log('home',res)
       this.homeinfor = res.data.data
       this.operateItem = res.data.data.operateItem
       this.bannerlist = res.data.data.bannerList[0]
       // console.log(res)
     }),
     this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
-          this.product = res.data.data[0]
-          this.joinFlag = this.product.joinFlag
+      debugger
+          this.products = res.data.data
+          // this.joinFlag = this.product.joinFlag
           console.log(this.product)
           // console.log(this.product)
     })
@@ -576,11 +580,16 @@ h3{
     height: 150px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: start;
     align-content: space-between;
-    img{
+    a{
+      display: inline-block;
       width: 25%;
       height: 50%;
+    }
+    img{
+      width: 100%;
+      height: 100%;
     }
   }
 

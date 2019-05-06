@@ -35,6 +35,11 @@ export default {
   components: {
 
   },
+  created() {
+    this.$axios.post('v1/user/info/personalInfo').then(res => {
+      this.$store.commit('set_userInfo',res.data.data)
+    })
+  },
   mounted() {
 
   }

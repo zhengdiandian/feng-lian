@@ -16,6 +16,21 @@
         </mu-button>
       </mu-appbar>
     </header>
+    <!--<pop-box v-if="showPoP">-->
+      <!--<div class="pop">-->
+        <!--<div>-->
+          <!--<div>-->
+            <!--<div class="heart">-->
+              <!--您还没有完成实名认证,现在去认证吗？-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div style="position: absolute;width: 100%;bottom: 0;">-->
+          <!--<button @click="showpop=false">不，谢谢</button>-->
+          <!--<button class="btn-join" @click="$router.push('/login')">现在认证</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</pop-box>-->
     <main>
       <div class="page-margin-top mu-header">终身重大疾病互助计划</div>
       <div class="plan-info wrap">
@@ -44,21 +59,21 @@
         <span class="margin-top" style="display: inline-block;">资料填写</span>
         <div class="input-wrap">
           <label for>姓 &nbsp; 名：</label>
-          <input type="text" placeholder="请输入您的姓名" v-model="name">
+          <input :disabled="!showPoP" type="text" placeholder="请输入您的姓名" :value="userInfo.contacs ">
         </div>
         <div class="input-wrap">
           <label for>身份证：</label>
-          <input type="text" placeholder="请输入您的身份证号" v-model="ID">
+          <input :disabled="!showPoP" type="text" :value="userInfo.contacsIdNo" placeholder="请输入您的身份证号" >
         </div>
         <div class="warning">
-          <mu-icon v-show="ShowID" value=":iconfont icontanhao" size="24"></mu-icon>  <span v-show="ShowID" style="color: #FF0C0C">身份证信息不可修改, 请正确填写</span>
+          <mu-icon v-show="!ShowID" value=":iconfont icontanhao" size="24"></mu-icon>  <span v-show="!ShowID" style="color: #FF0C0C">身份证信息不可修改, 请正确填写</span>
         </div>
       </div>
       <!-- <mu-divider style="height:5px;"></mu-divider> -->
       <div class="yaoQing margin-top wrap">
         <div class="input-wrap">
           <label for>邀请码</label>
-          <input type="text" placeholder="请联系客服获得邀请码" v-model="InvitationCode" disabled="disabled">
+          <input :disabled="!showPoP" type="text" placeholder="请联系客服获得邀请码" :value="userInfo.agentUserCode" >
           <span class="margin-left" @click="obtain">获取邀请码</span>
         </div>
         <div class="warning">
@@ -89,7 +104,7 @@
         </ul>
       </div>
       <div class="buy-info margin-top" style="position: relative;">
-        使用时间: <span class="margin-left font-min">{{this.sums[this.activeStep]}}个月</span>
+        使用时间: <span class="margin-left font-min">{{serviceTime}}个月</span>
         <div class="estimate"><span style="font-size: 12px;">预计到期时间2020年2月9日</span></div>
         <mu-divider></mu-divider>
       </div>
@@ -98,7 +113,7 @@
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
-        合计: <span class="margin-left font-min">&nbsp;&nbsp;&nbsp;&nbsp;10个月</span>
+        合计: <span class="margin-left font-min">&nbsp;&nbsp;&nbsp;&nbsp;{{amount}}元</span>
         <mu-divider></mu-divider>
       </div>
       <div class="tongYi">
@@ -111,12 +126,15 @@
 </template>
 
 <script>
-import headpage from '../components/PageHeader/PageHeader'
+// import headpage from '../components/PageHeader/PageHeader'
 import { debug } from 'util';
+import { mapState } from 'vuex'
+// import  popBox from '../components/PopBox/PopBox'
 export default {
   name: "joinPlan",
   data() {
     return {
+      // showPoP: true,
       name:'',
       ID:'',
       InvitationCode:'',
@@ -140,48 +158,62 @@ export default {
     }
   },
   computed:{
+    ...mapState(['userInfo']),
+    showPoP() {
+      return this.userInfo.state === 100
+    },
     tongYiStyle () {
-      return this.tongYi ? {color: 'blue'}: {}
+      return this.tongYi ? {color: 'rgba(18, 150, 219, 1)'}: {}
+    },
+    serviceTime() {
+      return this.sums[this.activeStep] / this.$route.params.MutualRule.suit
+    },
+    amount() {
+      return this.serviceTime * this.$route.params.MutualRule.suit + 68
     }
   },
   methods: {
     obtain(){
-    
+
     },
       btnHandleClick (i) {
-        var cPReg = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
-        if (!cPReg.test(this.ID)) {
-          this.ShowID = true
-          return
-        }
-        this.$axios.post('/v1/mutually/plan/checkOrder',{
-              "contacs": this.name,
-              "contacsIdNo": this.ID,
-              "inviteCode":"136750423931",
-              "orderAmount": "1",
-              "orderAmount": this.sums[this.activeStep], // 金额
-              // "productCode": this.$route.params.productCode,
-              "productCode": "test1234567890",
-              "relationShip": "0",
-              "stageCount": "1",
+        // var cPReg = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+        // if (!cPReg.test(this.ID)) {
+        //   this.ShowID = true
+        //   return
+        // }
+        debugger
+        this.$axios.post('v1/mutually/plan/checkOrder',{
+              "contacs": this.userInfo.contacs||'text',
+              "contacsIdNo": this.userInfo.contacsIdNo || 123,
+              "inviteCode": this.userInfo.agentUserCode|| 'text',
+              "orderAmount": this.amount, // 金额
+              "productCode": this.$route.params.productCode,
+              "relationShip": 0,
+              "stageCount": 0,
               // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
               "type": 2
             }).then((res)=> {
-              this.order = res.data.data
-              console.log(res)
-              // localStorage.setItem('order',this.order)
-              this.$router.push({
-                name: 'orderInfo',
-                params: {
-                  productCode: this.$route.params.productCode,
-                  order: this.order
-                }
-              })
+              debugger
+              if(res.data.code===200){
+                this.order = res.data.data
+                console.log(res)
+                // localStorage.setItem('order',this.order)
+                this.$router.push({
+                  name: 'orderInfo',
+                  params: {
+                    productCode: this.$route.params.productCode,
+                    order: res.data.data
+                  }
+                })
+              }
+
             })
       },
   },
   components: {
-    headpage
+    // headpage,
+    // popBox
   },
   mounted() {
     // this.$axios.post('/v1/user/info/getCertifyInfo').then(res=>{
@@ -218,6 +250,48 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+ /* .pop{
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    text-align: center;
+    position: relative;
+    & >div:last-child{
+      // height: 40px;
+      // background-color: $c-cheng;
+      // color: $c-bai;
+      // line-height: 40px;
+      // font-size: 18px;
+      // align-self: flex-end;
+    }
+    &>div{
+      width: 100%;
+      text-align: center;
+    }
+    align-items: center;
+    .iconfont{
+      font-size: 45px;
+    }
+    .heart{
+      display: inline-block;
+      width: 170px;
+      height: 80px;
+      font-size: 16px;
+    }
+    button{
+      border: none;
+      width: 50%;
+      height: 50px;
+      border-top: 1px solid $c-hui;
+      background-color: #fff;
+      border-right: 1px solid $c-hui;
+    }
+    .btn-join{
+      color: $c-lang
+    }
+  }*/
 main{
   margin-bottom: 50px;
 }
@@ -359,9 +433,13 @@ main{
     top: -20px;
   }
   .tongYi{
+    margin-top: 10px;
+    .iconfont{
+      vertical-align: middle;
+    }
     input[type=checkbox]{
       visibility: hidden;
-      margin-bottom: 20px;
+      /*margin-bottom: 20px;*/
     }
     span{
       color: cornflowerblue;

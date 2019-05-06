@@ -4,8 +4,8 @@
     <div class="wrap">
       <card></card>
       <div class="hlep-notice">
-        本期共5起互助事件，分摊总额（互助金）7000000.00元。共
-        399088人参与，人均分摊0.17元。
+        本期共0起互助事件，分摊总额（互助金）0元。共
+        0人参与，人均分摊0元。
       </div>
       <div class="notice-content">
         <div class="parent-list">
@@ -32,7 +32,7 @@
       <div class="notice-card">
         <div class="card-row">
           <div>截止2019年3月31日</div>
-          <div>共互助2832人，分摊3.19亿元</div>
+          <div>共互助0人，分摊0亿元</div>
         </div>
         <p class="card-row">本期剩余互助金 <span>￥0元</span></p>
         <div class="card-btn">点击查看详情</div>

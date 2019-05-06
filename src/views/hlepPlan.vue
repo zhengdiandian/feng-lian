@@ -12,6 +12,21 @@
       </mu-button>
       互助计划
     </mu-appbar>
+    <pop-box style="z-index: 6" v-if="showPoP">
+      <div class="pop">
+        <div>
+          <div>
+            <div class="heart">
+              您还没有完成实名认证,现在去认证吗？
+            </div>
+          </div>
+        </div>
+        <div style="position: absolute;width: 100%;bottom: 0;">
+          <button @click="showpop=false">不，谢谢</button>
+          <button class="btn-join" @click="$router.push('/real')">现在认证</button>
+        </div>
+      </div>
+    </pop-box>
     <div class="page-margin-top"></div>
     <banner-img></banner-img>
     <div class="wrap">
@@ -76,20 +91,20 @@
         <div class="font margin-left margin-top ">常见问题</div>
 
         <mu-list  class="list" toggle-nested="">
-          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="i in 7" :key="i">
-            <mu-list-item-title>{{i}}、{{problem.content}}</mu-list-item-title>
+          <mu-list-item v-for="(problem, i) in problems" button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"  :key="i">
+            <mu-list-item-title>{{i}}、{{problem.title}}</mu-list-item-title>
             <mu-list-item-action>
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
             <mu-list-item button :ripple="false" slot="nested">
-              <mu-list-item-title>{{problem.title}}</mu-list-item-title>
+              <mu-list-item-title>{{problem.content}}</mu-list-item-title>
             </mu-list-item>
-            <mu-list-item button :ripple="false" slot="nested">
-              <mu-list-item-title>{{problem.title}}</mu-list-item-title>
-            </mu-list-item>
-            <mu-list-item button :ripple="false" slot="nested">
-              <mu-list-item-title>{{problem.title}}</mu-list-item-title>
-            </mu-list-item>
+            <!--<mu-list-item button :ripple="false" slot="nested">-->
+              <!--<mu-list-item-title>{{problem.title}}</mu-list-item-title>-->
+            <!--</mu-list-item>-->
+            <!--<mu-list-item button :ripple="false" slot="nested">-->
+              <!--<mu-list-item-title>{{problem.title}}</mu-list-item-title>-->
+            <!--</mu-list-item>-->
           </mu-list-item>
         </mu-list>
 
@@ -101,20 +116,20 @@
         </div>
 
         <mu-list  class="list" toggle-nested="">
-          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="i in 4" :key="i">
-            <mu-list-item-title style="font-size: 14px;"> 《蜂链互助平台会员公约》 </mu-list-item-title>
+          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="(item,i) in $route.params.issueList" :key="i">
+            <mu-list-item-title style="font-size: 14px;">{{i+1}}、{{item.title}} </mu-list-item-title>
             <mu-list-item-action>
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
             <mu-list-item button :ripple="false" slot="nested">
-              <mu-list-item-title>List Item 1</mu-list-item-title>
+              <mu-list-item-title>{{item.content}}</mu-list-item-title>
             </mu-list-item>
-            <mu-list-item button :ripple="false" slot="nested">
-              <mu-list-item-title>List Item 2</mu-list-item-title>
-            </mu-list-item>
-            <mu-list-item button :ripple="false" slot="nested">
-              <mu-list-item-title>List Item 3</mu-list-item-title>
-            </mu-list-item>
+            <!--<mu-list-item button :ripple="false" slot="nested">-->
+              <!--<mu-list-item-title>List Item 2</mu-list-item-title>-->
+            <!--</mu-list-item>-->
+            <!--<mu-list-item button :ripple="false" slot="nested">-->
+              <!--<mu-list-item-title>List Item 3</mu-list-item-title>-->
+            <!--</mu-list-item>-->
           </mu-list-item>
         </mu-list>
 
@@ -129,22 +144,30 @@
   import IconBar from '../components/IocnBar/IConBar'
   import ItemRow from '../components/ItemRow/ItemRow'
   import pageHeader from '../components/PageHeader/PageHeader.vue'
+  import { mapState } from 'vuex'
+  import  popBox from '../components/PopBox/PopBox'
   export default {
     name: 'hlepPlan',
     components: {
       BannerImg,
       IconBar,
       ItemRow,
-      pageHeader
+      pageHeader,
+      popBox
     },
-
+    computed: {
+      ...mapState(['userInfo']),
+      showPoP() {
+        return this.userInfo.state === 200
+      },
+    },
     data() {
       return {
         // open: false,
         // open: 'send',
         title: '互助计划',
         MutualRule: [],
-        problem: {},
+        problems: {},
         productCode:this.$route.params.productCode,
         itemRowData: [
           // {
@@ -209,14 +232,15 @@
       this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
         "productCode": this.productCode
       }).then(res=>{
+        debugger
         this.MutualRule = res.data.data
-        // console.log(this.MutualRule)
+        console.log(this.MutualRule)
       })
 
       this.$axios.post('/v1/product/product/issue',{ //常见问题
         "productCode": this.productCode
       }).then(res=>{
-        this.problem = res.data.data[0]
+        this.problems = res.data.data
         console.log(this.problem)
       })
       console.log(this.$route.params.productCode)
@@ -225,6 +249,48 @@
 </script>
 
 <style lang="scss" scoped>
+  .pop{
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    text-align: center;
+    position: relative;
+    & >div:last-child{
+      // height: 40px;
+      // background-color: $c-cheng;
+      // color: $c-bai;
+      // line-height: 40px;
+      // font-size: 18px;
+      // align-self: flex-end;
+    }
+    &>div{
+      width: 100%;
+      text-align: center;
+    }
+    align-items: center;
+    .iconfont{
+      font-size: 45px;
+    }
+    .heart{
+      display: inline-block;
+      width: 170px;
+      height: 80px;
+      font-size: 16px;
+    }
+    button{
+      border: none;
+      width: 50%;
+      height: 50px;
+      border-top: 1px solid $c-hui;
+      background-color: #fff;
+      border-right: 1px solid $c-hui;
+    }
+    .btn-join{
+      color: $c-lang
+    }
+  }
   .wrap{
     padding: 5px;
     background: #fff;

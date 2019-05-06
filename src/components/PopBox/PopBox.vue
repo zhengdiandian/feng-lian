@@ -31,12 +31,12 @@ export default {
 <style lang="scss" scoped>
 
 .shadom{
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     right: 0px;
     bottom: 0px;
-    z-index: 999;
+    z-index: 6 ;
     display: flex;
     justify-content: center;
     align-items: center;
