@@ -10,14 +10,26 @@
       </mu-button>
     </mu-appbar>
     <div class="img-wrap page-nav-margin">
-      <img src="../assets/PNG/感恩有你.png" alt="">
+      <img :src="imgSrc" alt="">
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'owe'
+    name: 'owe',
+    data() {
+      return {
+        imgSrc: ''
+      }
+    },
+    created () {
+      this.$axios.post('v1/manage/config/getImgList',{
+        keys: 'Thanksgiving'
+      }).then(res => {
+        this.imgSrc = res.data.data.Thanksgiving
+      })
+    }
   }
 </script>
 

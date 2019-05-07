@@ -158,7 +158,7 @@
     computed: {
       ...mapState(['userInfo']),
       showPoP() {
-        return this.userInfo.state === 200
+        return this.userInfo.state === 100
       },
     },
     data() {

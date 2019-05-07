@@ -13,7 +13,7 @@ export default new Router({
     // {
     //   path: '*',
     //   redirect: '/home'
-      
+
     //   // component: function () {
     //   //   return import('./views/Home.vue')
     //   // }
@@ -29,7 +29,7 @@ export default new Router({
         return import('./views/Home.vue')
       },
       children: [
-        { 
+        {
           path: 'home', // 首页]
           name: 'homePage',
           component: function () {
@@ -286,6 +286,13 @@ export default new Router({
       name: 'CurrentScale',
       component: function () {
         return import('./views/CurrentScale')
+      }
+    },
+    {
+      path: '/impower',
+      name: 'impower',
+      component: function () {
+        return import('./views/impowerState')
       }
     }
     // {

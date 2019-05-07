@@ -15,10 +15,14 @@
       </div>
     </div>
   </PopBox>
-  <pop-box style="z-index: 8">
+  <pop-box style="z-index: 8" v-if="showQrcode">
+      <span class="close" @click="showQrcode=false">x</span>
     <div class="qrcode-wrap">
       <img src="https://placehold.it/180" alt="" class="qrcode-img">
+      <div class="bottom-text">长按关注公众号，进行实名认证，加入计划，成为爱心大使!</div>
     </div>
+
+
   </pop-box>
     <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
       <mu-button icon slot="right" @click="$router.push('/myPlanNews')">
@@ -32,8 +36,8 @@
     <div class="wrap">
 
       <mu-carousel class="banner">
-        <mu-carousel-item v-for="i in 4" :key="i">
-          <img :src="bannerlist.img">
+        <mu-carousel-item v-for="(item, i) in bannerlist" :key="i">
+          <img :src="item.img">
         </mu-carousel-item>
       </mu-carousel>
       <div class="content">
@@ -196,6 +200,7 @@ export default {
       homeinfor: [],
       bannerlist:[],
       operateItem: [],
+      showQrcode: false,
       type: 0,
       showPoP: false,
       videoImg: require('../assets/PNG/视频.png'),
@@ -222,28 +227,43 @@ export default {
   created() {
     if(this.$route.query.auth_token){
       sessionStorage.setItem('token', this.$route.query.auth_token)
+      this.showQrcode = true
+      this.$axios.post('v1/user/info/personalInfo').then(res => {
+        this.$store.commit('set_userInfo',res.data.data)
+      })
     }
-  },
-  mounted() {
     this.$axios.post('/v1/manage/post/index').then((res)=>{
       console.log('home',res)
       this.homeinfor = res.data.data
       this.operateItem = res.data.data.operateItem
-      this.bannerlist = res.data.data.bannerList[0]
+      this.bannerlist = res.data.data.bannerList
       // console.log(res)
     }),
-    this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
-      debugger
-          this.products = res.data.data
-          // this.joinFlag = this.product.joinFlag
-          console.log(this.product)
-          // console.log(this.product)
-    })
+      this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
+        debugger
+        this.products = res.data.data
+        // this.joinFlag = this.product.joinFlag
+        console.log(this.product)
+        // console.log(this.product)
+      })
+  },
+  mounted() {
+
   }
 };
 </script>
 <style lang="scss" scoped>
+  .close{
+    position: fixed;
+    top: 33px;
+    right: 20px;
+    color: $c-bai;
+    font-size:24px;
+    font-family:SourceHanSansCN-Medium;
+    font-weight:500;
+  }
 .qrcode-wrap{
+  position: relative;
   width:200px;
   height:200px;
   display: flex;
@@ -251,12 +271,27 @@ export default {
   align-items: center;
   line-height: 200px;
   text-align: center;
+  font-size:13px;
+  font-family:SourceHanSansCN-Medium;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  .bottom-text{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: -44px;
+    height:33px;
+    left: 0px;
+    line-height: 1.5;
+  }
   .qrcode-img{
     display: inline-block;
     width: 160px;
     height: 160px;
     background-color: red;
   }
+
+
 }
   .videobox{
     /*overflow: hidden;*/

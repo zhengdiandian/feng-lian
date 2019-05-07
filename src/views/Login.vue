@@ -160,6 +160,10 @@ export default {
           const { authToken } = res.data.data;
           console.log(res);
           this.$store.commit("set_authToken", authToken);
+          this.$axios.post('v1/user/info/personalInfo').then(res => {
+            debugger
+            this.$store.commit('set_userInfo',res.data.data)
+          })
           if(this.$route.query.redirect){
             this.$router.replace(this.$route.query.redirect);
           }else {

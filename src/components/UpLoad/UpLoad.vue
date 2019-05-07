@@ -93,7 +93,7 @@ export default {
             // self.file = formData.get("file")
             // self.$emit('getFile', blob)
             axios.create({
-              baseURL: 'http://test.wxapi.fenglianhz.com:8888/h5',
+              baseURL: 'http://test.wxapi.fenglianhz.com/h5',
               headers: {
                       'Content-Type': 'multipart/form-data',
                       'authToken' : window.sessionStorage.getItem('token')

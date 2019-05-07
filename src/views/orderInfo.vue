@@ -31,25 +31,25 @@
     <div class="title">
       <mu-sub-header>支付方式</mu-sub-header>
     </div>
-    <!-- <ul>
+     <ul>
       <li><span class="iconfont iconweixin"></span>微信支付<mu-divider></mu-divider>
       </li>
-      <li><span class="iconfont iconzhifubao" style="margin-left: 30px;"></span>支付宝支付<mu-divider></mu-divider>
-      </li>
-      <li><span class=" iconfont"> <span class="icon"></span></span>银联支付<mu-divider></mu-divider>
-      </li>
-    </ul> -->
-    <ul v-for="icon in pay" :key="icon.id">
-      <li>
-        <img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 微信支付 <mu-divider></mu-divider>
-      </li>
-      <li>
-        <img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 支付宝支付 <mu-divider></mu-divider>
-      </li>
-      <li>
-        <img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 银联支付 <mu-divider></mu-divider>
-      </li>
+      <!--<li><span class="iconfont iconzhifubao" style="margin-left: 30px;"></span>支付宝支付<mu-divider></mu-divider>-->
+      <!--</li>-->
+      <!--<li><span class=" iconfont"> <span class="icon"></span></span>银联支付<mu-divider></mu-divider>-->
+      <!--</li>-->
     </ul>
+    <!--<ul v-for="icon in pay" :key="icon.id">-->
+      <!--<li>-->
+        <!--<img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 微信支付 <mu-divider></mu-divider>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 支付宝支付 <mu-divider></mu-divider>-->
+      <!--</li>-->
+      <!--<li>-->
+        <!--<img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 银联支付 <mu-divider></mu-divider>-->
+      <!--</li>-->
+    <!--</ul>-->
     <div class="big-btn" @click="topay"> 去支付</div>
   </div>
 </template>
@@ -80,13 +80,20 @@
         //   this.planId = res.data.data.planId
         //   this.productId = res.data.data.productId
         //   console.log(this.planId)
-          this.$router.push({
-            name: 'planInitial',
-            params:{
-              // productCode: this.$route.params.productCode
-              planNo: this.planId
-            }
-          })
+        debugger
+        this.$axios.post('v1/mutually/payOrder/wxPay',{
+          orderNo: this.$route.params.order.orderNo
+        }).then(res => {
+          debugger
+          console.log('zhifu',res.data.data)
+        })
+          // this.$router.push({
+          //   name: 'planInitial',
+          //   params:{
+          //     // productCode: this.$route.params.productCode
+          //     planNo: this.planId
+          //   }
+          // })
         // })
       }
     },
@@ -107,9 +114,11 @@
       //   // console.log(this.payment)
       // })
       this.order = this.$route.params.order
-      this.$axios.post('/v1/mutually/plan/addPayOrder').then(res=>{
-        this.pay = res.data.data
-      })
+      // this.$axios.post('v1/pay/channel/channelList').then(res=>{
+      //   debugger
+      //   console.log('play',res)
+      //   this.pay = res.data.data
+      // })
     }
   }
 </script>
