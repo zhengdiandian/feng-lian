@@ -13,7 +13,7 @@
         <main class="page-margin-top">
             <div class="list-noe">
                 <div class="tow" style="position: relative;">
-                    <img src="../assets/PNG/公示头像5.png" alt="">
+                    <img style="z-index: 55" src="../assets/PNG/公示头像5.png" alt="">
                     <span class="an-crown-3"><img src="../assets/PNG/皇冠3.png" alt=""></span>
                     <div class="list-name-number" style="left: 8px; top: 95px;">
                         <span style="font-size:14px; font-weight:bold;">陈梅</span>
@@ -107,19 +107,30 @@ export default {
     }
 }
 .an-crown{
-    width: 90px;
+  z-index: -1;
+  width: 90px;
     position: relative;
-    top: -155px;
+    top: -158.5px;
 }
 .an-crown-2{
-    position: relative;
-    top: -120px;
+  z-index: -1;
+  position: relative;
+    top: -126.5px;
 }
 .an-crown-3{
+    z-index: -1;
     position: relative;
-    top: -130px;
+    top: -135.5px;
+  img{
+    z-index: -1;
+    width:56px;
+    height:35px;
+  }
 }
 .list-noe{
+  &>div>img{
+    z-index: 66;
+  }
     width: 100%;
     height: 220px;
     display: flex;
@@ -146,12 +157,16 @@ export default {
     // position: relative;
 }
 .tow{
+    position: relative;
     width: 80px;
     height: 80px;
     border-radius: 50%;
     margin: auto;
     // border: 1px solid #EFA220;
     text-align: center;
+  img{
+    /*z-index: 6666;*/
+  }
     // position: relative;
 }
 .three{
@@ -176,6 +191,7 @@ export default {
 
 .headerNav{
   width:351px;
+  padding: 6px;
 //   height:85px;
   background:rgba(255,255,255,1);
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);

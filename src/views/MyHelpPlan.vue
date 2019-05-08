@@ -13,7 +13,7 @@
                 <span class="font">我的购买计划</span>
                 <div  style="margin-top: 8px;">
                   <section class="card">
-                    <card 
+                    <card
                     :open="() => {$router.push('/palnned')}"
                     :date="': 2019.01.02'"
                     :waitingperiod="waitingperiod"
@@ -67,6 +67,9 @@ export default {
             waiting: '180天'
         }
     },
+  created () {
+      this.$axios.post('')
+  }
 }
 </script>
 <style scoped lang="scss">

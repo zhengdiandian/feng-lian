@@ -6,8 +6,8 @@ module.exports = {
         data: `@import "@/global/global.scss";`
       }
     }
-  },
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/'
-    : '/'
+  }
+  // publicPath: process.env.NODE_ENV === 'production'
+  //   ? '/'
+  //   : '/'
 }

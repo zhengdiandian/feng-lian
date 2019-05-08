@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'muse-ui/lib/styles/base.less'
-import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField, Divider, List, SubHeader, Slider, Stepper, Avatar } from 'muse-ui'
+import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField, Divider, List, SubHeader, Slider, Stepper, Avatar, Dialog, Snackbar } from 'muse-ui'
 import 'muse-ui/lib/styles/theme.less'
 import 'muse-ui/dist/muse-ui.css'
 import theme from 'muse-ui/lib/theme'
@@ -11,13 +11,37 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 // import 'material-design-icons/iconfont/material-icons.css'
 import * as colors from 'muse-ui/lib/theme/colors'
 import './assets/font/iconfont.css'
+// import 'muse-ui-message/dist/muse-ui-message.css'
 import 'muse-ui-message/dist/muse-ui-message.css'
 import Message from 'muse-ui-message'
 import Axios from 'axios'
 import qs from 'qs'
 import Util from '@/assets/js/unit.js'
+import Toast from 'muse-ui-toast'
 Vue.prototype.Util = Util
-Vue.use(Message)
+Vue.use(Toast, {
+  position: 'top',               // 弹出的位置
+  time: 5000,                       // 显示的时长
+  closeIcon: 'close',               // 关闭的图标
+  close: true,                      // 是否显示关闭按钮
+  successIcon: 'check_circle',      // 成功信息图标
+  infoIcon: 'info',                 // 信息信息图标
+  warningIcon: 'priority_high',     // 提醒信息图标
+  errorIcon: 'warning'              // 错误信息图标
+})
+Vue.use(Message, {
+  successIcon: 'check_circle',                    // 成功图标
+  infoIcon: 'info',                               // 信息图标
+  warningIcon: 'priority_high',                   // 提醒图标
+  errorIcon: 'warning',                           // 错误图标
+  iconSize: 24,                                   // 图标大小
+  width: 200,                                     // 对话框的宽度
+  maxWidth: '80%',                                // 对话框最大宽度
+  className: '',                                  // 对话框的样式
+  okLabel: '确定',                                 // 对话框确定按钮文字
+  cancelLabel: '取消',                             // 对话框取消按钮文字
+  transition: 'scale'                             // 对话框显示的动画 'slide-left', 'slide-right', 'fade', 'scale'
+})
 console.log('store', store)
 theme.add('custom-theme', {
   primaryColor: '#fff',
@@ -64,6 +88,8 @@ Vue.use(SubHeader)
 Vue.use(Slider)
 Vue.use(Stepper)
 Vue.use(Avatar)
+Vue.use(Dialog)
+Vue.use(Snackbar)
 Vue.config.productionTip = false
 // Axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 Axios.interceptors.response.use( (response) => {
@@ -96,6 +122,7 @@ Axios.interceptors.request.use(
       config.headers['authToken'] = xtoken
     }
     if (config.method == 'post') {
+
       config.data = qs.stringify({
         ...config.data
         // _t: Date.parse(new Date())/1000,

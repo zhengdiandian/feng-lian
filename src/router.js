@@ -205,7 +205,7 @@ export default new Router({
       }
     },
     {
-      path: '/joinPlan', // 加入计划
+      path: '/joinPlan/:productCode', // 加入计划
       name: 'joinPlan',
       component: function () {
         return import('./views/joinPlan')
@@ -293,6 +293,13 @@ export default new Router({
       name: 'impower',
       component: function () {
         return import('./views/impowerState')
+      }
+    },
+    {
+      path: '/invitation',
+      name: 'invitation',
+      component: function () {
+        return import('./views/invitation')
       }
     }
     // {

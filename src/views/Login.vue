@@ -164,6 +164,7 @@ export default {
             debugger
             this.$store.commit('set_userInfo',res.data.data)
           })
+          debugger
           if(this.$route.query.redirect){
             this.$router.replace(this.$route.query.redirect);
           }else {
@@ -218,6 +219,10 @@ export default {
           account: this.account
         })
         .then(res => {
+          if(res.data.code!==200){
+            this.show = true;
+            this.errorMsg = res.data.msg
+          }
           debugger
           console.log(res);
           this.msgToken = res.data.data.token;

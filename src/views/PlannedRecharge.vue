@@ -70,6 +70,7 @@
     },
     mounted() {
       this.$axios.post('/v1/mutually/plan/planDetail').then((res)=> {
+
         this.panned = res.data.data
         console.log(this.panned)
       })

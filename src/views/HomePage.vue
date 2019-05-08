@@ -61,7 +61,7 @@
           </div>
         </div>
         <div class="routers-wrap">
-          <div class="router-item item-content">
+          <div class="router-item item-content" @click="open">
             <div class="iconfont iconpeifu" style="font-size: 30px;"></div>
             <div class="text">秒到赔付</div>
           </div>
@@ -121,7 +121,7 @@
           <div class="plan-right-content">
             <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code,issueList:homeinfor.issueList}})">
               <span v-if="product.joinFlag == 0">加入</span>
-              <span v-if="product.joinFlag == 1">再次加入</span>
+              <span v-else>再次加入</span>
             </mu-button>
           </div>
         </div>
@@ -140,9 +140,9 @@
             <mu-list-item-action>
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
-            <mu-list-item  button :ripple="false" slot="nested">
-              <mu-list-item-title>{{item.content}}</mu-list-item-title>
-            </mu-list-item>
+            <!--<mu-list-item  button :ripple="false" >-->
+              <p slot="nested">{{item.content}}</p>
+            <!--</mu-list-item>-->
             <!-- <mu-list-item button :ripple="false" slot="nested">
               <mu-list-item-title>List Item 2</mu-list-item-title>
             </mu-list-item>
@@ -203,7 +203,7 @@ export default {
       showQrcode: false,
       type: 0,
       showPoP: false,
-      videoImg: require('../assets/PNG/视频.png'),
+      videoImg: '',
       joinFlag: ''
     };
   },
@@ -240,12 +240,17 @@ export default {
       // console.log(res)
     }),
       this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
-        debugger
+        // debugger
         this.products = res.data.data
         // this.joinFlag = this.product.joinFlag
         console.log(this.product)
         // console.log(this.product)
       })
+    this.$axios.post('v1/manage/config/getImgList',{
+      keys: 'PublicAddress'
+    }).then(res => {
+      this.videoImg = res.data.data.PublicAddress
+    })
   },
   mounted() {
 
@@ -470,7 +475,6 @@ h3{
         width:60px;
         height:60px;
         background: url("../assets/img/饼状图.svg") center no-repeat;
-        -webkit-background-size: 100% 100%;
         background-size: 100% 100%;
         margin-bottom: 8px;
       }
@@ -635,11 +639,11 @@ h3{
     height: 150px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: space-around;
     align-content: space-between;
     a{
       display: inline-block;
-      width: 25%;
+      width: 30%;
       height: 50%;
     }
     img{

@@ -28,7 +28,7 @@
       </div>
     </pop-box>
     <div class="page-margin-top"></div>
-    <banner-img></banner-img>
+    <banner-img :video-img="MutualRule.img"></banner-img>
     <div class="wrap">
       <div class="margin-left margin-bottom font">终身重大疾病互助计划</div>
       <div class="chat-wrap margin-bottom">
@@ -92,7 +92,7 @@
 
         <mu-list  class="list" toggle-nested="">
           <mu-list-item v-for="(problem, i) in problems" button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"  :key="i">
-            <mu-list-item-title>{{i}}、{{problem.title}}</mu-list-item-title>
+            <mu-list-item-title>{{i+1}}、{{problem.title}}</mu-list-item-title>
             <mu-list-item-action>
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
@@ -121,6 +121,7 @@
             <mu-list-item-action>
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
+            <p slot="nested">{{item.content}}</p>
             <mu-list-item button :ripple="false" slot="nested">
               <mu-list-item-title>{{item.content}}</mu-list-item-title>
             </mu-list-item>
@@ -155,6 +156,7 @@
       pageHeader,
       popBox
     },
+    props: ['productCode'],
     computed: {
       ...mapState(['userInfo']),
       showPoP() {
@@ -168,7 +170,7 @@
         title: '互助计划',
         MutualRule: [],
         problems: {},
-        productCode:this.$route.params.productCode,
+        // productCode:this.$route.params.productCode,
         itemRowData: [
           // {
           //   icon: ' iconfanweiguang-',
@@ -200,6 +202,11 @@
         // if (xtoken == null) {
         //   return
         // }
+        // this.$store.commit('set_writingData',
+        // {
+        //   "writingImg":this.MutualRule.healthyImg, //健康文案图片
+        //   "writing": this.MutualRule.healthyText, //健康文案
+        // })
         this.$router.push({
           name: 'inform',
           params: {
@@ -230,10 +237,13 @@
       fn()
       console.log(+ new Date() -time)
       this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
-        "productCode": this.productCode
+        "productCode": this.$route.params.productCode
       }).then(res=>{
         debugger
         this.MutualRule = res.data.data
+        this.MutualRule.productCode = this.$route.params.productCode
+        this.$store.commit('set_MutualRule', res.data.data)
+
         console.log(this.MutualRule)
       })
 

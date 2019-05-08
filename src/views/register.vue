@@ -76,13 +76,13 @@ export default {
                 return
             }
             debugger
-        this.$router.push({    
+        this.$router.push({
             name: 'setpwd',
             params: {
                 token: this.msgToken,
                 account: this.user,
                 smsCode: this.pwd,
-                code: this.$route.query.auth_token
+                code: this.$route.query.user_code
                 // Token: encodeURIComponent(this.token)
             }
         })
@@ -97,32 +97,37 @@ export default {
         //       debugger
         //     // this.token = res.data.data.authToken
         //     console.log(this.token)
-           
+
         //   })
         },
         getMsgHandleClick() {
         //   debugger
-        
-          if(!this.user)return
+
+          if(!this.user&&this.show)return
           this.$axios.post('/v1/manage/common/sendMsg',{
             type: 0,
             account: this.user
           }).then(res =>{
+            if(res.data.code!==200){
+              this.$toast.error(res.data.msg)
+              return
+            }
             // debugger
             console.log(res)
             this.msgToken = res.data.data.token
           })
         },
-        open() {
-        // debugger
-        // this.show = true
-        this.$router.push({
-            name: 'setpwd',
-            params: {
-                token: this.token,
-            }
-        })
-        },
+        // open() {
+        // // debugger
+        // // this.show = true
+        // this.$router.push({
+        //     name: 'setpwd',
+        //     params: {
+        //         token: this.token,
+        //
+        //     }
+        // })
+        // },
         getCode(){
             const TIME_COUNT = 60;
             if (!this.timer) {

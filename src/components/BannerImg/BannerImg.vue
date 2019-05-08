@@ -9,7 +9,7 @@
     name: 'BannerImg',
     props:{
       videoImg:{
-        default: require('../../assets/PNG/视频.png')
+        default: 'https:placehold.it/200'
       }
     },
     data() {

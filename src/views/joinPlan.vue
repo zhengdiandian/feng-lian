@@ -145,7 +145,7 @@ export default {
       btnList: [
         '自己', '父母', '配偶', '子女'
       ],
-      MutualRule: this.$route.params.MutualRule,
+      // MutualRule: this.$route.params.MutualRule,
       sums:[
         10,
         20,
@@ -158,7 +158,7 @@ export default {
     }
   },
   computed:{
-    ...mapState(['userInfo']),
+    ...mapState(['userInfo', 'MutualRule']),
     showPoP() {
       return this.userInfo.state === 100
     },
@@ -188,7 +188,7 @@ export default {
               "contacsIdNo": this.userInfo.contacsIdNo || 123,
               "inviteCode": this.userInfo.agentUserCode|| 'text',
               "orderAmount": this.amount, // 金额
-              "productCode": this.$route.params.productCode,
+              "productCode": this.MutualRule.productCode,
               "relationShip": 0,
               "stageCount": 0,
               // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
@@ -331,13 +331,21 @@ main{
   justify-content: space-evenly;
   background-color: #fff;
   li {
-    width: 150px;
+    /*width: 150px;*/
+    width: 100%;
+    text-align: left;
     color: $c-cheng;
     height: 20px;
-    overflow: hidden;
     margin: 8px auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     span {
+      /*width: 100%;*/
       color: #000;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       font-size: 12px;
     }
   }

@@ -14,7 +14,7 @@
           </div>
         </div>
       </p-op-box>
-        <header @click="showPop=true">
+        <header>
            <mu-appbar style="width: 100%;position: initial" color="primary" text-color="#666" z-depth="0">
             <mu-button icon slot="left" @click="showPop=true">
               <mu-icon value=":iconfont iconfanhui" ></mu-icon>
@@ -77,21 +77,22 @@ export default {
     },
     methods: {
       setPwd () {
+        debugger
         this.err1 = this.err2 = ''
         if(this.value13.length < 6){
           return this.err1 = '密码长度需要大于6个字符'
         }
-        if(this.value13.length > 16){ 
+        if(this.value13.length > 16){
           return this.err = '密码长度需要小于16个字符'
-        } 
+        }
         if(!this.value13.length){
-          return this.err1 = '密码不可以为空'      
+          return this.err1 = '密码不可以为空'
         }
         if(!this.pwd.length){
-          return this.err2 = '密码不可以为空'      
+          return this.err2 = '密码不可以为空'
         }
-        if(this.value13===this.pwd){
-          return '您两次输入的密码不同，请重新输入'
+        if(this.value13!==this.pwd){
+          return  this.err1 = '您两次输入的密码不同，请重新输入'
         }
          this.$axios.post('/v1/user/login/register',{
             "openId": "test",          // 微信appid
@@ -101,11 +102,14 @@ export default {
             "inviteCode":  this.code,
             'loginPwd': this.pwd
           }).then((res)=> {
-              debugger
+           if(res.data.code!==200){
+             this.$toast.error(res.data.msg)
+             return
+           }
             // this.token = res.data.data.authToken
             console.log(res)
             // sessionStorage.setItem('token', res.data.data.authToken)
-            this.$router.replace('/login')
+            this.$router.replace('/home')
 
 
           })

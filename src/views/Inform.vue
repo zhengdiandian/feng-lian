@@ -10,9 +10,9 @@
     </mu-appbar>
     <div class="page-margin-top">
       <!-- <img :src="this.writingImg" alt=""> -->
-      <img :src="$route.params.writingImg" alt="" srcset="">
+      <img :src="MutualRule.healthyImg" alt="" srcset="">
       <div class="wrap" style="margin-bottom:50px;">
-        <div v-html="$route.params.writing"></div>
+        <div v-html="MutualRule.healthyText"></div>
         <!--<div class="importance">-->
           <!--<span class="icon">-->
             <!--重要-->
@@ -151,12 +151,13 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
     name: 'Inform',
     data() {
       return {
-        writingImg: this.$route.params.writingImg,
-        writing: this.$route.params.writing,
+        // writingImg: this.writingData.writingImg,
+        // writing: this.writingData.writing,
         MutualRule: this.$route.params.MutualRule,
         productCode: this.$route.params.productCode
       }
@@ -171,7 +172,8 @@
           }
         })
       }
-    }
+    },
+    computed: mapState(['MutualRule'])
   }
 </script>
 

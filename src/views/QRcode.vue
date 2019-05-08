@@ -9,12 +9,12 @@
         <main>
             <div class="head-name">
                 <section class="hear-infor">
-                    <img :src="code.headPortrait" alt="">
+                    <img :src="userInfo.headPortrait" alt="">
                     <div>
-                        <span style="font-size:14px;">{{code.nickname}}</span>
-                        <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1); line-height: 20px;" >{{code.state == 100 ? '未认证':'已认证'}}</span>
+                        <span style="font-size:14px;">{{userInfo.nickname}}</span>
+                        <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1); line-height: 20px;" >{{userInfo.state == 100 ? '未认证':'已认证'}}</span>
                     </div>
-                    <span style="color:rgba(112,112,112,1);">{{code.motto}}</span>
+                    <span style="color:rgba(112,112,112,1);">{{userInfo.motto}}</span>
                 </section>
                 <section ref="qrWrap" class="code">
                   <div ref="qr"></div>
@@ -22,7 +22,7 @@
                 </section>
                 <section class="preservation">
                     <span class="margin-top margin-bottom" style="color: #EFA220">保存二维码</span>
-                    <span style="font-weight:bold;">我的邀请码：{{code.inviteCode}}</span>
+                    <span style="font-weight:bold;">我的邀请码：{{userInfo.userCode}}</span>
                 </section>
             </div>
         </main>
@@ -31,6 +31,7 @@
 <script>
 import Qrcode from 'qrcodejs2'
 import axios from 'axios'
+import  {mapState} from 'vuex'
 console.log(Qrcode)
 export default {
     name: 'Qrcode',
@@ -41,9 +42,11 @@ export default {
            stata: '已实名',
            autograph: '海内存知己，天涯若比邻',
            imgUrl: require('../assets/PNG/head.png'),
-           code: [],
+           code: '',
+
         }
     },
+  computed: mapState(['userInfo']),
     methods: {
         open() {
             this.$router.go(-1)
@@ -63,20 +66,31 @@ export default {
     created() {
         this.$axios.post('v1/user/info/personalInfo').then(res => {
             console.log('userinfo', res.data.data)
+          if(res.data.code!==200){
+            this.$toast.error(res.data.msg)
+            return
+          }
             let data = res.data.data
             this.name = data.nickname
             this.autograph= data.motto
             this.state = data.state == '100'? '未认证' : '已认证'
             this.imgUrl = data.headPortrait
-        }) 
+        })
+      this.$axios.post('/v1/user/share/getShareUrl').then((res)=>{
+        if(res.data.code!==200){
+          this.$toast.error(res.data.msg)
+          return
+        }
+        this.code = res.data.data
+        this.createQrcode(this.code)
+        console.log(res)
+      })
     },
     mounted(){
-        this.$axios.post('/v1/user/share/getShareUrl').then((res)=>{
-            this.code = res.data.data
-            console.log(res)
-          this.createQrcode(res.data.data)
-        })
+
       console.log(this.$refs.qrWrap.clientHeight)
+
+
 
     }
 }
@@ -147,7 +161,7 @@ main{
         border:10px solid rgba(255,162,228,1);
         opacity:0.5;
         margin: auto;
-        margin-top: 200px;
+        margin-top: 160px;
         img{
             width: 100%;
             height: 100%;

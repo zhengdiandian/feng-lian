@@ -106,16 +106,16 @@ export default {
       this[params] = file;
     },
     submit() {
-      if (!this.file2 && !this.file1 && !this.id && !this.userName && !this.city && !this.province){
-        window.alert('表单不能为空')
-         return
+      if (!this.file2 && !this.file1 && !this.userName && !this.city && !this.province){
+        this.$toast.error('请您填写完整的表单在提交')
+        return
       }
+      // if(!this.id )
       debugger;
       // console.log('fdsfdas', unit)
       var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/;
       if (!reg.test(this.id)) {
-        debugger
-        window.alert('请输入正确的身份证号码')
+        this.$toast.error('请输入正确的身份证号码')
         // this.warnTips({txt:'请输入正确的身份证号码'});
         return false;
       }
@@ -129,6 +129,10 @@ export default {
           city: this.city
         })
         .then(res => {
+          if(res.data.code!==200){
+            this.$toast.error(res.data.msg)
+            return
+          }
           console.log(res);
         });
     }

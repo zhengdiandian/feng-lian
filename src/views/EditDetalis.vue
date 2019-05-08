@@ -19,7 +19,7 @@
                     <span>性别：</span>
                     <!-- <span><input type="text" v-model="sex"></span> -->
                     <!-- <mu-form-item prop="select" label="Select"> -->
-                        <mu-select v-model="form.select" :active-step="activeStep" >
+                        <mu-select v-model="form.select" :active-step="activeStep"  :full-width="true">
                             <mu-option v-for="(option,index) in options" :key="index" :label="option.label" :value="option.id"></mu-option>
                         </mu-select>
                     <!-- </mu-form-item> -->
@@ -98,12 +98,14 @@ export default {
     },
     methods:{
         editdeta() {
+          debugger
             // console.log(this.options[length])
             var ePattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
             if (!ePattern.test(this.email)) {
                 // alert("’邮箱错误")
                 return
             }
+            debugger
             this.$axios.post('/v1/user/info/updateInfo',{
             "nickname":this.nickname,
             "sex":this.form.select,
@@ -118,6 +120,10 @@ export default {
             "city":this.city,
             "motto": this.motto
         }).then(res=>{
+              if(res.data.code!==200){
+                this.$toast.error(res.data.msg)
+                return
+              }
             // this.detalis = res.data.data
             console.log(res)
         })
@@ -135,6 +141,9 @@ main{
         background-color: #fff;
         margin-top: 20px;
         .rule{
+          overflow: hidden;
+
+          width: 100%;
             height: 50px;
             line-height: 50px;
             position: relative;
@@ -149,15 +158,23 @@ input{
     // border: none;
     // width: 30px;
     height: 30px;
-    background-color: rgba(234,234,234,0.3);
+    /*background-color: rgba(234,234,234,0.3);*/
     outline: none;
     border: none;
 }
 .mu-input{
-    width: 60px;
+    /*width: 100%;*/
+    /*height: 100%;*/
     margin: 0;
     padding: 0;
     position: absolute;
     top: 10px;
 }
+.rule /deep/.mu-item     .mu-option.is-selected .mu-item {
+  color: $c-cheng!important;
+}
+.rule /deep/ .mu-input-line, .mu-input-focus-line  .focus{
+  height: 0px;
+}
+
 </style>
