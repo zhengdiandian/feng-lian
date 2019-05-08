@@ -636,6 +636,7 @@ h3{
   }
 
   .partner-content{
+    overflow: hidden;
     height: 150px;
     display: flex;
     flex-wrap: wrap;
