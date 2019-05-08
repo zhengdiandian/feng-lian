@@ -13,7 +13,7 @@
         <div class="page-margin-top"></div>
         <main>
             <mu-text-field
-            v-model="value13"
+            v-model="account"
             label="请输入您的手机号码"
             label-float
             error-text="您输入的手机号码有误，请重新输入"
@@ -31,7 +31,7 @@
                     <div style="color: #347fe8" >获取验证码</div>
                 </div>
                 </mu-text-field>
-                <mu-button round class="login-btn" color="success">完&nbsp;成</mu-button>
+                <mu-button round class="login-btn" color="success" @click="next">完&nbsp;成</mu-button>
         </main>
     </div>
 </template>
@@ -45,8 +45,28 @@ export default {
             pwd: "",
             visibility: false,
             pwdErr: "123",
-            value13: '',
-            value14: ''
+            account: '',
+            value14: '',
+            msgToken
+        }
+    },
+    methods: {
+        next() {
+            const accountReg = /^1[34578]\d{9}$/;
+            if (!accountReg.test(this.account)) {
+                this.accountErr = "请输入正确的手机号码";
+                return;
+            }
+            this.$axios.post('v1/user/login/setPwd', {
+                type: 2,
+                account: this.account
+            }).then(res => {
+                if(res.data.code!==200){
+                    this.$toast.error(res.data.msg)
+                    return
+            }
+                this.msgToken = res.data.data.token
+            })
         }
     },
     components: {

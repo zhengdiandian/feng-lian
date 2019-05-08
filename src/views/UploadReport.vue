@@ -58,6 +58,9 @@ export default {
           images
         }).then(res => {
           console.log(res)
+          this.$axios.post('v1/user/info/personalInfo').then(res => {
+              this.$store.commit('set_userInfo',res.data.data)
+          })
         })
       }
     }

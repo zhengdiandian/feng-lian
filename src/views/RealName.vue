@@ -133,6 +133,9 @@ export default {
             this.$toast.error(res.data.msg)
             return
           }
+           this.$axios.post('v1/user/info/personalInfo').then(res => {
+              this.$store.commit('set_userInfo',res.data.data)
+          })
           console.log(res);
         });
     }

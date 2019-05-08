@@ -12,7 +12,7 @@
       </mu-button>
       互助计划
     </mu-appbar>
-    <pop-box style="z-index: 6" v-if="showPoP">
+    <pop-box style="z-index: 6" v-if="show">
       <div class="pop">
         <div>
           <div>
@@ -22,7 +22,7 @@
           </div>
         </div>
         <div style="position: absolute;width: 100%;bottom: 0;">
-          <button @click="showpop=false">不，谢谢</button>
+          <button @click="show=false">不，谢谢</button>
           <button class="btn-join" @click="$router.push('/real')">现在认证</button>
         </div>
       </div>
@@ -156,12 +156,10 @@
       pageHeader,
       popBox
     },
-    props: ['productCode'],
+    // props: ['productCode'],
     computed: {
       ...mapState(['userInfo']),
-      showPoP() {
-        return this.userInfo.state === 100
-      },
+      
     },
     data() {
       return {
@@ -170,7 +168,7 @@
         title: '互助计划',
         MutualRule: [],
         problems: {},
-        // productCode:this.$route.params.productCode,
+        productCode:this.$route.params.productCode,
         itemRowData: [
           // {
           //   icon: ' iconfanweiguang-',
@@ -192,10 +190,14 @@
           //   title: '赔付秒结',
           //   text: '满足条件拨款秒结'
           // }
-        ]
+        ],
+        show: false
       }
     },
     methods: {
+      showPoP() {
+        return  this.show = this.userInfo.state === 100
+      },
       joinInform() {
         // var xtoken = window.sessionStorage.getItem('token')
         // // console.log(xtoken)
@@ -213,7 +215,7 @@
             "writingImg":this.MutualRule.healthyImg, //健康文案图片
             "writing": this.MutualRule.healthyText, //健康文案
             "MutualRule": this.MutualRule, // 产品详情--传到加入计划
-            "productCode": this.productCode
+            "productCode": this.$route.params.productCode
           }
         })
       },
@@ -222,10 +224,12 @@
       }
     },
     mounted() {
+      this.showPoP()
       let time = +new Date()
       let fn = async () =>{
+        debugger
         let res= await this.$axios.post('/v1/product/product/tags',{  // 产品标签列表
-          "productCode": this.productCode
+          "productCode": this.$route.params.productCode
         })
           // res.then(res=>{
 

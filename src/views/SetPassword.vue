@@ -108,7 +108,7 @@ export default {
            }
             // this.token = res.data.data.authToken
             console.log(res)
-            // sessionStorage.setItem('token', res.data.data.authToken)
+            this.$store.commit("set_authToken", res.data.auth_token);
             this.$router.replace('/home')
 
 

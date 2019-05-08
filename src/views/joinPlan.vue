@@ -105,7 +105,7 @@
       </div>
       <div class="buy-info margin-top" style="position: relative;">
         使用时间: <span class="margin-left font-min">{{serviceTime}}个月</span>
-        <div class="estimate"><span style="font-size: 12px;">预计到期时间2020年2月9日</span></div>
+        <!-- <div class="estimate"><span style="font-size: 12px;">预计到期时间2020年2月9日</span></div> -->
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">

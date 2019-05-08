@@ -10,7 +10,7 @@
                 label-float
                 label="请输入新密码"
                 icon=":iconfont iconmima"
-                error-text="您输入的密码不够安全，请慎重"
+                :error-text="accountErr"
                 >
                     <div slot="append">
                         <mu-icon value=":iconfont iconbiyan"></mu-icon>
@@ -24,7 +24,7 @@
                 >
                 </mu-text-field>
             </div>
-                <mu-button round class="login-btn" color="success">修&nbsp;改&nbsp;并&nbsp;登&nbsp;陆</mu-button>
+                <mu-button round class="login-btn" color="success" @click="login()">修&nbsp;改&nbsp;并&nbsp;登&nbsp;陆</mu-button>
         </main>
     </div>
 </template>
@@ -38,8 +38,24 @@ export default {
             pwd: "",
             visibility: false,
             pwdErr: "123",
-            value13: '',
-            value14: ''
+            account: '',
+            pwd: '',
+            accountErr: ''
+        }
+    },
+    methods: {
+        login() {
+            const accountReg = /^1[34578]\d{9}$/;
+            if (!accountReg.test(this.account)) {
+                this.accountErr = "请输入正确的手机号码";
+                return;
+            }
+            this.$axios.post('v1/user/login/setPwd').then(res => {
+                if(res.data.code!==200){
+                    this.$toast.error(res.data.msg)
+                    return
+            }
+            })
         }
     },
     components: {
