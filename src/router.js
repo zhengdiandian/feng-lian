@@ -99,6 +99,7 @@ export default new Router({
     },
     {
       path: '/reset', // 重新设置密码
+      name: 'reset',
       component: function () {
         return import('./views/ResetPassword.vue')
       }
@@ -289,17 +290,24 @@ export default new Router({
       }
     },
     {
-      path: '/impower',
+      path: '/impower', //授权页面
       name: 'impower',
       component: function () {
         return import('./views/impowerState')
       }
     },
     {
-      path: '/invitation',
+      path: '/invitation', //分享页面
       name: 'invitation',
       component: function () {
         return import('./views/invitation')
+      }
+    },
+    {
+      path: '/InviteFriends',
+      name: 'InviteFriends',
+      component: function () {
+        return import('./views/ScalePage')
       }
     }
     // {

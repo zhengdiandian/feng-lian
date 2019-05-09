@@ -190,6 +190,7 @@
 import PopBox from '../components/PopBox/PopBox'
 import BannerImg from '../components/BannerImg/BannerImg'
 import { debug } from 'util';
+import {mapState} from 'vuex'
 export default {
   name: "homePage",
   data() {
@@ -209,15 +210,16 @@ export default {
       joinFlag: ''
     };
   },
+  computed: mapState(['userInfo']),
   methods: {
     open() {
 
     },
   invitation(){
-      if (this.type == 0) {
+      if (this.userInfo.state !== 200) {
         this.showPoP = true
       } else {
-        this.$router.push('/code')
+        this.$router.push('/InviteFriends')
       }
       // this.$router.push('/code')
   }
@@ -647,6 +649,7 @@ h3{
   }
 
   .partner-content{
+      padding: 12px 0px;
     overflow: hidden;
     height: 150px;
     display: flex;
@@ -655,8 +658,9 @@ h3{
     align-content: space-between;
     a{
       display: inline-block;
-      width: 30%;
+      width: 26%;
       height: 50%;
+        padding-top: 5px;
     }
     img{
       width: 100%;

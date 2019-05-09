@@ -158,6 +158,7 @@
 </template>
 <script>
 import axios from 'axios'
+import {mapState} from 'vuex'
   import PopBox from '../components/PopBox/PopBox'
   export default {
   name: 'mycenter',
@@ -183,13 +184,14 @@ import axios from 'axios'
       ]
     }
   },
+    computed:mapState(['userInfo']),
   methods: {
     jump() {
        this.$router.push('/per')
     },
     invitation(){
-      if (this.type == 200) {
-        this.$router.push('/code')
+      if (this.userInfo.state == 200) {
+        this.$router.push('/InviteFriends')
       } else {
         this.showpop = true
       }
