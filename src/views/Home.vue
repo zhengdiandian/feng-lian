@@ -52,7 +52,7 @@ export default {
     bottom: 0px;
   }
  .home-wrap{
-   margin-bottom: 50px;
+   padding-bottom: 50px;
  }
   .active-item{
     color: $c-cheng;

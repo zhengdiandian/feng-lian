@@ -2,10 +2,15 @@
     <div>
         <div style="display: flex;justify-content: center;">
             <div class="uploadimg">
-                <img src="../../assets/img/相机.svg" alt="">
+              <div class="image">
+                <img  src="../../assets/img/相机.svg" alt="" >
+              </div>
+
                 <span>{{upload}}</span>
                 <input class="justID" type="file" ref="file" @change="uploadIMG($event)" accept="image/*">
-                <img :src="imgUrl" v-if="imgUrl&&showImg" @click="delImg" alt="" class="img-file">
+                <div class="img-file" v-if="imgUrl&&showImg">
+                  <img :src="imgUrl"  @click="delImg" alt="" >
+                </div>
             </div>
         </div>
     </div>
@@ -50,10 +55,11 @@ export default {
       this.picavalue = files[0];
       console.log(this.picavalue.size / 1024);
       if (this.picavalue.size / 1024 > 5000) {
-        this.$message({
-          message: "图片过大不支持上传",
-          type: "warning"
-        });
+        this.$toast.error('图片过大不支持上传')
+        // this.$message({
+        //   message: "图片过大不支持上传",
+        //   type: "warning"
+        // });
       } else {
         this.imgPreview(this.picavalue);
       }
@@ -110,6 +116,10 @@ export default {
                   this.progress = completeProgress;
                 }
               }).then(res => {
+              if(res.data.code!==200){
+                self.$toast.error(res.data.msg)
+                return
+              }
               debugger
               self.$emit('getFile', res.data.data.url, self.imgUrl)
 
@@ -224,10 +234,16 @@ export default {
             position: absolute;
             top: 0px;
             left: 0px;
+          img{
+            width: 100%;
+          }
         }
-        img{
+        .image{
             width: 32px;
             height: 32px;
+          img{
+            width: 100%;
+          }
         }
         .iconshouye1{
             font-size: 30px;

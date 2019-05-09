@@ -113,7 +113,9 @@
       </div>
       <div class="plan-wrap" v-for="(product, i) in products" :key="i" >
         <div class="plan-left" >
-          <img :src="product.img" alt="">
+          <div class="plan-img" :style="{background:'url('+product.img+')',backgroundSize:'100% 100%'}" >
+            <img class="img" :src="product.img" alt="">
+          </div>
           <div class="plan-left-content">
             <div class="title">{{product.title}}</div>
             <div class="info">{{product.subtitle}}</div>
@@ -576,13 +578,22 @@ h3{
       align-items: center;
       /*padding: 5px;*/
       padding: 18px 14px 18px 0px;
-
-      img{
+      .plan-img{
         width:60px;
         height:60px;
-        border-radius:5px;
+        /*border-radius:5px;*/
         margin: 0px 12px 0 12px;
+        .img{
+         /*position: relative;*/
+          /*top: 0;*/
+          /*left: 0;*/
+          width:100%;
+          /*height: 60px;*/
+
+          height: 100%;
+        }
       }
+
 
 
     }
