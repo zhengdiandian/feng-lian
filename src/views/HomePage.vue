@@ -1,6 +1,6 @@
 <template>
   <div class="page-margin-top">
-    <PopBox v-if="showPoP">
+    <PopBox v-if="showPoP" style="z-index: 666666;">
     <div class="pop-content">
       <div>
         <div>
@@ -55,7 +55,7 @@
           </div>
           <div class="xian"></div>
           <div class="chat-content item-content" @click="$router.push('/scale')">
-            <div class="chat-img"></div>
+            <div class="chat-img" ></div>
             <div class="chat-title">{{homeinfor.stageAmount}}</div>
             <div class="chat-info" >本期互助金規模(元)</div>
           </div>
@@ -103,7 +103,7 @@
     <div class="wrap">
       <div @click="invitation">
       <div class="apply">
-        <img src="../assets/图标/爱心.png" alt="">
+        <img src="@/assets/图标/爱心.png" alt="">
         <span>成功邀请一人，就得20元红包</span>
         <div class="apply-click">
           <span>邀请</span>
@@ -113,7 +113,7 @@
       </div>
       <div class="plan-wrap" v-for="(product, i) in products" :key="i" >
         <div class="plan-left" >
-          <div class="plan-img" :style="{background:'url('+product.img+')',backgroundSize:'100% 100%'}" >
+          <div class="plan-img"  >
             <img class="img" :src="product.img" alt="">
           </div>
           <div class="plan-left-content">
@@ -262,6 +262,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+  .wrap /deep/ .mu-item-title{
+    padding: 0px 10px;
+  }
+  .list{
+    padding: 0px 10px;
+  }
   .close{
     position: fixed;
     top: 33px;
@@ -478,7 +484,7 @@ h3{
       .chat-img{
         width:60px;
         height:60px;
-        background: url("../assets/img/饼状图.svg") center no-repeat;
+        background: url("../../public/img/饼状图.svg") center no-repeat;
         background-size: 100% 100%;
         margin-bottom: 8px;
       }
@@ -586,13 +592,9 @@ h3{
         /*border-radius:5px;*/
         margin: 0px 12px 0 12px;
         .img{
-         /*position: relative;*/
-          /*top: 0;*/
-          /*left: 0;*/
-          width:100%;
-          /*height: 60px;*/
-
-          height: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
         }
       }
 
@@ -655,17 +657,22 @@ h3{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-content: space-between;
+    /*align-content: space-around;*/
     a{
       display: inline-block;
-      width: 26%;
-      height: 50%;
+      /*width: 25%;*/
+      /*height: 50%;*/
+      width:65px;
+      height:65px;
         padding-top: 5px;
     }
     img{
-      width: 100%;
-      height: 100%;
+      width: auto;
+      height: auto;
+      max-height: 100%;
+      max-width: 100%;
     }
+
   }
 
   .mu-item-action {

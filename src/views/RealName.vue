@@ -43,6 +43,7 @@
           <upload @getFile="getFile($event, 'file2')" :upload="upload"></upload>
         </section>
       </div>
+      <div v-html="html"></div>
 
     </main>
     <div class="bottom-btn" @click="submit">提交</div>
@@ -84,7 +85,8 @@ export default {
         data1: provs_data,
         data2: citys_data,
         data3: dists_data
-      }
+      },
+      html: ''
     };
   },
   created() {
@@ -133,6 +135,11 @@ export default {
           if(res.data.code!==200){
             this.$toast.error(res.data.msg)
             return
+          }
+          debugger
+          if(res.data.data.type ===1){
+            document.write(res.data.data.value)
+          this.html = res.data.data.value            
           }
            this.$axios.post('v1/user/info/personalInfo').then(res => {
               this.$store.commit('set_userInfo',res.data.data)

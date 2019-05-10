@@ -36,7 +36,7 @@ export default {
     left: 0px;
     right: 0px;
     bottom: 0px;
-    z-index: 6 ;
+    z-index: 9999 ;
     display: flex;
     justify-content: center;
     align-items: center;

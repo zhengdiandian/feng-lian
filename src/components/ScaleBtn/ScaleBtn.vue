@@ -8,7 +8,14 @@
     name: 'ScaleBtn',
     methods: {
       scale(){
-        this.$axios.post('/v1/user/share/getSharePara').then(res => {
+        debugger
+        // const url = location.href.split('#')[0];
+        //  const  url = this.$route.path
+        //  const url = window.location.href.split('#')[0]
+            const  url = '/'
+        this.$axios.post('/v1/user/share/getSharePara', {
+          url: url
+        }).then(res => {
           debugger
           console.log(res)
           wx.config({
@@ -17,12 +24,14 @@
             timestamp: res.data.data.timestamp, // 必填，生成签名的时间戳
             nonceStr: res.data.data.nonceStr, // 必填，生成签名的随机串
             signature: res.data.data.signature, // 必填，签名
-            jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData','onMenuShareWeibo'] // 必填，需要使用的JS接口列表
+            jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData'] // 必填，需要使用的JS接口列表
           })
           wx.ready(function() {
             const title = '分享标题';
             const desc = '分享描述';
-            const imgUrl = '/home';
+            const imgUrl = 'https://bee-test-bucket.oss-cn-beijing.aliyuncs.com/首页banner.png';
+            const link = 'http://test.wx.fenglianhz.com/home'
+
             wx.updateAppMessageShareData({
               title, // 分享标题
               desc, // 分享描述
@@ -30,7 +39,16 @@
               imgUrl, // 分享图标
               success: function () {
                 // 设置成功
-                this.$toast.success('成功')
+                console.log('成功')
+                // this.$toast.success('成功')
+              },
+              fail: (res) => {
+                console.log('失败', res)
+
+                // this.$toast.success(res)
+
+                debugger
+                res
               }
             })
             wx.updateTimelineShareData({
@@ -43,6 +61,10 @@
                 this.$toast.success('成功')
               }
             })
+            wx.error(function(res){
+              // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+              alert("errorMSG:"+res);
+            });
             // // 朋友圈
             // wx.onMenuShareTimeline({
             //   title: title, // 分享标题
@@ -77,12 +99,12 @@
             // });
 
             // 腾讯微博
-            wx.onMenuShareWeibo({
-              title: title, // 分享标题
-              desc: desc, // 分享描述
-              link: url, // 分享链接
-              imgUrl: imgUrl // 分享图标
-            });
+            // wx.onMenuShareWeibo({
+            //   title: title, // 分享标题
+            //   desc: desc, // 分享描述
+            //   link, // 分享链接
+            //   imgUrl: imgUrl // 分享图标
+            // });
           });
 
       })

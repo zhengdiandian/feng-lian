@@ -12,7 +12,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import * as colors from 'muse-ui/lib/theme/colors'
 import './assets/font/iconfont.css'
 // import 'muse-ui-message/dist/muse-ui-message.css'
-import 'muse-ui-message/dist/muse-ui-message.css'
+// import 'muse-ui-message/dist/muse-ui-message.css'
 import Message from 'muse-ui-message'
 import Axios from 'axios'
 import qs from 'qs'
@@ -44,7 +44,7 @@ Vue.use(Message, {
 })
 console.log('store', store)
 theme.add('custom-theme', {
-  primaryColor: '#fff',
+  primaryColor: '#ffffff',
   primary: colors.indigo,
   secondary: colors.pinkA200
 })
@@ -69,7 +69,7 @@ theme.add('teal', {
     paper: '#fff',
     chip: '#e0e0e0',
     default: '#fafafa',
-    navBar: '#fff'
+    navBar: '#ffffff'
   }
 }, 'light')
 
@@ -101,9 +101,13 @@ Axios.interceptors.response.use( (response) => {
       path: '/login',
       query: { redirect: router.currentRoute.fullPath }
     })
+    if(response.data.code == 302) {
+      debugger
+    }
   }
   return response
 }, function (error) {
+  debugger
   // Do something with response error
   return Promise.reject(error)
 })

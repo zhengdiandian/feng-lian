@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   // base: process.env.BASE_URL,
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }
@@ -86,7 +86,7 @@ export default new Router({
     {
       path: '/register', // 注册
       component: function () {
-        return import('./views/register.vue')
+        return import('./views/newRegister.vue')
       }
     },
     {
@@ -308,6 +308,13 @@ export default new Router({
       name: 'InviteFriends',
       component: function () {
         return import('./views/ScalePage')
+      }
+    },
+    {
+      path: '/newRegister',
+      name: 'newLogin',
+      component: function () {
+        return import('./views/newRegister')
       }
     }
     // {

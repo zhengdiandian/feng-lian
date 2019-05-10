@@ -375,9 +375,16 @@
     }
   }
   .help-wrap{
-    width: 351px;
-    margin: auto;
+    /*padding-left: 10px;*/
+    /*padding: 0px 10px;*/
+    width: 100%;
+
+    /*margin: auto;*/
+    /*& /deep/ .mu-item-title{*/
+      /*padding-left: 10px;*/
+    /*}*/
   & /deep/ .mu-item{
+    padding-left: 10px;
     // border-bottom: .5px solid $c-hui;
     // padding: 0px;
   }
