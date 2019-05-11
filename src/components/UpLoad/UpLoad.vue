@@ -102,14 +102,14 @@ export default {
               baseURL: 'http://test.wxapi.fenglianhz.com/h5',
               headers: {
                       'Content-Type': 'multipart/form-data',
-                      'authToken' : window.sessionStorage.getItem('token')
+                      'authToken' : window.localStorage.getItem('token')
                     },
             }).post('v1/manage/common/uploadImg',
               formData,
               {
                 headers: {
                   'Content-Type': 'multipart/form-data',
-                  'authToken' : window.sessionStorage.getItem('token')
+                  'authToken' : window.localStorage.getItem('token')
                 },
                 onUploadProgress: e => {
                   var completeProgress = ((e.loaded / e.total * 100) | 0) + "%";
@@ -129,7 +129,7 @@ export default {
             //   {
             //     headers: {
             //       'Content-Type': 'multipart/form-data',
-            //       'authToken' : window.sessionStorage.getItem('token')
+            //       'authToken' : window.localStorage.getItem('token')
             //     },
             //     onUploadProgress: e => {
             //       var completeProgress = ((e.loaded / e.total * 100) | 0) + "%";

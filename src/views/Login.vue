@@ -71,7 +71,7 @@
         >
       </div>
       <mu-button round class="login-btn" color="success" @click="login"
-        >登 &nbsp; 陆</mu-button
+        >登 &nbsp; 录</mu-button
       >
       <div class="show" v-show="show">
         <span>{{errorMsg}}</span>

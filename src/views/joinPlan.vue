@@ -109,7 +109,7 @@
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
-        服务费: <span class="margin-left font-min"> &nbsp;&nbsp;68元</span>
+        服务费: <span class="margin-left font-min"> &nbsp;&nbsp;{{MutualRule.annualPrice}}</span>
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
@@ -120,7 +120,7 @@
         <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span> <<互助计划公约>> </span>
       </div>
     </div>
-      <div class="big-btn" @click="btnHandleClick">去支付</div>
+      <div class="big-btn" @click="btnHandleClick" style="z-index: 888888">去支付</div>
     </main>
   </div>
 </template>
@@ -166,10 +166,10 @@ export default {
       return this.tongYi ? {color: 'rgba(18, 150, 219, 1)'}: {}
     },
     serviceTime() {
-      return this.sums[this.activeStep] / this.$route.params.MutualRule.suit
+      return this.sums[this.activeStep] / this.MutualRule.suit
     },
     amount() {
-      return this.serviceTime * this.$route.params.MutualRule.suit + 68
+      return this.serviceTime * this.$route.params.MutualRule.suit + this.MutualRule.annualPrice
     }
   },
   methods: {
@@ -190,11 +190,15 @@ export default {
               "orderAmount": this.amount, // 金额
               "productCode": this.MutualRule.productCode,
               "relationShip": 0,
-              "stageCount": 0,
+              "stageCount": this.serviceTime,
               // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
               "type": 2
             }).then((res)=> {
               debugger
+                if(res.data.code!==200){
+                  this.$toast.error(res.data.msg)
+                  return
+                }
               if(res.data.code===200){
                 this.order = res.data.data
                 console.log(res)
@@ -203,7 +207,8 @@ export default {
                   name: 'orderInfo',
                   params: {
                     productCode: this.$route.params.productCode,
-                    order: res.data.data
+                    order: res.data.data,
+                    // stageCount: this.serviceTime
                   }
                 })
               }

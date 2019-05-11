@@ -158,7 +158,7 @@
       return {
         // writingImg: this.writingData.writingImg,
         // writing: this.writingData.writing,
-        MutualRule: this.$route.params.MutualRule,
+        // MutualRule: this.$route.params.MutualRule,
         productCode: this.$route.params.productCode
       }
     },

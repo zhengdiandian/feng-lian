@@ -81,8 +81,9 @@
         //   this.productId = res.data.data.productId
         //   console.log(this.planId)
         debugger
-        this.$axios.get(`v1/mutually/payOrder/wxPay?oderNO=${this.$route.params.order.orderNo}`).then(res => {
+        this.$axios.get(`v1/mutually/payOrder/wxPay?orderNo=${this.$route.params.order.orderNo}`).then(res => {
           debugger
+          window.location = res.data.data.payUrl
           // res.redi
           console.log('zhifu',res.data.data)
         })

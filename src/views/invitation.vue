@@ -5,7 +5,7 @@
     </div>
     <div class="content-wrap">
       <div class="input-wrap">
-        <div class="input-content">
+        <!--<div class="input-content">
           <span class="iconfont iconzhanghao"></span
           ><input placeholder="请输入您的手机号码" type="text" />
         </div>
@@ -13,8 +13,8 @@
           <span class="iconfont iconzhanghao"></span
           ><input placeholder="请输入您的手机号码" type="text" />
           <span class="msg"> 获取验证码</span>
-        </div>
-        <div class="btn">立即注册</div>
+        </div>-->
+        <div class="btn" @click="$router.push('/login')">立即注册</div>
       </div>
       <div class="info-content">
         <div class="title">享“邀请有礼”现金红包奖励</div>

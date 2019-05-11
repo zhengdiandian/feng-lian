@@ -139,7 +139,7 @@ export default {
           debugger
           if(res.data.data.type ===1){
             document.write(res.data.data.value)
-          this.html = res.data.data.value            
+          this.html = res.data.data.value
           }
            this.$axios.post('v1/user/info/personalInfo').then(res => {
               this.$store.commit('set_userInfo',res.data.data)

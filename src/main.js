@@ -18,6 +18,8 @@ import Axios from 'axios'
 import qs from 'qs'
 import Util from '@/assets/js/unit.js'
 import Toast from 'muse-ui-toast'
+import wx from 'wechat-js-sdk'
+window.wx = wx
 Vue.prototype.Util = Util
 Vue.use(Toast, {
   position: 'top',               // 弹出的位置
@@ -121,7 +123,7 @@ Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 // })
 Axios.interceptors.request.use(
   config => {
-    var xtoken = window.sessionStorage.getItem('token')
+    var xtoken = window.localStorage.getItem('token')
     if (xtoken != null) {
       config.headers['authToken'] = xtoken
     }
@@ -148,7 +150,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(to => to.meta.requiresAuth)) {
     // 数组some方法,如果meta.requiresAuth为ture,则返回true.此时,说明进入该路由前需要判断用户是否已经登录
     console.log(this)
-    if (!window.sessionStorage.getItem('token')) { // 如果没登录,则跳转到登录页
+    if (!window.localStorage.getItem('token')) { // 如果没登录,则跳转到登录页
       next({
         path: '/login',
         query: { redirect: to.fullPath } // 官方例子的这个小细节很好,通过query将要跳转的路由路径保存下来,待完成登录后,就可以直接获取该路径,直接跳转到登录前要去的路由

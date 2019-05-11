@@ -59,7 +59,7 @@ export default {
     },
     methods: {
         quit(){
-            sessionStorage.clear()
+            localStorage.clear()
             this.$router.replace('/home')
         }
     }

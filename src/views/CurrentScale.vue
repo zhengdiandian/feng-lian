@@ -49,13 +49,17 @@
         </div>
     </main>
     <footer>
-        <button>分享邀请好友</button>
+        <!--<button>分享邀请好友</button>-->
+        <scale-btn></scale-btn>
+
     </footer>
 </div>
 </template>
 <script>
-export default {
+  import ScaleBtn from '../components/ScaleBtn/ScaleBtn'
+  export default {
     name: 'PageHeader',
+    components: {ScaleBtn},
     props: {
         title: {
             type: String,

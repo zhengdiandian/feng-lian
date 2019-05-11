@@ -124,8 +124,8 @@
         </mu-list>
 
       </div>
-      <div class="bottom-btn" @click="joinInform">立即加入</div>
     </div>
+    <div class="bottom-btn" @click="joinInform">立即加入</div>
   </div>
 </template>
 
@@ -188,7 +188,7 @@
         return  this.show = this.userInfo.state === 100
       },
       joinInform() {
-        // var xtoken = window.sessionStorage.getItem('token')
+        // var xtoken = window.localStorage.getItem('token')
         // // console.log(xtoken)
         // if (xtoken == null) {
         //   return
@@ -215,19 +215,24 @@
     mounted() {
       this.showPoP()
       let time = +new Date()
-      let fn = async () =>{
-        debugger
-        let res= await this.$axios.post('/v1/product/product/tags',{  // 产品标签列表
-          "productCode": this.$route.params.productCode
-        })
-          // res.then(res=>{
-
-          this.itemRowData = res.data.data
-          // console.log(res)
-        // })
-      }
+      // let fn = async () =>{
+      //   debugger
+      //   let res= await this.$axios.post('/v1/product/product/tags',{  // 产品标签列表
+      //     "productCode": this.$route.params.productCode
+      //   })
+      //     // res.then(res=>{
+      //
+      //     this.itemRowData = res.data.data
+      //     // console.log(res)
+      //   // })
+      // }
+      this.$axios.post('/v1/product/product/tags',{  // 产品标签列表
+        "productCode": this.$route.params.productCode
+      }).then(res => {
+            this.itemRowData = res.data.data
+      })
       console.log(+ new Date() -time)
-      fn()
+      // fn()
       console.log(+ new Date() -time)
       this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
         "productCode": this.$route.params.productCode

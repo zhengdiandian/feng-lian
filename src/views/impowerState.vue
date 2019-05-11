@@ -8,9 +8,9 @@
         <!-- icon slot="right" :ripple="false"> -->
           <mu-button icon slot="right" @click="$router.push('/perinfor')">
           <span >关闭</span>
-          
+
         </mu-button>
-        
+
       </mu-appbar>
       <div class="wrap">
         <div class="content page-margin-top">
@@ -41,6 +41,11 @@ import { decode } from 'punycode';
       this.state = this.imglist[state]
       // this.state =state
       this.text = state === '200' ? '授权成功': '授权失败'
+      this.$axios.post('v1/user/info/personalInfo').then(res => {
+        debugger
+
+        this.$store.commit('set_userInfo',res.data.data)
+      })
     },
     watch: {
       $route(){

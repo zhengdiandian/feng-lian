@@ -37,20 +37,15 @@
     </div>
     <div class="help-list">
       <mu-list  class="list" toggle-nested="">
-        <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="i in 7" :key="i">
-          <mu-list-item-title>申请互助</mu-list-item-title>
+        <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="(item,i) in issue" :key="i">
+          <mu-list-item-title style="font-size: 14px;">{{i+1}}、{{item.title}} </mu-list-item-title>
           <mu-list-item-action>
             <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
           </mu-list-item-action>
-          <mu-list-item button :ripple="false" slot="nested">
-            <mu-list-item-title>List Item 1</mu-list-item-title>
-          </mu-list-item>
-          <mu-list-item button :ripple="false" slot="nested">
-            <mu-list-item-title>List Item 2</mu-list-item-title>
-          </mu-list-item>
-          <mu-list-item button :ripple="false" slot="nested">
-            <mu-list-item-title>List Item 3</mu-list-item-title>
-          </mu-list-item>
+          <p slot="nested">{{item.content}}</p>
+          <!--<mu-list-item button :ripple="false" slot="nested">-->
+          <!--<mu-list-item-title>{{item.content}}</mu-list-item-title>-->
+          <!--</mu-list-item>-->
         </mu-list-item>
       </mu-list>
     </div>
@@ -66,17 +61,31 @@
     name: 'PlanInitial',
     data() {
       return {
-        panned: []
+        panned: [],
+        issue: []
       }
     },
     mounted() {
       this.$axios.post('/v1/mutually/plan/planDetail',{
-        "planNo": this.$route.params.planNo
+        "planNo": this.$route.query.planNo
       }).then((res)=> {
-
-        // this.panned = res.data.data
+        if(res.data.code!==200){
+          this.$toast.error(res.data.msg)
+          return
+        }
+        this.panned = res.data.data
+        this.$axios.post('v1/product/product/issue',{
+          productCode: res.data.data.productCode
+        }).then(res => {
+          if(res.data.code!==200){
+            this.$toast.error(res.data.msg)
+            return
+          }
+          this.issue = res.data.data
+        })
         console.log(this.panned)
       })
+
     },
     methods:{
       open(){

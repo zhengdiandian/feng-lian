@@ -23,7 +23,7 @@
       </div>
       <div style="position: absolute;width: 100%;bottom: 0;">
         <button @click="showpop=false">取消</button>
-        <button class="btn-join" @click="$router.push('/joinplan')">成为会员大使</button>
+        <button class="btn-join" @click="$router.push('/hlepPlan/PRO201905111234221')">成为会员大使</button>
       </div>
     </div>
   </PopBox>

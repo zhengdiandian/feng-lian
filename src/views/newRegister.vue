@@ -55,7 +55,7 @@
                 </mu-text-field>
             </div>
             <div style="width: 75%">
-                <mu-button round class="login-btn" color="success" @click="registerHandleClick">完 &nbsp; 成</mu-button>
+                <mu-button round :class="{ 'login-btn': disabled }" class="login" color="success" @click="registerHandleClick">完 &nbsp; 成</mu-button>
             </div>
         </main>
         <!--<div class="show" v-if="show">-->
@@ -97,6 +97,11 @@
         code: ''
       }
     },
+    computed: {
+      disabled() {
+        return !!this.$route.query.user_code
+      }
+    },
     created() {
       const code = this.$route.query.user_code
       if(code){
@@ -132,7 +137,7 @@
         //更改
         debugger
         this.$axios.post('/v1/user/login/register',{
-          "openId": "test",          // 微信appid
+          "openId": this.$route.query.openId ,         // 微信appid
           "account": this.user, // 手机
           "smsCode": this.pwd,  // 短信验证码
           "token": this.msgToken, // 短信token
@@ -245,11 +250,24 @@
         font-size: 12px !important;
         border: none !important;
     }
-    .login-btn{
-        background: linear-gradient(to right, #e99317 , #fbb830) !important;
+    .login.login-btn {
+        background: linear-gradient(to right, #e99317, #fbb830) !important;
         margin-top: 85px;
-        width: 100%;
+        width: 80%;
+        color: $c-bai ;
     }
+    .login {
+        margin-top: 85px;
+        width: 80%;
+        color: rgba(0,0,0,.3);
+        cursor: not-allowed;
+        background-color: #e6e6e6
+    }
+    /*.login-btn{*/
+        /*background: linear-gradient(to right, #e99317 , #fbb830) !important;*/
+        /*margin-top: 85px;*/
+        /*width: 100%;*/
+    /*}*/
     .show {
         position: fixed;
         top: 0;

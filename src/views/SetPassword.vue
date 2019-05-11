@@ -120,7 +120,7 @@ export default {
       //   account: decodeURIComponent(this.account)
       // }).then(res=>{
       //   debugger
-      //   sessionStorage.setItem('token', res.data.data)
+      //   localStorage.setItem('token', res.data.data)
       //   console.log(res);
 
       // })

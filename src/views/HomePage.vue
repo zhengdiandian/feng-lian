@@ -11,14 +11,14 @@
       </div>
       <div style="position: absolute;width: 100%;bottom: 0;">
         <button @click="showPoP=false">取消</button>
-        <button class="btn-join" @click="$router.push('/joinplan')">成为会员大使</button>
+        <button class="btn-join" @click="$router.push('/hlepPlan/PRO201905111234221')">成为会员大使</button>
       </div>
     </div>
   </PopBox>
   <pop-box style="z-index: 8" v-if="showQrcode">
       <span class="close" @click="showQrcode=false">x</span>
     <div class="qrcode-wrap">
-      <img src="https://placehold.it/180" alt="" class="qrcode-img">
+      <img :src="qrcodeImg" alt="" class="qrcode-img">
       <div class="bottom-text">长按关注公众号，进行实名认证，加入计划，成为爱心大使!</div>
     </div>
 
@@ -114,7 +114,9 @@
       <div class="plan-wrap" v-for="(product, i) in products" :key="i" >
         <div class="plan-left" >
           <div class="plan-img"  >
-            <img class="img" :src="product.img" alt="">
+            <span class="img" :style="{backgroundImage: 'url(' + product.img + ')'} ">
+                          <img class="img" :src="product.img" alt="">
+            </span>
           </div>
           <div class="plan-left-content">
             <div class="title">{{product.title}}</div>
@@ -207,7 +209,8 @@ export default {
       type: 0,
       showPoP: false,
       videoImg: '',
-      joinFlag: ''
+      joinFlag: '',
+      qrcodeImg: ''
     };
   },
   computed: mapState(['userInfo']),
@@ -230,7 +233,7 @@ export default {
   },
   created() {
     if(this.$route.query.auth_token){
-      sessionStorage.setItem('token', this.$route.query.auth_token)
+      localStorage.setItem('token', this.$route.query.auth_token)
       this.showQrcode = true
       this.$axios.post('v1/user/info/personalInfo').then(res => {
         this.$store.commit('set_userInfo',res.data.data)
@@ -250,6 +253,11 @@ export default {
         console.log(this.product)
         // console.log(this.product)
       })
+    this.$axios.post('v1/manage/config/getImgList',{
+      keys: 'PublicQrcode'
+    }).then(res => {
+      this.qrcodeImg = res.data.data.PublicAddress
+    })
     this.$axios.post('v1/manage/config/getImgList',{
       keys: 'PublicAddress'
     }).then(res => {
@@ -303,7 +311,6 @@ export default {
     display: inline-block;
     width: 160px;
     height: 160px;
-    background-color: red;
   }
 
 
@@ -521,7 +528,10 @@ h3{
     }
     .info{
       /*margin: 12px auto;*/
+      overflow: hidden;
+      text-overflow: ellipsis;
       font-size:13px;
+      padding-right: 10px;
       font-family:SourceHanSansCN-Normal;
       font-weight:400;
       color:rgba(112,112,112,1);
@@ -587,11 +597,19 @@ h3{
       /*padding: 5px;*/
       padding: 18px 14px 18px 0px;
       .plan-img{
+        background-size: cover;
         width:60px;
         height:60px;
         /*border-radius:5px;*/
         margin: 0px 12px 0 12px;
-        .img{
+        span.img{
+          width:60px;
+          height:60px;
+          background-size: cover;
+          display: inline-block;
+
+        }
+        img{
           max-height: 100%;
           width: auto;
           height: auto;
