@@ -139,6 +139,8 @@ export default {
 }
 main{
     .exchangeBtn{
+        height: 33px;
+        line-height: 33px;
         outline: none;
         border: none;
         background-color: #eea31f;

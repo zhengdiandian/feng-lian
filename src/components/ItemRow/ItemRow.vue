@@ -1,7 +1,9 @@
 <template>
     <div class="item-row">
       <div class="item" v-for="(data,i) in datas" :key="i">
-        <img item-row-icon :src="data.img" alt="">
+        <div>
+          <img item-row-icon :src="data.img" alt="">
+        </div>
         <div class="title">{{data.title}}</div>
         <div class="text">{{data.content}}</div>
       </div>
@@ -44,16 +46,20 @@
   .item{
     width: 25%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    // justify-content: center;
     // align-items: center;
     text-align: center;
     margin-bottom: 12px;
     line-height: 15px;
     // overflow: hidden;
     img{
-      width: 50px;
-      height: 50px;
+      display: inline-block;
+      justify-self: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 6px;
     }
     .title{
       font-size:14px;
@@ -63,8 +69,8 @@
     }
     .text{
       display: inline-block;
-      width: 60px;
-      height: 60px;
+      // width: 60px;
+      // height: 60px;
       font-size:12px;
       font-family:SourceHanSansCN-Normal;
       font-weight:400;

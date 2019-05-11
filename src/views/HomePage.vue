@@ -47,15 +47,14 @@
         </div>
         <div class="chat-wrap">
           <div class="chat-content item-content" @click="$router.push('/ranklist')">
-            <div class="chat-img" >
               <!-- <mu-icon value=":iconfont iconshuju"></mu-icon> -->
-            </div>
+            <!-- <div class="chat-img" ></div> -->
             <div class="chat-title">{{homeinfor.memberCount}}</div>
             <div class="chat-info">全平台用户(人)</div>
           </div>
           <div class="xian"></div>
           <div class="chat-content item-content" @click="$router.push('/scale')">
-            <div class="chat-img" ></div>
+            <!-- <div class="chat-img" ></div> -->
             <div class="chat-title">{{homeinfor.stageAmount}}</div>
             <div class="chat-info" >本期互助金規模(元)</div>
           </div>
@@ -159,7 +158,7 @@
         </mu-list>
         <div class="help-btn-wrap">
           <div class="btn">
-            <span class="iconfont iconlianxikefu"></span>
+            <a href="tel:10086" class="iconfont iconlianxikefu"></a>
             联系客服
           </div>
           <div class="btn">
@@ -470,8 +469,8 @@ h3{
       .btn{
         width:170px;
         height:44px;
-        background:linear-gradient(180deg,rgba(229,141,15,1) 0%,rgba(252,188,52,1) 100%);
-        border-radius:15px;
+        background:$c-cheng ;
+        border-radius:25px;
         margin: auto;
         margin-bottom: 12px;
       }
@@ -631,7 +630,7 @@ h3{
       .btn{
       // width:90px;
       height:25px;
-      background:rgba(255,129,37,1);
+      background: $c-cheng;
       border-radius:13px;
       text-align: center;
       line-height: 25px;
@@ -651,16 +650,18 @@ h3{
     display: flex;
     justify-content: space-around;
     align-items: center;
-
+    a{
+      color: $c-cheng;
+    }
     .btn{
       width:132px;
       height:35px;
-      border:1px solid rgba(239,162,32,1);
+      border:1px solid $c-cheng;
       border-radius:17px;
       text-align: center;
       line-height: 35px;
       color: $c-cheng;
-      border-radius: 10px;
+      border-radius: 25px;
       margin-bottom: 12px;
       .iconfont{
         padding-right: 5px;

@@ -140,6 +140,7 @@
         /*}*/
       }
       .one ,.tow{
+        margin-top: 5px;
         &>div{
           line-height: 1.75;
         }

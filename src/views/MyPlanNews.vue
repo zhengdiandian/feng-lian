@@ -31,7 +31,7 @@
                     </template>
                     </card>
                     <!-- <span>您于2019年4月9日申请的互助，在初审阶段已审核通过，请继续关注该申请的动态消息。</span>
-                    <div>如有疑问请咨询客服热线 010-xxxxxxxxx</div> --> -->
+                    <div>如有疑问请咨询客服热线 010-xxxxxxxxx</div>  -->
                     </section>
                     <card
                     :open="() => {$router.push('/palnned')}"

@@ -42,10 +42,10 @@
         </section>
     </main>
     <footer>
-        <div class="customer">
+        <a href="tel:10086" class="customer">
             <mu-icon value=":iconfont iconlianxikefu"></mu-icon>
             <span>联系客服</span>
-        </div>
+        </a>
     </footer>
 </div>
 </template>

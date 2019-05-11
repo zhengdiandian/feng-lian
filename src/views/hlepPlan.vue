@@ -7,8 +7,8 @@
       <mu-button icon slot="left" @click="$router.go(-1)">
         <mu-icon value=":iconfont iconfanhui" @click="$router.go(-1)"></mu-icon>
       </mu-button>
-      <mu-button icon slot="right" @click="$router.go(-1)">
-        <mu-icon value=":iconfont iconshubanshenglvehao" @click="$router.go(-1)"></mu-icon>
+      <mu-button :ripple="false" icon slot="right" @click="$router.go(-1)">
+        <!-- <mu-icon value=":iconfont iconshubanshenglvehao" @click="$router.go(-1)"></mu-icon> -->
       </mu-button>
       互助计划
     </mu-appbar>
@@ -54,8 +54,8 @@
         <img src="../assets/图标/加入我们.svg" alt="">
         <span>预存48元加入</span>
         <div class="apply-click">
-          <span>加入</span>
-          <mu-icon value=":iconfont iconyou"></mu-icon>
+          <!-- <span>加入</span> -->
+          <!-- <mu-icon value=":iconfont iconyou"></mu-icon> -->
         </div>
       </div>
       <item-row :datas="itemRowData" ></item-row>
@@ -105,7 +105,7 @@
 
         <div class="help-btn-wrap">
           <div class="btn margin-bottom">
-            <span class="iconfont iconlianxikefu"></span>
+            <a  href="tel:10086" class="iconfont iconlianxikefu"></a>
             联系客服
           </div>
         </div>
@@ -237,7 +237,6 @@
       this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
         "productCode": this.$route.params.productCode
       }).then(res=>{
-        debugger
         this.MutualRule = res.data.data
         this.MutualRule.productCode = this.$route.params.productCode
         this.$store.commit('set_MutualRule', res.data.data)
@@ -401,7 +400,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    a{
+      color: $c-cheng;
+    }
     .btn{
       width:132px;
       height:35px;
