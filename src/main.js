@@ -23,7 +23,7 @@ window.wx = wx
 Vue.prototype.Util = Util
 Vue.use(Toast, {
   position: 'top',               // 弹出的位置
-  time: 5000,                       // 显示的时长
+  time: 50000000000,                       // 显示的时长
   closeIcon: 'close',               // 关闭的图标
   close: true,                      // 是否显示关闭按钮
   successIcon: 'check_circle',      // 成功信息图标

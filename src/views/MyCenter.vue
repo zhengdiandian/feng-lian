@@ -51,7 +51,9 @@
       </div>
       <div @click="invitation">
       <div class="apply" >
-        <img src="../assets/图标/爱心.png" alt="">
+        <div class="img-wrap">
+          <img src="../assets/图标/爱心.png" alt="">
+        </div>
         <span>申请成为爱心大使</span>
         <div class="apply-click">
           <span>立即申请</span>
@@ -60,7 +62,7 @@
       </div>
       </div>
       <section class="please-list">
-        <router-link tag="div" to="/welfareagency">
+        <router-link tag="div" v-if="preinfo.type!==100" to="/welfareagency">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/福利汇.svg" alt="">
@@ -120,7 +122,7 @@
           </div>
         </router-link>
 
-        <router-link tag="div" to="/code">
+        <router-link tag="div" v-if="preinfo.type!==100" to="/code">
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/邀请.svg" alt="">
@@ -209,6 +211,7 @@ import {mapState} from 'vuex'
     mounted() {
       this.$axios.post('/v1/user/info/index').then((res) =>{
             // debugger
+        debugger
             this.preinfo = res.data.data
             // this.type = res.data.data.type
             console.log(res)
@@ -385,6 +388,7 @@ z-index: 99;
     }
 }
 .apply {
+
   display: flex;
   align-items: center;
   width: 351px;
@@ -406,7 +410,7 @@ z-index: 99;
   .iconfont{
     font-size: 50px;
   }
-  img{
+  .img-wrap{
     width: 50px;
     height: 50px;
     position: relative;
@@ -432,8 +436,8 @@ z-index: 99;
   }
 }
 .please-list{
-  width:351px;
-  height:323px;
+  width:350px;
+  /*height:323px;*/
   background:rgba(255,255,255,1);
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius:5px;

@@ -304,7 +304,7 @@ export default new Router({
       }
     },
     {
-      path: '/InviteFriends',
+      path: '/InviteFriends',//分享按钮页面
       name: 'InviteFriends',
       component: function () {
         return import('./views/ScalePage')

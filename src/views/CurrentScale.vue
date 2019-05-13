@@ -18,7 +18,9 @@
             <span class="font margin-left">本期互助名单</span>
             <div class="parent-list">
                 <div class="parent-wrap" v-for="i in 6" :key="i">
-                    <img src="../assets/PNG/中青年.png" alt="" class="part margin-top" />
+                    <div class="img-wrap">
+                        <img src="../assets/PNG/中青年.png" alt="" class="part margin-top" />
+                    </div>
                     <span class="margin-bottom" style="margin-top: 12px;">{{name}}</span>
                 </div>
             </div>
@@ -33,17 +35,23 @@
         <div class="sharing">
             <div class="brother">
                 <!-- <mu-icon value=":iconfont iconxiongdijiemei"></mu-icon> -->
-                <img src="../assets/img/兄弟姐妹.svg" alt="">
+                <div class="img-wrap">
+                    <img src="../assets/img/兄弟姐妹.svg" alt="">
+                </div>
                 <div class="position-a" style="color: #F2B54D;">兄弟姐妹</div>
             </div>
             <div class="brother">
-                <mu-icon value=":iconfont iconwoshou"></mu-icon>
-                <img src="../assets/img/握手.svg" alt="">
+                <!--<mu-icon value=":iconfont iconwoshou"></mu-icon>-->
+                <div class="img-wrap">
+                    <img src="../assets/img/握手.svg" alt="">
+                </div>
                 <div class="position-a" style="color: #F2B54D;">好友</div>
             </div>
             <div class="brother">
-                <mu-icon value=":iconfont iconlingdai"></mu-icon>
-                <img src="../assets/img/领带.svg" alt="">
+                <!--<mu-icon value=":iconfont iconlingdai"></mu-icon>-->
+                <div class="img-wrap">
+                    <img src="../assets/img/领带.svg" alt="">
+                </div>
                 <div class="position-a" style="color: #F2B54D;">同事</div>
             </div>
         </div>
@@ -124,18 +132,29 @@ nav {
     width: 95%;
     margin: auto;
     .parent-wrap{
-        // width: 45px;
+        /*width: 45px;*/
         margin: auto;
         // padding: 12px 12px 18px;
         display: flex;
         flex-direction: column;
     }
-    img{
+    .img-wrap{
+        box-sizing: content-box;
         width: 33px;
         height: 33px;
-        flex: 1;
+
+        /*flex: 1;*/
+
+    }
+    img{
+        width: 100%;
         border-radius: 50%;
         border: 2px solid rgba(239, 162, 32, 1);
+        /*width: 33px;*/
+        /*height: 33px;*/
+        /*!*flex: 1;*!*/
+        /*border-radius: 50%;*/
+        /*border: 2px solid rgba(239, 162, 32, 1);*/
     }
 }
 .Invitation-welfare{
@@ -175,10 +194,12 @@ nav {
             text-align: center;
             line-height: 75px;
             position: relative;
-            img{
+            .img-wrap{
+                display: inline-block;
                 width: 41px;
                 height: 31px;
             }
+
             .position-a{
                 width: 70px;
                 position: absolute;

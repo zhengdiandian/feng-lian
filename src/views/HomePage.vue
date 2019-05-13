@@ -102,7 +102,9 @@
     <div class="wrap">
       <div @click="invitation">
       <div class="apply">
-        <img src="@/assets/图标/爱心.png" alt="">
+        <div class="img-wrap">
+          <img src="@/assets/图标/爱心.png" alt="">
+        </div>
         <span>成功邀请一人，就得20元红包</span>
         <div class="apply-click">
           <span>邀请</span>
@@ -396,7 +398,7 @@ export default {
     }
   }
 .banner {
-    width:351px;
+    width:350px;
     height:130px;
     border-radius:10px;
     margin: 12px auto;
@@ -432,11 +434,17 @@ h3{
   .iconfont{
     font-size: 50px;
   }
-  img{
+  .img-wrap{
     width: 50px;
     height: 50px;
     position: relative;
     top: -15px;
+  }
+  img{
+   /* width: 50px;
+    height: 50px;
+    position: relative;
+    top: -15px;*/
   }
   .apply-click{
     display: flex;

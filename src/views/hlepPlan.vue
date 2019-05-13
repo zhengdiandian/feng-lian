@@ -51,7 +51,9 @@
         <span class="hot"></span>
       </icon-bar> -->
       <div class="apply">
-        <img src="../assets/图标/加入我们.svg" alt="">
+        <div class="img-wrap">
+          <img src="../assets/图标/加入我们.svg" alt="">
+        </div>
         <span>预存48元加入</span>
         <div class="apply-click">
           <!-- <span>加入</span> -->
@@ -453,7 +455,7 @@
   .iconfont{
     font-size: 50px;
   }
-  img{
+  .img-wrap{
     width: 34px;
     height: 34px;
     margin-left: 6px;

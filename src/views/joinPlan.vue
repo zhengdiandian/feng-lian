@@ -201,16 +201,25 @@ export default {
                 }
               if(res.data.code===200){
                 this.order = res.data.data
+                window.location = `http://test.wxapi.fenglianhz.com/h5/v1/mutually/payOrder/orderCheck?orderNo=${this.$route.params.productCode}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}`
                 console.log(res)
+                // this.$axios.post('v1/mutually/payOrder/orderCheck',{
+                //   orderNo: this.$route.params.productCode,
+                //   goodsName: this.order.goodsName,
+                //   unitPrice: this.order.unitPrice,
+                //   payAmount: this.order.payAmount,
+                //   bounty: this.order.bounty
+
+                // })
                 // localStorage.setItem('order',this.order)
-                this.$router.push({
-                  name: 'orderInfo',
-                  params: {
-                    productCode: this.$route.params.productCode,
-                    order: res.data.data,
-                    // stageCount: this.serviceTime
-                  }
-                })
+                // this.$router.push({
+                //   name: 'orderInfo',
+                //   params: {
+                //     productCode: this.$route.params.productCode,
+                //     order: res.data.data,
+                //     // stageCount: this.serviceTime
+                //   }
+                // })
               }
 
             })

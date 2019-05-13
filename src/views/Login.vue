@@ -28,7 +28,7 @@
       <div class="pwd">
         <mu-text-field
           v-if="codepwd"
-          v-model="pwd"
+          v-model.trim="pwd"
           label="请输入密码"
           label-float
           icon=":iconfont iconmima"
@@ -39,10 +39,11 @@
         ></mu-text-field>
         <mu-text-field
           v-else
-          v-model.number="pwd"
+          v-model.trim="pwd"
           label="请输入验证码"
           label-float
           icon=":iconfont iconmima"
+          type="text"
 
         >
           <div  slot="append">
