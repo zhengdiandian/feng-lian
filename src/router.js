@@ -290,21 +290,21 @@ export default new Router({
       }
     },
     {
-      path: '/impower', //授权页面
+      path: '/impower', // 授权页面
       name: 'impower',
       component: function () {
         return import('./views/impowerState')
       }
     },
     {
-      path: '/invitation', //分享页面
+      path: '/invitation', // 分享页面
       name: 'invitation',
       component: function () {
         return import('./views/invitation')
       }
     },
     {
-      path: '/InviteFriends',
+      path: '/InviteFriends', // 邀请页
       name: 'InviteFriends',
       component: function () {
         return import('./views/ScalePage')
@@ -315,6 +315,13 @@ export default new Router({
       name: 'newLogin',
       component: function () {
         return import('./views/newRegister')
+      }
+    },
+    {
+      path: '/InvitationNoMember', // 邀请页（非会员）
+      name: 'InvitationNoMember',
+      component: function () {
+        return import('./views/InvitationNoMember')
       }
     }
     // {

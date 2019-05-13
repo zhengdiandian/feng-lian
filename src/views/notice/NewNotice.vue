@@ -170,7 +170,7 @@ export default {
     background:rgba(255,255,255,1);
     /*border:1px solid rgba(220,220,220,1);*/
     border-radius:5px;
-    background: url("../../assets/PNG/资金公示背景.png") center no-repeat;
+    background: url("../../assets/gongshi.png") center no-repeat;
     background-size: 100% 100%;
     p.card-row{
       margin: 0px;

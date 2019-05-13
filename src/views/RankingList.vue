@@ -13,25 +13,25 @@
         <main class="page-margin-top">
             <div class="list-noe">
                 <div class="tow" style="position: relative;">
-                    <img style="z-index: 55" src="../assets/PNG/公示头像5.png" alt="">
-                    <span class="an-crown-3"><img src="../assets/PNG/皇冠3.png" alt=""></span>
-                    <div class="list-name-number" style="left: 8px; top: 95px;">
+                    <img style="z-index: 55;border-radius: 50%; border: 5px solid #C5D1E4;" :src="headImg3" alt="">
+                    <span class="an-crown-3"><img style="width: 42px; height: 26px;" src="../assets/PNG/皇冠3.png" alt=""></span>
+                    <div class="list-name-number" style="left: 16px; top: 95px;">
                         <span style="font-size:14px; font-weight:bold;">陈梅</span>
                         <span style="font-size:14px; font-weight:bold;">22800分</span>
                     </div>
                 </div>
                 <div class="noe" style="position: relative;">
-                    <img src="../assets/PNG/公示头像2.png" alt="">
-                    <span class="an-crown"><img src="../assets/PNG/皇冠1.png" alt=""></span>
+                    <img style="border-radius: 50%; border: 5px solid #FACF11;" :src="headImg1" alt="">
+                    <span class="an-crown"><img style="width: 56px; height: 35px;" src="../assets/PNG/皇冠1.png" alt=""></span>
                     <div class="list-name-number">
                         <span style="font-size:14px; font-weight:bold;">韩世忠</span>
                         <span style="font-size:14px; font-weight:bold;">22900分</span>
                     </div>
                 </div>
                 <div class="three" style="position: relative;">
-                    <img src="../assets/PNG/公示头像4.png" alt="">
-                    <span class="an-crown-2"><img src="../assets/PNG/皇冠2.png" alt=""></span>
-                    <div class="list-name-number" style="left: 8px; top: 90px;">
+                    <img style="border-radius: 50%; border: 5px solid #F8A771;" :src="headImg2" alt="">
+                    <span class="an-crown-2"><img style="width: 47px; height: 30px;" src="../assets/PNG/皇冠2.png" alt=""></span>
+                    <div class="list-name-number" style="left: 12px; top: 90px;">
                         <span style="font-size:14px; font-weight:bold; ">李军</span>
                         <span style="font-size:14px; font-weight:bold;">22700分</span>
                     </div>
@@ -68,7 +68,10 @@ export default {
         return {
             title: '排行榜',
             name: 'maskd',
-            rank: []
+            rank: [],
+            headImg1: require('../assets/PNG/积分头像2.png'),
+            headImg2: require('../assets/PNG/积分头像2.png'),
+            headImg3: require('../assets/PNG/积分头像2.png')
         }
     },
     components: {
@@ -110,17 +113,17 @@ export default {
   z-index: -1;
   width: 90px;
     position: relative;
-    top: -158.5px;
+    top: -130px;
 }
 .an-crown-2{
   z-index: -1;
   position: relative;
-    top: -126.5px;
+    top: -102.5px;
 }
 .an-crown-3{
     z-index: -1;
     position: relative;
-    top: -135.5px;
+    top: -105.5px;
   img{
     z-index: -1;
     width:56px;
@@ -128,6 +131,7 @@ export default {
   }
 }
 .list-noe{
+  
   &>div>img{
     z-index: 66;
   }
@@ -148,18 +152,21 @@ export default {
 }
 }
 .noe{
-    width: 98px;
-    height: 98px;
+    width: 95px;
+    height: 95px;
     border-radius: 50%;
     margin: auto;
     // border: 1px solid #EFA220;
     text-align: center;
     // position: relative;
+    img{
+      
+    }
 }
 .tow{
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 79px;
+    height: 79px;
     border-radius: 50%;
     margin: auto;
     // border: 1px solid #EFA220;
@@ -170,8 +177,8 @@ export default {
     // position: relative;
 }
 .three{
-    width: 75px;
-    height: 75px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
     margin: auto;
     // border: 1px solid #EFA220;
@@ -186,7 +193,7 @@ export default {
     justify-content: center;
     align-items: center;
     top: 105px;
-    left: 18px;
+    left: 20px;
 }
 
 .headerNav{
