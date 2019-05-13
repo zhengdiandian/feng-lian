@@ -210,7 +210,8 @@ export default new Router({
       name: 'joinPlan',
       component: function () {
         return import('./views/joinPlan')
-      }
+      },
+      
     },
     {
       path: '/hlepPlan/:productCode', // 帮助计划
@@ -219,7 +220,8 @@ export default new Router({
         return import('./views/hlepPlan')
       },
       meta: {
-        requiresAuth: true
+        // requiresAuth: true
+        mustAuth: true
       }
     },
     {
@@ -250,7 +252,7 @@ export default new Router({
         return import('./views/minePlan')
       },
       meta: {
-        requiresAuth: true
+        mustAuth: true,
       }
     },
     {
@@ -304,11 +306,7 @@ export default new Router({
       }
     },
     {
-<<<<<<< HEAD
-      path: '/InviteFriends',//分享按钮页面
-=======
       path: '/InviteFriends', // 邀请页
->>>>>>> 7d4f7b1268b24ddbed4916bb8c0d3144605b7f7f
       name: 'InviteFriends',
       component: function () {
         return import('./views/ScalePage')
