@@ -16,7 +16,7 @@
             </div>
             <div class="pwd-wrap">
                 <mu-text-field v-model="pwd" label="请输入验证码" label-float  icon=":iconfont iconmima" :error-text="pwdErr">
-                    <div @click="getMsgHandleClick" slot="append">
+                    <div  slot="append">
 
                         <div v-show="show" style="color: #347fe8;" @click="getCode">获取验证码</div>
                         <span v-show="!show" class="count">{{count}} s</span>
@@ -50,11 +50,11 @@
                         label-float
                         label="请输入您的得到的邀请码"
                         icon=":iconfont iconzhanghao"
-                        :error-text="accountErr"
+                        error-text=""
                 >
                 </mu-text-field>
             </div>
-            <div style="width: 75%">
+            <div style="width: 100%; margin: 0 auto ;position: relative" >
                 <mu-button round :class="{ 'login-btn': disabled }" class="login" color="success" @click="registerHandleClick">完 &nbsp; 成</mu-button>
             </div>
         </main>
@@ -99,13 +99,13 @@
     },
     computed: {
       disabled() {
-        return !!this.$route.query.user_code
+        return  this.code && this.user && this.pwd && this.pwd1 && this.pwd2
       }
     },
     created() {
-      const code = this.$route.query.user_code
+      const code = this.$route.query.userCode
       if(code){
-        this.code = this.$route.query.user_code
+        this.code = this.$route.query.userCode
 
       }else{
         // this.$alert('请向客服获得邀请码')
@@ -151,7 +151,7 @@
           }
           // this.token = res.data.data.authToken
           console.log(res)
-          this.$store.commit("set_authToken", res.data.auth_token);
+          this.$store.commit("set_authToken", res.data.authToken);
           this.$router.replace('/home')
 
 
@@ -209,6 +209,12 @@
       // })
       // },
       getCode(){
+        const accountReg = /^1[34578]\d{9}$/
+        if(!accountReg.test(this.user)) {
+          this.accountErr = '请输入正确的手机号码'
+          return
+        }
+        this.getMsgHandleClick()
         const TIME_COUNT = 60;
         if (!this.timer) {
           this.count = TIME_COUNT;
@@ -251,17 +257,28 @@
         border: none !important;
     }
     .login.login-btn {
+        width: 200px;
         background: linear-gradient(to right, #e99317, #fbb830) !important;
         margin-top: 85px;
-        width: 80%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        /*width: 80%;*/
         color: $c-bai ;
     }
     .login {
+        width: 200px;
         margin-top: 85px;
-        width: 80%;
+        /*width: 80%;*/
         color: rgba(0,0,0,.3);
         cursor: not-allowed;
-        background-color: #e6e6e6
+        background-color: #e6e6e6;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     /*.login-btn{*/
         /*background: linear-gradient(to right, #e99317 , #fbb830) !important;*/

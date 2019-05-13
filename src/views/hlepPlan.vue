@@ -7,7 +7,7 @@
       <mu-button icon slot="left" @click="$router.go(-1)">
         <mu-icon value=":iconfont iconfanhui" @click="$router.go(-1)"></mu-icon>
       </mu-button>
-      <mu-button :ripple="false" icon slot="right" @click="$router.go(-1)">
+      <mu-button :ripple="false" icon slot="right"  >
         <!-- <mu-icon value=":iconfont iconshubanshenglvehao" @click="$router.go(-1)"></mu-icon> -->
       </mu-button>
       互助计划
@@ -22,7 +22,7 @@
           </div>
         </div>
         <div style="position: absolute;width: 100%;bottom: 0;">
-          <button @click="show=false">不，谢谢</button>
+          <button @click="$router.push('/home')">不，谢谢</button>
           <button class="btn-join" @click="$router.push('/real')">现在认证</button>
         </div>
       </div>
@@ -104,10 +104,10 @@
         </mu-list>
 
         <div class="help-btn-wrap">
-          <div class="btn margin-bottom">
-            <a  href="tel:10086" class="iconfont iconlianxikefu"></a>
+          <a href="tel:10086" class="btn margin-bottom">
+            <span href="tel:10086" class="iconfont iconlianxikefu"></span>
             联系客服
-          </div>
+          </a>
         </div>
 
         <mu-list  class="list" toggle-nested="">

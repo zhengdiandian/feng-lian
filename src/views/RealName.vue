@@ -152,6 +152,7 @@ export default {
 </script>
 <style scoped lang="scss">
 input {
+  width: 300px;
   border: none;
   outline: none;
   padding-left: 20px;

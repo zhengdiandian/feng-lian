@@ -26,7 +26,7 @@
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>年龄：</span><span ><input type="text" v-model="age"></span>
+                    <span>年龄：</span><span ><input type="text" v-model.number="age"></span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
@@ -120,10 +120,12 @@ export default {
             "city":this.city,
             "motto": this.motto
         }).then(res=>{
+            debugger
               if(res.data.code!==200){
                 this.$toast.error(res.data.msg)
                 return
               }
+              this.$router(-1)
             // this.detalis = res.data.data
             console.log(res)
         })

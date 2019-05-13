@@ -132,7 +132,7 @@ span{
     .list-img{
         width:50px;
         height:50px;
-        background:rgba(242,181,77,1);
+        background:$c-cheng;
         border:2px solid rgba(239, 162, 32, 1);
         border-radius:50%;
         img{

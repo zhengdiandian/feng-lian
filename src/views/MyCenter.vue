@@ -50,7 +50,7 @@
          <mu-icon value=":iconfont iconyou1"></mu-icon>
       </div>
       <div @click="invitation">
-      <div class="apply">
+      <div class="apply" >
         <img src="../assets/图标/爱心.png" alt="">
         <span>申请成为爱心大使</span>
         <div class="apply-click">
@@ -124,7 +124,7 @@
           <div class="list-li">
             <div style="text-align: center;">
               <img src="../assets/图标/邀请.svg" alt="">
-              <span class="position-r" style="margin-left:12px">邀请好友</span>
+              <span class="position-r" style="margin-left:12px">我的二维码</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
@@ -191,7 +191,7 @@ import {mapState} from 'vuex'
     },
     invitation(){
       if (this.userInfo.state == 200) {
-        this.$router.push('/InviteFriends')
+        this.$router.push('/hlepPlan/PRO201905111234221')
       } else {
         this.showpop = true
       }
@@ -325,7 +325,7 @@ z-index: 99;
     height:60px;
     border-radius:50%;
     background:rgba(207,207,207,1);
-    border:2px solid rgba(239, 162, 32, 1);
+    border:1px solid $c-cheng;
     margin-left: 12px;
     overflow: hidden;
     img{
