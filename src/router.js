@@ -311,7 +311,7 @@ export default new Router({
       }
     },
     {
-      path: '/newRegister',
+      path: '/newRegister', // 注册弹窗
       name: 'newLogin',
       component: function () {
         return import('./views/newRegister')

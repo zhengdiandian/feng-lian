@@ -10,7 +10,7 @@
         </div>
       </div>
       <div style="position: absolute;width: 100%;bottom: 0;">
-        <button @click="showpop=false">不，谢谢</button>
+        <button @click="showPoP=false">不，谢谢</button>
         <button class="btn-join" @click="$router.push('/login')">现在登陆</button>
       </div>
     </div>

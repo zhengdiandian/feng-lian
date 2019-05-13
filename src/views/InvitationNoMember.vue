@@ -1,7 +1,7 @@
 <template>
     <div>
-        <header>
-            <img style="width: 100%; height: 100%;" src="../assets/PNG/百万计划banner.png" alt="">
+        <header style="height:165px; width:375px;">
+            <img src="../assets/PNG/百万计划banner.png" alt="">
         </header>
         <main>
             <div class="info-content">
@@ -46,7 +46,9 @@
             </div>
         </main>
         <footer>
-            <img style="width: 80px; height: 80px;" :src="addressImg" alt="">
+            <div style="width:80px; height:80px;">
+                <img  :src="qrcodeImg" alt="">
+            </div>
             <div style="padding-top:10px;">
                 长按关注公众号
             </div>
@@ -78,9 +80,16 @@
                     "为弱小群体提供一个安全保障。",
                     "我们在这里等你，一起分享这份爱！"
                 ],
-                addressImg: require('../assets/PNG/E4DE26D5-7785-4134-8241-075B9DDF140D.png')
+                qrcodeImg: ''
             }
         },
+        created() {
+            this.$axios.post('v1/manage/config/getImgList',{
+                keys: 'PublicQrcode'
+                }).then(res => {
+                this.qrcodeImg = res.data.data.PublicQrcode
+                })
+        }
     }
 </script>
 
