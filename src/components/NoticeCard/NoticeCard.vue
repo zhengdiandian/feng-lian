@@ -51,7 +51,7 @@
     background:rgba(239,162,32,1);
     border-radius:5px;
     padding: 12px 20px 13px 12px;
-    background: url("../../assets/PNG/公示背景.png") center no-repeat;
+    background: url("../../assets/gongshi.png") center no-repeat;
     background-size: 100% 100%;
     background-origin: padding-box;
     color: $c-bai;

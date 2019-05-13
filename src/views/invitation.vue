@@ -235,7 +235,7 @@
 
           }
           margin: 0 auto;
-          width:138px;
+          width:180px;
           height:22px;
           text-align: center;
           background:linear-gradient(-56deg,rgba(255,157,51,1) 0%,rgba(255,202,62,1) 100%);
