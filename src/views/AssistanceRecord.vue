@@ -122,10 +122,11 @@ footer{
     // bottom: 0px;
     width: 100%;
     .customer{
+        display: block;
         width:123px;
         height:33px;
         border:1px solid rgba(239,162,32,1);
-        border-radius:15px;
+        border-radius:25px;
         // position: absolute;
         // bottom: 0px;
         // left: 113px;

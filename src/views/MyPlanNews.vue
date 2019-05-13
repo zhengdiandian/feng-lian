@@ -14,7 +14,7 @@
                 <div class="date">2019-04-11   14:33</div>
                 <div  style="margin-top: 8px;">
                   <section class="card">
-                    <card 
+                    <card
                     :open="() => {$router.push('/palnned')}"
                     :date="': 2019.01.02'"
                     :waitingperiod="waitingperiod"
@@ -33,7 +33,7 @@
                     <!-- <span>您于2019年4月9日申请的互助，在初审阶段已审核通过，请继续关注该申请的动态消息。</span>
                     <div>如有疑问请咨询客服热线 010-xxxxxxxxx</div>  -->
                     </section>
-                    <card
+                    <!-- <card
                     :open="() => {$router.push('/palnned')}"
                     :date="': 2019.01.02'"
                     :waitingperiod="waitingperiod"
@@ -51,7 +51,7 @@
                     <template v-slot:AuditPass>
                       <div class="slot-AuditPass"><img src="../assets/img/审核通过.svg" alt=""></div>
                     </template>
-                    </card>
+                    </card> -->
                 </div>
             </div>
         </main>
@@ -104,7 +104,7 @@ main{
         min-width: 50px;
         word-wrap: break-word;
         height:22px;
-        background:rgba(246,176,59,1);
+        background:$c-cheng;
         border-radius:11px;
         font-size:10px;
         font-family:SourceHanSansCN-Normal;

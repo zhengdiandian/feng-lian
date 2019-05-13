@@ -37,18 +37,18 @@
                     <span>职业：</span><span style="margin-left: 30px;">{{detalis.job}}</span>
                     <mu-divider></mu-divider>
                 </div>
-                <div class="rule margin-left">
+                <!-- <div class="rule margin-left">
                     <span>学校/公司：</span><span style="margin-left: 0px;">{{detalis.workingPlace}}</span>
                     <mu-divider></mu-divider>
-                </div>
+                </div> -->
                 <div class="rule margin-left">
                     <span>所在地：</span><span style="margin-left: 20px;">{{detalis.address}}</span>
                     <mu-divider></mu-divider>
                 </div>
-                <div class="rule margin-left">
+                <!-- <div class="rule margin-left">
                     <span>故乡：</span><span style="margin-left: 30px;">{{detalis.hometown}}</span>
                     <mu-divider></mu-divider>
-                </div>
+                </div> -->
                 <div class="rule margin-left">
                     <span>邮箱：</span><span style="margin-left: 30px;">{{detalis.email}}</span>
                     <mu-divider></mu-divider>
@@ -59,6 +59,7 @@
     </div>
 </template>
 <script>
+import { debug } from 'util';
 export default {
     name: 'mydetails',
     data() {
@@ -73,6 +74,11 @@ export default {
     },
     mounted() {
         this.$axios.post('/v1/user/info/infoDetail').then(res=>{
+             if(res.data.code!==200){
+                this.$toast.error(res.data.msg)
+                return
+          }
+            debugger
             this.detalis = res.data.data
             console.log(this.detalis)
         })

@@ -5,8 +5,8 @@
         <mu-icon value=":iconfont iconfanhui" @click="$router.go(-1)"></mu-icon>
       </mu-button>
       感恩有你
-      <mu-button icon slot="right" >
-        <mu-icon value=":iconfont iconshubanshenglvehao" size="24"></mu-icon>
+      <mu-button icon slot="right" :ripple="false" >
+        <!--<mu-icon value=":iconfont iconshubanshenglvehao" size="24"></mu-icon>-->
       </mu-button>
     </mu-appbar>
     <div class="img-wrap page-nav-margin">

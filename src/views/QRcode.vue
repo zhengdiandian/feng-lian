@@ -21,7 +21,7 @@
                   <!--<img src="../assets/PNG/中青年.png" alt="">-->
                 </section>
                 <section class="preservation">
-                    <span class="margin-top margin-bottom" style="color: #EFA220">保存二维码</span>
+                    <span  class="margin-top margin-bottom" style="color: #EFA220; opacity: 0">保存二维码</span>
                     <span style="font-weight:bold;">我的邀请码：{{userInfo.userCode}}</span>
                 </section>
             </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <div class="banner">
-      <img src="http:\\placehold.it\375x165" alt="" />
+      <img src="../assets/PNG/750_329.png" alt="" />
     </div>
     <div class="content-wrap">
       <div class="input-wrap">
@@ -14,7 +14,7 @@
           ><input placeholder="请输入您的手机号码" type="text" />
           <span class="msg"> 获取验证码</span>
         </div>-->
-        <div class="btn" @click="() =>{$router.push('/register?user_code='+user_code)}">立即注册</div>
+        <div class="btn" @click="() =>{$router.push('/register?userCode='+user_code)}">立即注册</div>
       </div>
       <div class="info-content">
         <div class="title">享“邀请有礼”现金红包奖励</div>
@@ -35,7 +35,7 @@
             详细规则请见 <span @click="showPoP=true">《活动规则》</span>
         </div>
     </div>
-      <pop-box v-if="showPoP">
+      <pop-box v-if="showPoP" class="pop">
           <div class="rule-content">
             <div class="title">
                 <span></span>
@@ -53,6 +53,7 @@
 </template>
 <script>
   import PopBox from '../components/PopBox/PopBox'
+  import {mapState} from 'vuex'
   export default {
   name: "invitation",
   data() {
@@ -63,7 +64,9 @@
     };
   },
   created() {
-    this.user_code = this.$route.query.user_code
+    debugger
+
+    this.user_code = this.$route.query.userCode
   },
   components:{
     PopBox
@@ -72,6 +75,13 @@
 </script>
 
 <style lang="scss" scoped>
+    .pop /deep/ .center{
+        border-radius: 15px ;
+    }
+    .banner{
+        width:375px;
+        height:165px;
+    }
     .rule-content{
         width:303px;
         height:339px;
@@ -87,7 +97,7 @@
             font-family:SourceHanSansCN-Regular;
             font-weight:400;
             background:rgba(255,201,59,1);
-            border-radius:17px;
+            border-radius:15px;
             color: $c-bai;
             text-align: center;
         }
@@ -131,7 +141,7 @@
             font-size:12px;
             font-family:SourceHanSansCN-Regular;
             font-weight:400;
-            color:rgba(165,33,4,1);
+            color: rgba(56, 26, 21, 1);
             line-height:18px;
         }
     }

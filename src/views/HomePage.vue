@@ -69,7 +69,7 @@
             <div class="text">资金共管</div>
           </div>
           <div class="router-item item-content">
-            <div class="iconfont iconshequ" style="font-size: 30px;"></div>
+            <div class="iconfont iconshequ2" style="font-size: 30px;"></div>
             <div class="text">社区共建</div>
           </div>
           <div class="router-item item-content">
@@ -157,10 +157,10 @@
 
         </mu-list>
         <div class="help-btn-wrap">
-          <div class="btn">
-            <a href="tel:10086" class="iconfont iconlianxikefu"></a>
+          <a href="tel:10086" class="btn">
+            <span class="iconfont iconlianxikefu"></span>
             联系客服
-          </div>
+          </a>
           <div class="btn">
             <span class="iconfont iconguanyu"></span>
             了解我们
@@ -231,8 +231,8 @@ export default {
     PopBox
   },
   created() {
-    if(this.$route.query.auth_token){
-      localStorage.setItem('token', this.$route.query.auth_token)
+    if(this.$route.query.authToken){
+      localStorage.setItem('token', this.$route.query.authToken)
       this.showQrcode = true
       this.$axios.post('v1/user/info/personalInfo').then(res => {
         this.$store.commit('set_userInfo',res.data.data)
@@ -255,7 +255,7 @@ export default {
     this.$axios.post('v1/manage/config/getImgList',{
       keys: 'PublicQrcode'
     }).then(res => {
-      this.qrcodeImg = res.data.data.PublicAddress
+      this.qrcodeImg = res.data.data.PublicQrcode
     })
     this.$axios.post('v1/manage/config/getImgList',{
       keys: 'PublicAddress'
