@@ -4,12 +4,19 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 let JSONParse = JSON.parse
+let state
+try {
+   state =  {
+    authToken: window.localStorage.getItem('token') || '',
+    userInfo: JSONParse(window.localStorage.getItem('userInfo')) || {},
+    MutualRule: JSONParse(window.localStorage.getItem('MutualRule')) || {}
+  }
+} catch (error) {
+  window.localStorage.clear()
+  // alert(JSON.stringify(error))
+}
 export default new Vuex.Store({
-  state: {
-    authToken: window.localStorage.getItem('token'),
-    userInfo: JSONParse(window.localStorage.getItem('userInfo')),
-    MutualRule: JSONParse(window.localStorage.getItem('MutualRule'))
-  },
+  state,
   mutations: {
     set_authToken: ((state, data) => {
       state.authToken = data

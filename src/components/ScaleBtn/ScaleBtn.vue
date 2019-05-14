@@ -10,16 +10,20 @@
     computed: mapState(['userInfo']),
     methods: {
       scale(){
+         this.$alert('点击右上角选择分享方式', '邀请好友', {
+            okLabel: '知道了'
+          })
         debugger
         // const url = location.href.split('#')[0];
         //  const  url = this.$route.path
-        const url = window.location.href.split('#')[0]
-        //     const  url = '/'
-        const  self = this
+        
         
       }
     },
     created () {
+      const url = window.location.href.split('#')[0]
+        //     const  url = '/'
+      const  self = this
       this.$axios.post('/v1/user/share/getSharePara', {
           url: url
         }).then(res => {
@@ -136,9 +140,7 @@
             });
           });
           // this.$alert()
-          this.$alert('点击右上角选择分享方式', '邀请好友', {
-            okLabel: '知道了'
-          })
+         
 
       })
     }
