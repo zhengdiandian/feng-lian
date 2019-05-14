@@ -220,11 +220,11 @@ export default {
 
     },
   invitation(){
-      if (this.userInfo.state !== 200) {
-        this.showPoP = true
-      } else {
+      // if (this.userInfo.state !== 200) {
+      //   this.showPoP = true
+      // } else {
         this.$router.push('/InviteFriends')
-      }
+      // }
       // this.$router.push('/code')
   }
   },

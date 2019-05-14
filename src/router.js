@@ -210,7 +210,8 @@ export default new Router({
       name: 'joinPlan',
       component: function () {
         return import('./views/joinPlan')
-      }
+      },
+      
     },
     {
       path: '/hlepPlan/:productCode', // 帮助计划
@@ -219,7 +220,8 @@ export default new Router({
         return import('./views/hlepPlan')
       },
       meta: {
-        requiresAuth: true
+        // requiresAuth: true
+        mustAuth: true
       }
     },
     {
@@ -250,7 +252,7 @@ export default new Router({
         return import('./views/minePlan')
       },
       meta: {
-        requiresAuth: true
+        mustAuth: true,
       }
     },
     {
