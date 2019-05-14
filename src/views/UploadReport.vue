@@ -52,6 +52,7 @@ export default {
         this.imgArr.push(img)
       },
       submit() {
+        debugger
         if(!this.urlList.length)return
         let images = this.urlList.toString()
         this.$axios.post('v1/user/info/uploadHealthyReport',{
