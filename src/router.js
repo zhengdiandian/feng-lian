@@ -207,6 +207,13 @@ export default new Router({
       }
     },
     {
+      path: '/UnderstandUs', // 了解我们
+      name: 'UnderstandUs',
+      component: function () {
+        return import('./views/UnderstandUs')
+      }
+    },
+    {
       path: '/joinPlan/:productCode', // 加入计划
       name: 'joinPlan',
       component: function () {

@@ -8,7 +8,6 @@
     "lint": "vue-cli-service lint",
     "run": "vue-cli-service serve --host 192.168.100.150",
     "run1": "vue-cli-service serve --host 192.168.100.113"
-
   },
   "dependencies": {
     "axios": "^0.18.0",

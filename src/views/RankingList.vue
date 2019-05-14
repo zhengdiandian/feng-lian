@@ -15,46 +15,46 @@
                 <div class="tow" style="position: relative;">
                     <img style="z-index: 55;border-radius: 50%; border: 5px solid #C5D1E4;" :src="headImg3" alt="">
                     <span class="an-crown-3"><img src="../assets/PNG/皇冠3.png" alt=""></span>
-                    <div class="list-name-number" style="left: 16px; top: 95px;">
-                        <span style="font-size:14px; font-weight:bold;">陈梅</span>
-                        <span style="font-size:14px; font-weight:bold;">22800分</span>
+                    <div class="list-name-number" style="left: 15px;">
+                        <span style="font-size:14px; font-weight:bold;">{{rank[1].nickname}}</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[1].score}}分</span>
                     </div>
                 </div>
                 <div class="noe" style="position: relative;">
                     <img style="border-radius: 50%; border: 5px solid #FACF11;" :src="headImg1" alt="">
                     <span class="an-crown"><img  src="../assets/PNG/皇冠1.png" alt=""></span>
-                    <div class="list-name-number">
-                        <span style="font-size:14px; font-weight:bold;">韩世忠</span>
-                        <span style="font-size:14px; font-weight:bold;">22900分</span>
+                    <div class="list-name-number" >
+                        <span style="font-size:14px; font-weight:bold;">{{rank[2].nickname}}</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[2].score}}分</span>
                     </div>
                 </div>
                 <div class="three" style="position: relative;">
                     <img style="border-radius: 50%; border: 5px solid #F8A771;" :src="headImg2" alt="">
                     <div class="an-crown-2"><img  src="../assets/PNG/皇冠2.png" alt=""></div>
-                    <div class="list-name-number" style="left: 12px; top: 90px;">
-                        <span style="font-size:14px; font-weight:bold; ">李军</span>
-                        <span style="font-size:14px; font-weight:bold;">22700分</span>
+                    <div class="list-name-number" style="left: 8px;">
+                        <span style="font-size:14px; font-weight:bold; ">{{rank[3].nickname}}</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[3].score}}分</span>
                     </div>
                 </div>
             </div>
             <div class="headerNav">
                 <div class="headerLogin"><img src="../assets/PNG/积分头像.png" alt=""></div>
                     <section class="information">
-                        <span class="name">姓名：{{name}}</span><span class="state">已实名</span>
-                        <div class="number"><span>18800004239</span></div>
-                        <div class="autograph">海内存知己，天涯若比邻</div>
+                        <span class="name">姓名：{{Info.nickname}}</span><span class="state">已实名</span>
+                        <div class="number"><span>{{Info.account}}</span></div>
+                        <div class="autograph">{{Info.motto}}</div>
                     </section>
                 <div class="integral">
-                    <span style="font-size: 16px; font-weight: 100; letter-spacing: 3px;">5000分</span>
-                    <span class="font-min">排名：168</span>
+                    <span style="font-size: 16px; font-weight: 100; letter-spacing: 3px;margin-left: 23px;">{{Info.totalScore}}分</span>
+                    <span class="font-min">排名：0</span>
                 </div>
             </div>
             <div class="ranklist">
-                <div class="list" v-for="i in 20" :key="i">
-                    <span style="margin-left: 24px;">{{i}}</span>
-                    <span class="list-img"><img :src="rank.img" alt=""></span>
-                    <span style="position: absolute;left: 95px;">{{rank.nickname}}</span>
-                    <span style="position: absolute;right: 20px;">{{rank.score}}分</span>
+                <div class="list" v-for="(item, index) in rank" :key="index">
+                    <span style="margin-left: 24px;">{{index+4}}</span>
+                    <span class="list-img"><img :src="item.img" alt=""></span>
+                    <span style="position: absolute;left: 95px;">{{item.nickname}}</span>
+                    <span style="position: absolute;right: 20px;">{{item.score}}分</span>
                 </div>
             </div>
         </main>
@@ -67,7 +67,7 @@ export default {
     data() {
         return {
             title: '排行榜',
-            name: 'maskd',
+            Info: [],
             rank: [],
             headImg1: require('../assets/PNG/积分头像2.png'),
             headImg2: require('../assets/PNG/积分头像2.png'),
@@ -79,8 +79,12 @@ export default {
     },
     mounted() {
         this.$axios.post('/v1/finance/account/scoreRank').then((res)=>{
-            this.rank = res.data.data[0]
+            this.rank = res.data.data
             console.log(this.rank)
+        })
+        this.$axios.post('/v1/user/info/index').then((res)=>{
+            console.log(res)
+            this.Info = res.data.data
         })
     }
 }
@@ -188,8 +192,9 @@ export default {
     // position: relative;
 }
 .list-name-number{
+  width: 50px;
     position: absolute;
-    display: flex;
+    // display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;

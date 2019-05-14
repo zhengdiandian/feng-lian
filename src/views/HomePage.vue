@@ -77,24 +77,7 @@
             <div class="text">数据上链</div>
           </div>
         </div>
-        <div class="videobox banner" ontouchmove="return false;">
-          <video
 
-            id="video"
-            src="https://upos-hz-mirrorcosu.acgvideo.com/upgcxcode/15/36/64393615/64393615-1-6.mp4?e=ig8euxZM2rNcNbuBhwdVtWuBhwdVNEVEuCIv29hEn0l5QK==&deadline=1556439941&gen=playurl&nbs=1&oi=2015669759&os=cosu&platform=html5&trid=6bcb749044f44c5f9730204131d4ac6a&uipk=5&upsig=e9255c3cde85d784847601530e00803f&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk"
-            controls = "true"
-            preload="auto"
-            poster="../assets/PNG/视频.png"
-            webkit-playsinline="true"
-            playsinline="true"
-            x-webkit-airplay="allow"
-            x5-video-player-type="h5"
-
-            x5-video-orientation="landscape"
-            style="object-fit:fill"
-          >
-          </video>
-        </div>
 
         <!--<banner-img :videoImg="videoImg"></banner-img>-->
       </div>
@@ -133,7 +116,27 @@
         <mu-divider></mu-divider>
 
       </div>
+      
+              <div class="videobox banner" ontouchmove="return false;">
+          <video
+
+            id="video"
+            src="https://upos-hz-mirrorcosu.acgvideo.com/upgcxcode/15/36/64393615/64393615-1-6.mp4?e=ig8euxZM2rNcNbuBhwdVtWuBhwdVNEVEuCIv29hEn0l5QK==&deadline=1556439941&gen=playurl&nbs=1&oi=2015669759&os=cosu&platform=html5&trid=6bcb749044f44c5f9730204131d4ac6a&uipk=5&upsig=e9255c3cde85d784847601530e00803f&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk"
+            controls = "true"
+            preload="auto"
+            poster="../assets/PNG/视频.png"
+            webkit-playsinline="true"
+            playsinline="true"
+            x-webkit-airplay="allow"
+            x5-video-player-type="h5"
+
+            x5-video-orientation="landscape"
+            style="object-fit:fill"
+          >
+          </video>
+        </div>
     </div>
+    <mu-divider style="height:6px;"></mu-divider>
     <div class="wrap">
       <banner-img :videoImg="videoImg"></banner-img>
       <div class="help-wrap">
@@ -163,7 +166,7 @@
             <span class="iconfont iconlianxikefu"></span>
             联系客服
           </a>
-          <div class="btn">
+          <div class="btn" @click="$router.push('/UnderstandUs')">
             <span class="iconfont iconguanyu"></span>
             了解我们
           </div>
