@@ -110,7 +110,7 @@ export default {
 
     next() {
       debugger
-      const accountReg = /^1[34578]\d{9}$/;
+      const accountReg = /^1[3456789]\d{9}$/;
       if (!accountReg.test(this.account)) {
         this.accountErr = "您输入的手机号码有误，请重新输入";
         return;

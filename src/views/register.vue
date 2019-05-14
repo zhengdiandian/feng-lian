@@ -62,7 +62,7 @@ export default {
     },
     methods: {
         registerHandleClick() {
-            const accountReg = /^1[34578]\d{9}$/
+            const accountReg = /^1[3456789]\d{9}$/
             if(!accountReg.test(this.user)) {
                 this.accountErr = '请输入正确的手机号码'
                 return

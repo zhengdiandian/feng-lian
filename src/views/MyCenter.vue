@@ -92,7 +92,7 @@
           </div>
         </router-link>
 
-        <router-link tag="div" to="/myhlepPlan">
+        <div tag="div" @click="$toast.info('需要等待180天后', )">
           <div class="list-li">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
               <div style="width:22px;height:22px;"><img src="../assets/image/申请.svg" alt=""></div>
@@ -100,7 +100,7 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-        </router-link>
+        </div>
 
         <div @click="$router.push('/myintegral')">
           <div class="list-li">

@@ -54,15 +54,15 @@ export default {
       if (!files.length) return;
       this.picavalue = files[0];
       console.log(this.picavalue.size / 1024);
-      if (this.picavalue.size / 1024 > 5000) {
-        this.$toast.error('图片过大不支持上传')
-        // this.$message({
-        //   message: "图片过大不支持上传",
-        //   type: "warning"
-        // });
-      } else {
+      // if (this.picavalue.size / 1024 > 5000) {
+      //   this.$toast.error('图片过大不支持上传')
+      //   // this.$message({
+      //   //   message: "图片过大不支持上传",
+      //   //   type: "warning"
+      //   // });
+      // } else {
         this.imgPreview(this.picavalue);
-      }
+      // }
     },
     //获取图片
     imgPreview(file, callback) {

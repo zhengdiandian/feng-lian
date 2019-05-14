@@ -1,4 +1,4 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template >
   <div class="">
     <!--<mu-sub-header>我的购买计划</mu-sub-header>-->
     <div class="wrap">

@@ -44,16 +44,16 @@
                 >
                 </mu-text-field>
             </div>
-            <div class="user-wrap pwd-wrap">
-                <mu-text-field
-                        v-model="code"
-                        label-float
-                        label="请输入您的得到的邀请码"
-                        icon=":iconfont iconzhanghao"
-                        error-text=""
-                >
-                </mu-text-field>
-            </div>
+            <!--<div class="user-wrap pwd-wrap">-->
+                <!--<mu-text-field-->
+                        <!--v-model="code"-->
+                        <!--label-float-->
+                        <!--label="请输入您的得到的邀请码"-->
+                        <!--icon=":iconfont iconzhanghao"-->
+                        <!--error-text=""-->
+                <!--&gt;-->
+                <!--</mu-text-field>-->
+            <!--</div>-->
             <div style="width: 100%; margin: 0 auto ;position: relative" >
                 <mu-button round :class="{ 'login-btn': disabled }" class="login" color="success" @click="registerHandleClick">完 &nbsp; 成</mu-button>
             </div>
@@ -107,17 +107,18 @@
       if(code){
         this.code = this.$route.query.userCode
 
-      }else{
-        // this.$alert('请向客服获得邀请码')
-        // this.$alert('Hello world', 'Alert');
-        this.$alert('请向客服获得邀请码', '提示', {
-          okLabel: '知道了'
-        })
       }
+      // else{
+      //   // this.$alert('请向客服获得邀请码')
+      //   // this.$alert('Hello world', 'Alert');
+      //   this.$alert('请向客服获得邀请码', '提示', {
+      //     okLabel: '知道了'
+      //   })
+      // }
     },
     methods: {
       registerHandleClick() {
-        const accountReg = /^1[34578]\d{9}$/
+        const accountReg = /^1[3456789]\d{9}$/
         if(!accountReg.test(this.user)) {
           this.accountErr = '请输入正确的手机号码'
           return
@@ -209,7 +210,7 @@
       // })
       // },
       getCode(){
-        const accountReg = /^1[34578]\d{9}$/
+        const accountReg = /^1[3456789]\d{9}$/
         if(!accountReg.test(this.user)) {
           this.accountErr = '请输入正确的手机号码'
           return

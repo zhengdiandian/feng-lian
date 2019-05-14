@@ -188,7 +188,7 @@ export default {
         this.pwd = "密码不能为空";
         return;
       }
-      const accountReg = /^1[34578]\d{9}$/;
+      const accountReg = /^1[3456789]\d{9}$/;
       if (!accountReg.test(this.account)) {
         this.accountErr = "请输入正确的手机号码";
         return;

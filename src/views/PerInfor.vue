@@ -29,13 +29,13 @@
                         <span style="position: absolute;right: 65px;">{{datalist.healthyState == 0 ? '未上传': '已上传'}}</span>
                     </section>
                 </router-link>
-                <router-link tag="div" to="/real">
+                <div @click="toReal" to="/real">
                     <section class="datalist">
                         <div class="listtext"><span>实名认证</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
                         <span style="position: absolute;right: 65px;">{{datalist.state == 100 ? '未认证': '已认证'}}</span>
                     </section>
-                </router-link>
+                </div>
                 </div>
         </main>
     </div>
@@ -59,14 +59,23 @@ export default {
             imgUrl: require('../assets/PNG/head.png')
         }
     },
+
     created(){
 
         this.getlist()
     },
     computed: mapState(['userInfo']),
     methods: {
+        toReal() {
+          if(this.datalist.state==200){
+            this.$toast.success('已经认证过了')
+            return
+          }
+          this.$router.push('/real')
+        },
         getlist() {
             this.$axios.post('/v1/user/info/personalInfo').then( (res) => {
+
                 this.datalist = res.data.data
                 console.log(this.datalist)
             })

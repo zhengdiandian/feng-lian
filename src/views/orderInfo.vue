@@ -21,7 +21,8 @@
     <div class="order">
       <div class="order-list">
         商品名称:
-        <span class="margin-left">{{decodeURI(order.goodsName)}}</span>
+        <span class="margin-left">{{
+          decodeURI(decodeURI(order.goodsName))}}</span>
       </div>
       <div class="order-list">
         订单编号:
@@ -137,7 +138,7 @@ export default {
 
                   if (res.err_msg == "get_brand_wcpay_request:ok") {
                       slef.$router.push({name: 'planInitial',query:{
-                          planNo: slef.$route.query.orderNo
+                          planNo: slef.$route.query.planNo
 
                         }})
                     this.$toast.error('get_brand_wcpay_request:ok')

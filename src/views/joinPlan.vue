@@ -200,8 +200,9 @@ export default {
                   return
                 }
               if(res.data.code===200){
+                debugger
                 this.order = res.data.data
-                window.location = `http://test.wxapi.fenglianhz.com/h5/v1/mutually/payOrder/orderCheck?orderNo=${this.$route.params.productCode}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}`
+                window.location = `http://test.wxapi.fenglianhz.com/h5/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=${this.$route.params.productCode}`
                 console.log(res)
                 // this.$axios.post('v1/mutually/payOrder/orderCheck',{
                 //   orderNo: this.$route.params.productCode,
