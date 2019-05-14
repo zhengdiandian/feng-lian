@@ -26,7 +26,7 @@
                     <section class="datalist" style="height: 50px;">
                         <div class="listtext"><span>体检报告</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
-                        <span style="position: absolute;right: 65px;">{{datalist.healthyState == 0 ? '未上传': '已上传'}}</span>
+                        <span style="position: absolute;right: 65px;" v-if="">{{userInfo.healthyState == 0 ? '未上传': '已上传'}}</span>
                     </section>
                 </router-link>
                 <div @click="toReal" to="/real">
