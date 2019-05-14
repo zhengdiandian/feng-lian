@@ -46,7 +46,7 @@
                     </section>
                 <div class="integral">
                     <span style="font-size: 16px; font-weight: 100; letter-spacing: 3px;margin-left: 23px;">{{Info.totalScore}}分</span>
-                    <span class="font-min">排名：0</span>
+                    <!-- <span class="font-min">排名：0</span> -->
                 </div>
             </div>
             <div class="ranklist">

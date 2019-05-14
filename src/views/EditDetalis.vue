@@ -117,8 +117,14 @@ export default {
             // console.log(this.options[length])
             var ePattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
             if (!ePattern.test(this.email)) {
-                // alert("’邮箱错误")
+                this.$toast.error('邮箱错误')
                 return
+            }
+            if(this.job == ''){
+                this.$toast.error('请填写职业')
+            }
+            if (this.address == '') {
+                this.$toast.error('请填写所在地')
             }
             debugger
             this.$axios.post('/v1/user/info/updateInfo',{
@@ -140,7 +146,7 @@ export default {
                 this.$toast.error(res.data.msg)
                 return
               }
-              this.$router(-1)
+              this.$router.go(-1)
             // this.detalis = res.data.data
             console.log(res)
         })
@@ -175,12 +181,11 @@ main{
         background-color: #fff;
         margin-top: 20px;
         .rule{
-            display:  flex;
-            flex-wrap: nowrap;
+            // display:  flex;
+            // flex-wrap: nowrap;
             // flex-direction: column;
             overflow: hidden;
             // height: 50px;
-            height: 50px;
             line-height: 50px;
             position: relative;
             box-sizing: content-box;
@@ -213,7 +218,7 @@ input{
     padding: 0;
     position: absolute;
     top: 10px;
-    padding-left: 60px;
+    padding-left: 10px;
 }
 .rule /deep/.mu-item     .mu-option.is-selected .mu-item {
   color: $c-cheng!important;

@@ -42,7 +42,7 @@
                     <mu-divider></mu-divider>
                 </div> -->
                 <div class="rule margin-left">
-                    <span>收获地址：</span><span style="margin-left: 20px;">{{detalis.address}}</span>
+                    <span>收货地址：</span><span style="margin-left: 20px;">{{detalis.address}}</span>
                     <mu-divider></mu-divider>
                 </div>
                 <!-- <div class="rule margin-left">
