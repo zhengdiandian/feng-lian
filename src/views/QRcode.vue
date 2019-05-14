@@ -9,7 +9,7 @@
         <main>
             <div class="head-name">
                 <section class="hear-infor">
-                    <img :src="userInfo.headPortrait" alt="">
+                    <div style="width:75px;height:75px;background:rgba(255,255,255,1);border:2px solid rgba(255,255,255,1);border-radius:50%;margin: auto;"><img :src="userInfo.headPortrait" alt=""></div>
                     <div>
                         <span style="font-size:14px;">{{userInfo.nickname}}</span>
                         <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1); line-height: 20px;" >{{userInfo.state == 100 ? '未认证':'已认证'}}</span>
@@ -144,12 +144,12 @@ main{
             transform: translate(-50%, -16%);
             text-align: center;
             img{
-            width:75px;
-            height:75px;
-            background:rgba(255,255,255,1);
-            border:2px solid rgba(255,255,255,1);
+            // width:75px;
+            // height:75px;
+            // background:rgba(255,255,255,1);
+            // border:2px solid rgba(255,255,255,1);
             border-radius:50%;
-            margin: auto;
+            // margin: auto;
         }
         }
 

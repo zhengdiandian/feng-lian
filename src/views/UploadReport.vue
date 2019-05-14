@@ -60,8 +60,13 @@ export default {
         }).then(res => {
           console.log(res)
           this.$axios.post('v1/user/info/personalInfo').then(res => {
+              if(res.data.code!==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
               this.$store.commit('set_userInfo',res.data.data)
           })
+
         })
       }
     }

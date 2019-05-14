@@ -426,6 +426,7 @@ main{
 
 .select-wrap{
   width: 351px;
+  height: 300px;
   margin: auto;
   .select-items{
     display: flex;
