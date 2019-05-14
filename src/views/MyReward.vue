@@ -14,7 +14,7 @@
     </header>
     <main>
         <div class="historical-bill">历史账单</div>
-        <div>
+        <!-- <div>
             <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{lastdate}}</div>
             <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥80.00</div>
             <div class="reward-money">
@@ -41,10 +41,10 @@
                     <span>+{{thisMonth.profitAmount}}元</span>
                 </div>
             </div>
-        </div>
+        </div> -->
     </main>
     <footer>
-        <button @click="open">提现</button>
+        <!-- <button @click="open">提现</button> -->
     </footer>
     <div class="show" v-if="show">
         <div class="show-main">

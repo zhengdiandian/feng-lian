@@ -12,10 +12,10 @@
       我分享的用户
       <mu-button icon slot="right" :ripple="false"> </mu-button>
     </mu-appbar>
-    <main class="page-margin-top">
+    <main style="margin-top:60px;">
       <div class="headerNav">
         <div class="headerLogin">
-          <img src="../assets/PNG/head.png" alt="" />
+          <img :src="info.headPortrait" alt="" />
         </div>
         <router-link tag="div" to="/perinfor">
           <section class="information">
@@ -261,9 +261,8 @@ li {
     background: rgba(207, 207, 207, 1);
     border: 2px solid rgba(239, 162, 32, 1);
     margin-left: 12px;
-    img {
-      width: 100%;
-      height: 100%;
+    img{
+      border-radius: 50%;
     }
   }
   .information {

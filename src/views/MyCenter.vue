@@ -92,7 +92,7 @@
           </div>
         </router-link>
 
-        <div tag="div" @click="$toast.info('需要等待180天后', )">
+        <div tag="div" @click="$toast.info('需要等待180天后', {time: 2000} )">
           <div class="list-li">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
               <div style="width:22px;height:22px;"><img src="../assets/image/申请.svg" alt=""></div>
@@ -183,7 +183,8 @@ import {mapState} from 'vuex'
       listSet: [
         "通知",
         "设置"
-      ]
+      ],
+      time: 500,
     }
   },
     computed:mapState(['userInfo']),

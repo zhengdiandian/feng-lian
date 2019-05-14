@@ -29,7 +29,8 @@
             <img src="../assets/PNG/邀好友，赚福利.png" alt="">
         </section>
         <div class="return-commission">
-            每邀请一个新用户成为爱心大使即可获得 <span style="color: red">20元</span> 的返佣
+           <div>邀请一位新用户加入即成为爱心大使</div>
+           <div>立得20元红包</div>
             <div class="margin-top" style="color: #F2B54D;font-size: 13px;">你可以邀请</div>
         </div>
         <div class="sharing">
@@ -171,7 +172,7 @@ nav {
     margin-bottom: 18px;
 }
 .return-commission{
-        width:188px;
+        // width:188px;
         height:28px;
         font-size:13px;
         font-family:SourceHanSansCN-Normal;

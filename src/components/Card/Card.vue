@@ -171,11 +171,15 @@
     .touXiang{
       width:44px;
       height:44px;
-      border-radius:50%;
+      padding-top: 10px;
+      img{
+        border-radius:50%;
+      }
     }
     .right-wrap{
       padding-left: 12px;
       .name{
+        padding-top: 10px;
         font-size:13px;
         font-family:SourceHanSansCN-Normal;
         font-weight:bold;

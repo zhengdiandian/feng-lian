@@ -16,7 +16,7 @@
     </div>
   </PopBox>
   <pop-box style="z-index: 8" v-if="showQrcode">
-      <span class="close" @click="showQrcode=false">x</span>
+      <span class="close" @click="showQrcode=false"><img src="../assets/错误.png" alt=""></span>
     <div class="qrcode-wrap">
       <img :src="qrcodeImg" alt="" class="qrcode-img">
       <div class="bottom-text">长按关注公众号，进行实名认证，加入计划，成为爱心大使!</div>
@@ -24,11 +24,11 @@
 
 
   </pop-box>
-    <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+    <mu-appbar style="width: 100%;background: #f8b62d; " color="primary" text-color='#666' z-depth="0">
       <mu-button icon slot="right" @click="$router.push('/myPlanNews')">
-        <mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>
+        <mu-icon  value=":iconfont iconxinxi" size="24"></mu-icon>
       </mu-button>
-        链接你我他 &nbsp;&nbsp;守护千万家
+      <span style="color:#fff">链接你我他 &nbsp;&nbsp;守护千万家</span>
       <mu-button icon slot="left" :ripple="false">
         <!--<mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>-->
       </mu-button>
@@ -43,7 +43,7 @@
       <div class="content">
         <div class="btn-wrap">
           <mu-button  class="btn" color="success" @click="$router.push('/owe')">感恩有你</mu-button>
-          <mu-button round class="btn" color="success" @click="$router.push('/minePlan')">查看我的互助计划</mu-button>
+          <mu-button round class="btn" color="success" @click="$router.push('/minePlan')">互助计划</mu-button>
         </div>
         <div class="chat-wrap">
           <div class="chat-content item-content" @click="$router.push('/ranklist')">
@@ -109,7 +109,7 @@
           <div class="plan-right-content">
             <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code,issueList:homeinfor.issueList}})">
               <span v-if="product.joinFlag == 0">加入</span>
-              <span v-else>再次加入</span>
+              <span v-else>计划充值</span>
             </mu-button>
           </div>
         </div>
@@ -289,6 +289,8 @@ export default {
     font-size:24px;
     font-family:SourceHanSansCN-Medium;
     font-weight:500;
+    width: 17px;
+    height: 17px;
   }
 .qrcode-wrap{
   position: relative;
@@ -388,7 +390,7 @@ export default {
   .wrap{
     box-sizing: border-box;
     width: $gw;
-    padding: 0 5px;
+    padding: 1px 5px;
     /*border-bottom: 4px solid #666666;*/
   }
   .item-content{
@@ -650,6 +652,9 @@ h3{
     }
   }
 
+.iconxinxi{
+  color: #fff;
+}
 
 
 .help-wrap{
