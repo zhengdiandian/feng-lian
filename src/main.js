@@ -38,7 +38,7 @@ Vue.use(Dialog)
 Vue.use(Snackbar)
 Vue.config.productionTip = false
 // Axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
-Axios.interceptors.response.use( (response) => {
+Axios.interceptors.response.use((response) => {
   // token 已过期，重定向到登录页面
   if (response.data.code == 402 || response.data.code == 400) {
     localStorage.clear()
@@ -47,7 +47,7 @@ Axios.interceptors.response.use( (response) => {
       path: '/login',
       query: { redirect: router.currentRoute.fullPath }
     })
-    if(response.data.code == 302) {
+    if (response.data.code == 302) {
       debugger
     }
   }
@@ -72,7 +72,6 @@ Axios.interceptors.request.use(
       config.headers['authToken'] = xtoken
     }
     if (config.method == 'post') {
-
       config.data = qs.stringify({
         ...config.data
         // _t: Date.parse(new Date())/1000,
@@ -100,18 +99,22 @@ router.beforeEach((to, from, next) => {
         path: '/login',
         query: { redirect: to.fullPath } // 通过query将要跳转的路由路径保存下来,待完成登录后,就可以直接获取该路径,直接跳转到登录前要去的路由
       })
-    } else  {
-      
-      next()
+    }else {
+       return next() // 确保一定要调用 next()
     }
-  } else if(to.matched.some(to => to.meta.mustAuth)) {
+  }
+  if (to.matched.some(to => to.meta.mustAuth)) {
     // debugger
-    console.log(this)
-        Toast.info('请先登入',{color: '#f8b62d'})
-    next(false) 
+    if (!window.localStorage.getItem('token')) {
+      console.log(this)
+      // debugger
+      Toast.info('请先登入', { color: '#f8b62d' })
+      return next(false)
+    }
   } else {
     next() // 确保一定要调用 next()
   }
+  next()
 })
 new Vue({
   router,
@@ -119,27 +122,27 @@ new Vue({
   render: function (h) { return h(App) }
 }).$mount('#app')
 Vue.use(Toast, {
-  position: 'top',               // 弹出的位置
-  time: 5000,                       // 显示的时长
-  closeIcon: 'close',               // 关闭的图标
-  close: true,                      // 是否显示关闭按钮
-  successIcon: 'check_circle',      // 成功信息图标
-  infoIcon: 'info',                 // 信息信息图标
-  warningIcon: 'priority_high',     // 提醒信息图标
-  errorIcon: 'warning'              // 错误信息图标
+  position: 'top', // 弹出的位置
+  time: 5000, // 显示的时长
+  closeIcon: 'close', // 关闭的图标
+  close: true, // 是否显示关闭按钮
+  successIcon: 'check_circle', // 成功信息图标
+  infoIcon: 'info', // 信息信息图标
+  warningIcon: 'priority_high', // 提醒信息图标
+  errorIcon: 'warning' // 错误信息图标
 })
 Vue.use(Message, {
-  successIcon: 'check_circle',                    // 成功图标
-  infoIcon: 'info',                               // 信息图标
-  warningIcon: 'priority_high',                   // 提醒图标
-  errorIcon: 'warning',                           // 错误图标
-  iconSize: 24,                                   // 图标大小
-  width: 200,                                     // 对话框的宽度
-  maxWidth: '80%',                                // 对话框最大宽度
-  className: '',                                  // 对话框的样式
-  okLabel: '确定',                                 // 对话框确定按钮文字
-  cancelLabel: '取消',                             // 对话框取消按钮文字
-  transition: 'scale'                             // 对话框显示的动画 'slide-left', 'slide-right', 'fade', 'scale'
+  successIcon: 'check_circle', // 成功图标
+  infoIcon: 'info', // 信息图标
+  warningIcon: 'priority_high', // 提醒图标
+  errorIcon: 'warning', // 错误图标
+  iconSize: 24, // 图标大小
+  width: 200, // 对话框的宽度
+  maxWidth: '80%', // 对话框最大宽度
+  className: '', // 对话框的样式
+  okLabel: '确定', // 对话框确定按钮文字
+  cancelLabel: '取消', // 对话框取消按钮文字
+  transition: 'scale' // 对话框显示的动画 'slide-left', 'slide-right', 'fade', 'scale'
 })
 console.log('store', store)
 theme.add('custom-theme', {
