@@ -10,16 +10,20 @@
     computed: mapState(['userInfo']),
     methods: {
       scale(){
+         this.$alert('点击右上角选择分享方式', '邀请好友', {
+            okLabel: '知道了'
+          })
         debugger
         // const url = location.href.split('#')[0];
         //  const  url = this.$route.path
-        const url = window.location.href.split('#')[0]
-        //     const  url = '/'
-        const  self = this
-        
+
+
       }
     },
     created () {
+      const url = window.location.href.split('#')[0]
+        //     const  url = '/'
+      const  self = this
       this.$axios.post('/v1/user/share/getSharePara', {
           url: url
         }).then(res => {
@@ -45,7 +49,14 @@
             const title = '蜂链互助邀您加入';
             const desc = '链接你我他 守护千万家';
             const imgUrl = 'https://bee-test-bucket.oss-cn-beijing.aliyuncs.com/首页banner.png';
-            const link = 'http://test.wx.fenglianhz.com/#/invitation?userCode='+ self.userInfo.userCode
+            let link = ''
+            debugger
+            if(self.userInfo.type ==100) {
+              link = 'http://test.wx.fenglianhz.com/#/InvitationNoMember'
+            }else {
+              link = 'http://test.wx.fenglianhz.com/#/invitation?userCode='+ self.userInfo.userCode
+
+            }
 
             // wx.updateAppMessageShareData({
             //   title, // 分享标题
@@ -136,9 +147,7 @@
             });
           });
           // this.$alert()
-          this.$alert('点击右上角选择分享方式', '邀请好友', {
-            okLabel: '知道了'
-          })
+
 
       })
     }

@@ -119,7 +119,7 @@ export default {
             let slef = this
             let onBridgeReady = function() {
               console.log(WeixinJSBridge)
-              slef.$toast.error(WeixinJSBridge)
+              // slef.$toast.error(WeixinJSBridge)
               WeixinJSBridge.invoke(
                 "getBrandWCPayRequest",
                 {
@@ -150,7 +150,7 @@ export default {
               );
             };
             if (typeof WeixinJSBridge == "undefined") {
-              this.$toast.error('no')
+              // this.$toast.error('no')
 
               if (document.addEventListener) {
                 document.addEventListener(
@@ -163,9 +163,9 @@ export default {
                 document.attachEvent("onWeixinJSBridgeReady", onBridgeReady);
               }
             } else {
-              this.$toast.error('ok11111')
+              // this.$toast.error('ok11111')
               onBridgeReady();
-              this.$toast.error('ok22222')
+              // this.$toast.error('ok22222')
             }
           }
 

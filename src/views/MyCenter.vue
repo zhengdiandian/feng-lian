@@ -202,6 +202,11 @@ import {mapState} from 'vuex'
   }
   },
   created() {
+    this.$axios.post('v1/user/info/personalInfo').then(res => {
+        debugger
+        
+        this.$store.commit('set_userInfo',res.data.data)
+      })
     // this.$axios.post('/v1/user/info/personalInfo').then(res => {
     //   console.log(res)
     // })

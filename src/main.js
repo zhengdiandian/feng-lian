@@ -94,7 +94,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(to => to.meta.requiresAuth)) {
     // 数组some方法,如果meta.requiresAuth为ture,则返回true.此时,说明进入该路由前需要判断用户是否已经登录
     console.log(this)
-    if (!window.localStorage.getItem('token')) { // 如果没登录,则跳转到登录页
+    if (!window.localStorage.getItem('token') || !window.localStorage.getItem('userInfo')) { // 如果没登录,则跳转到登录页
       next({
         path: '/login',
         query: { redirect: to.fullPath } // 通过query将要跳转的路由路径保存下来,待完成登录后,就可以直接获取该路径,直接跳转到登录前要去的路由
@@ -105,7 +105,7 @@ router.beforeEach((to, from, next) => {
   }
   if (to.matched.some(to => to.meta.mustAuth)) {
     // debugger
-    if (!window.localStorage.getItem('token')) {
+    if (!window.localStorage.getItem('token') || !window.localStorage.getItem('userInfo')) {
       console.log(this)
       // debugger
       Toast.info('请先登入', { color: '#f8b62d' })

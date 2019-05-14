@@ -14,10 +14,14 @@
           ><input placeholder="请输入您的手机号码" type="text" />
           <span class="msg"> 获取验证码</span>
         </div>-->
-        <div class="btn" 
+        <div class="btn"
         @click="toLink"
-        
+
         >立即注册</div>
+        <div class="btn" style="margin-top: 10px"
+        @click="$router.push('/login')"
+
+        >已有账号, 立即登入</div>
       </div>
       <div class="info-content">
         <div class="title">享“邀请有礼”现金红包奖励</div>

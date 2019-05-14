@@ -2,7 +2,7 @@
     <div>
         <header>
             <PerInforHeader :imgUrl="datalist.headPortrait"></PerInforHeader>
-            <router-link tag="div" to="/code"><mu-icon value=":iconfont iconerweima"></mu-icon></router-link>
+            <router-link v-if="userInfo.type!==100" tag="div" to="/code"><mu-icon value=":iconfont iconerweima"></mu-icon></router-link>
         </header>
         <main>
            <div class="detaInfo">
