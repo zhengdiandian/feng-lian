@@ -16,8 +16,8 @@
         debugger
         // const url = location.href.split('#')[0];
         //  const  url = this.$route.path
-        
-        
+
+
       }
     },
     created () {
@@ -49,7 +49,14 @@
             const title = '蜂链互助邀您加入';
             const desc = '链接你我他 守护千万家';
             const imgUrl = 'https://bee-test-bucket.oss-cn-beijing.aliyuncs.com/首页banner.png';
-            const link = 'http://test.wx.fenglianhz.com/#/invitation?userCode='+ self.userInfo.userCode
+            let link = ''
+            debugger
+            if(self.userInfo.type ==100) {
+              link = 'http://test.wx.fenglianhz.com/#/InvitationNoMember'
+            }else {
+              link = 'http://test.wx.fenglianhz.com/#/invitation?userCode='+ self.userInfo.userCode
+
+            }
 
             // wx.updateAppMessageShareData({
             //   title, // 分享标题
@@ -140,7 +147,7 @@
             });
           });
           // this.$alert()
-         
+
 
       })
     }

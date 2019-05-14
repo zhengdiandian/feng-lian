@@ -58,6 +58,13 @@ export default {
         this.$axios.post('v1/user/info/uploadHealthyReport',{
           images
         }).then(res => {
+          debugger
+          if(res.data.code!==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
+            this.imgArr = this.urlList = []
+            this.$toast.success('上传成功')
           console.log(res)
           this.$axios.post('v1/user/info/personalInfo').then(res => {
               if(res.data.code!==200){

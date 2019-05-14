@@ -25,8 +25,8 @@
 
   </pop-box>
     <mu-appbar style="width: 100%;background: #f8b62d; " color="primary" text-color='#666' z-depth="0">
-      <mu-button icon slot="right" @click="$router.push('/myPlanNews')">
-        <mu-icon  value=":iconfont iconxinxi" size="24"></mu-icon>
+      <mu-button icon slot="right" :ripple="false">
+        <!--<mu-icon  value=":iconfont iconxinxi" size="24"></mu-icon>-->
       </mu-button>
       <span style="color:#fff">链接你我他 &nbsp;&nbsp;守护千万家</span>
       <mu-button icon slot="left" :ripple="false">
@@ -116,7 +116,7 @@
         <mu-divider></mu-divider>
 
       </div>
-      
+
               <div class="videobox banner" ontouchmove="return false;">
           <video
 
