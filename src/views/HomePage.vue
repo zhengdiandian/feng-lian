@@ -315,9 +315,9 @@ export default {
     line-height: 1.5;
   }
   .qrcode-img{
-    display: inline-block;
-    width: 160px;
-    height: 160px;
+    /*display: inline-block;*/
+    /*width: 160px;*/
+    /*height: 160px;*/
   }
 
 

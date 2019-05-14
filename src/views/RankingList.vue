@@ -16,16 +16,16 @@
                     <img style="z-index: 55;border-radius: 50%; border: 5px solid #C5D1E4;" :src="headImg3" alt="">
                     <span class="an-crown-3"><img src="../assets/PNG/皇冠3.png" alt=""></span>
                     <div class="list-name-number" style="left: 15px;">
-                        <span style="font-size:14px; font-weight:bold;">{{rank[1].nickname}}</span>
-                        <span style="font-size:14px; font-weight:bold;">{{rank[1].score}}分</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[0].nickname}}</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[0].score}}分</span>
                     </div>
                 </div>
                 <div class="noe" style="position: relative;">
                     <img style="border-radius: 50%; border: 5px solid #FACF11;" :src="headImg1" alt="">
                     <span class="an-crown"><img  src="../assets/PNG/皇冠1.png" alt=""></span>
                     <div class="list-name-number" >
-                        <span style="font-size:14px; font-weight:bold;">{{rank[2].nickname}}</span>
-                        <span style="font-size:14px; font-weight:bold;">{{rank[2].score}}分</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[1].nickname}}</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[1].score}}分</span>
                     </div>
                 </div>
                 <div class="three" style="position: relative;">
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="ranklist">
-                <div class="list" v-for="(item, index) in rank" :key="index">
+                <div class="list" v-for="(item, index) in (rank.slice(3))" :key="index">
                     <span style="margin-left: 24px;">{{index+4}}</span>
                     <span class="list-img"><img :src="item.img" alt=""></span>
                     <span style="position: absolute;left: 95px;">{{item.nickname}}</span>
@@ -79,7 +79,8 @@ export default {
     },
     mounted() {
         this.$axios.post('/v1/finance/account/scoreRank').then((res)=>{
-            this.rank = res.data.data
+          debugger
+            this.rank = res.data.data.sort((a,b) => b.score-a.score )
             console.log(this.rank)
         })
         this.$axios.post('/v1/user/info/index').then((res)=>{
@@ -136,7 +137,7 @@ export default {
 
 }
 .list-noe{
-  
+
   &>div>img{
     z-index: 66;
   }
@@ -165,7 +166,7 @@ export default {
     text-align: center;
     // position: relative;
     img{
-      
+
     }
 }
 .tow{

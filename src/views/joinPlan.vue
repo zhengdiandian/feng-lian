@@ -73,7 +73,7 @@
       <div class="yaoQing margin-top wrap">
         <div class="input-wrap">
           <label for>邀请码</label>
-          <input  type="text" placeholder="请联系客服获得邀请码" :value="userInfo.agentUserCode" >
+          <input  type="text" placeholder="请联系客服获得邀请码" v-model="userInfo.agentUserCode" >
           <span class="margin-left" @click="obtain">获取邀请码</span>
         </div>
         <div class="warning">
