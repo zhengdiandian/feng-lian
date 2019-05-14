@@ -203,6 +203,7 @@ main{
 input{
     flex: 2;
     height: 100%;
+    width: 249px;
     // border: none;
     // width: 30px;
     // height: 100%;
