@@ -1,7 +1,7 @@
 <template>
     <div class="item-row">
       <div class="item" v-for="(data,i) in datas" :key="i">
-        <div>
+        <div class="item-img">
           <img item-row-icon :src="data.img" alt="">
         </div>
         <div class="title">{{data.title}}</div>
@@ -53,14 +53,20 @@
     text-align: center;
     margin-bottom: 12px;
     line-height: 15px;
-    // overflow: hidden;
-    img{
-      display: inline-block;
-      justify-self: center;
+    .item-img{
       width: 30px;
       height: 30px;
-      margin-bottom: 6px;
+      margin-left: 26.2px;
+      margin-bottom: 12px;
     }
+    // overflow: hidden;
+    // img{
+    //   display: inline-block;
+    //   justify-self: center;
+    //   width: 30px;
+    //   height: 30px;
+    //   margin-bottom: 6px;
+    // }
     .title{
       font-size:14px;
       font-family:SourceHanSansCN-Normal;

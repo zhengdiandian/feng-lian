@@ -13,7 +13,7 @@
             <section class="details">
                 <div class="rule margin-left">
                     <span>昵称：</span><span ><input type="text" v-model="nickname"></span>
-                    <mu-divider></mu-divider>
+                    <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
                     <span>性别：</span>
@@ -23,46 +23,47 @@
                             <mu-option v-for="(option,index) in options" :key="index" :label="option.label" :value="option.id"></mu-option>
                         </mu-select>
                     <!-- </mu-form-item> -->
-                    <mu-divider></mu-divider>
+                    <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
                     <span>年龄：</span><span ><input type="text" v-model.number="age"></span>
-                    <mu-divider></mu-divider>
+                    <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
                     <span>生日：</span><span ><input type="text" v-model="birth"></span>
-                    <mu-divider></mu-divider>
+                    <!-- <mu-divider></mu-divider> -->
                 </div>
-                <div class="rule margin-left">
+                <!-- <div class="rule margin-left">
                     <span>星座：</span><span ><input type="text" v-model="constellation"></span>
                     <mu-divider></mu-divider>
-                </div>
+                </div> -->
 
             </section>
             <section class="details">
                 <div class="rule margin-left">
                     <span>职业：</span><span ><input type="text" v-model="job"></span>
-                    <mu-divider></mu-divider>
+                    <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
-                    <span>学校/公司：</span><span><input type="text" v-model="working_place"></span>
-                    <mu-divider></mu-divider>
+                    <span>学校/公司：</span><input type="text" v-model="working_place">
+                    <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
                     <span>所在地：</span><span><input type="text" v-model="address"></span>
-                    <mu-divider></mu-divider>
                 </div>
+                    <!-- <mu-divider></mu-divider> -->
+
                 <div class="rule margin-left">
                     <span>故乡：</span><span><input type="text" v-model="province"></span>
-                    <mu-divider></mu-divider>
+                    <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
                     <span>邮箱：</span><span><input type="text" v-model="email"></span>
-                    <mu-divider></mu-divider>
+                    <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
                     <span>个性签名：</span><span><input type="text" v-model="motto"></span>
-                    <mu-divider></mu-divider>
+                    <!-- <mu-divider></mu-divider> -->
                 </div>
             </section>
         </main>
@@ -143,24 +144,34 @@ main{
         background-color: #fff;
         margin-top: 20px;
         .rule{
-          overflow: hidden;
-
-          width: 100%;
+            display:  flex;
+            flex-wrap: nowrap;
+            // flex-direction: column;
+            overflow: hidden;
+            // height: 50px;
             height: 50px;
             line-height: 50px;
             position: relative;
+            box-sizing: content-box;
+            border-bottom: .5px solid $c-hui;
             span{
-                display: inline-block;
-                width: 80px;
+                width: auto;
+                // width: 100px;
+                height: 100%;
+                // display: inline-block;
+                // width: 80px;
             }
         }
     }
 }
 input{
+    flex: 2;
+    height: 100%;
     // border: none;
     // width: 30px;
-    height: 30px;
+    // height: 100%;
     /*background-color: rgba(234,234,234,0.3);*/
+    
     outline: none;
     border: none;
 }
