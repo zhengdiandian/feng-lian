@@ -398,6 +398,9 @@
     color: #EF9B1E;
   }
 }
+.mu-item-title[data-v-66198adc]{
+  font-size: 14px;
+}
   .help-btn-wrap{
     display: flex;
     justify-content: center;

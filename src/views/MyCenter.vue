@@ -52,7 +52,7 @@
       <div @click="invitation">
       <div class="apply" >
         <div class="img-wrap">
-          <img src="../assets/image/爱心.png" alt="">
+          <img src="../assets/爱心2.svg" alt="">
         </div>
         <span>申请成为爱心大使</span>
         <div class="apply-click">
@@ -62,7 +62,7 @@
       </div>
       </div>
       <section class="please-list">
-        <router-link tag="div" v-if="preinfo.type!==100" to="/welfareagency">
+        <router-link tag="div" v-if="preinfo.type &&  preinfo.type!==100" to="/welfareagency">
           <div class="list-li">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
               <div style="width:22px;height:22px;"><img src="../assets/image/福利汇.svg" alt=""></div>
@@ -122,7 +122,7 @@
           </div>
         </router-link>
 
-        <router-link tag="div" v-if="preinfo.type!==100" to="/code">
+        <router-link tag="div" v-if="preinfo.type && preinfo.type!==100" to="/code">
           <div class="list-li">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
               <div style="width:22px;height:22px;"><img src="../assets/image/邀请.svg" alt=""></div>
@@ -334,7 +334,7 @@ z-index: 99;
     height:60px;
     border-radius:50%;
     background:rgba(207,207,207,1);
-    border:1px solid $c-cheng;
+    // border:1px solid $c-cheng;
     margin-left: 12px;
     overflow: hidden;
     img{
@@ -345,7 +345,7 @@ z-index: 99;
   .information{
     margin-left: 13px;
     .name{
-      font-size:13px;
+      font-size:14px;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
       color:rgba(51,51,51,1);
@@ -355,6 +355,7 @@ z-index: 99;
       font-weight:bold;
       color:rgba(112,112,112,1);
       font-size: 10px;
+      font-size: 14px;
     }
     .integral{
       font-size:12px;
@@ -374,8 +375,9 @@ z-index: 99;
   .state{
     display: inline-block;
     // width:40px;
-    height:15px;
-    line-height: 15px;
+    padding: 0px 5px;
+    height: 18px;
+    line-height: 18px;
     background:rgba(239,162,32,1);
     border:0px solid rgba(255,255,255,1);
     font-size:12px;
@@ -384,6 +386,7 @@ z-index: 99;
     color:rgba(255,255,255,1);
     text-align: center;
     margin-left: 6px;
+    border-radius: 2px;
   }
     .iconyou1{
       width:6px;
@@ -399,16 +402,16 @@ z-index: 99;
   align-items: center;
   width: 351px;
   height: 44px;
-  background-color: rgb(243, 172, 172);
+  background-color: #f9be41;
   border-radius: 20px;
   margin: 18px auto;
   position: relative;
-  color: rgba(255,0,0,1);
+  color: #fff;
   span {
     font-size:12px;
     font-family:SourceHanSansCN-Normal;
     font-weight:400;
-    color:rgba(255,0,0,1);
+    // color:rgba(255,0,0,1);
     text-align: center;
     line-height: 12px;
     padding-left: 20px;
@@ -432,12 +435,12 @@ z-index: 99;
       font-size:12px;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
-      color:rgba(255,0,0,1);
+      // color:rgba(255,0,0,1);
       line-height: 12px;
     }
     .iconyou{
       font-size: 16px;
-      color:rgba(255,0,0,1);
+      // color:rgba(255,0,0,1);
     }
   }
 }

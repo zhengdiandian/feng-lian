@@ -111,9 +111,11 @@ main{
     justify-content: center;
     align-items: center;
     .btn{
+        margin-top: 12px;
+        background-color: #f8b62d;
         width: 80%;
-        height: 30px;
-        background: #fff;
+        height: 40px;
+        color: #fff;
         display: flex;
         justify-content: center;
         align-items: center;

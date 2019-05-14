@@ -86,7 +86,7 @@
       <div @click="invitation">
       <div class="apply">
         <div class="img-wrap">
-          <img src="@/assets/image/爱心.png" alt="">
+          <img src="@/assets/爱心2.svg" alt="">
         </div>
         <span>成功邀请一人，就得20元红包</span>
         <div class="apply-click">
@@ -164,11 +164,11 @@
         <div class="help-btn-wrap">
           <a href="tel:10086" class="btn">
             <span class="iconfont iconlianxikefu"></span>
-            联系客服
+            <span>联系客服</span> 
           </a>
           <div class="btn" @click="$router.push('/UnderstandUs')">
             <span class="iconfont iconguanyu"></span>
-            了解我们
+            <span>了解我们</span> 
           </div>
         </div>
       </div>
@@ -423,16 +423,16 @@ h3{
   align-items: center;
   width: 351px;
   height: 44px;
-  background-color: rgb(243, 172, 172);
+  background-color: #f9be41;
   border-radius: 20px;
   margin: 18px auto;
   position: relative;
-  color: rgba(255,0,0,1);
+  color: #fff;
   span {
     font-size:12px;
     font-family:SourceHanSansCN-Normal;
     font-weight:400;
-    color:rgba(255,0,0,1);
+    color: #fff;
     text-align: center;
     line-height: 12px;
     padding-left: 20px;
@@ -462,12 +462,12 @@ h3{
       font-size:12px;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
-      color:rgba(255,0,0,1);
+      color: #fff;
       line-height: 12px;
     }
     .iconyou{
       font-size: 16px;
-      color:rgba(255,0,0,1);
+      color: #fff;
     }
   }
 }
@@ -643,11 +643,11 @@ h3{
 
       .btn{
       // width:90px;
-      height:25px;
+      height:8.667vw;
       background: $c-cheng;
-      border-radius:13px;
+      border-radius:4.3vw;
       text-align: center;
-      line-height: 25px;
+      line-height: 8.667vw;
     }
     }
   }
@@ -680,6 +680,8 @@ h3{
       color: $c-cheng;
       border-radius: 25px;
       margin-bottom: 12px;
+      display: flex;
+      justify-content: center;
       .iconfont{
         padding-right: 5px;
       }
