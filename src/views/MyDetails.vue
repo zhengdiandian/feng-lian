@@ -26,10 +26,10 @@
                     <span>生日：</span><span style="margin-left: 30px;">{{detalis.birth}}</span>
                     <mu-divider></mu-divider>
                 </div>
-                <div class="rule margin-left">
+                <!-- <div class="rule margin-left">
                     <span>星座：</span><span style="margin-left: 30px;">{{detalis.constellation}}</span>
                     <mu-divider></mu-divider>
-                </div>
+                </div> -->
 
             </section>
             <section class="details">
@@ -42,7 +42,7 @@
                     <mu-divider></mu-divider>
                 </div> -->
                 <div class="rule margin-left">
-                    <span>所在地：</span><span style="margin-left: 20px;">{{detalis.address}}</span>
+                    <span>收获地址：</span><span style="margin-left: 20px;">{{detalis.address}}</span>
                     <mu-divider></mu-divider>
                 </div>
                 <!-- <div class="rule margin-left">
