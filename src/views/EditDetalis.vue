@@ -40,16 +40,16 @@
 
             </section>
             <section class="details">
-                <div class="rule margin-left">
-                    <span>职业：</span><span ><input type="text" v-model="job"></span>
+                <div class="rule margin-left xin">
+                    <span>职业：</span><span ><input  type="text" v-model="job"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
                     <span>学校/公司：</span><input type="text" v-model="working_place">
                     <!-- <mu-divider></mu-divider> -->
                 </div>
-                <div class="rule margin-left">
-                    <span>所在地：</span><span><input type="text" v-model="address"></span>
+                <div class="rule margin-left xin">
+                    <span>收货地址：</span><span><input  type="text" v-model="address"></span>
                 </div>
                     <!-- <mu-divider></mu-divider> -->
 
@@ -97,9 +97,23 @@ export default {
             }
         }
     },
+  created() {
+      let data = this.$route.params.data
+      this.nickname = data.nickname
+      this.address = data.address
+      this.city = data.city
+      this.email = data.email
+      this.obj = data.obj
+      this.account = data.account
+      this.form.select = data.sex
+      this.motto = data.motto
+  },
     methods:{
         editdeta() {
           debugger
+          if(!this.address || !this.job){
+            this.$toast.error('请填写完整信息')
+          }
             // console.log(this.options[length])
             var ePattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
             if (!ePattern.test(this.email)) {
@@ -138,6 +152,23 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+  .xin:before{
+    /*padding-right: 10px;*/
+    content: '*';
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    color: red;
+    font-size: 20px;
+    /*width: 100px;*/
+    /*height: 100px;*/
+    z-index: 66666666666;
+  }
+  .xin{
+    position: relative;
+
+  }
 main{
     margin-top: 60px;
     .details{
@@ -171,7 +202,7 @@ input{
     // width: 30px;
     // height: 100%;
     /*background-color: rgba(234,234,234,0.3);*/
-    
+
     outline: none;
     border: none;
 }

@@ -69,7 +69,12 @@ export default {
     },
     methods:{
         edit(){
-            this.$router.push('/Editdetails')
+            this.$router.push({
+              name: 'Editdetails',
+              params:{
+                data: this.detalis
+              }
+            })
         }
     },
     mounted() {
