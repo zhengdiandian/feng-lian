@@ -77,7 +77,7 @@ nav {
     .head-portrait{
         width: 75px;
         height: 75px;
-        border: 1px solid black;
+        // border: 1px solid black;
         border-radius: 50%;
         background-color: #fff;
         overflow: hidden;

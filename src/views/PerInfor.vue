@@ -26,14 +26,14 @@
                     <section class="datalist" style="height: 50px;">
                         <div class="listtext"><span>体检报告</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
-                        <span style="position: absolute;right: 65px;">{{datalist.healthyState == 0 ? '未上传': '已上传'}}</span>
+                        <span style="position: absolute;right: 65px; font-size: 12px; font-family: SourceHanSansCN-Normal;">{{datalist.healthyState == 0 ? '未上传': '已上传'}}</span>
                     </section>
                 </router-link>
                 <div @click="toReal" to="/real">
                     <section class="datalist">
                         <div class="listtext"><span>实名认证</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
-                        <span style="position: absolute;right: 65px;">{{datalist.state == 100 ? '未认证': '已认证'}}</span>
+                        <span style="position: absolute;right: 65px; font-size: 12px; font-family: SourceHanSansCN-Normal;">{{datalist.state == 100 ? '未认证': '已认证'}}</span>
                     </section>
                 </div>
                 </div>

@@ -5,8 +5,8 @@
           <mu-icon value=":iconfont iconfanhui"></mu-icon>
         </mu-button>
         编辑资料
-        <mu-button icon slot="right" @click="editdeta">
-           <span style="font-size:12px;">保</span><span style="font-size:12px;">存</span>
+        <mu-button icon slot="right" >
+           <!-- <span style="font-size:12px;">保</span><span style="font-size:12px;">存</span> -->
         </mu-button>
       </mu-appbar>
         <main>
@@ -67,6 +67,7 @@
                 </div>
             </section>
         </main>
+        <section class="btn-edit"><div class="btn" @click="editdeta">保存</div></section>
     </div>
 </template>
 <script>
@@ -220,6 +221,7 @@ input{
     position: absolute;
     top: 10px;
     padding-left: 10px;
+        font-size: 12px;
 }
 .rule /deep/.mu-item     .mu-option.is-selected .mu-item {
   color: $c-cheng!important;
@@ -227,5 +229,25 @@ input{
 .rule /deep/ .mu-input-line, .mu-input-focus-line  .focus{
   height: 0px;
 }
+.btn-edit{
+    // width: 100%;
+    height: 50px;
+    // background: red;
+    // margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .btn{
+        margin-top: 12px;
+        background-color: #f8b62d;
+        width: 80%;
+        height: 40px;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // padding: 5px;
 
+    }
+}
 </style>
