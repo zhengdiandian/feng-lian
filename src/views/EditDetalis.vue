@@ -182,6 +182,7 @@ input{
     padding: 0;
     position: absolute;
     top: 10px;
+    padding-left: 60px;
 }
 .rule /deep/.mu-item     .mu-option.is-selected .mu-item {
   color: $c-cheng!important;
