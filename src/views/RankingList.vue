@@ -14,7 +14,7 @@
             <div class="list-noe">
                 <div class="tow" style="position: relative;">
                     <img style="z-index: 55;border-radius: 50%; border: 5px solid #C5D1E4;" :src="headImg3" alt="">
-                    <span class="an-crown-3"><img style="width: 42px; height: 26px;" src="../assets/PNG/皇冠3.png" alt=""></span>
+                    <span class="an-crown-3"><img src="../assets/PNG/皇冠3.png" alt=""></span>
                     <div class="list-name-number" style="left: 16px; top: 95px;">
                         <span style="font-size:14px; font-weight:bold;">陈梅</span>
                         <span style="font-size:14px; font-weight:bold;">22800分</span>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="noe" style="position: relative;">
                     <img style="border-radius: 50%; border: 5px solid #FACF11;" :src="headImg1" alt="">
-                    <span class="an-crown"><img style="width: 56px; height: 35px;" src="../assets/PNG/皇冠1.png" alt=""></span>
+                    <span class="an-crown"><img  src="../assets/PNG/皇冠1.png" alt=""></span>
                     <div class="list-name-number">
                         <span style="font-size:14px; font-weight:bold;">韩世忠</span>
                         <span style="font-size:14px; font-weight:bold;">22900分</span>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="three" style="position: relative;">
                     <img style="border-radius: 50%; border: 5px solid #F8A771;" :src="headImg2" alt="">
-                    <span class="an-crown-2"><img style="width: 47px; height: 30px;" src="../assets/PNG/皇冠2.png" alt=""></span>
+                    <div class="an-crown-2"><img  src="../assets/PNG/皇冠2.png" alt=""></div>
                     <div class="list-name-number" style="left: 12px; top: 90px;">
                         <span style="font-size:14px; font-weight:bold; ">李军</span>
                         <span style="font-size:14px; font-weight:bold;">22700分</span>
@@ -114,21 +114,22 @@ export default {
   width: 90px;
     position: relative;
     top: -130px;
+    width: 56px; height: 35px
+
 }
 .an-crown-2{
   z-index: -1;
   position: relative;
-    top: -102.5px;
+  top: -100.5px;
+  left: 15px;
+  width: 42px; height: 26px;
 }
 .an-crown-3{
     z-index: -1;
     position: relative;
-    top: -105.5px;
-  img{
-    z-index: -1;
-    width:56px;
-    height:35px;
-  }
+    top: -110.5px;
+    width: 47px; height: 30px
+
 }
 .list-noe{
   

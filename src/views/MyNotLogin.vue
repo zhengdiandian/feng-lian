@@ -31,7 +31,7 @@
           <div  @click="showPoP=true">
             <div class="list-li">
             <div style="text-align: center;">
-              <img src="../assets/图标/我的计划-选中.svg" alt="">
+              <img src="../assets/image/我的计划-选中.svg" alt="">
               <span class="position-r" style="margin-left:12px">我的计划</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -40,7 +40,7 @@
           <div  @click="showPoP=true">
             <div class="list-li">
             <div style="text-align: center;">
-              <img src="../assets/图标/记录.svg" alt="">
+              <img src="../assets/image/记录.svg" alt="">
               <span class="position-r" style="margin-left:12px">互助记录</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -49,7 +49,7 @@
           <div  @click="showPoP=true">
             <div class="list-li">
             <div style="text-align: center;">
-              <img src="../assets/图标/邀请.svg" alt="">
+              <img src="../assets/image/邀请.svg" alt="">
               <span class="position-r" style="margin-left:12px">邀请好友</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -58,7 +58,7 @@
             <div  @click="showPoP=true">
               <div class="list-li">
               <div style="text-align: center;">
-              <img src="../assets/图标/通知.svg" alt="">
+              <img src="../assets/image/通知.svg" alt="">
                 <span class="position-r" style="margin-left:12px">通知</span>
               </div>
               <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -67,7 +67,7 @@
             <div  @click="showPoP=true">
               <div class="list-li">
               <div style="text-align: center;">
-              <img src="../assets/图标/设置.svg" alt="">
+              <img src="../assets/image/设置.svg" alt="">
                 <span class="position-r" style="margin-left:12px">设置</span>
               </div>
               <mu-icon value=":iconfont iconyou1"></mu-icon>

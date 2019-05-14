@@ -3,14 +3,7 @@
     <header>
         <PageHeader :title="title"></PageHeader>
     </header>
-    <main>
-        <div class="head">
-            <div class="head-img"><img src="" alt=""></div>
-            <div class="name">
-                <span>Hi</span>
-                <span>{{name}}</span>
-            </div>
-        </div>
+    <main style="margin-top: 60px;">
         <section class="Myinteg">
             <div class="reward">
                 <span>当前积分</span>

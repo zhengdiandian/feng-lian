@@ -52,7 +52,7 @@
       <div @click="invitation">
       <div class="apply" >
         <div class="img-wrap">
-          <img src="../assets/图标/爱心.png" alt="">
+          <img src="../assets/image/爱心.png" alt="">
         </div>
         <span>申请成为爱心大使</span>
         <div class="apply-click">
@@ -64,8 +64,8 @@
       <section class="please-list">
         <router-link tag="div" v-if="preinfo.type!==100" to="/welfareagency">
           <div class="list-li">
-            <div style="text-align: center;">
-              <img src="../assets/图标/福利汇.svg" alt="">
+            <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
+              <div style="width:22px;height:22px;"><img src="../assets/image/福利汇.svg" alt=""></div>
               <span class="position-r" style="margin-left:12px">福利社</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -74,8 +74,8 @@
 
           <div tag="div" @click="showPoP=true">
           <div class="list-li">
-            <div style="text-align: center;">
-              <img src="../assets/图标/卡包.svg" alt="">
+            <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
+               <div style="width:22px;height:22px;"><img src="../assets/image/卡包.svg" alt=""></div>
               <span class="position-r" style="margin-left:12px">我的卡包</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -84,8 +84,8 @@
 
         <router-link tag="div" to="/myplan">
           <div class="list-li">
-            <div style="text-align: center;">
-              <img src="../assets/图标/我的计划-选中.svg" alt="">
+            <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
+              <div style="width:22px;height:22px;"><img src="../assets/image/我的计划-选中.svg" alt=""></div>
               <span class="position-r" style="margin-left:12px">我的计划</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -94,8 +94,8 @@
 
         <router-link tag="div" to="/myhlepPlan">
           <div class="list-li">
-            <div style="text-align: center;">
-              <img src="../assets/图标/申请.svg" alt="">
+            <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
+              <div style="width:22px;height:22px;"><img src="../assets/image/申请.svg" alt=""></div>
               <span class="position-r" style="margin-left:12px">我的申请</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -104,8 +104,8 @@
 
         <div @click="$router.push('/myintegral')">
           <div class="list-li">
-            <div style="text-align: center;">
-              <img src="../assets/图标/客户.svg" alt="">
+            <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
+              <div style="width:22px;height:22px;"><img src="../assets/image/客户.svg" alt=""></div>
               <span class="position-r" style="margin-left:12px">我的蜂蜜</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -114,8 +114,8 @@
 
         <router-link tag="div" to="/assis">
           <div class="list-li">
-            <div style="text-align: center;">
-              <img src="../assets/图标/记录.svg" alt="">
+            <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
+              <div style="width:22px;height:22px;"><img src="../assets/image/记录.svg" alt=""></div>
               <span class="position-r" style="margin-left:12px">互助记录</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -124,8 +124,8 @@
 
         <router-link tag="div" v-if="preinfo.type!==100" to="/code">
           <div class="list-li">
-            <div style="text-align: center;">
-              <img src="../assets/图标/邀请.svg" alt="">
+            <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
+              <div style="width:22px;height:22px;"><img src="../assets/image/邀请.svg" alt=""></div>
               <span class="position-r" style="margin-left:12px">我的二维码</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -136,8 +136,8 @@
         <section class="please-list-tongzhi">
           <div  @click="showPoP=true">
             <div class="list-li">
-              <div style="text-align: center;">
-              <img src="../assets/图标/通知.svg" alt="">
+              <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
+              <div style="width:22px;height:22px;"><img src="../assets/image/通知.svg" alt=""></div>
                 <span class="position-r" style="margin-left:12px">通知</span>
               </div>
               <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -146,8 +146,8 @@
 
           <router-link tag="div" to="/setup">
             <div class="list-li">
-              <div style="text-align: center;">
-              <img src="../assets/图标/设置.svg" alt="">
+              <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
+              <div style="width:22px;height:22px;"><img src="../assets/image/设置.svg" alt=""></div>
                 <span class="position-r" style="margin-left:12px">设置</span>
               </div>
               <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -458,11 +458,6 @@ z-index: 99;
       display: flex;
       align-items: center;
       background-color: #fff;
-      img{
-        width: 20px;
-        height: 20px;
-        margin-left: 14px;
-      }
       .iconyou1{
         position: absolute;
         right: 12px;

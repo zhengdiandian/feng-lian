@@ -103,7 +103,7 @@
       <div @click="invitation">
       <div class="apply">
         <div class="img-wrap">
-          <img src="@/assets/图标/爱心.png" alt="">
+          <img src="@/assets/image/爱心.png" alt="">
         </div>
         <span>成功邀请一人，就得20元红包</span>
         <div class="apply-click">

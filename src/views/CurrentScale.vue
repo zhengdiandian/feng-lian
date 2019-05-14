@@ -18,8 +18,8 @@
             <span class="font margin-left">本期互助名单</span>
             <div class="parent-list">
                 <div class="parent-wrap" v-for="i in 6" :key="i">
-                    <div class="img-wrap">
-                        <img src="../assets/PNG/中青年.png" alt="" class="part margin-top" />
+                    <div class="img-wrap-head">
+                        <img src="../assets/PNG/公示头像2.png" alt="" />
                     </div>
                     <span class="margin-bottom" style="margin-top: 12px;">{{name}}</span>
                 </div>
@@ -137,6 +137,12 @@ nav {
         // padding: 12px 12px 18px;
         display: flex;
         flex-direction: column;
+        .img-wrap-head{
+            width: 33px;
+            height: 33px;
+            margin-left: 5px;
+            margin-top: 5px;
+        }
     }
     .img-wrap{
         box-sizing: content-box;
@@ -144,9 +150,7 @@ nav {
         height: 33px;
 
         /*flex: 1;*/
-
-    }
-    img{
+        img{
         width: 100%;
         border-radius: 50%;
         border: 2px solid rgba(239, 162, 32, 1);
@@ -156,16 +160,15 @@ nav {
         /*border-radius: 50%;*/
         /*border: 2px solid rgba(239, 162, 32, 1);*/
     }
+
+    }
+    
 }
 .Invitation-welfare{
     width:259px;
-    height:40px;
+    height:26px;
     margin: auto;
     margin-bottom: 18px;
-    img{
-        width: 259px;
-        height: 30px;
-    }
 }
 .return-commission{
         width:188px;
@@ -204,6 +207,7 @@ nav {
                 width: 70px;
                 position: absolute;
                 top: 45px;
+                left: -5px;
             }
         }
     }

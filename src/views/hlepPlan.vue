@@ -52,7 +52,7 @@
       </icon-bar> -->
       <div class="apply">
         <div class="img-wrap">
-          <img src="../assets/图标/加入我们.svg" alt="">
+          <img src="../assets/image/加入我们.svg" alt="">
         </div>
         <span>预存48元加入</span>
         <div class="apply-click">
