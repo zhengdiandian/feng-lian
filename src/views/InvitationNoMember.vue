@@ -1,8 +1,7 @@
 <template>
     <div>
-        <header style="height:165px; width:375px;">
-            <img src="../assets/PNG/百万计划banner.png" alt="">
-        </header>
+        <!-- <div style="width:100%"><img src="../assets/PNG/百万计划banner.png" alt=""></div> -->
+        <div class="img"><img src="../assets/PNG/百万计划banner.png" alt=""></div>
         <main>
             <div class="info-content">
                 <div class="title">感恩蜂链，互助享爱</div>
@@ -94,6 +93,14 @@
 </script>
 
 <style lang="scss" scoped>
+.img{
+    width: 100%;
+    // height: 100%;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
 main{
     margin-top: -5px;
     width: 100%;
