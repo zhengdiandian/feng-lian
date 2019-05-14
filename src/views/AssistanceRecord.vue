@@ -134,6 +134,8 @@ footer{
         text-align: center;
         line-height: 33px;
         color: #EFA220;
+        display: flex;
+        justify-content: center;
         .iconlianxikefu{
             padding-right: 6px;
         }
