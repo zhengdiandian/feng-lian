@@ -441,16 +441,16 @@
   align-items: center;
   width: 351px;
   height: 44px;
-  background-color: rgb(243, 172, 172);
+  background-color: #f9be41;
   border-radius: 20px;
   margin: 18px auto;
   position: relative;
-  color: rgba(255,0,0,1);
+  color: #fff;
   span {
     font-size:12px;
     font-family:SourceHanSansCN-Normal;
     font-weight:400;
-    color:rgba(255,0,0,1);
+    // color:rgba(255,0,0,1);
     text-align: center;
     line-height: 12px;
     padding-left: 20px;
@@ -473,12 +473,12 @@
       font-size:12px;
       font-family:SourceHanSansCN-Normal;
       font-weight:bold;
-      color:rgba(255,0,0,1);
+      // color:rgba(255,0,0,1);
       line-height: 12px;
     }
     .iconyou{
       font-size: 16px;
-      color:#FF0000;
+      // color:#FF0000;
     }
   }
 }
