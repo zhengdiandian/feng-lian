@@ -255,15 +255,16 @@ export default {
         // console.log(this.product)
       })
     this.$axios.post('v1/manage/config/getImgList',{
-      keys: 'PublicQrcode'
+      keys: 'PublicQrcode,PublicAddress'
     }).then(res => {
       this.qrcodeImg = res.data.data.PublicQrcode
-    })
-    this.$axios.post('v1/manage/config/getImgList',{
-      keys: 'PublicAddress'
-    }).then(res => {
       this.videoImg = res.data.data.PublicAddress
     })
+    // this.$axios.post('v1/manage/config/getImgList',{
+    //   keys: 'PublicAddress'
+    // }).then(res => {
+    //   this.videoImg = res.data.data.PublicAddress
+    // })
   },
   mounted() {
 

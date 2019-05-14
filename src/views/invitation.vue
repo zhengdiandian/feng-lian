@@ -14,7 +14,10 @@
           ><input placeholder="请输入您的手机号码" type="text" />
           <span class="msg"> 获取验证码</span>
         </div>-->
-        <div class="btn" @click="() =>{$router.push('/register?userCode='+user_code)}">立即注册</div>
+        <div class="btn" 
+        @click="toLink"
+        
+        >立即注册</div>
       </div>
       <div class="info-content">
         <div class="title">享“邀请有礼”现金红包奖励</div>
@@ -62,6 +65,11 @@
       user_code: '',
       textList: ["一直很感谢大家的支持和信任，", "有你们的团结与付出，","才有了今天的蜂链大家庭。", "每一个蜂链家人们，", "你们都是英雄。", "蜂链强大了，", "也努力地想要，", "社会上每一个弱小群体也强大起来。", , "我们希望：", "让蜂链互助和蜂链家人们共同成长！", "为了回馈新老用户，","蜂链推出了邀请大礼包，","蜂链家人们只要邀请新用户入驻成为蜂链会员，", "就能获得相应奖励哦。"],
     };
+  },
+  methods: {
+    toLink() {
+      window.location = `http://test.wxapi.fenglianhz.com/h5/v1/user/login/weixinLogin?userCode=${this.user_code}`
+    }
   },
   created() {
     debugger

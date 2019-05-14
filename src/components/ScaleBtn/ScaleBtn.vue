@@ -16,7 +16,11 @@
         const url = window.location.href.split('#')[0]
         //     const  url = '/'
         const  self = this
-        this.$axios.post('/v1/user/share/getSharePara', {
+        
+      }
+    },
+    created () {
+      this.$axios.post('/v1/user/share/getSharePara', {
           url: url
         }).then(res => {
           debugger
@@ -137,10 +141,6 @@
           })
 
       })
-      }
-    },
-    created () {
-
     }
   }
 </script>
