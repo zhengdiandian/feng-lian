@@ -60,7 +60,7 @@
                 <span  style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
                 <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
                     <card
-                        :open="() => {$router.push({name: 'hlepPlan', params:{productCode: 'PRO201905111234221'}})}"
+                        :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
                         :img="myplan.headPortrait"
                         :state="myplan.payState==100?'未实名':'已实名'"
                         :productName="myplan.productName"
@@ -100,6 +100,7 @@ export default {
     mounted() {
         this.$axios.get('/v1/mutually/plan/planList').then(res=>{
             console.log(res)
+          debugger
             this.myplan = res.data.data
             // console.log(this.myplan)
         })
