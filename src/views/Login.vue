@@ -3,8 +3,9 @@
     <mu-appbar
       style="width: 100%;"
       color="primary"
-      text-color="#666"
+      text-color="#fff"
       z-depth="0"
+      
     >
       <mu-button flat slot="right" @click="$router.push('/home')">跳过此步</mu-button>
     </mu-appbar>
@@ -19,8 +20,8 @@
           :error-text="accountErr"
         >
           <div slot="append">
-            <div @click="toRegister"  style="color: #347fe8;"
-              >立即注册</div
+            <router-link tag="div" to="/register" style="color: #fff;"
+              >立即注册</router-link
             >
           </div>
         </mu-text-field>
@@ -47,7 +48,7 @@
 
         >
           <div  slot="append">
-            <div v-show="show1" style="color: #347fe8;" @click="getMsgHandleClick">
+            <div v-show="show1" style="color: #fff;" @click="getMsgHandleClick">
               获取验证码
             </div>
             <span v-show="!show1" class="count">{{ count }} s</span>
@@ -56,7 +57,7 @@
       </div>
       <div class="bottom-nav">
         <div
-          style="color: #347fe8; font-size: 13px"
+          style="color: #fff; font-size: 13px"
           @click="
             codepwd = !codepwd;
             pwd='';
@@ -67,7 +68,7 @@
         <router-link
           tag="div"
           to="/forgetPassword"
-          style="color: #347fe8; font-size: 13px"
+          style="color: #fff; font-size: 13px"
           >忘记密码?</router-link
         >
       </div>
@@ -258,7 +259,7 @@ export default {
 <style lang="scss" scoped>
   .wrap{
     height: 100%;
-    background-color: $c-bai;
+    background-color: $c-cheng;
   }
 .content {
   width: $gw;
@@ -267,12 +268,19 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  background-color: #fff;
+  background-color: $c-cheng;
+  
+}
+.mu-appbar[data-v-26084dc2]{
+  background-color: $c-cheng;
+}
+.mu-input[data-v-26084dc2]{
+  color: #fff !important;
 }
 .img {
   width: 76px;
   height: 70px;
-  background-image: url("../assets/PNG/logo图.png");
+  background-image: url("../assets/logo.svg");
   background-size: 100% 100%;
   margin-bottom: 64px;
   margin-top: 75px;
@@ -285,6 +293,7 @@ export default {
 }
 .mu-input.has-icon {
   box-sizing: border-box;
+  
 
   margin-left: -7 * 3.5px;
 }
@@ -294,6 +303,7 @@ export default {
 }
 .mu-input {
   font-size: 12px;
+  color: #fff;
 }
 .show {
   position: fixed;
@@ -311,7 +321,8 @@ export default {
 //     padding: 25px 30px 0px 40px;
 // }
 .login-btn {
-  background: linear-gradient(to right, #e99317, #fbb830) !important;
+  background: #fff !important;
   margin-top: 51px;
+  color: $c-cheng;
 }
 </style>

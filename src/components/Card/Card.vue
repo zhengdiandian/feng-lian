@@ -173,6 +173,7 @@
       height:44px;
       padding-top: 10px;
       img{
+        background-color: $c-hui;
         border-radius:50%;
       }
     }

@@ -18,7 +18,7 @@
                 <mu-text-field v-model="pwd" label="请输入验证码" label-float  icon=":iconfont iconmima" :error-text="pwdErr">
                     <div  slot="append">
 
-                        <div v-show="show" style="color: #347fe8;" @click="getCode">获取验证码</div>
+                        <div v-show="show" style="color: #fff;" @click="getCode">获取验证码</div>
                         <span v-show="!show" class="count">{{count}} s</span>
                     </div>
                 </mu-text-field>
@@ -54,7 +54,7 @@
                 <!--&gt;-->
                 <!--</mu-text-field>-->
             <!--</div>-->
-            <div style="width: 100%; margin: 0 auto ;position: relative" >
+            <div>
                 <mu-button round :class="{ 'login-btn': disabled }" class="login" color="success" @click="registerHandleClick">完 &nbsp; 成</mu-button>
             </div>
         </main>
@@ -127,12 +127,18 @@
           this.pwdErr = '请输入验证码'
           return
         }
+        const pwd1Reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/
+        if (!pwd1Reg.test(this.pwd1)) {
+          this.err2 = '请输入6-16的密码'
+          return
+        }
         const pwdReg = /^\d*\.?\d+$/;
         if (!pwdReg.test(this.pwd)) {
           return
         }
         if(this.pwd1 !== this.pwd2){
           this.err2 = '两次输入的密码不相同'
+          return
         }
         debugger
         //更改
@@ -245,12 +251,23 @@
   }
 </script>
 <style lang="scss" scoped>
+#app>div{
+  background-color: $c-cheng;
+}
+.mu-appbar[data-v-f459da8e]{
+  background-color: $c-cheng;
+}
+.mu-input[data-v-f459da8e]{
+  color: #fff !important;
+}
     main {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 79px !important;
+        // margin-top: 79px !important;
+        padding-top: 40px;
+        background-color: $c-cheng;
         .pwd-wrap{
             width: 80%;
         }
@@ -263,27 +280,27 @@
     }
     .login.login-btn {
         width: 200px;
-        background: linear-gradient(to right, #e99317, #fbb830) !important;
-        margin-top: 85px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        background: #fff !important;
+        // margin-top: 85px;
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
 
         /*width: 80%;*/
         color: $c-bai ;
     }
     .login {
-        width: 200px;
-        margin-top: 85px;
+        width: 300px;
+        margin-top: 50px;
         /*width: 80%;*/
-        color: rgba(0,0,0,.3);
-        cursor: not-allowed;
-        background-color: #e6e6e6;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        color: $c-cheng;
+        // cursor: not-allowed;
+        background-color: $c-bai;
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
     }
     /*.login-btn{*/
         /*background: linear-gradient(to right, #e99317 , #fbb830) !important;*/

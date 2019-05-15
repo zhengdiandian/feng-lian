@@ -93,6 +93,27 @@
         <div class="font margin-left margin-top ">常见问题</div>
 
         <mu-list  class="list" toggle-nested="">
+          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="(item,i) in issueList" :key="i">
+            <mu-list-item-title style="font-size: 14px;">{{i+1}}、{{item.title}} </mu-list-item-title>
+            <mu-list-item-action>
+              <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
+            </mu-list-item-action>
+            <p slot="nested">{{item.content}}</p>
+            <!--<mu-list-item button :ripple="false" slot="nested">-->
+              <!--<mu-list-item-title>{{item.content}}</mu-list-item-title>-->
+            <!--</mu-list-item>-->
+          </mu-list-item>
+        </mu-list>
+
+        <div class="help-btn-wrap">
+          <a href="tel:10086" class="btn margin-bottom">
+            <span href="tel:10086" class="iconfont iconlianxikefu"></span>
+            联系客服
+          </a>
+        </div>
+
+
+        <mu-list  class="list" toggle-nested="">
           <mu-list-item v-for="(problem, i) in problems" button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"  :key="i">
             <mu-list-item-title>{{i+1}}、{{problem.title}}</mu-list-item-title>
             <mu-list-item-action>
@@ -105,25 +126,9 @@
           </mu-list-item>
         </mu-list>
 
-        <div class="help-btn-wrap">
-          <a href="tel:10086" class="btn margin-bottom">
-            <span href="tel:10086" class="iconfont iconlianxikefu"></span>
-            联系客服
-          </a>
-        </div>
+        
 
-        <mu-list  class="list" toggle-nested="">
-          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="(item,i) in issueList" :key="i">
-            <mu-list-item-title style="font-size: 14px;">{{i+1}}、{{item.title}} </mu-list-item-title>
-            <mu-list-item-action>
-              <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
-            </mu-list-item-action>
-            <p slot="nested">{{item.content}}</p>
-            <!--<mu-list-item button :ripple="false" slot="nested">-->
-              <!--<mu-list-item-title>{{item.content}}</mu-list-item-title>-->
-            <!--</mu-list-item>-->
-          </mu-list-item>
-        </mu-list>
+        
 
       </div>
     </div>

@@ -1,11 +1,40 @@
 <template>
   <div class="g-bg">
+    <PopBox v-if="showPoP">
+    <div class="pop-content">
+      <div class="pop-btn">
+        <button @click="showPoP = false">帮助中心</button>
+        <mu-divider></mu-divider>
+        <button style="color: rgba(234,234,234,1)" @click="refund">申请退款</button>
+      </div>
+    </div>
+      <div>
+    </div>
+  </PopBox>
+  <PopBox v-if="showpop">
+    <div class="pop">
+      <div>
+        <div>
+          <div class="heart">
+            退款后即失去互助资格
+            <div>请您确认是否退款</div>
+          </div>
+        </div>
+      </div>
+      <div style="position: absolute;width: 100%;bottom: 0;">
+        <button @click="refundSuc" style="color: #d0d0d0" >退款</button>
+        <button class="btn-join" @click="showpop = false">取消</button>
+      </div>
+    </div>
+  </PopBox>
     <mu-appbar style="width: 100%;" color="primary" text-color="#666" z-depth="0">
       <mu-button icon slot="left" @click="$router.push('/home')" >
         <mu-icon value=":iconfont iconfanhui" size="24" @click.stop="$router.go(-1)"></mu-icon>
       </mu-button>
       我的互助计划详情
-      <mu-button icon slot="right" :ripple="false">
+      <mu-button icon slot="right" :ripple="false" @click="showTui">
+        <!-- <img src="../assets/省略号.png" alt=""> -->
+        <i class="iconfont iconshubanshenglvehao"></i>
       </mu-button>
     </mu-appbar>
     <div class=" xian page-margin-top">
@@ -58,13 +87,27 @@
 </template>
 
 <script>
+  import PopBox from '../components/PopBox/PopBox'
   export default {
     name: 'PlanInitial',
     data() {
       return {
         panned: [],
-        issue: []
+        issue: [],
+        showPoP: false,
+        showpop: false,
+        position: 'bottom',               // 弹出的位置
+        time: 2000,                       // 显示的时长
+        closeIcon: 'close',               // 关闭的图标
+        close: true,                      // 是否显示关闭按钮
+        successIcon: 'check_circle',      // 成功信息图标
+        infoIcon: 'info',                 // 信息信息图标
+        warningIcon: 'priority_high',     // 提醒信息图标
+        errorIcon: 'warning'              // 错误信息图标
       }
+    },
+    components:{
+      PopBox
     },
     mounted() {
       this.$axios.post('/v1/mutually/plan/planDetail',{
@@ -91,6 +134,19 @@
     methods:{
       open(){
 
+      },
+      showTui() {
+        if(!this.showPoP&&this.showpop)return
+        this.showPoP = !this.showPoP
+      },
+      refund() {
+
+        this.showPoP = false
+        this.showpop = true
+      },
+      refundSuc() {
+        this.showpop = false
+        this.$toast.success('退款成功');
       }
     }
   }
@@ -99,7 +155,20 @@
 <style lang="scss" scoped>
   .g-bg{
     background-color: $c-hui;
-
+  }
+  .pop-btn{
+    position: absolute;
+    top: 48px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    button{
+      width: 200px;
+      height: 45px;
+      outline: none;
+      border: none;
+      background-color: rgba(234,234,234,0.87)
+    }
   }
 
     .wrap{
@@ -202,5 +271,47 @@
     line-height: 50px;
     color: $c-bai;
     background:rgba(239,162,32,1);
+  }
+  .pop{
+    width: 249px;
+    height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    text-align: center;
+    position: relative;
+    & >div:last-child{
+      // height: 40px;
+      // background-color: $c-cheng;
+      // color: $c-bai;
+      // line-height: 40px;
+      // font-size: 18px;
+      // align-self: flex-end;
+    }
+    &>div{
+      width: 100%;
+      text-align: center;
+    }
+    align-items: center;
+    .iconfont{
+      font-size: 45px;
+    }
+    .heart{
+      display: inline-block;
+      // width: 140px;
+      height: 80px;
+      font-size: 16px;
+    }
+    button{
+      border: none;
+      width: 50%;
+      height: 50px;
+      border-top: 1px solid $c-hui;
+      background-color: #fff;
+      border-right: 1px solid $c-hui;
+    }
+    .btn-join{
+      color: $c-lang
+    }
   }
 </style>

@@ -155,6 +155,9 @@ export default {
 /*}*/
 
 /*}*/
+#app>div{
+  background-color: $c-cheng;
+}
 .mu-input {
   width: 80%;
   margin: auto;
@@ -166,24 +169,28 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 79px !important;
+  // margin-top: 79px !important;
+  padding-top: 79px;
 }
 .iconbiyan {
   margin-right: 8px;
   font-size: 20px;
 }
 .login.login-btn {
-  background: linear-gradient(to right, #e99317, #fbb830) !important;
+  // background: linear-gradient(to right, #e99317, #fbb830) !important;
   margin-top: 85px;
   width: 80%;
-  color: $c-bai ;
+  // color: $c-bai ;
+}
+.mu-input[data-v-2e7c8062]{
+  color: #fff;
 }
 .login {
   margin-top: 85px;
   width: 80%;
-  color: rgba(0,0,0,.3);
+  color: $c-cheng;
   cursor: not-allowed;
-  background-color: #e6e6e6
+  background-color: #fff
 }
 .mu-input.has-icon {
   padding: 25px 30px 0px 40px;

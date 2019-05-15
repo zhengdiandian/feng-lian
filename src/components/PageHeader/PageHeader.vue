@@ -28,7 +28,7 @@ nav {
     height: 44px;
     display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color: $c-cheng;
     position: relative;
     justify-content: center;
     position: fixed;
@@ -44,7 +44,7 @@ nav {
     .title {
       font-size: 16px;
       font-weight:bold;
-      color:rgba(51,51,51,1);
+      color:#fff;
       text-align: center;
         /*span{*/
             /*width:62px;*/

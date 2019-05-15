@@ -71,6 +71,11 @@ export default {
   },
   methods: {
     login() {
+      const accountPwdReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/
+      if (!accountPwdReg.test(this.account)) {
+        this.accountErr = "请输入6-16的密码";
+        return;
+      }
 
       if (this.pwd !== this.account) {
         this.accountErr = "您两次输入的密码不同，请重新输入";
@@ -100,6 +105,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+#app>div{
+  background-color: $c-cheng;
+}
 .mu-input {
   width: 95%;
   margin: auto;
@@ -111,23 +119,26 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 79px !important;
+  padding-top: 79px;
 }
 .iconbiyan {
   margin-right: 8px;
   font-size: 20px;
 }
 .login.login-btn {
-  background: linear-gradient(to right, #e99317, #fbb830) !important;
+  background: $c-bai !important;
   margin-top: 85px;
   width: 80%;
-  color: $c-bai ;
+  color: $c-cheng ;
 }
 .login {
   margin-top: 85px;
   width: 80%;
-  color: rgba(0,0,0,.3);
+  color: $c-cheng;
   cursor: not-allowed;
-  background-color: #e6e6e6
+  background-color: #fff
+}
+.mu-input[data-v-16293040]{
+  color: #fff;
 }
 </style>

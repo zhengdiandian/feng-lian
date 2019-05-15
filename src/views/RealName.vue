@@ -1,7 +1,15 @@
 <template>
   <div>
     <header>
-      <PageHeader :title="title"></PageHeader>
+      <!-- <PageHeader :title="title"></PageHeader> -->
+      <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+      <mu-button icon slot="left" @click="$router.go(-1)">
+      <mu-icon value=":iconfont iconfanhui"></mu-icon>
+      </mu-button>
+      实名认证
+      <mu-button icon slot="right"  :ripple="false">
+      </mu-button>
+    </mu-appbar>
     </header>
     <vue-picker
       :show="show"
