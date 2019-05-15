@@ -262,7 +262,7 @@
         justify-content: center;
         align-items: center;
         // margin-top: 79px !important;
-        padding-top: 79px;
+        padding-top: 40px;
         background-color: $c-cheng;
         .pwd-wrap{
             width: 80%;
@@ -277,26 +277,26 @@
     .login.login-btn {
         width: 200px;
         background: #fff !important;
-        margin-top: 85px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        // margin-top: 85px;
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
 
         /*width: 80%;*/
         color: $c-bai ;
     }
     .login {
         width: 300px;
-        margin-top: 85px;
+        margin-top: 50px;
         /*width: 80%;*/
         color: $c-cheng;
-        cursor: not-allowed;
+        // cursor: not-allowed;
         background-color: $c-bai;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
     }
     /*.login-btn{*/
         /*background: linear-gradient(to right, #e99317 , #fbb830) !important;*/

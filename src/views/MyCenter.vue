@@ -50,7 +50,7 @@
          <mu-icon value=":iconfont iconyou1"></mu-icon>
       </div>
       <div @click="invitation">
-      <div class="apply" >
+      <!-- <div class="apply" >
         <div class="img-wrap">
           <img src="../assets/爱心2.svg" alt="">
         </div>
@@ -59,7 +59,7 @@
           <span>立即申请</span>
           <mu-icon value=":iconfont iconyou"></mu-icon>
         </div>
-      </div>
+      </div> -->
       </div>
       <section class="please-list">
         <router-link tag="div" v-if="preinfo.type &&  preinfo.type!==100" to="/welfareagency">

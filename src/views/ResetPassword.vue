@@ -71,6 +71,11 @@ export default {
   },
   methods: {
     login() {
+      const accountPwdReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/
+      if (!accountPwdReg.test(this.account)) {
+        this.accountErr = "请输入6-16的密码";
+        return;
+      }
 
       if (this.pwd !== this.account) {
         this.accountErr = "您两次输入的密码不同，请重新输入";
