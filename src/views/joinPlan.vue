@@ -66,7 +66,7 @@
           <input :disabled="!showPoP" type="text" :value="userInfo.contacsIdNo" placeholder="请输入您的身份证号" >
         </div>
         <div class="warning">
-          <mu-icon v-show="!ShowID" value=":iconfont icontanhao" size="24"></mu-icon>  <span v-show="!ShowID" style="color: #FF0C0C">身份证信息不可修改, 请正确填写</span>
+          <!-- <mu-icon v-show="!ShowID" value=":iconfont icontanhao" size="24"></mu-icon>  <span v-show="!ShowID" style="color: #FF0C0C">身份证信息不可修改, 请正确填写</span> -->
         </div>
       </div>
       <!-- <mu-divider style="height:5px;"></mu-divider> -->

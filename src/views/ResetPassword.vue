@@ -100,6 +100,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+#app>div{
+  background-color: $c-cheng;
+}
 .mu-input {
   width: 95%;
   margin: auto;
@@ -111,23 +114,26 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 79px !important;
+  padding-top: 79px;
 }
 .iconbiyan {
   margin-right: 8px;
   font-size: 20px;
 }
 .login.login-btn {
-  background: linear-gradient(to right, #e99317, #fbb830) !important;
+  background: $c-bai !important;
   margin-top: 85px;
   width: 80%;
-  color: $c-bai ;
+  color: $c-cheng ;
 }
 .login {
   margin-top: 85px;
   width: 80%;
-  color: rgba(0,0,0,.3);
+  color: $c-cheng;
   cursor: not-allowed;
-  background-color: #e6e6e6
+  background-color: #fff
+}
+.mu-input[data-v-16293040]{
+  color: #fff;
 }
 </style>
