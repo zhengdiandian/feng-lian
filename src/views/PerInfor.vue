@@ -22,13 +22,13 @@
                 </section>
             </div>
                 <div class="detaInfo" style="height: 94px;">
-                <router-link tag="div" to="/report">
+                <div tag="div" @click="toReport" to="/report">
                     <section class="datalist" style="height: 50px;">
                         <div class="listtext"><span>体检报告</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
-                        <span style="position: absolute;right: 65px; font-size: 12px; font-family: SourceHanSansCN-Normal;">{{datalist.healthyState == 0 ? '未上传': '已上传'}}</span>
+                        <span style="position: absolute;right: 65px; font-size: 12px; font-family: SourceHanSansCN-Normal;">{{datalist.healthyState == 1 ? '以上传': '未上传'}}</span>
                     </section>
-                </router-link>
+                </div>
                 <div @click="toReal" to="/real">
                     <section class="datalist">
                         <div class="listtext"><span>实名认证</span></div>
@@ -66,8 +66,15 @@ export default {
     },
     computed: mapState(['userInfo']),
     methods: {
+        toReport() {
+          if(this.datalist.healthyState===1){
+            this.$toast.success('已经上传过了')
+            return
+          }
+          this.$router.push('/report')
+        },
         toReal() {
-          if(this.datalist.state==200){
+          if(this.datalist.state===200){
             this.$toast.success('已经认证过了')
             return
           }

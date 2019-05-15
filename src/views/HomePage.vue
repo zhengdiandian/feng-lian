@@ -107,7 +107,7 @@
             <div class="info">{{product.subtitle}}</div>
           </div>
           <div class="plan-right-content">
-            <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code,issueList:homeinfor.issueList}})">
+            <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code},query: {issueList:issueList}})">
               <span v-if="product.joinFlag == 0">加入</span>
               <span v-else>计划充值</span>
             </mu-button>
@@ -121,12 +121,12 @@
           <video
 
             id="video"
-            src="https://upos-hz-mirrorcosu.acgvideo.com/upgcxcode/15/36/64393615/64393615-1-6.mp4?e=ig8euxZM2rNcNbuBhwdVtWuBhwdVNEVEuCIv29hEn0l5QK==&deadline=1556439941&gen=playurl&nbs=1&oi=2015669759&os=cosu&platform=html5&trid=6bcb749044f44c5f9730204131d4ac6a&uipk=5&upsig=e9255c3cde85d784847601530e00803f&uparams=e,deadline,gen,nbs,oi,os,platform,trid,uipk"
+            :src="videoUrl"
             controls = "true"
             preload="auto"
             poster="../assets/PNG/视频.png"
             webkit-playsinline="true"
-            playsinline="true"
+            playsinline
             x-webkit-airplay="allow"
             x5-video-player-type="h5"
 
@@ -164,11 +164,11 @@
         <div class="help-btn-wrap">
           <a href="tel:10086" class="btn">
             <span class="iconfont iconlianxikefu"></span>
-            <span>联系客服</span> 
+            <span>联系客服</span>
           </a>
           <div class="btn" @click="$router.push('/UnderstandUs')">
             <span class="iconfont iconguanyu"></span>
-            <span>了解我们</span> 
+            <span>了解我们</span>
           </div>
         </div>
       </div>
@@ -214,7 +214,9 @@ export default {
       showPoP: false,
       videoImg: '',
       joinFlag: '',
-      qrcodeImg: ''
+      qrcodeImg: '',
+      issueList: [],
+      videoUrl: ''
     };
   },
   computed: mapState(['userInfo']),
@@ -248,6 +250,11 @@ export default {
       this.homeinfor = res.data.data
       this.operateItem = res.data.data.operateItem
       this.bannerlist = res.data.data.bannerList
+      this.videoUrl = res.data.data.video
+      debugger
+
+      // this.issueList = this.homeinfor.issueList
+      this.$store.commit('set_issueList',this.homeinfor.issueList)
       // console.log(res)
     }),
       this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
@@ -323,6 +330,8 @@ export default {
 
 }
   .videobox{
+    /*display: none;*/
+    z-index: -1;
     /*overflow: hidden;*/
     &:before{
       content: '';

@@ -54,38 +54,39 @@
             ></mu-icon>
           </mu-list-item-action>
         </mu-list-item>
-        <template v-if="open == 'list1'">
+        <template>
           <mu-list
 
-            v-for="( { prefix, prefixData }, i) in oneList.list"
+            v-for="( prefix, i) in oneList.list"
             :key="i"
             class="user-list"
             textline="two-line"
             :nested-indent="false"
           >
-            <mu-sub-header class="list-title">{{prefix}}</mu-sub-header>
+            <!--<mu-sub-header class="list-title">{{prefix}}</mu-sub-header>-->
 
             <mu-list-item
               class="title"
               button
               :ripple="false"
               nested
-              :open="open === 'send'"
+              :open="open === 'send1'"
               nested-list-class="user-item"
-              @toggle-nested="open = arguments[0] ? 'send' : ''"
+              @toggle-nested="open = arguments[0] ? 'send1' : ''"
             >
-              <mu-list-item tag="div" avatar :ripple="false" v-for="({contacs,headPortrait, nickname},i) in prefixData" :key="i">
-                <mu-list-item-action>
-                  <mu-avatar size="33">
-                    <img :src="headPortrait" />
-                  </mu-avatar>
+              <mu-list-item tag="li" avatar :ripple="false" >
+                <mu-avatar size="33">
+                  <img :src="prefix.headPortrait" />
+                </mu-avatar>
+                <mu-list-item-action style="margin-left: 10px;">
+                  <mu-list-item-content>
+                    <mu-list-item-title style="color:rgba(51, 51, 51, 1)" >{{prefix.nickname}}</mu-list-item-title>
+                    <mu-list-item-sub-title>
+                      <span style="color:rgba(112,112,112,1)">{{prefix.contacs}}</span>
+                    </mu-list-item-sub-title>
+                  </mu-list-item-content>
                 </mu-list-item-action>
-                <mu-list-item-content>
-                  <mu-list-item-title style="color:rgba(51, 51, 51, 1)" >nickname</mu-list-item-title>
-                  <mu-list-item-sub-title>
-                    <span style="color:rgba(112,112,112,1)">contacs</span>
-                  </mu-list-item-sub-title>
-                </mu-list-item-content>
+
               </mu-list-item>
             </mu-list-item>
           </mu-list>
@@ -103,7 +104,7 @@
           button
           :ripple="false"
           nested
-          :open="open === 'list2'"
+          :open="open1 === 'list2'"
           nested-list-class="user-item"
           @toggle-nested="open = arguments[0] ? 'list2' : ''"
         >
@@ -119,38 +120,39 @@
             ></mu-icon>
           </mu-list-item-action>
         </mu-list-item>
-        <template v-if="open == 'list2'">
+        <template >
           <mu-list
 
-            v-for="( { prefix, prefixData }, i) in towList.list"
+            v-for="(prefix, i) in towList.list"
             :key="i"
             class="user-list"
             textline="two-line"
             :nested-indent="false"
           >
-            <mu-sub-header class="list-title">{{prefix}}</mu-sub-header>
+            <!--<mu-sub-header class="list-title">{{prefix}}</mu-sub-header>-->
 
             <mu-list-item
               class="title"
               button
               :ripple="false"
               nested
-              :open="open === 'send'"
+              :open="open === 'send2'"
               nested-list-class="user-item"
-              @toggle-nested="open = arguments[0] ? 'send' : ''"
+              @toggle-nested="open = arguments[0] ? 'send2' : ''"
             >
-              <mu-list-item tag="div" avatar :ripple="false" v-for="({contacs,headPortrait, nickname}, i) in prefixData" :key="i">
-                <mu-list-item-action>
-                  <mu-avatar size="33">
-                    <img :src="headPortrait" />
-                  </mu-avatar>
+              <mu-list-item tag="div" avatar :ripple="false" >
+                <mu-avatar size="33">
+                  <img :src="prefix.headPortrait" />
+                </mu-avatar>
+                <mu-list-item-action style="margin-left: 10px">
+                  <mu-list-item-content>
+                    <mu-list-item-title style="color:rgba(51, 51, 51, 1)" >{{prefix.nickname}}</mu-list-item-title>
+                    <mu-list-item-sub-title>
+                      <span style="color:rgba(112,112,112,1)">{{prefix.contacs}}</span>
+                    </mu-list-item-sub-title>
+                  </mu-list-item-content>
                 </mu-list-item-action>
-                <mu-list-item-content>
-                  <mu-list-item-title style="color:rgba(51, 51, 51, 1)" >nickname</mu-list-item-title>
-                  <mu-list-item-sub-title>
-                    <span style="color:rgba(112,112,112,1)">contacs</span>
-                  </mu-list-item-sub-title>
-                </mu-list-item-content>
+
               </mu-list-item>
             </mu-list-item>
           </mu-list>
@@ -188,8 +190,9 @@ export default {
       type: 0
     }).then(res =>{
       // console.log(res)
+      debugger
       this.oneList = res.data.data
-      this.amount +=res.data.data.list.length
+      this.amount +=res.data.data.count
 
     })
     this.$axios.post('/v1/user/share/shareList', {
@@ -197,7 +200,7 @@ export default {
     }).then(res =>{
       // console.log(res)
       this.towList = res.data.data
-      this.amount +=res.data.data.list.length
+      this.amount +=res.data.data.count
     })
     this.$axios.post('/v1/user/info/index').then(res=>{
       console.log(res)

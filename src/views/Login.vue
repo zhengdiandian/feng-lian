@@ -129,6 +129,9 @@ export default {
     },
   },
   methods: {
+    toRegister() {
+      window.location = 'http://test.wxapi.fenglianhz.com/h5/v1/user/login/weixinLogin?userCode=""'
+    },
     typeLogin(type) {
       var data ={
         account: this.account, //手机号码
