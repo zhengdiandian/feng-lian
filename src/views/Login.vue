@@ -19,8 +19,8 @@
           :error-text="accountErr"
         >
           <div slot="append">
-            <router-link tag="div" to="/register" style="color: #347fe8;"
-              >立即注册</router-link
+            <div @click="toRegister"  style="color: #347fe8;"
+              >立即注册</div
             >
           </div>
         </mu-text-field>
@@ -128,6 +128,9 @@ export default {
     },
   },
   methods: {
+    toRegister() {
+      window.location = 'http://test.wxapi.fenglianhz.com/h5/v1/user/login/weixinLogin?userCode=""'
+    },
     typeLogin(type) {
       var data ={
         account: this.account, //手机号码

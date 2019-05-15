@@ -1,58 +1,61 @@
 <template>
-    <div>
-      <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
-        <mu-button icon slot="left" @click="$router.go(-1)">
-          <mu-icon value=":iconfont iconfanhui"></mu-icon>
-        </mu-button>
-        我的申请
-        <mu-button icon slot="right"  :ripple="false">
-        </mu-button>
-      </mu-appbar>
+    <keep-alive>
+      <div>
+        <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+          <mu-button icon slot="left" @click="$router.go(-1)">
+            <mu-icon value=":iconfont iconfanhui"></mu-icon>
+          </mu-button>
+          我的申请
+          <mu-button icon slot="right"  :ripple="false">
+          </mu-button>
+        </mu-appbar>
         <main>
-            <div style="margin: auto;width:92%;">
-                <span class="font">我的购买计划</span>
-                <div  style="margin-top: 8px;">
-                  <section class="card">
-                    <card
-                    :open="() => {$router.push('/palnned')}"
-                    :date="': 2019.01.02'"
-                    :waitingperiod="waitingperiod"
-                    :waiting="waiting"
-                    >
+          <div style="margin: auto;width:92%;">
+            <span class="font">我的购买计划</span>
+            <div  style="margin-top: 8px;">
+              <section class="card">
+                <card
+                        :open="() => {$router.push('/palnned')}"
+                        :date="': 2019.01.02'"
+                        :waitingperiod="waitingperiod"
+                        :waiting="waiting"
+                >
 
-                    <template v-slot:lable>
-                        <div class="slot-lable">
-                            <img src="../assets/img/审核中.svg" alt="">
-                        </div>
-                    </template>
-                    <template v-slot:FilingDate>
-                        <div class="dates"><span>申请日：</span>2019.01.01</div>
-                    </template>
-                    </card>
-                    </section>
-                    <card
-                    :open="() => {$router.push('/palnned')}"
-                    :date="': 2019.01.02'"
-                    :waitingperiod="waitingperiod"
-                    :waiting="waiting"
-                    >
+                  <template v-slot:lable>
+                    <div class="slot-lable">
+                      <img src="../assets/img/审核中.svg" alt="">
+                    </div>
+                  </template>
+                  <template v-slot:FilingDate>
+                    <div class="dates"><span>申请日：</span>2019.01.01</div>
+                  </template>
+                </card>
+              </section>
+              <card
+                      :open="() => {$router.push('/palnned')}"
+                      :date="': 2019.01.02'"
+                      :waitingperiod="waitingperiod"
+                      :waiting="waiting"
+              >
 
-                    <template v-slot:lable>
-                        <div class="slot-lable">
-                            <img src="../assets/img/驳回.svg" alt="">
-                        </div>
-                    </template>
-                    <template v-slot:FilingDate>
-                        <div class="dates"><span>申请日：</span>2019.01.01</div>
-                    </template>
-                    <!-- <template v-slot:AuditPass>
-                      <div class="slot-AuditPass"><img src="../assets/img/审核通过.svg" alt=""></div>
-                    </template> -->
-                    </card>
-                </div>
+                <template v-slot:lable>
+                  <div class="slot-lable">
+                    <img src="../assets/img/驳回.svg" alt="">
+                  </div>
+                </template>
+                <template v-slot:FilingDate>
+                  <div class="dates"><span>申请日：</span>2019.01.01</div>
+                </template>
+                <!-- <template v-slot:AuditPass>
+                  <div class="slot-AuditPass"><img src="../assets/img/审核通过.svg" alt=""></div>
+                </template> -->
+              </card>
             </div>
+          </div>
         </main>
-    </div>
+      </div>
+    </keep-alive>
+
 </template>
 <script>
 import card from '../components/Card/Card'

@@ -9,7 +9,8 @@ try {
    state =  {
     authToken: window.localStorage.getItem('token') || '',
     userInfo: JSONParse(window.localStorage.getItem('userInfo')) || {},
-    MutualRule: JSONParse(window.localStorage.getItem('MutualRule')) || {}
+    MutualRule: JSONParse(window.localStorage.getItem('MutualRule')) || {},
+    issueList: []
   }
 } catch (error) {
   window.localStorage.clear()
@@ -35,6 +36,11 @@ export default new Vuex.Store({
       debugger
       state.MutualRule = data
       window.localStorage.setItem('MutualRule', JSON.stringify(data))
+    }),
+    set_issueList: ((state, data)=>{
+      debugger
+      state.issueList = data
+      // window.localStorage.setItem('MutualRule', JSON.stringify(data))
     })
   },
   actions: {

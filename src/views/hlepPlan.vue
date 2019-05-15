@@ -113,7 +113,7 @@
         </div>
 
         <mu-list  class="list" toggle-nested="">
-          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="(item,i) in $route.params.issueList" :key="i">
+          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="(item,i) in issueList" :key="i">
             <mu-list-item-title style="font-size: 14px;">{{i+1}}、{{item.title}} </mu-list-item-title>
             <mu-list-item-action>
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
@@ -149,7 +149,7 @@
     },
     // props: ['productCode'],
     computed: {
-      ...mapState(['userInfo']),
+      ...mapState(['userInfo', 'issueList']),
 
     },
     data() {
@@ -182,7 +182,7 @@
           //   text: '满足条件拨款秒结'
           // }
         ],
-        show: false
+        show: false,
       }
     },
     methods: {
@@ -213,6 +213,8 @@
       open(){
 
       }
+    },
+    created() {
     },
     mounted() {
       this.showPoP()
@@ -303,6 +305,7 @@
   .wrap{
     padding: 5px;
     background: #fff;
+    padding-bottom: 50px;
   }
   .hot{
     display: inline-block;
@@ -420,6 +423,9 @@
   }
 
   .bottom-btn{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
     width: 100%;
     height: 50px;
     display: flex;
