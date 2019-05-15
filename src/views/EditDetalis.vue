@@ -40,7 +40,7 @@
 
             </section>
             <section class="details">
-                <div class="rule margin-left xin">
+                <div class="rule margin-left ">
                     <span>职业：</span><span ><input  type="text" v-model="job"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
@@ -48,15 +48,14 @@
                     <span>学校/公司：</span><input type="text" v-model="working_place">
                     <!-- <mu-divider></mu-divider> -->
                 </div>
-                <div class="rule margin-left xin">
+                <div class="rule margin-left ">
                     <span>收货地址：</span><span><input  type="text" v-model="address"></span>
                 </div>
                     <!-- <mu-divider></mu-divider> -->
 
-                <div class="rule margin-left">
+                <!-- <div class="rule margin-left">
                     <span>故乡：</span><span><input type="text" v-model="province"></span>
-                    <!-- <mu-divider></mu-divider> -->
-                </div>
+                </div> -->
                 <div class="rule margin-left">
                     <span>邮箱：</span><span><input type="text" v-model="email"></span>
                     <!-- <mu-divider></mu-divider> -->
@@ -112,21 +111,21 @@ export default {
     methods:{
         editdeta() {
           debugger
-          if(!this.address || !this.job){
-            this.$toast.error('请填写完整信息')
-          }
-            // console.log(this.options[length])
-            var ePattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-            if (!ePattern.test(this.email)) {
-                this.$toast.error('邮箱错误')
-                return
-            }
-            if(this.job == ''){
-                this.$toast.error('请填写职业')
-            }
-            if (this.address == '') {
-                this.$toast.error('请填写所在地')
-            }
+        //   if(!this.address || !this.job){
+        //     this.$toast.error('请填写完整信息')
+        //   }
+        //     // console.log(this.options[length])
+        //     var ePattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        //     if (!ePattern.test(this.email)) {
+        //         this.$toast.error('邮箱错误')
+        //         return
+        //     }
+        //     if(this.job == ''){
+        //         this.$toast.error('请填写职业')
+        //     }
+        //     if (this.address == '') {
+        //         this.$toast.error('请填写所在地')
+        //     }
             debugger
             this.$axios.post('/v1/user/info/updateInfo',{
             "nickname":this.nickname,
@@ -174,7 +173,6 @@ export default {
   }
   .xin{
     position: relative;
-
   }
 main{
     margin-top: 60px;
