@@ -240,10 +240,13 @@ export default {
   created() {
     if(this.$route.query.authToken){
       localStorage.setItem('token', this.$route.query.authToken)
-      this.showQrcode = true
       this.$axios.post('v1/user/info/personalInfo').then(res => {
         this.$store.commit('set_userInfo',res.data.data)
       })
+    } else {
+      if(sessionStorage.getItem('qrpop'))return
+      this.showQrcode = true
+      sessionStorage.setItem('qrpop','true')
     }
     this.$axios.post('/v1/manage/post/index').then((res)=>{
       console.log('home',res)
@@ -258,7 +261,6 @@ export default {
       // console.log(res)
     }),
       this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
-        // debugger
         this.products = res.data.data
         // this.joinFlag = this.product.joinFlag
         console.log(this.product)

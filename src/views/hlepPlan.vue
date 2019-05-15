@@ -23,7 +23,7 @@
         </div>
         <div style="position: absolute;width: 100%;bottom: 0;">
           <button @click="$router.push('/home')">不，谢谢</button>
-          <button class="btn-join" @click="$router.push('/real')">现在认证</button>
+          <button class="btn-join" @click="$router.push({name:'real',query:{fullPath: $route.fullPath}})">现在认证</button>
         </div>
       </div>
     </pop-box>

@@ -236,7 +236,8 @@ export default {
           contacsFrontImg: this.file2,
           contacsIdNo: this.Util.encrypt(this.id),
           province: this.provinceValue,
-          city: this.cityValue
+          city: this.cityValue,
+          fullPath: this.$route.query.fullPath
         })
         .then(res => {
           if(res.data.code!==200){

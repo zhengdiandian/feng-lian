@@ -2,7 +2,7 @@
     <div>
         <header>
             <PerInforHeader :imgUrl="datalist.headPortrait"></PerInforHeader>
-            <router-link v-if="userInfo.type!==100" tag="div" to="/code"><mu-icon value=":iconfont iconerweima"></mu-icon></router-link>
+            <router-link v-if="userInfo.type>=200" tag="div" to="/code"><mu-icon value=":iconfont iconerweima"></mu-icon></router-link>
         </header>
         <main>
            <div class="detaInfo">
@@ -78,7 +78,7 @@ export default {
             this.$toast.success('已经认证过了')
             return
           }
-          this.$router.push('/real')
+          this.$router.push({name: 'real',query:{fullPath: this.$route.fullPath}})
         },
         getlist() {
             this.$axios.post('/v1/user/info/personalInfo').then( (res) => {

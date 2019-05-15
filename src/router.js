@@ -134,6 +134,7 @@ export default new Router({
     },
     {
       path: '/real', // 实名认证
+      name: 'real',
       component: function () {
         return import('./views/RealName.vue')
       }

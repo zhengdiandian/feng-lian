@@ -150,10 +150,14 @@
             this.$toast.error(res.data.msg)
             return
           }
+          debugger
           // this.token = res.data.data.authToken
           console.log(res)
           this.$store.commit("set_authToken", res.data.authToken);
-          this.$router.replace('/home')
+          setTimeout(() => {
+            this.$router.replace('/home')
+
+          }, 1000)
 
 
         })

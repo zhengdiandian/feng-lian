@@ -34,6 +34,7 @@
       <div class="text-info"><span>身份证号:</span><span>{{panned.contacsIdNo}}</span></div>
       <div class="text-info"><span>购买日:</span><span>{{panned.joinDate}}</span></div>
       <div class="text-info"><span>支付方式:</span><span>{{panned.payType}}</span></div>
+      <div class="text-info"><span>上链信息</span><span>{{panned.payType}}</span></div>
     </div>
     <div class="help-list">
       <mu-list  class="list" toggle-nested="">

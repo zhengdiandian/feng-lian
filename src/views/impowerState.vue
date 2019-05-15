@@ -1,12 +1,12 @@
 <template>
     <div>
       <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
-        <mu-button icon slot="left" @click="$router.push('/home')">
+        <mu-button icon slot="left" @click="close">
           <mu-icon value=":iconfont iconfanhui"></mu-icon>
         </mu-button>
         授权确认
         <!-- icon slot="right" :ripple="false"> -->
-          <mu-button icon slot="right" @click="$router.push('/home')">
+          <mu-button icon slot="right" @click="$router.push($route.query.fullPath)">
           <span >关闭</span>
 
         </mu-button>
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { decode } from 'punycode';
   export default {
     name: 'impowerState',
     data() {
@@ -34,6 +33,12 @@ import { decode } from 'punycode';
         state: '',
         text: ''
 
+      }
+    },
+    methods: {
+      close() {
+        let path = decodeURI($route.query.fullPath)
+        this.$route.push(path)
       }
     },
     created() {
