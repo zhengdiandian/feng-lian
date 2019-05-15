@@ -4,7 +4,7 @@
       <mu-button icon slot="left" @click="$router.push('/home')" >
         <mu-icon value=":iconfont iconfanhui" size="24" @click.stop="$router.go(-1)"></mu-icon>
       </mu-button>
-      生成计划
+      我的互助计划详情
       <mu-button icon slot="right" :ripple="false">
       </mu-button>
     </mu-appbar>
@@ -17,8 +17,8 @@
           <div class="balance">{{panned.balance}}</div>
           <div class="balance-warning">余额充足</div>
           <div class="btn-wrap">
-            <div class="btn" @click="$router.push('/recharge')">计划充值</div>
-            <div class="btn" @click="$router.push('/owe')">感恩有你</div>
+            <!--<div class="btn" @click="$router.push('/recharge')">计划充值</div>-->
+            <!--<div class="btn" @click="$router.push('/owe')">感恩有你</div>-->
           </div>
         </div>
       </div>
