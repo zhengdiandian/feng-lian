@@ -29,11 +29,11 @@
                     </div>
                 </div>
                 <div class="three" style="position: relative;">
-                    <img style="border-radius: 50%; border: 5px solid #F8A771;" :src="rank[3].img" alt="">
+                    <img style="border-radius: 50%; border: 5px solid #F8A771;" :src="rank[2].img" alt="">
                     <div class="an-crown-2"><img  src="../assets/PNG/皇冠2.png" alt=""></div>
                     <div class="list-name-number" style="left: 8px;">
-                        <span style="font-size:14px; font-weight:bold; ">{{rank[3].nickname}}</span>
-                        <span style="font-size:14px; font-weight:bold;">{{rank[3].score}}分</span>
+                        <span style="font-size:14px; font-weight:bold; ">{{rank[2].nickname}}</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[2].score}}分</span>
                     </div>
                 </div>
             </div>

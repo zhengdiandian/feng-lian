@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <div class="banner">
-      <img src="../assets/PNG/750_329.png" alt="" />
+      <img src="../assets/PNG/ea16e45ceb3bde8f1b1c2557d850794.png" alt="" />
     </div>
     <div class="content-wrap">
       <div class="input-wrap">

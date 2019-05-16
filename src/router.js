@@ -299,6 +299,9 @@ export default new Router({
       name: 'rankinglist',
       component: function () {
         return import('./views/RankingList.vue')
+      },
+      meta: {
+        mustAuth: true
       }
     },
     {
@@ -313,6 +316,9 @@ export default new Router({
       name: 'CurrentScale',
       component: function () {
         return import('./views/CurrentScale')
+      },
+      meta: {
+        mustAuth: true
       }
     },
     {

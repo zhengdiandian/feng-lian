@@ -129,7 +129,7 @@
         }
         const pwd1Reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/
         if (!pwd1Reg.test(this.pwd1)) {
-          this.err2 = '请输入6-16的密码'
+          this.err2 = '请输入字母加数字组合6-16的密码'
           return
         }
         const pwdReg = /^\d*\.?\d+$/;
@@ -159,7 +159,7 @@
           debugger
           // this.token = res.data.data.authToken
           console.log(res)
-          this.$store.commit("set_authToken", res.data.authToken);
+          this.$store.commit("set_authToken", res.data.data.authToken);
           setTimeout(() => {
             this.$router.replace('/home')
 
@@ -254,10 +254,10 @@
 #app>div{
   background-color: $c-cheng;
 }
-.mu-appbar[data-v-f459da8e]{
+.mu-appbar{
   background-color: $c-cheng;
 }
-.mu-input[data-v-f459da8e]{
+.mu-input{
   color: #fff !important;
 }
     main {

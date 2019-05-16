@@ -85,7 +85,7 @@ export default {
             this.$router.go(-1)
         },
         open() {
-            this.show = true
+          this.$toast.warning('金额需要大于100元才可提现')
         },
         out() {
             this.$router.go(-1)
@@ -93,6 +93,7 @@ export default {
     },
     mounted() {
         this.$axios.post('v1/finance/profit/profitList').then(res=>{
+            debugger
             this.reward = res.data.data
             this.listDate = res.data.data.list
             this.lastMonth = res.data.data.list.lastMonth.profitList

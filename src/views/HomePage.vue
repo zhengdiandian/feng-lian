@@ -109,7 +109,7 @@
           <div class="plan-right-content">
             <mu-button  class="btn" color="success" @click="$router.push({name: 'hlepPlan', params: {productCode: product.code},query: {issueList:issueList}})">
               <span v-if="product.joinFlag == 0">加入</span>
-              <span v-else>计划充值</span>
+              <span v-else>再次加入</span>
             </mu-button>
           </div>
         </div>
@@ -257,6 +257,7 @@ export default {
       // console.log(res)
     }),
       this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
+        debugger
         this.products = res.data.data
         // this.joinFlag = this.product.joinFlag
         // console.log(this.product)
