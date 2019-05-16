@@ -14,15 +14,15 @@
         <main v-if="cardList.length>0">
 
             <div class="BankCard">
-                <section class="bank">
+                <section class="bank" v-for="(bank,i) in cardList" :key="">
                     <div class="bankImg">
-                        <img src="" alt="">
+                        <img :src="bank.img" alt="">
                     </div>
                     <section class="bankText">
                         <div>
-                            <div>中国银行</div>
+                            <div>{{bank.bankName}}</div>
                             <span style="font-size:12px;">储蓄卡</span>
-                            <div>1234 **** **** 1231</div>
+                            <div>{{bank.cardNo}}</div>
                         </div>
                     </section>
                 </section>
