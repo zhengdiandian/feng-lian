@@ -18,8 +18,8 @@
 
         <div>
             <div class="Month">
-                <div  class="font-11"style="font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-top: 5px;">{{listDate.thisMonth.date}}</div>
-                <div  class="font-11"style="font-weight:600;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-bottom: 5px;">共获得￥{{listDate.thisMonth.totalAmount}}</div>
+                <div  class="font-11" style="font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-top: 5px;">{{listDate.thisMonth.date}}</div>
+                <div  class="font-11" style="font-weight:600;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-bottom: 5px;">共获得￥{{listDate.thisMonth.totalAmount}}</div>
             </div>
             <div class="reward-money" v-for="(item,index) in listDate.thisMonth.profitList" :key="index">
                 <div class="headimg"><img :src="item.icon" alt=""></div>
