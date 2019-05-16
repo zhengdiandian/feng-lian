@@ -185,7 +185,7 @@ export default new Router({
       }
     },
     {
-      path: '/RewardPresentation', // 我的奖励
+      path: '/RewardPresentation', // 奖励提现
       component: function () {
         return import('./views/RewardPresentation.vue')
       }

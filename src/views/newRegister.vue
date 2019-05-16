@@ -15,7 +15,7 @@
                 </mu-text-field>
             </div>
             <div class="pwd-wrap">
-                <mu-text-field v-model="pwd" label="请输入验证码" label-float  icon=":iconfont iconmima" :error-text="pwdErr">
+                <mu-text-field v-model="pwd" label="请输入验证码" label-float  icon=":iconfont iconyanzhengma" :error-text="pwdErr">
                     <div  slot="append">
 
                         <div v-show="show" style="color: #fff;" @click="getCode">获取验证码</div>
@@ -39,8 +39,8 @@
             </div>
             <div class="pwd-wrap">
                 <mu-text-field v-model="pwd2" label="请设置6-16位数字+字母的密码" label-float  icon=":iconfont iconmima"
-                               :action-icon="visibility1 ? 'visibility_off' : 'visibility'" :action-click="() => (visibility1 = !visibility1)" :type="visibility1 ? 'text' : 'password'"
-                               :error-text="err2"
+                          :action-icon="visibility1 ? 'visibility_off' : 'visibility'" :action-click="() => (visibility1 = !visibility1)" :type="visibility1 ? 'text' : 'password'"
+                          :error-text="err2"
                 >
                 </mu-text-field>
             </div>

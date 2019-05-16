@@ -29,7 +29,7 @@
       >
         <div slot="append">
           <!--<div style="color: #347fe8"  @click="sendMsg">{{count}}</div>-->
-          <div v-show="show1" style="color: #347fe8;" @click="sendMsg">
+          <div v-show="show1" style="color: #fff;" @click="sendMsg">
             获取验证码
           </div>
           <span v-show="!show1" class="count">{{ count }}s </span>
@@ -183,7 +183,7 @@ main {
   // color: $c-bai ;
 }
 .mu-input[data-v-2e7c8062]{
-  color: #fff;
+  color: #fff !important;
 }
 .login {
   margin-top: 85px;
