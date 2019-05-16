@@ -78,7 +78,7 @@ export default {
             this.$router.go(-1)
         },
         open() {
-            this.show = true
+          this.$toast.warning('金额需要大于100元才可提现')
         },
         out() {
             this.$router.go(-1)

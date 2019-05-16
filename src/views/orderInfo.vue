@@ -104,6 +104,10 @@ export default {
         )
         .then(res => {
           debugger
+          if(res.data.code!==200){
+            this.$toast.error(res.data.msg)
+            return
+          }
           if (res.data.data.type === 1) {
             debugger;
             window.location = res.data.data.payUrl;
