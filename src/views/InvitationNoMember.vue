@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- <div style="width:100%"><img src="../assets/PNG/百万计划banner.png" alt=""></div> -->
-        <div class="img"><img src="../assets/PNG/百万计划banner.png" alt=""></div>
+        <div class="img"><img src="../assets/PNG/ea16e45ceb3bde8f1b1c2557d850794.png" alt=""></div>
         <main>
             <div class="info-content">
                 <div class="title">感恩蜂链，互助享爱</div>
