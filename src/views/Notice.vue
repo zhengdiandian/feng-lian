@@ -10,7 +10,7 @@
           <div style=" color:#707070">我们正在努力建设美好的家园</div>
           <!-- <div>敬请期待！</div> -->
         </div>
-        <div style="color:#707070">敬请期待</div>
+        <div style="color:#707070">敬请期待!</div>
       </div>
     </PopBox>
 
