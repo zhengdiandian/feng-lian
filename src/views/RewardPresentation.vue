@@ -33,7 +33,7 @@
                 <section class="tation-and">
                     <div class="tationAmount">提现金额</div>
                     <div class="tation-and-input">
-                        <div>￥</div><input type="text" name="" id="" v-model="Amount">
+                        <div>￥</div><input type="number" name="" id="" v-model="Amount">
                     </div>
                 </section>
                 <section class="tation-down">
@@ -49,16 +49,27 @@
             </div>
         </main>
         <div style="margin-left: 12px; margin-top: 12px;color:#707070;font-size:12px">提现手续费为5元一笔，最低提现额为100元</div>
-        <div class="show" v-if="show">
-        <div class="show-main">
-            <div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>您还没有绑定银行卡</span></div>
-            <mu-divider></mu-divider>
-            <div class="show-btn">
-                
-                <input style="color: #4999f5" type="button" value="返回检查" @click="$router.go(-1)">
+        <div class="show" v-if="show_bind_card">
+            <div class="show-main">
+                <div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>您还没有绑定银行卡</span></div>
+                <mu-divider></mu-divider>
+                <div class="show-btn">
+                    
+                    <input style="color: #4999f5" type="button" value="返回检查" @click="$router.go(-1)">
+                </div>
             </div>
         </div>
-    </div>
+
+        <div class="show" v-if="show_success">
+            <div class="show-main">
+                <div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>你的提现申请已提交<br>请等待客服审核</span></div>
+                <mu-divider></mu-divider>
+                <div class="show-btn">
+                    
+                    <input style="color: #4999f5" type="button" value="好的" @click="$router.go(-1)">
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -72,14 +83,15 @@
                 msg: '',
                 withdrawBalance: '',
                 Bank: {},
-                show: false
+                show_bind_card: false,
+                show_success: false,
             }
         },
         methods: {
             whole() {
                 if (this.withdrawBalance < this.Amount) {
-                    this.msg = '提现金额小于可提现金额'
-                    return
+                    this.msg = '输入金额小于可提现金额';
+                    return;
                 }
                 this.$axios.post('/v1/finance/account/withdraw',{
                 'amount': this.Amount,
@@ -88,6 +100,8 @@
                 console.log(res)
                 if (res.data.code == 900) {
                     this.msg = res.data.msg
+                }else if(res.data.code == 200){
+                    this.show_success = true;
                 }
             })
             },
@@ -101,10 +115,10 @@
             })
             this.$axios.post('/v1/card/debitCard/getCardList').then(res=>{
                 if(res.data.data.length > 0){
-                    this.show = false;
+                    this.show_bind_card = false;
                     this.Bank =  res.data.data[0];
                 }else{
-                    this.show = true;
+                    this.show_bind_card = true;
                 }
                 
             })
