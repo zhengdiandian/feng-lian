@@ -139,7 +139,7 @@ export default {
       ID:'',
       InvitationCode:'',
       sliderVal: '',
-      tongYi: false,
+      tongYi: true,
       activeStep: 0,
       ShowID: false,
       btnList: [
@@ -182,6 +182,9 @@ export default {
         //   this.ShowID = true
         //   return
         // }
+        if(!this.tongYi){
+          this.$toast.error('必须阅读并同意才可执行')
+        }
         debugger
         this.$axios.post('v1/mutually/plan/checkOrder',{
               "contacs": this.userInfo.contacs||'text',

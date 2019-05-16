@@ -20,10 +20,16 @@
 
       }
     },
-    created () {
+     created  () {
       const url = window.location.href.split('#')[0]
         //     const  url = '/'
       const  self = this
+      this.$axios.post('v1/manage/config/getImgList',{
+        keys: 'PublicQrcode,PublicAddress'
+      }).then(res => {
+        this.qrcodeImg = res.data.data.PublicQrcode
+        this.videoImg = res.data.data.PublicAddress
+      })
       this.$axios.post('/v1/user/share/getSharePara', {
           url: url
         }).then(res => {
