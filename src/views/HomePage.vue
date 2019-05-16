@@ -149,7 +149,7 @@
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
             <!--<mu-list-item  button :ripple="false" >-->
-              <p slot="nested">{{item.content}}</p>
+              <p slot="nested" v-html="item.content"></p>
             <!--</mu-list-item>-->
             <!-- <mu-list-item button :ripple="false" slot="nested">
               <mu-list-item-title>List Item 2</mu-list-item-title>

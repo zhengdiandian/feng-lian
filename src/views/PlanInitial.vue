@@ -63,7 +63,7 @@
       <div class="text-info"><span>身份证号:</span><span>{{panned.contacsIdNo}}</span></div>
       <div class="text-info"><span>购买日:</span><span>{{panned.joinDate}}</span></div>
       <div class="text-info"><span>支付方式:</span><span>{{panned.payType}}</span></div>
-      <div class="text-info"><span>上链信息</span><span>{{panned.payType}}</span></div>
+      <div class="text-info" style="display: flex"><span>上链信息</span><span style="flex: 2; overflow: hidden;text-overflow: ellipsis; white-space: nowrap">{{panned.eosLink}}</span> <span class="btn text-blue" :data-clipboard-text="panned.eosLink">点击复制</span></div>
     </div>
     <div class="help-list">
       <mu-list  class="list" toggle-nested="">
@@ -86,6 +86,8 @@
 
 <script>
   import PopBox from '../components/PopBox/PopBox'
+  import Clipboard from 'clipboard';
+
   export default {
     name: 'PlanInitial',
     data() {
@@ -108,6 +110,8 @@
       PopBox
     },
     mounted() {
+      const btnCopy = new Clipboard('.btn');
+
       this.$axios.post('/v1/mutually/plan/planDetail',{
         "planNo": this.$route.query.planNo
       }).then((res)=> {
@@ -115,6 +119,7 @@
           this.$toast.error(res.data.msg)
           return
         }
+        debugger
         this.panned = res.data.data
         this.$axios.post('v1/product/product/issue',{
           productCode: res.data.data.productCode
@@ -144,13 +149,25 @@
       },
       refundSuc() {
         this.showpop = false
-        this.$toast.success('退款成功');
+        this.$axios.post('v1/mutually/plan/refund',{
+          planNo: this.$route.query.planNo
+        }).then(res => {
+          if(res.data.code!==200){
+            this.$toast.error(res.data.msg)
+            return
+          }
+          this.$toast.success('退款成功');
+        })
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
+  .text-blue{
+    color: $c-lang;
+    padding-left: 6px;
+  }
   .g-bg{
     background-color: $c-hui;
   }
@@ -249,7 +266,8 @@
     background-color: #fff;
     /*margin-top: 12px;*/
     padding: 0 12px;
-    margin-bottom: 50px;
+    padding-bottom: 62px;
+
     & /deep/ .mu-list{
       padding-top: 0px;
     }
@@ -263,6 +281,9 @@
     }
   }
   .next-btn{
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
     margin-top: 14px;
     width:375px;
     height:50px;

@@ -37,7 +37,7 @@
     },
     methods: {
       close() {
-        let path = decodeURI($route.query.fullPath)
+        let path =decodeURI(decodeURI($route.query.fullPath))
         this.$route.push(path)
       }
     },
