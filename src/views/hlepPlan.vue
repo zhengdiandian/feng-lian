@@ -126,10 +126,6 @@
           </mu-list-item>
         </mu-list>
 
-        
-
-        
-
       </div>
     </div>
     <div class="bottom-btn" @click="joinInform">立即加入</div>

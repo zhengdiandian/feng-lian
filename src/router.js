@@ -158,6 +158,12 @@ export default new Router({
       }
     },
     {
+      path: '/CardBag', // 我的卡包
+      component: function () {
+        return import('./views/CardBag.vue')
+      }
+    },
+    {
       path: '/share', // 我的共享用户
       component: function () {
         return import('./views/ShareUser.vue')

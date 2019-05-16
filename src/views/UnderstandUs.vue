@@ -8,11 +8,11 @@
       <mu-button icon slot="right"  :ripple="false">
       </mu-button>
     </mu-appbar>
-    <div style="margin-top:60px;">
+    <div class="imgUS">
       <!-- <img :src="this.writingImg" alt=""> -->
-      <!-- <img :src="imgUs" alt="" srcset=""> -->
+      <img :src="imgUs" alt="" srcset="">
       <div class="wrap" style="margin-bottom:50px;">
-        <div v-html="US"></div>
+        <!-- <div v-html="US"></div> -->
         </div>
 
     </div>
@@ -29,22 +29,29 @@
             }
         },
         created()　{
-            this.$axios.post('v1/manage/config/getTextList',{
-                "keys": "AboutUs"
-            }).then(res=>{
-                this.US = res.data.data.AboutUs
-                console.log(res)
-            })
-            // this.$axios.post('v1/manage/config/getImgList',{
+            // this.$axios.post('v1/manage/config/getTextList',{
             //     "keys": "AboutUs"
             // }).then(res=>{
-            //     this.imgUs = res.data.data.AboutUs
+            //     this.US = res.data.data.AboutUs
             //     console.log(res)
             // })
+            this.$axios.post('v1/manage/config/getImgList',{
+                "keys": "AboutUs"
+            }).then(res=>{
+                this.imgUs = res.data.data.AboutUs
+                console.log(res)
+            })
         }
     }
 </script>
 
 <style lang="scss" scoped>
-
+.imgUS{
+    width: 100%;
+    height: 100%;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
 </style>
