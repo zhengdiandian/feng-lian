@@ -354,6 +354,20 @@ export default new Router({
       meta: {
         mustAuth: true
       }
+    },
+    {
+      path: '/addBank',  //添加银行卡
+      name: 'addBank',
+      component: function () {
+        return import('./views/bank/addBank')
+      }
+    },
+    {
+      path: '/bankIssue',
+      name: 'bankIssue',
+      component: function () {
+        return import('./views/bank/bankIssue')
+      }
     }
     // {
     //   path: '*',

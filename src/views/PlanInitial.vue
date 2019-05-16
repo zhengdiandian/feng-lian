@@ -62,7 +62,7 @@
       <div class="text-info"><span>互助会员:</span><span>{{panned.contacs}}</span></div>
       <div class="text-info"><span>身份证号:</span><span>{{panned.contacsIdNo}}</span></div>
       <div class="text-info"><span>购买日:</span><span>{{panned.joinDate}}</span></div>
-      <div class="text-info"><span>支付方式:</span><span>{{panned.payType}}</span></div>
+      <div class="text-info"><span>支付方式:</span><span>{{panned.payTypeDesc}}</span></div>
       <div class="text-info" style="display: flex"><span>上链信息</span><span style="flex: 2; overflow: hidden;text-overflow: ellipsis; white-space: nowrap">{{panned.eosLink}}</span> <span class="btn text-blue" :data-clipboard-text="panned.eosLink">点击复制</span></div>
     </div>
     <div class="help-list">

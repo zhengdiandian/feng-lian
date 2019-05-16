@@ -13,7 +13,7 @@
         <main class="page-margin-top">
             <div class="list-noe">
                 <div class="tow" style="position: relative;">
-                    <img style="z-index: 55;border-radius: 50%; border: 5px solid #C5D1E4;" :src="headImg3" alt="">
+                    <img style="z-index: 55;border-radius: 50%; border: 5px solid #C5D1E4;" :src="rank[0].img" alt="">
                     <span class="an-crown-3"><img src="../assets/PNG/皇冠3.png" alt=""></span>
                     <div class="list-name-number" style="left: 15px;">
                         <span style="font-size:14px; font-weight:bold;">{{rank[0].nickname}}</span>
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="noe" style="position: relative;">
-                    <img style="border-radius: 50%; border: 5px solid #FACF11;" :src="headImg1" alt="">
+                    <img style="border-radius: 50%; border: 5px solid #FACF11;" :src="rank[1].img" alt="">
                     <span class="an-crown"><img  src="../assets/PNG/皇冠1.png" alt=""></span>
                     <div class="list-name-number" >
                         <span style="font-size:14px; font-weight:bold;">{{rank[1].nickname}}</span>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="three" style="position: relative;">
-                    <img style="border-radius: 50%; border: 5px solid #F8A771;" :src="headImg2" alt="">
+                    <img style="border-radius: 50%; border: 5px solid #F8A771;" :src="rank[3].img" alt="">
                     <div class="an-crown-2"><img  src="../assets/PNG/皇冠2.png" alt=""></div>
                     <div class="list-name-number" style="left: 8px;">
                         <span style="font-size:14px; font-weight:bold; ">{{rank[3].nickname}}</span>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="headerNav">
-                <div class="headerLogin"><img src="../assets/PNG/积分头像.png" alt=""></div>
+                <div class="headerLogin"><img :src="userInfo.headPortrait" alt=""></div>
                     <section class="information">
                         <span class="name">姓名：{{Info.nickname}}</span><span class="state">已实名</span>
                         <div class="number"><span>{{Info.account}}</span></div>
@@ -62,6 +62,7 @@
 </template>
 <script>
 import pageHeader from '../components/PageHeader/PageHeader'
+import {mapState} from 'vuex'
 export default {
     name: 'RankingList',
     data() {
@@ -77,6 +78,7 @@ export default {
     components: {
         pageHeader
     },
+  computed: mapState(['userInfo']),
     mounted() {
         this.$axios.post('/v1/finance/account/scoreRank').then((res)=>{
           debugger
