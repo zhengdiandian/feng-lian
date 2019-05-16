@@ -186,6 +186,12 @@ export default new Router({
       }
     },
     {
+      path: '/WithdrawalsRecord', // 提现记录
+      component: function () {
+        return import('./views/WithdrawalsRecord.vue')
+      }
+    },
+    {
       path: '/RewardPresentation', // 奖励提现
       component: function () {
         return import('./views/RewardPresentation.vue')

@@ -4,6 +4,7 @@
         <nav>
             <mu-icon value=":iconfont iconfanhui" @click="openReturn"></mu-icon>
             <div class="title" style="font-size: 16px;">{{title}}</div>
+            <div class="record" @click="$router.push('/WithdrawalsRecord')">提现记录</div>
         </nav>
         <div class="reward">
             <span style="height:26px;font-size:36px;color:rgba(255,255,255,1);">{{reward.totalBalance}} <span style="font-size:12px">元</span> </span>
@@ -60,7 +61,7 @@
             <mu-divider></mu-divider>
             <div class="show-btn">
                 <input style="color: #707070" type="button" value="再等等" @click="show = false">
-                <input style="color: #4999f5" type="button" value="现在绑卡">
+                <input style="color: #4999f5" type="button" value="现在绑卡" @click="$router.push('/CardBag')">
             </div>
         </div>
     </div>
@@ -77,7 +78,7 @@ export default {
             listDate: {},
             lastMonth: {},
             thisMonth:{},
-            debitCardState: ''
+            debitCardState: '1'
         }
     },
     methods: {
@@ -85,7 +86,17 @@ export default {
             this.$router.go(-1)
         },
         open() {
-          this.$toast.warning('金额需要大于100元才可提现')
+            if (this.debitCardState == 0) {
+                this.show = true
+            }else {
+                if(this.reward.withdrawBalance > 0){
+                    this.$router.push('/RewardPresentation')
+                }else{
+                    this.$toast.warning('可提现余额不足')
+                }
+               
+            }
+        //   this.$toast.warning('金额需要大于100元才可提现')
         },
         out() {
             this.$router.go(-1)
@@ -101,7 +112,7 @@ export default {
             console.log(this.listDate)
         })
         this.$axios.post('v1/user/info/personalInfo').then(res=>{
-            console.log(res)
+            this.debitCardState = res.data.data.debitCardState
         })
     }
 }
@@ -109,6 +120,10 @@ export default {
 <style scoped lang="scss">
 #app>div{
   background-color: $c-hui;
+}
+.record{
+    position: absolute;
+    right: 12px;
 }
 header{
     // height: 155px;
