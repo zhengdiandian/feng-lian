@@ -54,7 +54,7 @@
         <div class="img-wrap">
           <img src="../assets/image/加入我们.svg" alt="">
         </div>
-        <span>预存48元加入</span>
+        <span>预存10元互助金即可加入互助计划</span>
         <div class="apply-click">
           <!-- <span>加入</span> -->
           <!-- <mu-icon value=":iconfont iconyou"></mu-icon> -->
@@ -106,8 +106,8 @@
         </mu-list>
 
         <div class="help-btn-wrap">
-          <a href="tel:10086" class="btn margin-bottom">
-            <span href="tel:10086" class="iconfont iconlianxikefu"></span>
+          <a href="tel:17812772562" class="btn margin-bottom">
+            <span href="tel:17812772561" class="iconfont iconlianxikefu"></span>
             联系客服
           </a>
         </div>

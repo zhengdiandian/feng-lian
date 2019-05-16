@@ -72,7 +72,7 @@
           </div>
         </router-link>
 
-          <div tag="div" @click="showPoP=true">
+          <div tag="div" @click="$router.push('/CardBag')">
           <div class="list-li">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
                <div style="width:22px;height:22px;"><img src="../assets/image/卡包.svg" alt=""></div>
