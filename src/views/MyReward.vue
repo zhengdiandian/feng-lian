@@ -6,9 +6,9 @@
             <div class="title" style="font-size: 16px;">{{title}}</div>
         </nav>
         <div class="reward">
-            <span style="height:26px;font-size:36px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1);">{{reward.withdrawBalance}}</span>
+            <span style="height:26px;font-size:36px;color:rgba(255,255,255,1);">{{reward.withdrawBalance}} <span style="font-size:12px">元</span> </span>
             <div style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 40px; padding-bottom: 20px;">
-                可提现金额{{reward.withdrawBalance}}元
+                可提现金额{{reward.totalBalance}}元
             </div>
         </div>
     </header>

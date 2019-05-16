@@ -14,9 +14,16 @@
     <main style="margin-top: 60px;">
         <section class="Myinteg">
             <div class="reward">
-                <span>当前积分</span>
-                <span style="font-size: 50px;">0</span>
-                <span style="font-size: 14px;">近7天获得奖励{{20}}元</span>
+                <div>
+                    <span v-if="scoreType = 0">我的蜂蜜</span>
+                    <span v-else>我的蜜分</span>
+                </div>
+                <div>
+                    <span style="font-size: 50px;">{{totalScore}}</span>
+                    <span v-if="scoreType = 0">滴</span>
+                    <span v-else>分</span>
+                </div>
+                <!-- <span style="font-size: 14px;">近7天获得奖励{{20}}元</span> -->
                 <button class="integBtn">去炫耀</button>
             </div>
             <button class="exchangeBtn">积分兑换</button>
@@ -93,8 +100,13 @@ export default {
     data() {
         return {
             title: '我的奖励',
-            name: 'yyy.zZ'
+            totalScore: this.$route.params.totalScore,
+            scoreType: this.$route.params.scoreType
         }
+    },
+    mounted() {
+        // console.log(this.$route.params.totalScore)
+        console.log(this.$route.params.scoreType)
     }
 }
 </script>
@@ -115,10 +127,10 @@ export default {
     justify-content: center;
     }
     .integBtn{
-        width: 80px;
+        width: 90px;
         outline: none;
         border: none;
-        background-color: red;
+        background-color: #FE6766;
         border-radius: 20px;
         color: white;
     }
