@@ -11,7 +11,7 @@
         </mu-appbar>
         </header>
         <main style="padding-top: 60px;">
-            <div class="iconkong">
+            <div class="iconkong" v-if=" record.length <= 0 || !record">
                 <img src="../assets/空页面.png" alt="">
                 <span>暂无数据</span>
             </div>
