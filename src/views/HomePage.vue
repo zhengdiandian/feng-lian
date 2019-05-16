@@ -124,7 +124,7 @@
             :src="videoUrl"
             controls = "true"
             preload="auto"
-            poster="../assets/PNG/视频.png"
+            :poster="videoImg"
             webkit-playsinline="true"
             playsinline
             x-webkit-airplay="allow"

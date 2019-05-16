@@ -87,7 +87,7 @@ export default {
 </script>
 <style scoped lang="scss">
   .page-margin-top{
-    margin-top: 56px;
+    // margin-top: 56px;
   }
 .profit{
     width:351px;
