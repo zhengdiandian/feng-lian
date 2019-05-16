@@ -7,10 +7,12 @@
       z-depth="0"
       
     >
-      <mu-button flat slot="right" @click="$router.push('/home')">跳过此步</mu-button>
-    </mu-appbar>
     <div class="login-title" v-if="codepwd">密码登陆</div>
     <div class="login-title" v-else>验证码登陆</div>
+      <mu-button icon slot="left" :ripple="false"></mu-button>
+      <mu-button flat slot="right" @click="$router.push('/home')">跳过此步</mu-button>
+    </mu-appbar>
+    
     <div class="content">
       <div class="img"></div>
       <div class="user-wrap">
@@ -329,9 +331,10 @@ export default {
 }
 .login-title{
   position: absolute;
-    top: 50px;
-    left: 40%;
+    top: -3px;
+    left: 42%;
     color: $c-bai;
-    font-size: 16px;
+    // font-size: 16px;
+    font-size: 12px;
 }
 </style>

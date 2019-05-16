@@ -46,6 +46,7 @@
                 </section>
             </div>
         </main>
+        <div style="margin-left: 12px; margin-top: 12px;color:#707070;font-size:12px">提现手续费为5元一笔，最低提现额为100元</div>
     </div>
 </template>
 
