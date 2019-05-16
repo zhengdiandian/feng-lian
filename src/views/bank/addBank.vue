@@ -18,12 +18,13 @@
       </div>
       <div class="input-wrap" @click="showAddress = true">
         <label>所属地区</label>
+        <span class="text">{{province}}{{city}}</span>
         <!--<input placeholder="" type="text">-->
         <!--<ul><li>dsfdsa</li></ul>-->
         <span class="iconfont iconxiangshangshouqi1 right"></span>
       </div>
       <div class="input-wrap" @click="showBank=true">
-        <label>所属银行</label>
+        <label>所属银行</label><span class="text">{{bankName}}</span>
         <!--<input placeholder="" type="text">-->
         <!--<ul><li>dsfdsa</li></ul>-->
         <span class="iconfont iconxiangshangshouqi1 right"></span>
@@ -81,7 +82,9 @@
         token: '',
         cardNo: '',
         smsCode: '',
-        bankName: ''
+        bankName: '',
+        province: '',
+        city: ''
 
       }
     },
@@ -90,8 +93,8 @@
         debugger
         this.showAddress = false;
 
-        this.province = val.select1.text.substring(0,val.select1.text.length -1)
-        this.city = val.select2.text.substring(0,val.select2.text.length -1 )
+        this.province = val.select1.text
+        this.city = val.select2.text
         this.provinceValue = val.select1.value
         this.cityValue = val.select2.value
         // this.defaultData = [val.select1];
@@ -107,17 +110,23 @@
         // this.defaultData = [val.select1];
       },
       addBank() {
+        debugger
         this.$axios.post('v1/card/debitCard/updateCard',{
-          iphone: this.account,
+          phone: this.account,
           token: this.token,
-          cardNo: this.cardNo,
-          smsCode: this.smsCode
+          cardNo: this.Util.encrypt(this.cardNo),
+          smsCode: this.smsCode,
+          cardProv: this.provinceValue,
+          cardCity: this.cityValue,
+          bankName: this.bankName
 
         }).then(res => {
           if(res.data.code!==200){
             this.$toast.error(res.data.msg)
             return
           }
+          this.$toast.success('绑定成功')
+          this.$router.push('/CardBag')
         })
       },
       getMsg() {
@@ -134,13 +143,14 @@
             this.$toast.error(res.data.msg)
             return
           }
-          this.token = res.data.data
+          debugger
+          this.token = res.data.data.token
         })
         this.flag = 60
         let timer = setInterval(() => {
           if(this.flag ===0){
+            this.flag = 0
             clearInterval(timer)
-            this.flag = 60
           }
           this.flag--
         }, 1000)
@@ -156,10 +166,10 @@
     line-height: 44px;
     float: right;
     font-size:13px;
-      
+
     font-weight:400;
     &.timer{
-      color: $c-hui;
+      color: $c-hui !important;
     }
   }
   ul,li{
@@ -180,6 +190,9 @@
     padding: 0px 12px;
     .input-wrap{
     //  display: flex;
+      span.text{
+        color: rgba(0, 0, 0, 0.87)!important;
+      }
       width: 100%;
       // flex-wrap: nowrap;
       // flex-direction: column;
@@ -207,7 +220,7 @@
         display: inline-block;
         min-width:77px;
         font-size:13px;
-          
+
         font-weight:400;
         /*padding-right: 11px;*/
       }

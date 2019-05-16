@@ -14,15 +14,15 @@
         <main v-if="cardList.length>0">
 
             <div class="BankCard">
-                <section class="bank">
+                <section class="bank" v-for="(bank,i) in cardList" :key="">
                     <div class="bankImg">
-                        <img src="" alt="">
+                        <img :src="bank.img" alt="">
                     </div>
                     <section class="bankText">
                         <div>
-                            <div>中国银行</div>
+                            <div>{{bank.bankName}}</div>
                             <span style="font-size:12px;">储蓄卡</span>
-                            <div>1234 **** **** 1231</div>
+                            <div>{{bank.cardNo}}</div>
                         </div>
                     </section>
                 </section>
@@ -54,14 +54,14 @@
 
     },
     created () {
-      // this.$axios.get('v1/card/debitCard/getCardList').then(res => {
-      //   if(res.data.code!==200){
-      //     this.$toast.error(res.data.msg)
-      //     return
-      //   }
-      //   debugger
-      //   this.cardList = res.data.data
-      // })
+      this.$axios.get('v1/card/debitCard/getCardList').then(res => {
+        if(res.data.code!==200){
+          this.$toast.error(res.data.msg)
+          return
+        }
+        debugger
+        this.cardList = res.data.data
+      })
     }
   }
 </script>
@@ -89,14 +89,14 @@
     text-align: center;
     text-align: center;
     font-size:14px;
-      
+
     color: $c-bai;
     background:$c-cheng;
     border-radius:17px;
     margin: 18px auto 0px;
   }
 main{
-    padding-top: 50px;
+    padding-top: 6px;
 }
 .BankCard{
     width:351px;

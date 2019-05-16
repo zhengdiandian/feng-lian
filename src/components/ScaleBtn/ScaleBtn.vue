@@ -20,15 +20,20 @@
 
       }
     },
+    data() {
+      return {
+        imgUrl: ''
+      }
+    },
      created  () {
       const url = window.location.href.split('#')[0]
         //     const  url = '/'
       const  self = this
       this.$axios.post('v1/manage/config/getImgList',{
-        keys: 'PublicQrcode,PublicAddress'
+        keys: 'Share_Material_icon'
       }).then(res => {
-        this.qrcodeImg = res.data.data.PublicQrcode
-        this.videoImg = res.data.data.PublicAddress
+        debugger
+        this.imgUrl = res.data.data.Share_Material_icon
       })
       this.$axios.post('/v1/user/share/getSharePara', {
           url: url
@@ -103,7 +108,7 @@
               title: title, // 分享标题
               desc: desc, // 分享描述
               link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: imgUrl // 分享图标
+              imgUrl: self.imgUrl || 'https://bee-formal-bucket.oss-cn-beijing.aliyuncs.com/155801883390629049.png' // 分享图标
             });
 
             // 微信朋友
