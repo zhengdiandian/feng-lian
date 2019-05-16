@@ -238,16 +238,6 @@ export default {
     PopBox
   },
   created() {
-    if(this.$route.query.authToken){
-      localStorage.setItem('token', this.$route.query.authToken)
-      this.$axios.post('v1/user/info/personalInfo').then(res => {
-        this.$store.commit('set_userInfo',res.data.data)
-      })
-    } else {
-      if(sessionStorage.getItem('qrpop'))return
-      this.showQrcode = true
-      sessionStorage.setItem('qrpop','true')
-    }
     this.$axios.post('/v1/manage/post/index').then((res)=>{
       console.log('home',res)
       this.homeinfor = res.data.data
@@ -272,6 +262,17 @@ export default {
       this.qrcodeImg = res.data.data.PublicQrcode
       this.videoImg = res.data.data.PublicAddress
     })
+    if(this.$route.query.authToken){
+      localStorage.setItem('token', this.$route.query.authToken)
+      this.$axios.post('v1/user/info/personalInfo').then(res => {
+        this.$store.commit('set_userInfo',res.data.data)
+      })
+    }
+    else {
+      if(sessionStorage.getItem('qrpop'))return
+      this.showQrcode = true
+      sessionStorage.setItem('qrpop','true')
+    }
     // this.$axios.post('v1/manage/config/getImgList',{
     //   keys: 'PublicAddress'
     // }).then(res => {
