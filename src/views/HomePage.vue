@@ -238,8 +238,14 @@ export default {
     PopBox
   },
   created() {
+    this.$axios.post('v1/manage/config/getTextList',{
+            "keys": 'CustomerService'
+        }).then(res=>{
+          console.log(res)
+            this.CustomerService = res.data.data.CustomerService
+        })
     this.$axios.post('/v1/manage/post/index').then((res)=>{
-      console.log('home',res)
+      // console.log('home',res)
       this.homeinfor = res.data.data
       this.operateItem = res.data.data.operateItem
       this.bannerlist = res.data.data.bannerList
@@ -253,7 +259,7 @@ export default {
       this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
         this.products = res.data.data
         // this.joinFlag = this.product.joinFlag
-        console.log(this.product)
+        // console.log(this.product)
         // console.log(this.product)
       })
     this.$axios.post('v1/manage/config/getImgList',{

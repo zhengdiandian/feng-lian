@@ -57,9 +57,9 @@
 
       <div class="text-info"><span>凭证编号：</span><span>{{panned.planNo}}</span></div>
       <div class="title">终身重大疾病互助计划 | 等待期剩余{{panned.leftWattingDays}}天</div>
-      <div class="text-info"><span>凭证编号:</span><span>{{panned.planNo}}</span></div>
+      <div class="text-info"><span>互助计划:</span><span>{{panned.productName}}</span></div>
       <div class="text-info"><span>最高获取:</span><span>{{panned.highestHelped}}</span></div>
-      <div class="text-info"><span>互助会员:</span><span>FL20190115490963220251</span></div>
+      <div class="text-info"><span>互助会员:</span><span>{{panned.contacs}}</span></div>
       <div class="text-info"><span>身份证号:</span><span>{{panned.contacsIdNo}}</span></div>
       <div class="text-info"><span>购买日:</span><span>{{panned.joinDate}}</span></div>
       <div class="text-info"><span>支付方式:</span><span>{{panned.payType}}</span></div>
@@ -80,9 +80,7 @@
       </mu-list>
     </div>
 
-    <router-link tag="div" to="/home">
-    <div class="next-btn">再去看看</div>
-    </router-link>
+    <div class="next-btn" @click="$router.push('/home')">再去看看</div>
   </div>
 </template>
 
@@ -251,6 +249,7 @@
     background-color: #fff;
     /*margin-top: 12px;*/
     padding: 0 12px;
+    margin-bottom: 50px;
     & /deep/ .mu-list{
       padding-top: 0px;
     }
@@ -271,6 +270,9 @@
     line-height: 50px;
     color: $c-bai;
     background:rgba(239,162,32,1);
+    position: fixed;
+    bottom: 0;
+    z-index: 111;
   }
   .pop{
     width: 249px;
