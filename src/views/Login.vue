@@ -275,10 +275,10 @@ export default {
   background-color: $c-cheng;
   
 }
-.mu-appbar[data-v-26084dc2]{
+.mu-appbar{
   background-color: $c-cheng;
 }
-.mu-input[data-v-26084dc2]{
+.mu-input{
   color: #fff !important;
 }
 .img {
