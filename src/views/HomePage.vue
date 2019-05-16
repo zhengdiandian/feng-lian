@@ -138,7 +138,7 @@
     </div>
     <mu-divider style="height:6px;"></mu-divider>
     <div class="wrap">
-      <banner-img :videoImg="videoImg"></banner-img>
+      <banner-img :videoImg="bannerImg"></banner-img>
       <div class="help-wrap">
         <mu-sub-header>常见问题</mu-sub-header>
 
@@ -216,13 +216,21 @@ export default {
       joinFlag: '',
       qrcodeImg: '',
       issueList: [],
-      videoUrl: ''
+      videoUrl: '',
+      bannerImg: ''
     };
   },
   computed: mapState(['userInfo']),
   methods: {
     open() {
 
+    },
+    toMinePlan() {
+      if(this.userInfo.type>200){
+        this.$toast.error('您暂未加入互助计划,请先加入')
+        return
+      }
+      this.$router.push('/minePlan')
     },
   invitation(){
       // if (this.userInfo.state !== 200) {
@@ -250,6 +258,8 @@ export default {
       this.operateItem = res.data.data.operateItem
       this.bannerlist = res.data.data.bannerList
       this.videoUrl = res.data.data.video
+      this.videoImg = res.data.data.videoImg
+
       debugger
 
       // this.issueList = this.homeinfor.issueList
@@ -264,10 +274,11 @@ export default {
         // console.log(this.product)
       })
     this.$axios.post('v1/manage/config/getImgList',{
-      keys: 'PublicQrcode,PublicAddress'
+      keys: 'PublicQrcode,PublicAddress,videoImg'
     }).then(res => {
+      debugger
       this.qrcodeImg = res.data.data.PublicQrcode
-      this.videoImg = res.data.data.PublicAddress
+      this.bannerImg = res.data.data.PublicAddress
     })
     if(this.$route.query.authToken){
       localStorage.setItem('token', this.$route.query.authToken)
@@ -449,7 +460,7 @@ h3{
   color: #fff;
   span {
     font-size:12px;
-      
+
     font-weight:400;
     color: #fff;
     text-align: center;
@@ -479,7 +490,7 @@ h3{
     right: 12px;
     span{
       font-size:12px;
-        
+
       font-weight:bold;
       color: #fff;
       line-height: 12px;
@@ -531,7 +542,7 @@ h3{
         width: 100%;
         text-align: center;
         font-size:20px;
-          
+
         font-weight:400;
         color:rgba(51,51,51,1);
       }
@@ -554,7 +565,7 @@ h3{
 
 .title{
       font-size:14px;
-        
+
       font-weight:bold;
       color:rgba(51,51,51,1);
     }
@@ -564,7 +575,7 @@ h3{
       text-overflow: ellipsis;
       font-size:13px;
       padding-right: 10px;
-        
+
       font-weight:400;
       color:rgba(112,112,112,1);
     }

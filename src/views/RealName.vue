@@ -48,7 +48,7 @@
         </div>
         <section>
           <upload @getFile="getFile($event, 'file1')" :file="file1"></upload>
-          <upload @getFile="getFile($event, 'file2')" :upload="upload"></upload>
+          <upload style="margin-top: 10px;" @getFile="getFile($event, 'file2')" :upload="upload"></upload>
         </section>
       </div>
       <div v-html="html"></div>
@@ -61,7 +61,6 @@
 import PageHeader from "../components/PageHeader/PageHeader";
 import upload from "../components/UpLoad/UpLoad";
 import vuePicker from "../components/vuePickers/vuePicker";
-import awesomePicker from "vue-awesome-picker";
 import { decode } from 'punycode';
 // import {provs_data, citys_data, dists_data} from 'vue-pickers/lib/areaData'
 

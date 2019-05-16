@@ -212,16 +212,19 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.justID{
+ 
+}
 .uploadimg{
-        width:375px;
-        height:93px;
+        width: 375px;
+        height: 235px;
         background:rgba(255,255,255,1);
         border:1px solid rgba(234,234,234,1);
         padding: 4px 10px;
         line-height: 20px;
         position: relative;
         cursor: pointer;
-        border-radius: 4px;
+        border-radius: 2px;
         overflow: hidden;
         display: flex;
         justify-content: center;
@@ -229,13 +232,23 @@ export default {
         flex-direction: column;
         color: #ccc;
         .img-file{
+            padding: 20px;
             width: 100%;
             height: 100%;
             position: absolute;
             top: 0px;
             left: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
           img{
+            // box-sizing: border-box;
+            // width: 100;
+            // height: ;
             width: 100%;
+            height: 100%;
+
           }
         }
         .image{

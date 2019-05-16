@@ -16,16 +16,16 @@
                     <img style="z-index: 55;border-radius: 50%; border: 5px solid #C5D1E4;" :src="rank[0].img" alt="">
                     <span class="an-crown-3"><img src="../assets/PNG/皇冠3.png" alt=""></span>
                     <div class="list-name-number" style="left: 15px;">
-                        <span style="font-size:14px; font-weight:bold;">{{rank[0].nickname}}</span>
-                        <span style="font-size:14px; font-weight:bold;">{{rank[0].score}}分</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[1].nickname}}</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[1].score}}分</span>
                     </div>
                 </div>
                 <div class="noe" style="position: relative;">
-                    <img style="border-radius: 50%; border: 5px solid #FACF11;" :src="rank[1].img" alt="">
+                    <img style="border-radius: 50%; border: 5px solid #FACF11;" :src="rank[0].img" alt="">
                     <span class="an-crown"><img  src="../assets/PNG/皇冠1.png" alt=""></span>
                     <div class="list-name-number" >
-                        <span style="font-size:14px; font-weight:bold;">{{rank[1].nickname}}</span>
-                        <span style="font-size:14px; font-weight:bold;">{{rank[1].score}}分</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[0].nickname}}</span>
+                        <span style="font-size:14px; font-weight:bold;">{{rank[0].score}}分</span>
                     </div>
                 </div>
                 <div class="three" style="position: relative;">
@@ -241,20 +241,20 @@ export default {
     //   width:108px;
       height:14px;
       font-size:13px;
-        
+
       font-weight:bold;
       color:rgba(51,51,51,1);
     }
     .number{
       font-size:10px;
-        
+
       font-weight:bold;
       color:rgba(112,112,112,1);
       font-size: 10px;
     }
     .autograph{
       font-size:12px;
-        
+
       font-weight:bold;
       color:rgba(112,112,112,1);
       margin-top: 20px;
@@ -269,7 +269,7 @@ export default {
     background:rgba(239,162,32,1);
     border:0px solid rgba(255,255,255,1);
     font-size:12px;
-      
+
     font-weight:400;
     color:rgba(255,255,255,1);
     text-align: center;

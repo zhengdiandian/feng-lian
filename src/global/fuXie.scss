@@ -89,12 +89,12 @@
     top: 0px;
     left: 0px;
     height: 44px;
-      
+
     .mu-appbar-title{
         padding: 0;
         text-align: center;
         color: $c-black;
-          
+
         font-weight:bold;
     }
 }
@@ -103,7 +103,7 @@
 .wrap .mu-sub-header {
     color: $c-black;
     height: auto;
-      
+
     line-height: 1.25;
     font-weight:bold;
 
@@ -126,13 +126,13 @@
 }
 .font{
     font-size:14px;
-      
+
     font-weight:bold;
     color:rgba(51,51,51,1);
 }
 .font-min{
     font-size:12px;
-      
+
     font-weight:400;
     color:rgba(112,112,112,1);
 }
@@ -149,7 +149,22 @@
 }
 .mu-item-title{
     //padding-left: 10px;
+  width: 100%;
+  /* overflow: hidden; */
+  overflow-x: scroll;
+  white-space: nowrap;
+  /* text-overflow: ellipsis; */
+  word-wrap: break-word;
+  text-overflow: initial;
     font-size: 13px;
+}
+.mu-item-sub-title .mu-item-title{
+  width: 100%;
+  overflow: scroll;
+  overflow-x: scroll;
+  white-space: normal;
+  /* text-overflow: ellipsis; */
+  word-wrap: break-word;
 }
 .mu-list p{
     padding: 0 10px;

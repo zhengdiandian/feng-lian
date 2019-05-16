@@ -54,14 +54,14 @@
 
     },
     created () {
-      // this.$axios.get('v1/card/debitCard/getCardList').then(res => {
-      //   if(res.data.code!==200){
-      //     this.$toast.error(res.data.msg)
-      //     return
-      //   }
-      //   debugger
-      //   this.cardList = res.data.data
-      // })
+      this.$axios.get('v1/card/debitCard/getCardList').then(res => {
+        if(res.data.code!==200){
+          this.$toast.error(res.data.msg)
+          return
+        }
+        debugger
+        this.cardList = res.data.data
+      })
     }
   }
 </script>
