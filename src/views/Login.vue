@@ -282,6 +282,9 @@ export default {
 .mu-input{
   color: #fff !important;
 }
+.mu-primary-color{
+  color: $c-cheng;
+}
 .img {
   width: 76px;
   height: 70px;

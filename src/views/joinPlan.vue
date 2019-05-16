@@ -421,7 +421,7 @@ main{
 .info-form{
   span{
     font-size:14px;
-    font-family:SourceHanSansCN-Normal;
+      
     font-weight:bold;
     color:rgba(51,51,51,1);
   }

@@ -131,7 +131,7 @@
       top: 90px;
       
       font-size:11px;
-      font-family:SourceHanSansCN-Normal;
+        
       font-weight:400;
       .tow{
         padding-left: 13px;
@@ -182,14 +182,14 @@
       .name{
         padding-top: 10px;
         font-size:13px;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:bold;
         color:rgba(255,255,255,1);
         padding-bottom: 7px;
         span{
           margin-left: 6px;
           font-size:12px;
-          font-family:SourceHanSansCN-Normal;
+            
           font-weight:400;
           border:1px solid rgba(255,255,255,1);
           color:rgba(255,255,255,1);
@@ -210,7 +210,7 @@
         background:rgba(246,176,59,1);
         border-radius:11px;
         font-size:12px;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:400;
       }
 </style>

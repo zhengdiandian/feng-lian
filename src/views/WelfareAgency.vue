@@ -10,7 +10,7 @@
       </mu-appbar>
         <main class="page-margin-top">
             <div>
-                <div style="width:54px;height:13px;font-size:13px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin: 12px 0 12px 12px;">我的收益</div>
+                <div style="width:54px;height:13px;font-size:13px;  font-weight:bold;color:rgba(51,51,51,1); margin: 12px 0 12px 12px;">我的收益</div>
                 <section class="profit">
                     <div class="users">
                          <!-- @click="$router.push('/share')" -->

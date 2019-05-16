@@ -11,7 +11,7 @@
         <div class="page-margin-top"></div>
         <main>
             <!-- <div class="add-family">
-                <span style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的家人</span>
+                <span style="font-size:14px;  font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的家人</span>
                 <section class="add-family-list">
                     <div class="list">
                         <div class="list-img">
@@ -57,7 +57,7 @@
                 </section>
             </div> -->
             <div class="purchase-plan" style="margin-top: 50px;">
-                <span  style="font-size:14px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
+                <span  style="font-size:14px;  font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
                 <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
                     <card
                         :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
@@ -116,7 +116,7 @@ export default {
   height: 180px;
 }
 span{
-    font-family:SourceHanSansCN-Normal;
+      
 }
 .add-family{
     margin-bottom: 10px;

@@ -89,12 +89,12 @@
     top: 0px;
     left: 0px;
     height: 44px;
-    font-family:SourceHanSansCN-Normal;
+      
     .mu-appbar-title{
         padding: 0;
         text-align: center;
         color: $c-black;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:bold;
     }
 }
@@ -103,7 +103,7 @@
 .wrap .mu-sub-header {
     color: $c-black;
     height: auto;
-    font-family:SourceHanSansCN-Normal;
+      
     line-height: 1.25;
     font-weight:bold;
 
@@ -126,13 +126,13 @@
 }
 .font{
     font-size:14px;
-    font-family:SourceHanSansCN-Normal;
+      
     font-weight:bold;
     color:rgba(51,51,51,1);
 }
 .font-min{
     font-size:12px;
-    font-family:SourceHanSansCN-Normal;
+      
     font-weight:400;
     color:rgba(112,112,112,1);
 }

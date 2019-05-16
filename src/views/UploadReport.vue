@@ -84,7 +84,7 @@ export default {
     span{
         display: inline-block;
         font-size:13px;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:400;
         color:rgba(51,51,51,1);
         margin: 12px 0 12px 12px;
@@ -119,7 +119,7 @@ export default {
   color: #fff;
   line-height: 50px;
   font-size:15px;
-  font-family:SourceHanSansCN-Normal;
+    
   font-weight:400;
   color:rgba(255,255,255,1);
 }

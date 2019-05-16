@@ -24,9 +24,9 @@
                     <span v-else>分</span>
                 </div>
                 <!-- <span style="font-size: 14px;">近7天获得奖励{{20}}元</span> -->
-                <button class="integBtn">去炫耀</button>
+                <!-- <button class="integBtn">去炫耀</button> -->
             </div>
-            <button class="exchangeBtn">积分兑换</button>
+            <!-- <button class="exchangeBtn">积分兑换</button> -->
         </section>
         <!-- <section>
             <div>蜂链福利</div>

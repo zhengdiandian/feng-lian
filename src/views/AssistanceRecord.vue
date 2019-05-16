@@ -22,10 +22,10 @@
             </div>
         </section>
             <div class="assis-title">链接你我他 &nbsp; &nbsp; 守护千万家</div>
-            <div class="margin-left" style="font-size:15px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
+            <div class="margin-left" style="font-size:15px;  font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
         <section v-for="item in supporlist" :key="item.orderNo">
             <div style="margin: 12px 0px 12px 12px" >
-                <div style="font-size:9px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(112,112,112,1);">{{item.createTime}}</div>
+                <div style="font-size:9px;  font-weight:bold;color:rgba(112,112,112,1);">{{item.createTime}}</div>
             </div>
             <section class="card" >
                 <card
@@ -114,7 +114,7 @@ export default {
     text-align: center;
     height:15px;
     font-size:18px;
-    font-family:SourceHanSansCN-Normal;
+      
     font-weight:bold;
     color:rgba(51,51,51,1);
     margin: 12px auto;

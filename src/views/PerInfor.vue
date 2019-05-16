@@ -1,7 +1,7 @@
 <template>
     <div>
         <header>
-            <PerInforHeader :imgUrl="datalist.headPortrait"></PerInforHeader>
+            <PerInforHeader :imgUrl="datalist.headPortrait?datalist.headPortrait:'../assets/PNG/avatarDefault.png'"></PerInforHeader>
             <router-link v-if="userInfo.type>=200" tag="div" to="/code"><mu-icon value=":iconfont iconerweima"></mu-icon></router-link>
         </header>
         <main>
@@ -12,12 +12,12 @@
                 </section>
                 <section class="datalist">
                     <div class="listtext"><span>邮箱：</span></div>
-                    <div class="listInfo">{{datalist.email}}</div>
+                    <div class="listInfo">{{datalist.email?datalist.email: '无'}}</div>
                 </section>
                 <section class="datalist" @click="$router.push('/mydetails')">
                     <div class="listtext" style="width: 75px;"><span>个人信息：</span></div>
                     <div class="listInfo" >{{datalist.personalInfo}}</div>
-                    <span style="font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:#707070; ">详细信息</span>
+                    <span style="font-size:11px;  font-weight:400;color:#707070; ">详细信息</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </section>
             </div>
@@ -63,6 +63,7 @@ export default {
     created(){
 
         this.getlist()
+        
     },
     computed: mapState(['userInfo']),
     methods: {
@@ -123,7 +124,7 @@ header{
             // width:58px;
             height:12px;
             font-size:12px;
-            font-family:SourceHanSansCN-Normal;
+              
             font-weight:400;
             color:rgba(51,51,51,1);
             display: flex;
@@ -134,7 +135,7 @@ header{
             width: 150px;
             height: 18px;
             font-size:12px;
-            font-family:SourceHanSansCN-Normal;
+              
             font-weight:400;
             margin-left: 12px;
         }

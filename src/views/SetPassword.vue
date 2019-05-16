@@ -148,7 +148,7 @@ export default {
     /*align-items: center;*/
     text-align: center;
     font-size:16px;
-    font-family:SourceHanSansCN-Normal;
+      
     font-weight:400;
     &>div:first-child{
       align-self:center;

@@ -113,7 +113,7 @@
       }
       div{
         font-size:12px;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:bold;
       }
     }

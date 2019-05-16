@@ -6,7 +6,7 @@
                 <div class="title">{{title}}</div>
             </nav>
             <div class="head-infor">
-                <section class="head-portrait"><img :src="imgUrl" alt=""></section>
+                <section class="head-portrait"><img :src="imgUrl?imgUrl:'../assets/PNG/avatarDefault.png'" alt=""></section>
                 <div>
                     <span class="name">{{name}}</span>
                     <span class="stata">{{stata}}</span>

@@ -145,7 +145,7 @@ main{
     //     width: 210px;
     //     height:66px;
     //     font-size:12px;
-    //     font-family:SourceHanSansCN-Normal;
+    //       
     //     font-weight:400;
     //     color:rgba(56,26,21,1);
     //     line-height:18px;
@@ -155,7 +155,7 @@ main{
         width: 300px;
         text-indent: 24px;
         font-size:12px;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:400;
         color:rgba(56,26,21,1);
         line-height:18px;

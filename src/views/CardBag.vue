@@ -89,7 +89,7 @@
     text-align: center;
     text-align: center;
     font-size:14px;
-    font-family:SourceHanSansCN-Normal;
+      
     color: $c-bai;
     background:$c-cheng;
     border-radius:17px;

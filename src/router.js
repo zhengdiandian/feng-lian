@@ -153,6 +153,7 @@ export default new Router({
     },
     {
       path: '/welfareagency', // 福利社
+      name: 'welfareagency',
       component: function () {
         return import('./views/WelfareAgency.vue')
       }
