@@ -185,7 +185,14 @@ export default new Router({
       }
     },
     {
+      path: '/RewardPresentation', // 我的奖励
+      component: function () {
+        return import('./views/RewardPresentation.vue')
+      }
+    },
+    {
       path: '/myintegral', // 我的积分
+      name: 'myintegral',
       component: function () {
         return import('./views/MyIntegral.vue')
       }

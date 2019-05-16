@@ -6,17 +6,17 @@
             <div class="title" style="font-size: 16px;">{{title}}</div>
         </nav>
         <div class="reward">
-            <span style="height:26px;font-size:36px;font-family:SourceHanSansCN-Normal;font-weight:bold;color:rgba(255,255,255,1);">{{reward.balance}}</span>
+            <span style="height:26px;font-size:36px;color:rgba(255,255,255,1);">{{reward.withdrawBalance}} <span style="font-size:12px">元</span> </span>
             <div style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 40px; padding-bottom: 20px;">
-                共有{{0}}人参与分摊，人均分摊{{0}}元
+                可提现金额{{reward.totalBalance}}元
             </div>
         </div>
     </header>
     <main>
         <div class="historical-bill">历史账单</div>
-        <!-- <div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{lastdate}}</div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥80.00</div>
+        <div>
+            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{date.lastMonth.date}}</div>
+            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥{{date.lastMonth.totalAmount}}</div>
             <div class="reward-money">
                 <div class="headimg"><img :src="lastMonth.icon" alt=""></div>
                 <div style="display: flex; flex-direction: column; font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(51,51,51,1); margin-left: 12px;">
@@ -25,12 +25,13 @@
                 </div>
                 <div class="right">
                     <span>+{{lastMonth.profitAmount}}元</span>
+                    <!-- <span>-{{lastMonth.profitAmount}}元</span> -->
                 </div>
             </div>
         </div>
         <div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{thisdate}}</div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥80.00</div>
+            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{date.thisMonth.date}}</div>
+            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥{{date.lastMonth.totalAmount}}</div>
             <div class="reward-money">
                 <div class="headimg"><img :src="thisMonth.icon" alt=""></div>
                 <div style="display: flex; flex-direction: column; font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(51,51,51,1); margin-left: 12px;">
@@ -39,18 +40,20 @@
                 </div>
                 <div class="right">
                     <span>+{{thisMonth.profitAmount}}元</span>
+                    <!-- <span>-{{thisMonth.profitAmount}}元</span> -->
                 </div>
             </div>
-        </div> -->
+        </div>
     </main>
     <footer>
-        <!-- <button @click="open">提现</button> -->
+        <button @click="open">提现</button>
     </footer>
     <div class="show" v-if="show">
         <div class="show-main">
             <div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>您还没有绑定银行卡</span></div>
+            <mu-divider></mu-divider>
             <div style="position: absolute;bottom: 0; width: 100%;">
-                <input style="color: #707070" type="button" value="再等等" @click="out">
+                <input style="color: #707070" type="button" value="再等等" @click="show = false">
                 <input style="color: #4999f5" type="button" value="现在绑卡">
             </div>
         </div>
@@ -65,10 +68,9 @@ export default {
             title: '我的奖励',
             show: false,
             reward: [],
+            date: {},
             lastMonth: [],
-            thisMonth: [],
-            lastdate:[],
-            thisdate:[]
+            thisMonth:[]
         }
     },
     methods: {
@@ -83,15 +85,12 @@ export default {
         }
     },
     mounted() {
-        this.$axios.post('/v1/finance/profit/profitList').then(res=>{
+        this.$axios.post('v1/finance/profit/profitList').then(res=>{
             this.reward = res.data.data
-            console.log(this.reward);
-            this.lastdate = res.data.data.list.lastMonth.date
-            this.thisdate = res.data.data.list.thisMonth.date
-            console.log(res.data.data.list.lastMonth.date)
-            // this.lastMonth = res.data.data.list.lastMonth.profitList[0]
-            // this.thisMonth = res.data.data.list.thisMonth.profitList[0]
-            // console.log(this.lastMonthm)
+            this.date = res.data.data.list
+            this.lastMonth = res.data.data.list.lastMonth.profitList
+            this.thisMonth = res.data.data.list.thisMonth.profitList
+            console.log(res.data.data.list)
         })
     }
 }
@@ -196,6 +195,7 @@ nav {
         border: none;
         background: none;
         outline: none;
+        border-right: .5px solid $c-hui;
     }
     input:active{
         background-color: #cccccc;

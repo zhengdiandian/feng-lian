@@ -7,8 +7,8 @@
             <div class="heart">
             </div>
           </div>
-          <div style="font-size: 18px; color:#707070">尊敬的蜂链会员您好：</div>
-          <div style="font-size: 18px; color:#707070">我们正在努力建设美好的家园</div>
+          <div style=" color:#707070">尊敬的蜂链会员您好：</div>
+          <div style=" color:#707070">我们正在努力建设美好的家园</div>
           <!-- <div>敬请期待！</div> -->
         </div>
         <div>敬请期待</div>

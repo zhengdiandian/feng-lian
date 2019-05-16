@@ -62,15 +62,13 @@
       </div> -->
       </div>
       <section class="please-list">
-        <router-link tag="div" v-if="preinfo.type &&  preinfo.type!==100" to="/welfareagency">
-          <div class="list-li">
+          <div class="list-li" v-if="preinfo.type &&  preinfo.type!==100" @click="$router.push('/welfareagency')">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
               <div style="width:22px;height:22px;"><img src="../assets/image/福利汇.svg" alt=""></div>
-              <span class="position-r" style="margin-left:12px">福利社</span>
+              <span class="position-r" style="margin-left:12px; margin-top: 3px;">福利社</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-        </router-link>
 
           <div tag="div" @click="$router.push('/CardBag')">
           <div class="list-li">
@@ -92,7 +90,7 @@
           </div>
         </router-link>
 
-        <div tag="div" @click="$toast.info('需要等待180天后', {time: 2000} )">
+        <div  @click="$toast.info('需要等待180天后', {time: 2000} )">
           <div class="list-li">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
               <div style="width:22px;height:22px;"><img src="../assets/image/申请.svg" alt=""></div>
@@ -102,7 +100,7 @@
           </div>
         </div>
 
-        <div @click="$router.push('/myintegral')">
+        <div @click="ToMyinteg">
           <div class="list-li">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
               <div style="width:22px;height:22px;"><img src="../assets/image/客户.svg" alt=""></div>
@@ -199,6 +197,15 @@ import {mapState} from 'vuex'
         this.showpop = true
       }
       // this.$router.push('/code')
+  },
+  ToMyinteg(){
+    this.$router.push({
+      name: 'myintegral',
+      params:{
+        "totalScore": this.preinfo.totalScore,
+        "scoreType": this.preinfo.scoreType
+      }
+    })
   }
   },
   created() {

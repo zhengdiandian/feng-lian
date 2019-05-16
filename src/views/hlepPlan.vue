@@ -106,8 +106,8 @@
         </mu-list>
 
         <div class="help-btn-wrap">
-          <a href="tel:17812772562" class="btn margin-bottom">
-            <span href="tel:17812772561" class="iconfont iconlianxikefu"></span>
+          <a href="tel:CustomerService" class="btn margin-bottom">
+            <span href="tel:CustomerService" class="iconfont iconlianxikefu"></span>
             联系客服
           </a>
         </div>
@@ -183,6 +183,7 @@
           //   text: '满足条件拨款秒结'
           // }
         ],
+        CustomerService: '',
         show: false,
       }
     },
@@ -218,6 +219,11 @@
     created() {
     },
     mounted() {
+      this.$axios.post('v1/manage/config/getTextList',{
+            "keys": 'CustomerService'
+        }).then(res=>{
+            this.CustomerService = res.data.data.CustomerService
+        })
       this.showPoP()
       let time = +new Date()
       // let fn = async () =>{
