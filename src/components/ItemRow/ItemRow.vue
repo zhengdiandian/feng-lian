@@ -69,7 +69,7 @@
     // }
     .title{
       font-size:14px;
-      font-family:SourceHanSansCN-Normal;
+        
       font-weight:bold;
       color:rgba(51,51,51,1);
     }
@@ -78,7 +78,7 @@
       // width: 60px;
       // height: 60px;
       font-size:12px;
-      font-family:SourceHanSansCN-Normal;
+        
       font-weight:400;
       color:rgba(51,51,51,1);
     }

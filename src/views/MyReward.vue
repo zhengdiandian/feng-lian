@@ -6,41 +6,47 @@
             <div class="title" style="font-size: 16px;">{{title}}</div>
         </nav>
         <div class="reward">
-            <span style="height:26px;font-size:36px;color:rgba(255,255,255,1);">{{reward.withdrawBalance}} <span style="font-size:12px">元</span> </span>
-            <div style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 40px; padding-bottom: 20px;">
-                可提现金额{{reward.totalBalance}}元
+            <span style="height:26px;font-size:36px;color:rgba(255,255,255,1);">{{reward.totalBalance}} <span style="font-size:12px">元</span> </span>
+            <div style="font-size:12px;  color:rgba(255,255,255,1); padding-top: 40px; padding-bottom: 20px;">
+                可提现金额{{reward.withdrawBalance}}元
             </div>
         </div>
     </header>
     <main>
         <div class="historical-bill">历史账单</div>
+
         <div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{listDate.lastMonth.date}}</div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥{{listDate.lastMonth.totalAmount}}</div>
-            <div class="reward-money">
-                <div class="headimg"><img :src="lastMonth.icon" alt=""></div>
-                <div style="display: flex; flex-direction: column; font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(51,51,51,1); margin-left: 12px;">
-                    <span style="font-weight:bold;">{{lastMonth.contacs}}</span>
-                    <span > {{lastMonth.profitDate}}</span>
+            <div class="Month">
+                <div style="font-size:11px;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-top: 5px;">{{listDate.thisMonth.date}}</div>
+                <div style="font-size:11px;font-weight:600;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-bottom: 5px;">共获得￥{{listDate.thisMonth.totalAmount}}</div>
+            </div>
+            <div class="reward-money" v-for="(item,index) in listDate.thisMonth.profitList" :key="index">
+                <div class="headimg"><img :src="item.icon" alt=""></div>
+                <div style="display: flex; flex-direction: column; font-size:12px;color:rgba(51,51,51,1); margin-left: 12px;">
+                    <span style="font-weight:bold;">{{item.contacs}}</span>
+                    <span > {{item.profitDate}}</span>
                 </div>
                 <div class="right">
-                    <span v-if="lastMonth.changeType = 1">+{{lastMonth.profitAmount}}元</span>
-                    <span v-else>-{{lastMonth.profitAmount}}元</span>
+                    <span v-if="item.changeType = 1">+&nbsp;{{item.profitAmount}}元</span>
+                    <span v-else>-&nbsp;{{item.profitAmount}}元</span>
                 </div>
             </div>
         </div>
+
         <div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">{{listDate.thisMonth.date}}</div>
-            <div style="height:11px;font-size:11px;font-family:SourceHanSansCN-Normal;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 6px 12px">共获得￥{{listDate.lastMonth.totalAmount}}</div>
-            <div class="reward-money">
-                <div class="headimg"><img :src="thisMonth.icon" alt=""></div>
-                <div style="display: flex; flex-direction: column; font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(51,51,51,1); margin-left: 12px;">
-                    <span style="font-weight:bold;">{{thisMonth.contacs}}</span>
-                    <span > {{thisMonth.profitDate}}</span>
+            <div class="Month">
+                <div style="font-size:11px;  font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;;padding-top: 5px;">{{listDate.lastMonth.date}}</div>
+                <div style="font-size:11px;  font-weight:600;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-bottom: 5px;">共获得￥{{listDate.lastMonth.totalAmount}}</div>
+            </div>
+            <div class="reward-money" v-for="(item,index) in listDate.lastMonth.profitList" :key="index">
+                <div class="headimg"><img :src="item.icon" alt=""></div>
+                <div style="display: flex; flex-direction: column; font-size:12px;color:rgba(51,51,51,1); margin-left: 12px;">
+                    <span style="font-weight:bold;">{{item.contacs}}</span>
+                    <span > {{item.profitDate}}</span>
                 </div>
                 <div class="right">
-                    <span v-if="thisMonth.changeType = 1">+{{thisMonth.profitAmount}}元</span>
-                    <span v-else>-{{thisMonth.profitAmount}}元</span>
+                    <span v-if="item.changeType = 1">+&nbsp;{{item.profitAmount}}元</span>
+                    <span v-else>-&nbsp;{{item.profitAmount}}元</span>
                 </div>
             </div>
         </div>
@@ -70,7 +76,8 @@ export default {
             reward: [],
             listDate: {},
             lastMonth: {},
-            thisMonth:{}
+            thisMonth:{},
+            debitCardState: ''
         }
     },
     methods: {
@@ -90,12 +97,18 @@ export default {
             this.listDate = res.data.data.list
             this.lastMonth = res.data.data.list.lastMonth.profitList
             this.thisMonth = res.data.data.list.thisMonth.profitList
-            console.log(res.data.data.list)
+            console.log(this.listDate)
+        })
+        this.$axios.post('v1/user/info/personalInfo').then(res=>{
+            console.log(res)
         })
     }
 }
 </script>
 <style scoped lang="scss">
+#app>div{
+  background-color: $c-hui;
+}
 header{
     // height: 155px;
     background-image: url('../assets/PNG/我的奖励背景.png');
@@ -119,11 +132,15 @@ nav {
         span{
             width:62px;
             height:14px;
-            font-family:SourceHanSansCN-Normal;
+              
             font-weight: bold;
             color:rgba(51,51,51,1);
         }
     }
+}
+.Month{
+    background-color: $c-bai;
+    margin-top: 12px;
 }
 .reward{
         display: flex;
@@ -144,10 +161,11 @@ nav {
 .reward-money{
     width:375px;
     height:50px;
-    background:rgba(255,255,255,1);
+    background:#f9f9f9;
     display: flex;
     align-items: center;
     position: relative;
+    margin-bottom: 2px;
     .headimg{
         width: 33px;
         height: 33px;

@@ -74,7 +74,7 @@
       &>div{
         & span{
           font-size:18px;
-          font-family:SourceHanSansCN-Normal;
+            
           font-weight:bold;
         }
         text-align: center;

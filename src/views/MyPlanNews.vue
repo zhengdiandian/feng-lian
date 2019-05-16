@@ -107,7 +107,7 @@ main{
         background:$c-cheng;
         border-radius:11px;
         font-size:10px;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:400;
         text-align: center;
         line-height: 22px;

@@ -245,7 +245,7 @@
   .title{
     padding: 12px ;
     font-size:14px;
-    font-family:SourceHanSansCN-Normal;
+      
     font-weight:bold;
     &+.text-info{
       width:375px;

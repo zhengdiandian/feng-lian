@@ -9,10 +9,14 @@
         <main>
             <div class="head-name">
                 <section class="hear-infor">
-                    <div style="width:75px;height:75px;background:rgba(255,255,255,1);border:2px solid rgba(255,255,255,1);border-radius:50%;margin: auto;"><img :src="userInfo.headPortrait" alt=""></div>
-                    <div>
+                    <div class="head-img"><img :src="userInfo.headPortrait" alt=""></div>
+                    <div class="head-text">
                         <span style="font-size:14px;">{{userInfo.nickname}}</span>
-                        <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1); line-height: 20px;" >{{userInfo.state == 100 ? '未认证':'已认证'}}</span>
+                        <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;
+                        margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1);
+                        line-height: 20px;    padding: 0 2px 0 2px;
+                        font-size: 12px;
+                        border-radius: 1px;" >{{userInfo.state == 100 ? '未认证':'已认证'}}</span>
                     </div>
                     <span style="color:rgba(112,112,112,1);">{{userInfo.motto}}</span>
                 </section>
@@ -100,6 +104,12 @@ html,body{
     width: 100%;
     height: 100%;
 }
+.head-img{
+    width:75px;height:75px;background:rgba(255,255,255,1);border:2px solid rgba(255,255,255,1);border-radius:50%;margin: auto;
+}
+.head-text{
+    margin-top: 12px;
+}
 .card{
     width: 375px;
     height: 100%;
@@ -125,7 +135,7 @@ nav {
             width:62px;
             height:14px;
             font-size:15px;
-            font-family:SourceHanSansCN-Normal;
+              
             font-weight:bold;
             color:rgba(51,51,51,1);
         }
@@ -157,9 +167,8 @@ main{
     .code{
         width:180px;
         height:180px;
-        background:rgba(255,255,255,1);
-        border:10px solid rgba(255,162,228,1);
-        opacity:0.5;
+        background:$c-bai;
+        border:10px solid $c-bai;
         margin: auto;
         margin-top: 160px;
         img{

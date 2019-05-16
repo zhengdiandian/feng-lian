@@ -78,7 +78,7 @@ export default {
         // width:50px;
         line-height:12px;
         font-size:12px;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:400;
         color:rgba(51,51,51,1);
         margin-left: 15px;
@@ -87,7 +87,7 @@ export default {
         width:38px;
         height:9px;
         font-size:12px;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:400;
         color:rgba(51,51,51,1);
         margin-right: 12px;
@@ -104,6 +104,6 @@ export default {
     outline: none;
     margin-top: 10px;
     font-size:12px;
-    font-family:SourceHanSansCN-Normal;
+      
 }
 </style>

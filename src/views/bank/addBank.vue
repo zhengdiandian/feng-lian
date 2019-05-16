@@ -156,7 +156,7 @@
     line-height: 44px;
     float: right;
     font-size:13px;
-    font-family:SourceHanSansCN-Normal;
+      
     font-weight:400;
     &.timer{
       color: $c-hui;
@@ -207,7 +207,7 @@
         display: inline-block;
         min-width:77px;
         font-size:13px;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:400;
         /*padding-right: 11px;*/
       }

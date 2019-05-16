@@ -8,7 +8,7 @@
         <div class="reward">
             <span >本期总金额（元）</span>
             <span style="font-size:16px; padding-top:10px;">0&nbsp;元</span>
-            <!-- <div style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 25px;">
+            <!-- <div style="font-size:12px;  color:rgba(255,255,255,1); padding-top: 25px;">
                 共有{{39003}}人参与分摊，人均分摊{{0.11}}元
             </div> -->
         </div>
@@ -113,7 +113,7 @@ nav {
         span{
             width:62px;
             height:14px;
-            font-family:SourceHanSansCN-Normal;
+              
             font-weight: bold;
             color:rgba(51,51,51,1);
         }
@@ -177,7 +177,7 @@ nav {
         // width:188px;
         height:28px;
         font-size:13px;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:400;
         color:rgba(51,51,51,1);
         margin: auto;

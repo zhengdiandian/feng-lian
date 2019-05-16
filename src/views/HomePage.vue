@@ -448,7 +448,7 @@ h3{
   color: #fff;
   span {
     font-size:12px;
-    font-family:SourceHanSansCN-Normal;
+      
     font-weight:400;
     color: #fff;
     text-align: center;
@@ -478,7 +478,7 @@ h3{
     right: 12px;
     span{
       font-size:12px;
-      font-family:SourceHanSansCN-Normal;
+        
       font-weight:bold;
       color: #fff;
       line-height: 12px;
@@ -530,7 +530,7 @@ h3{
         width: 100%;
         text-align: center;
         font-size:20px;
-        font-family:SourceHanSansCN-Normal;
+          
         font-weight:400;
         color:rgba(51,51,51,1);
       }
@@ -553,7 +553,7 @@ h3{
 
 .title{
       font-size:14px;
-      font-family:SourceHanSansCN-Normal;
+        
       font-weight:bold;
       color:rgba(51,51,51,1);
     }
@@ -563,7 +563,7 @@ h3{
       text-overflow: ellipsis;
       font-size:13px;
       padding-right: 10px;
-      font-family:SourceHanSansCN-Normal;
+        
       font-weight:400;
       color:rgba(112,112,112,1);
     }
