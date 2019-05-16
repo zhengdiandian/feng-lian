@@ -129,8 +129,9 @@
             playsinline
             x-webkit-airplay="allow"
             x5-video-player-type="h5"
-
-            x5-video-orientation="landscape"
+            x5-playsinline="true"
+            x5-video-player-fullscreen="true"
+            x5-video-orientation="portrait"
             style="object-fit:fill"
           >
           </video>
