@@ -35,7 +35,7 @@
         <mu-text-field
           v-if="codepwd"
           v-model.trim="pwd"
-          label="请输入密码"
+          label="请输入6-16位数字+字母的密码"
           label-float
           icon=":iconfont iconmima"
           :error-text="pwdErr"

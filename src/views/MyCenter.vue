@@ -182,7 +182,8 @@ import {mapState} from 'vuex'
         "通知",
         "设置"
       ],
-      time: 500
+      time: 500,
+      changeText: '我的蜂蜜'
     }
   },
     computed:mapState(['userInfo']),
@@ -214,6 +215,9 @@ import {mapState} from 'vuex'
   }
   },
   created() {
+    if(this.userInfo.type >= 200) {
+      this.changeText = '我的蜜分'
+    }
     this.$axios.post('v1/user/info/personalInfo').then(res => {
         debugger
         this.$store.commit('set_userInfo',res.data.data)
@@ -357,12 +361,12 @@ z-index: 99;
     margin-left: 13px;
     .name{
       font-size:14px;
-        
+
       font-weight:bold;
       color:rgba(51,51,51,1);
     }
     .number{
-        
+
       font-weight:bold;
       color:rgba(112,112,112,1);
       font-size: 10px;
@@ -370,14 +374,14 @@ z-index: 99;
     }
     .integral{
       font-size:12px;
-        
+
       font-weight:bold;
       color:rgba(239,162,32,1);
       margin-top: 10px;
     }
     .autograph{
       font-size:12px;
-        
+
       font-weight:bold;
       color:rgba(112,112,112,1);
       // margin-top: 5px;
@@ -392,7 +396,7 @@ z-index: 99;
     background:rgba(239,162,32,1);
     border:0px solid rgba(255,255,255,1);
     font-size:12px;
-      
+
     font-weight:400;
     color:rgba(255,255,255,1);
     text-align: center;
@@ -420,7 +424,7 @@ z-index: 99;
   color: #fff;
   span {
     font-size:12px;
-      
+
     font-weight:400;
     // color:rgba(255,0,0,1);
     text-align: center;
@@ -444,7 +448,7 @@ z-index: 99;
     right: 12px;
     span{
       font-size:12px;
-        
+
       font-weight:bold;
       // color:rgba(255,0,0,1);
       line-height: 12px;

@@ -21,8 +21,8 @@
                     <section class="bankText">
                         <div>
                             <div>{{bank.bankName}}</div>
-                            <span style="font-size:12px;">储蓄卡</span>
-                            <div>{{bank.cardNo}}</div>
+                            <span style="font-size:12px; ">储蓄卡</span>
+                            <div style="padding-top: 12px">{{bank.cardNo}}</div>
                         </div>
                     </section>
                 </section>
@@ -96,7 +96,7 @@
     margin: 18px auto 0px;
   }
 main{
-    padding-top: 6px;
+    padding-top: 12px;
 }
 .BankCard{
     width:351px;
@@ -109,23 +109,37 @@ main{
         width:351px;
         height: 100%;
         display: flex;
+      border-radius: 4px;
+      background: url("../assets/PNG/bankbg.png") center no-repeat;
+      background-size: cover;
+      color: $c-bai;
     }
     .bankImg{
-        width: 35px;
-        height: 35px;
-        background-color: $c-cheng;
+        width: 40px;
+        height: 40px;
+        padding:5px ;
+        background-color: $c-bai;
         border-radius: 50%;
-        padding: 6.2vw;
-        margin: 12px;
+        /*padding: 6.2vw;*/
+        margin: 18px ;
+      img{
+        display: inline-block;
+        border-radius: 50%;
+
+        /*width: 35px;*/
+        /*height: 35px;*/
+        /*width: 100%;*/
+      }
     }
     .bankText{
         width: 100%;
-        padding-top: 12px;
+        padding-top: 18px;
         font-size:16px;
     }
 }
 .Reminder{
     width:351px;
+    border-radius: 4px;
     height: 92px;
     background: $c-bai;
     border-radius:5px;

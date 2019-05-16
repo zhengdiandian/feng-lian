@@ -16,7 +16,7 @@
                         margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1);
                         line-height: 20px;    padding: 0 2px 0 2px;
                         font-size: 12px;
-                        border-radius: 1px;" >{{userInfo.state == 100 ? '未认证':'已认证'}}</span>
+                        border-radius: 1px;" >{{userInfo.state == 100 ? '未实名':'已实名'}}</span>
                     </div>
                     <span style="color:rgba(112,112,112,1);">{{userInfo.motto}}</span>
                 </section>
