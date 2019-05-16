@@ -16,18 +16,18 @@
             <div class="Presentation">
                 <section class="tation-top">
                     <div class="text">到账银行卡：</div>
-                    <div class="top-img">
-                        <img src="" alt="">
+                    <div class="top-img" v-if="Bank.img">
+                        <img :src="Bank.img" alt="">
                     </div>
-                    <div class="top-bank">
-                        <div class="bank">中国银行</div>
-                        <div class="last-number">尾号：{{1234}}</div>
+                    <div class="top-bank" >
+                        <div class="bank">{{Bank.bankName}}</div>
+                        <div class="last-number">{{Bank.cardNo}}</div>
                     </div>
                     
-                    <div class="top-right">
-                        <div @click="$router.push('/CardBag')">请选择</div>
+                    <!-- <div class="top-right">
+                        <div>请选择</div>
                         <i class="iconfont iconyou1"></i>
-                    </div>
+                    </div> -->
                 </section>
                 <mu-divider></mu-divider>
                 <section class="tation-and">
@@ -49,6 +49,16 @@
             </div>
         </main>
         <div style="margin-left: 12px; margin-top: 12px;color:#707070;font-size:12px">提现手续费为5元一笔，最低提现额为100元</div>
+        <div class="show" v-if="show">
+        <div class="show-main">
+            <div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>您还没有绑定银行卡</span></div>
+            <mu-divider></mu-divider>
+            <div class="show-btn">
+                
+                <input style="color: #4999f5" type="button" value="返回检查" @click="$router.go(-1)">
+            </div>
+        </div>
+    </div>
     </div>
 </template>
 
@@ -60,14 +70,20 @@
                 Amount: '',
                 AmountErr: '',
                 msg: '',
-                withdrawBalance: ''
+                withdrawBalance: '',
+                Bank: {},
+                show: false
             }
         },
         methods: {
             whole() {
+                if (this.withdrawBalance < this.Amount) {
+                    this.msg = '提现金额小于可提现金额'
+                    return
+                }
                 this.$axios.post('/v1/finance/account/withdraw',{
                 'amount': this.Amount,
-                "cardId": 1
+                "bindedNo": this.Bank.bindedNo
             }).then(res=>{
                 console.log(res)
                 if (res.data.code == 900) {
@@ -81,7 +97,16 @@
         },
         created(){
             this.$axios.post('v1/finance/profit/profitList').then(res=>{
-                this.withdrawBalance = res.data.data.withdrawBalance
+                this.withdrawBalance = res.data.data.withdrawBalance;
+            })
+            this.$axios.post('/v1/card/debitCard/getCardList').then(res=>{
+                if(res.data.data.length > 0){
+                    this.show = false;
+                    this.Bank =  res.data.data[0];
+                }else{
+                    this.show = true;
+                }
+                
             })
         }
     }
@@ -113,6 +138,10 @@
             background-color: $c-hui;
             border-radius: 50%;
             margin-right: 12px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
         }
         .top-bank{
             display: flex;
@@ -165,7 +194,45 @@
             margin: auto;
             outline: none;
             border: none;
+            color: $c-bai;
         }
+    }
+}
+.show {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.show-main{
+    width: 65%;
+    // height: 180px;
+    background: #fff;
+    opacity: 1;
+    text-align: center;
+    border: none;
+    .show-btn{
+        height: 50px;
+    }
+    span{
+        display: inline-block;
+        margin-top: 20px;
+    }
+    input{
+        height: 100%;
+        width: 50%;
+        border: none;
+        background: none;
+        outline: none;
+        border-right: .5px solid $c-hui;
+    }
+    input:active{
+        background-color: #cccccc;
     }
 }
 </style>
