@@ -12,7 +12,7 @@
                 </mu-button>
             </mu-appbar>
         </header>
-        <main>
+        <main style="padding-top: 60px;">
             <div class="Presentation">
                 <section class="tation-top">
                     <div class="text">到账银行卡：</div>
@@ -23,7 +23,9 @@
                         <div class="bank">中国银行</div>
                         <div class="last-number">尾号：{{1234}}</div>
                     </div>
+                    
                     <div class="top-right">
+                        <div @click="$router.push('/CardBag')">请选择</div>
                         <i class="iconfont iconyou1"></i>
                     </div>
                 </section>
@@ -31,17 +33,17 @@
                 <section class="tation-and">
                     <div class="tationAmount">提现金额</div>
                     <div class="tation-and-input">
-                        <div>￥</div><input type="text" name="" id="">
+                        <div>￥</div><input type="text" name="" id="" v-model="Amount">
                     </div>
                 </section>
                 <section class="tation-down">
                     <div class="wholeAmount">
-                        <span>可提现金额￥{{wholeAmount}}，</span>
-                        <span style="color:#f8b62d" @click="wholeAmount">全部提现</span>
+                        <span>可提现金额￥{{withdrawBalance}}，</span>
+                        <span style="color:#f8b62d" @click="Amounts">全部提现</span>
                     </div>
-                    <div  style="color:#FF0B0B;padding-bottom: 12px;">您提现的金额未满100元，暂时无法提现</div>
+                    <div  v-if="msg != ''" style="color:#FF0B0B;padding-bottom: 12px;">{{msg}}</div>
                     <div class="wholeAmount-btn">
-                        <button class="wholeAmount-btn">提现</button>
+                        <button class="wholeAmount-btn" @click="whole">提现</button>
                     </div>
                 </section>
             </div>
@@ -57,19 +59,44 @@
             return {
                 Amount: '',
                 AmountErr: '',
-                wholeAmount: 70
+                msg: '',
+                withdrawBalance: ''
             }
         },
+        methods: {
+            whole() {
+                this.$axios.post('/v1/finance/account/withdraw',{
+                'amount': this.Amount,
+                "cardId": 1
+            }).then(res=>{
+                console.log(res)
+                if (res.data.code == 900) {
+                    this.msg = res.data.msg
+                }
+            })
+            },
+            Amounts() {
+                this.Amount = this.withdrawBalance
+            }
+        },
+        created(){
+            this.$axios.post('v1/finance/profit/profitList').then(res=>{
+                this.withdrawBalance = res.data.data.withdrawBalance
+            })
+        }
     }
 </script>
 
 <style lang="scss" scoped>
+#app>div{
+    background-color: #f5f5f5;
+}
 .Presentation{
     width:351px;
     height:251px;
     background: $c-bai;
     margin: auto;
-    margin-top: 50px;
+    // margin-top: 50px;
     .tation-top{
         height: 51px;
         display: flex;
@@ -94,6 +121,8 @@
         .top-right{
             position: absolute;
             right: 15px;
+            display: flex;
+            align-items: center;
         }
     }
     .tation-and{
@@ -102,7 +131,6 @@
             padding: 12px;
         }
         .tation-and-input{
-            width: 100%;
             display: flex;
             margin-left: 12px;
             // padding-top: 12px;
