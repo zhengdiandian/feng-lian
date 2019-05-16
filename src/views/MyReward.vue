@@ -6,9 +6,9 @@
             <div class="title" style="font-size: 16px;">{{title}}</div>
         </nav>
         <div class="reward">
-            <span style="height:26px;font-size:36px;color:rgba(255,255,255,1);">{{reward.withdrawBalance}} <span style="font-size:12px">元</span> </span>
-            <div style="font-size:12px;font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 40px; padding-bottom: 20px;">
-                可提现金额{{reward.totalBalance}}元
+            <span style="height:26px;font-size:36px;color:rgba(255,255,255,1);"> <span class="font-size font-title">{{reward.totalBalance}}元</span> </span>
+            <div class="font-size" style=";font-family:SourceHanSansCN-Normal;color:rgba(255,255,255,1); padding-top: 40px; padding-bottom: 20px;">
+                可提现金额{{reward.withdrawBalance}}元
             </div>
         </div>
     </header>
@@ -86,6 +86,7 @@ export default {
     },
     mounted() {
         this.$axios.post('v1/finance/profit/profitList').then(res=>{
+            debugger
             this.reward = res.data.data
             this.listDate = res.data.data.list
             this.lastMonth = res.data.data.list.lastMonth.profitList
@@ -96,6 +97,13 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.font-size{
+    &.font-title{
+    font-size: 30px;
+
+    }
+    font-size: 14px;
+}
 header{
     // height: 155px;
     background-image: url('../assets/PNG/我的奖励背景.png');

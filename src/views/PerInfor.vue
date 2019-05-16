@@ -84,6 +84,7 @@ export default {
             this.$axios.post('/v1/user/info/personalInfo').then( (res) => {
 
                 this.datalist = res.data.data
+                debugger
                 console.log(this.datalist)
             })
         }

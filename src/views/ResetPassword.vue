@@ -138,7 +138,7 @@ main {
   cursor: not-allowed;
   background-color: #fff
 }
-.mu-input[data-v-16293040]{
+.mu-input{
   color: #fff;
 }
 </style>

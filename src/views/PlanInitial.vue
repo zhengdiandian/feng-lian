@@ -63,7 +63,7 @@
       <div class="text-info"><span>身份证号:</span><span>{{panned.contacsIdNo}}</span></div>
       <div class="text-info"><span>购买日:</span><span>{{panned.joinDate}}</span></div>
       <div class="text-info"><span>支付方式:</span><span>{{panned.payTypeDesc}}</span></div>
-      <div class="text-info" style="display: flex"><span>上链信息</span><span style="flex: 2; overflow: hidden;text-overflow: ellipsis; white-space: nowrap">{{panned.eosLink}}</span> <span class="btn text-blue" :data-clipboard-text="panned.eosLink">点击复制</span></div>
+      <div class="text-info" style="display: flex"><span>上链信息</span><span style="flex: 2; overflow: hidden;text-overflow: ellipsis; white-space: nowrap">{{panned.eosLink}}</span> <span class="btn text-blue" :data-clipboard-text="panned.eosLink" @click="$toast.success('复制成功')">点击复制</span></div>
     </div>
     <div class="help-list">
       <mu-list  class="list" toggle-nested="">
@@ -72,7 +72,7 @@
           <mu-list-item-action>
             <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
           </mu-list-item-action>
-          <p slot="nested">{{item.content}}</p>
+          <p slot="nested" v-html="item.content"></p>
           <!--<mu-list-item button :ripple="false" slot="nested">-->
           <!--<mu-list-item-title>{{item.content}}</mu-list-item-title>-->
           <!--</mu-list-item>-->

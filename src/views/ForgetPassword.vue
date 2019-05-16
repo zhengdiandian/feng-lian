@@ -182,7 +182,7 @@ main {
   width: 80%;
   // color: $c-bai ;
 }
-.mu-input[data-v-2e7c8062]{
+.mu-input{
   color: #fff !important;
 }
 .login {

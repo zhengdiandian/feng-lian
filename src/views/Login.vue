@@ -5,14 +5,15 @@
       color="primary"
       text-color="#fff"
       z-depth="0"
-      
+
     >
-    <div class="login-title" v-if="codepwd">密码登陆</div>
-    <div class="login-title" v-else>验证码登陆</div>
+
+    <div class="login-title" v-if="codepwd">密码登录</div>
+    <div class="login-title" v-else>验证码登录</div>
       <mu-button icon slot="left" :ripple="false"></mu-button>
       <mu-button flat slot="right" @click="$router.push('/home')">跳过此步</mu-button>
     </mu-appbar>
-    
+
     <div class="content">
       <div class="img"></div>
       <div class="user-wrap">
@@ -273,7 +274,7 @@ export default {
   justify-content: center;
   align-content: center;
   background-color: $c-cheng;
-  
+
 }
 .mu-appbar{
   background-color: $c-cheng;
@@ -297,7 +298,7 @@ export default {
 }
 .mu-input.has-icon {
   box-sizing: border-box;
-  
+
 
   margin-left: -7 * 3.5px;
 }
@@ -331,10 +332,10 @@ export default {
 }
 .login-title{
   position: absolute;
-    top: -3px;
+    top: -6px;
     left: 42%;
     color: $c-bai;
     // font-size: 16px;
-    font-size: 12px;
+    font-size: 15px;
 }
 </style>

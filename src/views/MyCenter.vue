@@ -132,15 +132,15 @@
 
         </section>
         <section class="please-list-tongzhi">
-          <div  @click="showPoP=true">
-            <div class="list-li">
-              <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
-              <div style="width:22px;height:22px;"><img src="../assets/image/通知.svg" alt=""></div>
-                <span class="position-r" style="margin-left:12px">通知</span>
-              </div>
-              <mu-icon value=":iconfont iconyou1"></mu-icon>
-            </div>
-          </div>
+          <!--<div  @click="showPoP=true">-->
+            <!--<div class="list-li">-->
+              <!--<div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">-->
+              <!--<div style="width:22px;height:22px;"><img src="../assets/image/通知.svg" alt=""></div>-->
+                <!--<span class="position-r" style="margin-left:12px">通知</span>-->
+              <!--</div>-->
+              <!--<mu-icon value=":iconfont iconyou1"></mu-icon>-->
+            <!--</div>-->
+          <!--</div>-->
 
           <router-link tag="div" to="/setup">
             <div class="list-li">
@@ -211,7 +211,7 @@ import {mapState} from 'vuex'
   created() {
     this.$axios.post('v1/user/info/personalInfo').then(res => {
         debugger
-        
+
         this.$store.commit('set_userInfo',res.data.data)
       })
     // this.$axios.post('/v1/user/info/personalInfo').then(res => {
@@ -461,7 +461,7 @@ z-index: 99;
 }
 .please-list-tongzhi{
   width:351px;
-  height:93px;
+  /*height:93px;*/
   background:rgba(255,255,255,1);
   box-shadow:0px 0px 3px 0px rgba(0, 0, 0, 0.1);
   border-radius:5px;
