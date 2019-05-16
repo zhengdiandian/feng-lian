@@ -6,7 +6,7 @@
       <mu-button icon slot="left" @click="$router.go(-1)">
       <mu-icon value=":iconfont iconfanhui"></mu-icon>
       </mu-button>
-      {{title}}
+        我的{{changeText.text1 }}
       <mu-button icon slot="right"  :ripple="false">
       </mu-button>
     </mu-appbar>
@@ -17,12 +17,13 @@
                 <div>
                     <!--<span v-if="title = '我的蜂蜜'">我的蜂蜜</span>-->
                     <!--<span v-else>我的蜜分</span>-->
-                  <span>{{title}}</span>
+                  <span>我的{{changeText.text1}}</span>
                 </div>
                 <div>
                     <span style="font-size: 50px;">{{totalScore}}</span>
-                    <span v-if="title = '我的蜂蜜'">滴</span>
-                    <span v-else>分</span>
+                    <span>{{changeText.text2}}</span>
+                    <!--<span v-if="title = '我的蜂蜜'">滴</span>-->
+                    <!--<span v-else>分</span>-->
                 </div>
                 <!-- <span style="font-size: 14px;">近7天获得奖励{{20}}元</span> -->
                 <!-- <button class="integBtn">去炫耀</button> -->
@@ -102,11 +103,29 @@ export default {
         return {
             title: '',
             totalScore: this.$route.params.totalScore,
-            scoreType: this.$route.params.scoreType
+            scoreType: ''
         }
     },
+  computed: {
+      changeText(){
+        if (this.scoreType === 0) {
+          return {text1:'蜂蜜',text2: '滴'}
+        }else if(this.scoreType === 1) {
+          return {text1: '蜜分', text2: '分'}
+        } else {
+          return ''
+        }
+    }
+  },
   created() {
       this.title= this.$route.query.type
+      this.$axios.post('v1/user/info/index').then(res => {
+        if(res.data.code !==200){
+          this.$toast.error(res.data.msg)
+          return
+        }
+        this.scoreType = res.data.data.scoreType
+      })
   },
     mounted() {
         // console.log(this.$route.params.totalScore)

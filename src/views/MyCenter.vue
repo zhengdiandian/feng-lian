@@ -43,7 +43,7 @@
         <section class="information">
           <span class="name">姓名：{{preinfo.nickname}}</span><span class="state">{{preinfo.state==100 ? '未实名': '已实名' }}</span>
           <div class="number"><span>{{preinfo.account}}</span></div>
-          <div class="integral">积分 {{preinfo.totalScore}}</div>
+          <div class="integral">{{changeText}} {{preinfo.totalScore}}</div>
           <div class="autograph">{{preinfo.motto}}</div>
         </section>
         <!-- </router-link> -->
@@ -104,7 +104,7 @@
           <div class="list-li">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
               <div style="width:22px;height:22px;"><img src="../assets/image/客户.svg" alt=""></div>
-              <span class="position-r" style="margin-left:12px">{{changeText}}</span>
+              <span class="position-r" style="margin-left:12px">我的{{changeText}}</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
@@ -183,8 +183,9 @@ import {mapState} from 'vuex'
         "设置"
       ],
       time: 500,
-      changeText: '我的蜂蜜',
+      changeText: '',
       timeout: null,
+      scoreType: ''
     }
   },
     computed:mapState(['userInfo']),
@@ -227,15 +228,20 @@ import {mapState} from 'vuex'
   }
   },
   created() {
+    this.$axios.post('v1/user/info/index').then(res => {
+      if(res.data.code !==200){
+        this.$toast.error(res.data.msg)
+        return
+      }
+      this.changeText = res.data.data.scoreType === 0 ? '蜂蜜' : '蜜分'
+    })
     this.$axios.get('/v1/mutually/plan/planList').then(res=>{
       console.log(res)
       debugger
       this.timeout = res.data.data.list[0].leftWattingDays
       // console.log(this.myplan)
     })
-    if(this.userInfo.type >= 200) {
-      this.changeText = '我的蜜分'
-    }
+
     this.$axios.post('v1/user/info/personalInfo').then(res => {
         debugger
         this.$store.commit('set_userInfo',res.data.data)

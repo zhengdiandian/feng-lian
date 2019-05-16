@@ -92,7 +92,7 @@
     }
     .banner{
         width:375px;
-        height:165px;
+        /*height:auto;*/
         img{
           width:100%;
           height:auto;

@@ -41,7 +41,7 @@
                     <span style="float: right;">1.0.0.1</span>
                 </div>
             </div> -->
-            <button class="setBtn">解除绑定</button>
+            <!--<button class="setBtn">解除绑定</button>-->
             <button class="setBtn" @click="quit">安全退出</button>
         </main>
     </div>
@@ -78,7 +78,7 @@ export default {
         // width:50px;
         line-height:12px;
         font-size:12px;
-          
+
         font-weight:400;
         color:rgba(51,51,51,1);
         margin-left: 15px;
@@ -87,7 +87,7 @@ export default {
         width:38px;
         height:9px;
         font-size:12px;
-          
+
         font-weight:400;
         color:rgba(51,51,51,1);
         margin-right: 12px;
@@ -104,6 +104,6 @@ export default {
     outline: none;
     margin-top: 10px;
     font-size:12px;
-      
+
 }
 </style>

@@ -13,7 +13,7 @@
             </div>
         </div>
     </header>
-    <main>
+    <main class="main">
         <div class="historical-bill">历史账单</div>
 
         <div>
@@ -68,6 +68,7 @@
 </div>
 </template>
 <script>
+  // import  PopBox from '../components/PopBox/PopBox'
 export default {
     name: 'myreward',
     data() {
@@ -118,6 +119,9 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+  .main{
+    padding-bottom: 50px;
+  }
   .font-11{
     font-size: 11px;
   }
@@ -246,11 +250,12 @@ nav {
     }
 }
 footer{
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
     button{
         width:375px;
-        height:49px;
+        height:50px;
         background:rgba(239,162,32,1);
         margin: auto;
         border: none;

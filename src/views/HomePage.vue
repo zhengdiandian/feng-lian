@@ -43,7 +43,7 @@
       <div class="content">
         <div class="btn-wrap">
           <mu-button  class="btn" color="success" @click="$router.push('/owe')">感恩有你</mu-button>
-          <mu-button round class="btn" color="success" @click="$router.push('/minePlan')">互助计划</mu-button>
+          <mu-button round class="btn" color="success" @click="toMinePlan">互助计划</mu-button>
         </div>
         <div class="chat-wrap">
           <div class="chat-content item-content" @click="$router.push('/ranklist')">
@@ -227,7 +227,7 @@ export default {
 
     },
     toMinePlan() {
-      if(this.userInfo.type>200){
+      if(this.userInfo.type<200){
         this.$toast.error('您暂未加入互助计划,请先加入')
         return
       }

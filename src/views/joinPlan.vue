@@ -417,6 +417,7 @@ main{
     white-space: nowrap;
   }
   input {
+
     // width: 150px;
     // box-sizing: border-box;
     // padding-left: 10px;
