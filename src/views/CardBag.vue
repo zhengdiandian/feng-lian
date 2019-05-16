@@ -89,14 +89,14 @@
     text-align: center;
     text-align: center;
     font-size:14px;
-      
+
     color: $c-bai;
     background:$c-cheng;
     border-radius:17px;
     margin: 18px auto 0px;
   }
 main{
-    padding-top: 50px;
+    padding-top: 6px;
 }
 .BankCard{
     width:351px;
