@@ -26,6 +26,11 @@
                     </section>
                 </section>
             </div>
+            <div class="Reminder">
+                <div>温馨提示</div>
+                <span>系统只支持添加一张储蓄卡，更换储蓄卡，将添加新的储蓄卡，添加成功后自动替换原储蓄卡</span>
+                <span></span>
+            </div>
         </main>
     </div>
 </template>
@@ -42,10 +47,11 @@ main{
 }
 .BankCard{
     width:351px;
-    height:100px;
-    background: $c-cheng;
+    height:112px;
+    background: $c-hui;
     border-radius:5px;
     margin: auto;
+    margin-bottom: 12px;
     .bank {
         width:351px;
         height: 100%;
@@ -54,7 +60,7 @@ main{
     .bankImg{
         width: 35px;
         height: 35px;
-        background-color: $c-bai;
+        background-color: $c-cheng;
         border-radius: 50%;
         padding: 6.2vw;
         margin: 12px;
@@ -63,6 +69,23 @@ main{
         width: 100%;
         padding-top: 12px;
         font-size:16px;
+    }
+}
+.Reminder{
+    width:351px;
+    height: 92px;
+    background: $c-hui;
+    border-radius:5px;
+    margin: auto;
+    &>div{
+        color: $c-cheng;
+        padding: 11px;
+    }
+    &>span{
+        display: inline-block;
+        width: 95%;
+        margin-left: 12px;
+        font-size: 12px;
     }
 }
 </style>

@@ -42,7 +42,7 @@
         </section>
     </main>
     <footer>
-        <a href="tel:10086" class="customer">
+        <a href="tel:CustomerService" class="customer">
             <mu-icon value=":iconfont iconlianxikefu"></mu-icon>
             <span>联系客服</span>
         </a>
@@ -63,7 +63,8 @@ export default {
             title: '互助记录',
             amount: '互助余额',
             helped: [], //帮助数据
-            supporlist: [] //card数据
+            supporlist: [], //card数据
+            CustomerService: ''
         }
     },
     mounted() {
@@ -75,6 +76,11 @@ export default {
             this.helped = res.data.data
             this.supporlist = res.data.data.list
             // console.log(this.supporlist)
+        })
+        this.$axios.post('v1/manage/config/getTextList',{
+            "keys": 'CustomerService'
+        }).then(res=>{
+            this.CustomerService = res.data.data.CustomerService
         })
     }
 }

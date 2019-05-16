@@ -40,6 +40,7 @@ nav {
         margin-left: 5px;
         position: absolute;
         left: 12px;
+        color: #fff;
     }
     .title {
       font-size: 16px;
