@@ -56,7 +56,7 @@
           <div class="chat-content item-content" @click="$router.push('/scale')">
             <!-- <div class="chat-img" ></div> -->
             <div class="chat-title">{{homeinfor.stageAmount}}</div>
-            <div class="chat-info" >本期互助金規模(元)</div>
+            <div class="chat-info" >本期互助金规模(元)</div>
           </div>
         </div>
         <div class="routers-wrap">

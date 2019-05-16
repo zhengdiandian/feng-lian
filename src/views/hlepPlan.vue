@@ -54,7 +54,7 @@
         <div class="img-wrap">
           <img src="../assets/image/加入我们.svg" alt="">
         </div>
-        <span>预存48元加入</span>
+        <span>预存10元互助金即可加入互助计划</span>
         <div class="apply-click">
           <!-- <span>加入</span> -->
           <!-- <mu-icon value=":iconfont iconyou"></mu-icon> -->

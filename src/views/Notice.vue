@@ -7,7 +7,9 @@
             <div class="heart">
             </div>
           </div>
-          一大批爱心人士正在赶来
+          <div style="font-size: 18px; padding-bottom: 10px;">尊敬的蜂链会员您好：</div>
+          <div style="font-size: 18px;">我们正在努力建设美好的家园</div>
+          <!-- <div>敬请期待！</div> -->
         </div>
         <div>敬请期待</div>
       </div>
@@ -67,8 +69,8 @@
     }
     .heart{
       display: inline-block;
-      width: 80px;
-      height: 80px;
+      width: 60px;
+      height: 60px;
       background: url("../assets/img/爱心.svg") center no-repeat;
       -webkit-background-size: 100% 100%;
       background-size: 100% 100%;

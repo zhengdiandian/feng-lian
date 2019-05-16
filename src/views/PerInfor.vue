@@ -26,7 +26,7 @@
                     <section class="datalist" style="height: 50px;">
                         <div class="listtext"><span>体检报告</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
-                        <span style="position: absolute;right: 65px; font-size: 12px; font-family: SourceHanSansCN-Normal;">{{datalist.healthyState == 1 ? '以上传': '未上传'}}</span>
+                        <span style="position: absolute;right: 65px; font-size: 12px; font-family: SourceHanSansCN-Normal;">{{datalist.healthyState == 1 ? '已上传': '未上传'}}</span>
                     </section>
                 </div>
                 <div @click="toReal" to="/real">
