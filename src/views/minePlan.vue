@@ -108,7 +108,7 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-.card[data-v-6c619236] {
+.card {
     margin: -2.8vw auto auto;
 }
 .card{
@@ -116,7 +116,7 @@ export default {
   height: 180px;
 }
 span{
-      
+
 }
 .add-family{
     margin-bottom: 10px;

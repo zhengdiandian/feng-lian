@@ -62,7 +62,7 @@
       </div> -->
       </div>
       <section class="please-list">
-          <div class="list-li" v-if="preinfo.type &&  preinfo.type!==100" @click="Towelfareagency">
+          <div class="list-li" v-if="userInfo.type &&  userInfo.type!=100" @click="Towelfareagency">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
               <div style="width:22px;height:22px;"><img src="../assets/image/福利汇.svg" alt=""></div>
               <span class="position-r" style="margin-left:12px; margin-top: 3px;">福利社</span>
@@ -90,7 +90,7 @@
           </div>
         </router-link>
 
-        <div  @click="$toast.info('需要等待180天后', {time: 2000} )">
+        <div  @click="toast">
           <div class="list-li">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
               <div style="width:22px;height:22px;"><img src="../assets/image/申请.svg" alt=""></div>
@@ -104,7 +104,7 @@
           <div class="list-li">
             <div style="text-align: center; display: flex; line-height: 26px; margin-left: 12px;">
               <div style="width:22px;height:22px;"><img src="../assets/image/客户.svg" alt=""></div>
-              <span class="position-r" style="margin-left:12px">我的蜂蜜</span>
+              <span class="position-r" style="margin-left:12px">{{changeText}}</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
@@ -183,11 +183,20 @@ import {mapState} from 'vuex'
         "设置"
       ],
       time: 500,
-      changeText: '我的蜂蜜'
+      changeText: '我的蜂蜜',
+      timeout: null,
     }
   },
     computed:mapState(['userInfo']),
   methods: {
+    toast() {
+      debugger
+      if(this.timeout) {
+        this.$toast.success(`需要等待${this.timeout}天`)
+      }else  {
+        this.$toast.success('请先加入计划')
+      }
+    },
     jump() {
        this.$router.push('/per')
     },
@@ -205,6 +214,9 @@ import {mapState} from 'vuex'
       params:{
         "totalScore": this.preinfo.totalScore,
         "scoreType": this.preinfo.scoreType
+      },
+      query: {
+        type: this.changeText
       }
     })
   },
@@ -215,6 +227,12 @@ import {mapState} from 'vuex'
   }
   },
   created() {
+    this.$axios.get('/v1/mutually/plan/planList').then(res=>{
+      console.log(res)
+      debugger
+      this.timeout = res.data.data.list[0].leftWattingDays
+      // console.log(this.myplan)
+    })
     if(this.userInfo.type >= 200) {
       this.changeText = '我的蜜分'
     }

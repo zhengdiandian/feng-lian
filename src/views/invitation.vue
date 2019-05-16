@@ -93,6 +93,11 @@
     .banner{
         width:375px;
         height:165px;
+        img{
+          width:100%;
+          height:auto;
+          /*object-fit: cover;*/
+        }
     }
     .rule-content{
         width:303px;
@@ -253,7 +258,7 @@
           background:linear-gradient(-56deg,rgba(255,157,51,1) 0%,rgba(255,202,62,1) 100%);
           border-radius:11px;
           font-size:12px;
-            
+
           font-weight:400;
           color:rgba(56,26,21,1);
       }
@@ -268,7 +273,7 @@
   }
       .info-text{
           font-size:12px;
-            
+
           font-weight:400;
           color:rgba(56,26,21,1);
           /*line-height: 1.25;*/
@@ -286,7 +291,7 @@
     .rule{
         padding-top: 12px ;
         font-size:12px;
-          
+
         font-weight:400;
         color: $c-bai;
         span{

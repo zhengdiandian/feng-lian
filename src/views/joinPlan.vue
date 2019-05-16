@@ -73,7 +73,7 @@
       <div class="yaoQing margin-top wrap">
         <div class="input-wrap">
           <label for>邀请码</label>
-          <input  type="text" placeholder="请联系客服获得邀请码" v-model="userInfo.agentUserCode" >
+          <input  style="vertical-align: middle" type="text" placeholder="请联系客服获得邀请码" v-model="agentUserCode" >
           <span class="margin-left" @click="obtain">获取邀请码</span>
         </div>
         <div class="warning">
@@ -154,7 +154,8 @@ export default {
         200
       ],
       activeIndex: 0,
-      order: []
+      order: [],
+      agentUserCode: ''
     }
   },
   computed:{
@@ -187,9 +188,9 @@ export default {
         }
         debugger
         this.$axios.post('v1/mutually/plan/checkOrder',{
-              "contacs": this.userInfo.contacs||'text',
-              "contacsIdNo": this.userInfo.contacsIdNo || 123,
-              "inviteCode": this.userInfo.agentUserCode|| 'text',
+              "contacs": this.userInfo.contacs,
+              "contacsIdNo": this.userInfo.contacsIdNo ,
+              "inviteCode": this.agentUserCode,
               "orderAmount": this.amount, // 金额
               "productCode": this.MutualRule.productCode,
               "relationShip": 0,
@@ -232,6 +233,16 @@ export default {
   components: {
     // headpage,
     // popBox
+  },
+  created() {
+    this.$axios.post('v1/user/info/getCertifyInfo').then(res => {
+      debugger
+      if(res.data.data.code){
+        this.$toast(res.data.data.msg)
+      }
+      this.agentUserCode = res.data.data.userCode
+
+    })
   },
   mounted() {
     // this.$axios.post('/v1/user/info/getCertifyInfo').then(res=>{
@@ -421,7 +432,7 @@ main{
 .info-form{
   span{
     font-size:14px;
-      
+
     font-weight:bold;
     color:rgba(51,51,51,1);
   }

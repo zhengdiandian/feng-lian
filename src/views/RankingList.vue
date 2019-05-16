@@ -13,7 +13,7 @@
         <main class="page-margin-top">
             <div class="list-noe">
                 <div class="tow" style="position: relative;">
-                    <img style="z-index: 55;border-radius: 50%; border: 5px solid #C5D1E4;" :src="rank[0].img" alt="">
+                    <img style="z-index: 55;border-radius: 50%; border: 5px solid #C5D1E4;" :src="rank[1].img" alt="">
                     <span class="an-crown-3"><img src="../assets/PNG/皇冠3.png" alt=""></span>
                     <div class="list-name-number" style="left: 15px;">
                         <span style="font-size:14px; font-weight:bold;">{{rank[1].nickname}}</span>

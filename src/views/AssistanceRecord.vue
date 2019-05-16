@@ -42,7 +42,7 @@
         </section>
     </main>
     <footer>
-        <a href="tel:CustomerService" class="customer">
+        <a :href="'tel:'+CustomerService" class="customer">
             <mu-icon value=":iconfont iconlianxikefu"></mu-icon>
             <span>联系客服</span>
         </a>
@@ -114,7 +114,7 @@ export default {
     text-align: center;
     height:15px;
     font-size:18px;
-      
+
     font-weight:bold;
     color:rgba(51,51,51,1);
     margin: 12px auto;

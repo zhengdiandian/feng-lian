@@ -17,7 +17,7 @@
                 <section class="datalist" @click="$router.push('/mydetails')">
                     <div class="listtext" style="width: 75px;"><span>个人信息：</span></div>
                     <div class="listInfo" >{{datalist.personalInfo}}</div>
-                    <span style="font-size:11px;  font-weight:400;color:#707070; ">详细信息</span>
+                    <span class="info-text">详细信息</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </section>
             </div>
@@ -63,7 +63,7 @@ export default {
     created(){
 
         this.getlist()
-        
+
     },
     computed: mapState(['userInfo']),
     methods: {
@@ -93,6 +93,11 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+  .info-text{
+    font-size:12px;
+    font-weight:400;
+    color:#707070;
+  }
 header{
     position: relative;
     .iconerweima{
@@ -124,7 +129,7 @@ header{
             // width:58px;
             height:12px;
             font-size:12px;
-              
+
             font-weight:400;
             color:rgba(51,51,51,1);
             display: flex;
@@ -135,7 +140,7 @@ header{
             width: 150px;
             height: 18px;
             font-size:12px;
-              
+
             font-weight:400;
             margin-left: 12px;
         }

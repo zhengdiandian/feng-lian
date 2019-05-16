@@ -288,7 +288,7 @@
         // transform: translate(-50%, -50%);
 
         /*width: 80%;*/
-        color: $c-bai ;
+        color: $c-cheng ;
     }
     .login {
         width: 300px;

@@ -3,12 +3,12 @@
     <header>
         <nav>
             <mu-icon value=":iconfont iconfanhui" @click="openReturn"></mu-icon>
-            <div class="title" style="font-size: 16px;">{{title}}</div>
+            <div class="title font-16">{{title}}</div>
             <div class="record" @click="$router.push('/WithdrawalsRecord')">提现记录</div>
         </nav>
         <div class="reward">
-            <span style="height:26px;font-size:36px;color:rgba(255,255,255,1);">{{reward.totalBalance}} <span style="font-size:12px">元</span> </span>
-            <div style="font-size:12px;  color:rgba(255,255,255,1); padding-top: 40px; padding-bottom: 20px;">
+            <span style="height:26px;font-size:36px;color:rgba(255,255,255,1);">{{reward.totalBalance}} <span class="font-12" >元</span> </span>
+            <div class="font-12t" style="  color:rgba(255,255,255,1); padding-top: 40px; padding-bottom: 20px;">
                 可提现金额{{reward.withdrawBalance}}元
             </div>
         </div>
@@ -18,12 +18,12 @@
 
         <div>
             <div class="Month">
-                <div style="font-size:11px;font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-top: 5px;">{{listDate.thisMonth.date}}</div>
-                <div style="font-size:11px;font-weight:600;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-bottom: 5px;">共获得￥{{listDate.thisMonth.totalAmount}}</div>
+                <div  class="font-11"style="font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-top: 5px;">{{listDate.thisMonth.date}}</div>
+                <div  class="font-11"style="font-weight:600;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-bottom: 5px;">共获得￥{{listDate.thisMonth.totalAmount}}</div>
             </div>
             <div class="reward-money" v-for="(item,index) in listDate.thisMonth.profitList" :key="index">
                 <div class="headimg"><img :src="item.icon" alt=""></div>
-                <div style="display: flex; flex-direction: column; font-size:12px;color:rgba(51,51,51,1); margin-left: 12px;">
+                <div class="font-12" style="display: flex; flex-direction: column; color:rgba(51,51,51,1); margin-left: 12px;">
                     <span style="font-weight:bold;">{{item.contacs}}</span>
                     <span > {{item.profitDate}}</span>
                 </div>
@@ -36,12 +36,12 @@
 
         <div>
             <div class="Month">
-                <div style="font-size:11px;  font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;;padding-top: 5px;">{{listDate.lastMonth.date}}</div>
-                <div style="font-size:11px;  font-weight:600;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-bottom: 5px;">共获得￥{{listDate.lastMonth.totalAmount}}</div>
+                <div class="font-11" style="font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;;padding-top: 5px;">{{listDate.lastMonth.date}}</div>
+                <div class="font-11" style="font-weight:600;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-bottom: 5px;">共获得￥{{listDate.lastMonth.totalAmount}}</div>
             </div>
             <div class="reward-money" v-for="(item,index) in listDate.lastMonth.profitList" :key="index">
                 <div class="headimg"><img :src="item.icon" alt=""></div>
-                <div style="display: flex; flex-direction: column; font-size:12px;color:rgba(51,51,51,1); margin-left: 12px;">
+                <div class="font-12" style="display: flex; flex-direction: column; color:rgba(51,51,51,1); margin-left: 12px;">
                     <span style="font-weight:bold;">{{item.contacs}}</span>
                     <span > {{item.profitDate}}</span>
                 </div>
@@ -94,7 +94,7 @@ export default {
                 }else{
                     this.$toast.warning('可提现余额不足')
                 }
-               
+
             }
         //   this.$toast.warning('金额需要大于100元才可提现')
         },
@@ -118,6 +118,15 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+  .font-11{
+    font-size: 11px;
+  }
+  .font-12{
+    font-size: 12px;
+  }
+  .font-16{
+    font-size: 16px;
+  }
 #app>div{
   background-color: $c-hui;
 }
@@ -148,7 +157,7 @@ nav {
         span{
             width:62px;
             height:14px;
-              
+
             font-weight: bold;
             color:rgba(51,51,51,1);
         }

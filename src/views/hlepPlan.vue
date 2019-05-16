@@ -106,7 +106,7 @@
         </mu-list>
 
         <div class="help-btn-wrap">
-          <a href="tel:CustomerService" class="btn margin-bottom">
+          <a :href="'tel:'+CustomerService" class="btn margin-bottom">
             <span href="tel:CustomerService" class="iconfont iconlianxikefu"></span>
             联系客服
           </a>
@@ -358,7 +358,7 @@
       text-align: center;
       margin-bottom: 17px;
       font-size:12px;
-        
+
       font-weight:400;
       color:rgba(51,51,51,1);
       // letter-spacing: 2px;
@@ -442,7 +442,7 @@
     color: #fff;
     line-height: 50px;
     font-size:15px;
-      
+
     font-weight:400;
     color:rgba(255,255,255,1);
   }
@@ -461,7 +461,7 @@
   color: #fff;
   span {
     font-size:12px;
-      
+
     font-weight:400;
     // color:rgba(255,0,0,1);
     text-align: center;
@@ -484,7 +484,7 @@
     right: 12px;
     span{
       font-size:12px;
-        
+
       font-weight:bold;
       // color:rgba(255,0,0,1);
       line-height: 12px;

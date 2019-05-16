@@ -14,7 +14,7 @@
         <label>持卡人</label><input placeholder="持卡人姓名" type="text">
       </div>
       <div class="input-wrap">
-        <label>银行卡号</label><input v-model="cardNo" placeholder="请填写您的银行卡号" type="text">
+        <label>银行卡号</label><input v-model.lazy.number="cardNo" placeholder="请填写您的银行卡号" type="number">
       </div>
       <div class="input-wrap" @click="showAddress = true">
         <label>所属地区</label>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="input-wrap">
-        <label>预留手机号</label><input v-model="account" placeholder="请输入银行预留手机号" type="text">
+        <label>预留手机号</label><input  v-model.number="account" placeholder="请输入银行预留手机号" type="number">
       </div>
       <div class="input-wrap">
         <label>短信验证码</label><input v-model="smsCode" placeholder="请输入短信验证码" type="text" > <span class="right" v-if="flag===0" @click="getMsg">获取验证码</span><span class="right timer" v-else>{{flag}}</span>
@@ -89,6 +89,10 @@
       }
     },
     methods: {
+      // numberChange() {
+      //   debugger
+      //   this.account = e.target.value.replace(/[^\d]/g,'')
+      // },
       confirmFn(val) {
         debugger
         this.showAddress = false;
