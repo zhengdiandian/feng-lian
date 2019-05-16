@@ -89,9 +89,14 @@ export default {
             if (this.debitCardState == 0) {
                 this.show = true
             }else {
-                this.$router.push('/RewardPresentation')
+                if(this.reward.withdrawBalance > 0){
+                    this.$router.push('/RewardPresentation')
+                }else{
+                    this.$toast.warning('可提现余额不足')
+                }
+               
             }
-          this.$toast.warning('金额需要大于100元才可提现')
+        //   this.$toast.warning('金额需要大于100元才可提现')
         },
         out() {
             this.$router.go(-1)

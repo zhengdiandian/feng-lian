@@ -11,6 +11,10 @@
         </mu-appbar>
         </header>
         <main style="padding-top: 60px;">
+            <div class="iconkong">
+                <img src="../assets/空页面.png" alt="">
+                <span>暂无数据</span>
+            </div>
             <div class="Withdrawals" v-for="(item,i) in record" :key="i">
                 <div class="Withdrawals-main">
                     <div class="top">
@@ -18,7 +22,6 @@
                         <div v-if="item.state == 100" class="right" style="color:#2DA4F8">{{item.stateDesc}}</div>
                         <div v-if="item.state == 200" class="right" style="color: #F8B62D">{{item.stateDesc}}</div>
                         <div v-if="item.state == 300" class="right" style="color: #F82D2D">{{item.stateDesc}}</div>
-                        
                     </div>
                     <div class="record">
                         <div class="record-img"><img :src="item.headPortrait" alt=""></div>
@@ -61,6 +64,22 @@
 <style lang="scss" scoped>
 #app>div{
     background-color: #f5f5f5;
+}
+.iconkong{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    span{
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        color: #707070;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
 }
 .Withdrawals{
     width: 95%;
