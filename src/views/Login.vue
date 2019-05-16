@@ -330,7 +330,7 @@ export default {
 .login-title{
   position: absolute;
     top: 50px;
-    left: 42%;
+    left: 40%;
     color: $c-bai;
     font-size: 16px;
 }
