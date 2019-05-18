@@ -59,7 +59,7 @@
           wx.ready(function() {
             const title = '蜂链互助邀您加入';
             const desc = '链接你我他 守护千万家';
-            const imgUrl = 'https://bee-test-bucket.oss-cn-beijing.aliyuncs.com/首页banner.png';
+            // const imgUrl = 'https://bee-test-bucket.oss-cn-beijing.aliyuncs.com/首页banner.png';
             let link = ''
             debugger
             if(self.userInfo.type ==100) {
@@ -108,7 +108,7 @@
               title: title, // 分享标题
               desc: desc, // 分享描述
               link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: self.imgUrl || 'https://bee-formal-bucket.oss-cn-beijing.aliyuncs.com/155801883390629049.png' // 分享图标
+              imgUrl: self.imgUrl  // 分享图标
             });
 
             // 微信朋友
