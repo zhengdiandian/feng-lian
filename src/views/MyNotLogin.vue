@@ -100,8 +100,8 @@ export default {
 </script>
 <style scoped lang="scss">
 .pop{
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 150px;
     display: flex;
     flex-wrap: wrap;
     justify-items: center;
@@ -141,8 +141,8 @@ export default {
       color: $c-lang
     }
   }.pop{
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 150px;
     display: flex;
     flex-wrap: wrap;
     justify-items: center;

@@ -137,8 +137,8 @@ export default {
     position: initial;
   }
   .pop-content{
-    width:315px;
-    height:180px;
+    width:250px;
+    height:150px;
     background:rgba(255,255,255,1);
     border:1px solid rgba(220,220,220,1);
     border-radius:2px;

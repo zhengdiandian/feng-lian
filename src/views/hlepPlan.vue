@@ -268,8 +268,8 @@
 
 <style lang="scss" scoped>
   .pop{
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 150px;
     display: flex;
     flex-wrap: wrap;
     justify-items: center;

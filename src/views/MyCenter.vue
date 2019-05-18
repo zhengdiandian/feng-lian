@@ -309,8 +309,8 @@ import {mapState} from 'vuex'
   }
 
   .pop-content{
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 150px;
     display: flex;
     flex-wrap: wrap;
     justify-items: center;
