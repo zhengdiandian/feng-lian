@@ -8,7 +8,7 @@
         <mu-text-field
           v-model="account"
           label-float
-          label="请输入新密码"
+          label="输入6-16位数字+字母的密码"
           icon=":iconfont iconmima"
           :error-text="accountErr"
           :action-icon="visibility ? 'visibility_off' : 'visibility'"
@@ -25,7 +25,7 @@
         <mu-text-field
           v-model="pwd"
           @input="accountErr = ''"
-          label="请确认密码"
+          label="输入6-16位数字+字母的密码"
           label-float
           icon=":iconfont iconmima"
           :action-icon="visibility ? 'visibility_off' : 'visibility'"

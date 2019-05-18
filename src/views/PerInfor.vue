@@ -15,7 +15,7 @@
                     <div class="listInfo">{{datalist.email?datalist.email: '无'}}</div>
                 </section>
                 <section class="datalist" @click="$router.push('/mydetails')">
-                    <div class="listtext" style="width: 75px;"><span>个人信息：</span></div>
+                    <div class="listtext"><span>个人信息：</span></div>
                     <div class="listInfo" >{{datalist.personalInfo}}</div>
                     <span class="info-text">详细信息</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>

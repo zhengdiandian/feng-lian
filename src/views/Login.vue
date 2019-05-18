@@ -35,7 +35,7 @@
         <mu-text-field
           v-if="codepwd"
           v-model.trim="pwd"
-          label="请输入6-16位数字+字母的密码"
+          label="输入6-16位数字+字母的密码"
           label-float
           icon=":iconfont iconmima"
           :error-text="pwdErr"
@@ -288,6 +288,7 @@ export default {
 }
 .mu-input{
   color: #fff !important;
+  font-size: 12px;
 }
 .mu-primary-color{
   color: $c-cheng;
@@ -317,7 +318,7 @@ export default {
   width: 100%;
 }
 .mu-input {
-  font-size: $f14;
+  font-size: $f12;
   color: #fff;
 }
 .show {
