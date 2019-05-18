@@ -6,7 +6,7 @@
                 <div class="title">{{title}}</div>
             </nav>
         </header>
-        <main>
+        <main id="qrContent">
             <div class="head-name">
                 <section class="hear-infor">
                     <div class="head-img"><img :src="userInfo.headPortrait" alt=""></div>
@@ -20,21 +20,24 @@
                   <div ref="qr"></div>
                   <!--<img src="../assets/PNG/中青年.png" alt="">-->
                 </section>
-                <section class="preservation">
-                    <span  class="margin-top margin-bottom" style="color: #EFA220; opacity: 0">保存二维码</span>
+                <section class="preservation margin-top margin-bottom">
+                    <span  class="" style="color: #EFA220; opacity: 0">保存二维码</span>
                     <span style="font-weight:bold;">我的邀请码：{{userInfo.userCode}}</span>
                 </section>
             </div>
         </main>
-        <div class="btn-wrap">
-          <div class="btn">保存二维码</div>
-          <div class="btn">复制邀请码</div>
+        <div class="btn-wrap margin-top">
+          <div class="btn" @click="downloadMyQrcode">保存二维码</div>
+          <div class="btn" :data-clipboard-text="userInfo.userCode" @click="$toast.success('复制成功')">复制邀请码</div>
         </div>
+      <a id="download" :href="imgSrc" download="我的二维码"> </a>
     </div>
 </template>
 <script>
 import Qrcode from 'qrcodejs2'
 import axios from 'axios'
+import Clipboard from 'clipboard';
+import Html2canvas from 'html2canvas'
 import  {mapState} from 'vuex'
 console.log(Qrcode)
 export default {
@@ -47,11 +50,37 @@ export default {
            autograph: '海内存知己，天涯若比邻',
            imgUrl: require('../assets/PNG/head.png'),
            code: '',
+           imgSrc: ''
 
         }
     },
   computed: mapState(['userInfo']),
     methods: {
+      dataURItoBlob(base64Data) {
+        var byteString;
+        if (base64Data.split(",")[0].indexOf("base64") >= 0)
+          byteString = atob(base64Data.split(",")[1]);
+        else byteString = unescape(base64Data.split(",")[1]);
+        var mimeString = base64Data
+          .split(",")[0]
+          .split(":")[1]
+          .split(";")[0];
+        var ia = new Uint8Array(byteString.length);
+        for (var i = 0; i < byteString.length; i++) {
+          ia[i] = byteString.charCodeAt(i);
+        }
+        return new Blob([ia], { type: mimeString });
+      },
+      downloadMyQrcode() {
+        let linkDom = document.getElementById('download')
+        let contentDom  =document.getElementById('qrContent')
+        Html2canvas(contentDom, {dpi: window.devicePixelRatio}).then(canvas => {
+          this.imgSrc = canvas.toDataURL('image/png', 1.0)
+          this.$nextTick(() => {
+            linkDom.click()
+          })
+        })
+      },
         open() {
             this.$router.go(-1)
         },
@@ -91,6 +120,7 @@ export default {
       })
     },
     mounted(){
+      const btnCopy = new Clipboard('.btn');
 
       console.log(this.$refs.qrWrap.clientHeight)
 
@@ -100,6 +130,16 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+  .btn-wrap{
+    display: flex;
+    justify-content: space-around;
+    .btn{
+      background-color: $c-cheng;
+      height: 33px;
+      border-radius: 25px;
+      color: $c-bai;
+    }
+  }
 html,body{
     width: 100%;
     height: 100%;
@@ -158,7 +198,7 @@ nav {
 main{
     width: 100%;
     .head-name{
-        
+
         .hear-infor{
             display: flex;
             flex-direction: column;
