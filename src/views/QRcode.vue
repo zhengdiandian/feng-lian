@@ -152,7 +152,7 @@ html,body{
 }
 .head-state {
     display: inline-block;
-    width:50px;
+    // width:50px;
     height:20px;
     text-align: center;
     color: #fff;
@@ -200,13 +200,14 @@ main{
     .head-name{
 
         .hear-infor{
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 16%;
-            left: 50%;
-            transform: translate(-50%, -16%);
+            // display: flex;
+            // flex-direction: column;
+            // position: absolute;
+            // top: 16%;
+            // left: 50%;
+            // transform: translate(-50%, -16%);
             text-align: center;
+            padding-top: 20px;
             img{
             // width:75px;
             // height:75px;
@@ -224,7 +225,7 @@ main{
         background:$c-bai;
         border:10px solid $c-bai;
         margin: auto;
-        margin-top: 180px;
+        margin-top: 40px;
         img{
             width: 100%;
             height: 100%;
