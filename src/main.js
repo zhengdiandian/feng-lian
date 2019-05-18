@@ -43,7 +43,7 @@ Axios.interceptors.response.use((response) => {
   // token 已过期，重定向到登录页面
   if (response.data.code == 402 || response.data.code == 400) {
     localStorage.clear()
-    window.alert('登录失效请从新登录')
+    window.alert('登录失效请重新登录')
     window.location=`${Axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=''`
     // router.replace({
     //   path: '/login',
@@ -59,7 +59,7 @@ Axios.interceptors.response.use((response) => {
   // Do something with response error
   return Promise.reject(error)
 })
-Axios.defaults.baseURL = 'http://test.wxapi.fenglianhz.com/h5'
+Axios.defaults.baseURL = 'http://wxapi.fenglianhz.com/h5'
 // Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 // Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 // Axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;

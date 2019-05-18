@@ -43,7 +43,7 @@
         color="success"
         @click="login"
 
-        >修&nbsp;改&nbsp;并&nbsp;登&nbsp;陆</mu-button
+        >修&nbsp;改&nbsp;并&nbsp;登&nbsp;录</mu-button
       >
     </main>
   </div>
