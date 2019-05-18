@@ -12,17 +12,17 @@
     <main class="page-margin-top">
         <section class="profit">
             <div class="users">
-                <span class="number" style="font-weight:bold; font-size: 20px;">{{helped.helpedCount}}</span>
-                <span style="font-size: 12px;">已帮助人数</span>
+                <span class="number">{{helped.helpedCount}}</span>
+                <span class="numberDay">已帮助人数</span>
             </div>
-            <div class="xian" style="width: 1px;align-self: center;border-left: 1px solid #eaeaea;height:30px;"></div>
+            <div class="xian"></div>
             <div class="users">
-                <span class="number" style="font-weight:bold; font-size: 20px;">{{helped.joinedDays}}</span>
-                <span style="font-size: 12px;">已加入蜂链天数</span>
+                <span class="number">{{helped.joinedDays}}</span>
+                <span class="numberDay">已加入蜂链天数</span>
             </div>
         </section>
             <div class="assis-title">链接你我他 &nbsp; &nbsp; 守护千万家</div>
-            <div class="margin-left" style="font-size:15px;  font-weight:bold;color:rgba(51,51,51,1);margin-bottom: 5px; ">互助记录</div>
+            <div class="assis-text margin-left">互助记录</div>
         <section v-for="item in supporlist" :key="item.orderNo">
             <div style="margin: 12px 0px 12px 12px" >
                 <div style="font-size:9px;  font-weight:bold;color:rgba(112,112,112,1);">{{item.createTime}}</div>
@@ -101,14 +101,29 @@ export default {
         font-family:ArialMT;
         color:rgba(51,51,51,1);
         width: 50%;
-      font-weight: 700;
+        font-weight: 700;
         /*height: 100%;*/
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         color: #fff;
+        .number{
+            font-weight:bold;
+            font-size: 20px;
+        }
+        .numberDay{
+            font-size: 12px;
+        }
+        .xian{
+            width: 1px;
+            align-self: center;
+            border-left: 1px solid #eaeaea;
+            height:30px;
+        }
+        
     }
+    
 }
 .assis-title{
     text-align: center;
@@ -118,6 +133,13 @@ export default {
     font-weight:bold;
     color:rgba(51,51,51,1);
     margin: 12px auto;
+}
+.assis-text{
+    font-size:15px;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin-bottom: 5px;
+    padding-top: 12px;
 }
 .card{
     margin: auto;

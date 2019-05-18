@@ -4,7 +4,7 @@
         <mu-button icon slot="left" @click="$router.go(-1)">
           <mu-icon value=":iconfont iconfanhui"></mu-icon>
         </mu-button>
-        我的互助计划
+        我的计划
         <mu-button icon slot="right"  :ripple="false">
         </mu-button>
       </mu-appbar>
@@ -56,11 +56,10 @@
                     </div>
                 </section>
             </div> -->
-            <div class="purchase-plan" style="margin-top: 50px;">
-                <span  style="font-size:14px;  font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
+            <div class="purchase-plan" >
+                <span  class="plan-text">我的购买计划</span>
                 <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
-                    <card
-                        :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
+                    <card :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
                         :img="myplan.headPortrait"
                         :state="myplan.payState==100?'未实名':'已实名'"
                         :productName="myplan.productName"
@@ -100,7 +99,6 @@ export default {
     mounted() {
         this.$axios.get('/v1/mutually/plan/planList').then(res=>{
             console.log(res)
-          debugger
             this.myplan = res.data.data
             // console.log(this.myplan)
         })
@@ -108,22 +106,17 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-.card {
-    margin: -2.8vw auto auto;
-}
 .card{
-
-  height: 180px;
+    height: 180px;
 }
 span{
-
+      
 }
 .add-family{
     margin-bottom: 10px;
 }
 .card{
     margin: auto;
-    margin-top: 12px;
 }
 .add-family-list{
     display: flex;
@@ -154,5 +147,11 @@ span{
     }
 }
 }
-
+.plan-text{
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+    padding: 12px 12px 0;
+    display: inline-block;
+}
 </style>

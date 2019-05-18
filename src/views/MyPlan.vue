@@ -57,7 +57,7 @@
                 </section>
             </div> -->
             <div class="purchase-plan" >
-                <span  style="font-size:14px;  font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的购买计划</span>
+                <span  class="plan-text">我的购买计划</span>
                 <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
                     <card :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
                         :img="myplan.headPortrait"
@@ -117,7 +117,6 @@ span{
 }
 .card{
     margin: auto;
-    margin-top: 12px;
 }
 .add-family-list{
     display: flex;
@@ -148,5 +147,11 @@ span{
     }
 }
 }
-
+.plan-text{
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+    padding: 12px 12px 0;
+    display: inline-block;
+}
 </style>

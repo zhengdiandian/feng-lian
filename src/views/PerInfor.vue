@@ -26,14 +26,14 @@
                     <section class="datalist" style="height: 50px;">
                         <div class="listtext"><span>体检报告</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
-                        <span style="position: absolute;right: 65px; font-size: 12px; font-family: SourceHanSansCN-Normal;">{{datalist.healthyState == 1 ? '已上传': '未上传'}}</span>
+                        <span class="list-state">{{datalist.healthyState == 1 ? '已上传': '未上传'}}</span>
                     </section>
                 </div>
                 <div @click="toReal" to="/real">
                     <section class="datalist">
                         <div class="listtext"><span>实名认证</span></div>
                         <mu-icon value=":iconfont iconyou1"></mu-icon>
-                        <span style="position: absolute;right: 65px; font-size: 12px; font-family: SourceHanSansCN-Normal;">{{datalist.state == 100 ? '未认证': '已认证'}}</span>
+                        <span class="list-state">{{datalist.state == 100 ? '未认证': '已认证'}}</span>
                     </section>
                 </div>
                 </div>
@@ -93,11 +93,16 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-  .info-text{
+.info-text{
     font-size:12px;
     font-weight:400;
     color:#707070;
-  }
+}
+.list-state{
+    position: absolute;
+    right: 65px;
+    font-size: 12px;
+}
 header{
     position: relative;
     .iconerweima{

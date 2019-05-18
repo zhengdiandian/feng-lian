@@ -7,8 +7,8 @@
             <div class="record" @click="$router.push('/WithdrawalsRecord')">提现记录</div>
         </nav>
         <div class="reward">
-            <span style="height:26px;font-size:36px;color:rgba(255,255,255,1);">{{reward.totalBalance}} <span class="font-12" >元</span> </span>
-            <div class="font-12t" style="  color:rgba(255,255,255,1); padding-top: 40px; padding-bottom: 20px;">
+            <span class="Total-sum">{{reward.totalBalance}} <span class="font-12" >元</span> </span>
+            <div class="font-12t Withdrawable" >
                 可提现金额{{reward.withdrawBalance}}元
             </div>
         </div>
@@ -18,12 +18,12 @@
 
         <div>
             <div class="Month">
-                <div  class="font-11" style="font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-top: 5px;">{{listDate.thisMonth.date}}</div>
-                <div  class="font-11" style="font-weight:600;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-bottom: 5px;">共获得￥{{listDate.thisMonth.totalAmount}}</div>
+                <div  class="font-11 month-date">{{listDate.thisMonth.date}}</div>
+                <div  class="font-11 month-date month-date-weight" >共获得￥{{listDate.thisMonth.totalAmount}}</div>
             </div>
             <div class="reward-money" v-for="(item,index) in listDate.thisMonth.profitList" :key="index">
                 <div class="headimg"><img :src="item.icon" alt=""></div>
-                <div class="font-12" style="display: flex; flex-direction: column; color:rgba(51,51,51,1); margin-left: 12px;">
+                <div class="font-12 header-name-date">
                     <span style="font-weight:bold;">{{item.contacs}}</span>
                     <span > {{item.profitDate}}</span>
                 </div>
@@ -36,12 +36,12 @@
 
         <div>
             <div class="Month">
-                <div class="font-11" style="font-weight:400;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;;padding-top: 5px;">{{listDate.lastMonth.date}}</div>
-                <div class="font-11" style="font-weight:600;color:rgba(51,51,51,1); margin: 6px 0 2px 12px;padding-bottom: 5px;">共获得￥{{listDate.lastMonth.totalAmount}}</div>
+                <div class="font-11 month-date" >{{listDate.lastMonth.date}}</div>
+                <div class="font-11 month-date month-date-weight">共获得￥{{listDate.lastMonth.totalAmount}}</div>
             </div>
             <div class="reward-money" v-for="(item,index) in listDate.lastMonth.profitList" :key="index">
                 <div class="headimg"><img :src="item.icon" alt=""></div>
-                <div class="font-12" style="display: flex; flex-direction: column; color:rgba(51,51,51,1); margin-left: 12px;">
+                <div class="font-12 header-name-date">
                     <span style="font-weight:bold;">{{item.contacs}}</span>
                     <span > {{item.profitDate}}</span>
                 </div>
@@ -57,7 +57,7 @@
     </footer>
     <div class="show" v-if="show">
         <div class="show-main">
-            <div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>您还没有绑定银行卡</span></div>
+            <div class="show-main-text"><span>您还没有绑定银行卡</span></div>
             <mu-divider></mu-divider>
             <div class="show-btn">
                 <input style="color: #707070" type="button" value="再等等" @click="show = false">
@@ -79,7 +79,7 @@ export default {
             listDate: {},
             lastMonth: {},
             thisMonth:{},
-            debitCardState: '1'
+            debitCardState: ''
         }
     },
     methods: {
@@ -119,6 +119,28 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.Withdrawable{
+    color:rgba(255,255,255,1);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.header-name-date{
+    display: flex;
+    flex-direction: column;
+    color:rgba(51,51,51,1);
+    margin-left: 12px;
+}
+.Total-sum{
+    font-size:36px;
+    color:rgba(255,255,255,1);
+}
+.show-main-text{
+    width: 100%;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
   .main{
     padding-bottom: 50px;
   }
@@ -134,9 +156,20 @@ export default {
 #app>div{
   background-color: $c-hui;
 }
+.month-date{
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    margin: 6px 0 2px 12px;
+    padding-top: 5px;
+}
+.month-date-weight{
+    font-weight:600;
+    padding-bottom: 5px;
+}
 .record{
     position: absolute;
     right: 12px;
+    font-size: 16px;
 }
 header{
     // height: 155px;

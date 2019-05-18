@@ -56,7 +56,7 @@
       </div>
       <!-- <mu-divider style="height:5px"></mu-divider> -->
       <div class="info-form margin-left">
-        <span class="margin-top" style="display: inline-block;">资料填写</span>
+        <span>资料填写</span>
         <div class="input-wrap">
           <label for>姓 &nbsp; 名：</label>
           <input :disabled="!showPoP" type="text" placeholder="请输入您的姓名" :value="userInfo.contacs ">
@@ -326,6 +326,9 @@ main{
 }
 .mu-header{
   margin: 56px 0 12px 12px;
+  font-size:14px;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
 }
   .stepper-step{
     margin: -45px -10px 0 0;
@@ -433,9 +436,10 @@ main{
 .info-form{
   span{
     font-size:14px;
-
     font-weight:bold;
     color:rgba(51,51,51,1);
+    display: inline-block;
+    padding: 12px 0 0 12px;
   }
 }
 

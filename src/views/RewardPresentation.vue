@@ -51,7 +51,7 @@
         <div style="margin-left: 12px; margin-top: 12px;color:#707070;font-size:12px">提现手续费为5元一笔，最低提现额为100元</div>
         <div class="show" v-if="show_bind_card">
             <div class="show-main">
-                <div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>您还没有绑定银行卡</span></div>
+                <div class="show-main-text" ><span>您还没有绑定银行卡</span></div>
                 <mu-divider></mu-divider>
                 <div class="show-btn">
                     
@@ -62,7 +62,7 @@
 
         <div class="show" v-if="show_success">
             <div class="show-main">
-                <div style="width: 100%;  height: 120px;  display: flex;justify-content: center;align-items: center;"><span>你的提现申请已提交<br>请等待客服审核</span></div>
+                <div class="show-main-text" ><span>你的提现申请已提交<br>请等待客服审核</span></div>
                 <mu-divider></mu-divider>
                 <div class="show-btn">
                     
@@ -129,6 +129,13 @@
 <style lang="scss" scoped>
 #app>div{
     background-color: #f5f5f5;
+}
+.show-main-text{
+    width: 100%;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 }
 .Presentation{
     width:351px;

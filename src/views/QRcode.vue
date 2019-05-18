@@ -12,11 +12,7 @@
                     <div class="head-img"><img :src="userInfo.headPortrait" alt=""></div>
                     <div class="head-text">
                         <span style="font-size:14px;">{{userInfo.nickname}}</span>
-                        <span style="display: inline-block; width:50px;height:20px;text-align: center;color: #fff;
-                        margin-left: 5px;background:rgba(239,162,32,1);border:1px solid rgba(255,255,255,1);
-                        line-height: 20px;    padding: 0 2px 0 2px;
-                        font-size: 12px;
-                        border-radius: 1px;" >{{userInfo.state == 100 ? '未实名':'已实名'}}</span>
+                        <span class="head-state" >{{userInfo.state == 100 ? '未实名':'已实名'}}</span>
                     </div>
                     <span style="color:rgba(112,112,112,1);">{{userInfo.motto}}</span>
                 </section>
@@ -110,6 +106,20 @@ html,body{
 .head-text{
     margin-top: 12px;
 }
+.head-state {
+    display: inline-block;
+    width:50px;
+    height:20px;
+    text-align: center;
+    color: #fff;
+    margin-left: 5px;
+    background:rgba(239,162,32,1);
+    border:1px solid rgba(255,255,255,1);
+    line-height: 20px;
+    padding: 0 2px 0 2px;
+    font-size: 12px;
+    border-radius: 1px;
+}
 .card{
     width: 375px;
     height: 100%;
@@ -144,7 +154,7 @@ nav {
 main{
     width: 100%;
     .head-name{
-        height: 150px;
+        
         .hear-infor{
             display: flex;
             flex-direction: column;
@@ -170,7 +180,7 @@ main{
         background:$c-bai;
         border:10px solid $c-bai;
         margin: auto;
-        margin-top: 160px;
+        margin-top: 180px;
         img{
             width: 100%;
             height: 100%;
