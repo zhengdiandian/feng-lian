@@ -220,7 +220,7 @@ li {
   /*margin: 12px 0;*/
   /*background: url("") center no;*/
   font-size: 13px;
-  font-family: SourceHanSansCN-Normal;
+  // font-family: SourceHanSansCN-Normal;
   font-weight: bold;
   color: rgba(51, 51, 51, 1);
 }
@@ -274,20 +274,20 @@ li {
       // width: 108px;
       height: 14px;
       font-size: 13px;
-      font-family: SourceHanSansCN-Normal;
+      // font-family: SourceHanSansCN-Normal;
       font-weight: bold;
       color: rgba(51, 51, 51, 1);
     }
     .number {
       font-size: 10px;
-      font-family: SourceHanSansCN-Normal;
+      // font-family: SourceHanSansCN-Normal;
       font-weight: bold;
       color: rgba(112, 112, 112, 1);
       font-size: 10px;
     }
     .autograph {
       font-size: 12px;
-      font-family: SourceHanSansCN-Normal;
+      // font-family: SourceHanSansCN-Normal;
       font-weight: bold;
       color: rgba(112, 112, 112, 1);
       margin-top: 20px;
@@ -301,7 +301,7 @@ li {
     background: rgba(239, 162, 32, 1);
     border: 0px solid rgba(255, 255, 255, 1);
     font-size: 12px;
-    font-family: SourceHanSansCN-Normal;
+    // font-family: SourceHanSansCN-Normal;
     font-weight: 400;
     color: rgba(255, 255, 255, 1);
     text-align: center;

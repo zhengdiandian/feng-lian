@@ -220,7 +220,7 @@ ul {
 }
 .order {
   font-size: 12px;
-  font-family: SourceHanSansCN-Normal;
+  // font-family: SourceHanSansCN-Normal;
   font-weight: 400;
   color: rgba(51, 51, 51, 1);
   background: #fff;

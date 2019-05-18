@@ -291,7 +291,7 @@ input {
     height: 44px;
     background: rgba(255, 255, 255, 1);
     font-size: 12px;
-    font-family: SourceHanSansCN-Normal;
+    // font-family: SourceHanSansCN-Normal;
     font-weight: 400;
     color: rgba(51, 51, 51, 1);
     padding-left: 12px;
@@ -301,9 +301,10 @@ input {
 .upload {
   width: $gw;
   margin-top: 10px;
+  margin-bottom: 60px;
   .uptitle {
     font-size: 12px;
-    font-family: SourceHanSansCN-Normal;
+    // font-family: SourceHanSansCN-Normal;
     font-weight: bold;
     color: rgba(51, 51, 51, 1);
     padding: 12px 0 10px 10px;
@@ -322,7 +323,7 @@ input {
   color: #fff;
   line-height: 50px;
   font-size: 15px;
-  font-family: SourceHanSansCN-Normal;
+  // font-family: SourceHanSansCN-Normal;
   font-weight: 400;
   color: rgba(255, 255, 255, 1);
 }
