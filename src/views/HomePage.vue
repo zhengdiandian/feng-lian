@@ -567,14 +567,22 @@ h3{
 
 .title{
       font-size:$f15;
-
+      width: 180px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       font-weight:bold;
       color:rgba(51,51,51,1);
     }
     .info{
       /*margin: 12px auto;*/
       overflow: hidden;
+      width: 180px;
+      /*white-space: nowrap;*/
       text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
       font-size:13px;
       padding-right: 10px;
 

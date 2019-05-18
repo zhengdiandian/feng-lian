@@ -54,14 +54,19 @@
             timestamp: res.data.data.timestamp, // 必填，生成签名的时间戳
             nonceStr: res.data.data.nonceStr, // 必填，生成签名的随机串
             signature: res.data.data.signature, // 必填，签名
-            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone', 'onMenuShareWeibo'] // 必填，需要使用的JS接口列表
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone', 'onMenuShareWeibo', 'hideMenuItems', 'hideAllNonBaseMenuItem'] // 必填，需要使用的JS接口列表
           })
+          
           wx.ready(function() {
             const title = '蜂链互助邀您加入';
             const desc = '链接你我他 守护千万家';
             // const imgUrl = 'https://bee-test-bucket.oss-cn-beijing.aliyuncs.com/首页banner.png';
             let link = ''
             debugger
+            wx.hideMenuItems({
+               menuList: ["menuItem:share:qq","menuItem:share:QZone", "menuItem:share:weiboApp", "menuItem:favorite", "menuItem:share:facebook", "menuItem:share:QZone", "menuItem:jsDebug", "menuItem:editTag", "menuItem:delete", "menuItem:copyUrl",  "menuItem:originPage", "menuItem:readMode", "menuItem:openWithQQBrowser",  "menuItem:openWithSafari", "menuItem:share:email", "menuItem:share:brand"] // 要隐藏的菜单项，所有menu项见附录3
+            });
+            wx.hideAllNonBaseMenuItem() //隐藏所有非基础按钮接口
             if(self.userInfo.type ==100) {
               link = 'http://wx.fenglianhz.com/#/InvitationNoMember'
             }else {
@@ -115,8 +120,8 @@
             wx.onMenuShareAppMessage({
               title: title, // 分享标题
               desc: desc, // 分享描述
-              link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: imgUrl, // 分享图标
+              link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+              imgUrl: self.imgUrl, // 分享图标
               type: 'link', // 分享类型,music、video或link，不填默认为link
               dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
               success : () =>{
@@ -137,24 +142,24 @@
             wx.onMenuShareQQ({
               title: title, // 分享标题
               desc: desc, // 分享描述
-              link, // 分享链接
-              imgUrl: imgUrl // 分享图标
+              link: link, // 分享链接
+              imgUrl: self.imgUrl // 分享图标
             });
 
             // qq空间
             wx.onMenuShareQZone({
               title: title, // 分享标题
               desc: desc, // 分享描述
-              link, // 分享链接
-              imgUrl: imgUrl // 分享图标
+              link: link, // 分享链接
+              imgUrl: self.imgUrl // 分享图标
             });
 
             //腾讯微博
             wx.onMenuShareWeibo({
               title: title, // 分享标题
               desc: desc, // 分享描述
-              link, // 分享链接
-              imgUrl: imgUrl // 分享图标
+              link: link, // 分享链接
+              imgUrl: self.imgUrl // 分享图标
             });
           });
           // this.$alert()
