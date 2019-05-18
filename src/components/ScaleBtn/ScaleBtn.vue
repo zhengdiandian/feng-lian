@@ -63,9 +63,9 @@
             let link = ''
             debugger
             if(self.userInfo.type ==100) {
-              link = 'http://test.wx.fenglianhz.com/#/InvitationNoMember'
+              link = 'http://wx.fenglianhz.com/#/InvitationNoMember'
             }else {
-              link = 'http://test.wx.fenglianhz.com/#/invitation?userCode='+ self.userInfo.userCode
+              link = 'http://wx.fenglianhz.com/#/invitation?userCode='+ self.userInfo.userCode
 
             }
 
