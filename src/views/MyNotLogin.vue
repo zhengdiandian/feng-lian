@@ -11,7 +11,7 @@
       </div>
       <div style="position: absolute;width: 100%;bottom: 0;">
         <button @click="showPoP=false">不，谢谢</button>
-        <button class="btn-join" @click="$router.push('/login')">现在登陆</button>
+        <button class="btn-join" @click="toLogin">现在登录</button>
       </div>
     </div>
   </PopBox>
@@ -20,7 +20,7 @@
     </header>
     <main>
         <section class="please-login">
-            <div class="login-img" @click="$router.push('/login')">
+            <div class="login-img" @click="toLogin">
                 <div class="icon">
                   <mu-icon value=":iconfont iconwode1"></mu-icon>
                 </div>
@@ -91,6 +91,11 @@ export default {
         "设置"
       ],
       showPoP: false
+    }
+  },
+  methods: {
+    toLogin() {
+      window.location=`${this.$axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=''`
     }
   },
   components: {

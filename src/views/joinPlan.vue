@@ -120,7 +120,7 @@
         <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span @click="$router.push('/AssistanceConvention')"> 《互助计划公约》 </span>
       </div>
     </div>
-      <div class="big-btn" @click="btnHandleClick" style="z-index: 888888">去支付</div>
+      <div class="big-btn" :class="{'disable-btn': !tongYi}" @click="btnHandleClick" style="z-index: 888888">去支付</div>
     </main>
   </div>
 </template>
@@ -139,7 +139,7 @@ export default {
       ID:'',
       InvitationCode:'',
       sliderVal: '',
-      tongYi: true,
+      tongYi: false,
       activeStep: 0,
       ShowID: false,
       btnList: [
@@ -164,7 +164,7 @@ export default {
       return this.userInfo.state === 100
     },
     tongYiStyle () {
-      return this.tongYi ? {color: 'rgba(18, 150, 219, 1)'}: {}
+      return this.tongYi ? {color: '#f8b62d'}: {}
     },
     serviceTime() {
       return this.sums[this.activeStep] / this.MutualRule.suit
@@ -183,8 +183,9 @@ export default {
         //   this.ShowID = true
         //   return
         // }
-        if(!this.tongYi){
+        if(this.tongYi){
           this.$toast.error('必须阅读并同意才可执行')
+          return
         }
         debugger
         this.$axios.post('v1/mutually/plan/checkOrder',{
@@ -206,7 +207,7 @@ export default {
               if(res.data.code===200){
                 debugger
                 this.order = res.data.data
-                window.location = `http://test.wxapi.fenglianhz.com/h5/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=${this.$route.params.productCode}`
+                window.location = `${this.$axios.defaults.baseURL}/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=${this.$route.params.productCode}`
                 console.log(res)
                 // this.$axios.post('v1/mutually/payOrder/orderCheck',{
                 //   orderNo: this.$route.params.productCode,
@@ -499,6 +500,10 @@ main{
     position: fixed;
     bottom: 0;
     width: 100%;
+    &.disable-btn{
+      background-color: $c-hui;
+      /*color: $c-cheng;*/
+    }
   }
   .stepper{
     width: 100%;

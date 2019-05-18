@@ -237,7 +237,13 @@ import {mapState} from 'vuex'
     })
     this.$axios.get('/v1/mutually/plan/planList').then(res=>{
       console.log(res)
+      if(res.data.code !== 200){
+        return
+      }
       debugger
+      if(!res.data.data.list.length){
+      return
+    }
       this.timeout = res.data.data.list[0].leftWattingDays
       // console.log(this.myplan)
     })

@@ -127,6 +127,12 @@ export default {
       }
     }
   },
+  created() {
+    const openId = this.$route.query.openId
+    if(openId){
+      localStorage.setItem('openId', openId)
+    }
+  },
   computed: {
     loginTypeText() {
       if(!this.codepwd) return '密码登录'
@@ -135,7 +141,7 @@ export default {
   },
   methods: {
     toRegister() {
-      window.location = 'http://test.wxapi.fenglianhz.com/h5/v1/user/login/weixinLogin?userCode=""'
+      window.location = `${this.$axios.defaults.baseURL}/v1/user/login/weixinLogin?userCode=""`
     },
     typeLogin(type) {
       var data ={
@@ -144,7 +150,8 @@ export default {
         loginPassword: this.pwd, //登陆密码
         // smsCode:  this.pwd,	//type=0时，短信验证码
         	//type=0时，短信token
-        type:  type //0=短信登陆，1=密码登陆
+        type:  type, //0=短信登陆，1=密码登陆
+        openId : this.$route.query.openId || ''
       }
       debugger
       if(type===0) {
