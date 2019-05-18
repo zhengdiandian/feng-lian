@@ -70,6 +70,14 @@
                         :date=" ':' +myplan.joinDate"
                         :name="myplan.contacs"
                     >
+                    <template v-slot:lable v-if="myplan.state == 500">
+                        <div class="slot-lable">
+                            <!-- <img src="../assets/img/审核中.png" alt=""> -->
+                            <!-- <img src="../assets/img/通过.png" alt=""> -->
+                            <!-- <img src="../assets/img/驳回.png" alt=""> -->
+                            <img src="../assets/img/已退款.png" alt="">
+                        </div>
+                    </template>
                     </card>
                     </section>
             </div>
@@ -106,6 +114,19 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.slot-lable{
+    // width: 100px;
+    // height: 500px;
+    // position: relative;
+    img{
+        position: absolute;
+        right: 0px;
+        top: 16px;
+        width: 50px;
+        height: 50px;
+        z-index: 99;
+    }
+}
 .card{
     height: 180px;
 }
