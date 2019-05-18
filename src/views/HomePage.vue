@@ -288,9 +288,10 @@ export default {
       })
     }
     else {
-      if(sessionStorage.getItem('qrpop'))return
-      this.showQrcode = true
-      sessionStorage.setItem('qrpop','true')
+      //关闭首页二维码弹窗
+      // if(sessionStorage.getItem('qrpop'))return
+      // this.showQrcode = true
+      // sessionStorage.setItem('qrpop','true')
     }
     // this.$axios.post('v1/manage/config/getImgList',{
     //   keys: 'PublicAddress'

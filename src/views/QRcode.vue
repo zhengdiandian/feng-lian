@@ -30,6 +30,10 @@
                 </section>
             </div>
         </main>
+        <div class="btn-wrap">
+          <div class="btn">保存二维码</div>
+          <div class="btn">复制邀请码</div>
+        </div>
     </div>
 </template>
 <script>
@@ -135,7 +139,7 @@ nav {
             width:62px;
             height:14px;
             font-size:15px;
-              
+
             font-weight:bold;
             color:rgba(51,51,51,1);
         }
