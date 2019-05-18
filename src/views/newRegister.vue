@@ -113,6 +113,10 @@
     },
     created() {
       const code = this.$route.query.userCode
+      const openId = this.$route.query.openId
+      if(openId){
+        localStorage.setItem('openId', openId)
+      }
       if(code){
         this.code = this.$route.query.userCode
 
@@ -172,10 +176,14 @@
           // this.token = res.data.data.authToken
           console.log(res)
           this.$store.commit("set_authToken", res.data.data.authToken);
-          setTimeout(() => {
+          this.$axios.post('v1/user/info/personalInfo').then(res => {
+            debugger
+            this.$store.commit('set_userInfo',res.data.data)
             this.$router.replace('/home')
-
-          }, 1000)
+          })
+          // setTimeout(() => {
+          //
+          // }, 1000)
 
 
         })

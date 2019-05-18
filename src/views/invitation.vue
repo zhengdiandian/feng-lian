@@ -72,10 +72,10 @@
   },
   methods: {
     toLink() {
-      window.location = `http://test.wxapi.fenglianhz.com/h5/v1/user/login/weixinLogin?userCode=${this.user_code}`
+      window.location = `${this.$axios.defaults.baseURL}/v1/user/login/weixinLogin?userCode=${this.user_code}`
     },
     toLogin() {
-      window.location=`http://test.wxapi.fenglianhz.com/h5v1/user/login/weixinLogin?urlAddrType=2&&userCode=''`
+      window.location=`${this.$axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=''`
     }
   },
   created() {

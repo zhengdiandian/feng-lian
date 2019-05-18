@@ -99,7 +99,7 @@ export default {
             // self.file = formData.get("file")
             // self.$emit('getFile', blob)
             axios.create({
-              baseURL: 'http://test.wxapi.fenglianhz.com/h5',
+              baseURL: `${this.$axios.defaults.baseURL}`,
               headers: {
                       'Content-Type': 'multipart/form-data',
                       'authToken' : window.localStorage.getItem('token')
@@ -213,7 +213,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .justID{
- 
+
 }
 .uploadimg{
         width: 375px;

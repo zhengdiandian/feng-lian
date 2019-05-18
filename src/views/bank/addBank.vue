@@ -89,7 +89,7 @@
       }
     },
     created() {
-      this.$axios.get('http://test.wxapi.fenglianhz.com/h5/v1/manage/common/getBankList').then(res => {
+      this.$axios.get('/v1/manage/common/getBankList').then(res => {
         if(res.data.code !==200){
           this.$toast.error(res.data.msg)
         }

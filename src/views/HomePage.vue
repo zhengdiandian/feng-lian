@@ -281,18 +281,18 @@ export default {
       this.qrcodeImg = res.data.data.PublicQrcode
       this.bannerImg = res.data.data.PublicAddress
     })
-    if(this.$route.query.authToken){
-      localStorage.setItem('token', this.$route.query.authToken)
-      this.$axios.post('v1/user/info/personalInfo').then(res => {
-        this.$store.commit('set_userInfo',res.data.data)
-      })
-    }
-    else {
-      //关闭首页二维码弹窗
-      // if(sessionStorage.getItem('qrpop'))return
-      // this.showQrcode = true
-      // sessionStorage.setItem('qrpop','true')
-    }
+    // if(this.$route.query.authToken){
+    //   localStorage.setItem('token', this.$route.query.authToken)
+    //   this.$axios.post('v1/user/info/personalInfo').then(res => {
+    //     this.$store.commit('set_userInfo',res.data.data)
+    //   })
+    // }
+    // else {
+    //   //关闭首页二维码弹窗
+    //   // if(sessionStorage.getItem('qrpop'))return
+    //   // this.showQrcode = true
+    //   // sessionStorage.setItem('qrpop','true')
+    // }
     // this.$axios.post('v1/manage/config/getImgList',{
     //   keys: 'PublicAddress'
     // }).then(res => {

@@ -127,6 +127,12 @@ export default {
       }
     }
   },
+  created() {
+    const openId = this.$route.query.openId
+    if(openId){
+      localStorage.setItem('openId', openId)
+    }
+  },
   computed: {
     loginTypeText() {
       if(!this.codepwd) return '密码登录'
@@ -135,7 +141,7 @@ export default {
   },
   methods: {
     toRegister() {
-      window.location = 'http://test.wxapi.fenglianhz.com/h5/v1/user/login/weixinLogin?userCode=""'
+      window.location = `${this.$axios.defaults.baseURL}/v1/user/login/weixinLogin?userCode=""`
     },
     typeLogin(type) {
       var data ={

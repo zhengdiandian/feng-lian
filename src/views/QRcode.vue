@@ -40,6 +40,7 @@ import axios from 'axios'
 import Clipboard from 'clipboard';
 import Html2canvas from 'html2canvas'
 import  {mapState} from 'vuex'
+import PopBox from '../components/PopBox/PopBox'
 console.log(Qrcode)
 export default {
     name: 'Qrcode',
@@ -57,6 +58,7 @@ export default {
         }
     },
   computed: mapState(['userInfo']),
+  components: {PopBox},
     methods: {
       dataURItoBlob(base64Data) {
         var byteString;
@@ -82,6 +84,7 @@ export default {
           this.$nextTick(() => {
 
             linkDom.click()
+            this.$toast.success('保存成功')
             this.show = 1
           })
         })

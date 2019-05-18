@@ -206,7 +206,7 @@ export default {
               if(res.data.code===200){
                 debugger
                 this.order = res.data.data
-                window.location = `http://test.wxapi.fenglianhz.com/h5/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=${this.$route.params.productCode}`
+                window.location = `${this.$axios.defaults.baseURL}/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=${this.$route.params.productCode}`
                 console.log(res)
                 // this.$axios.post('v1/mutually/payOrder/orderCheck',{
                 //   orderNo: this.$route.params.productCode,
