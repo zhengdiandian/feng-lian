@@ -219,7 +219,7 @@ ul {
   padding: 0px;
 }
 .order {
-  font-size: 12px;
+  font-size: $f14;
   // font-family: SourceHanSansCN-Normal;
   font-weight: 400;
   color: rgba(51, 51, 51, 1);

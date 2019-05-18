@@ -352,7 +352,7 @@
             margin-top: 40px;
         }
         input{
-            font-size: 12px;
+            font-size: $f14;
             width: 50%;
             height: 40px;
             border: none;
@@ -366,7 +366,7 @@
     .tongYi{
     margin-top: 10px;
     margin-left: 4.333vw;
-    font-size: 12px;
+    font-size: $f14;
     color: $c-bai;
     .iconfont{
       vertical-align: middle;

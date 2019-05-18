@@ -169,7 +169,7 @@ span{
 }
 }
 .plan-text{
-    font-size: 14px;
+    font-size: $f15;
     font-weight: bold;
     color: rgb(51, 51, 51);
     padding: 12px 12px 0;

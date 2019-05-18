@@ -195,7 +195,7 @@ main{
     margin: 8px auto;
     span {
       color: #000;
-      font-size: 12px;
+      font-size: $f14;
     }
   }
 }
@@ -207,7 +207,7 @@ main{
     border: none;
     padding-left: 20px;
     outline: none;
-    font-size: 12px;
+    font-size: $f14;
     
   }
 }
@@ -248,7 +248,7 @@ main{
 
 .info-form{
   span{
-    font-size:14px;
+    font-size:$f15;
       
     font-weight:bold;
     color:rgba(51,51,51,1);

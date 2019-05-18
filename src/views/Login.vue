@@ -317,7 +317,7 @@ export default {
   width: 100%;
 }
 .mu-input {
-  font-size: 12px;
+  font-size: $f14;
   color: #fff;
 }
 .show {

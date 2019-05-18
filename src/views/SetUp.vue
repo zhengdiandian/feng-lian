@@ -77,7 +77,7 @@ export default {
         display: inline-block;
         // width:50px;
         line-height:12px;
-        font-size:12px;
+        font-size:$f14;
 
         font-weight:400;
         color:rgba(51,51,51,1);
@@ -86,7 +86,7 @@ export default {
     .number{
         width:38px;
         height:9px;
-        font-size:12px;
+        font-size:$f14;
 
         font-weight:400;
         color:rgba(51,51,51,1);
@@ -103,7 +103,7 @@ export default {
     border: none;
     outline: none;
     margin-top: 10px;
-    font-size:12px;
+    font-size:$f14;
 
 }
 </style>

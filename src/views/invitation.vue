@@ -158,7 +158,7 @@
             justify-content: space-between;
             width:275px;
             height:192px;
-            font-size:12px;
+            font-size:$f14;
             font-family:SourceHanSansCN-Regular;
             font-weight:400;
             color: rgba(56, 26, 21, 1);
@@ -209,7 +209,7 @@
         border: 1px solid rgba(248, 182, 45, 1);
         border-radius: 2px;
 
-        font-size: 12px;
+        font-size: $f14;
         font-family: SimSun;
         font-weight: 400;
         color: $c-cheng;
@@ -222,7 +222,7 @@
       line-height: 33px;
       background: rgba(248, 182, 45, 1);
       border-radius: 2px;
-      font-size: 12px;
+      font-size: $f14;
       font-family: SimSun;
       color: $c-bai;
     }
@@ -237,7 +237,7 @@
     .title {
       padding-bottom: 12px;
       text-align: center;
-      font-size: 14px;
+      font-size: $f15;
       font-family: SourceHanSansCN-Bold;
       font-weight: bold;
       color: rgba(56, 26, 21, 1);
@@ -260,7 +260,7 @@
           text-align: center;
           background:linear-gradient(-56deg,rgba(255,157,51,1) 0%,rgba(255,202,62,1) 100%);
           border-radius:11px;
-          font-size:12px;
+          font-size:$f14;
 
           font-weight:400;
           color:rgba(56,26,21,1);
@@ -275,7 +275,7 @@
 
   }
       .info-text{
-          font-size:12px;
+          font-size:$f14;
 
           font-weight:400;
           color:rgba(56,26,21,1);
@@ -293,7 +293,7 @@
 }
     .rule{
         padding-top: 12px ;
-        font-size:12px;
+        font-size:$f14;
 
         font-weight:400;
         color: $c-bai;

@@ -27,7 +27,7 @@
 <style lang="scss" scoped>
   .title-date{
     padding: 12px;
-    font-size:14px;
+    font-size:$f15;
       
     font-weight:bold;
     color:$c-black;

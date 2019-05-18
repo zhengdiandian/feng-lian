@@ -21,7 +21,7 @@
                     <section class="bankText">
                         <div>
                             <div>{{bank.bankName}}</div>
-                            <span style="font-size:12px; ">储蓄卡</span>
+                            <span style="font-size:14px; ">储蓄卡</span>
                             <div style="padding-top: 12px">{{bank.cardNo}}</div>
                         </div>
                     </section>
@@ -88,7 +88,7 @@
     line-height: 33px;
     text-align: center;
     text-align: center;
-    font-size:14px;
+    font-size:$f15;
 
     color: $c-bai;
     background:$c-cheng;
@@ -152,7 +152,7 @@ main{
         display: inline-block;
         width: 95%;
         margin-left: 12px;
-        font-size: 12px;
+        font-size: $f14;
     }
 }
 </style>

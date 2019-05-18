@@ -390,7 +390,7 @@ z-index: 99;
   .information{
     margin-left: 13px;
     .name{
-      font-size:14px;
+      font-size:$f15;
 
       font-weight:bold;
       color:rgba(51,51,51,1);
@@ -400,17 +400,17 @@ z-index: 99;
       font-weight:bold;
       color:rgba(112,112,112,1);
       font-size: 10px;
-      font-size: 14px;
+      font-size: $f15;
     }
     .integral{
-      font-size:12px;
+      font-size:$f14;
 
       font-weight:bold;
       color:rgba(239,162,32,1);
       margin-top: 10px;
     }
     .autograph{
-      font-size:12px;
+      font-size:$f14;
 
       font-weight:bold;
       color:rgba(112,112,112,1);
@@ -425,7 +425,7 @@ z-index: 99;
     line-height: 18px;
     background:rgba(239,162,32,1);
     border:0px solid rgba(255,255,255,1);
-    font-size:12px;
+    font-size:$f14;
 
     font-weight:400;
     color:rgba(255,255,255,1);
@@ -453,7 +453,7 @@ z-index: 99;
   position: relative;
   color: #fff;
   span {
-    font-size:12px;
+    font-size:$f14;
 
     font-weight:400;
     // color:rgba(255,0,0,1);
@@ -477,7 +477,7 @@ z-index: 99;
     position: absolute;
     right: 12px;
     span{
-      font-size:12px;
+      font-size:$f14;
 
       font-weight:bold;
       // color:rgba(255,0,0,1);

@@ -94,7 +94,7 @@
 
         <mu-list  class="list" toggle-nested="">
           <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="(item,i) in issueList" :key="i">
-            <mu-list-item-title style="font-size: 14px;">{{i+1}}、{{item.title}} </mu-list-item-title>
+            <mu-list-item-title style="font-size: 15px;">{{i+1}}、{{item.title}} </mu-list-item-title>
             <mu-list-item-action>
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
@@ -357,7 +357,7 @@
       width: 100%;
       text-align: center;
       margin-bottom: 17px;
-      font-size:12px;
+      font-size:$f14;
 
       font-weight:400;
       color:rgba(51,51,51,1);
@@ -408,8 +408,8 @@
     color: #EF9B1E;
   }
 }
-.mu-item-title[data-v-66198adc]{
-  font-size: 14px;
+.mu-item-title{
+  font-size: 15px;
 }
   .help-btn-wrap{
     display: flex;
@@ -460,7 +460,7 @@
   position: relative;
   color: #fff;
   span {
-    font-size:12px;
+    font-size:$f14;
 
     font-weight:400;
     // color:rgba(255,0,0,1);
@@ -483,7 +483,7 @@
     position: absolute;
     right: 12px;
     span{
-      font-size:12px;
+      font-size:$f14;
 
       font-weight:bold;
       // color:rgba(255,0,0,1);

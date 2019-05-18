@@ -15,11 +15,11 @@
                     <div class="users">
                          <!-- @click="$router.push('/share')" -->
                         <span class="number">{{welf.sharedCount}}</span>
-                        <span style="font-size: 12px;">我分享的用户 &nbsp; (人)</span>
+                        <span style="font-size: 14px;">我分享的用户 &nbsp; (人)</span>
                     </div>
                     <router-link class="users" tag="div" to="/myreward">
                         <span class="number">{{welf.balance}}</span>
-                        <span style="font-size: 12px;">我的奖励 &nbsp; (元)</span>
+                        <span style="font-size: 14px;">我的奖励 &nbsp; (元)</span>
                     </router-link>
                 </section>
             </div>
@@ -105,7 +105,7 @@ export default {
         height: 30px;
         background-color: #fff;
         border-radius: 10px;
-        font-size: 12px;
+        font-size: 14px;
         text-align: center;
         line-height: 30px;
         position: absolute;

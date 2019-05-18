@@ -205,7 +205,7 @@ main{
         }
         .date{
             display: inline-block;
-            font-size: 12px;
+            font-size: $f14;
             position: absolute;
             right: 0;
             bottom: 0;

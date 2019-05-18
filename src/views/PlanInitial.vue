@@ -5,7 +5,7 @@
       <div class="pop-btn">
         <!-- <button @click="showPoP = false">帮助中心</button> -->
         <mu-divider></mu-divider>
-        <button v-if="issue.refundFlag" style="color: rgba(234,234,234,1)" @click="refund">申请退款</button>
+        <button v-if="panned.refundFlag == 1" style="color: rgba(234,234,234,1)" @click="refund">申请退款</button>
       </div>
     </div>
       <div>
@@ -68,7 +68,7 @@
     <div class="help-list">
       <mu-list  class="list" toggle-nested="">
         <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     v-for="(item,i) in issue" :key="i">
-          <mu-list-item-title style="font-size: 14px;">{{i+1}}、{{item.title}} </mu-list-item-title>
+          <mu-list-item-title style="font-size: 15px;">{{i+1}}、{{item.title}} </mu-list-item-title>
           <mu-list-item-action>
             <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
           </mu-list-item-action>
@@ -244,7 +244,7 @@
     }
   .title{
     padding: 12px ;
-    font-size:14px;
+    font-size:$f15;
       
     font-weight:bold;
     &+.text-info{
@@ -252,7 +252,7 @@
       height:33px;
       background:rgba(255,255,255,1);
       &+.title{
-        font-size: 12px;
+        font-size: $f14;
         color: $c-cheng;
         text-align: right;
         &~.text-info{

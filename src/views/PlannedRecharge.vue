@@ -147,7 +147,7 @@
     }
   .title{
     padding: 12px ;
-    font-size:14px;
+    font-size:$f15;
       
     font-weight:bold;
     &+.text-info{
@@ -155,7 +155,7 @@
       height:33px;
       background:rgba(255,255,255,1);
       &+.title{
-        font-size: 12px;
+        font-size: $f14;
         color: $c-cheng;
         text-align: right;
         &~.text-info{

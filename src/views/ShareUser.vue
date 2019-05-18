@@ -286,7 +286,7 @@ li {
       font-size: 10px;
     }
     .autograph {
-      font-size: 12px;
+      font-size: $f14;
       // font-family: SourceHanSansCN-Normal;
       font-weight: bold;
       color: rgba(112, 112, 112, 1);
@@ -300,7 +300,7 @@ li {
     line-height: 15px;
     background: rgba(239, 162, 32, 1);
     border: 0px solid rgba(255, 255, 255, 1);
-    font-size: 12px;
+    font-size: $f14;
     // font-family: SourceHanSansCN-Normal;
     font-weight: 400;
     color: rgba(255, 255, 255, 1);

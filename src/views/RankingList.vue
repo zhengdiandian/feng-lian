@@ -123,7 +123,7 @@ export default {
   margin-left: 23px;
 }
 .font-14{
-  font-size:14px;
+  font-size:$f15;
   font-weight:bold;
 }
 .an-crown{
@@ -264,7 +264,7 @@ export default {
       font-size: 10px;
     }
     .autograph{
-      font-size:12px;
+      font-size:$f14;
 
       font-weight:bold;
       color:rgba(112,112,112,1);
@@ -279,7 +279,7 @@ export default {
     line-height: 15px;
     background:rgba(239,162,32,1);
     border:0px solid rgba(255,255,255,1);
-    font-size:12px;
+    font-size:$f14;
 
     font-weight:400;
     color:rgba(255,255,255,1);
