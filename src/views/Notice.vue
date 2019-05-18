@@ -3,11 +3,11 @@
     <PopBox style="bottom: 6.2%">
       <div class="pop-content">
         <div>
-            <div style="color:#f8b62d;margin-bottom:24px;">温馨提示</div>
+            <div style="color:#f8b62d;margin-bottom:24px; font-size: 16px;">温馨提示</div>
           <div>
           </div>
-          <div style=" color:#707070">尊敬的蜂链会员您好：</div>
-          <div style=" color:#707070">我们正在努力建设美好的家园</div>
+          <div style=" color:#707070;font-size: 14px;">尊敬的蜂链会员您好：</div>
+          <div style=" color:#707070;font-size: 14px;">我们正在努力建设美好的家园</div>
           <!-- <div>敬请期待！</div> -->
         </div>
         <div style="color:#707070">敬请期待!</div>

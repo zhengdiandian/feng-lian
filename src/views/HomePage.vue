@@ -722,6 +722,7 @@ h3{
       margin-bottom: 12px;
       display: flex;
       justify-content: center;
+      font-size: 14px;
       .iconfont{
         padding-right: 5px;
       }

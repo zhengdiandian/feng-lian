@@ -27,7 +27,7 @@
                 <mu-text-field
                         v-model="pwd1"
                         label-float
-                        label="请设置6-16位数字+字母的密码"
+                        label="设置6-16位数字+字母的密码"
                         icon=":iconfont iconmima"
                         :action-icon="visibility ? 'visibility_off' : 'visibility'" :action-click="() => (visibility = !visibility)" :type="visibility ? 'text' : 'password'"
                         :error-text="err2"
@@ -38,7 +38,7 @@
                 </mu-text-field>
             </div>
             <div class="pwd-wrap">
-                <mu-text-field v-model="pwd2" label="请设置6-16位数字+字母的密码" label-float  icon=":iconfont iconmima"
+                <mu-text-field v-model="pwd2" label="设置6-16位数字+字母的密码" label-float  icon=":iconfont iconmima"
                           :action-icon="visibility1 ? 'visibility_off' : 'visibility'" :action-click="() => (visibility1 = !visibility1)" :type="visibility1 ? 'text' : 'password'"
                           :error-text="err2"
                 >
@@ -352,7 +352,7 @@
             margin-top: 40px;
         }
         input{
-            font-size: $f14;
+            font-size: $f12;
             width: 50%;
             height: 40px;
             border: none;
