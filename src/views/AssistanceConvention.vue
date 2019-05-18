@@ -53,7 +53,8 @@
     width: 100%;
     height: 100%;
     margin-bottom:50px;
-    padding-top: 40px;
+    // padding-top: 40px;
+    padding: 52px 15px 12px 22px;
     img{
         width: 100%;
         height: 100%;
