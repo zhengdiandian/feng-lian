@@ -1,21 +1,22 @@
 <template>
-    <div class="card">
-        <header>
+    <div class="card" id="qrContent">
+        <header  :style="{opacity: show}">
             <nav>
                 <mu-icon value=":iconfont iconfanhui" @click="open"></mu-icon>
                 <div class="title">{{title}}</div>
             </nav>
         </header>
-        <main id="qrContent">
+        <main  style="padding: 5px 5px;">
             <div class="head-name">
                 <section class="hear-infor">
-                    <div class="head-img"><img :src="userInfo.headPortrait" alt=""></div>
+                    <div class="head-img" :style="{backgroundImage: 'url(' + userInfo.headPortrait + ')'}"><img :src="userInfo.headPortrait" alt=""></div>
                     <div class="head-text">
                         <span style="font-size:14px;">{{userInfo.nickname}}</span>
                         <span class="head-state" >{{userInfo.state == 100 ? '未实名':'已实名'}}</span>
                     </div>
                     <span style="color:rgba(112,112,112,1);">{{userInfo.motto}}</span>
                 </section>
+
                 <section ref="qrWrap" class="code">
                   <div ref="qr"></div>
                   <!--<img src="../assets/PNG/中青年.png" alt="">-->
@@ -26,11 +27,11 @@
                 </section>
             </div>
         </main>
-        <div class="btn-wrap margin-top">
+        <div class="btn-wrap margin-top" v-if="show">
           <div class="btn" @click="downloadMyQrcode">保存二维码</div>
           <div class="btn" :data-clipboard-text="userInfo.userCode" @click="$toast.success('复制成功')">复制邀请码</div>
         </div>
-      <a id="download" :href="imgSrc" download="我的二维码"> </a>
+      <a id="download" style="z-index: -1" :href="imgSrc" download="我的二维码"> </a>
     </div>
 </template>
 <script>
@@ -50,7 +51,8 @@ export default {
            autograph: '海内存知己，天涯若比邻',
            imgUrl: require('../assets/PNG/head.png'),
            code: '',
-           imgSrc: ''
+           imgSrc: '',
+           show: 1
 
         }
     },
@@ -74,10 +76,13 @@ export default {
       downloadMyQrcode() {
         let linkDom = document.getElementById('download')
         let contentDom  =document.getElementById('qrContent')
-        Html2canvas(contentDom, {dpi: window.devicePixelRatio}).then(canvas => {
+        this.show = 0
+        Html2canvas(contentDom, {dpi: window.devicePixelRatio, useCORS: true}).then(canvas => {
           this.imgSrc = canvas.toDataURL('image/png', 1.0)
           this.$nextTick(() => {
+
             linkDom.click()
+            this.show = 1
           })
         })
       },
@@ -131,6 +136,8 @@ export default {
 </script>
 <style scoped lang="scss">
   .btn-wrap{
+    width: 60%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-around;
     .btn{
@@ -138,6 +145,7 @@ export default {
       height: 33px;
       border-radius: 25px;
       color: $c-bai;
+
     }
   }
 html,body{
@@ -145,7 +153,11 @@ html,body{
     height: 100%;
 }
 .head-img{
-    width:75px;height:75px;background:rgba(255,255,255,1);border:2px solid rgba(255,255,255,1);border-radius:50%;margin: auto;
+  width:75px;height:75px;
+    background:rgba(255,255,255,1);border:2px solid rgba(255,255,255,1);border-radius:50%;margin: auto;
+    img{
+      width:75px;height:75px;
+    }
 }
 .head-text{
     margin-top: 12px;

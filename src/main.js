@@ -20,6 +20,7 @@ import Util from '@/assets/js/unit.js'
 import Toast from 'muse-ui-toast'
 import wx from 'wechat-js-sdk'
 window.wx = wx
+Vue.prototype.windom = window
 Vue.prototype.Util = Util
 Vue.use(Button)
 Vue.use(Select)
@@ -43,6 +44,7 @@ Axios.interceptors.response.use((response) => {
   if (response.data.code == 402 || response.data.code == 400) {
     localStorage.clear()
     window.alert('登入失效请从新登入')
+    window.location=`http://test.wxapi.fenglianhz.com/h5v1/user/login/weixinLogin?urlAddrType=2&&userCode=''`
     router.replace({
       path: '/login',
       query: { redirect: router.currentRoute.fullPath }

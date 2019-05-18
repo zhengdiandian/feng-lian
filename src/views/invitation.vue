@@ -19,7 +19,7 @@
 
         >立即注册</div>
         <div class="btn" style="margin-top: 10px"
-        @click="$router.push('/login')"
+        @click="toLogin"
 
         >已有账号, 立即登入</div>
       </div>
@@ -73,6 +73,9 @@
   methods: {
     toLink() {
       window.location = `http://test.wxapi.fenglianhz.com/h5/v1/user/login/weixinLogin?userCode=${this.user_code}`
+    },
+    toLogin() {
+      window.location=`http://test.wxapi.fenglianhz.com/h5v1/user/login/weixinLogin?urlAddrType=2&&userCode=''`
     }
   },
   created() {

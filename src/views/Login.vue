@@ -144,7 +144,8 @@ export default {
         loginPassword: this.pwd, //登陆密码
         // smsCode:  this.pwd,	//type=0时，短信验证码
         	//type=0时，短信token
-        type:  type //0=短信登陆，1=密码登陆
+        type:  type, //0=短信登陆，1=密码登陆
+        openId : this.$route.query.openId || ''
       }
       debugger
       if(type===0) {
