@@ -44,7 +44,7 @@ Axios.interceptors.response.use((response) => {
   if (response.data.code == 402 || response.data.code == 400) {
     localStorage.clear()
     window.alert('登录失效请重新登录')
-    window.location=`${Axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=''`
+    window.location=`${Axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=`
     // router.replace({
     //   path: '/login',
     //   query: { redirect: router.currentRoute.fullPath }
@@ -97,7 +97,7 @@ router.beforeEach((to, from, next) => {
     // 数组some方法,如果meta.requiresAuth为ture,则返回true.此时,说明进入该路由前需要判断用户是否已经登录
     console.log(this)
     if (!window.localStorage.getItem('token') || !window.localStorage.getItem('userInfo')) { // 如果没登录,则跳转到登录页
-      window.location=`${Axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=''`
+      window.location=`${Axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=`
       // next({
       //   path: '/login',
       //   query: { redirect: to.fullPath } // 通过query将要跳转的路由路径保存下来,待完成登录后,就可以直接获取该路径,直接跳转到登录前要去的路由

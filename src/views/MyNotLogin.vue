@@ -95,7 +95,8 @@ export default {
   },
   methods: {
     toLogin() {
-      window.location=`${this.$axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=''`
+      window.location=`${this.$axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=`
+      // /v1/user/login/weixinLogin?urlAddrType=2&&userCode=''`
     }
   },
   components: {

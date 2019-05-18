@@ -99,7 +99,7 @@ export default {
             // self.file = formData.get("file")
             // self.$emit('getFile', blob)
             axios.create({
-              baseURL: `${this.$axios.defaults.baseURL}`,
+              baseURL: `${self.$axios.defaults.baseURL}`,
               headers: {
                       'Content-Type': 'multipart/form-data',
                       'authToken' : window.localStorage.getItem('token')
