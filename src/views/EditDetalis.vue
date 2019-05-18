@@ -219,7 +219,7 @@ input{
     position: absolute;
     top: 10px;
     padding-left: 10px;
-        font-size: 12px;
+        font-size: $f14;
 }
 .rule /deep/.mu-item     .mu-option.is-selected .mu-item {
   color: $c-cheng!important;

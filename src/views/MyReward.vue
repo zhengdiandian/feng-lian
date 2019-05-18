@@ -148,7 +148,7 @@ export default {
     font-size: 11px;
   }
   .font-12{
-    font-size: 12px;
+    font-size: $f14;
   }
   .font-16{
     font-size: 16px;

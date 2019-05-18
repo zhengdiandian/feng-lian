@@ -145,7 +145,7 @@
 
         <mu-list  class="list" toggle-nested="" v-for="(item,i) in homeinfor.issueList" :key="i">
           <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     >
-            <mu-list-item-title>{{i+1}}、{{item.title}}</mu-list-item-title>
+            <mu-list-item-title style="font-size: 14px;">{{i+1}}、{{item.title}}</mu-list-item-title>
             <mu-list-item-action>
               <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
             </mu-list-item-action>
@@ -461,7 +461,7 @@ h3{
   position: relative;
   color: #fff;
   span {
-    font-size:12px;
+    font-size:$f14;
 
     font-weight:400;
     color: #fff;
@@ -491,7 +491,7 @@ h3{
     position: absolute;
     right: 12px;
     span{
-      font-size:12px;
+      font-size:$f14;
 
       font-weight:bold;
       color: #fff;
@@ -549,7 +549,7 @@ h3{
         color:rgba(51,51,51,1);
       }
       .chat-info{
-        font-size:12px;
+        font-size:$f14;
         color:rgba(112,112,112,1);
         letter-spacing:2px
       }
@@ -566,7 +566,7 @@ h3{
   }
 
 .title{
-      font-size:14px;
+      font-size:$f15;
 
       font-weight:bold;
       color:rgba(51,51,51,1);
@@ -588,7 +588,7 @@ h3{
     text-align: center;
     margin-bottom: 0px;
     .text{
-        font-size: 12px;
+        font-size: $f14;
     }
     .iconfont{
       width: 50px;
@@ -672,7 +672,7 @@ h3{
       justify-content: flex-end;
       display: flex;
       /*flex-direction: column;*/
-
+      font-size: 14px;
       .btn{
       // width:90px;
       height:8.667vw;

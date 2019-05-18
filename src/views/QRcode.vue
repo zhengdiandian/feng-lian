@@ -11,7 +11,7 @@
                 <section class="hear-infor">
                     <div class="head-img" :style="{backgroundImage: 'url(' + userInfo.headPortrait + ')'}"><img :src="userInfo.headPortrait" alt=""></div>
                     <div class="head-text">
-                        <span style="font-size:14px;">{{userInfo.nickname}}</span>
+                        <span style="font-size:15px;">{{userInfo.nickname}}</span>
                         <span class="head-state" >{{userInfo.state == 100 ? '未实名':'已实名'}}</span>
                     </div>
                     <span style="color:rgba(112,112,112,1);">{{userInfo.motto}}</span>
@@ -227,7 +227,7 @@ html,body{
     border:1px solid rgba(255,255,255,1);
     line-height: 20px;
     padding: 0 2px 0 2px;
-    font-size: 12px;
+    font-size: $f14;
     border-radius: 1px;
 }
 .card{

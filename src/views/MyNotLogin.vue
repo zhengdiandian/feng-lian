@@ -227,7 +227,7 @@ main {
       span {
         display: inline-block;
         height:12px;
-        font-size:14px;
+        font-size:$f15;
         font-family:Adobe Heiti Std R;
         font-weight:normal;
         color:rgba(239,162,32,1);

@@ -127,7 +127,7 @@ export default {
       height: 15px;
       margin-left: 7px;
       border: 1px solid $c-cheng;
-      font-size: 12px;
+      font-size: $f14;
       // font-family: SourceHanSansCN-Normal;
       font-weight: 400;
       color: $c-cheng;
@@ -135,7 +135,7 @@ export default {
   }
   .text {
     width: 100%;
-    font-size: 12px;
+    font-size: $f14;
     // font-family: SourceHanSansCN-Normal;
     font-weight: 400;
     color: rgba(112, 112, 112, 1);

@@ -290,7 +290,7 @@ input {
     width: 375px;
     height: 44px;
     background: rgba(255, 255, 255, 1);
-    font-size: 12px;
+    font-size: $f14;
     // font-family: SourceHanSansCN-Normal;
     font-weight: 400;
     color: rgba(51, 51, 51, 1);
@@ -303,7 +303,7 @@ input {
   margin-top: 10px;
   margin-bottom: 60px;
   .uptitle {
-    font-size: 12px;
+    font-size: $f14;
     // font-family: SourceHanSansCN-Normal;
     font-weight: bold;
     color: rgba(51, 51, 51, 1);

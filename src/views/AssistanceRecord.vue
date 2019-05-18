@@ -113,7 +113,7 @@ export default {
             font-size: 20px;
         }
         .numberDay{
-            font-size: 12px;
+            font-size: $f14;
         }
         .xian{
             width: 1px;

@@ -105,7 +105,7 @@
       </div>
       <div class="buy-info margin-top" style="position: relative;">
         使用时间: <span class="margin-left font-min">{{serviceTime}}个月</span>
-        <!-- <div class="estimate"><span style="font-size: 12px;">预计到期时间2020年2月9日</span></div> -->
+        <!-- <div class="estimate"><span style="font-size: 14px;">预计到期时间2020年2月9日</span></div> -->
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
@@ -327,7 +327,7 @@ main{
 }
 .mu-header{
   margin: 56px 0 12px 12px;
-  font-size:14px;
+  font-size:$f15;
   font-weight:bold;
   color:rgba(51,51,51,1);
 }
@@ -354,7 +354,7 @@ main{
   margin-top: 5px;
   width: 85px;
   // background-color: red;
-  font-size: 12px;
+  font-size: $f14;
   text-align: center;
   line-height: 15px;
 }
@@ -379,7 +379,7 @@ main{
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      font-size: 12px;
+      font-size: $f14;
     }
   }
 }
@@ -391,7 +391,7 @@ main{
     border: none;
     padding-left: 20px;
     outline: none;
-    font-size: 12px;
+    font-size: $f14;
     background-color: #fff;
 
   }
@@ -436,7 +436,7 @@ main{
 
 .info-form{
   span{
-    font-size:14px;
+    font-size:$f15;
     font-weight:bold;
     color:rgba(51,51,51,1);
     display: inline-block;

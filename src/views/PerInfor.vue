@@ -94,14 +94,14 @@ export default {
 </script>
 <style scoped lang="scss">
 .info-text{
-    font-size:12px;
+    font-size:$f14;
     font-weight:400;
     color:#707070;
 }
 .list-state{
     position: absolute;
     right: 65px;
-    font-size: 12px;
+    font-size: $f14;
 }
 header{
     position: relative;
@@ -133,7 +133,7 @@ header{
         .listtext{
             // width:58px;
             height:12px;
-            font-size:12px;
+            font-size:$f14;
 
             font-weight:400;
             color:rgba(51,51,51,1);
@@ -144,7 +144,7 @@ header{
         .listInfo {
             width: 150px;
             height: 18px;
-            font-size:12px;
+            font-size:$f14;
 
             font-weight:400;
             margin-left: 12px;

@@ -66,7 +66,7 @@
 .mu-icon-button {
     line-height: 1;
     width: auto;
-    font-size:14px;
+    font-size:$f15;
 }
 .state{
   padding-top: 20px;

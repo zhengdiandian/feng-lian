@@ -154,7 +154,7 @@ main{
         display: inline-block;
         width: 300px;
         text-indent: 24px;
-        font-size:12px;
+        font-size:$f14;
           
         font-weight:400;
         color:rgba(56,26,21,1);

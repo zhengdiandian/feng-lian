@@ -3,8 +3,8 @@
         <header>
             <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
                 <mu-button icon slot="left" @click="$router.go(-1)">
-                <span style="font-size: 12px;">取</span>
-                <span style="font-size: 12px;">消</span>
+                <span style="font-size: 14px;">取</span>
+                <span style="font-size: 14px;">消</span>
                 </mu-button>
                 奖励提现
                 <mu-button icon slot="right" >
@@ -148,7 +148,7 @@
         display: flex;
         align-items: center;
         position: relative;
-        font-size: 12px;
+        font-size: 14px;
         .text{
             padding-left: 12px;
             // padding-right: 5px;
@@ -203,7 +203,7 @@
     .tation-down{
         margin-top: -10px;
         margin-left: 12px;
-        font-size: 12px;
+        font-size: 14px;
         .wholeAmount{
             padding-bottom: 12px;
         }

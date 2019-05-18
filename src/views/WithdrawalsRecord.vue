@@ -28,7 +28,7 @@
                         <div class="record-name">{{item.contacs}}</div>
                         <div class="AmountMoney">
                             <span>{{item.amount}}</span>
-                            <span style="font-size: 12px;">元</span>
+                            <span style="font-size: 14px;">元</span>
                         </div>
                     </div>
                         <div  class="remark" v-if="item.remark && item.state == 100" style="color:#2DA4F8">备注：{{item.remark}}</div>

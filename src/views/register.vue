@@ -199,7 +199,7 @@ main {
         margin-top: 40px;
     }
     input{
-        font-size: 12px;
+        font-size: $f14;
         width: 50%;
         height: 40px;
         border: none;
