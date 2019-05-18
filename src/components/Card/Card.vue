@@ -5,7 +5,7 @@
          <img :src="img" alt="">
        </div>
         <div class="right-wrap" >
-          <div class="name" >姓名：{{name}} <span>{{state}}</span></div>
+          <div class="name" >姓名：{{name}} <span class="name-state">{{state}}</span></div>
           <slot name="data"></slot>
           <div class="date content-center"> <span>{{purchase}}</span>{{date}}</div>
           <slot name="FilingDate"></slot>
@@ -189,10 +189,12 @@
         span{
           margin-left: 6px;
           font-size:12px;
-            
           font-weight:400;
           border:1px solid rgba(255,255,255,1);
           color:rgba(255,255,255,1);
+        }
+        .name-state{
+          padding: 2px;
         }
       }
       

@@ -10,15 +10,15 @@
       </mu-appbar>
         <main class="page-margin-top">
             <div>
-                <div style="width:54px;height:13px;font-size:13px;  font-weight:bold;color:rgba(51,51,51,1); margin: 12px 0 12px 12px;">我的收益</div>
+                <div class="agen-text">我的收益</div>
                 <section class="profit">
                     <div class="users">
                          <!-- @click="$router.push('/share')" -->
-                        <span class="number" style="font-weight:bold; font-size: 20px;">{{welf.sharedCount}}</span>
+                        <span class="number">{{welf.sharedCount}}</span>
                         <span style="font-size: 12px;">我分享的用户 &nbsp; (人)</span>
                     </div>
                     <router-link class="users" tag="div" to="/myreward">
-                        <span class="number" style="font-weight:bold; font-size: 20px;">{{welf.balance}}</span>
+                        <span class="number">{{welf.balance}}</span>
                         <span style="font-size: 12px;">我的奖励 &nbsp; (元)</span>
                     </router-link>
                 </section>
@@ -66,7 +66,7 @@ export default {
     height:60px;
     background:rgba(239,162,32,1);
     border-radius:5px;
-    margin: 12px auto;
+    margin: auto;
     overflow: hidden;
     display: flex;
     .users{
@@ -80,6 +80,17 @@ export default {
         align-items: center;
         color: #fff;
     }
+    .number{
+        font-weight:bold;
+        font-size: 20px;
+    }
+}
+.agen-text{
+    display: inline-block;
+    font-size:13px;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    padding: 12px;
 }
 .coupon-list{
     width: 90%;

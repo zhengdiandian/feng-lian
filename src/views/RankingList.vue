@@ -16,24 +16,24 @@
                     <img style="z-index: 55;border-radius: 50%; border: 5px solid #C5D1E4;" :src="rank[1].img" alt="">
                     <span class="an-crown-3"><img src="../assets/PNG/皇冠3.png" alt=""></span>
                     <div class="list-name-number" style="left: 15px;">
-                        <span style="font-size:14px; font-weight:bold;">{{rank[1].nickname}}</span>
-                        <span style="font-size:14px; font-weight:bold;">{{rank[1].score}}分</span>
+                        <span class="font-14" >{{rank[1].nickname}}</span>
+                        <span class="font-14" >{{rank[1].score}}分</span>
                     </div>
                 </div>
                 <div class="noe" style="position: relative;">
                     <img style="border-radius: 50%; border: 5px solid #FACF11;" :src="rank[0].img" alt="">
                     <span class="an-crown"><img  src="../assets/PNG/皇冠1.png" alt=""></span>
                     <div class="list-name-number" >
-                        <span style="font-size:14px; font-weight:bold;">{{rank[0].nickname}}</span>
-                        <span style="font-size:14px; font-weight:bold;">{{rank[0].score}}分</span>
+                        <span class="font-14" >{{rank[0].nickname}}</span>
+                        <span class="font-14" >{{rank[0].score}}分</span>
                     </div>
                 </div>
                 <div class="three" style="position: relative;">
                     <img style="border-radius: 50%; border: 5px solid #F8A771;" :src="rank[2].img" alt="">
                     <div class="an-crown-2"><img  src="../assets/PNG/皇冠2.png" alt=""></div>
                     <div class="list-name-number" style="left: 8px;">
-                        <span style="font-size:14px; font-weight:bold; ">{{rank[2].nickname}}</span>
-                        <span style="font-size:14px; font-weight:bold;">{{rank[2].score}}分</span>
+                        <span class="font-14" >{{rank[2].nickname}}</span>
+                        <span class="font-14" >{{rank[2].score}}分</span>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                         <div class="autograph">{{Info.motto}}</div>
                     </section>
                 <div class="integral">
-                    <span style="font-size: 16px; font-weight: 100; letter-spacing: 3px;margin-left: 23px;">{{Info.totalScore}}分</span>
+                    <span class="integral-text">{{Info.totalScore}}分</span>
                     <!-- <span class="font-min">排名：0</span> -->
                 </div>
             </div>
@@ -115,6 +115,16 @@ export default {
             height: 100%;
         }
     }
+}
+.integral-text{
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 3px;
+  margin-left: 23px;
+}
+.font-14{
+  font-size:14px;
+  font-weight:bold;
 }
 .an-crown{
   z-index: -1;
@@ -229,6 +239,7 @@ export default {
     border-radius:50%;
     background:rgba(207,207,207,1);
     margin-left: 12px;
+    overflow: hidden;
     img{
       width: 100%;
       height: 100%;

@@ -7,7 +7,7 @@
         </nav>
         <div class="reward">
             <span >本期总金额（元）</span>
-            <span style="font-size:36px; padding-top:10px;">0&nbsp;<span style="font-size: 16px">元</span></span>
+            <span class="reward-money">0</span>
             <!-- <div style="font-size:12px;  color:rgba(255,255,255,1); padding-top: 25px;">
                 共有{{39003}}人参与分摊，人均分摊{{0.11}}元
             </div> -->
@@ -125,6 +125,10 @@ nav {
         align-items: center;
         color: #ffffff;
         // margin-top: 10px;
+        .reward-money{
+            padding-top: 10px;
+            font-size: 36px;
+        }
 }
 .notice-content{
     border-bottom:1px solid rgba(220,220,220,1);
