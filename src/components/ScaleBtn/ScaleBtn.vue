@@ -66,7 +66,7 @@
             wx.hideMenuItems({
                menuList: ["menuItem:share:qq","menuItem:share:QZone", "menuItem:share:weiboApp", "menuItem:favorite", "menuItem:share:facebook", "menuItem:share:QZone", "menuItem:jsDebug", "menuItem:editTag", "menuItem:delete", "menuItem:copyUrl",  "menuItem:originPage", "menuItem:readMode", "menuItem:openWithQQBrowser",  "menuItem:openWithSafari", "menuItem:share:email", "menuItem:share:brand"] // 要隐藏的菜单项，所有menu项见附录3
             });
-            wx.hideAllNonBaseMenuItem() //隐藏所有非基础按钮接口
+            // wx.hideAllNonBaseMenuItem() //隐藏所有非基础按钮接口
             if(self.userInfo.type ==100) {
               link = 'http://wx.fenglianhz.com/#/InvitationNoMember'
             }else {

@@ -62,7 +62,8 @@ export default {
            imgSrc: '',
            show: 1,
            showPop: false,
-           imgUrl: ''
+           imgUrl: '',
+           count: 0
 
         }
     },
@@ -114,17 +115,12 @@ export default {
         })
       }
     },
-    created() {
-        const url = window.location.href.split('#')[0]
-
-        const  self = this
-        this.$axios.post('v1/manage/config/getImgList',{
-          keys: 'Share_Material_icon'
-        }).then(res => {
-          debugger
-          this.imgUrl = res.data.data.Share_Material_icon
-        })
-         this.$axios.post('/v1/user/share/getSharePara', {
+    watch: {
+      count() {
+        if(this.count >=2) {
+          const url = window.location.href.split('#')[0]
+          const  self = this
+          this.$axios.post('/v1/user/share/getSharePara', {
           url: url
         }).then(res => {
           debugger
@@ -145,17 +141,19 @@ export default {
             signature: res.data.data.signature, // 必填，签名
             jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone', 'onMenuShareWeibo', 'hideMenuItems', 'hideAllNonBaseMenuItem'] // 必填，需要使用的JS接口列表
           })
-         
+
           wx.ready(function() {
             const title = '蜂链互助邀您加入';
             const desc = '链接你我他 守护千万家';
             // const imgUrl = 'https://bee-test-bucket.oss-cn-beijing.aliyuncs.com/首页banner.png';
             let link = self.code
+            alert(self.code)
+            alert(self.imgUrl)
             debugger
             wx.hideMenuItems({
                menuList: ["menuItem:share:qq","menuItem:share:QZone", "menuItem:share:weiboApp", "menuItem:favorite", "menuItem:share:facebook", "menuItem:share:QZone", "menuItem:jsDebug", "menuItem:editTag", "menuItem:delete", "menuItem:copyUrl",  "menuItem:originPage", "menuItem:readMode", "menuItem:openWithQQBrowser",  "menuItem:openWithSafari", "menuItem:share:email", "menuItem:share:brand"] // 要隐藏的菜单项，所有menu项见附录3
             });
-            wx.hideAllNonBaseMenuItem() //隐藏所有非基础按钮接口
+            // wx.hideAllNonBaseMenuItem() //隐藏所有非基础按钮接口
             // if(self.userInfo.type ==100) {
             //   link = 'http://wx.fenglianhz.com/#/InvitationNoMember'
             // }else {
@@ -201,8 +199,8 @@ export default {
             wx.onMenuShareTimeline({
               title: title, // 分享标题
               desc: desc, // 分享描述
-              link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: self.imgUrl  // 分享图标
+              link: "http://wx.fenglianhz.com/h5/v1/user/share/shareUrl?userCode=hb7wft", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+              imgUrl: 'https://bee-formal-bucket.oss-cn-beijing.aliyuncs.com/155801883390629049.png'  // 分享图标
             });
 
             // 微信朋友
@@ -256,6 +254,21 @@ export default {
 
       })
 
+        }
+      }
+    },
+    created() {
+        debugger
+
+        this.$axios.post('v1/manage/config/getImgList',{
+          keys: 'Share_Material_icon'
+        }).then(res => {
+          debugger
+          this.imgUrl = res.data.data.Share_Material_icon
+          this.count +=1
+        })
+
+
         this.$axios.post('v1/user/info/personalInfo').then(res => {
             console.log('userinfo', res.data.data)
           if(res.data.code!==200){
@@ -266,7 +279,7 @@ export default {
             this.name = data.nickname
             this.autograph= data.motto
             this.state = data.state == '100'? '未认证' : '已认证'
-            this.imgUrl = data.headPortrait
+            // this.imgUrl = data.headPortrait
         })
       this.$axios.post('/v1/user/share/getShareUrl').then((res)=>{
         if(res.data.code!==200){
@@ -275,6 +288,7 @@ export default {
         }
         this.code = res.data.data
         this.createQrcode(this.code)
+          this.count +=1
         console.log(res)
       })
     },
