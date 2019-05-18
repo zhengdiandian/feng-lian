@@ -44,6 +44,11 @@
                 >
                 </mu-text-field>
             </div>
+
+
+            <div class="tongYi">
+              <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span @click="$router.push('/MemberConvention')"> 《会员公约》 </span>
+            </div>
             <!--<div class="user-wrap pwd-wrap">-->
                 <!--<mu-text-field-->
                         <!--v-model="code"-->
@@ -94,13 +99,17 @@
         visibility: false,
         visibility1: false,
         err2: '',
-        code: ''
+        code: '',
+        tongYi: true
       }
     },
     computed: {
       disabled() {
         return  this.code && this.user && this.pwd && this.pwd1 && this.pwd2
-      }
+      },
+      tongYiStyle () {
+      return this.tongYi ? {color: 'rgba(18, 150, 219, 1)'}: {}
+    },
     },
     created() {
       const code = this.$route.query.userCode
@@ -118,6 +127,9 @@
     },
     methods: {
       registerHandleClick() {
+        if(!this.tongYi){
+          this.$toast.error('必须阅读并同意才可执行')
+        }
         const accountReg = /^1[3456789]\d{9}$/
         if(!accountReg.test(this.user)) {
           this.accountErr = '请输入正确的手机号码'
@@ -342,4 +354,17 @@
             background-color: #cccccc;
         }
     }
+    .tongYi{
+    margin-top: 10px;
+    .iconfont{
+      vertical-align: middle;
+    }
+    input[type=checkbox]{
+      visibility: hidden;
+      /*margin-bottom: 20px;*/
+    }
+    span{
+      color: cornflowerblue;
+    }
+  }
 </style>

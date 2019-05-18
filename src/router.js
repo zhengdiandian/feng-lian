@@ -311,7 +311,7 @@ export default new Router({
       }
     },
     {
-      path: '/inform',
+      path: '/inform', // 健康告知
       name: 'inform',
       component: function () {
         return import('./views/Inform')
@@ -369,7 +369,7 @@ export default new Router({
       }
     },
     {
-      path: '/addBank',  //添加银行卡
+      path: '/addBank', // 添加银行卡
       name: 'addBank',
       component: function () {
         return import('./views/bank/addBank')
@@ -380,6 +380,20 @@ export default new Router({
       name: 'bankIssue',
       component: function () {
         return import('./views/bank/bankIssue')
+      }
+    },
+    {
+      path: '/AssistanceConvention', // 互助计划公约
+      name: 'AssistanceConvention',
+      component: function () {
+        return import('./views/AssistanceConvention')
+      }
+    },
+    {
+      path: '/MemberConvention', // 会员公约
+      name: 'MemberConvention',
+      component: function () {
+        return import('./views/MemberConvention')
       }
     }
     // {

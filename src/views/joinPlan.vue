@@ -117,7 +117,7 @@
         <mu-divider></mu-divider>
       </div>
       <div class="tongYi">
-        <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span> <<互助计划公约>> </span>
+        <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span @click="$router.push('/AssistanceConvention')"> 《互助计划公约》 </span>
       </div>
     </div>
       <div class="big-btn" @click="btnHandleClick" style="z-index: 888888">去支付</div>
@@ -170,7 +170,7 @@ export default {
       return this.sums[this.activeStep] / this.MutualRule.suit
     },
     amount() {
-      return this.serviceTime * this.$route.params.MutualRule.suit + this.MutualRule.annualPrice
+      return this.serviceTime * this.MutualRule.suit + this.MutualRule.annualPrice
     }
   },
   methods: {
