@@ -31,6 +31,13 @@
           <div class="btn" @click="downloadMyQrcode">保存二维码</div>
           <div class="btn" :data-clipboard-text="userInfo.userCode" @click="$toast.success('复制成功')">复制邀请码</div>
         </div>
+        <pop-box v-if="showPop">
+          <span class="close" @click="showPop=false"><img src="../assets/错误.png" alt=""></span>
+          <div class="qrcode-wrap">
+            <img :src="imgSrc" alt="" class="qrcode-img">
+            <div class="bottom-text">长按保存图片</div>
+          </div>
+        </pop-box>
       <a id="download" style="z-index: -1" :href="imgSrc" download="我的二维码"> </a>
     </div>
 </template>
@@ -53,7 +60,8 @@ export default {
            imgUrl: require('../assets/PNG/head.png'),
            code: '',
            imgSrc: '',
-           show: 1
+           show: 1,
+           showPop: false
 
         }
     },
@@ -84,8 +92,9 @@ export default {
           this.$nextTick(() => {
 
             linkDom.click()
-            this.$toast.success('保存成功')
+            // this.$toast.success('保存成功')
             this.show = 1
+            this.showPop = true
           })
         })
       },
@@ -138,6 +147,48 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+  .img-content{
+    width: 80%;
+  }
+  .close{
+    position: fixed;
+    top: 33px;
+    right: 20px;
+    color: $c-bai;
+    font-size:24px;
+    font-family:SourceHanSansCN-Medium;
+    font-weight:500;
+    width: 17px;
+    height: 17px;
+  }
+  .qrcode-wrap {
+    position: relative;
+    width: 300px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 200px;
+    text-align: center;
+    font-size: 13px;
+    font-family: SourceHanSansCN-Medium;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    img{
+      width: 100%;
+      height: 100%;
+    }
+
+    .bottom-text {
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      bottom: -44px;
+      height: 33px;
+      left: 0px;
+      line-height: 1.5;
+    }
+  }
   .btn-wrap{
     width: 60%;
     margin: 0 auto;

@@ -183,7 +183,7 @@ export default {
         //   this.ShowID = true
         //   return
         // }
-        if(this.tongYi){
+        if(!this.tongYi){
           this.$toast.error('必须阅读并同意才可执行')
           return
         }
@@ -501,7 +501,7 @@ main{
     bottom: 0;
     width: 100%;
     &.disable-btn{
-      background-color: $c-hui;
+      background-color: #999999;
       /*color: $c-cheng;*/
     }
   }

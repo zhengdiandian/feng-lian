@@ -15,15 +15,15 @@
       </div>
     </div>
   </PopBox>
-  <pop-box style="z-index: 8" v-if="showQrcode">
-      <span class="close" @click="showQrcode=false"><img src="../assets/错误.png" alt=""></span>
-    <div class="qrcode-wrap">
-      <img :src="qrcodeImg" alt="" class="qrcode-img">
-      <div class="bottom-text">长按关注公众号，进行实名认证，加入计划，成为爱心大使!</div>
-    </div>
+  <!--<pop-box style="z-index: 8" v-if="showQrcode">-->
+      <!--<span class="close" @click="showQrcode=false"><img src="../assets/错误.png" alt=""></span>-->
+    <!--<div class="qrcode-wrap">-->
+      <!--<img :src="qrcodeImg" alt="" class="qrcode-img">-->
+      <!--<div class="bottom-text">长按关注公众号，进行实名认证，加入计划，成为爱心大使!</div>-->
+    <!--</div>-->
 
 
-  </pop-box>
+  <!--</pop-box>-->
     <mu-appbar style="width: 100%;background: #f8b62d; " color="primary" text-color='#666' z-depth="0">
       <mu-button icon slot="right" :ripple="false">
         <!--<mu-icon  value=":iconfont iconxinxi" size="24"></mu-icon>-->
