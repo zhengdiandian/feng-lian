@@ -68,7 +68,7 @@
     .info-wrap{
       display: flex;
       overflow: hidden;
-
+      padding-top: 40px;
       height: auto;
       justify-content: space-between;
       &>div{

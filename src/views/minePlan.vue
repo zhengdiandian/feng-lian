@@ -121,13 +121,19 @@ export default {
     // width: 100px;
     // height: 500px;
     // position: relative;
-    img{
-        position: absolute;
+    position: absolute;
         right: 0px;
         top: 16px;
         width: 50px;
         height: 50px;
         z-index: 99;
+    img{
+        // position: absolute;
+        // right: 0px;
+        // top: 16px;
+        // width: 50px;
+        // height: 50px;
+        // z-index: 99;
     }
 }
 span{

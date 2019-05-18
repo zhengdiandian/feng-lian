@@ -247,6 +247,7 @@ margin: 10px auto;
     display: flex;
     align-items: center;
     background-color: #fff;
+    font-size: 14px;
     img{
         width: 20px;
         height: 20px;
