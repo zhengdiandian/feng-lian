@@ -43,12 +43,13 @@
                           :error-text="err2"
                 >
                 </mu-text-field>
+                <div class="tongYi">
+                  <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span @click="$router.push('/MemberConvention')"> 《会员公约》 </span>
+                </div>
             </div>
 
 
-            <div class="tongYi">
-              <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span @click="$router.push('/MemberConvention')"> 《会员公约》 </span>
-            </div>
+            
             <!--<div class="user-wrap pwd-wrap">-->
                 <!--<mu-text-field-->
                         <!--v-model="code"-->
@@ -364,12 +365,16 @@
     }
     .tongYi{
     margin-top: 10px;
+    margin-left: 4.333vw;
+    font-size: 12px;
+    color: $c-bai;
     .iconfont{
       vertical-align: middle;
     }
     input[type=checkbox]{
       visibility: hidden;
       /*margin-bottom: 20px;*/
+      padding-right: 5px;
     }
     span{
       color: cornflowerblue;

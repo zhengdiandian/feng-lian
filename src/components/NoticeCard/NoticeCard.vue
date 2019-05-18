@@ -38,7 +38,7 @@
   }
   .card  .title {
     color: #fff;
-    font-family: SourceHanSansCN-Normal;
+    // font-family: SourceHanSansCN-Normal;
     font-weight: 700;
     padding: 0px !important;
     font-size: 14px;

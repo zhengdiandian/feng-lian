@@ -119,7 +119,7 @@ export default {
   .title {
     width: 100%;
     font-size: 13px;
-    font-family: SourceHanSansCN-Normal;
+    // font-family: SourceHanSansCN-Normal;
     font-weight: bold;
     color: $c-black;
     & > span {
@@ -128,7 +128,7 @@ export default {
       margin-left: 7px;
       border: 1px solid $c-cheng;
       font-size: 12px;
-      font-family: SourceHanSansCN-Normal;
+      // font-family: SourceHanSansCN-Normal;
       font-weight: 400;
       color: $c-cheng;
     }
@@ -136,7 +136,7 @@ export default {
   .text {
     width: 100%;
     font-size: 12px;
-    font-family: SourceHanSansCN-Normal;
+    // font-family: SourceHanSansCN-Normal;
     font-weight: 400;
     color: rgba(112, 112, 112, 1);
   }

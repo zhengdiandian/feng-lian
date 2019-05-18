@@ -8,12 +8,12 @@
       <mu-button icon slot="right"  :ripple="false">
       </mu-button>
     </mu-appbar>
-    <div class="imgUS" style="margin-bottom:50px;">
+    <div class="imgUS">
       <!-- <img :src="this.writingImg" alt=""> -->
-      <img :src="imgUs" alt="" srcset="">
-      <!-- <div class="wrap" style="margin-bottom:50px;">
+      <!-- <img :src="imgUs" alt="" srcset=""> -->
+      <div class="wrap">
         <div v-html="US"></div>
-        </div> -->
+        </div>
     </div>
     <div class="footer-btn">
         <button @click="$router.go(-1)">知道了</button>
@@ -28,22 +28,22 @@
         data() {
             return {
                 US:'',
-                imgUs: ''
+                // imgUs: ''
             }
         },
         created()　{
-            // this.$axios.post('v1/manage/config/getTextList',{
+            this.$axios.post('v1/manage/config/getTextList',{
+                "keys": "Plan_Convention"
+            }).then(res=>{
+                this.US = res.data.data.Plan_Convention
+                console.log(res.data.data.Plan_Convention)
+            })
+            // this.$axios.post('v1/manage/config/getImgList',{
             //     "keys": "AboutUs"
             // }).then(res=>{
-            //     this.US = res.data.data.AboutUs
+            //     this.imgUs = res.data.data.AboutUs
             //     console.log(res)
             // })
-            this.$axios.post('v1/manage/config/getImgList',{
-                "keys": "AboutUs"
-            }).then(res=>{
-                this.imgUs = res.data.data.AboutUs
-                console.log(res)
-            })
         }
     }
 </script>
@@ -52,6 +52,8 @@
 .imgUS{
     width: 100%;
     height: 100%;
+    margin-bottom:50px;
+    padding-top: 40px;
     img{
         width: 100%;
         height: 100%;
@@ -69,6 +71,7 @@
         outline: none;
         border: none;
         background-color: $c-cheng;
+        color: $c-bai;
     }
 }
 </style>

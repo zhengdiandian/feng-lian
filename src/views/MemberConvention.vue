@@ -8,7 +8,7 @@
       <mu-button icon slot="right"  :ripple="false">
       </mu-button>
     </mu-appbar>
-    <div class="imgUS" style="margin-bottom:50px;">
+    <div class="imgUS">
     <!-- <img :src="this.writingImg" alt=""> -->
     <!-- <img :src="imgUs" alt="" srcset=""> -->
     <div class="wrap" style="margin-bottom:50px;">
@@ -32,9 +32,9 @@
         },
         created()　{
             this.$axios.post('v1/manage/config/getTextList',{
-                "keys": "AboutUs"
+                "keys": "User_Convention"
             }).then(res=>{
-                this.US = res.data.data.AboutUs
+                this.US = res.data.data.User_Convention
                 console.log(res)
             })
             // this.$axios.post('v1/manage/config/getImgList',{
@@ -51,6 +51,8 @@
 .imgUS{
     width: 100%;
     height: 100%;
+    margin-bottom:50px;
+    padding-top: 40px;
     img{
         width: 100%;
         height: 100%;
@@ -68,6 +70,7 @@
         outline: none;
         border: none;
         background-color: $c-cheng;
+        color: $c-bai;
     }
 }
 </style>

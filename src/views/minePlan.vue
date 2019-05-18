@@ -70,6 +70,14 @@
                         :date=" ':' +myplan.joinDate"
                         :name="myplan.contacs"
                     >
+                    <template v-slot:lable v-if="myplan.state == 500">
+                        <div class="slot-lable">
+                            <!-- <img src="../assets/img/审核中.png" alt=""> -->
+                            <!-- <img src="../assets/img/通过.png" alt=""> -->
+                            <!-- <img src="../assets/img/驳回.png" alt=""> -->
+                            <img src="../assets/img/已退款.png" alt="">
+                        </div>
+                    </template>
                     </card>
                     </section>
             </div>
@@ -100,7 +108,7 @@ export default {
         this.$axios.get('/v1/mutually/plan/planList').then(res=>{
             console.log(res)
             this.myplan = res.data.data
-            // console.log(this.myplan)
+            console.log(this.myplan)
         })
     }
 }
@@ -108,6 +116,19 @@ export default {
 <style scoped lang="scss">
 .card{
     height: 180px;
+}
+.slot-lable{
+    // width: 100px;
+    // height: 500px;
+    // position: relative;
+    img{
+        position: absolute;
+        right: 0px;
+        top: 16px;
+        width: 50px;
+        height: 50px;
+        z-index: 99;
+    }
 }
 span{
       

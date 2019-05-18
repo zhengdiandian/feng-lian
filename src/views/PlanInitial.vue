@@ -5,7 +5,7 @@
       <div class="pop-btn">
         <!-- <button @click="showPoP = false">帮助中心</button> -->
         <mu-divider></mu-divider>
-        <button style="color: rgba(234,234,234,1)" @click="refund">申请退款</button>
+        <button v-if="issue.refundFlag" style="color: rgba(234,234,234,1)" @click="refund">申请退款</button>
       </div>
     </div>
       <div>
