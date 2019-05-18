@@ -122,6 +122,19 @@
         // this.defaultData = [val.select1];
       },
       addBank() {
+        if(!this.account) {
+          this.$toast.error('手机号码不能为空')
+          return
+        }
+        if(!this.cardNo) {
+          this.$toast.error("信号卡不能为空")
+        }
+        if(!this.bankName) {
+          this.$toast('请选择所属银行')
+        }
+        if(!this.cardProv || !this.cardCity) {
+          this.$toast('请选择所属地区')
+        }
         debugger
         this.$axios.post('v1/card/debitCard/updateCard',{
           phone: this.account,
