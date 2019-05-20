@@ -146,20 +146,20 @@ export default {
             const title = '蜂链互助邀您加入';
             const desc = '链接你我他 守护千万家';
             // const imgUrl = 'https://bee-test-bucket.oss-cn-beijing.aliyuncs.com/首页banner.png';
-            let link = self.code
-            alert(self.code)
-            alert(self.imgUrl)
+            let link = ''
+            // alert(self.code)
+            // alert(self.imgUrl)
             debugger
             wx.hideMenuItems({
                menuList: ["menuItem:share:qq","menuItem:share:QZone", "menuItem:share:weiboApp", "menuItem:favorite", "menuItem:share:facebook", "menuItem:share:QZone", "menuItem:jsDebug", "menuItem:editTag", "menuItem:delete", "menuItem:copyUrl",  "menuItem:originPage", "menuItem:readMode", "menuItem:openWithQQBrowser",  "menuItem:openWithSafari", "menuItem:share:email", "menuItem:share:brand"] // 要隐藏的菜单项，所有menu项见附录3
             });
             // wx.hideAllNonBaseMenuItem() //隐藏所有非基础按钮接口
-            // if(self.userInfo.type ==100) {
-            //   link = 'http://wx.fenglianhz.com/#/InvitationNoMember'
-            // }else {
-            //   link = 'http://wx.fenglianhz.com/#/invitation?userCode='+ self.userInfo.userCode
+            if(self.userInfo.type ==100) {
+              link = 'http://wx.fenglianhz.com/#/InvitationNoMember'
+            }else {
+              link = 'http://wx.fenglianhz.com/#/invitation?userCode='+ self.userInfo.userCode
 
-            // }
+            }
 
             // wx.updateAppMessageShareData({
             //   title, // 分享标题
@@ -199,8 +199,8 @@ export default {
             wx.onMenuShareTimeline({
               title: title, // 分享标题
               desc: desc, // 分享描述
-              link: "http://wx.fenglianhz.com/h5/v1/user/share/shareUrl?userCode=hb7wft", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: 'https://bee-formal-bucket.oss-cn-beijing.aliyuncs.com/155801883390629049.png'  // 分享图标
+              link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+              imgUrl: self.imgUrl // 分享图标
             });
 
             // 微信朋友

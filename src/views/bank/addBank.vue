@@ -128,12 +128,15 @@
         }
         if(!this.cardNo) {
           this.$toast.error("信号卡不能为空")
+          return
         }
         if(!this.bankName) {
           this.$toast.error('请选择所属银行')
+          return
         }
-        if(!this.cardProv || !this.cardCity) {
+        if(!this.provinceValue || !this.cityValue) {
           this.$toast.error('请选择所属地区')
+          return
         }
         debugger
         this.$axios.post('v1/card/debitCard/updateCard',{
