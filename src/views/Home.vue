@@ -6,7 +6,7 @@
 
       <mu-bottom-nav-item value="movies" active-class="active-item" title="首页" to="/home"  icon=":iconfont iconshouye1 " ></mu-bottom-nav-item>
       <mu-bottom-nav-item value="music"  active-class="active-item" title="公告" to="/notice/newNotice" icon=":iconfont icongonggao"></mu-bottom-nav-item>
-      <mu-bottom-nav-item value="my"  active-class="active-item" title="我的" @click="open" icon=":iconfont iconwode"></mu-bottom-nav-item>
+      <mu-bottom-nav-item value="my" active-class="active-item" title="我的" @click="open" icon=":iconfont iconwode"></mu-bottom-nav-item>
     </mu-bottom-nav>
 
   <!--</mu-container>-->

@@ -125,13 +125,13 @@
     margin-right: 12px;
 }
 .font{
-    font-size:14px;
+    font-size:15px;
 
     font-weight:bold;
     color:rgba(51,51,51,1);
 }
 .font-min{
-    font-size:12px;
+    font-size:15px;
 
     font-weight:400;
     color:rgba(112,112,112,1);
@@ -168,7 +168,12 @@
 }
 .mu-list p{
     padding: 0 10px;
-    font-size: 12px;
+    font-size: 14px!important;
+}
+.mu-list{
+  .mu-item-title{
+    font-size: 15px;
+  }
 }
 
 

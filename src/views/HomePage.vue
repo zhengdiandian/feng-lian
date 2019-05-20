@@ -174,7 +174,7 @@
         </div>
       </div>
       <div class="partner">
-        <mu-sub-header style="margin-bottom: 12px;">平台运营安全可靠</mu-sub-header>
+        <mu-sub-header style="margin-bottom: 12px;"><span class="title">平台运营安全可靠</span></mu-sub-header>
         <div class="partner-content">
           <a :href="item.linkUrl" v-for="(item,i) in homeinfor.operateItem" :key="i">
             <img :src="item.img" alt="">
@@ -760,5 +760,11 @@ h3{
   .mu-list{
     padding: 0;
     margin-bottom: 12px;
+  }
+  .partner{
+    padding-top: 10px;
+    .title{
+      font-size: 15px;
+    }
   }
 </style>
