@@ -141,7 +141,7 @@
     <div class="wrap">
       <banner-img :videoImg="bannerImg"></banner-img>
       <div class="help-wrap">
-        <mu-sub-header>常见问题</mu-sub-header>
+        <mu-sub-header><span class="title-font">常见问题</span></mu-sub-header>
 
         <mu-list  class="list" toggle-nested="" v-for="(item,i) in homeinfor.issueList" :key="i">
           <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     >
