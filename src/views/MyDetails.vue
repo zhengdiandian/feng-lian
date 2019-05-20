@@ -11,30 +11,30 @@
         <main>
             <section class="details">
                 <div class="rule margin-left">
-                    <span>昵称：</span><span style="margin-left: 30px;">{{detalis.nickname}}</span>
+                    <span class="width-left">昵称：</span><span>{{detalis.nickname}}</span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>性别：</span><span style="margin-left: 30px;">{{detalis.sex == 1?'男':'女'}}</span>
+                    <span class="width-left">性别：</span><span>{{detalis.sex == 1?'男':'女'}}</span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>年龄：</span><span style="margin-left: 30px;">{{detalis.age}}</span>
+                    <span class="width-left">年龄：</span><span>{{detalis.age}}</span>
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule margin-left">
-                    <span>生日：</span><span style="margin-left: 30px;">{{detalis.birth}}</span>
+                    <span class="width-left">生日：</span><span>{{detalis.birth}}</span>
                     <mu-divider></mu-divider>
                 </div>
                 <!-- <div class="rule margin-left">
-                    <span>星座：</span><span style="margin-left: 30px;">{{detalis.constellation}}</span>
+                    <span>星座：</span><span>{{detalis.constellation}}</span>
                     <mu-divider></mu-divider>
                 </div> -->
 
             </section>
             <section class="details">
                 <div class="rule margin-left">
-                    <span>职业：</span><span style="margin-left: 30px;">{{detalis.job}}</span>
+                    <span class="width-left">职业：</span><span>{{detalis.job}}</span>
                     <mu-divider></mu-divider>
                 </div>
                 <!-- <div class="rule margin-left">
@@ -42,15 +42,15 @@
                     <mu-divider></mu-divider>
                 </div> -->
                 <div class="rule margin-left">
-                    <span>收货地址：</span><span style="margin-left: 20px;">{{detalis.address}}</span>
+                    <span class="width-left">收货地址：</span><span>{{detalis.address}}</span>
                     <mu-divider></mu-divider>
                 </div>
                 <!-- <div class="rule margin-left">
-                    <span>故乡：</span><span style="margin-left: 30px;">{{detalis.hometown}}</span>
+                    <span>故乡：</span><span>{{detalis.hometown}}</span>
                     <mu-divider></mu-divider>
                 </div> -->
                 <div class="rule margin-left">
-                    <span>邮箱：</span><span style="margin-left: 30px;">{{detalis.email}}</span>
+                    <span class="width-left">邮箱：</span><span>{{detalis.email}}</span>
                     <mu-divider></mu-divider>
                 </div>
             </section>
@@ -120,5 +120,9 @@ main{
         justify-content: center;
         align-items: center;
     }
+}
+.width-left{
+    display: inline-block;
+    width: 80px;
 }
 </style>

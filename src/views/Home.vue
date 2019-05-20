@@ -57,4 +57,7 @@ export default {
   .active-item{
     color: $c-cheng;
   }
+  .mu-bottom-item-active{
+    color: $c-cheng;
+  }
 </style>

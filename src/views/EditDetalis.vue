@@ -12,11 +12,11 @@
         <main>
             <section class="details">
                 <div class="rule margin-left">
-                    <span>昵称：</span><span ><input type="text" v-model="nickname"></span>
+                    <span class="width-left">昵称：</span><span ><input type="text" v-model="nickname"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
-                    <span>性别：</span>
+                    <span class="width-left">性别：</span>
                     <!-- <span><input type="text" v-model="sex"></span> -->
                     <!-- <mu-form-item prop="select" label="Select"> -->
                         <mu-select v-model="form.select" :active-step="activeStep"  :full-width="true">
@@ -26,11 +26,11 @@
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
-                    <span>年龄：</span><span ><input type="text" v-model.number="age"></span>
+                    <span class="width-left">年龄：</span><span ><input type="text" v-model.number="age"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
-                    <span>生日：</span><span ><input type="text" v-model="birth"></span>
+                    <span class="width-left">生日：</span><span ><input type="text" v-model="birth"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <!-- <div class="rule margin-left">
@@ -41,15 +41,15 @@
             </section>
             <section class="details">
                 <div class="rule margin-left ">
-                    <span>职业：</span><span ><input  type="text" v-model="job"></span>
+                    <span class="width-left">职业：</span><span ><input  type="text" v-model="job"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
-                    <span>学校/公司：</span><input type="text" v-model="working_place">
+                    <span class="width-left">学校/公司：</span><input type="text" v-model="working_place">
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left ">
-                    <span>收货地址：</span><span><input  type="text" v-model="address"></span>
+                    <span class="width-left">收货地址：</span><span><input  type="text" v-model="address"></span>
                 </div>
                     <!-- <mu-divider></mu-divider> -->
 
@@ -57,11 +57,11 @@
                     <span>故乡：</span><span><input type="text" v-model="province"></span>
                 </div> -->
                 <div class="rule margin-left">
-                    <span>邮箱：</span><span><input type="text" v-model="email"></span>
+                    <span class="width-left">邮箱：</span><span><input type="text" v-model="email"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
-                    <span>个性签名：</span><span><input type="text" v-model="motto"></span>
+                    <span class="width-left">个性签名：</span><span><input type="text" v-model="motto"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
             </section>
@@ -190,7 +190,7 @@ main{
             box-sizing: content-box;
             border-bottom: .5px solid $c-hui;
             span{
-                width: auto;
+                // width: auto;
                 // width: 100px;
                 height: 100%;
                 // display: inline-block;
@@ -247,5 +247,9 @@ input{
         // padding: 5px;
 
     }
+}
+.width-left{
+    display: inline-block;
+    width: 80px;
 }
 </style>

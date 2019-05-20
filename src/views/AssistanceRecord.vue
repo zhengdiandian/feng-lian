@@ -88,13 +88,15 @@ export default {
 <style scoped lang="scss">
   .page-margin-top{
     // margin-top: 56px;
+    padding-top: 12px;
   }
 .profit{
     width:351px;
     height:60px;
     background:rgba(239,162,32,1);
     border-radius:5px;
-    margin: 12px auto;
+    margin: auto;
+    // padding-top: 12px;
     overflow: hidden;
     display: flex;
     .users{
