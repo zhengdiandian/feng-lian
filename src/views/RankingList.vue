@@ -276,12 +276,12 @@ export default {
   .state{
     display: inline-block;
     // width:40px;
-    height:15px;
-    line-height: 15px;
+    // height:20px;
+    line-height: 18px;
     background:rgba(239,162,32,1);
     border:0px solid rgba(255,255,255,1);
-    font-size:$f14;
-
+    font-size:$f12;
+    padding: 3px;
     font-weight:400;
     color:rgba(255,255,255,1);
     text-align: center;

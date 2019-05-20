@@ -28,7 +28,7 @@
                     <span > {{item.profitDate}}</span>
                 </div>
                 <div class="right">
-                    <span v-if="item.changeType = 1">+&nbsp;{{item.profitAmount}}元</span>
+                    <span v-if="item.changeType == 1">+&nbsp;{{item.profitAmount}}元</span>
                     <span v-else>-&nbsp;{{item.profitAmount}}元</span>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <span > {{item.profitDate}}</span>
                 </div>
                 <div class="right">
-                    <span v-if="item.changeType = 1">+&nbsp;{{item.profitAmount}}元</span>
+                    <span v-if="item.changeType == 1">+&nbsp;{{item.profitAmount}}元</span>
                     <span v-else>-&nbsp;{{item.profitAmount}}元</span>
                 </div>
             </div>

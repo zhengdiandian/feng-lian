@@ -134,7 +134,7 @@ header{
             // width:58px;
             height:12px;
             font-size:$f14;
-
+            width: 80px;
             font-weight:400;
             color:rgba(51,51,51,1);
             display: flex;
