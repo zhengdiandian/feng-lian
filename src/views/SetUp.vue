@@ -15,17 +15,17 @@
                     <span class="version-number">当前版本</span>
                     <span class="number" style="float: right;">1.0.0.1</span>
             </div>
-            <!-- <div style="margin-top: 10px;">
+            <div style="margin-top: 10px;">
                 <div class="setList">
-                    <span>账号与安全</span>
+                    <span class="version-number">帮助中心</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </div>
-                <div class="setList">
-                    <span>账号与安全</span>
+                <div class="setList" @click="$router.push('/UnderstandUs')">
+                    <span class="version-number">关于蜂链</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </div>
             </div>
-            <div style="margin-top: 10px;">
+            <!-- <div style="margin-top: 10px;">
                 <div class="setList">
                     <span>账号与安全</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -41,7 +41,7 @@
                     <span style="float: right;">1.0.0.1</span>
                 </div>
             </div> -->
-            <!--<button class="setBtn">解除绑定</button>-->
+            <!--<button class="setBtn">解除绑定</button> -->
             <button class="setBtn" @click="quit">安全退出</button>
         </main>
     </div>
