@@ -26,6 +26,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
+      redirect: '/home',
       component: function () {
         return import('./views/Home.vue')
       },
@@ -86,6 +87,7 @@ export default new Router({
     },
     {
       path: '/register', // 注册
+      name: 'register',
       component: function () {
         return import('./views/newRegister.vue')
       }

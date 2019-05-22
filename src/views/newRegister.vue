@@ -18,7 +18,7 @@
                 <mu-text-field v-model="pwd" label="请输入验证码" label-float  icon=":iconfont iconyanzhengma" :error-text="pwdErr">
                     <div  slot="append">
 
-                        <div v-show="show" style="color: #fff;" @click="getCode">获取验证码</div>
+                        <div v-show="show" style="color: #fff; font-size: 14px" @click="getCode">获取验证码</div>
                         <span v-show="!show" class="count">{{count}} s</span>
                     </div>
                 </mu-text-field>

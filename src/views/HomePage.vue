@@ -732,7 +732,7 @@ h3{
   .partner-content{
       padding: 12px 0px;
     overflow: hidden;
-    height: 150px;
+    /*height: 150px;*/
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

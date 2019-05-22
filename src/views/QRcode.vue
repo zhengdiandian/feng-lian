@@ -326,7 +326,7 @@ export default {
     align-items: center;
     line-height: 200px;
     text-align: center;
-    font-size: 13px;
+    /*font-size: 13px;*/
     font-family: SourceHanSansCN-Medium;
     font-weight: 500;
     color: rgba(255, 255, 255, 1);

@@ -74,7 +74,7 @@
         <div class="input-wrap">
           <label for>邀请码</label>
           <input  style="vertical-align: middle" type="text" placeholder="请联系客服获得邀请码" v-model="agentUserCode" >
-          <span class="margin-left" @click="obtain">获取邀请码</span>
+          <span class="" @click="obtain">获取邀请码</span>
         </div>
         <div class="warning">
           <mu-icon  value=":iconfont icontanhao" size="24"></mu-icon> <span>邀请码信息不可修改, 请正确填写</span>
@@ -411,6 +411,7 @@ main{
   .input-wrap {
     display: flex;
     box-sizing: border-box;
+    padding: 0px 6px;
     justify-content: center;
     width:351px;
     height:33px;
