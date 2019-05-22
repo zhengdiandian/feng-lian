@@ -251,31 +251,18 @@ export default {
             "keys": 'CustomerService'
         }).then(res=>{
           if(res.data.code !==200){
-<<<<<<< HEAD
-              this.$toast.error(res.data.msg)
-              return
-      }
-=======
                 this.$toast.error(res.data.msg)
                 return
             }
->>>>>>> b2d3a3e1d12421866f0cbd4d026eeb25221d3afe
           console.log(res)
             this.CustomerService = res.data.data.CustomerService
         })
 
     this.$axios.post('/v1/manage/post/index').then((res)=>{
-<<<<<<< HEAD
-      if(res.data.code !==200){
-              this.$toast.error(res.data.msg)
-              return
-      }
-=======
         if(res.data.code !==200){
                 this.$toast.error(res.data.msg)
                 return
             }
->>>>>>> b2d3a3e1d12421866f0cbd4d026eeb25221d3afe
       // console.log('home',res)
       this.homeinfor = res.data.data
       this.operateItem = res.data.data.operateItem
@@ -292,15 +279,9 @@ export default {
       this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
         debugger
         if(res.data.code !==200){
-<<<<<<< HEAD
-              this.$toast.error(res.data.msg)
-              return
-      }
-=======
                 this.$toast.error(res.data.msg)
                 return
             }
->>>>>>> b2d3a3e1d12421866f0cbd4d026eeb25221d3afe
         this.products = res.data.data
         // this.joinFlag = this.product.joinFlag
         // console.log(this.product)
@@ -311,15 +292,9 @@ export default {
     }).then(res => {
       debugger
       if(res.data.code !==200){
-<<<<<<< HEAD
-          this.$toast.error(res.data.msg)
-          return
-      }
-=======
                 this.$toast.error(res.data.msg)
                 return
             }
->>>>>>> b2d3a3e1d12421866f0cbd4d026eeb25221d3afe
       this.qrcodeImg = res.data.data.PublicQrcode
       this.bannerImg = res.data.data.PublicAddress
     })
