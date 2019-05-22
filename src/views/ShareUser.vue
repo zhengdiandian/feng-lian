@@ -189,6 +189,10 @@ export default {
     this.$axios.post('/v1/user/share/shareList', {
       type: 0
     }).then(res =>{
+      if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+          }
       // console.log(res)
       debugger
       this.oneList = res.data.data
@@ -198,6 +202,10 @@ export default {
     this.$axios.post('/v1/user/share/shareList', {
       type: 1
     }).then(res =>{
+      if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+          }
       // console.log(res)
       this.towList = res.data.data
       this.amount +=res.data.data.count

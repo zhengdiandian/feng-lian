@@ -105,6 +105,10 @@ export default {
     },
     mounted() {
         this.$axios.post('v1/finance/profit/profitList').then(res=>{
+            if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
             debugger
             this.reward = res.data.data
             this.listDate = res.data.data.list

@@ -106,6 +106,10 @@ export default {
     },
     mounted() {
         this.$axios.get('/v1/mutually/plan/planList').then(res=>{
+            if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
             console.log(res)
             this.myplan = res.data.data
             // console.log(this.myplan)

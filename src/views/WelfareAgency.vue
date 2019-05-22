@@ -55,6 +55,10 @@ export default {
     },
     mounted() {
         this.$axios.post('/v1/finance/profit/index').then((res)=> {
+            if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+          }
             this.welf = res.data.data
         })
     }

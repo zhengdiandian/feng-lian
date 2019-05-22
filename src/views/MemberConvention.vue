@@ -34,6 +34,10 @@
             this.$axios.post('v1/manage/config/getTextList',{
                 "keys": "User_Convention"
             }).then(res=>{
+                if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return 
+                }
                 this.US = res.data.data.User_Convention
                 console.log(res)
             })

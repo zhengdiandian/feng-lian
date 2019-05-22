@@ -48,6 +48,10 @@
       this.text = state === '200' ? '授权成功': '授权失败'
       this.$axios.post('v1/user/info/personalInfo').then(res => {
         debugger
+        if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+          }
 
         this.$store.commit('set_userInfo',res.data.data)
       })
