@@ -39,7 +39,7 @@
             </div>
             <div class="headerNav">
                 <div class="headerLogin"><img :src="userInfo.headPortrait" alt=""></div>
-                    <section class="information">
+                    <section class="information position-center ">
                         <span class="name">姓名：{{Info.nickname}}</span><span class="state">已实名</span>
                         <div class="number"><span>{{Info.account}}</span></div>
                         <div class="autograph">{{Info.motto}}</div>
@@ -246,11 +246,12 @@ export default {
     }
   }
   .information{
-    margin-left: 13px;
-    position: relative;
+    /*margin-left: 13px;*/
+    /*margin: 0 auto;*/
+    /*position: relative;*/
     .name{
     //   width:108px;
-      height:14px;
+      height:15px;
       font-size:13px;
 
       font-weight:bold;
@@ -261,7 +262,7 @@ export default {
 
       font-weight:bold;
       color:rgba(112,112,112,1);
-      font-size: 10px;
+      font-size: 14px;
     }
     .autograph{
       font-size:$f14;
@@ -287,4 +288,10 @@ export default {
     margin-left: 6px;
   }
 }
+  .position-center{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 </style>

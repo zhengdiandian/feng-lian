@@ -29,7 +29,7 @@
       >
         <div slot="append">
           <!--<div style="color: #347fe8"  @click="sendMsg">{{count}}</div>-->
-          <div v-show="show1" style="color: #fff;" @click="sendMsg">
+          <div v-show="show1" style="color: #fff; font-size:14px" @click="sendMsg">
             获取验证码
           </div>
           <span v-show="!show1" class="count">{{ count }}s </span>

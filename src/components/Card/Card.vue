@@ -67,7 +67,7 @@
         default: 10
       },
       waiting:{
-        
+
       },
       purchase: {
         type: String,
@@ -129,9 +129,9 @@
       /*padding-left: 12px;*/
       position: absolute;
       top: 90px;
-      
-      font-size:11px;
-        
+
+      font-size:$f14;
+
       font-weight:400;
       .tow{
         padding-left: 13px;
@@ -181,14 +181,14 @@
       padding-left: 12px;
       .name{
         padding-top: 10px;
-        font-size:13px;
-          
+        font-size:$f14;
+
         font-weight:bold;
         color:rgba(255,255,255,1);
         padding-bottom: 7px;
         span{
           margin-left: 6px;
-          font-size:12px;
+          font-size:$f14;
           font-weight:400;
           border:1px solid rgba(255,255,255,1);
           color:rgba(255,255,255,1);
@@ -197,7 +197,7 @@
           padding: 2px;
         }
       }
-      
+
     }
   }
   .date{
@@ -211,8 +211,8 @@
         height:22px;
         background:rgba(246,176,59,1);
         border-radius:11px;
-        font-size:12px;
-          
+        font-size:$f14;
+
         font-weight:400;
       }
 </style>

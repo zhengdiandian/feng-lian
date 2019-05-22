@@ -145,7 +145,7 @@ export default {
     padding-bottom: 50px;
   }
   .font-11{
-    font-size: 11px;
+    font-size: $f14;
   }
   .font-12{
     font-size: $f14;

@@ -25,8 +25,8 @@
           :error-text="accountErr"
         >
           <div slot="append">
-            <router-link tag="div" to="/register" style="color: #fff;"
-              >立即注册</router-link
+            <div @click="$router.push({name: 'register', query: {openId: $route.query.openId}})" style="color: #fff; font-size: 14px"
+              >立即注册</div
             >
           </div>
         </mu-text-field>
@@ -62,7 +62,7 @@
       </div>
       <div class="bottom-nav">
         <div
-          style="color: #fff; font-size: 13px"
+          style="color: #fff; font-size: 14px"
           @click="
             codepwd = !codepwd;
             pwd='';
@@ -73,7 +73,7 @@
         <router-link
           tag="div"
           to="/forgetPassword"
-          style="color: #fff; font-size: 13px"
+          style="color: #fff; font-size: 14px"
           >忘记密码?</router-link
         >
       </div>
@@ -288,7 +288,7 @@ export default {
 }
 .mu-input{
   color: #fff !important;
-  font-size: 12px;
+  // font-size: 12px;
 }
 .mu-primary-color{
   color: $c-cheng;
@@ -316,6 +316,7 @@ export default {
 .login-btn {
   margin-top: 20px;
   width: 100%;
+  font: $f14 !important;
 }
 .mu-input {
   font-size: $f12;

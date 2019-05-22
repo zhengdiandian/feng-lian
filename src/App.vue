@@ -22,8 +22,11 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.title-font{
+  font-size: 15px;
+}
 html,body{
-  font-size: 12px;
+  font-size: 14px;
   font-family:SourceHanSansCN-Normal, 'Avenir', Helvetica, Arial, sans-serif;
   color: $c-black;
   height: 100%;

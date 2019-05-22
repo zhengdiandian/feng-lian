@@ -141,7 +141,7 @@
     <div class="wrap">
       <banner-img :videoImg="bannerImg"></banner-img>
       <div class="help-wrap">
-        <mu-sub-header>常见问题</mu-sub-header>
+        <mu-sub-header><span class="title-font">常见问题</span></mu-sub-header>
 
         <mu-list  class="list" toggle-nested="" v-for="(item,i) in homeinfor.issueList" :key="i">
           <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     >
@@ -174,7 +174,7 @@
         </div>
       </div>
       <div class="partner">
-        <mu-sub-header style="margin-bottom: 12px;">平台运营安全可靠</mu-sub-header>
+        <mu-sub-header style="margin-bottom: 12px;"><span class="title">平台运营安全可靠</span></mu-sub-header>
         <div class="partner-content">
           <a :href="item.linkUrl" v-for="(item,i) in homeinfor.operateItem" :key="i">
             <img :src="item.img" alt="">
@@ -732,7 +732,7 @@ h3{
   .partner-content{
       padding: 12px 0px;
     overflow: hidden;
-    height: 150px;
+    /*height: 150px;*/
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -760,5 +760,11 @@ h3{
   .mu-list{
     padding: 0;
     margin-bottom: 12px;
+  }
+  .partner{
+    padding-top: 10px;
+    .title{
+      font-size: 15px;
+    }
   }
 </style>
