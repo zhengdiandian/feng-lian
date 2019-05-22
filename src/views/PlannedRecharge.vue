@@ -70,7 +70,10 @@
     },
     mounted() {
       this.$axios.post('/v1/mutually/plan/planDetail').then((res)=> {
-
+        if(res.data.code !==200){
+              this.$toast.error(res.data.msg)
+              return
+      }
         this.panned = res.data.data
         console.log(this.panned)
       })

@@ -86,6 +86,10 @@ export default {
             console.log(this.rank)
         })
         this.$axios.post('/v1/user/info/index').then((res)=>{
+          if(res.data.code !==200){
+              this.$toast.error(res.data.msg)
+              return
+            }
             console.log(res)
             this.Info = res.data.data
         })

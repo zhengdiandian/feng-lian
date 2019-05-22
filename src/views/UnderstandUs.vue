@@ -38,6 +38,10 @@
             this.$axios.post('v1/manage/config/getImgList',{
                 "keys": "AboutUs"
             }).then(res=>{
+                if(res.data.code !==200){
+                    this.$toast.error(res.data.msg)
+                    return
+                }
                 this.imgUs = res.data.data.AboutUs
                 console.log(res)
             })

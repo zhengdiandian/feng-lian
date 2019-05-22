@@ -73,6 +73,10 @@ export default {
             "pageSize": 1
         }).then((res) => {
             console.log(res)
+            if(res.data.code !==200){
+              this.$toast.error(res.data.msg)
+              return
+      }
             this.helped = res.data.data
             this.supporlist = res.data.data.list
             // console.log(this.supporlist)
@@ -80,6 +84,10 @@ export default {
         this.$axios.post('v1/manage/config/getTextList',{
             "keys": 'CustomerService'
         }).then(res=>{
+            if(res.data.code !==200){
+              this.$toast.error(res.data.msg)
+              return
+      }
             this.CustomerService = res.data.data.CustomerService
         })
     }

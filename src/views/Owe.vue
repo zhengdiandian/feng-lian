@@ -27,6 +27,10 @@
       this.$axios.post('v1/manage/config/getImgList',{
         keys: 'Thanksgiving'
       }).then(res => {
+        if(res.data.code !==200){
+              this.$toast.error(res.data.msg)
+              return
+      }
         this.imgSrc = res.data.data.Thanksgiving
       })
     }
