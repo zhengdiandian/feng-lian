@@ -98,6 +98,10 @@
                 "bindedNo": this.Bank.bindedNo
             }).then(res=>{
                 console.log(res)
+                if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+          }
                 if (res.data.code == 900) {
                     this.msg = res.data.msg
                 }else if(res.data.code == 200){
@@ -111,9 +115,17 @@
         },
         created(){
             this.$axios.post('v1/finance/profit/profitList').then(res=>{
+                if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+          }
                 this.withdrawBalance = res.data.data.withdrawBalance;
             })
             this.$axios.post('/v1/card/debitCard/getCardList').then(res=>{
+                if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+          }
                 if(res.data.data.length > 0){
                     this.show_bind_card = false;
                     this.Bank =  res.data.data[0];

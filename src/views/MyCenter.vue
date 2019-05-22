@@ -238,6 +238,7 @@ import {mapState} from 'vuex'
     this.$axios.get('/v1/mutually/plan/planList').then(res=>{
       console.log(res)
       if(res.data.code !== 200){
+        this.$toast.error(res.data.msg)
         return
       }
       debugger
@@ -249,6 +250,10 @@ import {mapState} from 'vuex'
     })
 
     this.$axios.post('v1/user/info/personalInfo').then(res => {
+         if(res.data.code !==200){
+        this.$toast.error(res.data.msg)
+        return
+        }
         debugger
         this.$store.commit('set_userInfo',res.data.data)
       })

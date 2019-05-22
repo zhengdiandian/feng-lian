@@ -36,9 +36,15 @@
                 "keys": "Plan_Convention"
             }).then(res=>{
                 if(res.data.code !==200){
+<<<<<<< HEAD
               this.$toast.error(res.data.msg)
               return
       }
+=======
+                    this.$toast.error(res.data.msg)
+                    return
+                }
+>>>>>>> b2d3a3e1d12421866f0cbd4d026eeb25221d3afe
                 this.US = res.data.data.Plan_Convention
                 console.log(res.data.data.Plan_Convention)
             })

@@ -222,10 +222,17 @@
       this.$axios.post('v1/manage/config/getTextList',{
             "keys": 'CustomerService'
         }).then(res=>{
+<<<<<<< HEAD
           if(res.data.code !==200){
               this.$toast.error(res.data.msg)
               return
       }
+=======
+            if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
+>>>>>>> b2d3a3e1d12421866f0cbd4d026eeb25221d3afe
             this.CustomerService = res.data.data.CustomerService
         })
       this.showPoP()
@@ -244,6 +251,10 @@
       this.$axios.post('/v1/product/product/tags',{  // 产品标签列表
         "productCode": this.$route.params.productCode
       }).then(res => {
+            if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
             this.itemRowData = res.data.data
       })
       console.log(+ new Date() -time)
@@ -252,16 +263,24 @@
       this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
         "productCode": this.$route.params.productCode
       }).then(res=>{
-        this.MutualRule = res.data.data
-        this.MutualRule.productCode = this.$route.params.productCode
-        this.$store.commit('set_MutualRule', res.data.data)
+          if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
+          this.MutualRule = res.data.data
+          this.MutualRule.productCode = this.$route.params.productCode
+          this.$store.commit('set_MutualRule', res.data.data)
 
-        console.log(this.MutualRule)
+          console.log(this.MutualRule)
       })
 
       this.$axios.post('/v1/product/product/issue',{ //常见问题
         "productCode": this.productCode
       }).then(res=>{
+         if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
         this.problems = res.data.data
         console.log(this.problem)
       })

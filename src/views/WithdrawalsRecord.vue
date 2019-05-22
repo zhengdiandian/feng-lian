@@ -54,9 +54,15 @@
                 "pageSize": 15
             }).then(res=>{
                 if(res.data.code !==200){
+<<<<<<< HEAD
                     this.$toast.error(res.data.msg)
                     return
                 }
+=======
+                this.$toast.error(res.data.msg)
+                return
+          }
+>>>>>>> b2d3a3e1d12421866f0cbd4d026eeb25221d3afe
                 this.record = res.data.data
                 // this.record.push(this.record[0]);//test
                 console.log(this.record[0].state)

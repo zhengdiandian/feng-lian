@@ -124,6 +124,10 @@ export default {
           url: url
         }).then(res => {
           debugger
+          if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+          }
           console.log(res)
           if(res.data.code!==200){
             this.$toast.error(res.data.msg)
@@ -263,6 +267,10 @@ export default {
         this.$axios.post('v1/manage/config/getImgList',{
           keys: 'Share_Material_icon'
         }).then(res => {
+          if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+          }
           debugger
           this.imgUrl = res.data.data.Share_Material_icon
           this.count +=1

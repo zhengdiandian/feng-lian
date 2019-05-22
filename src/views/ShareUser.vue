@@ -189,6 +189,10 @@ export default {
     this.$axios.post('/v1/user/share/shareList', {
       type: 0
     }).then(res =>{
+      if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+          }
       // console.log(res)
       if(res.data.code !==200){
               this.$toast.error(res.data.msg)
@@ -203,9 +207,15 @@ export default {
       type: 1
     }).then(res =>{
       if(res.data.code !==200){
+<<<<<<< HEAD
               this.$toast.error(res.data.msg)
               return
       }
+=======
+                this.$toast.error(res.data.msg)
+                return
+          }
+>>>>>>> b2d3a3e1d12421866f0cbd4d026eeb25221d3afe
       // console.log(res)
       this.towList = res.data.data
       this.amount +=res.data.data.count
