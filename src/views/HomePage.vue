@@ -250,10 +250,18 @@ export default {
     this.$axios.post('v1/manage/config/getTextList',{
             "keys": 'CustomerService'
         }).then(res=>{
+          if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
           console.log(res)
             this.CustomerService = res.data.data.CustomerService
         })
     this.$axios.post('/v1/manage/post/index').then((res)=>{
+        if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
       // console.log('home',res)
       this.homeinfor = res.data.data
       this.operateItem = res.data.data.operateItem
@@ -269,6 +277,10 @@ export default {
     }),
       this.$axios.post('/v1/product/product/productList').then((res)=>{ // 产品列表
         debugger
+        if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
         this.products = res.data.data
         // this.joinFlag = this.product.joinFlag
         // console.log(this.product)
@@ -278,6 +290,10 @@ export default {
       keys: 'PublicQrcode,PublicAddress,videoImg'
     }).then(res => {
       debugger
+      if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
       this.qrcodeImg = res.data.data.PublicQrcode
       this.bannerImg = res.data.data.PublicAddress
     })
