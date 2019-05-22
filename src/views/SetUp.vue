@@ -15,7 +15,7 @@
                     <span class="version-number">当前版本</span>
                     <span class="number" style="float: right;">1.0.0.1</span>
             </div>
-            <div style="margin-top: 10px;">
+            <!-- <div style="margin-top: 10px;">
                 <div class="setList">
                     <span class="version-number">帮助中心</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -24,7 +24,7 @@
                     <span class="version-number">关于蜂链</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </div>
-            </div>
+            </div> -->
             <!-- <div style="margin-top: 10px;">
                 <div class="setList">
                     <span>账号与安全</span>

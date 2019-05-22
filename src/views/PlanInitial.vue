@@ -81,6 +81,7 @@
     </div>
 
     <div class="next-btn" @click="$router.push('/home')">再去看看</div>
+    <!-- <div class="next-btn" @click="$router.push('/home')">立即充值</div> -->
   </div>
 </template>
 

@@ -7,60 +7,85 @@
       <div class="text-center">加入计划</div>
     </mu-appbar> -->
     <header>
-      <headpage :title="title"></headpage>
+      <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+        <mu-button icon slot="left" @click="$router.go(-1)">
+          <mu-icon value=":iconfont iconfanhui"></mu-icon>
+        </mu-button>
+        充值
+        <mu-button icon slot="right" :ripple="false">
+        </mu-button>
+      </mu-appbar>
     </header>
+    <!--<pop-box v-if="showPoP">-->
+      <!--<div class="pop">-->
+        <!--<div>-->
+          <!--<div>-->
+            <!--<div class="heart">-->
+              <!--您还没有完成实名认证,现在去认证吗？-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div style="position: absolute;width: 100%;bottom: 0;">-->
+          <!--<button @click="showpop=false">不，谢谢</button>-->
+          <!--<button class="btn-join" @click="$router.push('/login')">现在认证</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</pop-box>-->
     <main>
       <div class="page-margin-top mu-header">终身重大疾病互助计划</div>
       <div class="plan-info wrap">
-        <li v-for="(item, index) in 6" :key="index">
-          <span>加入年龄：出生28天-65周岁</span>
+        <li>
+          <span>互助内容：{{MutualRule.content}}</span>
         </li>
-      </div>
-        <div class="margin-top margin-left card">
-            <span class="font" style="display: inline-block">充值计划</span>
-            <card
-            :open="()=>{}"
-            :date="'：2019.01.02'"
-            :waitingperiod="'等待期:'"
-            :waiting="'180天'"
-              >
+        <li>
+          <span>加入年龄：{{MutualRule.crowdRange}}</span>
+        </li>
+        <li>
+          <span>最高互助金：{{MutualRule.highestHelped}}</span>
+        </li>
+        <li>
+          <span>加入人数：{{MutualRule.joinCount}}</span>
+        </li>
+        <li>
+          <span>已捐助：{{MutualRule.supportCount}}人</span>
+        </li>
+        <li>
+          <span>已捐助金额：{{MutualRule.supportAmount}}</span>
+        </li>
 
-            </card>
-        </div>
+      </div>
       <!-- <mu-divider style="height:5px"></mu-divider> -->
       <!-- <div class="info-form margin-left">
-        <span class="margin-top" style="display: inline-block;">资料填写</span>
+        <span>资料填写</span>
         <div class="input-wrap">
           <label for>姓 &nbsp; 名：</label>
-          <input type="text" placeholder="请输入您的姓名">
+          <input :disabled="!showPoP" type="text" placeholder="请输入您的姓名" :value="userInfo.contacs ">
         </div>
         <div class="input-wrap">
           <label for>身份证：</label>
-          <input type="text" placeholder="请输入您的姓名">
+          <input :disabled="!showPoP" type="text" :value="userInfo.contacsIdNo" placeholder="请输入您的身份证号" >
         </div>
         <div class="warning">
-          <mu-icon value=":iconfont icontanhao" size="24"></mu-icon> &nbsp; 身份证信息不可修改, 请正确填写
+          <mu-icon v-show="!ShowID" value=":iconfont icontanhao" size="24"></mu-icon>  <span v-show="!ShowID" style="color: #FF0C0C">身份证信息不可修改, 请正确填写</span>
         </div>
       </div> -->
       <!-- <mu-divider style="height:5px;"></mu-divider> -->
       <!-- <div class="yaoQing margin-top wrap">
         <div class="input-wrap">
           <label for>邀请码</label>
-          <input type="text" placeholder="请输入邀请码">
-          <span class="margin-left">获取邀请码</span>
+          <input  style="vertical-align: middle" type="text" placeholder="请联系客服获得邀请码" v-model="agentUserCode" >
+          <span class="margin-left" @click="obtain">获取邀请码</span>
         </div>
         <div class="warning">
-          <mu-icon value=":iconfont icontanhao" size="24"></mu-icon>身份证信息不可修改, 请正确填写
+          <mu-icon  value=":iconfont icontanhao" size="24"></mu-icon> <span>邀请码信息不可修改, 请正确填写</span>
         </div>
       </div> -->
     <!-- <mu-divider style="height:5px;"></mu-divider> -->
     <div class="select-wrap">
       <!-- <div class="font margin-bottom margin-top">选择关系</div>
       <div class="select-items">
-        <div class="item">自己</div>
-        <div class="item">父母</div>
-        <div class="item">配偶</div>
-        <div class="item">子女</div>
+        <div class="item" v-for="(item, i) in btnList"  :key="i" :class="{'active': activeIndex == i}" @click="activeIndex=i">{{item}}</div>
+
       </div> -->
       <div class="font margin-top">预计使用10个月</div>
       <!--<mu-slider class="demo-slider" v-model="normal.value1"></mu-slider>-->
@@ -68,7 +93,7 @@
       <!--<mu-slider class="demo-slider" disabled v-model="normal.value3"></mu-slider>-->
       <div class="stepper-wrap">
         <mu-stepper :linear="false" :active-step="activeStep"  class="mu-stepper">
-          <mu-step v-for="i in 5" :key="i" @click="activeStep=i-1">
+          <mu-step v-for="i in 5" :key="i" @click="activeStep=i-1" >
             <mu-step-label >
             </mu-step-label>
           </mu-step>
@@ -78,38 +103,49 @@
           <li v-for="sum in sums" :key="sum">{{sum}}元</li>
         </ul>
       </div>
-      <div class="buy-info margin-top">
-        使用时间: <span class="margin-left font-min">{{this.sums[this.activeStep]}}个月</span>
+      <div class="buy-info margin-top" style="position: relative;">
+        使用时间: <span class="margin-left font-min">{{serviceTime}}个月</span>
+        <!-- <div class="estimate"><span style="font-size: 14px;">预计到期时间2020年2月9日</span></div> -->
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
-        服务费: <span class="margin-left font-min"> &nbsp;&nbsp;68元</span>
+        服务费: <span class="margin-left font-min"> &nbsp;&nbsp;{{MutualRule.annualPrice}}</span>
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
-        合计: <span class="margin-left font-min">&nbsp;&nbsp;&nbsp;&nbsp;10个月</span>
+        合计: <span class="margin-left font-min">&nbsp;&nbsp;&nbsp;&nbsp;{{amount}}元</span>
         <mu-divider></mu-divider>
       </div>
       <div class="tongYi">
-        <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span> <<互助计划公约>></span>
+        <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span @click="$router.push('/AssistanceConvention')"> 《互助计划公约》 </span>
       </div>
     </div>
-  </main>
-    <div class="big-btn" @click="btnHandleClick">去支付</div>
+      <div class="big-btn" :class="{'disable-btn': !tongYi}" @click="btnHandleClick" style="z-index: 888888">去支付</div>
+    </main>
   </div>
 </template>
 
 <script>
-import headpage from '../components/PageHeader/PageHeader'
-import card from '../components/Card/Card'
+// import headpage from '../components/PageHeader/PageHeader'
+import { debug } from 'util';
+import { mapState } from 'vuex'
+// import  popBox from '../components/PopBox/PopBox'
 export default {
-  name: "recharge",
+  name: "joinPlan",
   data() {
     return {
+      // showPoP: true,
+      name:'',
+      ID:'',
+      InvitationCode:'',
       sliderVal: '',
       tongYi: false,
       activeStep: 0,
-      title: '充值',
+      ShowID: false,
+      btnList: [
+        '自己', '父母', '配偶', '子女'
+      ],
+      // MutualRule: this.$route.params.MutualRule,
       sums:[
         10,
         20,
@@ -117,53 +153,183 @@ export default {
         100,
         200
       ],
+      activeIndex: 0,
+      order: [],
+      agentUserCode: ''
     }
   },
   computed:{
+    ...mapState(['userInfo', 'MutualRule']),
+    showPoP() {
+      return this.userInfo.state === 100
+    },
     tongYiStyle () {
-      return this.tongYi ? {color: 'blue'}: {}
+      return this.tongYi ? {color: '#f8b62d'}: {}
+    },
+    serviceTime() {
+      return this.sums[this.activeStep] / this.MutualRule.suit
+    },
+    amount() {
+      return this.serviceTime * this.MutualRule.suit + this.MutualRule.annualPrice
     }
   },
-  components: {
-    headpage,
-    card
-  },
   methods: {
+    obtain(){
+
+    },
       btnHandleClick (i) {
-        // this.$axios.post('/v1/mutually/plan/checkOrder',{
-        //       // "contacs":this.name,
-        //       // "contacsIdNo":this.ID,
-        //       // "inviteCode":this.InvitationCode,
-        //       "orderAmount": this.sums[this.activeStep], // 金额
-        //       // "productCode": this.$route.params.productCode,
-        //       // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
-        //       // "type": 0
-        //     }).then((res)=> {
-        //       this.order = res.data.data
-        //       console.log(this.order)
-              // localStorage.setItem('order',this.order)
-              this.$router.push({
-                name: 'orderInfo',
-                params: {
-                  order: this.order
+        // var cPReg = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+        // if (!cPReg.test(this.ID)) {
+        //   this.ShowID = true
+        //   return
+        // }
+        if(!this.tongYi){
+          this.$toast.error('必须阅读并同意才可执行')
+          return
+        }
+        debugger
+        this.$axios.post('v1/mutually/plan/checkOrder',{
+              "contacs": this.userInfo.contacs,
+              "contacsIdNo": this.userInfo.contacsIdNo ,
+              "inviteCode": this.agentUserCode,
+              "orderAmount": this.amount, // 金额
+              "productCode": this.MutualRule.productCode,
+              "relationShip": 0,
+              "stageCount": this.serviceTime,
+              // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
+              "type": 2
+            }).then((res)=> {
+              debugger
+                if(res.data.code!==200){
+                  this.$toast.error(res.data.msg)
+                  return
                 }
-              })
-            // })
+              if(res.data.code===200){
+                debugger
+                this.order = res.data.data
+                window.location = `${this.$axios.defaults.baseURL}/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=${this.$route.params.productCode}`
+                console.log(res)
+                // this.$axios.post('v1/mutually/payOrder/orderCheck',{
+                //   orderNo: this.$route.params.productCode,
+                //   goodsName: this.order.goodsName,
+                //   unitPrice: this.order.unitPrice,
+                //   payAmount: this.order.payAmount,
+                //   bounty: this.order.bounty
+
+                // })
+                // localStorage.setItem('order',this.order)
+                // this.$router.push({
+                //   name: 'orderInfo',
+                //   params: {
+                //     productCode: this.$route.params.productCode,
+                //     order: res.data.data,
+                //     // stageCount: this.serviceTime
+                //   }
+                // })
+              }
+
+            })
       },
   },
+  components: {
+    // headpage,
+    // popBox
+  },
+  created() {
+    this.$axios.post('v1/user/info/getCertifyInfo').then(res => {
+      debugger
+      if(res.data.data.code){
+        this.$toast(res.data.data.msg)
+      }
+      this.agentUserCode = res.data.data.userCode
+
+    })
+  },
+  mounted() {
+    // this.$axios.post('/v1/user/info/getCertifyInfo').then(res=>{
+    //   if(res.data.code == 900) {
+    //     alert('还没实名认证')
+    //     this.$router.push('/real')
+    //   }
+    // })
+    // this.$axios.post('/v1/mutually/plan/checkOrder',{
+    //           "contacs":"黄溢东",
+    //           "contacsIdNo":"124124243",
+    //           "inviteCode":"136750423931",
+    //           "orderAmount": "1",
+    //           // "orderAmount": this.sums[this.activeStep], // 金额
+    //           // "productCode": this.$route.params.productCode,
+    //           "productCode": "test1234567890",
+    //           "relationShip": "0",
+    //           "stageCount": "1",
+    //           // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
+    //           "type": 2
+    //         }).then((res)=> {
+    //           this.order = res.data.data
+    //           console.log(this.order)
+    //           // localStorage.setItem('order',this.order)
+    //           // this.$router.push({
+    //           //   name: 'orderInfo',
+    //           //   params: {
+    //           //     order: this.order
+    //           //   }
+    //           // })
+    //         })
+  }
 };
 </script>
 
 <style scoped lang='scss'>
-.card{
-  height: 175px;
-  margin-bottom: 20px;
-}
+ /* .pop{
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    text-align: center;
+    position: relative;
+    & >div:last-child{
+      // height: 40px;
+      // background-color: $c-cheng;
+      // color: $c-bai;
+      // line-height: 40px;
+      // font-size: 18px;
+      // align-self: flex-end;
+    }
+    &>div{
+      width: 100%;
+      text-align: center;
+    }
+    align-items: center;
+    .iconfont{
+      font-size: 45px;
+    }
+    .heart{
+      display: inline-block;
+      width: 170px;
+      height: 80px;
+      font-size: 16px;
+    }
+    button{
+      border: none;
+      width: 50%;
+      height: 50px;
+      border-top: 1px solid $c-hui;
+      background-color: #fff;
+      border-right: 1px solid $c-hui;
+    }
+    .btn-join{
+      color: $c-lang
+    }
+  }*/
 main{
-    background-color: #fff;
+  margin-bottom: 50px;
 }
 .mu-header{
   margin: 56px 0 12px 12px;
+  font-size:$f15;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
 }
   .stepper-step{
     margin: -45px -10px 0 0;
@@ -182,19 +348,37 @@ main{
 .wrap {
   padding: 0 20px;
 }
+.estimate{
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+  width: 85px;
+  // background-color: red;
+  font-size: $f14;
+  text-align: center;
+  line-height: 15px;
+}
 .plan-info  {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: #fff;
   li {
-    width: 150px;
+    /*width: 150px;*/
+    width: 100%;
+    text-align: left;
     color: $c-cheng;
     height: 20px;
-    overflow: hidden;
     margin: 8px auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     span {
+      /*width: 100%;*/
       color: #000;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       font-size: $f14;
     }
   }
@@ -208,7 +392,8 @@ main{
     padding-left: 20px;
     outline: none;
     font-size: $f14;
-    
+    background-color: #fff;
+
   }
 }
 .warning {
@@ -232,8 +417,11 @@ main{
     border:1px solid rgba(239,162,32,1);
     border-radius:17px;
     line-height: 33px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   input {
+
     // width: 150px;
     // box-sizing: border-box;
     // padding-left: 10px;
@@ -249,14 +437,16 @@ main{
 .info-form{
   span{
     font-size:$f15;
-      
     font-weight:bold;
     color:rgba(51,51,51,1);
+    display: inline-block;
+    padding: 12px 0 0 12px;
   }
 }
 
 .select-wrap{
   width: 351px;
+  height: 300px;
   margin: auto;
   .select-items{
     display: flex;
@@ -266,9 +456,13 @@ main{
       justify-content: center;
       align-items: center;
       width: 20%;
+      background-color: $c-hui;
       border-radius: 5px;
-      background-color: $c-cheng;
       color: #fff;
+    }
+    .item.active{
+      background-color: $c-cheng;
+
     }
   }
   .buy-info{
@@ -283,8 +477,13 @@ main{
     top: -20px;
   }
   .tongYi{
+    margin-top: 10px;
+    .iconfont{
+      vertical-align: middle;
+    }
     input[type=checkbox]{
       visibility: hidden;
+      /*margin-bottom: 20px;*/
     }
     span{
       color: cornflowerblue;
@@ -300,8 +499,11 @@ main{
     color: #fff;
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
+    &.disable-btn{
+      background-color: #999999;
+      /*color: $c-cheng;*/
+    }
   }
   .stepper{
     width: 100%;
