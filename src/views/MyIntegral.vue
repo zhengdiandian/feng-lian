@@ -12,6 +12,13 @@
     </mu-appbar>
     </header>
     <main style="margin-top: 60px;">
+        <div class="infor">
+            <div class="infor-img"><img :src="infor.headPortrait" alt=""></div>
+            <div class="infor-text">
+                <span>Hi</span>
+                <span>{{infor.nickname}}</span>
+            </div>
+        </div>
         <section class="Myinteg">
             <div class="reward">
                 <div>
@@ -103,7 +110,8 @@ export default {
         return {
             title: '',
             totalScore: this.$route.params.totalScore,
-            scoreType: ''
+            scoreType: '',
+            infor: []
         }
     },
   computed: {
@@ -126,6 +134,14 @@ export default {
         }
         this.scoreType = res.data.data.scoreType
       })
+      this.$axios.post('v1/user/info/index').then(res=>{
+          if(res.data.code !==200){
+            this.$toast.error(res.data.msg)
+            return
+            }
+            this.infor = res.data.data
+            console.log(this.infor)
+      })
   },
     mounted() {
         // console.log(this.$route.params.totalScore)
@@ -134,6 +150,27 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.infor{
+    display: flex;
+    padding-left: 12px;
+    padding-bottom: 12px;
+    .infor-img{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .infor-text{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 12px;
+    }
+}
 .Myinteg{
     width: 100%;
     background: #fff;

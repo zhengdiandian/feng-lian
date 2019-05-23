@@ -4,7 +4,8 @@
       <mu-button icon slot="left" @click="$router.go(-1)">
       <mu-icon value=":iconfont iconfanhui"></mu-icon>
       </mu-button>
-      了解我们
+      <span v-if="title">{{title}}</span>
+      <span v-else>了解我们</span>
       <mu-button icon slot="right"  :ripple="false">
       </mu-button>
     </mu-appbar>
@@ -25,7 +26,8 @@
         data() {
             return {
                 US:'',
-                imgUs: ''
+                imgUs: '',
+                title: this.$route.params.title
             }
         },
         created()　{

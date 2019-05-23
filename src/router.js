@@ -231,6 +231,37 @@ export default new Router({
       }
     },
     {
+      path: '/HelpCenter', // 帮助中心
+      component: function () {
+        return import('./views/HelpCenter.vue')
+      }
+    },
+    {
+      path: '/AccountSecurity', // 账号与安全
+      component: function () {
+        return import('./views/AccountSecurity.vue')
+      }
+    },
+    {
+      path: '/replacePhone',
+      component: function () {
+        return import('./views/AccountSecurity/replacePhone.vue') // 更换手机号码
+      }
+    },
+    {
+      path: '/withdrawalPassword',
+      name: 'withdrawalPassword',
+      component: function () {
+        return import('./views/AccountSecurity/withdrawalPassword.vue') // 提现密码设置
+      }
+    },
+    {
+      path: '/PasswordSettings',
+      component: function () {
+        return import('./views/AccountSecurity/PasswordSettings.vue') // 登陆密码设置
+      }
+    },
+    {
       path: '/UnderstandUs', // 了解我们
       name: 'UnderstandUs',
       component: function () {

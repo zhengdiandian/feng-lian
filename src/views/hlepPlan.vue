@@ -222,17 +222,10 @@
       this.$axios.post('v1/manage/config/getTextList',{
             "keys": 'CustomerService'
         }).then(res=>{
-<<<<<<< HEAD
-          if(res.data.code !==200){
-              this.$toast.error(res.data.msg)
-              return
-      }
-=======
             if(res.data.code !==200){
                 this.$toast.error(res.data.msg)
                 return
             }
->>>>>>> b2d3a3e1d12421866f0cbd4d026eeb25221d3afe
             this.CustomerService = res.data.data.CustomerService
         })
       this.showPoP()
