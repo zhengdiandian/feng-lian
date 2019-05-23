@@ -10,7 +10,7 @@
       </mu-appbar>
         <div class="page-margin-top"></div>
         <main>
-            <!-- <div class="add-family">
+            <div class="add-family">
                 <span style="font-size:14px;  font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的家人</span>
                 <section class="add-family-list">
                     <div class="list">
@@ -55,7 +55,7 @@
                         <span style="font-size:12px;">添加家人</span>
                     </div>
                 </section>
-            </div> -->
+            </div>
             <div class="purchase-plan" >
                 <span  class="plan-text">我的购买计划</span>
                 <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
@@ -82,7 +82,7 @@
                     </section>
             </div>
         </main>
-        <!-- <footerBtn></footerBtn> -->
+        <footerBtn></footerBtn>
     </div>
 </template>
 <script>

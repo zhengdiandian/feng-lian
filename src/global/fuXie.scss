@@ -46,6 +46,12 @@
     color: $c-cheng;
 }
 .mu-stepper {
+    .active-step+.mu-step-connector  .mu-step-connector-line{
+        border-color: $c-cheng
+    }
+    .active-step .mu-step-label-circle{
+        background-color: $c-cheng;
+    }
     .mu-step-label.active .mu-step-label-circle, .mu-step-label.completed .mu-step-label-circle {
         background-color: $c-cheng;
     }
