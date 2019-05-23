@@ -428,6 +428,15 @@ export default new Router({
       component: function () {
         return import('./views/MemberConvention')
       }
+    },
+    {
+      path: '/compensate',  
+      //  普通赔付
+      name: 'compensate',
+      component: function () {
+        return import('./views/compensate/compensate')
+      }
+
     }
     // {
     //   path: '*',

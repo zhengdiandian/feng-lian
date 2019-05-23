@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'muse-ui/lib/styles/base.less'
-import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField, Divider, List, SubHeader, Slider, Stepper, Avatar, Dialog, Snackbar } from 'muse-ui'
+import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField, Divider, List, SubHeader, Slider, Stepper, Avatar, Dialog, Snackbar, Picker , BottomSheet, Paper} from 'muse-ui'
 import 'muse-ui/lib/styles/theme.less'
 import 'muse-ui/dist/muse-ui.css'
 import theme from 'muse-ui/lib/theme'
@@ -37,6 +37,9 @@ Vue.use(Stepper)
 Vue.use(Avatar)
 Vue.use(Dialog)
 Vue.use(Snackbar)
+Vue.use(Picker)
+Vue.use(BottomSheet)
+Vue.use(Paper)
 Vue.config.productionTip = false
 // Axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 Axios.interceptors.response.use((response) => {
@@ -59,8 +62,8 @@ Axios.interceptors.response.use((response) => {
   // Do something with response error
   return Promise.reject(error)
 })
-Axios.defaults.baseURL = 'http://wxapi.fenglianhz.com/h5'
-// Axios.defaults.baseURL = 'http://testv2.wxapi.fenglianhz.com/h5'
+// Axios.defaults.baseURL = 'http://wxapi.fenglianhz.com/h5'
+Axios.defaults.baseURL = 'http://testv2.wxapi.fenglianhz.com/h5'
 // Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 // Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 // Axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
