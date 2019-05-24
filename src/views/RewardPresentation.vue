@@ -23,7 +23,6 @@
                         <div class="bank">{{Bank.bankName}}</div>
                         <div class="last-number">{{Bank.cardNo}}</div>
                     </div>
-                    
                     <!-- <div class="top-right">
                         <div>请选择</div>
                         <i class="iconfont iconyou1"></i>
@@ -54,7 +53,7 @@
                 <div class="show-main-text" ><span>您还没有绑定银行卡</span></div>
                 <mu-divider></mu-divider>
                 <div class="show-btn">
-                    
+
                     <input style="color: #4999f5" type="button" value="返回检查" @click="$router.go(-1)">
                 </div>
             </div>
@@ -65,8 +64,22 @@
                 <div class="show-main-text" ><span>你的提现申请已提交<br>请等待客服审核</span></div>
                 <mu-divider></mu-divider>
                 <div class="show-btn">
-                    
                     <input style="color: #4999f5" type="button" value="好的" @click="$router.go(-1)">
+                </div>
+            </div>
+        </div>
+
+        <div class="show_pwd" v-if="show_pwd">
+            <div class="show-main">
+                <div class="text_pay">请输入支付密码</div>
+                <mu-divider></mu-divider>
+                <div class="text">提现</div>
+                <div class="number">￥1200</div>
+                <div class="money-charge">额外扣除￥5元手续费</div>
+                <div class="input">
+                    <div v-for="(item,index) in inputList" :key="index">
+                        <input type="password" v-model="item.val" maxlength="1"  class="border-input" @keyup="nextFocus($event,index)">
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,9 +98,34 @@
                 Bank: {},
                 show_bind_card: false,
                 show_success: false,
+                show_pwd: false,
+                inputList: [{val: ""}, {val: ""}, {val: ""}, {val: ""}, {val: ""}, {val: ""}],
+            }
+        },
+        computed: {
+            inpuVal() {
+                return this.inputList[0].val + this.inputList[1].val + this.inputList[2].val + this.inputList[3].val + this.inputList[4].val + this.inputList[5].val
             }
         },
         methods: {
+            nextFocus(el,index) {
+                var dom = document.getElementsByClassName("border-input"),
+                    currInput = dom[index],
+                    nextInput = dom[index + 1],
+                    lastInput = dom[index - 1];
+                /*这里的keyCode 根据不同的平台或许不同,安卓就是不是8*/
+                if (el.keyCode != 8) {
+                    if (index < (this.inputList.length - 1)) {
+                        nextInput.focus();
+                    } else {
+                        currInput.blur();
+                    }
+                }else{
+                    if (index !=0) {
+                        lastInput.focus();
+                    }
+                }
+            },
             whole() {
                 if (this.withdrawBalance < this.Amount) {
                     this.msg = '输入金额小于可提现金额';
@@ -96,22 +134,36 @@
                 this.$axios.post('/v1/finance/account/withdraw',{
                 'amount': this.Amount,
                 "bindedNo": this.Bank.bindedNo
-            }).then(res=>{
+                }).then(res=>{
                 console.log(res)
                 if(res.data.code !==200){
                 this.$toast.error(res.data.msg)
                 return
-          }
+                }
                 if (res.data.code == 900) {
                     this.msg = res.data.msg
                 }else if(res.data.code == 200){
                     this.show_success = true;
+                    this.show_pwd = true
+                    this.$axios.post('v1/finance/account/withdraw',{
+                        "amount": this.Amount,
+                        "bindedNo": this.Bank.cardNo,
+                        "withdrawPwd": this.inpuVal
+                    }).then(res=>{
+                        if (res.data.code !== 200) {
+                            this.$toast.error(res.data.msg)
+                            return
+                        }
+                    })
+                    if (this.inpuVal.length == 6) {
+                        this.show_pwd = false
+                    }
                 }
             })
             },
             Amounts() {
                 this.Amount = this.withdrawBalance
-            }
+            },
         },
         created(){
             this.$axios.post('v1/finance/profit/profitList').then(res=>{
@@ -141,6 +193,51 @@
 <style lang="scss" scoped>
 #app>div{
     background-color: #f5f5f5;
+}
+.show_pwd{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .text{
+        margin-top: 12px;
+    }
+    .number{
+        font-size: 24px;
+        padding-top: 10px;
+        color: #333333;
+    }
+    .text_pay{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        font-size: $f14;
+    }
+    .money-charge{
+        font-size: 13px;
+    }
+    .show-main{
+        width: 70%;
+        margin-bottom: 80px;
+    }
+}
+.input{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    .border-input{
+        border: none;
+        width: 30px;
+        height: 30px;
+        border-bottom: 1px solid black;
+        text-align: center;
+        margin-left: 5px;
+    }
 }
 .show-main-text{
     width: 100%;

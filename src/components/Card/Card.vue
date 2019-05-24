@@ -24,9 +24,10 @@
           <div style="height:20px;">{{waiting}}</div>
           <div style="height:20px;">{{amountMoney}}元</div>
         </div>
-        <div class="btn-wrap">
+        <slot name="btnOpen"></slot>
+        <!-- <div class="btn-wrap">
           <div class="btn content-center" @click="open">查看计划</div>
-        </div>
+        </div> -->
       </div>
     </div>
 </template>

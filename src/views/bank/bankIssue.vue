@@ -45,7 +45,7 @@
 
       </mu-list>
       <div class="help-btn-wrap">
-        <a href="tel: 17812772561" class="btn">
+        <a :href="'tel:'+CustomerService" class="btn">
           <span class="iconfont iconlianxikefu"></span>
           <span>联系客服</span>
         </a>
@@ -55,7 +55,7 @@
         </div>
       </div>
     </div>
-    <a href="tel: 17812772561" class="btn">
+    <a :href="'tel:'+CustomerService" class="btn">
       <span class="iconfont iconlianxikefu"></span>
       <span>联系客服</span>
     </a>
@@ -64,7 +64,23 @@
 
 <script>
   export default {
-    name: 'bankIssue'
+    name: 'bankIssue',
+    data() {
+      return {
+        CustomerService: ''
+      }
+    },
+    created(){
+      this.$axios.post('v1/manage/config/getTextList',{
+            "keys": 'CustomerService'
+        }).then(res=>{
+            if(res.data.code !==200){
+                    this.$toast.error(res.data.msg)
+                    return
+            }
+            this.CustomerService = res.data.data.CustomerService
+        })
+    }
   }
 </script>
 

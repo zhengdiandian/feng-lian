@@ -80,8 +80,8 @@
       </mu-list>
     </div>
 
-    <div class="next-btn" @click="$router.push('/home')">再去看看</div>
-    <!-- <div class="next-btn" @click="$router.push('/home')">立即充值</div> -->
+    <div v-if="title" class="next-btn" @click="$router.push('/home')">再去看看</div>
+    <div v-else class="next-btn" @click="$router.push('/recharge')">立即充值</div>
   </div>
 </template>
 
@@ -97,6 +97,7 @@
         issue: [],
         showPoP: false,
         showpop: false,
+        title: this.$route.query.title,
         position: 'bottom',               // 弹出的位置
         time: 2000,                       // 显示的时长
         closeIcon: 'close',               // 关闭的图标

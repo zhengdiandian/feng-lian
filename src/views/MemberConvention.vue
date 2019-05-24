@@ -36,7 +36,7 @@
             }).then(res=>{
                 if(res.data.code !==200){
                 this.$toast.error(res.data.msg)
-                return 
+                return
                 }
                 this.US = res.data.data.User_Convention
                 console.log(res)

@@ -117,6 +117,10 @@ export default {
             console.log(this.listDate)
         })
         this.$axios.post('v1/user/info/personalInfo').then(res=>{
+            if(res.data.code !==200){
+              this.$toast.error(res.data.msg)
+              return
+            }
             this.debitCardState = res.data.data.debitCardState
         })
     }

@@ -74,7 +74,10 @@
         <div class="input-wrap">
           <label for>邀请码</label>
           <input  style="vertical-align: middle" type="text" placeholder="请联系客服获得邀请码" v-model="agentUserCode" >
-          <span class="" @click="obtain">获取邀请码</span>
+          <span class="" @click="obtain">
+            <a :href="'tel:'+CustomerService" class="btn">
+            <span>获取邀请码</span>
+          </a></span>
         </div>
         <div class="warning">
           <mu-icon  value=":iconfont icontanhao" size="24"></mu-icon> <span>邀请码信息不可修改, 请正确填写</span>
@@ -117,7 +120,7 @@
         <mu-divider></mu-divider>
       </div>
       <div class="tongYi">
-        <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span @click="$router.push('/AssistanceConvention')"> 《互助计划公约》 </span>
+        <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span @click="$router.push('/AssistanceConvention')"> 《 蜂链互助计划公约》 </span>
       </div>
     </div>
       <div class="big-btn" :class="{'disable-btn': !tongYi}" @click="btnHandleClick" style="z-index: 888888">去支付</div>
@@ -142,6 +145,7 @@ export default {
       tongYi: false,
       activeStep: 0,
       ShowID: false,
+      CustomerService: '',
       btnList: [
         '自己', '父母', '配偶', '子女'
       ],
@@ -246,6 +250,15 @@ export default {
     })
   },
   mounted() {
+    this.$axios.post('v1/manage/config/getTextList',{
+            "keys": 'CustomerService'
+        }).then(res=>{
+            if(res.data.code !==200){
+                    this.$toast.error(res.data.msg)
+                    return
+            }
+            this.CustomerService = res.data.data.CustomerService
+        })
     // this.$axios.post('/v1/user/info/getCertifyInfo').then(res=>{
     //   if(res.data.code == 900) {
     //     alert('还没实名认证')

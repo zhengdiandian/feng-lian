@@ -86,6 +86,10 @@
             this.$axios.post('v1/manage/config/getImgList',{
                 keys: 'PublicQrcode'
                 }).then(res => {
+                    if(res.data.code !==200){
+                            this.$toast.error(res.data.msg)
+                            return
+                    }
                 this.qrcodeImg = res.data.data.PublicQrcode
                 })
         }

@@ -78,6 +78,11 @@
                             <img src="../assets/img/已退款.png" alt="">
                         </div>
                     </template>
+                    <template v-slot:btnOpen>
+                        <div class="btn-wrap">
+                            <div class="btn content-center" @click="open">查看计划</div>
+                        </div>
+                    </template>
                     </card>
                     </section>
             </div>
@@ -101,14 +106,31 @@ export default {
             amount: '余额',
             waitingperiod: '等待期:',
             name: 'Bytan.zZ',
-            myplan: []
+            myplan: [],
+            planNo: ""
+        }
+    },
+    methods:{
+        open() {
+            this.$router.push({
+                name: 'planInitial',
+                query:{planNo: this.planNo}
+            })
         }
     },
     mounted() {
         this.$axios.get('/v1/mutually/plan/planList').then(res=>{
+            if(res.data.code !==200){
+              this.$toast.error(res.data.msg)
+              return
+            }
             console.log(res)
             this.myplan = res.data.data
-            console.log(this.myplan)
+            // console.log(this.myplan)
+            this.myplan.list.forEach(element => {
+                this.planNo = element.planNo
+                console.log(this.planNo)
+            });
         })
     }
 }

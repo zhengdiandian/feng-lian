@@ -77,6 +77,10 @@ export default {
                     return
             }
             console.log(res)
+            if(res.data.code !==200){
+              this.$toast.error(res.data.msg)
+              return
+      }
             this.helped = res.data.data
             this.supporlist = res.data.data.list
             // console.log(this.supporlist)

@@ -4,7 +4,7 @@
       <mu-button icon slot="left" @click="$router.go(-1)">
       <mu-icon value=":iconfont iconfanhui"></mu-icon>
       </mu-button>
-      互助计划公约
+      蜂链互助计划公约
       <mu-button icon slot="right"  :ripple="false">
       </mu-button>
     </mu-appbar>
