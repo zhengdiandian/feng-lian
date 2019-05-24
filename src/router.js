@@ -404,7 +404,21 @@ export default new Router({
       name: 'compensate',
       component: function () {
         return import('./views/compensate/compensate')
-      }
+      },
+      children: [
+        {
+          path: 'inputForm',
+          component: function () {
+            return import('./views/compensate/components/InputForm')
+          }
+        },
+        {
+          path: 'imageForm',
+          component: function () {
+            return import('./views/compensate/components/ImageForm')
+          }
+        }
+      ]
 
     }
     // {

@@ -57,11 +57,11 @@
       })
     },
     watch: {
-      $route(){
-        debugger
-      this.state = this.imglist[this.$route.query.state]
-      this.text = this.state === 'succeed' ? '授权成功': '授权失败'
-      }
+      // $route(){
+      //   debugger
+      // this.state = this.imglist[this.$route.query.state]
+      // this.text = this.state === 'succeed' ? '授权成功': '授权失败'
+      // }
     },
   }
 </script>

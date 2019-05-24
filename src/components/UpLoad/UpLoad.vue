@@ -1,9 +1,9 @@
 <template>
     <div>
         <div style="display: flex;justify-content: center;">
-            <div class="uploadimg">
+            <div  :class="wrapClass" >
               <div class="image">
-                <img  src="../../assets/img/相机.svg" alt="" >
+                <img v-if="showImg"  :src="iconSrc" alt="" > <img v-else :src="addIcon" alt="">
               </div>
 
                 <span>{{upload}}</span>
@@ -25,10 +25,20 @@ export default {
             type: String,
             default: '上传身份证正面',
         },
-      showImg: {
-          type: Boolean,
-          default: true
-      }
+        showImg: {
+            type: Boolean,
+            default: true
+      },
+        wrapClass: {
+            type: String,
+            default: 'uploadimg',
+      },
+        type: {
+            type: String,
+            default: ''
+        }
+
+
         // file: {
         //     type : Object,
         //     default: function () {
@@ -36,11 +46,31 @@ export default {
         //     }
         // }
     },
+    computed: {
+        // iconSrc() {
+        //     debugger
+        //     let src = ''
+        //     if(this.showImg) {
+        //         src = '../../assets/img/相机.svg'
+        //         return  src
+        //     }
+        // }
+    },
+    // watch: {
+    //     showImg() {
+    //     debugger
+    //         if(!this.showImg){
+    //             this.iconSrc = require('../../assets/img/add.svg')
+    //         }
+    //     }
+    // },
     data() {
         return {
              picavalue: "",
             imgUrl: null,
-            isEnlargeImage: false
+            isEnlargeImage: false,
+            iconSrc: require('../../assets/img/相机.svg'),
+            addIcon: require('../../assets/img/add.svg')
         }
     },
     methods: {
