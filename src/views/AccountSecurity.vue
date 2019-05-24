@@ -13,7 +13,7 @@
         <main>
             <div class="setList">
                     <span class="version-number">蜂链ID</span>
-                    <span class="numberID">{{ID}}</span>
+                    <span class="numberID">{{safety.userCode}}</span>
             </div>
             <div>
                 <!-- <div class="setList" @click="$router.push('/replacePhone')">
@@ -23,12 +23,12 @@
                 </div> -->
                 <div class="setList" @click="$router.push('/PasswordSettings')">
                     <span class="version-number">登陆密码设置</span>
-                    <span class="state">已设置</span>
+                    <span class="state">{{safety.loginPwd == 0 ? '未设置' : '已设置'}}</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </div>
-                <div class="setList" @click="$router.push({name: 'withdrawalPassword', params: {id: '2'}})">
+                <div class="setList" @click="$router.push({name: 'withdrawalPassword', params: {id: '1'}})">
                     <span class="version-number">提现密码设置</span>
-                    <span class="state">已设置</span>
+                    <span class="state">{{safety.withdrawPwd == 0 ? '未设置' : '已设置'}}</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </div>
             </div>
@@ -59,8 +59,9 @@ export default {
     name: 'AccountSecurity',
     data() {
         return {
-            infor: [],
-            ID: ''
+            // infor: [],
+            ID: '',
+            safety: {}
         }
     },
     components: {
@@ -73,21 +74,28 @@ export default {
         // }
     },
     created() {
-        this.$axios.post('v1/user/info/index').then(res=>{
-          if(res.data.code !==200){
+    //     this.$axios.post('v1/user/info/index').then(res=>{
+    //       if(res.data.code !==200){
+    //         this.$toast.error(res.data.msg)
+    //         return
+    //         }
+    //         this.infor = res.data.data
+    //         console.log(this.infor)
+    //   })
+    this.$axios.post('v1/user/info/safety').then(res=> {
+        if (res.data.code !==200) {
             this.$toast.error(res.data.msg)
             return
-            }
-            this.infor = res.data.data
-            console.log(this.infor)
-      })
-      this.$axios.post('v1/user/info/personalInfo').then(res=>{
-          if(res.data.code !==200){
-            this.$toast.error(res.data.msg)
-            return
-            }
-            this.ID = res.data.data.userCode
-      })
+        }
+        this.safety = res.data.data
+    })
+    //   this.$axios.post('v1/user/info/personalInfo').then(res=>{
+    //       if(res.data.code !==200){
+    //         this.$toast.error(res.data.msg)
+    //         return
+    //         }
+    //         this.ID = res.data.data.userCode
+    //   })
     }
 
 }

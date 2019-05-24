@@ -59,7 +59,7 @@
             <div class="purchase-plan" >
                 <span  class="plan-text">我的购买计划</span>
                 <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
-                    <card :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
+                    <card
                         :img="myplan.headPortrait"
                         :state="myplan.payState==100?'未实名':'已实名'"
                         :productName="myplan.productName"
@@ -76,6 +76,11 @@
                             <!-- <img src="../assets/img/通过.png" alt=""> -->
                             <!-- <img src="../assets/img/驳回.png" alt=""> -->
                             <img src="../assets/img/已退款.png" alt="">
+                        </div>
+                    </template>
+                    <template v-slot:btnOpen>
+                        <div class="btn-wrap">
+                            <div class="btn content-center" @click="open">查看计划</div>
                         </div>
                     </template>
                     </card>
@@ -101,7 +106,16 @@ export default {
             amount: '余额',
             waitingperiod: '等待期:',
             name: 'Bytan.zZ',
-            myplan: []
+            myplan: [],
+            planNo: ""
+        }
+    },
+    methods: {
+        open() {
+            this.$router.push({
+                name: 'planInitial',
+                query:{planNo: this.planNo}
+            })
         }
     },
     mounted() {
@@ -113,6 +127,10 @@ export default {
             console.log(res)
             this.myplan = res.data.data
             // console.log(this.myplan)
+            this.myplan.list.forEach(element => {
+                this.planNo = element.planNo
+                console.log(this.planNo)
+            });
         })
     }
 }

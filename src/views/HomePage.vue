@@ -284,7 +284,7 @@ export default {
             }
         this.products = res.data.data
         // this.joinFlag = this.product.joinFlag
-        // console.log(this.product)
+        console.log(this.products)
         // console.log(this.product)
       })
     this.$axios.post('v1/manage/config/getImgList',{

@@ -64,8 +64,8 @@
         <div class="input-wrap">
           <label for>身份证：</label>
           <input :disabled="!showPoP" type="text" :value="userInfo.contacsIdNo" placeholder="请输入您的身份证号" >
-        </div>
-        <div class="warning">
+        </div> -->
+        <!-- <div class="warning">
           <mu-icon v-show="!ShowID" value=":iconfont icontanhao" size="24"></mu-icon>  <span v-show="!ShowID" style="color: #FF0C0C">身份证信息不可修改, 请正确填写</span>
         </div>
       </div> -->
@@ -74,13 +74,42 @@
         <div class="input-wrap">
           <label for>邀请码</label>
           <input  style="vertical-align: middle" type="text" placeholder="请联系客服获得邀请码" v-model="agentUserCode" >
-          <span class="margin-left" @click="obtain">获取邀请码</span>
+          <span class="" @click="obtain">获取邀请码</span>
         </div>
         <div class="warning">
           <mu-icon  value=":iconfont icontanhao" size="24"></mu-icon> <span>邀请码信息不可修改, 请正确填写</span>
         </div>
       </div> -->
     <!-- <mu-divider style="height:5px;"></mu-divider> -->
+    <div class="purchase-plan" >
+                <span  class="plan-text">充值计划</span>
+                <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
+                    <card :open="() => {}"
+                        :img="myplan.headPortrait"
+                        :state="myplan.payState==100?'未实名':'已实名'"
+                        :productName="myplan.productName"
+                        :amount="amounta"
+                        :amountMoney="myplan.balance"
+                        :waiting="myplan.leftWattingDays + '天'"
+                        :waitingperiod="waitingperiod"
+                        :date=" ':' +myplan.joinDate"
+                        :name="myplan.contacs"
+                    >
+                    </card>
+                    </section>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="select-wrap">
       <!-- <div class="font margin-bottom margin-top">选择关系</div>
       <div class="select-items">
@@ -130,8 +159,9 @@
 import { debug } from 'util';
 import { mapState } from 'vuex'
 // import  popBox from '../components/PopBox/PopBox'
+import card from '../components/Card/Card'
 export default {
-  name: "joinPlan",
+  name: "Recharge",
   data() {
     return {
       // showPoP: true,
@@ -142,6 +172,8 @@ export default {
       tongYi: false,
       activeStep: 0,
       ShowID: false,
+      waitingperiod: '等待期:',
+      amounta: '余额',
       btnList: [
         '自己', '父母', '配偶', '子女'
       ],
@@ -155,7 +187,8 @@ export default {
       ],
       activeIndex: 0,
       order: [],
-      agentUserCode: ''
+      agentUserCode: '',
+      myplan: []
     }
   },
   computed:{
@@ -233,9 +266,19 @@ export default {
   },
   components: {
     // headpage,
-    // popBox
+    // popBox,
+    card
   },
   created() {
+    // this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
+    //     "productCode": this.$route.params.productCode
+    //   }).then(res=>{
+    //       if(res.data.code !==200){
+    //             this.$toast.error(res.data.msg)
+    //             return
+    //         }
+    //     console.log(res)
+    //   })
     this.$axios.post('v1/user/info/getCertifyInfo').then(res => {
       debugger
       if(res.data.data.code){
@@ -244,6 +287,17 @@ export default {
       this.agentUserCode = res.data.data.userCode
 
     })
+
+
+    this.$axios.get('/v1/mutually/plan/planList').then(res=>{
+            if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
+            console.log(res)
+            this.myplan = res.data.data
+            // console.log(this.myplan)
+        })
   },
   mounted() {
     // this.$axios.post('/v1/user/info/getCertifyInfo').then(res=>{
@@ -322,6 +376,17 @@ export default {
       color: $c-lang
     }
   }*/
+.card{
+  height: 180px;
+  margin: auto;
+}
+.plan-text{
+    font-size: $f15;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+    padding: 12px 12px 0;
+    display: inline-block;
+}
 main{
   margin-bottom: 50px;
 }
@@ -411,6 +476,7 @@ main{
   .input-wrap {
     display: flex;
     box-sizing: border-box;
+    padding: 0px 6px;
     justify-content: center;
     width:351px;
     height:33px;

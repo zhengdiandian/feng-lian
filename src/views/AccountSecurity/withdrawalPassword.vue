@@ -5,7 +5,10 @@
             <mu-icon value=":iconfont iconfanhui"></mu-icon>
           </mu-button>
           <span v-if="id == 1" class="text">设置提现密码</span>
+          <!-- 未设置 -->
           <span v-if="id == 2" class="text">修改提现密码</span>
+          <!-- 已设置 -->
+          <span v-if="forget" class="text">修改提现密码</span>
           <span v-if="newpwd" class="text">修改提现密码</span>
           <span v-if="again" class="text">修改提现密码</span>
           <mu-button icon slot="right" :ripple="false">
@@ -17,6 +20,10 @@
                 <span v-if="id == 2" class="text">请输入当前密码</span>
                 <span v-if="newpwd"  class="text">请输入新密码</span>
                 <span v-if="again"  class="text">再次输入</span>
+                <div class="phone-text" v-if="forget">
+                    <div>我们已发送短信验证码到你的手机号</div>
+                    <span>188****1234</span>
+                </div>
             </div>
         </main>
         <!-- <pay></pay> -->
@@ -26,16 +33,18 @@
             </div>
         </div>
 
-        <div class="Tips">
+        <div class="Tips" v-if="tips">
             <div>温馨提示：</div>
             <span>请妥善保管您的支付密码</span>
         </div>
-        <section v-if="id == 2" class="forget">忘记密码</section>
+        <section v-if="id == 2" class="forget" @click="forgetpwd">忘记密码</section>
         <footer>
             <button v-if="id == 1 && inpuVal.length == 6" style="background: #EFA220" @click="NewInputPwd">完成</button>
             <!-- //设置新的提现密码 -->
             <button v-if="id == 1 && inpuVal.length !== 6 " style="background: #707070">完成</button>
             <!-- //设置新的提现密码 -->
+
+
             <button v-if="id == 2 && inpuVal.length == 6" style="background: #EFA220" @click="inputopen">下一步</button>
             <!-- 输入旧的密码 -->
             <!-- //修改提现密码 -->
@@ -46,6 +55,16 @@
             <!-- 重新输入新的密码 -->
             <!-- // 修改的新密码 -->
             <button v-if="again" style="background: #EFA220" @click="becomeInput">完成</button>
+            <!-- // 修改的新密码 -->
+
+
+            <button v-if="forget && inpuVal.length !== 6 " style="background: #707070" >下一步</button>
+            <!-- 输入新的密码 -->
+             <!-- //修改提现密码 -->
+            <button v-if="forget && inpuVal.length == 6" style="background: #EFA220" @click="inputNext2">下一步</button>
+            <!-- 重新输入新的密码 -->
+            <!-- // 修改的新密码 -->
+            <!-- <button v-if="again" style="background: #EFA220" @click="becomeInput">完成</button> -->
             <!-- // 修改的新密码 -->
         </footer>
     </div>
@@ -61,8 +80,11 @@
                 id: this.$route.params.id,
                 newpwd: false,
                 again: false,
+                tips: true,
+                forget: false,
                 againNewPwd1: '',
-                againNewPwd2: ''
+                againNewPwd2: '',
+                forgetpassword: ''
             }
         },
         methods: {
@@ -89,6 +111,13 @@
             },
             NewInputPwd(){
                 console.log(this.inpuVal)
+                if (this.inpuVal.length == 6) {
+                    this.$axios.post('v1/finance/account/setWithdrawPwd',{
+                        "withdrawPwd": this.inpuVal
+                    }).then(res=>{
+                        console.log(res)
+                    })
+                }
                 this.$router.push('/AccountSecurity')
             },
             inputopen() {
@@ -129,11 +158,43 @@
                     this.$toast.error('您输入的密码不一致');
                     return
                 }
-            }
+            },
+            forgetpwd() {
+                this.id = 0,
+                this.forget = true,
+                this.tips = false,
+                this.inputList[0].val = ''
+                this.inputList[1].val = ''
+                this.inputList[2].val = ''
+                this.inputList[3].val = ''
+                this.inputList[4].val = ''
+                this.inputList[5].val = ''
+            },
             // inputopen(){
             //     this.inpuVal = this.inputList[0].val + this.inputList[1].val + this.inputList[2].val + this.inputList[3].val + this.inputList[4].val + this.inputList[5].val
             //     console.log(this.inpuVal)
             // }
+            inputNext2() {
+                this.forgetpassword = this.inpuVal
+                console.log(this.forgetpassword)
+                if (this.forgetpassword.length !== 6 ) {
+                    this.$toast.error('请输入正确的验证码');
+                    return
+                }
+                if (this.forgetpassword.length == 6) {
+                    this.forget = false
+                    this.newpwd = true
+                    this.tips = true
+                    this.againNewPwd1 = this.inpuVal
+                    console.log(this.againNewPwd1)
+                    this.inputList[0].val = ''
+                    this.inputList[1].val = ''
+                    this.inputList[2].val = ''
+                    this.inputList[3].val = ''
+                    this.inputList[4].val = ''
+                    this.inputList[5].val = ''
+                }
+            }
         },
         computed: {
             inpuVal() {
@@ -147,6 +208,20 @@
 main{
     padding-top: 60px;
     padding-bottom: 12px;
+}
+.phone-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &>div{
+        font-size: $f14;
+        padding-bottom: 10px;
+    }
+    &>span{
+        font-size: 24px;
+        text-align: center;
+    }
 }
 .pwd-text{
     width:375px;

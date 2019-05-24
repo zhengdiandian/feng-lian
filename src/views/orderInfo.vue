@@ -142,8 +142,8 @@ export default {
 
                   if (res.err_msg == "get_brand_wcpay_request:ok") {
                       slef.$router.push({name: 'planInitial',query:{
-                          planNo: slef.$route.query.planNo
-
+                          planNo: slef.$route.query.planNo,
+                          title: '再去看看'
                         }})
                     // this.$toast.error('get_brand_wcpay_request:ok')
 

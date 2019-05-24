@@ -17,19 +17,19 @@
             </section>
             <section class="main-input">
                 <div class="rule margin-left">
-                    <span class="width-left">手机号：</span><span ><input type="text" v-model="phone"></span>
+                    <span class="width-left">手机号：</span><span >{{userInfo.account}}</span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
-                    <span class="width-left">旧密码：</span><span ><input type="text" v-model="oldpwd" placeholder="请填写旧密码"></span>
+                    <span class="width-left">旧密码：</span><span ><input type="password" v-model="oldpwd" placeholder="请填写旧密码"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
-                    <span class="width-left">新密码：</span><span ><input type="text" v-model="newpwd" placeholder="请输入新密码"></span>
+                    <span class="width-left">新密码：</span><span ><input type="password" v-model="newpwd" placeholder="请输入新密码"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
-                    <span class="width-left">确认密码：</span><span ><input type="text" v-model="confirmpwd" placeholder="请再次输入新密码"></span>
+                    <span class="width-left">确认密码：</span><span ><input type="password" v-model="confirmpwd" placeholder="请再次输入新密码"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
             </section>
@@ -40,20 +40,47 @@
             </section>
             <section class="forget" @click="$router.push('/forgetPassword')">忘记密码</section>
         </main>
+        <footer>
+            <button v-if="this.confirmpwd && this.newpwd && this.oldpwd !== ''" style="background: #EFA220" @click="NewPwd">完成</button>
+            <button v-else style="background: #707070">完成</button>
+        </footer>
     </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
     export default {
         name: 'PasswordSettings',
         data() {
             return {
-                phone: '',
                 oldpwd: '',
                 newpwd: '',
                 confirmpwd: ''
             }
         },
+        computed: mapState(['userInfo']),
+        methods: {
+            NewPwd() {
+                const pwd1Reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/
+                if (!pwd1Reg.test(this.newpwd)) {
+                    this.$toast.error('请输入字母加数字组合6-16的密码');
+                    return
+                }
+                if (this.newpwd !== this.confirmpwd) {
+                    this.$toast.error('两次输入的密码不一致');
+                    return
+                }
+                this.$axios.post('v1/user/info/setLoginPwd',{
+                        "pwdOld": this.oldpwd,
+                        "pwdNew": this.newpwd
+                    }).then(res=>{
+                        console.log(res)
+                    })
+            }
+        },
+        mounted() {
+            console.log(this.userInfo)
+        }
     }
 </script>
 
@@ -112,5 +139,18 @@ main{
     font-size: $f14;
     color: #F8B62D;
     border-bottom: 1px solid #F8B62D;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    button{
+        width:375px;
+        height:50px;
+        background: $c-cheng;
+        color: $c-bai;
+        outline: none;
+        border: none;
+    }
 }
 </style>
