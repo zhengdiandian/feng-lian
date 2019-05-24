@@ -430,7 +430,7 @@ export default new Router({
       }
     },
     {
-      path: '/compensate',  
+      path: '/compensate',
       //  普通赔付
       name: 'compensate',
       component: function () {

@@ -34,7 +34,7 @@
             <div class="info">邀请细则</div>
             <div class="info-text-wrap">
                 <div class="info-text">1.蜂链会员用户通过分享服务号内“邀请有礼”的活动详情页面给好友；</div>
-                <div class="info-text">2.会员每成功邀请1名好友（新用户）注册入驻并购买蜂链互助任意一款保障计划，可获得平台20元现金红包奖励（红包只用于分摊互助金，不可提现）；</div>
+                <div class="info-text">2.会员每成功邀请1名好友（新用户）注册入驻并购买蜂链互助任意一款保障计划，可获得平台20元现金红包奖励；</div>
                 <div class="info-text">3.成功邀请入驻的会员数越多，获得的现金红包奖励则越多，奖励上不封顶。</div>
             </div>
         </div>
