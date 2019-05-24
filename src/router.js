@@ -437,6 +437,22 @@ export default new Router({
         return import('./views/compensate/compensate')
       }
 
+    },
+    {
+      path: '/news',
+      //  消息中心
+      name: 'news',
+      component: function () {
+        return import('./views/news/news.vue')
+      }
+    },
+    {
+      path: '/SystemNews',
+      //  系统消息
+      name: 'SystemNews',
+      component: function () {
+        return import('./views/news/SystemNews.vue')
+      }
     }
     // {
     //   path: '*',

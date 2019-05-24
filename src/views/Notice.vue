@@ -1,6 +1,6 @@
 <template>
   <div class="pop-wrap">
-    <PopBox style="bottom: 6.2%">
+    <!-- <PopBox style="bottom: 6.2%">
       <div class="pop-content">
         <div>
             <div style="color:#f8b62d;margin-bottom:24px; font-size: 16px;">温馨提示</div>
@@ -8,15 +8,15 @@
           </div>
           <div style=" color:#707070;font-size: 14px;">尊敬的蜂链会员您好：</div>
           <div style=" color:#707070;font-size: 14px;">我们正在努力建设美好的家园</div>
-          <!-- <div>敬请期待！</div> -->
+          <div>敬请期待！</div>
         </div>
         <div style="color:#707070">敬请期待!</div>
       </div>
-    </PopBox>
+    </PopBox> -->
 
     <mu-appbar style="width: 100%; position: initial" color="primary" text-color="#666" z-depth="0">
-      <mu-button icon slot="right" @click="$router.go(-1)" >
-        <mu-icon value=":iconfont iconxinxi" size="24" @click.stop="$router.go(-1)"></mu-icon>
+      <mu-button icon slot="right"  @click="$router.push('/news')">
+        <mu-icon value=":iconfont iconxinxi" size="24"></mu-icon>
       </mu-button>
       公示
       <mu-button icon slot="left" :ripple="false">

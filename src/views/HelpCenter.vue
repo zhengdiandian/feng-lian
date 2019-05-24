@@ -7,7 +7,7 @@
                 <div class="record">帮助中心</div>
             </nav>
             <div class="header-btn">
-                <a href="tel: 17812772561" class="btn">
+                <a :href="'tel:'+CustomerService" class="btn">
                     <span class="iconfont iconlianxikefu"></span>
                     <span>联系客服</span>
                 </a>
@@ -44,6 +44,7 @@
         data() {
             return {
                 homeinfor: [],
+                CustomerService: ''
             }
         },
         created(){
@@ -54,6 +55,15 @@
             }
             this.homeinfor = res.data.data.issueList
             console.log(this.homeinfor)
+        })
+        this.$axios.post('v1/manage/config/getTextList',{
+            "keys": 'CustomerService'
+        }).then(res=>{
+            if(res.data.code !==200){
+                    this.$toast.error(res.data.msg)
+                    return
+            }
+            this.CustomerService = res.data.data.CustomerService
         })
     },
     methods:{
