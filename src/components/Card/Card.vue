@@ -7,7 +7,7 @@
         <div class="right-wrap" >
           <div class="name" >姓名：{{name}} <span class="name-state">{{state}}</span></div>
           <slot name="data"></slot>
-          <div class="date content-center"> <span>{{purchase}}</span>{{date}}</div>
+          <div class="date"> <span>{{purchase}}</span>{{date}}</div>
           <slot name="FilingDate"></slot>
           <slot name="AuditPass"></slot>
         </div>
@@ -95,125 +95,63 @@
 
 <style lang="scss" scoped>
   .card {
-    display: flex;
-    // justify-items: flex-start;
-    // justify-content: flex-start;
-    // flex-wrap: wrap;
-    /*box-sizing: border-box;*/
     width: 351px;
-    /*height: 140px;*/
     background: url("../../assets/PNG/8-1我的互助计划_03.png") center no-repeat;
     border-radius: 5px;
     background-size: 100%;
-    padding: 12px;
-    // margin-bottom: 10px;
+    // padding: 12px;
     color:rgba(255,255,255,1);
     position: relative;
     margin: 0;
     .top-content{
       display: flex;
-      // justify-items: flex-start;
-      // justify-content: flex-start;
-      // flex-wrap: nowrap;
-      // padding-top: 12px;
-      position: absolute;
-      top: 20px;
-
-    }
-    .bottom-content{
-      width: 100%;
-      // padding-top: 16px;
-      display: flex;
-      // justify-items: flex-start;
-      // justify-content: flex-start;
-      // flex-wrap: nowrap;
-      /*padding-left: 12px;*/
-      position: absolute;
-      top: 90px;
-
-      font-size:$f14;
-
-      font-weight:400;
-      .tow{
-        padding-left: 13px;
-        /*&>div{*/
-          /*padding-bottom: 10px;*/
-        /*}*/
-      }
-      .one ,.tow{
-        margin-top: 5px;
-        &>div{
-          line-height: 1.75;
-        }
-      }
-      .btn-wrap{
-        flex: 2;
-        /*width: 100%;*/
-        display: flex;
-        // justify-content: flex-end;
-        position: absolute;
-        right: 20px;
-      }
-      .btn{
-        padding: 0px;
-        // justify-self: flex-end;
-        // justify-self: self-end;
-        // align-self: flex-end;
-        margin-top: 24px;
-        width:80px;
-        height:33px;
-        /*margin-left: 74px;*/
-        background:rgba(255,255,255,1);
-        border-radius:9px;
-        color: $c-cheng;
-      }
-    }
-
-    .touXiang{
-      width:44px;
-      height:44px;
-      padding-top: 10px;
-      img{
-        background-color: $c-hui;
-        border-radius:50%;
-      }
+      padding-top: 12px;
+      padding-left: 12px;
     }
     .right-wrap{
       padding-left: 12px;
-      .name{
-        padding-top: 10px;
-        font-size:$f14;
-
-        font-weight:bold;
-        color:rgba(255,255,255,1);
-        padding-bottom: 7px;
-        span{
-          margin-left: 6px;
-          font-size:$f14;
-          font-weight:400;
-          border:1px solid rgba(255,255,255,1);
-          color:rgba(255,255,255,1);
-        }
-        .name-state{
-          padding: 2px;
-        }
-      }
+    }
+    .touXiang {
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      overflow: hidden;
+    }
+    .name-state{
+      font-size: 12px;
+      border: 1px solid $c-bai;
+      display: inline-block;
+      height: 20px;
+      line-height: 20px;
+      padding: 0 1px 0 1px;
 
     }
   }
   .date{
-        // width:150px;
-        width:fit-content;
-        // width:-webkit-fit-content;
-        // width:-moz-fit-content;
-        // max-width: 300px;
-        min-width: 150px;
-        word-wrap: break-word;
-        height:22px;
-        background:rgba(246,176,59,1);
+        // word-wrap: break-word;
+        height:20px;
         border-radius:11px;
-        font-size:$f14;
-
-        font-weight:400;
+        font-size: 12px;
+        background-color: #F6B03B;
+        padding: 0 10px 0 10px;
+        line-height: 20px;
+        margin-top: 5px;
       }
+      .bottom-content{
+        display: flex;
+        position: absolute;
+        bottom: 18px;
+        left: 12px;
+        .tow{
+          padding-left: 12px;
+        }
+      }
+      // .btnOpen{
+      //   width:80px;
+      //   height:33px;
+      //   background:$c-bai;
+      //   border-radius:10px;
+      //   position: absolute;
+      //   z-index: 111;
+      // }
 </style>

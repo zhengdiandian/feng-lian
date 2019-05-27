@@ -161,7 +161,7 @@ import { mapState } from 'vuex'
 // import  popBox from '../components/PopBox/PopBox'
 import card from '../components/Card/Card'
 export default {
-  name: "Recharge",
+  name: "recharge",
   data() {
     return {
       // showPoP: true,
@@ -177,6 +177,7 @@ export default {
       btnList: [
         '自己', '父母', '配偶', '子女'
       ],
+      MutualRule: [],
       // MutualRule: this.$route.params.MutualRule,
       sums:[
         10,
@@ -192,7 +193,7 @@ export default {
     }
   },
   computed:{
-    ...mapState(['userInfo', 'MutualRule']),
+    ...mapState(['userInfo']),
     showPoP() {
       return this.userInfo.state === 100
     },
@@ -270,15 +271,15 @@ export default {
     card
   },
   created() {
-    // this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
-    //     "productCode": this.$route.params.productCode
-    //   }).then(res=>{
-    //       if(res.data.code !==200){
-    //             this.$toast.error(res.data.msg)
-    //             return
-    //         }
-    //     console.log(res)
-    //   })
+    this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
+        "productCode": this.$route.params.productCode
+      }).then(res=>{
+          if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
+        this.MutualRule = res.data.data
+      })
     this.$axios.post('v1/user/info/getCertifyInfo').then(res => {
       debugger
       if(res.data.data.code){
@@ -294,7 +295,7 @@ export default {
                 this.$toast.error(res.data.msg)
                 return
             }
-            console.log(res)
+            // console.log(res)
             this.myplan = res.data.data
             // console.log(this.myplan)
         })
@@ -512,7 +513,6 @@ main{
 
 .select-wrap{
   width: 351px;
-  height: 300px;
   margin: auto;
   .select-items{
     display: flex;

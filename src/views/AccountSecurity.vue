@@ -2,7 +2,7 @@
     <div>
       <div class="title page-margin-top">
         <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
-          <mu-button icon slot="left" @click="$router.go(-1)">
+          <mu-button icon slot="left" @click="$router.push('/setup')">
             <mu-icon value=":iconfont iconfanhui"></mu-icon>
           </mu-button>
           账号与安全
@@ -88,6 +88,7 @@ export default {
             return
         }
         this.safety = res.data.data
+        console.log(this.safety)
     })
     //   this.$axios.post('v1/user/info/personalInfo').then(res=>{
     //       if(res.data.code !==200){

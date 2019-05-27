@@ -220,6 +220,7 @@ export default new Router({
     },
     {
       path: '/recharge', // 充值
+      name: 'recharge',
       component: function () {
         return import('./views/Recharge.vue')
       }
@@ -298,7 +299,7 @@ export default new Router({
       path: '/myPlanNews', // 我的计划消息
       name: 'myplannews',
       component: function () {
-        return import('./views/MyPlanNews')
+        return import('./views/news/MyPlanNews')
       }
     },
     {
