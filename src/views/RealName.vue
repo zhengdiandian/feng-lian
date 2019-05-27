@@ -54,7 +54,7 @@
       <div v-html="html"></div>
 
     </main>
-    <div class="bottom-btn" @click="submit">提交</div>
+    <div class="bottom-btn"  @click="submit">提交</div>
   </div>
 </template>
 <script>

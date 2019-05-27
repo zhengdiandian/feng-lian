@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div style="display: flex;justify-content: center;">
-            <div  :class="wrapClass" >
+        <div >
+            <div class="uploadimg"  :class="size==='small'? 'add-box': ''" >
               <div class="image">
                 <img v-if="showImg"  :src="iconSrc" alt="" > <img v-else :src="addIcon" alt="">
               </div>
@@ -34,6 +34,10 @@ export default {
             default: 'uploadimg',
       },
         type: {
+            type: String,
+            default: ''
+        },
+        size: {
             type: String,
             default: ''
         }
@@ -304,4 +308,9 @@ export default {
             height: 100px;
         }
     }
+.add-box{
+    width:100px !important;
+    height:100px !important;
+    background:rgba(255,255,255,1);
+}
 </style>

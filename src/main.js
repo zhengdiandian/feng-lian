@@ -19,6 +19,13 @@ import qs from 'qs'
 import Util from '@/assets/js/unit.js'
 import Toast from 'muse-ui-toast'
 import wx from 'wechat-js-sdk'
+// import Vue from 'vue'
+import VuePromiseBtn from 'vue-promise-btn'
+
+// not required. Styles for built-in spinner
+import 'vue-promise-btn/dist/vue-promise-btn.css'
+
+Vue.use(VuePromiseBtn)
 window.wx = wx
 Vue.prototype.windom = window
 Vue.prototype.Util = Util
@@ -41,6 +48,24 @@ Vue.use(Picker)
 Vue.use(BottomSheet)
 Vue.use(Paper)
 Vue.use(Switch)
+// Vue.prototype.throttle(fun, delay) {
+//   let last, deferTimer
+//     return function (args) {
+//     let that = this
+//     let _args = arguments
+//     let now = +new Date()
+//   if (last && now < last + delay) {
+//     clearTimeout(deferTimer)
+//     deferTimer = setTimeout(function () {
+//     last = now
+//     fun.apply(that, _args)
+//     }, delay)
+//   }else {
+//     last = now
+//     fun.apply(that,_args)
+//   }
+//   }
+// }
 Vue.config.productionTip = false
 // Axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 Axios.interceptors.response.use((response) => {
