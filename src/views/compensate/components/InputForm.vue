@@ -2,8 +2,8 @@
     <div>
         <div class="form-content content">
             <div class="title">请如实填写以下信息</div>
-            <div class="input-box"><label >姓名:</label><input placeholder="请填写您的姓名" type="text"></div>
-            <div class="input-box"><label >身份证号码:</label><input placeholder="请填写您的身份证号码" type="text"></div>
+            <div class="input-box"><label >姓名:</label><input v-model="contacs" placeholder="请填写您的姓名" type="text"></div>
+            <div class="input-box"><label >身份证号码:</label><input v-model="contacsIdNo" placeholder="请填写您的身份证号码" type="text"></div>
             <div class="input-box"><label >手机号:</label><input placeholder="请填写您的手机号码" type="text"></div>
             <div class="input-box"><label >邮箱：</label><input placeholder="请填写您的邮箱地址" type="text"></div>
         </div>
@@ -98,6 +98,12 @@
     },
     data() {
       return {
+        contacs: '',
+        contacsIdNo: '',
+        phone: '',
+        email: '',
+        job: '',
+        workingPlace: '',
         showAddress: false,
         province: '',
         city: '',
@@ -131,6 +137,31 @@
             this.$toast.warning('需要确认信息真实有效才能进行')
             return
         }
+        if(this.contacs.length <2){
+            this.$toast.error('请输入正确的姓名')
+        }
+          var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/;
+          if (!reg.test(this.contacsIdNo)) {
+          this.$toast.error('请输入正确的身份证号码')
+          // this.warnTips({txt:'请输入正确的身份证号码'});
+          return false;
+          }
+          const accountReg = /^1[3456789]\d{9}$/
+          if(!accountReg.test(this.phone)) {
+          this.$toast.error('请输入正确的手机号码')
+          return
+          }
+        this.$axios.post('v1/mutually/compensate/compensateApplyText', {
+        contacs: this.contacs,
+        contacsIdNo: this.contacsIdNo,
+        phone: this.phone,
+        email: this.email,
+        job: this.job,
+        workingPlace: this.workingPlace
+
+        }).then(res => {
+
+        })
       },
       closeBottomSheet () {
         this.open = false;

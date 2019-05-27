@@ -19,6 +19,13 @@ import qs from 'qs'
 import Util from '@/assets/js/unit.js'
 import Toast from 'muse-ui-toast'
 import wx from 'wechat-js-sdk'
+// import Vue from 'vue'
+import VuePromiseBtn from 'vue-promise-btn'
+
+// not required. Styles for built-in spinner
+import 'vue-promise-btn/dist/vue-promise-btn.css'
+
+Vue.use(VuePromiseBtn)
 window.wx = wx
 Vue.prototype.windom = window
 Vue.prototype.Util = Util
