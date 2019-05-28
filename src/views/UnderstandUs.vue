@@ -52,12 +52,16 @@
 </script>
 
 <style lang="scss" scoped>
-.imgUS{
+#app>div{
     width: 100%;
     height: 100%;
+}
+.imgUS{
+    width: 100%;
+    
     img{
         width: 100%;
-        height: 100%;
+        
     }
 }
 </style>

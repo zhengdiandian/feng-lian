@@ -285,7 +285,8 @@
         }
     }
     .tation-and{
-        height: 100px;
+        // height: 120px;
+        padding-bottom: 20px;
         .tationAmount{
             padding: 12px;
         }

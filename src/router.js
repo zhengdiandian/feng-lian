@@ -244,12 +244,6 @@ export default new Router({
       }
     },
     {
-      path: '/replacePhone',
-      component: function () {
-        return import('./views/AccountSecurity/replacePhone.vue') // 更换手机号码
-      }
-    },
-    {
       path: '/withdrawalPassword',
       name: 'withdrawalPassword',
       component: function () {
