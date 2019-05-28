@@ -58,36 +58,42 @@
             </div>
             <div class="purchase-plan" >
                 <span  class="plan-text">我的购买计划</span>
-                <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
-                    <card
-                        :img="myplan.headPortrait"
-                        :state="myplan.payState==100?'未实名':'已实名'"
-                        :productName="myplan.productName"
-                        :amount="amount"
-                        :amountMoney="myplan.balance"
-                        :waiting="myplan.leftWattingDays + '天'"
-                        :waitingperiod="waitingperiod"
-                        :date=" ':' +myplan.joinDate"
-                        :name="myplan.contacs"
-                    >
-                    <template v-slot:lable v-if="myplan.state == 500">
-                        <div class="slot-lable">
-                            <!-- <img src="../assets/img/审核中.png" alt=""> -->
-                            <!-- <img src="../assets/img/通过.png" alt=""> -->
-                            <!-- <img src="../assets/img/驳回.png" alt=""> -->
-                            <img src="../assets/img/已退款.png" alt="">
-                        </div>
-                    </template>
-                    <template v-slot:btnOpen>
-                        <div class="btn-wrap">
-                            <div class="btn content-center" @click="open">查看计划</div>
-                        </div>
-                    </template>
-                    </card>
-                    </section>
+                <section  class="card" :class="[activeIndex==i? 'active': '']" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
+                    <div @click="activeIndex=i">
+                        <card
+                              :img="myplan.headPortrait"
+                              :state="myplan.payState==100?'未实名':'已实名'"
+                              :productName="myplan.productName"
+                              :amount="amount"
+                              :amountMoney="myplan.balance"
+                              :waiting="myplan.leftWattingDays + '天'"
+                              :waitingperiod="waitingperiod"
+                              :date=" ':' +myplan.joinDate"
+                              :name="myplan.contacs"
+                        >
+                            <template v-slot:lable v-if="myplan.state == 500">
+                                <div class="slot-lable">
+                                    <!-- <img src="../assets/img/审核中.png" alt=""> -->
+                                    <!-- <img src="../assets/img/通过.png" alt=""> -->
+                                    <!-- <img src="../assets/img/驳回.png" alt=""> -->
+                                    <img src="../assets/img/已退款.png" alt="">
+                                </div>
+                            </template>
+                            <template v-slot:btnOpen>
+                                <div class="btn-wrap">
+                                    <div class="btn content-center" @click="open">查看计划</div>
+                                </div>
+                            </template>
+                        </card>
+                    </div>
+                </section>
             </div>
         </main>
-        <footerBtn></footerBtn>
+<!--        <footerBtn></footerBtn>-->
+        <footer>
+            <div class="ordinary-claims" @click="toComponsate">申请理赔</div>
+            <div class="Second-claims">申请秒赔</div>
+        </footer>
     </div>
 </template>
 <script>
@@ -107,7 +113,8 @@ export default {
             waitingperiod: '等待期:',
             name: 'Bytan.zZ',
             myplan: [],
-            planNo: ""
+            planNo: "",
+            activeIndex: null
         }
     },
     methods: {
@@ -116,6 +123,35 @@ export default {
                 name: 'planInitial',
                 query:{planNo: this.planNo}
             })
+        },
+        toComponsate() {
+        debugger
+            return this.$axios.post('v1/mutually/compensate/compensateDetail',{
+                planNo: this.myplan.list[this.activeIndex].planNo
+            }).then(res => {
+                if(res.data.code !==200){
+                    this.$toast.error(res.data.msg)
+                    return
+                }
+                let state = res.data.data.state
+                if(state=300) {
+                    this.$toast.success('初审审核中')
+                    return
+                }
+                if(state ==400) {
+
+                }
+                if(state = 0) {
+                this.$router.push({
+                    path: '/compensate/inputForm',
+                    query: {
+                    type: 1,
+                    planNo: this.myplan.list[this.activeIndex].planNo
+                    }
+                 })
+                }
+            })
+
         }
     },
     mounted() {
@@ -165,7 +201,11 @@ span{
     margin-bottom: 10px;
 }
 .card{
-    margin: auto;
+    &.active{
+        background-color: $c-cheng;
+    }
+    padding: 0px 12px;
+    /*margin: auto;*/
 }
 .add-family-list{
     display: flex;
@@ -202,5 +242,26 @@ span{
     color: rgb(51, 51, 51);
     padding: 12px 12px 0;
     display: inline-block;
+}
+footer{
+    width: 100%;
+    height: 49px;
+    // border: 1px solid black;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    .ordinary-claims{
+        width: 70%;
+        height: 100%;
+        background-color: #eea31f;
+    }
+    .Second-claims{
+        width: 30%;
+        height: 100%;
+        background-color: #f26d00;
+    }
 }
 </style>

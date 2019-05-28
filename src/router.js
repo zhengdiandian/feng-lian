@@ -448,6 +448,13 @@ export default new Router({
           component: function () {
             return import('./views/compensate/components/ImageForm')
           }
+        },
+        {
+          path: 'defrayment',
+          component: function () {
+            return import('./views/compensate/components/defrayment')
+          }
+
         }
       ]
 

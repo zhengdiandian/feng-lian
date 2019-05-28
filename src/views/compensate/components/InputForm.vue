@@ -4,26 +4,26 @@
             <div class="title">请如实填写以下信息</div>
             <div class="input-box"><label >姓名:</label><input v-model="contacs" placeholder="请填写您的姓名" type="text"></div>
             <div class="input-box"><label >身份证号码:</label><input v-model="contacsIdNo" placeholder="请填写您的身份证号码" type="text"></div>
-            <div class="input-box"><label >手机号:</label><input placeholder="请填写您的手机号码" type="text"></div>
-            <div class="input-box"><label >邮箱：</label><input placeholder="请填写您的邮箱地址" type="text"></div>
+            <div class="input-box"><label >手机号:</label><input v-model="phone" placeholder="请填写您的手机号码" type="text"></div>
+            <div class="input-box"><label >邮箱：</label><input v-model="email" placeholder="请填写您的邮箱地址" type="text"></div>
         </div>
         <div class="input-box-line"></div>
         <div class="content">
-            <div class="input-box"><label >职业:</label><input placeholder="请填写您的职业" type="text"></div>
-            <div class="input-box"><label >工作单位/学校:</label><input placeholder="请填写受助人工作单位或学校" type="text"></div>
+            <div class="input-box"><label >职业:</label><input v-model="job" placeholder="请填写您的职业" type="text"></div>
+            <div class="input-box"><label >工作单位/学校:</label><input v-model="workingPlace" placeholder="请填写受助人工作单位或学校" type="text"></div>
         </div>
         <div class="input-box-line"></div>
         <div class="content">
-            <div class="input-box" @click="showAddress=true"><label >地区:</label><div class="select"><span class="placeholder-text" v-if="province===''">请选择地区</span><span>{{province}}</span><span> {{city}}</span><span class="iconfont iconxiangshangshouqi1"></span></div></div>
-            <div class="input-box"><label >详细地址:</label><input placeholder="请填写您的详细地址" type="text"></div>
+            <div class="input-box" @click="showAddress=true"><label >地区:</label><div class="select"><span class="placeholder-text" v-if="province===''">请选择地区</span><span>{{province}}</span><span> {{city}}</span> <span> {{county}}</span><span class="iconfont iconxiangshangshouqi1"></span></div></div>
+            <div class="input-box"><label >详细地址:</label><input v-model="address" placeholder="请填写您的详细地址" type="text"></div>
         </div>
         <div class="input-box-line"></div>
         <div class="content">
-            <div class="input-box"><label >疾病名称:</label><input placeholder="请填写受助者详细的疾病名称" type="text"></div>
+            <div class="input-box"><label >疾病名称:</label><input v-model="illnessName" placeholder="请填写受助者详细的疾病名称" type="text"></div>
             <div class="input-box"><label >确诊医院:</label><input placeholder="请填写确诊医院" type="text"></div>
             <div class="input-box" @click="openBotttomSheet">
                 <label >事故发生时间:</label>
-                <div class="select"><span class="placeholder-text" v-if="province===''">请选择事故发生时间</span><span>{{province}}</span><span> {{city}}</span><span class="iconfont iconxiangshangshouqi1"></span>
+                <div class="select"><span class="placeholder-text" v-if="incidentTime===''">请选择事故发生时间</span><span>{{incidentTime}}</span><span class="iconfont iconxiangshangshouqi1"></span>
                 </div>
 <!--                <mu-date-input v-model="value2" label="横屏显示" label-float full-width landscape></mu-date-input>-->
 
@@ -34,19 +34,19 @@
         <div class="content">
             <div class="input-box switch"><label >是否有社保/新农合:</label> <div class="right"><mu-switch v-model="switchData.switchVal" color="#f8b62d" :label="switchText.label"></mu-switch></div> </div>
 <!--            <div class="input-box"><label >确诊医院:</label><input placeholder="请填写确诊医院" type="text"></div>-->
-            <div class="input-box" @click="openBotttomSheet">
+            <div class="input-box" @click="showLocation = true">
                 <label >所在地:</label>
-                <div class="select"><span class="placeholder-text" v-if="province===''">请选择社保/新农合所在地</span><span>{{province}}</span><span> {{city}}</span><span class="iconfont iconxiangshangshouqi1"></span>
+                <div class="select"><span class="placeholder-text" v-if="locationCity===''">请选择社保/新农合所在地</span><span>{{locationProvince}}</span><span> {{locationCity}}</span><span> {{locationCounty}}</span><span class="iconfont iconxiangshangshouqi1"></span>
                 </div>
             </div>
         </div>
         <div class="input-box-line"></div>
         <div class="content">
             <div class="input-box switch"><label >是否有商业保险：:</label> <div class="right"><mu-switch v-model="switchData.switchVal1" color="#f8b62d" :label="switchText.label1"></mu-switch></div> </div>
-            <div class="input-box"><label >保险公司名称:</label><input placeholder="请填写保险公司名称" type="text"></div>
+            <div class="input-box"><label >保险公司名称:</label><input v-model="insuranceCompany" placeholder="请填写保险公司名称" type="text"></div>
             <div class="input-box" @click="openBotttomSheet">
                 <label>目前理赔状况:</label>
-                <div class="select"><span class="placeholder-text" v-if="province===''">请选择社保/新农合所在地</span><span>{{province}}</span><span> {{city}}</span><span class="iconfont iconxiangshangshouqi1"></span>
+                <div class="select"><span class="placeholder-text" v-if="compensateState===''">请选择目前理赔状况</span><span>{{province}}</span><span> {{city}}</span><span class="iconfont iconxiangshangshouqi1"></span>
                 </div>
             </div>
         </div>
@@ -54,13 +54,13 @@
         <div class="content">
 <!--            <div class="title"></div>-->
             <div class="input-box"><label >事情经过</label></div>
-            <textarea placeholder="  请简单描述事情经过（何时、何因、何地、经过、结果）"></textarea>
+            <textarea v-model="incidentDetail" placeholder="  请简单描述事情经过（何时、何因、何地、经过、结果）"></textarea>
         </div>
         <div class="input-box-line"></div>
         <div class="content">
             <!--            <div class="title"></div>-->
             <div class="input-box"><label >加入前身体状况</label></div>
-            <textarea placeholder="  如：健康、肢体运动功能障碍、躯体感觉障碍、器官移植、身体残疾、精神异常、智力缺陷、抑郁症等。"></textarea>
+            <textarea   v-model="bodyStatus" placeholder="  如：健康、肢体运动功能障碍、躯体感觉障碍、器官移植、身体残疾、精神异常、智力缺陷、抑郁症等。"></textarea>
             <div class="tongYi">
                 <div><label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"></div><span>我保证以上信息均真实有效，不存在虚拟和隐瞒情形，否则将视为自动放弃申请互助尽权力。</span>
             </div>
@@ -68,10 +68,17 @@
         <div class="btn" @click="submit">提交信息</div>
         <vue-picker
                 :show="showAddress"
-                :columns="2"
+                :columns="3"
                 :link='true'
                 @cancel="showAddress=false"
                 @confirm="confirmFn"
+        ></vue-picker>
+        <vue-picker
+                :show="showLocation"
+                :columns="3"
+                :link='true'
+                @cancel="showLocation=false"
+                @confirm="confirmFn1"
         ></vue-picker>
 <!--        <mu-bottom-sheet :open="true"></mu-bottom-sheet>-->
 <!--        <mu-container>-->
@@ -90,7 +97,34 @@
 
 <script>
   import vuePicker from "../../../components/vuePickers/vuePicker";
-
+  Date.prototype.Format = function (fmt) {
+  var o = {
+  "y+": this.getFullYear(),
+  "M+": this.getMonth() + 1,                 //月份
+  "d+": this.getDate(),                    //日
+  "h+": this.getHours(),                   //小时
+  "m+": this.getMinutes(),                 //分
+  "s+": this.getSeconds(),                 //秒
+  "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+  "S+": this.getMilliseconds()             //毫秒
+  };
+  for (var k in o) {
+  if (new RegExp("(" + k + ")").test(fmt)){
+  if(k == "y+"){
+  fmt = fmt.replace(RegExp.$1, ("" + o[k]).substr(4 - RegExp.$1.length));
+  }
+  else if(k=="S+"){
+  var lens = RegExp.$1.length;
+  lens = lens==1?3:lens;
+  fmt = fmt.replace(RegExp.$1, ("00" + o[k]).substr(("" + o[k]).length - 1,lens));
+  }
+  else{
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+  }
+  }
+  }
+  return fmt;
+  }
   export default {
     name: 'InputForm',
     components: {
@@ -104,11 +138,28 @@
         email: '',
         job: '',
         workingPlace: '',
+        address: '',
+        illnessName: '',
+        // incidentTime: '',
+        // location: '',
+        locationProvince: '',
+        locationCity: '',
+        locationCounty: '',
+        locationProvinceValue: '',
+        locationCityValue: '',
+        locationCountyValue: '',
+        insuranceCompany: '',
+        compensateState: '',
+        incidentDetail: '',
+        bodyStatus: '',
         showAddress: false,
+        showLocation: false,
         province: '',
         city: '',
+        county: '',
         provinceValue: '',
         cityValue: '',
+        countyValue: '',
         open: false,
         value2: '',
         date: undefined,
@@ -129,6 +180,14 @@
         },
         tongYiStyle () {
             return this.tongYi ? {color: '#f8b62d'}: {}
+        },
+        incidentTime() {
+        if(typeof this.date === 'object'  ){
+            return  this.date.Format("yyyy-MM-dd")
+        }
+            return ''
+
+
         },
     },
     methods: {
@@ -152,14 +211,40 @@
           return
           }
         this.$axios.post('v1/mutually/compensate/compensateApplyText', {
-        contacs: this.contacs,
-        contacsIdNo: this.contacsIdNo,
-        phone: this.phone,
-        email: this.email,
-        job: this.job,
-        workingPlace: this.workingPlace
+            contacs: this.contacs,
+            contacsIdNo: this.contacsIdNo,
+            phone: this.phone,
+            email: this.email,
+            job: this.job,
+            workingPlace: this.workingPlace,
+            province: this.provinceValue,
+            city: this.cityValue,
+            county: this.countyValue,
+            address: this.address,
+            illnessName: this.illnessName,
+            incidentTime: this.incidentTime,
+            socialSecurityFlag: +this.switchData.switchVal,
+            businessInsureFlag: this.switchData.switchVal1,
+            locationProvince: this.locationProvinceValue,
+            locationCity: this.locationCityValue,
+            locationCounty: this.locationCountyValue,
+            insuranceCompany: this.insuranceCompany,
+            compensateState: this.compensateState,
+            incidentDetail: this.incidentDetail,
+            bodyStatus: this.bodyStatus,
+            type: this.$route.query.type,
+            planNo: this.$route.query.planNo
+            
+            
+
 
         }).then(res => {
+            if(res.data.code!==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
+            this.$toast.success('提交成功,请继续操作')
+            this.$router.push({path: '/compensate/imageForm', query: {planNo: this.$route.query.planNo}})
 
         })
       },
@@ -178,6 +263,21 @@
           // .substring(0,val.select2.text.length -1 )
         this.provinceValue = val.select1.value
         this.cityValue = val.select2.value
+        this.countyValue = val.select3.value
+        this.county = val.select3.text
+        // this.defaultData = [val.select1];
+      },
+      confirmFn1(val) {
+        debugger
+        this.showLocation = false;
+        this.locationProvince = val.select1.text
+          // .substring(0,val.select1.text.length -1)
+        this.locationCity = val.select2.text
+          // .substring(0,val.select2.text.length -1 )
+        this.locationProvinceValue = val.select1.value
+        this.locationCityValue = val.select2.value
+        this.locationCountyValue = val.select3.value
+        this.locationCounty = val.select3.text
         // this.defaultData = [val.select1];
       },
     }
