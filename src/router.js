@@ -468,6 +468,22 @@ export default new Router({
       component: function () {
         return import('./views/news/SystemNews.vue')
       }
+    },
+    {
+      path: '/PlatformNews',
+      //  平台消息
+      name: 'PlatformNews',
+      component: function () {
+        return import('./views/news/PlatformNews.vue')
+      }
+    },
+    {
+      path: '/NewsDetail',
+      //  消息详情
+      name: 'NewsDetail',
+      component: function () {
+        return import('./views/news/NewsDetail.vue')
+      }
     }
     // {
     //   path: '*',

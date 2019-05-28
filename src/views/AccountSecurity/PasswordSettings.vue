@@ -79,7 +79,14 @@ import {mapState} from 'vuex'
                         "pwdOld": this.oldpwd,
                         "pwdNew": this.newpwd
                     }).then(res=>{
-                        console.log(res)
+                        if(res.data.code !==200){
+                            this.$toast.error(res.data.msg)
+                            return
+                        }
+                        if(res.data.code == 200){
+                            this.$toast.success('密码修改成功，返回登陆')
+                            this.$router.push('/login')
+                        }
                     })
             }
         },

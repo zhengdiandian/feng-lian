@@ -170,7 +170,7 @@ export default {
         // }
     },
     mounted() {
-        // this.$axios.get('/v1/mutually/compensate/megList',{
+        // this.$axios.get('/v1/mutually/compensate/megList',{ //计划消息接口
         //   "page": this.page,
         //   "pageSize": this.pageSize
         // }).then(res=>{
@@ -181,7 +181,7 @@ export default {
         //     console.log(res)
         //     this.myplan = res.data.data
         // })
-        this.$axios.get('/v1/mutually/plan/planList',{
+        this.$axios.get('/v1/mutually/plan/planList',{ //我的计划接口
           "page": this.page,
           "pageSize": this.pageSize
         }).then(res=>{
