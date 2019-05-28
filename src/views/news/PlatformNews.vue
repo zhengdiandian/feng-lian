@@ -84,7 +84,7 @@ export default {
       this.$axios.post('/v1/manage/post/postList', {
         'page': this.page,
         'pageSize': this.pageSize,
-        'type': 0
+        'type': 1
       }).then(res => {
         
         console.log(res)

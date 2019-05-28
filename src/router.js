@@ -220,6 +220,7 @@ export default new Router({
     },
     {
       path: '/recharge', // 充值
+      name: 'recharge',
       component: function () {
         return import('./views/Recharge.vue')
       }
@@ -240,12 +241,6 @@ export default new Router({
       path: '/AccountSecurity', // 账号与安全
       component: function () {
         return import('./views/AccountSecurity.vue')
-      }
-    },
-    {
-      path: '/replacePhone',
-      component: function () {
-        return import('./views/AccountSecurity/replacePhone.vue') // 更换手机号码
       }
     },
     {
@@ -298,7 +293,7 @@ export default new Router({
       path: '/myPlanNews', // 我的计划消息
       name: 'myplannews',
       component: function () {
-        return import('./views/MyPlanNews')
+        return import('./views/news/MyPlanNews')
       }
     },
     {
@@ -473,6 +468,22 @@ export default new Router({
       name: 'SystemNews',
       component: function () {
         return import('./views/news/SystemNews.vue')
+      }
+    },
+    {
+      path: '/PlatformNews',
+      //  平台消息
+      name: 'PlatformNews',
+      component: function () {
+        return import('./views/news/PlatformNews.vue')
+      }
+    },
+    {
+      path: '/NewsDetail',
+      //  消息详情
+      name: 'NewsDetail',
+      component: function () {
+        return import('./views/news/NewsDetail.vue')
       }
     }
     // {

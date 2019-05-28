@@ -2,7 +2,7 @@
     <div>
       <div class="title page-margin-top">
         <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
-          <mu-button icon slot="left" @click="$router.go(-1)">
+          <mu-button icon slot="left" @click="$router.push('/my')">
             <mu-icon value=":iconfont iconfanhui"></mu-icon>
           </mu-button>
           设置

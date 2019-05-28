@@ -114,14 +114,15 @@ export default {
             name: 'Bytan.zZ',
             myplan: [],
             planNo: "",
-            activeIndex: null
+            activeIndex: null,
+            productCode: ''
         }
     },
     methods: {
         open() {
             this.$router.push({
                 name: 'planInitial',
-                query:{planNo: this.planNo}
+                query:{planNo: this.planNo , productCode: this.productCode}
             })
         },
         toComponsate() {
@@ -165,7 +166,8 @@ export default {
             // console.log(this.myplan)
             this.myplan.list.forEach(element => {
                 this.planNo = element.planNo
-                console.log(this.planNo)
+                this.productCode = element.productCode
+                console.log(this.productCode)
             });
         })
     }
@@ -178,7 +180,7 @@ export default {
     // position: relative;
     position: absolute;
     right: 0px;
-    top: 16px;
+    top: 6px;
     width: 50px;
     height: 50px;
     z-index: 99;
@@ -192,7 +194,7 @@ export default {
     }
 }
 .card{
-    height: 180px;
+    height: 160px;
 }
 span{
       
@@ -243,6 +245,7 @@ span{
     padding: 12px 12px 0;
     display: inline-block;
 }
+<<<<<<< HEAD
 footer{
     width: 100%;
     height: 49px;
@@ -263,5 +266,15 @@ footer{
         height: 100%;
         background-color: #f26d00;
     }
+=======
+.btn-wrap{
+  width:80px;
+  height:33px;
+  background:$c-bai;
+  border-radius:10px;
+  margin: 20px 0 0 10px;
+  color: $c-cheng;
+  line-height: 33px;
+>>>>>>> 12d19da90b51a5a5b09686c68506daf5982ba1b3
 }
 </style>

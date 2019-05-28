@@ -81,7 +81,7 @@
     </div>
 
     <div v-if="title" class="next-btn" @click="$router.push('/home')">再去看看</div>
-    <div v-else class="next-btn" @click="$router.push('/recharge')">立即充值</div>
+    <div v-else class="next-btn" @click="rechargeTo">立即充值</div>
   </div>
 </template>
 
@@ -98,6 +98,7 @@
         showPoP: false,
         showpop: false,
         title: this.$route.query.title,
+        productCode: this.$route.query.productCode,
         position: 'bottom',               // 弹出的位置
         time: 2000,                       // 显示的时长
         closeIcon: 'close',               // 关闭的图标
@@ -139,6 +140,12 @@
     methods:{
       open(){
 
+      },
+      rechargeTo() {
+        this.$router.push({
+          name: 'recharge',
+          params: {productCode: this.productCode}
+        })
       },
       showTui() {
         if(!this.showPoP&&this.showpop)return

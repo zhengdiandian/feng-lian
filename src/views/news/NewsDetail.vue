@@ -4,7 +4,7 @@
           <mu-button icon slot="left" @click="$router.go(-1)">
             <mu-icon value=":iconfont iconfanhui"></mu-icon>
           </mu-button>
-          绑定手机号码
+          系统信息详细
           <mu-button icon slot="right" :ripple="false">
           </mu-button>
         </mu-appbar>
@@ -14,15 +14,18 @@
 </template>
 
 <script>
-
-    export default {
-        name: 'replacePhone'
-    }
+export default {
+  name: 'NewsDetail',
+  created () {
+    this.$axios.post('/v1/manage/post/postDetail', {
+      'id': this.$route.params.id
+    }).then(res => {
+      console.log(res)
+    })
+  }
+}
 </script>
 
 <style lang="scss" scoped>
-main{
-  padding-top: 50px;
-}
 
 </style>

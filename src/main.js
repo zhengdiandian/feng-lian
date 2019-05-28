@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'muse-ui/lib/styles/base.less'
-import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField, Divider, List, SubHeader, Slider, Stepper, Avatar, Dialog, Snackbar, Picker , BottomSheet, Paper, Switch} from 'muse-ui'
+import { Button, Select, BottomNav, Carousel, AppBar, Icon, TextField, Divider, List, SubHeader, Slider, Stepper, Avatar, Dialog, Snackbar, Picker , BottomSheet, Paper, Switch, LoadMore, Grid} from 'muse-ui'
 import 'muse-ui/lib/styles/theme.less'
 import 'muse-ui/dist/muse-ui.css'
 import theme from 'muse-ui/lib/theme'
@@ -48,24 +48,8 @@ Vue.use(Picker)
 Vue.use(BottomSheet)
 Vue.use(Paper)
 Vue.use(Switch)
-// Vue.prototype.throttle(fun, delay) {
-//   let last, deferTimer
-//     return function (args) {
-//     let that = this
-//     let _args = arguments
-//     let now = +new Date()
-//   if (last && now < last + delay) {
-//     clearTimeout(deferTimer)
-//     deferTimer = setTimeout(function () {
-//     last = now
-//     fun.apply(that, _args)
-//     }, delay)
-//   }else {
-//     last = now
-//     fun.apply(that,_args)
-//   }
-//   }
-// }
+Vue.use(LoadMore)
+Vue.use(Grid)
 Vue.config.productionTip = false
 // Axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 Axios.interceptors.response.use((response) => {
@@ -73,7 +57,7 @@ Axios.interceptors.response.use((response) => {
   if (response.data.code == 402 || response.data.code == 400) {
     localStorage.clear()
     window.alert('登录失效请重新登录')
-    window.location=`${Axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=`
+    window.location = `${Axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=`
     // router.replace({
     //   path: '/login',
     //   query: { redirect: router.currentRoute.fullPath }
@@ -127,13 +111,13 @@ router.beforeEach((to, from, next) => {
     // 数组some方法,如果meta.requiresAuth为ture,则返回true.此时,说明进入该路由前需要判断用户是否已经登录
     console.log(this)
     if (!window.localStorage.getItem('token') || !window.localStorage.getItem('userInfo')) { // 如果没登录,则跳转到登录页
-      window.location=`${Axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=`
+      window.location = `${Axios.defaults.baseURL}/v1/user/login/weixinLogin?urlAddrType=2&&userCode=`
       // next({
       //   path: '/login',
       //   query: { redirect: to.fullPath } // 通过query将要跳转的路由路径保存下来,待完成登录后,就可以直接获取该路径,直接跳转到登录前要去的路由
       // })
-    }else {
-       return next() // 确保一定要调用 next()
+    } else {
+      return next() // 确保一定要调用 next()
     }
   }
   if (to.matched.some(to => to.meta.mustAuth)) {

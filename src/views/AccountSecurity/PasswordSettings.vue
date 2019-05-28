@@ -39,6 +39,7 @@
                 <div class="text2">2、密码中不可有5位以上包含5位的连续相同字符</div>
             </section>
             <section class="forget" @click="$router.push('/forgetPassword')">忘记密码</section>
+            <mu-divider style="width: 60px; margin-left: 12px; background: #EFA220"></mu-divider>
         </main>
         <footer>
             <button v-if="this.confirmpwd && this.newpwd && this.oldpwd !== ''" style="background: #EFA220" @click="NewPwd">完成</button>
@@ -62,6 +63,10 @@ import {mapState} from 'vuex'
         methods: {
             NewPwd() {
                 const pwd1Reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/
+                if (!pwd1Reg.test(this.oldpwd)) {
+                    this.$toast.error('请输入字母加数字组合6-16的密码');
+                    return
+                }
                 if (!pwd1Reg.test(this.newpwd)) {
                     this.$toast.error('请输入字母加数字组合6-16的密码');
                     return
@@ -74,7 +79,14 @@ import {mapState} from 'vuex'
                         "pwdOld": this.oldpwd,
                         "pwdNew": this.newpwd
                     }).then(res=>{
-                        console.log(res)
+                        if(res.data.code !==200){
+                            this.$toast.error(res.data.msg)
+                            return
+                        }
+                        if(res.data.code == 200){
+                            this.$toast.success('密码修改成功，返回登陆')
+                            this.$router.push('/login')
+                        }
                     })
             }
         },
@@ -134,11 +146,9 @@ main{
 .forget{
     margin-top: 12px;
     margin-left: 14px;
-    width:59px;
     height:21px;
     font-size: $f14;
     color: #F8B62D;
-    border-bottom: 1px solid #F8B62D;
 }
 footer{
     position: fixed;

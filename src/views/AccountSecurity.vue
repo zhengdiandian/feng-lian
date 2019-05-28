@@ -2,7 +2,7 @@
     <div>
       <div class="title page-margin-top">
         <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
-          <mu-button icon slot="left" @click="$router.go(-1)">
+          <mu-button icon slot="left" @click="$router.push('/setup')">
             <mu-icon value=":iconfont iconfanhui"></mu-icon>
           </mu-button>
           账号与安全
@@ -26,7 +26,7 @@
                     <span class="state">{{safety.loginPwd == 0 ? '未设置' : '已设置'}}</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </div>
-                <div class="setList" @click="$router.push({name: 'withdrawalPassword', params: {id: '1'}})">
+                <div class="setList" @click="$router.push({name: 'withdrawalPassword', params: {id: '2'}})">
                     <span class="version-number">提现密码设置</span>
                     <span class="state">{{safety.withdrawPwd == 0 ? '未设置' : '已设置'}}</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -88,6 +88,7 @@ export default {
             return
         }
         this.safety = res.data.data
+        console.log(this.safety)
     })
     //   this.$axios.post('v1/user/info/personalInfo').then(res=>{
     //       if(res.data.code !==200){

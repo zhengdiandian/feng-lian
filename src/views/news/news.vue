@@ -10,8 +10,8 @@
         </mu-button>
       </mu-appbar>
       <main>
-          <div class="list-li">
-            <div class="list-img-text">
+          <div class="list-li" @click="$router.push('/PlatformNews')">
+            <div class="list-img-text" >
               <div class="list-img" ><i class="iconfont iconpingtai"></i></div>
               <span class="position-r">平台消息</span>
             </div>
@@ -24,7 +24,7 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-          <div class="list-li">
+          <div class="list-li" @click="$router.push('/myPlanNews')">
             <div class="list-img-text" >
               <div class="list-img" ><i class="iconfont iconjihua"></i></div>
               <span class="position-r">我的计划消息消息</span>
@@ -64,6 +64,9 @@
 </script>
 
 <style lang="scss" scoped>
+// #app>div{
+//   background-color: $c-hui;
+// }
 main{
     padding-top: 60px;
 }
