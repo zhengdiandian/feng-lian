@@ -21,9 +21,10 @@
                 <span v-if="newpwd"  class="text">请输入新密码</span>
                 <span v-if="again"  class="text">再次输入</span>
                 <div class="phone-text" v-if="forget">
-                    <div>我们已发送短信验证码到你的手机号</div>
+                    <div v-if="forgetText">我们已发送短信验证码到你的手机号</div>
                     <span>188****1234</span>
                 </div>
+                
             </div>
         </main>
         <!-- <pay></pay> -->
@@ -38,6 +39,11 @@
             <span>请妥善保管您的支付密码</span>
         </div>
         <section v-if="id == 2" class="forget" @click="forgetpwd">忘记密码</section>
+
+        <div class="forgetTrue" @click="Getcode" v-if="forgetcode">
+            <span>获取验证码</span>
+        </div>
+
         <footer>
             <button v-if="id == 1 && inpuVal.length == 6" style="background: #EFA220" @click="NewInputPwd">完成</button>
             <!-- //设置新的提现密码 -->
@@ -71,6 +77,7 @@
 </template>
 
 <script>
+import { timingSafeEqual } from 'crypto';
     export default {
         name: 'withdrawalPassword',
         data() {
@@ -78,10 +85,12 @@
                 inputList: [{val: ""}, {val: ""}, {val: ""}, {val: ""}, {val: ""}, {val: ""}],
                 pwd: false,
                 id: this.$route.params.id,
-                newpwd: false,
-                again: false,
-                tips: true,
-                forget: false,
+                newpwd: false, //新密码开关
+                again: false, // 再次输入开关
+                tips: true, // 温馨提示开关
+                forget: false, // 忘记提现密码开关
+                forgetText: false, // 已发送文本开关
+                forgetcode: false, // 获取验证码开关
                 againNewPwd1: '',
                 againNewPwd2: '',
                 forgetpassword: ''
@@ -109,7 +118,7 @@
                     }
                 }
             },
-            NewInputPwd(){
+            NewInputPwd(){ //设置新密码
                 console.log(this.inpuVal)
                 if (this.inpuVal.length == 6) {
                     this.$axios.post('v1/finance/account/setWithdrawPwd',{
@@ -120,7 +129,7 @@
                 }
                 this.$router.push('/AccountSecurity')
             },
-            inputopen() {
+            inputopen() { //旧密码
                 if (this.inpuVal.length !== 6) {
                     this.$toast.error('请输入六位数的密码');
                 }
@@ -135,7 +144,7 @@
                     this.inputList[5].val = ''
                 }
             },
-            inputNext() {
+            inputNext() { //新密码
                 if (this.inpuVal.length == 6) {
                     this.newpwd = false
                     this.again = true
@@ -149,7 +158,7 @@
                     this.inputList[5].val = ''
                 }
             },
-            becomeInput() {
+            becomeInput() { //从旧密码到完成新密码
                 this.againNewPwd2 = this.inpuVal
                 console.log(this.againNewPwd2)
                 if (this.againNewPwd2 == this.againNewPwd1) {
@@ -159,10 +168,11 @@
                     return
                 }
             },
-            forgetpwd() {
+            forgetpwd() { //忘记密码事件
                 this.id = 0,
                 this.forget = true,
                 this.tips = false,
+                this.forgetcode = true,
                 this.inputList[0].val = ''
                 this.inputList[1].val = ''
                 this.inputList[2].val = ''
@@ -174,7 +184,11 @@
             //     this.inpuVal = this.inputList[0].val + this.inputList[1].val + this.inputList[2].val + this.inputList[3].val + this.inputList[4].val + this.inputList[5].val
             //     console.log(this.inpuVal)
             // }
-            inputNext2() {
+            inputNext2() { //再次输入
+                if (this.forgetcode == true) {
+                    this.$toast.error('请获取验证码');
+                    return
+                }
                 this.forgetpassword = this.inpuVal
                 console.log(this.forgetpassword)
                 if (this.forgetpassword.length !== 6 ) {
@@ -194,6 +208,10 @@
                     this.inputList[4].val = ''
                     this.inputList[5].val = ''
                 }
+            },
+            Getcode() {
+                this.forgetText = true
+                this.forgetcode = false
             }
         },
         computed: {
@@ -282,5 +300,17 @@ footer{
     font-size: $f14;
     color: #F8B62D;
     border-bottom: 1px solid #F8B62D;
+}
+.forgetTrue{
+    width: 100%;
+    padding-top: 20px;
+    color: $c-cheng;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span{
+        border-bottom: 1px solid $c-cheng;
+        padding-bottom: 2px;
+    }
 }
 </style>

@@ -49,7 +49,9 @@ export default {
       postList: [],
       num: 5,
       refreshing: false,
-      loading: false
+      loading: false,
+      page: 1,
+      pageSize: 15
     }
   },
   created () {
@@ -76,20 +78,38 @@ export default {
     },
     load () {
       this.loading = true
-      setTimeout(() => {
-        this.loading = false
-        this.get_postList()
-        this.num += 10
-      }, 2000)
+      this.get_search_list();
     },
     get_postList () {
       this.$axios.post('/v1/manage/post/postList', {
-        'page': 1,
-        'pageSize': 15,
+        'page': this.page,
+        'pageSize': this.pageSize,
         'type': 1
       }).then(res => {
-        this.postList = res.data.data,
+        
         console.log(res)
+
+        if (res.data.data.length > 0 ) {
+
+						if (this.page == 1) {
+							this.postList = res.data.data;
+						}
+						else {
+							this.postList = this.postList.concat(res.data.data);
+						}
+						this.page++;
+					} else {
+						//not more data
+						// this.finished = true;
+					}
+					
+					if(res.data.data.length < this.page_size){
+						//not more data
+						// this.finished = true;
+					}
+					
+					this.loading = false;
+					console.log(res.data.data.length);
       })
     }
   }

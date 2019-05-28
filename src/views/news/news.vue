@@ -10,8 +10,8 @@
         </mu-button>
       </mu-appbar>
       <main>
-          <div class="list-li">
-            <div class="list-img-text" @click="$router.push('/PlatformNews')">
+          <div class="list-li" @click="$router.push('/PlatformNews')">
+            <div class="list-img-text" >
               <div class="list-img" ><i class="iconfont iconpingtai"></i></div>
               <span class="position-r">平台消息</span>
             </div>

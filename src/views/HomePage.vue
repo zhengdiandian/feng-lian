@@ -255,7 +255,7 @@ export default {
                 this.$toast.error(res.data.msg)
                 return
             }
-          console.log(res)
+          // console.log(res)
             this.CustomerService = res.data.data.CustomerService
         })
 
@@ -264,7 +264,7 @@ export default {
                 this.$toast.error(res.data.msg)
                 return
             }
-      // console.log('home',res)
+      console.log('home',res)
       this.homeinfor = res.data.data
       this.operateItem = res.data.data.operateItem
       this.bannerlist = res.data.data.bannerList
