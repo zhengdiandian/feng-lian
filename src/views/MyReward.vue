@@ -15,26 +15,36 @@
     </header>
     <main class="main">
         <div class="historical-bill">历史账单</div>
+        <mu-paper :z-depth="1" class="demo-loadmore-wrap">
+            <mu-container ref="container" class="demo-loadmore-content">
+                <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
+                <mu-list>
+                    
+                    <div v-for="(list,i) in reward.list" :key="i">
+                            <div class="Month" >
+                                <div  class="font-11 month-date">{{i}}</div>
+                                <div  class="font-11 month-date month-date-weight" >共获得￥{{list.totalAmount}}</div>
+                            </div>
+                            <div class="reward-money" v-for="(item,j) in list.profitList" :key="j">
+                                <div class="headimg"><img :src="item.icon" alt=""></div>
+                                <div class="font-12 header-name-date">
+                                    <span style="font-weight:bold;">{{item.contacs}}</span>
+                                    <span > {{item.profitDate}}</span>
+                                </div>
+                                <div class="right">
+                                    <span v-if="item.changeType == 1">+&nbsp;{{item.profitAmount}}元</span>
+                                    <span v-else>-&nbsp;{{item.profitAmount}}元</span>
+                                </div>
+                            </div>
+                    </div>
+                    
+                </mu-list>
+                </mu-load-more>
+            </mu-container>
+        </mu-paper>
+        
 
-        <div>
-            <div class="Month">
-                <div  class="font-11 month-date">{{listDate.thisMonth.date}}</div>
-                <div  class="font-11 month-date month-date-weight" >共获得￥{{listDate.thisMonth.totalAmount}}</div>
-            </div>
-            <div class="reward-money" v-for="(item,index) in listDate.thisMonth.profitList" :key="index">
-                <div class="headimg"><img :src="item.icon" alt=""></div>
-                <div class="font-12 header-name-date">
-                    <span style="font-weight:bold;">{{item.contacs}}</span>
-                    <span > {{item.profitDate}}</span>
-                </div>
-                <div class="right">
-                    <span v-if="item.changeType == 1">+&nbsp;{{item.profitAmount}}元</span>
-                    <span v-else>-&nbsp;{{item.profitAmount}}元</span>
-                </div>
-            </div>
-        </div>
-
-        <div>
+        <!-- <div>
             <div class="Month">
                 <div class="font-11 month-date" >{{listDate.lastMonth.date}}</div>
                 <div class="font-11 month-date month-date-weight">共获得￥{{listDate.lastMonth.totalAmount}}</div>
@@ -50,7 +60,7 @@
                     <span v-else>-&nbsp;{{item.profitAmount}}元</span>
                 </div>
             </div>
-        </div>
+        </div> -->
     </main>
     <footer>
         <button @click="open">提现</button>
@@ -76,10 +86,14 @@ export default {
             title: '我的奖励',
             show: false,
             reward: [],
-            listDate: {},
-            lastMonth: {},
-            thisMonth:{},
-            debitCardState: ''
+            listDate: '',
+            profitList: [],
+            debitCardState: '',
+            refreshing: false,
+            loading: false,
+            date: '',
+            page: 1,
+            pageSize: 15,
         }
     },
     methods: {
@@ -101,21 +115,78 @@ export default {
         },
         out() {
             this.$router.go(-1)
+        },
+        refresh () {
+            
+            // this.refreshing = true;
+            // this.page = 1
+            
+            // this.$refs.container.scrollTop = 0;
+            // this.get_reward()
+            // setTimeout(() => {
+            //     this.refreshing = false;
+            // }, 2000)
+        },
+        load () {
+            debugger
+            this.loading = true;
+            this.page++
+            this.get_reward(true)
+        
+        },
+        get_reward(flag) {
+            this.$axios.post('/v1/finance/profit/profitMonthList',{
+            "page": this.page,
+            "pageSize": this.pageSize
+        }).then(res=>{
+            debugger
+            if(flag){
+                this.reward.list = Object.assign({}, res.data.data.list)
+                console.log(this.reward.list)
+            }else{
+                 this.reward = res.data.data
+                 console.log(this.reward.list)
+            }
+                
+             this.date = Object.keys(this.reward.list)
+            // console.log(date)
+            // console.log(this.reward.list[date].profitList)
+            // this.listDate = date.join(',')
+            this.loading = false
+            console.log(this.reward.list)
+        })
         }
+
     },
     mounted() {
-        this.$axios.post('v1/finance/profit/profitList').then(res=>{
-            if(res.data.code !==200){
-                this.$toast.error(res.data.msg)
-                return
-            }
+        // this.$axios.post('v1/finance/profit/profitList').then(res=>{
+        //     if(res.data.code !==200){
+        //         this.$toast.error(res.data.msg)
+        //         return
+        //     }
+        //     debugger
+        //     this.reward = res.data.data
+        //     this.listDate = res.data.data.list
+        //     this.lastMonth = res.data.data.list.lastMonth.profitList
+        //     this.thisMonth = res.data.data.list.thisMonth.profitList
+        //     console.log(this.listDate)
+        // })
+        this.$axios.post('/v1/finance/profit/profitMonthList',{
+            "page": this.page,
+            "pageSize": this.pageSize
+        }).then(res=>{
             debugger
             this.reward = res.data.data
-            this.listDate = res.data.data.list
-            this.lastMonth = res.data.data.list.lastMonth.profitList
-            this.thisMonth = res.data.data.list.thisMonth.profitList
-            console.log(this.listDate)
+             this.date = Object.keys(this.reward.list)
+            // console.log(date)
+            // console.log(this.reward.list[date].profitList)
+            // this.listDate = date.join(',')
+
+            console.log(this.reward.list)
         })
+
+
+
         this.$axios.post('v1/user/info/personalInfo').then(res=>{
             if(res.data.code !==200){
               this.$toast.error(res.data.msg)
@@ -127,6 +198,23 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.demo-loadmore-wrap {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: $c-hui;
+  padding-top: 30px;
+  .mu-appbar {
+    width: 100%;
+  }
+}
+.demo-loadmore-content {
+  // flex: 1;
+  overflow: auto;
+  width: 100%;
+  // -webkit-overflow-scrolling: touch;
+}
 .Withdrawable{
     color:rgba(255,255,255,1);
     padding-top: 20px;
@@ -151,6 +239,7 @@ export default {
 }
   .main{
     padding-bottom: 50px;
+    padding-top: 180px;
   }
   .font-11{
     font-size: $f14;
@@ -183,6 +272,10 @@ header{
     // height: 155px;
     background-image: url('../assets/PNG/我的奖励背景.png');
     background-size: 100% 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 22;
 }
 nav {
     width: $gw;
@@ -226,7 +319,10 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 6px 0 10px 0;
+    position: fixed;
+    top: 182px;
+    left: 0;
+    z-index: 11;
 }
 .reward-money{
     width:375px;
@@ -251,7 +347,7 @@ nav {
 }
 .right{
     position: absolute;
-    right: 20px;
+    right: 30px;
 }
 .show {
     position: fixed;
