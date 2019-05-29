@@ -45,6 +45,7 @@ export default {
     background-color:rgba(0, 0, 0, .7);
     .center{
       background-color: #fff;
+      border-radius: 5px;
 
     line-height: 20px;
     /*border-radius: 10px;*/

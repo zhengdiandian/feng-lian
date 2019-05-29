@@ -15,6 +15,59 @@
       </div>
     </div>
   </PopBox>
+
+  <PopBox v-if="show_compensate" style="z-index: 666666;">
+    <div class="compensate-content">
+        <div class="title">
+          秒到赔付
+        </div>
+        <div class="text">
+          蜂链互助率先实现了秒结机制，符合秒结条件的会员在互助时间发生后的第一时间即可获得约定的互助金。秒结机制可帮助会员第一时间度过难关，能更加高效的帮助会员。
+        </div>
+        <div class="btn" @click="show_compensate = false">我知道了</div>
+    </div>
+  </PopBox>
+
+<PopBox v-if="show_capital" style="z-index: 666666;">
+    <div class="compensate-content">
+        <div class="title">
+          资金共管
+        </div>
+        <div class="text">
+          基于公约，互助资金由所有成员共管，第三方机构托管且账户公开，任何人均可查询账户情况，监督资金流向。
+        </div>
+        <div class="btn" @click="show_capital = false">我知道了</div>
+    </div>
+  </PopBox>
+
+
+  <PopBox v-if="show_community" style="z-index: 666666;">
+    <div class="compensate-content">
+        <div class="title">
+          社区共建
+        </div>
+        <div class="text">
+          蜂链互助社区利用区块链技术实现了社区共建。节点、会员、运营方通过社区共同对平台进行管理。蜂链互助计划的各项操作与管理均向用户公开，既透明又可追溯。
+        </div>
+        <div class="btn" @click="show_community = false">我知道了</div>
+    </div>
+  </PopBox>
+  
+
+
+  <PopBox v-if="show_data" style="z-index: 666666;">
+    <div class="compensate-content">
+        <div class="title">
+          数据上链
+        </div>
+        <div class="text">
+          用户互助合约将实时上传至公有区块链平台，任何人不可篡改。资金流向链上可查，每一笔充值划扣均有迹可循。
+        </div>
+        <div class="btn" @click="show_data = false">我知道了</div>
+    </div>
+  </PopBox>
+
+
   <!--<pop-box style="z-index: 8" v-if="showQrcode">-->
       <!--<span class="close" @click="showQrcode=false"><img src="../assets/错误.png" alt=""></span>-->
     <!--<div class="qrcode-wrap">-->
@@ -60,19 +113,19 @@
           </div>
         </div>
         <div class="routers-wrap">
-          <div class="router-item item-content" @click="open">
+          <div class="router-item item-content" @click="show_compensate = true">
             <div class="iconfont iconpeifu" style="font-size: 30px;"></div>
             <div class="text">秒到赔付</div>
           </div>
-          <div class="router-item item-content">
+          <div class="router-item item-content" @click="show_capital = true">
             <div class="iconfont iconzijin" style="font-size: 30px;"></div>
             <div class="text">资金共管</div>
           </div>
-          <div class="router-item item-content">
+          <div class="router-item item-content" @click="show_community = true">
             <div class="iconfont iconshequ2" style="font-size: 30px;"></div>
             <div class="text">社区共建</div>
           </div>
-          <div class="router-item item-content">
+          <div class="router-item item-content" @click="show_data = true">
             <div class="iconfont iconshuju" style="font-size: 30px;"></div>
             <div class="text">数据上链</div>
           </div>
@@ -219,7 +272,11 @@ export default {
       issueList: [],
       videoUrl: '',
       bannerImg: '',
-      CustomerService: ''
+      CustomerService: '',
+      show_compensate: false,
+      show_capital: false,
+      show_community: false,
+      show_data: false
     };
   },
   computed: mapState(['userInfo']),
@@ -331,6 +388,38 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.compensate-content {
+  width: 300px;
+  height: 215px;
+  padding: 12px;
+  border-radius: 50px;
+  position: relative;
+  .title{
+    width:279px;
+    height:42px;
+    background: $c-cheng;
+    border-radius:5px 5px 0px 0px;
+    text-align: center;
+    line-height: 42px;
+    color: $c-bai;
+  }
+  .text{
+    text-indent:2em;
+    padding-top: 12px;
+  }
+  .btn{
+    width:160px;
+    height:31px;
+    background: $c-cheng;
+    border-radius:15px;
+    text-align: center;
+    line-height: 31px;
+    color: $c-bai;
+    position: absolute;
+    left: 70px;
+    bottom: 20px;
+  }
+}
   .wrap /deep/ .mu-item-title{
     padding: 0px 10px;
   }

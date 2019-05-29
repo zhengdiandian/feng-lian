@@ -137,12 +137,10 @@
                 }).then(res=>{
                 console.log(res)
                 if(res.data.code !==200){
-                this.$toast.error(res.data.msg)
+                this.msg = res.data.msg
                 return
                 }
-                if (res.data.code == 900) {
-                    this.msg = res.data.msg
-                }else if(res.data.code == 200){
+                else if(res.data.code == 200){
                     this.show_success = true;
                     this.show_pwd = true
                     this.$axios.post('v1/finance/account/withdraw',{
