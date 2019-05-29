@@ -42,6 +42,7 @@
 </template>
 <script>
 import PageHeader from '../components/PageHeader/PageHeader'
+import {mapState} from 'vuex'
 export default {
     name: 'welfareAgency',
     components: {
@@ -53,6 +54,16 @@ export default {
             welf: []
         }
     },
+    methods: {
+        Tomyreward() {
+            if (this.userInfo.state == 200) {
+            this.$router.push('/myreward')
+            } else {
+                this.$toast.error('请先完成实名认证')
+        }
+        },
+    },
+    computed: mapState(['userInfo']),
     mounted() {
         this.$axios.post('/v1/finance/profit/index').then((res)=> {
             if(res.data.code !==200){

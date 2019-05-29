@@ -245,7 +245,6 @@ span{
     padding: 12px 12px 0;
     display: inline-block;
 }
-<<<<<<< HEAD
 footer{
     width: 100%;
     height: 49px;
@@ -266,7 +265,6 @@ footer{
         height: 100%;
         background-color: #f26d00;
     }
-=======
 .btn-wrap{
   width:80px;
   height:33px;
@@ -275,6 +273,6 @@ footer{
   margin: 20px 0 0 10px;
   color: $c-cheng;
   line-height: 33px;
->>>>>>> 12d19da90b51a5a5b09686c68506daf5982ba1b3
+}
 }
 </style>

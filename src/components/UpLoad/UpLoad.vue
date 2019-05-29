@@ -298,14 +298,14 @@ export default {
         }
         input {
             position: absolute;
-            font-size: 100px;
+            // font-size: 100px;
             right: 0;
             top: 0;
             opacity: 0;
             filter: alpha(opacity=0);
             cursor: pointer;
             width: $gw;
-            height: 100px;
+            height: 100%;
         }
     }
 .add-box{

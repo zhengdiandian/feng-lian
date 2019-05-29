@@ -70,7 +70,7 @@
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
 
-          <div tag="div" @click="$router.push('/CardBag')">
+          <div tag="div" @click="toCardBag()">
           <div class="list-li">
             <div class="list-img-text" >
                <div class="list-img" ><img src="../assets/image/卡包.svg" alt=""></div>
@@ -209,6 +209,13 @@ import {mapState} from 'vuex'
       }
       // this.$router.push('/code')
   },
+      toCardBag() {
+        if (this.userInfo.state == 200) {
+            this.$router.push('/CardBag')
+          } else {
+            this.$toast.error('请先完成实名认证')
+          }
+      },
   ToMyinteg(){
     this.$router.push({
       name: 'myintegral',
@@ -222,9 +229,14 @@ import {mapState} from 'vuex'
     })
   },
   Towelfareagency() {
-    this.$router.push({
-      name: 'welfareagency',
-    })
+      if (this.userInfo.state == 200) {
+          this.$router.push({
+          name: 'welfareagency',
+          })
+      } else {
+        this.$toast.error('请先完成实名认证')
+      }
+
   }
   },
   created() {
