@@ -1,7 +1,7 @@
 <template>
     <div class="card">
       <div class="title">蜂链互助公示</div>
-      <!-- <div class="dateInfo">2019年4月1期</div> -->
+      <div class="dateInfo">2019年4月1期</div>
       <div class="info-wrap">
         <div>
           <div><span>0</span> 人</div>
@@ -68,7 +68,7 @@
     .info-wrap{
       display: flex;
       overflow: hidden;
-      padding-top: 40px;
+      // padding-top: 40px;
       height: auto;
       justify-content: space-between;
       &>div{

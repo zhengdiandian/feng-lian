@@ -4,9 +4,9 @@
           <mu-button icon slot="left" @click="$router.go(-1)">
             <mu-icon value=":iconfont iconfanhui"></mu-icon>
           </mu-button>
-          <span v-if="id == 1" class="text">设置提现密码</span>
+          <span v-if="id == 0" class="text">设置提现密码</span>
           <!-- 未设置 -->
-          <span v-if="id == 2" class="text">修改提现密码</span>
+          <span v-if="id == 1" class="text">修改提现密码</span>
           <!-- 已设置 -->
           <span v-if="forget" class="text">修改提现密码</span>
           <span v-if="newpwd" class="text">修改提现密码</span>
@@ -16,8 +16,8 @@
         </mu-appbar>
         <main>
             <div class="pwd-text">
-                <span v-if="id == 1" class="text">设置支付密码</span>
-                <span v-if="id == 2" class="text">请输入当前密码</span>
+                <span v-if="id == 0" class="text">设置支付密码</span>
+                <span v-if="id == 1" class="text">请输入当前密码</span>
                 <span v-if="newpwd"  class="text">请输入新密码</span>
                 <span v-if="again"  class="text">再次输入</span>
                 <div class="phone-text" v-if="forget">
@@ -38,23 +38,23 @@
             <div>温馨提示：</div>
             <span>请妥善保管您的支付密码</span>
         </div>
-        <section v-if="id == 2" class="forget" @click="forgetpwd">忘记密码</section>
+        <section v-if="id == 1" class="forget" @click="forgetpwd">忘记密码</section>
 
         <div class="forgetTrue" @click="Getcode" v-if="forgetcode">
             <span>获取验证码</span>
         </div>
 
         <footer>
-            <button v-if="id == 1 && inpuVal.length == 6" style="background: #EFA220" @click="NewInputPwd">完成</button>
+            <button v-if="id == 0 && inpuVal.length == 6" style="background: #EFA220" @click="NewInputPwd">完成</button>
             <!-- //设置新的提现密码 -->
-            <button v-if="id == 1 && inpuVal.length !== 6 " style="background: #707070">完成</button>
+            <button v-if="id == 0 && inpuVal.length !== 6 " style="background: #707070">完成</button>
             <!-- //设置新的提现密码 -->
 
 
-            <button v-if="id == 2 && inpuVal.length == 6" style="background: #EFA220" @click="inputopen">下一步</button>
+            <button v-if="id == 1 && inpuVal.length == 6" style="background: #EFA220" @click="inputopen">下一步</button>
             <!-- 输入旧的密码 -->
             <!-- //修改提现密码 -->
-            <button v-if="id == 2 && inpuVal.length !== 6 " style="background: #707070" >下一步</button>
+            <button v-if="id == 1 && inpuVal.length !== 6 " style="background: #707070" >下一步</button>
             <!-- 输入新的密码 -->
              <!-- //修改提现密码 -->
             <button v-if="newpwd" style="background: #EFA220" @click="inputNext">下一步</button>
@@ -91,9 +91,10 @@ import { timingSafeEqual } from 'crypto';
                 forget: false, // 忘记提现密码开关
                 forgetText: false, // 已发送文本开关
                 forgetcode: false, // 获取验证码开关
-                againNewPwd1: '',
-                againNewPwd2: '',
-                forgetpassword: ''
+                currentPwd: '', //当前密码
+                againNewPwd1: '', //新密码
+                againNewPwd2: '', //确认新密码
+                forgetpassword: '' //验证码
             }
         },
         methods: {
@@ -134,7 +135,7 @@ import { timingSafeEqual } from 'crypto';
                     this.$toast.error('请输入六位数的密码');
                 }
                 if (this.inpuVal.length == 6) {
-                    this.id = 0
+                    this.id = 2
                     this.newpwd = true
                     this.inputList[0].val = ''
                     this.inputList[1].val = ''
@@ -169,7 +170,7 @@ import { timingSafeEqual } from 'crypto';
                 }
             },
             forgetpwd() { //忘记密码事件
-                this.id = 0,
+                this.id = 2,
                 this.forget = true,
                 this.tips = false,
                 this.forgetcode = true,

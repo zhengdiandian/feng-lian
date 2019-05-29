@@ -3,31 +3,31 @@
     <!--<mu-sub-header>我的购买计划</mu-sub-header>-->
     <div class="wrap">
       <card></card>
-      <!-- <div class="hlep-notice">
+      <div class="hlep-notice">
         本期共0起互助事件，分摊总额（互助金）0元。共
         0人参与，人均分摊0元。
-      </div> -->
-      <!-- <div class="notice-content"> -->
-        <!-- <div class="parent-list">
+      </div>
+      <div class="notice-content">
+         <div class="parent-list">
           <div class="parent-wrap active">
             <img src="http:\\placehold.it\33x33" alt="" class="part" />
           </div>
           <div class="parent-wrap " v-for="i in 4" :key="i">
             <img src="http:\\placehold.it\33x33" alt="" class="part" />
           </div>
-        </div> -->
-        <!-- <div class="notice-info">
+        </div>
+         <div class="notice-info">
           <div class="title">霍貂蝉<span>已实名</span></div>
           <div class="title">肝癌▪申请10万元互助金</div>
           <div class="text">已加入蜂链互助572天，参与27次分摊，话费7.88元</div>
           <div class="info-btn-wrap">
             <div class="info-btn">查看详情</div>
           </div>
-        </div> -->
-      <!-- </div> -->
+        </div>
+       </div>
     </div>
-    <!-- <mu-divider></mu-divider> -->
-    <!-- <div class="wrap">
+    <mu-divider></mu-divider>
+    <div class="wrap">
       <mu-sub-header>蜂链互助资金公示</mu-sub-header>
       <div class="notice-card">
         <div class="card-row">
@@ -40,7 +40,7 @@
       <div class="contact-wrap">
         <div class="contact"><span class="iconfont iconlianxikefu"></span>联系客服</div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 

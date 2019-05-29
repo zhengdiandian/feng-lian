@@ -78,6 +78,7 @@
 </div>
 </template>
 <script>
+import { debug } from 'util';
   // import  PopBox from '../components/PopBox/PopBox'
 export default {
     name: 'myreward',
@@ -139,18 +140,28 @@ export default {
             "page": this.page,
             "pageSize": this.pageSize
         }).then(res=>{
-            // debugger
+            debugger
+            if(res.data.code !== 200) {
+                this.$toast.error(res.data.msg)
+                return
+            }
+            // console.error('dadafds',res.data.data)
             if(flag){
                 for( let key in res.data.data.list){
+                    console.log('key', key)
                 // debugger
+                // if(!key)return
                     if(this.reward.list[key]){
-
+                        let sum = this.reward.list[key].totalAmount = res.data.data.list[key].totalAmount
                         this.reward.list[key].profitList = this.reward.list[key].profitList.concat(res.data.data.list[key].profitList)
                         this.$set(this.reward.list[key].profitList, this.reward.list[key].profitList.concat(res.data.data.list[key].profitList))
                         console.log('c',this.reward)
                     }else {
-                        this.reward.list[key] = res.data.data[key]
+                        debugger
+                        // console.log('aaa')
+                        this.reward.list[key] =  res.data.data.list[key]
                     }
+                    this.loading = false
                 }
                 // this.reward.list =
                 console.log(this.reward.list)
