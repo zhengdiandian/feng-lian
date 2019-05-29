@@ -93,7 +93,7 @@ export default {
             loading: false,
             date: '',
             page: 1,
-            pageSize: 15,
+            pageSize: 8,
         }
     },
     methods: {
@@ -139,16 +139,27 @@ export default {
             "page": this.page,
             "pageSize": this.pageSize
         }).then(res=>{
-            debugger
+            // debugger
             if(flag){
-                this.reward.list = Object.assign({}, res.data.data.list)
+                for( let key in res.data.data.list){
+                // debugger
+                    if(this.reward.list[key]){
+
+                        this.reward.list[key].profitList = this.reward.list[key].profitList.concat(res.data.data.list[key].profitList)
+                        this.$set(this.reward.list[key].profitList, this.reward.list[key].profitList.concat(res.data.data.list[key].profitList))
+                        console.log('c',this.reward)
+                    }else {
+                        this.reward.list[key] = res.data.data[key]
+                    }
+                }
+                // this.reward.list =
                 console.log(this.reward.list)
             }else{
                  this.reward = res.data.data
                  console.log(this.reward.list)
             }
                 
-             this.date = Object.keys(this.reward.list)
+             // this.date = Object.keys(this.reward.list)
             // console.log(date)
             // console.log(this.reward.list[date].profitList)
             // this.listDate = date.join(',')
@@ -175,9 +186,9 @@ export default {
             "page": this.page,
             "pageSize": this.pageSize
         }).then(res=>{
-            debugger
+            // debugger
             this.reward = res.data.data
-             this.date = Object.keys(this.reward.list)
+             // this.date = Object.keys(this.reward.list)
             // console.log(date)
             // console.log(this.reward.list[date].profitList)
             // this.listDate = date.join(',')
