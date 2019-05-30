@@ -2,17 +2,37 @@
   <div class="">
     <!--<mu-sub-header>我的购买计划</mu-sub-header>-->
     <div class="wrap">
-      <card></card>
+      <!-- <card></card> -->
+      <div class="card">
+          <div class="title">蜂链互助公示</div>
+          <div class="dateInfo">{{nitice.stage}}</div>
+          <div class="info-wrap">
+            <div>
+              <div><span>{{nitice.publicityCount}}</span> 人</div>
+              <div>本期公示人数</div>
+            </div>
+            <div class="xian"></div>
+            <div>
+              <div><span>{{nitice.totalAmount}}</span> 人</div>
+              <div>预计分摊总额</div>
+            </div>
+            <div class="xian"></div>
+            <div>
+              <div><span>{{nitice.shareCount}}</span> 人</div>
+              <div>分摊人数</div>
+            </div>
+          </div>
+      </div>
       <div class="hlep-notice">
-        本期共0起互助事件，分摊总额（互助金）0元。共
-        0人参与，人均分摊0元。
+        <span>本期共{{nitice.helpedCount}}起互助事件，分摊总额（互助金）{{nitice.helpedAmount}}元。共
+        {{nitice.joinedCount}}人参与，人均分摊{{nitice.shareCount}}元。</span>
       </div>
       <div class="notice-content">
          <div class="parent-list">
           <div class="parent-wrap active">
             <img src="http:\\placehold.it\33x33" alt="" class="part" />
           </div>
-          <div class="parent-wrap " v-for="i in 4" :key="i">
+          <div class="parent-wrap " v-for="i in 8" :key="i">
             <img src="http:\\placehold.it\33x33" alt="" class="part" />
           </div>
         </div>
@@ -21,21 +41,24 @@
           <div class="title">肝癌▪申请10万元互助金</div>
           <div class="text">已加入蜂链互助572天，参与27次分摊，话费7.88元</div>
           <div class="info-btn-wrap">
-            <div class="info-btn">查看详情</div>
+            <div class="info-btn"><span>查看详情</span></div>
           </div>
         </div>
        </div>
     </div>
-    <mu-divider></mu-divider>
-    <div class="wrap">
-      <mu-sub-header>蜂链互助资金公示</mu-sub-header>
+    <mu-divider style="height: 5px;"></mu-divider>
+    <div class="wrap_card">
+      <!-- <mu-sub-header>蜂链互助资金公示</mu-sub-header> -->
+      <div class="margin-top margin-bottom">蜂链互助资金公示</div>
       <div class="notice-card">
         <div class="card-row">
-          <div>截止2019年3月31日</div>
-          <div>共互助0人，分摊0亿元</div>
+          <!-- <div>截止2019年3月31日</div>
+          <div>共互助0人，分摊0亿元</div> -->
+          <img :src="nitice.postImgSimple" alt="">
         </div>
-        <p class="card-row">本期剩余互助金 <span>￥0元</span></p>
-        <div class="card-btn">点击查看详情</div>
+        <!-- <p class="card-row">本期剩余互助金 <span>￥0元</span></p> -->
+        
+        <div class="card-btn" @click="$router.push('/NoticeDetails')">点击查看详情</div>
       </div>
       <div class="contact-wrap">
         <div class="contact"><span class="iconfont iconlianxikefu"></span>联系客服</div>
@@ -45,11 +68,31 @@
 </template>
 
 <script>
-import Card from "../../components/NoticeCard/NoticeCard";
+// import Card from "../../components/NoticeCard/NoticeCard";
 export default {
   name: "NewNotice",
-  components: {
-    Card
+  // components: {
+  //   Card
+  // }
+  data () {
+    return {
+      page: 1,
+      pageSize: 15,
+      nitice: []
+    }
+  },
+  created() {
+    this.$axios.post('v1/publicity/publicity/detail',{
+      "page": this.page,
+      "pageSize": this.pageSize
+    }).then(res=>{
+      if (res.data.code !==200) {
+            this.$toast.error(res.data.msg)
+            return
+        }
+      this.nitice = res.data.data
+      console.log(this.nitice)
+    })
   }
 };
 </script>
@@ -57,18 +100,41 @@ export default {
 <style lang="scss" scoped>
 .wrap {
   padding: 12px;
+  padding-top: 90px;
 
   .mu-sub-header {
     padding: 0px;
   }
   .hlep-notice {
     width: 351px;
-    height: 41px;
+    // height: 41px;
     margin-top: 8px;
     background: rgba(255, 227, 179, 1);
     border-radius: 2px;
     line-height: 1.5;
+    span{
+      display: inline-block;
+      width: 100%;
+      // height: 100%;
+      padding: 5px;
+      font-size: $f12;
+    }
   }
+}
+.wrap_card{
+  padding: 0px 12px 12px 12px;
+  .mu-sub-header {
+    padding: 0px;
+  }
+  // .hlep-notice {
+  //   width: 351px;
+  //   height: 41px;
+  //   margin-top: 8px;
+  //   background: rgba(255, 227, 179, 1);
+  //   border-radius: 2px;
+  //   line-height: 1.5;
+    
+  // }
 }
 .notice-content {
   margin-top: 13px;
@@ -81,6 +147,7 @@ export default {
     flex-wrap: nowrap;
     padding: 12px 12px 18px;
     border-bottom: 1px solid rgba(220, 220, 220, 1);
+    overflow: auto;
     .parent-wrap {
       position: relative;
       margin-right: 12px;
@@ -144,9 +211,10 @@ export default {
     flex: 1;
     display: flex;
     justify-content: flex-end;
+    
   }
   .info-btn {
-    width: 67px;
+    // width: 67px;
     height: 25px;
     line-height: 25px;
     text-align: center;
@@ -154,36 +222,40 @@ export default {
     border-radius: 13px;
     color: $c-cheng;
     /*justify-self: flex-end;*/
+    span{
+      padding: 0px 10px 0px 10px;
+    }
   }
 }
 
   .notice-card{
     display: flex;
     flex-wrap: wrap;
-    margin-top: 13px;
+    // margin-top: 13px;
     padding-bottom: 12px;
     flex-direction: row-reverse;
     align-items: flex-end;
     justify-content: center;
+    // color: $c-bai;
     width:351px;
     height:136px;
     background:rgba(255,255,255,1);
     /*border:1px solid rgba(220,220,220,1);*/
     border-radius:5px;
-    background: url("../../assets/gongshi.png") center no-repeat;
-    background-size: 100% 100%;
+    // background: url("../../assets/PNG/资金公示背景.png") center no-repeat;
+    // background-size: 100% 100%;
     p.card-row{
       margin: 0px;
     }
     .card-row{
 
-      width: 100%;
+      width:351px;
+      height:136px;
       /*margin-top: 60px;*/
-      text-align: center;
-      span{
-        color: $c-cheng;
+      img{
+        width: 100%;
+        height: 100%;
       }
-      /*flex: 2;*/
     }
     .card-btn{
       width:225px;
@@ -193,6 +265,7 @@ export default {
       background:rgba(239,162,32,.7);
       color: $c-bai;
       border-radius:17px;
+      position: absolute;
     }
   }
   .contact-wrap{
@@ -201,6 +274,7 @@ export default {
     margin-top: 13px;
     display: flex;
     justify-content: center;
+    padding-bottom: 60px;
   }
   .contact{
     span.iconfont{
@@ -215,5 +289,67 @@ export default {
     border: 1px solid $c-cheng;
     border-radius:17px;
   }
+.mu-sub-header {
+    color: $c-bai;
+    font-size: 3.733vw;
+    line-height: 1.5;
+    padding-left: 4.267vw;
+    width: 100%;
+    content: "viewport-units-buggyfill; font-size: 3.733vw; line-height: 12.8vw; padding-left: 4.267vw";
+  }
+  .card  .title {
+    color: #fff;
+    // font-family: SourceHanSansCN-Normal;
+    font-weight: 700;
+    padding: 0px !important;
+    font-size: 14px;
+  }
+  .card{
+    color: #fff ;
+    font-size: 12px;
+    /*width:351px;*/
+    /*max-height:126px;*/
+    background:rgba(239,162,32,1);
+    border-radius:5px;
+    padding: 12px 20px 13px 12px;
+    background: url("../../assets/gongshi.png") center no-repeat;
+    background-size: 100% 100%;
+    background-origin: padding-box;
+    color: $c-bai;
+    .dateInfo{
+      margin: 12px 0 18px 0px;
+      width:100px;
+      height:22px;
+      background:rgba(255,255,255,.2);
+      border-radius:11px;
+      text-align: center;
+      line-height: 21px;
+      background:rgba(255,255,255,.2);
+    }
+    .info-wrap{
+      display: flex;
+      overflow: hidden;
+      // padding-top: 40px;
+      height: auto;
+      justify-content: space-between;
+      &>div{
+        & span{
+          font-size:18px;
+            
+          font-weight:bold;
+        }
+        text-align: center;
+        /*width: 33%;*/
 
+
+      }
+      .xian{
+        /*height: 33px;*/
+        border-right: 1px solid $c-bai;
+      }
+      & > div:last-of-type{
+      border: none;
+    }
+    }
+  }
 </style>

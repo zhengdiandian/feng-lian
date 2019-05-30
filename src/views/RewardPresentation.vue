@@ -74,7 +74,7 @@
                 <div class="text_pay">请输入支付密码</div>
                 <mu-divider></mu-divider>
                 <div class="text">提现</div>
-                <div class="number">￥1200</div>
+                <div class="number">￥{{Amount}}</div>
                 <div class="money-charge">额外扣除￥5元手续费</div>
                 <div class="input">
                     <div v-for="(item,index) in inputList" :key="index">
@@ -105,9 +105,31 @@
         computed: {
             inpuVal() {
                 return this.inputList[0].val + this.inputList[1].val + this.inputList[2].val + this.inputList[3].val + this.inputList[4].val + this.inputList[5].val
-            }
+            },
+            
         },
         methods: {
+            get_rewardTition() {
+                // debugger
+                if (this.inpuVal.length == 6) {
+                        this.$axios.post('v1/finance/account/withdraw',{
+                        "amount": this.Amount,
+                        "bindedNo": this.Bank.bindedNo,
+                        "withdrawPwd": this.inpuVal
+                    }).then(res=>{
+                        // debugger
+                        console.log(res)
+                        if (res.data.code !== 200) {
+                            this.$toast.error(res.data.msg)
+                            return
+                        }
+                        if (res.data.code == 200) {
+                            this.show_success = true
+                            this.show_pwd = false
+                        }
+                    })   
+                }
+            },
             nextFocus(el,index) {
                 var dom = document.getElementsByClassName("border-input"),
                     currInput = dom[index],
@@ -126,52 +148,63 @@
                     }
                 }
             },
-            whole() {
-                if (this.withdrawBalance < this.Amount) {
-                    this.msg = '输入金额小于可提现金额';
-                    return;
-                }
-                this.$axios.post('/v1/finance/account/withdraw',{
-                'amount': this.Amount,
-                "bindedNo": this.Bank.bindedNo
-                }).then(res=>{
-                console.log(res)
-                if(res.data.code !==200){
-                this.msg = res.data.msg
-                return
-                }
-                else if(res.data.code == 200){
-                    this.show_success = true;
-                    this.show_pwd = true
-                    this.$axios.post('v1/finance/account/withdraw',{
-                        "amount": this.Amount,
-                        "bindedNo": this.Bank.cardNo,
-                        "withdrawPwd": this.inpuVal
-                    }).then(res=>{
-                        if (res.data.code !== 200) {
-                            this.$toast.error(res.data.msg)
-                            return
-                        }
-                    })
-                    if (this.inpuVal.length == 6) {
-                        this.show_pwd = false
-                    }
-                }
-            })
-            },
             Amounts() {
                 this.Amount = this.withdrawBalance
             },
-        },
+
+            whole() {
+                // debugger
+                if (this.withdrawBalance < this.Amount) {
+                    this.msg = '提现金额小于输入金额'
+                    return
+                }
+                if (this.Amount == '' || this.Amount == 0) {
+                    this.msg = '提现金额不能为空'
+                    return
+                }
+                if( this.Amount < 100) {
+                    this.msg = '提现金额不能小于一百'
+                    return
+                }
+                this.show_pwd = true
+                // this.get_rewardTition
+                // this.show_pwd = false
+                // this.show_success = true
+            }
+                    //     this.$axios.post('v1/finance/account/withdraw',{
+                    //     "amount": this.Amount,
+                    //     "bindedNo": this.Bank.bindedNo,
+                    //     "withdrawPwd": this.inpuVal
+                    // }).then(res=>{
+                    //     console.log(res)
+                    //     if (res.data.code !== 200) {
+                    //         this.msg = res.data.msg
+                    //         return
+                    //     }
+                    //     if (res.data.code == 200) {
+                    //         this.show_pwd = false
+                    //     }
+                    // })
+                    
+                
+            },
+            watch: {
+                inpuVal() {
+                    if(this.inpuVal.length === 6){
+                        this.get_rewardTition()
+                    }
+                }
+            },
+            
         created(){
-            this.$axios.post('v1/finance/profit/profitList').then(res=>{
+            this.$axios.post('v1/finance/profit/profitList').then(res=>{ //收益列表接口，获取可提现金额
                 if(res.data.code !==200){
                 this.$toast.error(res.data.msg)
                 return
           }
                 this.withdrawBalance = res.data.data.withdrawBalance;
             })
-            this.$axios.post('/v1/card/debitCard/getCardList').then(res=>{
+            this.$axios.post('/v1/card/debitCard/getCardList').then(res=>{ //卡包获取银行卡信息
                 if(res.data.code !==200){
                 this.$toast.error(res.data.msg)
                 return
@@ -179,6 +212,7 @@
                 if(res.data.data.length > 0){
                     this.show_bind_card = false;
                     this.Bank =  res.data.data[0];
+                    console.log(this.Bank)
                 }else{
                     this.show_bind_card = true;
                 }

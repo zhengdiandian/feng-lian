@@ -27,7 +27,7 @@
           <div class="list-li" @click="$router.push('/myPlanNews')">
             <div class="list-img-text" >
               <div class="list-img" ><i class="iconfont iconjihua"></i></div>
-              <span class="position-r">我的计划消息消息</span>
+              <span class="position-r">我的计划消息</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
