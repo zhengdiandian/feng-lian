@@ -5,7 +5,7 @@
         <mu-icon value=":iconfont iconfanhui" @click="$router.go(-1)"></mu-icon>
       </mu-button>
 
-      <mu-button icon slot="right" >
+      <mu-button icon slot="right" :ripple="false" >
         <!--<mu-icon value=":iconfont iconshubanshenglvehao" size="24"></mu-icon>-->
       </mu-button>
     </mu-appbar>

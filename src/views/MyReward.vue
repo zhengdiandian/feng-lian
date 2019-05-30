@@ -129,7 +129,6 @@ export default {
             // }, 2000)
         },
         load () {
-            debugger
             this.loading = true;
             this.page++
             this.get_reward(true)
