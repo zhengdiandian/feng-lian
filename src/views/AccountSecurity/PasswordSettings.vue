@@ -63,10 +63,6 @@ import {mapState} from 'vuex'
         methods: {
             NewPwd() {
                 const pwd1Reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/
-                if (!pwd1Reg.test(this.oldpwd)) {
-                    this.$toast.error('请输入字母加数字组合6-16的密码');
-                    return
-                }
                 if (!pwd1Reg.test(this.newpwd)) {
                     this.$toast.error('请输入字母加数字组合6-16的密码');
                     return
@@ -84,6 +80,7 @@ import {mapState} from 'vuex'
                             return
                         }
                         if(res.data.code == 200){
+                            console.log(res)
                             this.$toast.success('密码修改成功，返回登陆')
                             this.$router.push('/login')
                         }

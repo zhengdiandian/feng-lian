@@ -26,7 +26,7 @@
                     <span class="state">{{safety.loginPwd == 0 ? '未设置' : '已设置'}}</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </div>
-                <div class="setList" @click="$router.push({name: 'withdrawalPassword', params: {id: '2'}})">
+                <div class="setList" @click="$router.push({name: 'withdrawalPassword', params: {id: safety.withdrawPwd}})">
                     <span class="version-number">提现密码设置</span>
                     <span class="state">{{safety.withdrawPwd == 0 ? '未设置' : '已设置'}}</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
