@@ -13,46 +13,46 @@
             <div class="add-family">
                 <span style="font-size:14px;  font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;">我的家人</span>
                 <section class="add-family-list">
-                    <div class="list">
+                    <div class="list" v-for="(item, i) in relationList" :key="i">
                         <div class="list-img">
-                            <img src="../assets/PNG/积分头像2.png" alt="">
+                            <img :src="item.headPortrait" alt="">
                         </div>
-                        <span style="font-size:12px;">{{name}}</span>
-                        <span style="font-size:12px;">自己</span>
+                        <span style="font-size:12px;">{{item.contacs}}</span>
+                        <span style="font-size:12px;">{{item.relationDesc}}</span>
                     </div>
+<!--                    <div class="list">-->
+<!--                        <div class="list-img">-->
+<!--                            <img src="../assets/PNG/积分头像2.png" alt="">-->
+<!--                        </div>-->
+<!--                        <span style="font-size:12px;">{{name}}</span>-->
+<!--                        <span style="font-size:12px;">自己</span>-->
+<!--                    </div>-->
+<!--                    <div class="list">-->
+<!--                        <div class="list-img">-->
+<!--                            <img src="../assets/PNG/积分头像2.png" alt="">-->
+<!--                        </div>-->
+<!--                        <span style="font-size:12px;">{{name}}</span>-->
+<!--                        <span style="font-size:12px;">自己</span>-->
+<!--                    </div>-->
+<!--                    <div class="list">-->
+<!--                        <div class="list-img">-->
+<!--                            <img src="../assets/PNG/积分头像2.png" alt="">-->
+<!--                        </div>-->
+<!--                        <span style="font-size:12px;">{{name}}</span>-->
+<!--                        <span style="font-size:12px;">自己</span>-->
+<!--                    </div>-->
+<!--                    <div class="list">-->
+<!--                        <div class="list-img">-->
+<!--                            <img src="../assets/PNG/积分头像2.png" alt="">-->
+<!--                        </div>-->
+<!--                        <span style="font-size:12px;">{{name}}</span>-->
+<!--                        <span style="font-size:12px;">自己</span>-->
+<!--                    </div>-->
                     <div class="list">
-                        <div class="list-img">
-                            <img src="../assets/PNG/积分头像2.png" alt="">
-                        </div>
-                        <span style="font-size:12px;">{{name}}</span>
-                        <span style="font-size:12px;">自己</span>
-                    </div>
-                    <div class="list">
-                        <div class="list-img">
-                            <img src="../assets/PNG/积分头像2.png" alt="">
-                        </div>
-                        <span style="font-size:12px;">{{name}}</span>
-                        <span style="font-size:12px;">自己</span>
-                    </div>
-                    <div class="list">
-                        <div class="list-img">
-                            <img src="../assets/PNG/积分头像2.png" alt="">
-                        </div>
-                        <span style="font-size:12px;">{{name}}</span>
-                        <span style="font-size:12px;">自己</span>
-                    </div>
-                    <div class="list">
-                        <div class="list-img">
-                            <img src="../assets/PNG/积分头像2.png" alt="">
-                        </div>
-                        <span style="font-size:12px;">{{name}}</span>
-                        <span style="font-size:12px;">自己</span>
-                    </div>
-                    <div class="list">
-                        <div class="list-img">
+                        <div class="list-img" @click="$router.push('/selectAddFamily')">
                             <img src="../assets/PNG/添加家人.png" alt="">
                         </div>
-                        <span style="font-size:12px;">添加家人</span>
+                        <span style="font-size:12px;" @click="$router.push('/selectAddFamily')">添加家人</span>
                     </div>
                 </section>
             </div>
@@ -105,7 +105,7 @@ export default {
     components: {
         PageHeader,
         footerBtn,
-        card
+        card,
     },
     data() {
         return {
@@ -115,7 +115,9 @@ export default {
             myplan: [],
             planNo: "",
             activeIndex: null,
-            productCode: ''
+            productCode: '',
+            relationList: []
+
         }
     },
     methods: {
@@ -154,6 +156,17 @@ export default {
             })
 
         }
+    },
+    created() {
+      this.$axios.get('v1/family/info/familyList').then(res=>{
+        if(res.data.code !==200){
+          this.$toast.error(res.data.msg)
+          return
+        }
+        this.relationList = res.data.data
+        console.log(res)
+
+      })
     },
     mounted() {
         this.$axios.get('/v1/mutually/plan/planList').then(res=>{
