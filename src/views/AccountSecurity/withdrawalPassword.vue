@@ -11,6 +11,7 @@
           <span v-if="forget" class="text">修改提现密码</span>
           <span v-if="newpwd" class="text">修改提现密码</span>
           <span v-if="again" class="text">修改提现密码</span>
+          <span v-if="getpwd || forgetagain" class="text">修改提现密码</span>
           <mu-button icon slot="right" :ripple="false">
           </mu-button>
         </mu-appbar>
@@ -20,9 +21,11 @@
                 <span v-if="id == 1" class="text">请输入当前密码</span>
                 <span v-if="newpwd"  class="text">请输入新密码</span>
                 <span v-if="again"  class="text">再次输入</span>
+                <span v-if="getpwd"  class="text">请输入新密码</span>
+                <span v-if="forgetagain"  class="text">再次输入</span>
                 <div class="phone-text" v-if="forget">
                     <div v-if="forgetText">我们已发送短信验证码到你的手机号</div>
-                    <span>188****1234</span>
+                    <span>{{userInfo.account}}</span>
                 </div>
                 
             </div>
@@ -53,31 +56,28 @@
 
             <button v-if="id == 1 && inpuVal.length == 6" style="background: #EFA220" @click="inputopen">下一步</button>
             <!-- 输入旧的密码 -->
-            <!-- //修改提现密码 -->
             <button v-if="id == 1 && inpuVal.length !== 6 " style="background: #707070" >下一步</button>
             <!-- 输入新的密码 -->
-             <!-- //修改提现密码 -->
             <button v-if="newpwd" style="background: #EFA220" @click="inputNext">下一步</button>
             <!-- 重新输入新的密码 -->
-            <!-- // 修改的新密码 -->
             <button v-if="again" style="background: #EFA220" @click="becomeInput">完成</button>
             <!-- // 修改的新密码 -->
 
 
+
+            <!-- 忘记密码、修改提现密码 -->
             <button v-if="forget && inpuVal.length !== 6 " style="background: #707070" >下一步</button>
-            <!-- 输入新的密码 -->
-             <!-- //修改提现密码 -->
             <button v-if="forget && inpuVal.length == 6" style="background: #EFA220" @click="inputNext2">下一步</button>
-            <!-- 重新输入新的密码 -->
-            <!-- // 修改的新密码 -->
-            <!-- <button v-if="again" style="background: #EFA220" @click="becomeInput">完成</button> -->
-            <!-- // 修改的新密码 -->
+            <!-- 忘记密码 -->
+            <button v-if="getpwd" style="background: #EFA220" @click="getpwdClick">下一步</button>
+            <button v-if="forgetagain" style="background: #EFA220" @click="forgetagainClick">完成</button>
         </footer>
     </div>
 </template>
 
 <script>
 import { timingSafeEqual } from 'crypto';
+ import { mapState } from 'vuex'
     export default {
         name: 'withdrawalPassword',
         data() {
@@ -91,10 +91,14 @@ import { timingSafeEqual } from 'crypto';
                 forget: false, // 忘记提现密码开关
                 forgetText: false, // 已发送文本开关
                 forgetcode: false, // 获取验证码开关
+                getpwd: false, //忘记密码 - 输入新密码
+                forgetagain: false, //忘记密码 - 再次输入-完成
+                oldPwd: '',   //旧密码
                 currentPwd: '', //当前密码
                 againNewPwd1: '', //新密码
                 againNewPwd2: '', //确认新密码
-                forgetpassword: '' //验证码
+                forgetpassword: '', //验证码
+                pwdtoken: ''
             }
         },
         methods: {
@@ -131,6 +135,8 @@ import { timingSafeEqual } from 'crypto';
                 this.$router.push('/AccountSecurity')
             },
             inputopen() { //旧密码
+                this.oldPwd = this.inpuVal
+                console.log('旧密码',this.oldPwd)
                 if (this.inpuVal.length !== 6) {
                     this.$toast.error('请输入六位数的密码');
                 }
@@ -150,7 +156,7 @@ import { timingSafeEqual } from 'crypto';
                     this.newpwd = false
                     this.again = true
                     this.againNewPwd1 = this.inpuVal
-                    console.log(this.againNewPwd1)
+                    console.log('新密码a',this.againNewPwd1)
                     this.inputList[0].val = ''
                     this.inputList[1].val = ''
                     this.inputList[2].val = ''
@@ -161,13 +167,24 @@ import { timingSafeEqual } from 'crypto';
             },
             becomeInput() { //从旧密码到完成新密码
                 this.againNewPwd2 = this.inpuVal
-                console.log(this.againNewPwd2)
-                if (this.againNewPwd2 == this.againNewPwd1) {
-                    this.$router.push('/AccountSecurity')
-                }else{
+                console.log('新密码b',this.againNewPwd2)
+                if (this.againNewPwd2 !== this.againNewPwd1) {
                     this.$toast.error('您输入的密码不一致');
                     return
                 }
+                this.$axios.post('/v1/finance/account/updateOldWithdrawPwd',{ //修改提现密码接口
+                    "oldPwd": this.oldPwd,
+                    "newPwd": this.againNewPwd2
+                }).then(res=> {
+                    if (res.data.code !==200) {
+                        this.$toast.error(res.data.msg)
+                        return
+                    }
+                    if (res.data.code === 200) {
+                        this.$toast.success('修改成功')
+                        this.$router.push('/AccountSecurity')
+                    }
+                })
             },
             forgetpwd() { //忘记密码事件
                 this.id = 2,
@@ -185,23 +202,39 @@ import { timingSafeEqual } from 'crypto';
             //     this.inpuVal = this.inputList[0].val + this.inputList[1].val + this.inputList[2].val + this.inputList[3].val + this.inputList[4].val + this.inputList[5].val
             //     console.log(this.inpuVal)
             // }
+
+            Getcode() {
+                this.forgetText = true
+                this.forgetcode = false
+                this.$axios.post('/v1/manage/common/sendMsg',{
+                    "account": this.userInfo.account,
+                    "type": 4
+                }).then(res=> {
+                    if (res.data.code !==200) {
+                        this.$toast.error(res.data.msg)
+                        return
+                    }
+                    console.log(res.data.data.token)
+                    this.pwdtoken = res.data.data.token
+                    console.log(this.pwdtoken)
+                })
+            },
+
             inputNext2() { //再次输入
                 if (this.forgetcode == true) {
                     this.$toast.error('请获取验证码');
                     return
                 }
                 this.forgetpassword = this.inpuVal
-                console.log(this.forgetpassword)
+                console.log('验证码',this.forgetpassword)
                 if (this.forgetpassword.length !== 6 ) {
                     this.$toast.error('请输入正确的验证码');
                     return
                 }
                 if (this.forgetpassword.length == 6) {
                     this.forget = false
-                    this.newpwd = true
+                    this.getpwd = true
                     this.tips = true
-                    this.againNewPwd1 = this.inpuVal
-                    console.log(this.againNewPwd1)
                     this.inputList[0].val = ''
                     this.inputList[1].val = ''
                     this.inputList[2].val = ''
@@ -210,15 +243,47 @@ import { timingSafeEqual } from 'crypto';
                     this.inputList[5].val = ''
                 }
             },
-            Getcode() {
-                this.forgetText = true
-                this.forgetcode = false
-            }
+            getpwdClick() {
+                this.againNewPwd1 = this.inpuVal
+                console.log('忘记密码-输入新的密码',this.againNewPwd1)
+                this.inputList[0].val = ''
+                this.inputList[1].val = ''
+                this.inputList[2].val = ''
+                this.inputList[3].val = ''
+                this.inputList[4].val = ''
+                this.inputList[5].val = ''
+                this.getpwd = false
+                this.forgetagain = true
+            },
+            forgetagainClick(){
+                this.againNewPwd2 = this.inpuVal
+                console.log('忘记密码-再次输入',this.againNewPwd1)
+                if (this.againNewPwd2 !== this.againNewPwd1) {
+                    this.$toast.error('您输入的密码不一致');
+                    return
+                }
+                this.$axios.post('/v1/finance/account/updateWithdrawPwd',{ //忘记提现密码接口
+                    "withdrawPwd": this.againNewPwd2,
+                    "smsCode": this.forgetpassword,
+                    "token": this.pwdtoken
+                }).then(res=> {
+                    if (res.data.code !==200) {
+                        this.$toast.error(res.data.msg)
+                        return
+                    }
+                    if (res.data.code === 200) {
+                        this.$toast.success('修改成功')
+                        this.$router.push('/AccountSecurity')
+                    }
+                })
+            },
+            
         },
         computed: {
             inpuVal() {
                 return this.inputList[0].val + this.inputList[1].val + this.inputList[2].val + this.inputList[3].val + this.inputList[4].val + this.inputList[5].val
-            }
+            },
+            ...mapState(['userInfo']),
         }
     }
 </script>

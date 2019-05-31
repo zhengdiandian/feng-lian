@@ -27,7 +27,7 @@
                   <span>我的{{changeText.text1}}</span>
                 </div>
                 <div>
-                    <span style="font-size: 50px;">{{totalScore}}</span>
+                    <span style="font-size: 50px;">{{totalScore ? totalScore : '0'}}</span>
                     <span>{{changeText.text2}}</span>
                     <!--<span v-if="title = '我的蜂蜜'">滴</span>-->
                     <!--<span v-else>分</span>-->
@@ -96,6 +96,17 @@
                 </mu-list-item>
             </mu-list>
         </section> -->
+        <mu-sub-header><span class="title-font">帮助中心</span></mu-sub-header>
+        <mu-list  class="list" toggle-nested="" v-for="(item,i) in issueList" :key="i">
+          <mu-list-item button :ripple="false" nested :open="open === 'send'" @toggle-nested="open = arguments[0] ? 'send' : ''"     >
+            <mu-list-item-title style="font-size: 14px;">{{i+1}}、{{item.title}}</mu-list-item-title>
+            <mu-list-item-action>
+              <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down" ></mu-icon>
+            </mu-list-item-action>
+              <p slot="nested" v-html="item.content"></p>
+          </mu-list-item>
+
+        </mu-list>
     </main>
 </div>
 </template>
@@ -111,7 +122,8 @@ export default {
             title: '',
             totalScore: this.$route.params.totalScore,
             scoreType: '',
-            infor: []
+            infor: [],
+            issueList: []
         }
     },
   computed: {
@@ -140,16 +152,28 @@ export default {
             return
             }
             this.infor = res.data.data
-            console.log(this.infor)
+            // console.log(this.infor)
       })
   },
     mounted() {
         // console.log(this.$route.params.totalScore)
         console.log(this.$route.params.scoreType)
+        this.$axios.post('/v1/manage/post/helpCenter',{
+            "type": 1
+        }).then(res=>{
+            if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
+            this.issueList = res.data.data
+        })
     }
 }
 </script>
 <style scoped lang="scss">
+.mu-list{
+    padding: 0 5px 5px 5px;
+}
 .infor{
     display: flex;
     padding-left: 12px;

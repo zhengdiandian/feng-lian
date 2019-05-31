@@ -487,6 +487,14 @@ export default new Router({
       }
     },
     {
+      path: '/NoticeDetails',
+      //  公示详情
+      name: 'NoticeDetails',
+      component: function () {
+        return import('./views/notice/NoticeDetails.vue')
+      }
+    },
+    {
       path: '/selectAddFamily',
       component: function () {
         return import('./views/family/selectAddFamily')

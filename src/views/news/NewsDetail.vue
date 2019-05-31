@@ -9,6 +9,9 @@
           </mu-button>
         </mu-appbar>
         <main>
+          <div v-html="content.postTitle">{{content.postTitle}}</div>
+          <div v-html="content.postDate">{{content.postDate}}</div>
+          <div v-html="content.postContent">{{content.postContent}}</div>
         </main>
     </div>
 </template>
@@ -16,16 +19,24 @@
 <script>
 export default {
   name: 'NewsDetail',
+  data () {
+    return {
+      id: this.$route.params.id,
+      content: {}
+    }
+  },
   created () {
     this.$axios.post('/v1/manage/post/postDetail', {
-      'id': this.$route.params.id
+      'id': this.id
     }).then(res => {
-      console.log(res)
+      this.content = res.data.data
     })
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+main{
+  padding-top: 50px;
+}
 </style>

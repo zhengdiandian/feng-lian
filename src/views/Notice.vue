@@ -42,6 +42,12 @@
 </script>
 
 <style lang="scss" scoped>
+.mu-appbar{
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 111;
+}
   .pop-wrap{
     position: relative;
     height: 100%;
@@ -82,6 +88,9 @@
     background:rgba(255,255,255,1);
     display: flex;
     flex-wrap: nowrap;
+    position: fixed;
+    top: 40px;
+    z-index: 111;
 
     .select{
       border-bottom: 1px solid transparent;
