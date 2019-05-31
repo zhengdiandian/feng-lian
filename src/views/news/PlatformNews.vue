@@ -20,16 +20,16 @@
                   </template> -->
                   <div v-for="(item,index) in postList" :key="index">
                     <!-- <div v-for="(i,index) in num" :key="index"></div> -->
-                    <div class="postList" @click="tab(index)">
-                      <div class="postList-date">{{item.postDate}}5月8日 &nbsp; &nbsp; 晚上21:32</div>
-                      <div class="postList-img-title">
-                        <img src="@/assets/gongshi.png" alt="">
-                        <div class="postList-title">与强者同行，蜂链科技总裁周鹏参加第八届亚太地区商学院沙漠挑战赛</div>
+                    <div class="postList" @click="tab(item.message[0].id)">
+                      <div class="postList-date">{{item.postDate}}</div>
+                      <div class="postList-img-title" >
+                        <img :src="item.message[0].img" alt="">
+                        <div class="postList-title">{{item.message[0].postTitle}}</div>
                       </div>
                     </div>
-                    <div class="postData" v-for="(items,index) in postList.slice(1)" :key="index" @click="tab(index)">
-                        <div class="postData-title">中国已做好全面应对的准备，大国风范不外如是</div>
-                        <img class="postData-img" src="@/assets/PNG/中青年.png" alt="">
+                    <div class="postData" v-for="(items,index) in item.message.slice(1)" :key="index" @click="tab(items.id)">
+                        <div class="postData-title">{{items.postTitle}}</div>
+                        <img class="postData-img" :src="item.message.img" alt="">
                     </div>
                   </div>
 
@@ -55,7 +55,7 @@ export default {
     }
   },
   created () {
-
+    this.get_postList ()
   },
   methods: {
     // refresh () {
@@ -84,32 +84,32 @@ export default {
       this.$axios.post('/v1/manage/post/postList', {
         'page': this.page,
         'pageSize': this.pageSize,
-        'type': 1
+        'type': 0
       }).then(res => {
         
         console.log(res)
+        this.postList = res.data.data;
+        // if (res.data.data.length > 0 ) {
 
-        if (res.data.data.length > 0 ) {
-
-						if (this.page == 1) {
-							this.postList = res.data.data;
-						}
-						else {
-							this.postList = this.postList.concat(res.data.data);
-						}
-						this.page++;
-					} else {
-						//not more data
-						// this.finished = true;
-					}
+				// 		if (this.page == 1) {
+				// 			this.postList = res.data.data;
+				// 		}
+				// 		else {
+				// 			this.postList = this.postList.concat(res.data.data);
+				// 		}
+				// 		this.page++;
+				// 	} else {
+				// 		//not more data
+				// 		// this.finished = true;
+				// 	}
 					
-					if(res.data.data.length < this.page_size){
-						//not more data
-						// this.finished = true;
-					}
+				// 	if(res.data.data.length < this.page_size){
+				// 		//not more data
+				// 		// this.finished = true;
+				// 	}
 					
-					this.loading = false;
-					console.log(res.data.data.length);
+				// 	this.loading = false;
+				// 	console.log(res.data.data.length);
       })
     }
   }
@@ -148,29 +148,38 @@ export default {
   position: absolute;
   bottom: 0px;
   padding: 12px;
-  color: $c-bai;
+  // color: $c-bai;
 }
 .postList-img-title{
   width:351px;
   height:150px;
   border-radius:3px;
   overflow: hidden;
+  border-bottom: 1px solid #000;
+  img{
+    width: 100%;
+    height: 100%;
+  }
 }
 .postData{
   width:351px;
   height:75px;
   background: $c-bai;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   margin: auto;
+  border-bottom: 1px solid $c-cheng;
 }
 .postData-title{
   padding: 12px;
+  position: relative;
+  
 }
 .postData-img{
   width: 50px;
   height: 50px;
-  margin: 13px 14px 13px 0;
+  position: absolute;
+  right: 20px;
 }
 </style>

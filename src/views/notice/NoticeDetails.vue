@@ -48,9 +48,9 @@
           <section class="platform-result">
             <div class="result-title">调查过程</div>
             <div>
-              <div class="process" v-for="i in 3" :key="i">
-                <div class="Serial-number">{{i}}</div>
-                <div class="process-text">{{detaliList.investigation}}</div>
+              <div class="process" >
+                <!-- <div class="Serial-number">{{i}}</div> -->
+                <div class="process-text" v-html="detaliList.investigation">{{detaliList.investigation}}</div>
               </div>
             </div>
           </section>

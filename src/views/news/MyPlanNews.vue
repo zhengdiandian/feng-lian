@@ -69,14 +69,14 @@
                         :date=" '：' + ' ' +myplan.joinDate"
                         :name="myplan.contacs"
                     >
-                    <template v-slot:lable v-if="myplan.state == 500">
+                    <!-- <template v-slot:lable v-if="myplan.state == 500">
                         <div class="slot-lable">
-                            <!-- <img src="../assets/img/审核中.png" alt=""> -->
-                            <!-- <img src="../assets/img/通过.png" alt=""> -->
-                            <!-- <img src="../assets/img/驳回.png" alt=""> -->
+                            <img src="../assets/img/审核中.png" alt="">
+                            <img src="../assets/img/通过.png" alt="">
+                            <img src="../assets/img/驳回.png" alt="">
                             <img src="@/assets/img/已退款.png" alt="">
                         </div>
-                    </template>
+                    </template> -->
                     <!-- <template v-slot:AuditPass>
                       <div class="AuditPass">
                         123
@@ -114,12 +114,12 @@
                         :date=" '：' + ' ' +myplan.joinDate"
                         :name="myplan.contacs"
                     >
-                    <template v-slot:lable v-if="myplan.state == 500">
+                    <template v-slot:lable >
                         <div class="slot-lable">
                             <!-- <img src="../assets/img/审核中.png" alt=""> -->
                             <!-- <img src="../assets/img/通过.png" alt=""> -->
                             <!-- <img src="../assets/img/驳回.png" alt=""> -->
-                            <img src="@/assets/img/已退款.png" alt="">
+                            <img v-if="myplan.state == 500" src="@/assets/img/已退款.png" alt="">
                         </div>
                     </template>
                     <!-- <template v-slot:AuditPass>
