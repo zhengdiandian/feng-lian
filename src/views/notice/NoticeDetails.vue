@@ -12,30 +12,30 @@
           <div class="tips">为保护个人隐私，公示10日后不在展示用户信息</div>
           <div class="info">
             <section class="info-head">
-              <div class="info-img"><img src="" alt=""></div>
+              <div class="info-img"><img :src="detaliList.headPortrait" alt=""></div>
               <div class="info-text">
-                <div>姓名：Bryant.ZZ</div>
-                <div>男   42岁   终身重大疾病互助计划</div>
+                <div>姓名：{{detaliList.contacs}}</div>
+                <div>{{detaliList.sex == 1? '男': '女'}}   {{detaliList.age}}岁   {{detaliList.productName}}</div>
               </div>
             </section>
             <div class="xian"></div>
-            <div class="footer-text"><span>已加入互助计划490天，共分摊互助金为9.19元</span></div>
+            <div class="footer-text"><span>已加入互助计划{{detaliList.joinDays}}天，共分摊互助金为{{detaliList.totalApportion}}元</span></div>
           </div>
           <div class="text-info" style="display: flex"><span>上链信息</span><span style="flex: 2; overflow: hidden;text-overflow: ellipsis; white-space: nowrap">{{}}</span> <span class="btn text-blue" @click="$toast.success('复制成功')">点击复制</span></div>
           <section class="info-detalis">
             <div class="detalis">
-                <div>肺癌   申请20万元互助金</div>
-                <div>本期互助计划有 9000101位会员参与互助金分摊您将为该会员分摊 0.14元互助金</div>
+                <div>{{detaliList.illnessApply}}</div>
+                <div>本期互助计划有 {{detaliList.joinedCount}}位会员参与互助金分摊您将为该会员分摊 {{detaliList.apportionAverage}}元互助金</div>
             </div>
             <div class="detalis-date">
-              <div>公示日期：2019.04.10~2019.4.16</div>
-              <div>加入日期：2017.09.28</div>
-              <div>生效日期：2018.03.27</div>
+              <div>公示日期：{{detaliList.publicityDate}}</div>
+              <div>加入日期：{{detaliList.joinDate}}</div>
+              <div>生效日期：{{detaliList.effectiveDate}}</div>
             </div>
           </section>
           <section class="platform-result">
             <div class="result-title">平台审核结果</div>
-            <div class="result-content">根据《终身重大疾病互助计划》1.0，会员 可申请互助金{{200000}}元</div>
+            <div class="result-content">{{detaliList.auditResult}}</div>
             <div class="objection">
               <i class="iconfont iconyiyishenqing1"></i>
               <span>我有异议</span>
@@ -43,26 +43,30 @@
           </section>
           <section class="platform-result">
             <div class="result-title">事件概括</div>
-            <div class="result-content pad-buttom">会员  小兵张嘎  于2018年11月27日在北京同仁堂医院，病理确诊为肺癌。</div>
+            <div class="result-content pad-buttom">{{detaliList.incidentProbably}}</div>
           </section>
           <section class="platform-result">
             <div class="result-title">调查过程</div>
             <div>
               <div class="process" v-for="i in 3" :key="i">
                 <div class="Serial-number">{{i}}</div>
-                <div class="process-text">text</div>
+                <div class="process-text">{{detaliList.investigation}}</div>
               </div>
             </div>
           </section>
           <section class="platform-result">
             <div class="result-title">相关材料</div>
           
-            <div class="parent">
-              <div v-for="i in 9" :key="i">  
-                <div class="child">
-                  <img src="" alt="">
-                  
-                </div>
+            <div class="parent" style="text-align: center;">
+              <div v-for="(icon,index) in detaliList.imageDataList " :key="index">
+                <div class="chlid"><img :src="icon.imgDeal" alt=""></div>
+                <span v-if="icon.type === 1">体检报告</span>
+                <span v-if="icon.type === 2">缴费凭证</span>
+                <span v-if="icon.type === 3">申请表凭证</span>
+                <span v-if="icon.type === 4">病历报告</span>
+                <span v-if="icon.type === 5">诊断报告</span>
+                <span v-if="icon.type === 6">身份证</span>
+                <span v-if="icon.type === 7">银行卡</span>
               </div>
           </div>  
           </section>
@@ -72,7 +76,22 @@
 
 <script>
     export default {
-        name: 'NoticeDetails'
+        name: 'NoticeDetails',
+        data () {
+          return {
+            orderNo: this.$route.params.orderNo,
+            stage: this.$route.params.stage,
+            detaliList: {}
+          }
+        },
+        created() {
+          this.$axios.post('/v1/publicity/publicity/userPublicity',{
+            "orderNo": this.orderNo,
+            "stage": this.stage
+          }).then(res=>{
+            this.detaliList = res.data.data
+          })
+        }
     }
 </script>
 
@@ -86,16 +105,17 @@
   flex-flow: row wrap;
   align-content: flex-start;
 }
-
-.child {
-  box-sizing: border-box;
-  // background-color: white;
-  // flex: 0 0 33%;
+.chlid{
   width: 100px;
   height: 100px;
-  border: 1px solid red;
   margin-left: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  border: 1px solid darkcyan;
+  img{
+    width: 100%;
+    height: 100%;
+    // border: 1px solid red;
+  }
 }
 .process{
   display: flex;
@@ -204,7 +224,7 @@ main{
     height: 60px;
     border-radius: 50%;
     overflow: hidden;
-    background-color: red;
+    // background-color: red;
     margin-right: 13px;
     img{
       width: 100%;

@@ -378,7 +378,7 @@ export default {
     }
   }*/
 .card{
-  height: 180px;
+  height: 160px;
   margin: auto;
 }
 .plan-text{

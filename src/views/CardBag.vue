@@ -14,7 +14,7 @@
         <main v-if="cardList.length>0">
 
             <div class="BankCard">
-                <section class="bank" v-for="(bank,i) in cardList" :key="">
+                <section class="bank" v-for="(bank,i) in cardList" :key="i">
                     <div class="bankImg">
                         <img :src="bank.img" alt="">
                     </div>
@@ -27,15 +27,18 @@
                     </section>
                 </section>
             </div>
-            <div class="Reminder">
-                <div>温馨提示</div>
-                <span>系统只支持添加一张储蓄卡，更换储蓄卡，将添加新的储蓄卡，添加成功后自动替换原储蓄卡</span>
-                <span></span>
-            </div>
+            <!-- <div class="Reminder" >
+                <div>您的绑卡申请已提交</div>
+            </div> -->
           <div class="btn" @click="$router.push('/addBank')">更改银行卡</div>
 
         </main>
         <div class="none" v-else>
+          <div class="Reminder" >
+                <div>温馨提示</div>
+                <span>1、系统只支持添加一张储蓄卡，更换储蓄卡，将添加新的储蓄卡，添加成功后自动替换原储蓄卡</span>
+                <span>2.当您提交绑卡信息后，请刷新页面，如未显示卡片信息，说明绑卡失败，请重新绑卡。</span>
+            </div>
           <div class="btn" @click="$router.push('/addBank')">添加银行卡</div>
         </div>
         <!--<div class="issue" @click="$router.push('/bankIssue')">常见问题</div>-->
@@ -93,7 +96,7 @@
     color: $c-bai;
     background:$c-cheng;
     border-radius:17px;
-    margin: 18px auto 0px;
+    margin: auto;
   }
 main{
     padding-top: 12px;
@@ -140,7 +143,7 @@ main{
 .Reminder{
     width:351px;
     border-radius: 4px;
-    height: 92px;
+    // height: 92px;
     background: $c-bai;
     border-radius:5px;
     margin: auto;

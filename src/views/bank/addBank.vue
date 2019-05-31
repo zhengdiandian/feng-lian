@@ -153,7 +153,7 @@
             this.$toast.error(res.data.msg)
             return
           }
-          this.$toast.success('绑定成功')
+          this.$toast.success('您的绑卡申请已提交')
           setTimeout(() => {
             this.$router.push('/my')
           },3000)

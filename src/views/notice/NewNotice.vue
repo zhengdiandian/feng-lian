@@ -28,22 +28,25 @@
         {{nitice.joinedCount}}人参与，人均分摊{{nitice.shareCount}}元。</span>
       </div>
       <div class="notice-content">
-         <div class="parent-list">
-          <div class="parent-wrap active">
-            <img src="http:\\placehold.it\33x33" alt="" class="part" />
-          </div>
-          <div class="parent-wrap " v-for="i in 8" :key="i">
-            <img src="http:\\placehold.it\33x33" alt="" class="part" />
-          </div>
+        <div class="parent-list">
+
+            <div class="parent-wrap" :class="[ activeIndex == index ? 'active': '']" v-for="(item,index) in list" :key="index">
+              <img @click=" listActive(index)" :src="item.headPortrait" alt="" class="part" />
+            </div>
+
         </div>
-         <div class="notice-info">
-          <div class="title">霍貂蝉<span>已实名</span></div>
-          <div class="title">肝癌▪申请10万元互助金</div>
-          <div class="text">已加入蜂链互助572天，参与27次分摊，话费7.88元</div>
-          <div class="info-btn-wrap">
-            <div class="info-btn"><span>查看详情</span></div>
+
+          <div class="notice-info">
+            
+              <div class="title">{{acs.contacs}}<span>{{acs.state == 200? '已实名': '未实名'}}</span></div>
+              <div class="title">{{acs.illnessApply}}</div>
+              <div class="text">已加入蜂链互助{{acs.joinDays}}天，参与{{acs.shareTimes}}次分摊，话费{{acs.shareAmount}}元</div>
+
+              <div class="info-btn-wrap">
+                <div class="info-btn" @click="$router.push({name: 'NoticeDetails' , params: {stage: nitice.stage ,orderNo: acs.orderNo}})"><span>查看详情</span></div>
+              </div>
+
           </div>
-        </div>
        </div>
     </div>
     <mu-divider style="height: 5px;"></mu-divider>
@@ -58,7 +61,7 @@
         </div>
         <!-- <p class="card-row">本期剩余互助金 <span>￥0元</span></p> -->
         
-        <div class="card-btn" @click="$router.push('/NoticeDetails')">点击查看详情</div>
+        <div class="card-btn">点击查看详情</div>
       </div>
       <div class="contact-wrap">
         <div class="contact"><span class="iconfont iconlianxikefu"></span>联系客服</div>
@@ -77,12 +80,24 @@ export default {
   data () {
     return {
       page: 1,
-      pageSize: 15,
-      nitice: []
+      pageSize: 50,
+      nitice: [],
+      list: [],
+      acs: {},
+      activeIndex: 0,
+      index: 0,
+    }
+  },
+  methods: {
+    listActive(i) {
+      this.activeIndex = i
+      console.log(this.activeIndex)
+      // this.acs = this.list[i]
+      // console.log(this.acs)
     }
   },
   created() {
-    this.$axios.post('v1/publicity/publicity/detail',{
+    this.$axios.post('/v1/publicity/publicity/detail',{
       "page": this.page,
       "pageSize": this.pageSize
     }).then(res=>{
@@ -91,7 +106,8 @@ export default {
             return
         }
       this.nitice = res.data.data
-      console.log(this.nitice)
+      this.list = res.data.data.compensateList
+      this.acs = this.list[this.activeIndex]
     })
   }
 };
@@ -149,6 +165,7 @@ export default {
     border-bottom: 1px solid rgba(220, 220, 220, 1);
     overflow: auto;
     .parent-wrap {
+      display: flex;
       position: relative;
       margin-right: 12px;
       width: 33px;
