@@ -65,7 +65,7 @@
                 <div><label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"></div><span>我保证以上信息均真实有效，不存在虚拟和隐瞒情形，否则将视为自动放弃申请互助尽权力。</span>
             </div> -->
         </div>
-        <div class="btn" @click="submit">缴纳调查费用</div>
+        <div class="btn" v-promise-btn @click="submit">缴纳调查费用</div>
 
     </div>
 
@@ -112,7 +112,9 @@ export default {
                 switchVal:false,
                 switchVal1: false
                 },
-            tongYi: false
+            tongYi: false,
+            orderNo: '',
+            order: ''
       }
     },
     computed: {
@@ -124,18 +126,43 @@ export default {
         },
     },
     methods: {
-        submit() {}
+        submit() {
+          return this.$axios.post('v1/mutually/compensate/checkOrder',{
+            orderNo: this.orderNo
+          }).then(res => {
+            debugger
+            if(res.data.code!==200){
+              this.$toast.error(res.data.msg)
+              return
+            }
+            if(res.data.code===200){
+              debugger
+              this.order = res.data.data
+              window.location = `${this.$axios.defaults.baseURL}/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=&type=1`
+              console.log(res)
+            }
+
+          })
+        }
     },
     created() {
         console.log(this.$data)
+      debugger
         this.$axios.post('v1/mutually/compensate/compensateDetail',{
-            planNo: this.$route.query.planNo
+            orderNo: this.$route.query.orderNo
         }).then(res => {
+          debugger
              if(res.data.code!==200){
                 this.$toast.error(res.data.msg)
                 return
             }
-            this.$data = res.data.data
+             debugger
+          let {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus, hospitalName ,insuranceCompany, compensateState,orderNo } = res.data.data
+          contacsIdNo = this.Util.decrypt(contacsIdNo)
+          this.orderNo = orderNo
+          this.$data = Object.assign(this.$data, {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus ,hospitalName, insuranceCompany, compensateState})
+          // this.switchData.switchVal = !!res.data.data.socialSecurityFlag
+          this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
             // this.contacs = data.contacs
             // this.
         })

@@ -110,29 +110,31 @@ export default {
     },
     methods: {
         getFile(file, imgUrl,base) {
-        this.payProve.push(imgUrl)
+          debugger
+        this.payProve.push(file)
         debugger
         // this[params] = file;
         },
         getApplyForm(file, imgUrl, base ) {
-            this.applyForm.push(imgUrl)
+            this.applyForm.push(file)
         },
         getIllnessInform(file, imgUrl, base ) {
-            this.illnessInform.push(imgUrl)
+            this.illnessInform.push(file)
         },
         getTreatProve(file, imgUrl, base ) {
-            this.treatProve.push(imgUrl)
+            this.treatProve.push(file)
         },
         getContacsId(file, imgUrl, base ) {
-            this.contacsId.push(imgUrl)
+            this.contacsId.push(file)
         },
         getCardImg(file, imgUrl, base ) {
-            this.cardImg = imgUrl
+            this.cardImg = file
         },
 
 
 
         submit() {
+          debugger
             return this.$axios.post('v1/mutually/compensate/compensateApplyImg', {
             orderNo: this.$route.query.orderNo,
             payProve: this.payProve.toString(),
@@ -150,6 +152,8 @@ export default {
                     this.$toast.error(res.data.msg)
                     return
                 }
+                this.$toast.success('提交成功等待审核')
+                this.$router.push('/myPlanNews')
             })
         },
         closeBottomSheet () {

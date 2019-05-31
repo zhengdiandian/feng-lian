@@ -4,7 +4,7 @@
       <mu-button icon slot="left" @click="$router.go(-1)">
         <mu-icon value=":iconfont iconfanhui" @click="$router.go(-1)"></mu-icon>
       </mu-button>
-
+        申请秒赔
       <mu-button icon slot="right" :ripple="false" >
         <!--<mu-icon value=":iconfont iconshubanshenglvehao" size="24"></mu-icon>-->
       </mu-button>

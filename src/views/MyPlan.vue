@@ -91,7 +91,7 @@
         </main>
 <!--        <footerBtn></footerBtn>-->
         <footer>
-            <div class="ordinary-claims" @click="toComponsate">申请理赔</div>
+            <div class="ordinary-claims" v-promise-btn @click="toComponsate">申请理赔</div>
             <div class="Second-claims">申请秒赔</div>
         </footer>
     </div>
@@ -116,7 +116,8 @@ export default {
             planNo: "",
             activeIndex: null,
             productCode: '',
-            relationList: []
+            relationList: [],
+            activeIndex: 0
 
         }
     },
@@ -130,34 +131,81 @@ export default {
         toComponsate() {
         debugger
             return this.$axios.post('v1/mutually/compensate/compensateDetail',{
-                planNo: this.myplan.list[this.activeIndex].planNo
+                orderNo: this.myplan.list[this.activeIndex].planNo
             }).then(res => {
+              debugger
+                  if(res.data.code === 8888) {
+                    debugger
+                    this.$router.push({
+                      path: '/compensate/inputForm',
+                      query: {
+                        type: 0,
+                        planNo: this.myplan.list[this.activeIndex].planNo,
+                        first: res.data.code
+                      }
+                    })
+                    return
+                  }
                 if(res.data.code !==200){
                     this.$toast.error(res.data.msg)
                     return
                 }
                 let state = res.data.data.state
-                if(state=300) {
+                if(state==300) {
                     this.$toast.success('初审审核中')
                     return
                 }
                 if(state ==400) {
+                    //todo  去支付费用
+                  this.$router.push({
+                    path: '/compensate/defrayment',
+                    query: {
+                      orderNo: this.myplan.list[this.activeIndex].planNo
+                    }
 
+                  })
                 }
-                if(state = 0) {
-                this.$router.push({
+                debugger
+                if(res.data.code === 8888) {
+                  debugger
+                  this.$router.push({
                     path: '/compensate/inputForm',
                     query: {
-                    type: 1,
-                    planNo: this.myplan.list[this.activeIndex].planNo
+                      type: 1,
+                      planNo: this.myplan.list[this.activeIndex].planNo
                     }
-                 })
+                  })
+                }
+                if(state == 0) {
+                  debugger
+                    this.$router.push({
+                        path: '/compensate/inputForm',
+                        query: {
+                        type: 0,
+                        planNo: this.myplan.list[this.activeIndex].planNo
+                        }
+                     })
                 }
             })
 
         }
     },
     created() {
+      // this.$axios.get('/v1/mutually/plan/planList').then(res=>{
+      //   if(res.data.code !==200){
+      //     this.$toast.error(res.data.msg)
+      //     return
+      //   }
+      //   console.log(res)
+      //   this.myplan = res.data.data
+      //   // console.log(this.myplan)
+      //   this.myplan.list.forEach(element => {
+      //     this.planNo = element.planNo
+      //     this.productCode = element.productCode
+      //     console.log(this.productCode)
+      //   });
+      // })
+
       this.$axios.get('v1/family/info/familyList').then(res=>{
         if(res.data.code !==200){
           this.$toast.error(res.data.msg)
@@ -278,6 +326,8 @@ footer{
         height: 100%;
         background-color: #f26d00;
     }
+
+}
 .btn-wrap{
   width:80px;
   height:33px;
@@ -286,6 +336,5 @@ footer{
   margin: 20px 0 0 10px;
   color: $c-cheng;
   line-height: 33px;
-}
 }
 </style>

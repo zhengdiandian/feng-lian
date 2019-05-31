@@ -20,7 +20,7 @@
         <div class="input-box-line"></div>
         <div class="content">
             <div class="input-box"><label >疾病名称:</label><input v-model="illnessName" placeholder="请填写受助者详细的疾病名称" type="text"></div>
-            <div class="input-box"><label >确诊医院:</label><input placeholder="请填写确诊医院" type="text"></div>
+            <div class="input-box"><label >确诊医院:</label><input v-model="hospitalName" placeholder="请填写确诊医院" type="text"></div>
             <div class="input-box" @click="openBotttomSheet">
                 <label >事故发生时间:</label>
                 <div class="select"><span class="placeholder-text" v-if="incidentTime===''">请选择事故发生时间</span><span>{{incidentTime}}</span><span class="iconfont iconxiangshangshouqi1"></span>
@@ -44,9 +44,9 @@
         <div class="content">
             <div class="input-box switch"><label >是否有商业保险：:</label> <div class="right"><mu-switch v-model="switchData.switchVal1" color="#f8b62d" :label="switchText.label1"></mu-switch></div> </div>
             <div class="input-box"><label >保险公司名称:</label><input v-model="insuranceCompany" placeholder="请填写保险公司名称" type="text"></div>
-            <div class="input-box" @click="openBotttomSheet">
+            <div class="input-box" @click="showCompensateState=true">
                 <label>目前理赔状况:</label>
-                <div class="select"><span class="placeholder-text" v-if="compensateState===''">请选择目前理赔状况</span><span>{{province}}</span><span> {{city}}</span><span class="iconfont iconxiangshangshouqi1"></span>
+                <div class="select"><span class="placeholder-text" v-if="compensateState===''">请选择目前理赔状况</span><span>{{compensateState}}</span><span class="iconfont iconxiangshangshouqi1"></span>
                 </div>
             </div>
         </div>
@@ -79,6 +79,12 @@
                 :link='true'
                 @cancel="showLocation=false"
                 @confirm="confirmFn1"
+        ></vue-picker>
+        <vue-picker
+                :show="showCompensateState"
+                :select-data="compensateStateSelectData"
+                @cancel="showCompensateState=false"
+                @confirm="confirmFn2"
         ></vue-picker>
 <!--        <mu-bottom-sheet :open="true"></mu-bottom-sheet>-->
 <!--        <mu-container>-->
@@ -142,6 +148,7 @@
         illnessName: '',
         // incidentTime: '',
         // location: '',
+        hospitalName: '',
         locationProvince: '',
         locationCity: '',
         locationCounty: '',
@@ -154,6 +161,7 @@
         bodyStatus: '',
         showAddress: false,
         showLocation: false,
+        showCompensateState: false,
         province: '',
         city: '',
         county: '',
@@ -168,6 +176,11 @@
             switchVal:false,
             switchVal1: false
             },
+        compensateStateSelectData: {data1: [
+            {text: '核定阶段',value: '核定阶段'},
+            {text: '已赔付', value: '已赔付'},
+            {text: '被驳回', value: '被驳回'}
+          ]},
         tongYi: false
       }
     },
@@ -189,6 +202,29 @@
 
 
         },
+    },
+    created() {
+      debugger
+      if(this.$route.query.first != 8888) {
+        this.$axios.post('v1/mutually/compensate/compensateDetail',{
+          orderNo: this.$route.query.planNo
+        }).then(res => {
+          if(res.data.code!==200){
+            this.$toast.error(res.data.msg)
+            return
+          }
+          debugger
+          let {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus, hospitalName ,insuranceCompany, compensateState } = res.data.data
+          contacsIdNo = this.Util.decrypt(contacsIdNo)
+
+          this.$data = Object.assign(this.$data, {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus ,hospitalName, insuranceCompany, compensateState})
+          // this.switchData.switchVal = !!res.data.data.socialSecurityFlag
+          this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
+
+          // this.contacs = data.contacs
+          // this.
+        })
+      }
     },
     methods: {
       submit() {
@@ -213,7 +249,7 @@
           }
         this.$axios.post('v1/mutually/compensate/compensateApplyText', {
             contacs: this.contacs,
-            contacsIdNo: this.contacsIdNo,
+            contacsIdNo: this.Util.encrypt(this.contacsIdNo),
             phone: this.phone,
             email: this.email,
             job: this.job,
@@ -225,7 +261,7 @@
             illnessName: this.illnessName,
             incidentTime: this.incidentTime,
             socialSecurityFlag: +this.switchData.switchVal,
-            businessInsureFlag: this.switchData.switchVal1,
+            businessInsureFlag: +this.switchData.switchVal1,
             locationProvince: this.locationProvinceValue,
             locationCity: this.locationCityValue,
             locationCounty: this.locationCountyValue,
@@ -234,7 +270,8 @@
             incidentDetail: this.incidentDetail,
             bodyStatus: this.bodyStatus,
             type: this.$route.query.type,
-            planNo: this.$route.query.planNo
+            planNo: this.$route.query.planNo,
+            hospitalName: this.hospitalName,
             
             
 
@@ -245,7 +282,7 @@
                 return
             }
             this.$toast.success('提交成功,请继续操作')
-            this.$router.push({path: '/compensate/imageForm', query: {planNo: this.$route.query.planNo}})
+            this.$router.push({path: '/compensate/imageForm', query: {orderNo: res.data.data}})
 
         })
       },
@@ -279,6 +316,14 @@
         this.locationCityValue = val.select2.value
         this.locationCountyValue = val.select3.value
         this.locationCounty = val.select3.text
+        // this.defaultData = [val.select1];
+      },
+      confirmFn2(val) {
+        debugger
+        this.showCompensateState = false;
+        this.compensateState = val.select1.text
+          // .substring(0,val.select1.text.length -1)
+
         // this.defaultData = [val.select1];
       },
     }
