@@ -85,11 +85,13 @@
       </div>
     <!-- <mu-divider style="height:5px;"></mu-divider> -->
     <div class="select-wrap">
-      <!-- <div class="font margin-bottom margin-top">选择关系</div>
+       <div class="font margin-bottom margin-top">选择关系</div>
       <div class="select-items">
-        <div class="item" v-for="(item, i) in btnList"  :key="i" :class="{'active': activeIndex == i}" @click="activeIndex=i">{{item}}</div>
+        <div class="item" v-for="(item, i) in familyList"  :key="i" :class="{'active': activeIndex == i}" @click="activeIndex=i">{{item.relationDesc}}</div>
+          <div class="item active"  @click="$router.push('/selectAddFamily')" >添加家人</div>
 
-      </div> -->
+      </div>
+
       <div class="font margin-top">预计使用10个月</div>
       <!--<mu-slider class="demo-slider" v-model="normal.value1"></mu-slider>-->
       <!--<mu-slider class="demo-slider" :display-value="false" :step="10" v-model="sliderVal"></mu-slider>-->
@@ -159,7 +161,8 @@ export default {
       ],
       activeIndex: 0,
       order: [],
-      agentUserCode: ''
+      agentUserCode: '',
+      familyList: []
     }
   },
   computed:{
@@ -198,9 +201,9 @@ export default {
               "inviteCode": this.agentUserCode,
               "orderAmount": this.amount, // 金额
               "productCode": this.MutualRule.productCode,
-              "relationShip": 0,
+              "relationShip": this.familyList[this.activeIndex].relation,
               "stageCount": this.serviceTime,
-              // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
+              "relationCode": this.familyList[this.activeIndex].userCode, // 自己， 父母 ，子女 ，配偶
               "type": 2
             }).then((res)=> {
               debugger
@@ -247,6 +250,26 @@ export default {
       }
       this.agentUserCode = res.data.data.userCode
 
+    })
+    this.$axios.post('v1/family/info/familyList').then(res => {
+      if(res.data.code !== 200){
+        this.$toast(res.data.data.msg)
+      }
+      this.familyList = res.data.data
+      this.familyList.unshift({
+        relation: 0,
+        relationDesc: '自己',
+        userCode: this.userInfo.userCode
+
+      })
+      console.log('family',res)
+    }).catch(e => {
+      this.familyList.unshift({
+        relation: 0,
+        relationDesc: '自己',
+        userCode: this.userInfo.userCode
+
+      })
     })
   },
   mounted() {
@@ -336,7 +359,7 @@ export default {
     }
   }*/
 main{
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 }
 .mu-header{
   margin: 56px 0 12px 12px;
@@ -464,13 +487,16 @@ main{
   margin: auto;
   .select-items{
     display: flex;
-    justify-content: space-between;
+      flex-wrap: wrap;
+    justify-content: start;
     .item {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 20%;
+      width: 18%;
       background-color: $c-hui;
+        margin-right: 10px;
+        margin-bottom: 10px;
       border-radius: 5px;
       color: #fff;
     }

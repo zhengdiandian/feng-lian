@@ -16,7 +16,7 @@
             <div class="input-box" @click="showRelation=true"><label >选择关系:</label><div class="select"><span class="placeholder-text" v-if="relation===''">请选择关系</span><span>{{relation}}</span> <span> </span><span class="iconfont iconyou1"></span></div></div>
 
         </div>
-        <div class="submit" @click="submit">完成</div>
+        <div class="submit" v-promise-btn @click="submit">完成</div>
         <vue-picker
             :show="showAddress"
             :columns="2"
@@ -92,7 +92,7 @@
           // this.warnTips({txt:'请输入正确的身份证号码'});
           return false;
         }
-        this.$axios.post('v1/family/info/addFamily', {
+        return  this.$axios.post('v1/family/info/addFamily', {
           contacs: this.contacs,
           contacsIdNo: this.contacsIdNo,
           province: this.provinceValue,
