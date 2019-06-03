@@ -138,7 +138,7 @@
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
-        服务费: <span class="margin-left font-min"> &nbsp;&nbsp;{{MutualRule.annualPrice}}</span>
+        服务费: <span class="margin-left font-min"> &nbsp;&nbsp;{{rechargeAnnualAmount}}</span>
         <mu-divider></mu-divider>
       </div>
       <div class="buy-info">
@@ -192,7 +192,8 @@ export default {
       myplan: [],
       productCode: this.$route.query.productCode,
       planNo: this.$route.query.planNo,
-      item: {}
+      item: {},
+      rechargeAnnualAmount: this.$route.query.rechargeAnnualAmount,
     }
   },
   computed:{
@@ -225,16 +226,18 @@ export default {
           return
         }
         debugger
-        this.$axios.post('v1/mutually/plan/checkOrder',{
-              "contacs": this.userInfo.contacs, // 姓名
-              "contacsIdNo": this.userInfo.contacsIdNo , //身份证
-              "inviteCode": this.agentUserCode, //邀请码
-              "orderAmount": this.amount, // 金额
-              "productCode": this.productCode, //产品编码
-              "stageCount": this.serviceTime, //购买期数
-              "relationShip": 0, //0=自己，1=爱人，2=父亲，3=母亲，4=儿子，5=女儿
-              "relationCode": this.agentUserCode, //家人邀请码
+        this.$axios.post('/v1/mutually/plan/rechargeOrder',{
+              // "contacs": this.userInfo.contacs, // 姓名
+              // "contacsIdNo": this.userInfo.contacsIdNo , //身份证
+              // "inviteCode": this.agentUserCode, //邀请码
+              // "orderAmount": this.amount, // 金额
+              // "productCode": this.productCode, //产品编码
+              // "stageCount": this.serviceTime, //购买期数
+              // "relationShip": 0, //0=自己，1=爱人，2=父亲，3=母亲，4=儿子，5=女儿
+              // "relationCode": this.agentUserCode, //家人邀请码
               // "type": 2 //不用传
+              "planNo": this.planNo,
+              "stageCount": this.serviceTime
             }).then((res)=> {
               debugger
                 if(res.data.code!==200){

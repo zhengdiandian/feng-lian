@@ -147,7 +147,8 @@
           name: 'recharge',
           query: {
             productCode: this.productCode,
-            planNo: this.planNo
+            planNo: this.planNo,
+            rechargeAnnualAmount: this.panned.rechargeAnnualAmount
           }
         })
       },

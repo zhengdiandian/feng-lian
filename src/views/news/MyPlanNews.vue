@@ -152,6 +152,7 @@
 </template>
 <script>
 import card from '@/components/Card/Card'
+import { debug } from 'util';
 export default {
     name: 'myplannews',
     components: {
@@ -179,14 +180,43 @@ export default {
         //     })
         // }
         // 
+        get_list(flag){
+          
+          this.$axios.get('/v1/mutually/plan/planList',{ //我的计划接口
+          "page": this.page,
+          "pageSize": this.pageSize
+        }).then(res=>{
+            if(res.data.code !==200){
+              this.$toast.error(res.data.msg)
+              return
+            }
+            if(flag){
+            this.myplan = res.data.data
+
+            }else {
+              this.myplan = Object.assign({}, this.myplan, res.data.data)
+              // this.myplan = this.myplan.concat(res.data.data)
+              // this.$set(this.myplan , this.myplan.concat(res.data.data))
+            }
+            this.loading = false
+            console.log(res)
+        })
+        },
         load () {
+          debugger
           this.loading = true;
-          setTimeout(() => {
-            this.loading = false;
-            this.num += 10;
-          }, 2000)
+          this.page++ 
+          this.get_list()
+
+          // setTimeout(() => {
+          //   this.loading = false;
+          //   this.num += 10;
+          // }, 2000)
         }
   
+    },
+    created() {
+      this.get_list(true)
     },
     mounted() {
         // this.$axios.get('/v1/mutually/compensate/megList',{ //计划消息接口
@@ -200,17 +230,7 @@ export default {
         //     console.log(res)
         //     this.myplan = res.data.data
         // })
-        this.$axios.get('/v1/mutually/plan/planList',{ //我的计划接口
-          "page": this.page,
-          "pageSize": this.pageSize
-        }).then(res=>{
-            if(res.data.code !==200){
-              this.$toast.error(res.data.msg)
-              return
-            }
-            console.log(res)
-            this.myplan = res.data.data
-        })
+        
     }
 }
 </script>
