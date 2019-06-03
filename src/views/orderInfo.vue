@@ -100,7 +100,7 @@ export default {
         .get(
           `v1/mutually/payOrder/wxPay?openId=${this.$route.query.openId}&orderNo=${
             this.$route.query.orderNo
-          }`
+          }&type=${this.$route.query.type}`
         )
         .then(res => {
           debugger
