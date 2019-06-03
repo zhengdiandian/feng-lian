@@ -99,6 +99,7 @@
         showpop: false,
         title: this.$route.query.title,
         productCode: this.$route.query.productCode,
+        planNo: this.$route.query.planNo,
         position: 'bottom',               // 弹出的位置
         time: 2000,                       // 显示的时长
         closeIcon: 'close',               // 关闭的图标
@@ -144,7 +145,11 @@
       rechargeTo() {
         this.$router.push({
           name: 'recharge',
-          params: {productCode: this.productCode}
+          query: {
+            productCode: this.productCode,
+            planNo: this.planNo,
+            rechargeAnnualAmount: this.panned.rechargeAnnualAmount
+          }
         })
       },
       showTui() {

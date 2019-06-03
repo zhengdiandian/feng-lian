@@ -43,7 +43,7 @@
               <div class="text">已加入蜂链互助{{acs.joinDays}}天，参与{{acs.shareTimes}}次分摊，话费{{acs.shareAmount}}元</div>
 
               <div class="info-btn-wrap">
-                <div class="info-btn" @click="$router.push({name: 'NoticeDetails' , params: {stage: nitice.stage ,orderNo: acs.orderNo}})"><span>查看详情</span></div>
+                <div class="info-btn" @click="$router.push({name: 'NoticeDetails' , query: {stage: nitice.stage ,orderNo: acs.orderNo}})"><span>查看详情</span></div>
               </div>
 
           </div>

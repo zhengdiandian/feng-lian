@@ -58,6 +58,11 @@
             </div> -->
             <div class="purchase-plan" >
                 <span  class="plan-text">我的购买计划</span>
+
+
+<mu-paper :z-depth="1" class="demo-loadmore-wrap">
+    <mu-container ref="container" class="demo-loadmore-content">
+        <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
                 <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
                     <card :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
                         :img="myplan.headPortrait"
@@ -80,11 +85,17 @@
                     </template>
                     <template v-slot:btnOpen>
                         <div class="btn-wrap">
-                            <div class="btn content-center" @click="open">查看计划</div>
+                            <div class="btn content-center" @click="$router.push({name: 'planInitial',query:{planNo: myplan.planNo, productCode: myplan.productCode}})">查看计划</div>
                         </div>
                     </template>
                     </card>
                     </section>
+            </mu-load-more>
+        </mu-container>
+    </mu-paper>
+
+
+
             </div>
         </main>
         <!-- <footerBtn></footerBtn> -->
@@ -108,38 +119,74 @@ export default {
             name: 'Bytan.zZ',
             myplan: [],
             planNo: '',
-            productCode: ''
+            productCode: '',
+            refreshing: false,
+            loading: false,
+            page: 1,
+            pageSize: 5
         }
     },
     methods:{
-        open() {
-            this.$router.push({
-                name: 'planInitial',
-                query:{planNo: this.planNo, productCode: this.productCode}
-            })
-        }
-    },
-    mounted() {
-        this.$axios.get('/v1/mutually/plan/planList').then(res=>{
+        // open() {
+        //     this.$router.push({
+        //         name: 'planInitial',
+        //         query:{planNo: this.planNo, productCode: this.productCode}
+        //     })
+        // }
+        get_myplan(){
+            this.$axios.get('/v1/mutually/plan/planList',{
+                "page": this.page,
+                "pageSize": this.pageSize
+            }).then(res=>{
             if(res.data.code !==200){
               this.$toast.error(res.data.msg)
               return
             }
             console.log(res)
             this.myplan = res.data.data
-            // console.log(this.myplan)
-            this.myplan.list.forEach(element => {
-                this.planNo = element.planNo
-                this.productCode = element.productCode
-                console.log(this.planNo)
-            });
         })
+        },
+        refresh () {
+            this.refreshing = true;
+            this.$refs.container.scrollTop = 0;
+            setTimeout(() => {
+                this.refreshing = false;
+                // this.text = this.text === 'List' ? 'Menu' : 'List';
+                // this.num = 10;
+            }, 2000)
+        },
+        load () {
+            this.loading = true;
+            setTimeout(() => {
+                this.loading = false;
+                // this.num += 10;
+            }, 2000)
+        }
+    },
+    mounted() {
+        this.get_myplan()
     }
 }
 </script>
 <style scoped lang="scss">
 .card{
     height: 160px;
+}
+.demo-loadmore-wrap {
+  width: 100%;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  background-color: $c-bai;
+  .mu-appbar {
+    width: 100%;
+  }
+}
+.demo-loadmore-content {
+  // flex: 1;
+  overflow: auto;
+  width: 100%;
+  // -webkit-overflow-scrolling: touch;
 }
 .slot-lable{
     // width: 100px;
