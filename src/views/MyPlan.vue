@@ -256,7 +256,7 @@ export default {
     }
 }
 .card{
-    height: 160px;
+
 }
 span{
       
@@ -265,11 +265,22 @@ span{
     margin-bottom: 10px;
 }
 .card{
+    position: relative;
+    height: 160px;
+
+
     &.active{
-        background-color: $c-cheng;
+    }
+    .selected{
+        position: absolute;
+        top: 20px;
+        right: 30px;
+    }
+    .iconxuanzhong{
+        color: red;
     }
     padding: 0px 12px;
-    /*margin: auto;*/
+    margin: auto;
 }
 .add-family-list{
     display: flex;
