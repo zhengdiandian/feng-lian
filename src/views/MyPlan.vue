@@ -274,11 +274,12 @@ span{
     }
     .selected{
         position: absolute;
-        top: 20px;
+        top: 50%;
+        transform: translateY(-50%);
         right: 30px;
     }
     .iconxuanzhong{
-        color: red;
+        color: $c-bai;
     }
     padding: 0px 12px;
     margin: auto;
