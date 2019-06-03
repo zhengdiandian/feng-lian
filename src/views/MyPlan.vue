@@ -86,6 +86,7 @@
                             </template>
                         </card>
                     </div>
+                    <div class="selected iconfont iconxuanzhong" ></div>
                 </section>
             </div>
         </main>
