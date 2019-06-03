@@ -83,17 +83,17 @@
     <!-- <mu-divider style="height:5px;"></mu-divider> -->
     <div class="purchase-plan" >
                 <span  class="plan-text">充值计划</span>
-                <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
+                <section class="card" style="margin:0;">
                     <card :open="() => {}"
-                        :img="myplan.headPortrait"
-                        :state="myplan.payState==100?'未实名':'已实名'"
-                        :productName="myplan.productName"
+                        :img="item.headPortrait"
+                        :state="item.payState==100?'未实名':'已实名'"
+                        :productName="item.productName"
                         :amount="amounta"
-                        :amountMoney="myplan.balance"
-                        :waiting="myplan.leftWattingDays + '天'"
+                        :amountMoney="item.balance"
+                        :waiting="item.leftWattingDays + '天'"
                         :waitingperiod="waitingperiod"
-                        :date=" ':' +myplan.joinDate"
-                        :name="myplan.contacs"
+                        :date=" ':' +item.joinDate"
+                        :name="item.contacs"
                     >
                     </card>
                     </section>
@@ -189,7 +189,10 @@ export default {
       activeIndex: 0,
       order: [],
       agentUserCode: '',
-      myplan: []
+      myplan: [],
+      productCode: this.$route.query.productCode,
+      planNo: this.$route.query.planNo,
+      item: {}
     }
   },
   computed:{
@@ -223,15 +226,15 @@ export default {
         }
         debugger
         this.$axios.post('v1/mutually/plan/checkOrder',{
-              "contacs": this.userInfo.contacs,
-              "contacsIdNo": this.userInfo.contacsIdNo ,
-              "inviteCode": this.agentUserCode,
+              "contacs": this.userInfo.contacs, // 姓名
+              "contacsIdNo": this.userInfo.contacsIdNo , //身份证
+              "inviteCode": this.agentUserCode, //邀请码
               "orderAmount": this.amount, // 金额
-              "productCode": this.MutualRule.productCode,
-              "relationShip": 0,
-              "stageCount": this.serviceTime,
-              // "relationShip": this.activeIndex, // 自己， 父母 ，子女 ，配偶
-              "type": 2
+              "productCode": this.productCode, //产品编码
+              "stageCount": this.serviceTime, //购买期数
+              "relationShip": 0, //0=自己，1=爱人，2=父亲，3=母亲，4=儿子，5=女儿
+              "relationCode": this.agentUserCode, //家人邀请码
+              // "type": 2 //不用传
             }).then((res)=> {
               debugger
                 if(res.data.code!==200){
@@ -241,7 +244,7 @@ export default {
               if(res.data.code===200){
                 debugger
                 this.order = res.data.data
-                window.location = `${this.$axios.defaults.baseURL}/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=${this.$route.params.productCode}`
+                window.location = `${this.$axios.defaults.baseURL}/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=${this.$route.query.productCode}`
                 console.log(res)
                 // this.$axios.post('v1/mutually/payOrder/orderCheck',{
                 //   orderNo: this.$route.params.productCode,
@@ -272,7 +275,7 @@ export default {
   },
   created() {
     this.$axios.post('/v1/product/product/productDetail',{  // 产品详情
-        "productCode": this.$route.params.productCode
+        "productCode": this.productCode
       }).then(res=>{
           if(res.data.code !==200){
                 this.$toast.error(res.data.msg)
@@ -285,20 +288,35 @@ export default {
       if(res.data.data.code){
         this.$toast(res.data.data.msg)
       }
-      this.agentUserCode = res.data.data.userCode
-
+        this.agentUserCode = res.data.data.userCode
     })
 
+    this.$axios.post('/v1/mutually/plan/planDetail',{
+      "planNo": this.planNo
+    }).then(res => {
+      this.item = res.data.data
+    })
 
-    this.$axios.get('/v1/mutually/plan/planList').then(res=>{
-            if(res.data.code !==200){
-                this.$toast.error(res.data.msg)
-                return
-            }
-            // console.log(res)
-            this.myplan = res.data.data
-            // console.log(this.myplan)
-        })
+    this.$axios.post('/v1/family/info/familyList').then(res=>{
+      console.log(res)
+    })
+    // this.$axios.get('/v1/mutually/plan/planList').then(res=>{
+    //         if(res.data.code !==200){
+    //             this.$toast.error(res.data.msg)
+    //             return
+    //         }
+    //         debugger
+    //         // console.log(res)
+    //         this.myplan = res.data.data.list.filter( item => { 
+    //           debugger
+    //           if(item.planNo === this.$route.params.planNo) {
+    //             return item
+    //           }
+    //           this.item = item
+    //           // console.log(this.item)
+    //           } )
+    //         // console.log(this.myplan)
+    //     })
   },
   mounted() {
     // this.$axios.post('/v1/user/info/getCertifyInfo').then(res=>{

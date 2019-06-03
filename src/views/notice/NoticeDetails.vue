@@ -59,30 +59,42 @@
           
             <div class="parent" style="text-align: center;">
               <div v-for="(icon,index) in detaliList.imageDataList " :key="index">
-                <div class="chlid"><img :src="icon.imgDeal" alt=""></div>
-                <span v-if="icon.type === 1">体检报告</span>
-                <span v-if="icon.type === 2">缴费凭证</span>
-                <span v-if="icon.type === 3">申请表凭证</span>
-                <span v-if="icon.type === 4">病历报告</span>
-                <span v-if="icon.type === 5">诊断报告</span>
-                <span v-if="icon.type === 6">身份证</span>
-                <span v-if="icon.type === 7">银行卡</span>
+                <div class="chlid" @click="show_picture(icon.imgDeal)"><img :src="icon.imgDeal" alt=""></div>
+                <span v-if="icon.type === 0">体检报告</span>
+                <span v-if="icon.type === 1">缴费凭证</span>
+                <span v-if="icon.type === 2">申请表凭证</span>
+                <span v-if="icon.type === 3">病历报告</span>
+                <span v-if="icon.type === 4">诊断报告</span>
+                <span v-if="icon.type === 5">身份证</span>
+                <span v-if="icon.type === 6">银行卡</span>
               </div>
           </div>  
           </section>
         </main>
+        <PopBox v-if="show_pic" style="z-index: 666666;">
+          <div class="pic_img">
+              <img :src="shiLiImg" alt="">
+              <div class="btn" @click="show_pic = false"><i class="iconfont iconcha"></i></div>
+          </div>
+        </PopBox>
     </div>
 </template>
 
 <script>
+import PopBox from '../../components/PopBox/PopBox'
     export default {
         name: 'NoticeDetails',
         data () {
           return {
-            orderNo: this.$route.params.orderNo,
-            stage: this.$route.params.stage,
-            detaliList: {}
+            orderNo: this.$route.query.orderNo,
+            stage: this.$route.query.stage,
+            detaliList: {},
+            show_pic: false,
+            shiLiImg: ''
           }
+        },
+        components: {
+          PopBox
         },
         created() {
           this.$axios.post('/v1/publicity/publicity/userPublicity',{
@@ -90,12 +102,21 @@
             "stage": this.stage
           }).then(res=>{
             this.detaliList = res.data.data
+            console.log(this.detaliList)
           })
+        },
+        methods: {
+          show_picture(imgSrc) {
+            this.shiLiImg = imgSrc
+            // console.log(i)
+            this.show_pic = true
+          },
         }
     }
 </script>
 
 <style lang="scss" scoped>
+
 #app>div{
   background:rgba(245,245,245,1);
 }
@@ -104,6 +125,20 @@
   display: flex;
   flex-flow: row wrap;
   align-content: flex-start;
+}
+.pic_img{
+  width: 375px;
+  height: 300px;
+  img{
+    width: 100%;
+    height: 100%;
+  }
+  .btn{
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    color: #fff;
+  }
 }
 .chlid{
   width: 100px;

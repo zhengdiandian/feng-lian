@@ -84,15 +84,16 @@
                     </template> -->
                     <template v-slot:btnOpen>
                         <div class="btn-wrap">
-                            <div class="btn content-center">查看计划</div>
+                            <div class="btn content-center" @click="$router.push({name: 'planInitial',query:{planNo: myplan.planNo, productCode: myplan.productCode}})">查看计划</div>
                         </div>
                     </template>
                     </card>
-                    </section>
                     <div class="text">
                       您于2019年4月9日申请的互助，在初审阶段已审核通过，请继续关注该申请的动态消息。
                     </div>
                     <div class="customer">如有疑问请咨询客服热线 <span>010-56248620</span></div>
+                    </section>
+                    
             </div>
 
 
@@ -101,9 +102,13 @@
 
             <div class="historical-record" >
               <div class="apply">历史记录</div>
-              <div>data</div>
+              <div style="padding-left: 12px;">data</div>
+
+              <mu-paper :z-depth="1" class="demo-loadmore-wrap">
+                <mu-container ref="container" class="demo-loadmore-content">
+                  <mu-load-more  :refreshing="refreshing" :loading="loading" @load="load">
                 <section class="card" v-for="(myplan,i) in myplan.list" :key="i">
-                    <card :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
+                    <card
                         :img="myplan.headPortrait"
                         :state="myplan.payState==100?'未实名':'已实名'"
                         :productName="myplan.productName"
@@ -129,15 +134,18 @@
                     </template> -->
                     <template v-slot:btnOpen>
                         <div class="btn-wrap">
-                            <div class="btn content-center">查看计划</div>
+                            <div class="btn content-center" @click="$router.push({name: 'planInitial',query:{planNo: myplan.planNo, productCode: myplan.productCode}})">查看计划</div>
                         </div>
                     </template>
                     </card>
-                    </section>
                     <div class="text">
                       您于2019年1月19日申请的互助，在初审阶段被驳回
                     </div>
                     <div class="customer">如有疑问请咨询客服热线 <span>010-56248620</span></div>
+                    </section>
+                   </mu-load-more>
+                  </mu-container>
+                </mu-paper> 
             </div>
         </main>
     </div>
@@ -156,7 +164,9 @@ export default {
             name: 'Bytan.zZ',
             myplan: [],
             page: 1,
-            pageSize: 15
+            pageSize: 15,
+            refreshing: false,
+            loading: false,
             // planNo: '',
             // productCode: ''
         }
@@ -168,6 +178,15 @@ export default {
         //         query:{planNo: this.planNo, productCode: this.productCode}
         //     })
         // }
+        // 
+        load () {
+          this.loading = true;
+          setTimeout(() => {
+            this.loading = false;
+            this.num += 10;
+          }, 2000)
+        }
+  
     },
     mounted() {
         // this.$axios.get('/v1/mutually/compensate/megList',{ //计划消息接口
@@ -204,6 +223,22 @@ main{
     padding-top: 44px;
     position: relative;
 }
+.demo-loadmore-wrap {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: $c-bai;
+  .mu-appbar {
+    width: 100%;
+  }
+}
+.demo-loadmore-content {
+  // flex: 1;
+  overflow: auto;
+  width: 100%;
+  // -webkit-overflow-scrolling: touch;
+}
 .purchase-plan{
   padding-top: 12px;
   width: 100%;
@@ -215,15 +250,17 @@ main{
     padding-bottom: 5px;
   }
   .customer {
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding-top: 12px;
+    // padding-bottom: 10px;
+    padding-left: 12px;
     span{
       padding-left: 12px;
       color: $c-cheng;
     }
   }
   .text{
-    padding-top: 5px;
+    margin-top: -80px;
+    padding-left: 12px;
   }
 }
 .historical-record{
@@ -232,21 +269,25 @@ main{
   width: 100%;
   background-color: $c-bai;
   &>div{
-    padding-left: 12px;
+    // padding-left: 12px;
   }
   .apply{
     padding-bottom: 5px;
+    padding-left: 12px;
   }
   .customer {
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding-top: 12px;
+    // padding-bottom: 10px;
+    padding-left: 12px;
     span{
       padding-left: 12px;
       color: $c-cheng;
     }
   }
   .text{
-    padding-top: 5px;
+    // padding-top: 165px;
+    margin-top: -80px;
+    padding-left: 12px;
   }
 }
 .card{
@@ -254,6 +295,7 @@ main{
   height: 160px;
   margin: auto;
   position: relative;
+  margin-bottom: 80px;
 }
 .slot-lable{
     // width: 100px;

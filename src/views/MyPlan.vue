@@ -81,7 +81,7 @@
                             </template>
                             <template v-slot:btnOpen>
                                 <div class="btn-wrap">
-                                    <div class="btn content-center" @click="open">查看计划</div>
+                                    <div class="btn content-center" @click="$router.push({name: 'planInitial',query:{planNo: myplan.planNo, productCode: myplan.productCode}})">查看计划</div>
                                 </div>
                             </template>
                         </card>
@@ -122,12 +122,12 @@ export default {
         }
     },
     methods: {
-        open() {
-            this.$router.push({
-                name: 'planInitial',
-                query:{planNo: this.planNo , productCode: this.productCode}
-            })
-        },
+        // open() {
+        //     this.$router.push({
+        //         name: 'planInitial',
+        //         query:{planNo: this.planNo , productCode: this.productCode}
+        //     })
+        // },
         toComponsate() {
         debugger
             return this.$axios.post('v1/mutually/compensate/compensateDetail',{
@@ -212,7 +212,7 @@ export default {
           return
         }
         this.relationList = res.data.data
-        console.log(res)
+        // console.log(res)
 
       })
     },
@@ -222,14 +222,15 @@ export default {
                 this.$toast.error(res.data.msg)
                 return
             }
-            console.log(res)
+            // console.log(res)
             this.myplan = res.data.data
             // console.log(this.myplan)
-            this.myplan.list.forEach(element => {
-                this.planNo = element.planNo
-                this.productCode = element.productCode
-                console.log(this.productCode)
-            });
+            // this.myplan.list.forEach(element => {
+            //     this.planNo = element.planNo
+            //     this.productCode = element.productCode
+            //     console.log(this.productCode)
+            //     console.log(this.planNo)
+            // });
         })
     }
 }
@@ -286,6 +287,7 @@ span{
         background:$c-cheng;
         border:2px solid rgba(239, 162, 32, 1);
         border-radius:50%;
+        overflow: hidden;
         img{
             width: 100%;
             height: 100%;
@@ -336,5 +338,8 @@ footer{
   margin: 20px 0 0 10px;
   color: $c-cheng;
   line-height: 33px;
+}
+.purchase-plan{
+    padding-bottom: 60px;
 }
 </style>
