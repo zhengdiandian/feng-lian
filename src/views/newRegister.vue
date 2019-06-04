@@ -109,7 +109,7 @@
         return  this.code && this.user && this.pwd && this.pwd1 && this.pwd2
       },
       tongYiStyle () {
-      return this.tongYi ? {color: 'rgba(18, 150, 219, 1)'}: {}
+      return this.tongYi ? {color: '#fff'}: { color: '#666'}
     },
     },
     created() {
