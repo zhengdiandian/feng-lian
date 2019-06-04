@@ -10,8 +10,8 @@
         </mu-appbar>
         <main>
           <div v-html="content.postTitle">{{content.postTitle}}</div>
-          <div v-html="content.postDate">{{content.postDate}}</div>
-          <div v-html="content.postContent">{{content.postContent}}</div>
+          <div class="date" v-html="content.postDate">{{content.postDate}}</div>
+          <div class="content" v-html="content.postContent">{{content.postContent}}</div>
         </main>
     </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   name: 'NewsDetail',
   data () {
     return {
-      id: this.$route.params.id,
+      id: this.$route.query.id,
       content: {}
     }
   },
@@ -37,6 +37,12 @@ export default {
 
 <style lang="scss" scoped>
 main{
+  width: 100%;
+  padding: 12px;
   padding-top: 50px;
+  overflow: hidden;
+}
+.content{
+  padding-top: 20px;
 }
 </style>

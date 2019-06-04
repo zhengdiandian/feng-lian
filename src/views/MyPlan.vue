@@ -274,7 +274,7 @@ export default {
 <style scoped lang="scss">
 .demo-loadmore-wrap {
   width: 100%;
-  height: 780px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   overflow: hidden;

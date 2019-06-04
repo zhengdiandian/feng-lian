@@ -117,7 +117,7 @@ export default {
 <style lang="scss" scoped>
 .demo-loadmore-wrap {
   width: 100%;
-  height: 800px;
+  height: 650px;
   display: flex;
   flex-direction: column;
   // background-color: $c-hui;

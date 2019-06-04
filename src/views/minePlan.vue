@@ -58,9 +58,12 @@
             </div> -->
             <div class="purchase-plan" >
                 <span  class="plan-text">我的购买计划</span>
+                <div class="iconkong" v-if=" myplan.list.length <= 0 || !myplan.list">
+                    <img src="../assets/空页面.png" alt="">
+                    <span>暂无数据</span>
+                </div>
 
-
-<mu-paper :z-depth="1" class="demo-loadmore-wrap">
+<mu-paper  :z-depth="1" class="demo-loadmore-wrap">
     <mu-container ref="container" class="demo-loadmore-content">
         <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
                 <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
@@ -199,6 +202,22 @@ export default {
   .mu-appbar {
     width: 100%;
   }
+}
+.iconkong{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    span{
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        color: #707070;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
 }
 .demo-loadmore-content {
   // flex: 1;

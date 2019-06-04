@@ -146,7 +146,7 @@
             <div class="list-li">
               <div class="list-img-text" >
               <div class="list-img" ><img src="../assets/image/设置.svg" alt=""></div>
-                <span class="position-r" style="margin-left:12px">设置</span>
+                <span class="position-r" style="margin-left: 12px;margin-top: 3px;">设置</span>
               </div>
               <mu-icon value=":iconfont iconyou1"></mu-icon>
             </div>

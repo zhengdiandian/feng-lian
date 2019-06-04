@@ -62,10 +62,10 @@
                     <span class="width-left">邮箱：</span><span><input type="text" v-model="email"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
-                <div class="rule margin-left">
+                <!-- <div class="rule margin-left">
                     <span class="width-left">个性签名：</span><span><input type="text" v-model="motto"></span>
-                    <!-- <mu-divider></mu-divider> -->
-                </div>
+                    <mu-divider></mu-divider>
+                </div> -->
             </section>
         </main>
         <section class="btn-edit"><div class="btn" @click="editdeta">保存</div></section>

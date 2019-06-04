@@ -40,7 +40,7 @@
             
               <div class="title">{{acs.contacs}}<span>{{acs.state == 200? '已实名': '未实名'}}</span></div>
               <div class="title">{{acs.illnessApply}}</div>
-              <div class="text">已加入蜂链互助{{acs.joinDays}}天，参与{{acs.shareTimes}}次分摊，话费{{acs.shareAmount}}元</div>
+              <div class="text">已加入蜂链互助{{acs.joinDays}}天，参与{{acs.shareTimes}}次分摊，花费{{acs.shareAmount}}元</div>
 
               <div class="info-btn-wrap">
                 <div class="info-btn" @click="$router.push({name: 'NoticeDetails' , query: {stage: nitice.stage ,orderNo: acs.orderNo}})"><span>查看详情</span></div>
@@ -61,7 +61,7 @@
         </div>
         <!-- <p class="card-row">本期剩余互助金 <span>￥0元</span></p> -->
         
-        <div class="card-btn">点击查看详情</div>
+        <div class="card-btn" @click="$router.push('/fundsDetails')">点击查看详情</div>
       </div>
       <div class="contact-wrap">
         <div class="contact"><span class="iconfont iconlianxikefu"></span>联系客服</div>
@@ -91,9 +91,9 @@ export default {
   methods: {
     listActive(i) {
       this.activeIndex = i
-      console.log(this.activeIndex)
-      // this.acs = this.list[i]
-      // console.log(this.acs)
+      // console.log(this.activeIndex)
+      this.acs = this.list[i]
+      console.log(this.acs)
     }
   },
   created() {
@@ -108,6 +108,7 @@ export default {
       this.nitice = res.data.data
       this.list = res.data.data.compensateList
       this.acs = this.list[this.activeIndex]
+      // console.log(this.acs)
     })
   }
 };
@@ -282,7 +283,8 @@ export default {
       background:rgba(239,162,32,.7);
       color: $c-bai;
       border-radius:17px;
-      position: absolute;
+      position: relative;
+      top: -85px;
     }
   }
   .contact-wrap{

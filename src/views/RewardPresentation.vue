@@ -392,7 +392,7 @@
         border: none;
         background: none;
         outline: none;
-        border-right: .5px solid $c-hui;
+        // border-right: .5px solid $c-hui;
     }
     input:active{
         background-color: #cccccc;
