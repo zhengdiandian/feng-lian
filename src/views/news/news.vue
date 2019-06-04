@@ -24,7 +24,7 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-          <div class="list-li" @click="$router.push('/myPlanNews')">
+          <div class="list-li" @click="toast">
             <div class="list-img-text" >
               <div class="list-img" ><i class="iconfont iconjihua"></i></div>
               <span class="position-r">我的计划消息</span>
@@ -46,8 +46,22 @@
         name: 'news',
         data() {
             return {
-                CustomerService: ''
+                CustomerService: '',
+                timeout: null,
             }
+        },
+        methods: {
+          toast() {
+            debugger
+            if(this.timeout) {
+              this.$toast.success(`需要等待${this.timeout}天`)
+            }else  {
+              this.$toast.success('请先加入计划')
+            }
+            if (this.timeout > 180) {
+              this.$router.push('/myplannews')
+            } 
+          },
         },
         mounted() {
             this.$axios.post('v1/manage/config/getTextList',{
@@ -59,6 +73,21 @@
                 }
                 this.CustomerService = res.data.data.CustomerService
             })
+
+
+            this.$axios.get('/v1/mutually/plan/planList').then(res=>{
+                console.log(res)
+                if(res.data.code !== 200){
+                  this.$toast.error(res.data.msg)
+                  return
+                }
+                debugger
+                if(!res.data.data.list.length){
+                return
+              }
+                this.timeout = res.data.data.list[0].leftWattingDays
+                console.log(this.timeout)
+              })
         }
     }
 </script>
