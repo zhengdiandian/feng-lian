@@ -13,6 +13,7 @@
         <section class="profit">
             <div class="users">
                 <span class="number">{{helped.helpedCount}}</span>
+                <span v-if="helped.helpedCount == ''" class="number">0</span>
                 <span class="numberDay">已帮助人数</span>
             </div>
             <div class="xian"></div>
@@ -23,7 +24,11 @@
         </section>
             <div class="assis-title">链接你我他 &nbsp; &nbsp; 守护千万家</div>
             <div class="assis-text margin-left">互助记录</div>
-            <mu-paper :z-depth="1" class="demo-loadmore-wrap">
+            <div class="iconkong" v-if=" supporlist.length <= 0 || !supporlist">
+                    <img src="../assets/空页面.png" alt="">
+                    <span>暂无数据</span>
+                </div>
+            <mu-paper v-if="supporlist.length !== 0" :z-depth="1" class="demo-loadmore-wrap">
                 <mu-container ref="container" class="demo-loadmore-content">
                     <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
                         <section v-for="item in supporlist" :key="item.orderNo">
@@ -161,6 +166,23 @@ export default {
   .mu-appbar {
     width: 100%;
   }
+}
+.iconkong{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 25px;
+    span{
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        color: #707070;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
 }
 .demo-loadmore-content {
   // flex: 1;
