@@ -513,6 +513,13 @@ export default new Router({
         return import('./views/family/addFamilyTow')
       },
 
+    },
+    {
+      path: '/notice/yiyi',
+      name: 'yiyi',
+      component: function () {
+        return import('./views/notice/yiyi')
+      }
     }
     // {
     //   path: '*',
