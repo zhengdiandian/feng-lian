@@ -133,8 +133,8 @@ export default {
         //         query:{planNo: this.planNo, productCode: this.productCode}
         //     })
         // }
-        get_myplan(){
-            this.$axios.get('/v1/mutually/plan/planList',{
+        get_myplan(flag){
+            this.$axios.post('/v1/mutually/plan/planList',{
                 "page": this.page,
                 "pageSize": this.pageSize
             }).then(res=>{
@@ -142,8 +142,24 @@ export default {
               this.$toast.error(res.data.msg)
               return
             }
+            if(flag){
+                this.myplan = res.data.data
+
+            }else {
+                // debugger
+                res.data.data.list.forEach(item => {
+                    // debugger
+                    this.myplan.list.push(item)
+                })
+                // let o =  Object.assign( this.myplan, res.data.data)
+            //   this.myplan = Object.assign( this.myplan, res.data.data)
+              // this.myplan = this.myplan.concat(res.data.data)
+              // this.$set(this.myplan , this.myplan.concat(res.data.data))
+            }
+            this.loading = false
             console.log(res)
-            this.myplan = res.data.data
+            // console.log(res)
+            // this.myplan = res.data.data
         })
         },
         refresh () {
@@ -157,14 +173,16 @@ export default {
         },
         load () {
             this.loading = true;
-            setTimeout(() => {
-                this.loading = false;
-                // this.num += 10;
-            }, 2000)
+            this.page++ 
+            this.get_myplan()
+            // setTimeout(() => {
+            //     this.loading = false;
+            //     // this.num += 10;
+            // }, 2000)
         }
     },
-    mounted() {
-        this.get_myplan()
+    created() {
+        this.get_myplan(true)
     }
 }
 </script>

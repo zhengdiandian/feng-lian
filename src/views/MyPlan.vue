@@ -58,6 +58,9 @@
             </div>
             <div class="purchase-plan" >
                 <span  class="plan-text">我的购买计划</span>
+<mu-paper :z-depth="1" class="demo-loadmore-wrap">
+    <mu-container ref="container" class="demo-loadmore-content">
+        <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
                 <section  class="card" :class="[activeIndex==i? 'active': '']" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
                     <div @click="activeIndex=i">
                         <card
@@ -86,8 +89,11 @@
                             </template>
                         </card>
                     </div>
-                    <div class="selected iconfont iconxuanzhong" ></div>
+                    <div class="selected iconfont iconxuanzhong" ></div>     
                 </section>
+                </mu-load-more>
+        </mu-container>
+    </mu-paper>
             </div>
         </main>
 <!--        <footerBtn></footerBtn>-->
@@ -118,7 +124,11 @@ export default {
             activeIndex: null,
             productCode: '',
             relationList: [],
-            activeIndex: 0
+            activeIndex: 0,
+            refreshing: false,
+            loading: false,
+            pageSize: 5,
+            page: 1
 
         }
     },
@@ -189,6 +199,47 @@ export default {
                 }
             })
 
+        },
+        refresh () {
+            this.refreshing = true;
+            this.$refs.container.scrollTop = 0;
+            setTimeout(() => {
+                this.refreshing = false;
+                // this.text = this.text === 'List' ? 'Menu' : 'List';
+                // this.num = 10;
+            }, 2000)
+        },
+        load () {
+            this.loading = true;
+            this.page++ 
+            this.get_list()
+            // setTimeout(() => {
+            //     this.loading = false;
+            //     // this.num += 10;
+            // }, 2000)
+        },
+        get_list(flag) {
+            this.$axios.post('/v1/mutually/plan/planList',{
+                "page": this.page,
+                "pageSize": this.pageSize
+            }).then(res=>{
+            if(res.data.code !==200){
+                this.$toast.error(res.data.msg)
+                return
+            }
+            if(flag){
+                this.myplan = res.data.data
+
+            }else {
+                // debugger
+                res.data.data.list.forEach(item => {
+                    // debugger
+                    this.myplan.list.push(item)
+                })
+            }
+            this.loading = false
+            
+        })
         }
     },
     created() {
@@ -206,6 +257,7 @@ export default {
       //     console.log(this.productCode)
       //   });
       // })
+    this.get_list(true)
 
       this.$axios.get('v1/family/info/familyList').then(res=>{
         if(res.data.code !==200){
@@ -217,26 +269,29 @@ export default {
 
       })
     },
-    mounted() {
-        this.$axios.get('/v1/mutually/plan/planList').then(res=>{
-            if(res.data.code !==200){
-                this.$toast.error(res.data.msg)
-                return
-            }
-            // console.log(res)
-            this.myplan = res.data.data
-            // console.log(this.myplan)
-            // this.myplan.list.forEach(element => {
-            //     this.planNo = element.planNo
-            //     this.productCode = element.productCode
-            //     console.log(this.productCode)
-            //     console.log(this.planNo)
-            // });
-        })
-    }
 }
 </script>
 <style scoped lang="scss">
+.demo-loadmore-wrap {
+  width: 100%;
+  height: 780px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: $c-bai;
+  &::-webkit-scrollbar{
+      display: none;
+  }
+  .mu-appbar {
+    width: 100%;
+  }
+}
+.demo-loadmore-content {
+  // flex: 1;
+  overflow: auto;
+  width: 100%;
+  // -webkit-overflow-scrolling: touch;
+}
 .slot-lable{
     // width: 100px;
     // height: 500px;
@@ -281,7 +336,7 @@ span{
     .iconxuanzhong{
         color: $c-bai;
     }
-    padding: 0px 12px;
+    // padding: 0px 12px;
     margin: auto;
 }
 .add-family-list{

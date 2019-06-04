@@ -61,11 +61,10 @@ export default {
   data() {
     return {
       page: 1,
-      pageSize: 3,
+      pageSize: 5,
       niticeList: [],
       refreshing: false,
       loading: false,
-      num: 5
     };
   },
   methods: {
@@ -78,14 +77,16 @@ export default {
     },
     load () {
       this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-        this.niticeList = this.niticeList.concat(this.niticeList)
-      }, 2000)
-    }
-  },
-  created() {
-    this.$axios
+      this.page++;
+      this.get_publicityList()
+      
+      // setTimeout(() => {
+      //   this.loading = false;
+        
+      // }, 2000)
+    },
+    get_publicityList(flag) {
+      this.$axios
       .post("/v1/publicity/publicity/publicityList", {
         page: this.page,
         pageSize: this.pageSize
@@ -95,9 +96,20 @@ export default {
           this.$toast.error(res.data.msg);
           return;
         }
-        this.niticeList = res.data.data;
-        console.log(this.niticeList);
+        if (flag) {
+          this.niticeList = res.data.data;
+        }else{
+          res.data.data.forEach(item => {
+              // debugger
+              this.niticeList.push(item)
+          })
+        }
+        this.loading = false
       });
+    }
+  },
+  created() {
+    this.get_publicityList(true)
   }
 };
 </script>

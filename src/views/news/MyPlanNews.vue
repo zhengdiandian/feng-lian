@@ -56,15 +56,16 @@
             <!-- </div> -->
             <div class="purchase-plan" >
               <div class="apply">我的申请</div>
-              <div>data</div>
-                <section class="card" v-for="(myplan,i) in myplan.list" :key="i">
+              
+                <section class="card" v-for="(myplan,i) in myApply" :key="i">
+                  <div class="date">{{myplan.createTime}}</div>
                     <card :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
                         :img="myplan.headPortrait"
                         :state="myplan.payState==100?'未实名':'已实名'"
                         :productName="myplan.productName"
                         :amount="amount"
                         :amountMoney="myplan.balance"
-                        :waiting="myplan.leftWattingDays + '天'"
+                        :waiting="myplan.wattingStage + '天'"
                         :waitingperiod="waitingperiod"
                         :date=" '：' + ' ' +myplan.joinDate"
                         :name="myplan.contacs"
@@ -77,11 +78,11 @@
                             <img src="@/assets/img/已退款.png" alt="">
                         </div>
                     </template> -->
-                    <!-- <template v-slot:AuditPass>
+                    <template v-slot:AuditPass>
                       <div class="AuditPass">
-                        123
+                        申请日：{{myplan.applyDate}}
                       </div>
-                    </template> -->
+                    </template>
                     <template v-slot:btnOpen>
                         <div class="btn-wrap">
                             <div class="btn content-center" @click="$router.push({name: 'planInitial',query:{planNo: myplan.planNo, productCode: myplan.productCode}})">查看计划</div>
@@ -95,19 +96,21 @@
                     </section>
                     
             </div>
-
+            <br />
+            <mu-divider style="height: 5px;"></mu-divider>
 
 
 
 
             <div class="historical-record" >
               <div class="apply">历史记录</div>
-              <div style="padding-left: 12px;">data</div>
+              <!-- <div style="padding-left: 12px;">data</div> -->
 
               <mu-paper :z-depth="1" class="demo-loadmore-wrap">
                 <mu-container ref="container" class="demo-loadmore-content">
-                  <mu-load-more  :refreshing="refreshing" :loading="loading" @load="load">
-                <section class="card" v-for="(myplan,i) in myplan.list" :key="i">
+                  <mu-load-more  :loading="loading" @load="load">
+                <section class="card" v-for="(myplan,i) in myplan.historyMsg" :key="i">
+                  <div class="historical-date">{{myplan.createTime}}</div>
                     <card
                         :img="myplan.headPortrait"
                         :state="myplan.payState==100?'未实名':'已实名'"
@@ -127,11 +130,11 @@
                             <img v-if="myplan.state == 500" src="@/assets/img/已退款.png" alt="">
                         </div>
                     </template>
-                    <!-- <template v-slot:AuditPass>
+                    <template v-slot:AuditPass>
                       <div class="AuditPass">
-                        123
+                        申请日：{{myplan.applyDate}}
                       </div>
-                    </template> -->
+                    </template>
                     <template v-slot:btnOpen>
                         <div class="btn-wrap">
                             <div class="btn content-center" @click="$router.push({name: 'planInitial',query:{planNo: myplan.planNo, productCode: myplan.productCode}})">查看计划</div>
@@ -161,11 +164,12 @@ export default {
     data() {
         return {
             amount: '余额',
-            waitingperiod: '等待期:',
-            name: 'Bytan.zZ',
+            waitingperiod: '已持有:',
+            // name: 'Bytan.zZ',
             myplan: [],
+            myApply: [],
             page: 1,
-            pageSize: 15,
+            pageSize: 5,
             refreshing: false,
             loading: false,
             // planNo: '',
@@ -182,7 +186,7 @@ export default {
         // 
         get_list(flag){
           
-          this.$axios.get('/v1/mutually/plan/planList',{ //我的计划接口
+          this.$axios.post('/v1/mutually/compensate/msgList',{ 
           "page": this.page,
           "pageSize": this.pageSize
         }).then(res=>{
@@ -191,15 +195,21 @@ export default {
               return
             }
             if(flag){
-            this.myplan = res.data.data
+
+              this.myplan = res.data.data
 
             }else {
-              this.myplan = Object.assign({}, this.myplan, res.data.data)
+              res.data.data.historyMsg.forEach(item => {
+                    // debugger
+                    this.myplan.historyMsg.push(item)
+                })
+              // this.myplan = Object.assign({}, this.myplan, res.data.data)
               // this.myplan = this.myplan.concat(res.data.data)
               // this.$set(this.myplan , this.myplan.concat(res.data.data))
             }
             this.loading = false
-            console.log(res)
+            this.myApply = res.data.data.myApply
+            console.log(this.myApply)
         })
         },
         load () {
@@ -219,6 +229,7 @@ export default {
       this.get_list(true)
     },
     mounted() {
+
         // this.$axios.get('/v1/mutually/compensate/megList',{ //计划消息接口
         //   "page": this.page,
         //   "pageSize": this.pageSize
@@ -227,8 +238,8 @@ export default {
         //       this.$toast.error(res.data.msg)
         //       return
         //     }
-        //     console.log(res)
-        //     this.myplan = res.data.data
+        //     console.log(res.data.data.myApply)
+        //     // this.myplan = res.data.data
         // })
         
     }
@@ -236,7 +247,7 @@ export default {
 </script>
 <style scoped lang="scss">
 #app>div{
-  background-color: $c-hui;
+  background-color: $c-bai;
 }
 main{
     margin: auto;
@@ -262,8 +273,11 @@ main{
 .purchase-plan{
   padding-top: 12px;
   width: 100%;
-  background-color: $c-bai;
+  // background-color: $c-bai;
   &>div{
+    padding-left: 12px;
+  }
+  .date{
     padding-left: 12px;
   }
   .apply{
@@ -290,6 +304,10 @@ main{
   background-color: $c-bai;
   &>div{
     // padding-left: 12px;
+  }
+  .historical-date{
+    padding-left: 5px;
+    font-size: $f14;
   }
   .apply{
     padding-bottom: 5px;

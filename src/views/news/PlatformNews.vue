@@ -51,7 +51,7 @@ export default {
       refreshing: false,
       loading: false,
       page: 1,
-      pageSize: 15
+      pageSize: 1
     }
   },
   created () {
@@ -71,37 +71,36 @@ export default {
       console.log(i)
       this.$router.push({
         name: 'NewsDetail',
-        params: {
+        query: {
           'id': i
         }
       })
     },
     load () {
       this.loading = true
-      this.get_search_list();
+      // this.page++
+      this.get_postList();
     },
-    get_postList () {
+    get_postList() {
       this.$axios.post('/v1/manage/post/postList', {
         'page': this.page,
         'pageSize': this.pageSize,
-        'type': 0
+        'type': 1
       }).then(res => {
         
-        console.log(res)
-        this.postList = res.data.data;
-        // if (res.data.data.length > 0 ) {
+        // console.log(res)
+        // this.postList = res.data.data;
+        if (res.data.data.length > 0 ) {
 
-				// 		if (this.page == 1) {
-				// 			this.postList = res.data.data;
-				// 		}
-				// 		else {
-				// 			this.postList = this.postList.concat(res.data.data);
-				// 		}
-				// 		this.page++;
-				// 	} else {
-				// 		//not more data
-				// 		// this.finished = true;
-				// 	}
+						if (this.page == 1) {
+							this.postList = res.data.data;
+						}
+						else {
+							this.postList = this.postList.concat(res.data.data);
+						}
+						this.page++;
+          } 
+						this.loading = false;          
 					
 				// 	if(res.data.data.length < this.page_size){
 				// 		//not more data
@@ -155,7 +154,7 @@ export default {
   height:150px;
   border-radius:3px;
   overflow: hidden;
-  border-bottom: 1px solid #000;
+  // border-bottom: 1px solid #000;
   img{
     width: 100%;
     height: 100%;
@@ -169,7 +168,7 @@ export default {
   // justify-content: center;
   align-items: center;
   margin: auto;
-  border-bottom: 1px solid $c-cheng;
+  // border-bottom: 1px solid $c-cheng;
 }
 .postData-title{
   padding: 12px;
@@ -181,5 +180,6 @@ export default {
   height: 50px;
   position: absolute;
   right: 20px;
+  // background: $c-cheng;
 }
 </style>
