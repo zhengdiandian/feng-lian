@@ -71,8 +71,7 @@
   import PageHeader from "../../components/PageHeader/PageHeader";
   import upload from "../../components/UpLoad/UpLoad";
   import vuePicker from "../../components/vuePickers/vuePicker";
-  import { decode } from 'punycode';
-  // import {provs_data, citys_data, dists_data} from 'vue-pickers/lib/areaData'
+
 
 
   // debugger
