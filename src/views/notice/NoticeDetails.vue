@@ -37,8 +37,8 @@
             <div class="result-title">平台审核结果</div>
             <div class="result-content">{{detaliList.auditResult}}</div>
             <div class="objection">
-              <i class="iconfont iconyiyishenqing1"></i>
-              <span>我有异议</span>
+              <i class="iconfont iconyiyishenqing1" @click="toYIYI"></i>
+              <span @click="toYIYI">我有异议</span>
             </div>
           </section>
           <section class="platform-result">
@@ -101,6 +101,10 @@ import PopBox from '../../components/PopBox/PopBox'
             "orderNo": this.orderNo,
             "stage": this.stage
           }).then(res=>{
+            if(res.data.code !==200){
+              this.$toast.error(res.data.msg)
+              return
+            }
             this.detaliList = res.data.data
             console.log(this.detaliList)
           })
@@ -111,6 +115,14 @@ import PopBox from '../../components/PopBox/PopBox'
             // console.log(i)
             this.show_pic = true
           },
+          toYIYI() {
+            this.$router.push({
+              path: '/notice/yiyi',
+              query: {
+                orderNo: this.orderNo
+              }
+            })
+          }
         }
     }
 </script>

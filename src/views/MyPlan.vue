@@ -89,7 +89,7 @@
                             </template>
                         </card>
                     </div>
-                    <div class="selected iconfont iconxuanzhong" ></div>     
+                    <div v-if="activeIndex===i" class="selected yes " ></div> <div v-else class="selected iconfont iconweixuanzhong"></div>
                 </section>
                 </mu-load-more>
         </mu-container>
@@ -328,10 +328,22 @@ span{
     &.active{
     }
     .selected{
+        width: 20px;
+        height: 20px;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         right: 30px;
+        &.yes{
+            background: url("../assets/img/选中.svg") center no-repeat;
+            background-size: 100% 100%;
+
+
+        }
+        &.iconweixuanzhong{
+            color: $c-bai;
+        }
+
     }
     .iconxuanzhong{
         color: $c-bai;
