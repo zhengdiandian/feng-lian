@@ -197,6 +197,9 @@ import {mapState} from 'vuex'
       }else  {
         this.$toast.success('请先加入计划')
       }
+      if (this.timeout > 180) {
+        this.$router.push('myhlepPlan')
+      } 
     },
     jump() {
        this.$router.push('/per')
@@ -258,7 +261,7 @@ import {mapState} from 'vuex'
       return
     }
       this.timeout = res.data.data.list[0].leftWattingDays
-      // console.log(this.myplan)
+      console.log(this.timeout)
     })
 
     this.$axios.post('v1/user/info/personalInfo').then(res => {

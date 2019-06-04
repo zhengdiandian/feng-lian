@@ -283,7 +283,7 @@ export default new Router({
       }
     },
     {
-      path: '/myhlepPlan', // 我的 申请   帮助计划
+      path: '/myhlepPlan', // 我的申请
       name: 'myhlepPlan',
       component: function () {
         return import('./views/MyHelpPlan')
