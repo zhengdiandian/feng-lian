@@ -7,7 +7,7 @@
                 1、缴费凭证 <span class="iconwenhao iconfont"></span>
                 <div class="file-box-content">
                     <ul>
-                        <li class="image-box" v-for="(img,i) in payProve"><img :src="img" :key="i" alt=""></li>
+                        <li class="image-box" v-for="(img,i) in payProve"  :key="i"><img :src="img" :key="i" alt=""></li>
                         <li><file-input  style="display: inline-block" @getFile="getFile"   type="add" upload="继续上传" size="small"  :show-img="false"></file-input></li>
                     </ul>
 
@@ -19,7 +19,7 @@
                 2、申请表填写完成后拍照上传 <span class="iconwenhao iconfont"></span>
                 <div class="file-box-content">
                     <ul>
-                        <li class="image-box" v-for="(img,i) in applyForm"><img :src="img" :key="i" alt=""></li>
+                        <li class="image-box" v-for="(img,i) in applyForm" :key="i"><img :src="img" :key="i" alt=""></li>
                         <li><file-input  style="display: inline-block" @getFile="getApplyForm"   type="add" upload="继续上传" size="small"  :show-img="false"></file-input></li>
                     </ul>
                 </div>
@@ -30,7 +30,7 @@
                 3、病例报告 <span class="iconwenhao iconfont"></span>
                 <div class="file-box-content">
                     <ul>
-                        <li class="image-box" v-for="(img,i) in illnessInform"><img :src="img" :key="i" alt=""></li>
+                        <li class="image-box" v-for="(img,i) in illnessInform" :key="i"><img :src="img" :key="i" alt=""></li>
                         <li><file-input  style="display: inline-block" @getFile="getIllnessInform"   type="add" upload="继续上传" size="small"  :show-img="false"></file-input></li>
                     </ul>
                 </div>
@@ -41,7 +41,7 @@
                 4、诊断证明 <span class="iconwenhao iconfont"></span>
                 <div class="file-box-content">
                     <ul>
-                        <li class="image-box" v-for="(img,i) in treatProve"><img :src="img" :key="i" alt=""></li>
+                        <li class="image-box" v-for="(img,i) in treatProve" :key="i"><img :src="img" :key="i" alt=""></li>
                         <li><file-input  style="display: inline-block" @getFile="getTreatProve"   type="add" upload="继续上传" size="small"  :show-img="false"></file-input></li>
                     </ul>
                 </div>
@@ -173,6 +173,9 @@ export default {
         list-style: none;
         display: inline-block;
 
+    }
+    li{
+        margin: 5px 0px;
     }
     ul{
         padding: 15px 0px;

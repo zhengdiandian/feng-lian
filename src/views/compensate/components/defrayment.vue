@@ -225,7 +225,7 @@ export default {
         width: 100%;
         outline: none;
         resize: none;
-        height:90px;
+        min-height:90px;
     }
     .content{
         padding: 0px 12px 6px;

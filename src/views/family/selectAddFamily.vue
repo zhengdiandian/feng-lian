@@ -13,7 +13,7 @@
             <div class="type-wrap-img"><img src="../../assets/image/满18岁.png" alt=""><div>满18岁家人</div></div>
             <div class="btn" @click="$router.push('/addFamilyTwo')"  >添加满18岁家人</div>
         </div>
-        <div class="type-wrap page-margin-top">
+        <div class="type-wrap">
             <div class="type-wrap-img"><img src="../../assets/image/未满18岁.png" alt=""><div>未满18岁家人</div></div>
             <div class="btn" @click="toAdd(0)">添加未满18岁家人</div>
         </div>

@@ -99,7 +99,7 @@
 <!--        <footerBtn></footerBtn>-->
         <footer>
             <div class="ordinary-claims" v-promise-btn @click="toComponsate">申请理赔</div>
-            <div class="Second-claims">申请秒赔</div>
+            <div v-if="myplan.list[activeIndex].compensateFlag" class="Second-claims" v-promise-btn>申请秒赔</div>
         </footer>
     </div>
 </template>
@@ -399,7 +399,8 @@ footer{
     line-height: 50px;
     color: #fff;
     .ordinary-claims{
-        width: 70%;
+        /*width: 70%;*/
+        flex: 2;
         height: 100%;
         background-color: #eea31f;
     }

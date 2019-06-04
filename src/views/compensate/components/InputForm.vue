@@ -3,9 +3,9 @@
         <div class="form-content content">
             <div class="title">请如实填写以下信息</div>
             <div class="input-box"><label >姓名:</label><input v-model="contacs" placeholder="请填写您的姓名" type="text"></div>
-            <div class="input-box"><label >身份证号码:</label><input v-model="contacsIdNo" placeholder="请填写您的身份证号码" type="text"></div>
-            <div class="input-box"><label >手机号:</label><input v-model="phone" placeholder="请填写您的手机号码" type="text"></div>
-            <div class="input-box"><label >邮箱：</label><input v-model="email" placeholder="请填写您的邮箱地址" type="text"></div>
+            <div class="input-box"><label >身份证号码:</label><input v-model="contacsIdNo" placeholder="请填写您的身份证号码"  @keyup="contacsIdNo=contacsIdNo.replace(/[\W]/g,'')" type="text"></div>
+            <div class="input-box"><label >手机号:</label><input v-model="phone" placeholder="请填写您的手机号码" type="number"></div>
+            <div class="input-box"><label >邮箱：</label><input v-model="email" placeholder="请填写您的邮箱地址" @keyup="email=email.replace(/[\W]/g,'')" type="text"></div>
         </div>
         <div class="input-box-line"></div>
         <div class="content">
@@ -103,34 +103,6 @@
 
 <script>
   import vuePicker from "../../../components/vuePickers/vuePicker";
-  Date.prototype.Format = function (fmt) {
-  var o = {
-  "y+": this.getFullYear(),
-  "M+": this.getMonth() + 1,                 //月份
-  "d+": this.getDate(),                    //日
-  "h+": this.getHours(),                   //小时
-  "m+": this.getMinutes(),                 //分
-  "s+": this.getSeconds(),                 //秒
-  "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-  "S+": this.getMilliseconds()             //毫秒
-  };
-  for (var k in o) {
-  if (new RegExp("(" + k + ")").test(fmt)){
-  if(k == "y+"){
-  fmt = fmt.replace(RegExp.$1, ("" + o[k]).substr(4 - RegExp.$1.length));
-  }
-  else if(k=="S+"){
-  var lens = RegExp.$1.length;
-  lens = lens==1?3:lens;
-  fmt = fmt.replace(RegExp.$1, ("00" + o[k]).substr(("" + o[k]).length - 1,lens));
-  }
-  else{
-  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-  }
-  }
-  }
-  return fmt;
-  }
   export default {
     name: 'InputForm',
     components: {
@@ -170,7 +142,7 @@
         countyValue: '',
         open: false,
         value2: '',
-        date: undefined,
+        date: new Date(),
         switchVal:'',
         switchData: {
             switchVal:false,
@@ -376,7 +348,7 @@
         width: 100%;
         outline: none;
         resize: none;
-        height:90px;
+        min-height:90px;
     }
     .content{
         padding: 0px 12px 6px;

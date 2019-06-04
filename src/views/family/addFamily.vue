@@ -11,7 +11,7 @@
         </mu-appbar>
         <div class="content page-margin-top">
             <div class="input-box"><label >姓名:</label><input v-model="contacs" placeholder="请填写您的姓名" type="text"></div>
-            <div class="input-box"><label >身份证号码:</label><input v-model="contacsIdNo" placeholder="请填写您的身份证号码" type="text"></div>
+            <div class="input-box"><label >身份证号码:</label><input  v-model="contacsIdNo" placeholder="请填写您的身份证号码" type="text"></div>
             <div class="input-box" @click="showAddress=true"><label >身份证地址:</label><div class="select"><span class="placeholder-text" v-if="province===''">请选择身份证地址</span><span>{{province}}</span><span> {{city}}</span> <span> </span><span class="iconfont iconyou1"></span></div></div>
             <div class="input-box" @click="showRelation=true"><label >选择关系:</label><div class="select"><span class="placeholder-text" v-if="relation===''">请选择关系</span><span>{{relation}}</span> <span> </span><span class="iconfont iconyou1"></span></div></div>
 
@@ -183,8 +183,8 @@
         }
         &:after{
             width: 100%;
-            height: 1px;
-            transform: scaleY(0.5);
+            height: 2px;
+            transform: scaleY(0.25);
             transform-origin: 50% 100%;
             /*height: .5px;*/
             content: '';

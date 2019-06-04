@@ -108,8 +108,8 @@
             {text: '爱人', value: 1},
             {text: '父亲', value: 2},
             {text: '母亲', value: 3},
-            // {text: '儿子', value: 4},
-            // {text: '女儿', value: 6},
+            {text: '儿子', value: 4},
+            {text: '女儿', value: 6},
           ]
         },
 

@@ -10,6 +10,8 @@
         </mu-button>
       </mu-appbar>
         <main>
+            <div class="input-box"><label >姓名:</label><input v-model="contacs" placeholder="请填写您的姓名" type="text"></div>
+
             <section class="details">
                 <div class="rule margin-left">
                     <span class="width-left">昵称：</span><span ><input type="text" v-model="nickname"></span>
@@ -158,7 +160,66 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-  .xin:before{
+    .input-box{
+        width: 100%;
+        /*height:36px;*/
+        display: flex;
+        flex-wrap: wrap;
+        &.switch{
+            justify-content: space-between;
+        }
+        .placeholder-text{
+            font-family:SourceHanSansCN-Normal;
+            font-weight:400;
+            color:rgba(112,112,112,1);
+        }
+        &:after{
+            width: 100%;
+            height: 1px;
+            transform: scaleY(0.5);
+            transform-origin: 50% 100%;
+            /*height: .5px;*/
+            content: '';
+            display: block;
+            z-index: 6666;
+            background-color: $c-hui;
+            /*<!--border-bottom: .5px solid $c-hui;-->*/
+        }
+        .select{
+            position: relative;
+            flex: 2;
+            line-height: 36px;
+            height: 36px;
+            .iconfont{
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                color: $c-cheng;
+            }
+        }
+        label {
+            white-space: nowrap;
+            display: inline-block;
+            width: 100px;
+            line-height: 36px;
+            height: 36px;
+            background-color: $c-bai;
+        }
+        input{
+            flex: 2;
+            border: none;
+            outline: none;
+            width: auto;
+            height: 36px;
+        }
+
+        .right{
+            /*float: right;*/
+            line-height: 36px;
+        }
+    }
+
+    .xin:before{
     /*padding-right: 10px;*/
     content: '*';
     display: inline-block;

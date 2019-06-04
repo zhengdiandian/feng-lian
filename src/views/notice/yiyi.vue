@@ -17,7 +17,7 @@
 
 
         </div>
-        <div class="input-box"><label >手机号:</label><input v-model="phone" placeholder="请填写您的手机号码" type="text"></div>
+        <div class="input-box"><label >手机号:</label><input v-model="phone" placeholder="请填写您的手机号码" type="number"></div>
 
         <div class="submit" v-promise-btn @click="submit">提交</div>
     </div>
