@@ -136,6 +136,7 @@
         padding: 0 10px 0 10px;
         line-height: 20px;
         margin-top: 5px;
+        text-align: center;
       }
       .bottom-content{
         display: flex;

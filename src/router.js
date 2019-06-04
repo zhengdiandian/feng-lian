@@ -435,19 +435,19 @@ export default new Router({
         {
           path: 'inputForm',
           component: function () {
-            return import('./views/compensate/components/InputForm') //上传文字
+            return import('./views/compensate/components/InputForm') // 上传文字
           }
         },
         {
           path: 'imageForm',
           component: function () {
-            return import('./views/compensate/components/ImageForm')//上传图片
+            return import('./views/compensate/components/ImageForm')// 上传图片
           }
         },
         {
           path: 'defrayment',
           component: function () {
-            return import('./views/compensate/components/defrayment')//支付
+            return import('./views/compensate/components/defrayment')// 支付
           }
 
         }
@@ -492,6 +492,22 @@ export default new Router({
       name: 'NoticeDetails',
       component: function () {
         return import('./views/notice/NoticeDetails.vue')
+      }
+    },
+    {
+      path: '/fundsDetails',
+      //  公示资金详情
+      name: 'fundsDetails',
+      component: function () {
+        return import('./views/notice/fundsDetails.vue')
+      }
+    },
+    {
+      path: '/Imgfunds',
+      //  图片公示资金详情
+      name: 'Imgfunds',
+      component: function () {
+        return import('./views/notice/Imgfunds.vue')
       }
     },
     {

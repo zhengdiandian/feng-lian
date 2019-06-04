@@ -208,7 +208,7 @@ export default {
       return this.sums[this.activeStep] / this.MutualRule.suit
     },
     amount() {
-      return this.serviceTime * this.MutualRule.suit + this.MutualRule.annualPrice
+      return this.serviceTime * this.MutualRule.suit + this.rechargeAnnualAmount
     }
   },
   methods: {

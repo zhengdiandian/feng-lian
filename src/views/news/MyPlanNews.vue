@@ -90,7 +90,7 @@
                     </template>
                     </card>
                     <div class="text">
-                      您于2019年4月9日申请的互助，在初审阶段已审核通过，请继续关注该申请的动态消息。
+                      {{myApply.content}}
                     </div>
                     <div class="customer">如有疑问请咨询客服热线 <span>010-56248620</span></div>
                     </section>
@@ -125,9 +125,9 @@
                     <template v-slot:lable >
                         <div class="slot-lable">
                             <!-- <img src="../assets/img/审核中.png" alt=""> -->
-                            <!-- <img src="../assets/img/通过.png" alt=""> -->
-                            <!-- <img src="../assets/img/驳回.png" alt=""> -->
-                            <img v-if="myplan.state == 500" src="@/assets/img/已退款.png" alt="">
+                            <img v-if="myplan.state == 200" src="@/assets/img/通过.png" alt="">
+                            <img v-if="myplan.state == 450" src="@/assets/img/驳回.png" alt="">
+                            <!-- <img v-if="myplan.state == 500" src="@/assets/img/已退款.png" alt=""> -->
                         </div>
                     </template>
                     <template v-slot:AuditPass>
@@ -142,7 +142,7 @@
                     </template>
                     </card>
                     <div class="text">
-                      您于2019年1月19日申请的互助，在初审阶段被驳回
+                      {{myplan.content}}
                     </div>
                     <div class="customer">如有疑问请咨询客服热线 <span>010-56248620</span></div>
                     </section>
