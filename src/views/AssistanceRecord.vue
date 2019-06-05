@@ -13,7 +13,6 @@
         <section class="profit">
             <div class="users">
                 <span class="number">{{helped.helpedCount}}</span>
-                <span v-if="helped.helpedCount == ''" class="number">0</span>
                 <span class="numberDay">已帮助人数</span>
             </div>
             <div class="xian"></div>

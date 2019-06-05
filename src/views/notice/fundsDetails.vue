@@ -16,7 +16,7 @@
             <div style="padding-top: 13px;">
                 <mu-paper :z-depth="1" class="demo-loadmore-wrap">
                         <mu-container ref="container" class="demo-loadmore-content">
-                            <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
+                            <mu-load-more :loading="loading" @load="load">
                                 <div class="stage" v-for="(item,index) in cityList" :key="index" @click="$router.push({name: 'Imgfunds', query: { stage: item.stage} })">
                                     <div class="item-stage">{{item.stage}}</div>
                                 </div>
@@ -66,13 +66,13 @@
             },
 
             
-            refresh () {
-                this.refreshing = true;
-                this.$refs.container.scrollTop = 0;
-                setTimeout(() => {
-                    this.refreshing = false;
-                }, 2000)
-            },
+            // refresh () {
+            //     this.refreshing = true;
+            //     this.$refs.container.scrollTop = 0;
+            //     setTimeout(() => {
+            //         this.refreshing = false;
+            //     }, 2000)
+            // },
 
             load () {
                 this.loading = true;

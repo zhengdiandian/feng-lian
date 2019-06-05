@@ -65,7 +65,7 @@
           <div class="list-li" v-if="userInfo.type &&  userInfo.type!=100" @click="Towelfareagency">
             <div class="list-img-text" >
               <div class="list-img" ><img src="../assets/image/福利汇.svg" alt=""></div>
-              <span class="position-r" style="margin-left:12px; margin-top: 3px;">福利社</span>
+              <span class="position-r" style="margin-left:12px; margin-top: 5px;">福利社</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
@@ -74,7 +74,7 @@
           <div class="list-li">
             <div class="list-img-text" >
                <div class="list-img" ><img src="../assets/image/卡包.svg" alt=""></div>
-              <span class="position-r" style="margin-left:12px">我的卡包</span>
+              <span class="position-r" style="margin-left:12px; margin-top: 5px;">我的卡包</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
@@ -84,7 +84,7 @@
           <div class="list-li">
             <div class="list-img-text" >
               <div class="list-img" ><img src="../assets/image/我的计划-选中.svg" alt=""></div>
-              <span class="position-r" style="margin-left:12px">我的计划</span>
+              <span class="position-r" style="margin-left:12px; margin-top: 5px;">我的计划</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
@@ -94,7 +94,7 @@
           <div class="list-li">
             <div class="list-img-text" >
               <div class="list-img" ><img src="../assets/image/申请.svg" alt=""></div>
-              <span class="position-r" style="margin-left:12px">我的申请</span>
+              <span class="position-r" style="margin-left:12px; margin-top: 5px;">我的申请</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
@@ -104,7 +104,7 @@
           <div class="list-li">
             <div class="list-img-text" >
               <div class="list-img" ><img src="../assets/image/客户.svg" alt=""></div>
-              <span class="position-r" style="margin-left:12px">我的{{changeText}}</span>
+              <span class="position-r" style="margin-left:12px; margin-top: 5px;">我的{{changeText}}</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
@@ -114,7 +114,7 @@
           <div class="list-li">
             <div class="list-img-text" >
               <div class="list-img" ><img src="../assets/image/记录.svg" alt=""></div>
-              <span class="position-r" style="margin-left:12px">互助记录</span>
+              <span class="position-r" style="margin-left:12px; margin-top: 5px;">互助记录</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
@@ -124,7 +124,7 @@
           <div class="list-li">
             <div class="list-img-text" >
               <div class="list-img" ><img src="../assets/image/邀请.svg" alt=""></div>
-              <span class="position-r" style="margin-left:12px">我的二维码</span>
+              <span class="position-r" style="margin-left:12px; margin-top: 5px;">我的二维码</span>
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
@@ -144,9 +144,9 @@
 
           <router-link tag="div" to="/setup">
             <div class="list-li">
-              <div class="list-img-text" >
+              <div class="list-img-text" style="margin-top: 2px;">
               <div class="list-img" ><img src="../assets/image/设置.svg" alt=""></div>
-                <span class="position-r" style="margin-left: 12px;margin-top: 3px;">设置</span>
+                <span class="position-r" style="margin-left: 12px;margin-top: 5px;">设置</span>
               </div>
               <mu-icon value=":iconfont iconyou1"></mu-icon>
             </div>
@@ -292,11 +292,15 @@ import {mapState} from 'vuex'
 </script>
 <style scoped lang="scss">
 .list-img-text{
-  text-align: center;
+  // text-align: center;
   display: flex;
-  line-height: 26px;
-  margin-left: 12px;
-  font-size: $f14;
+  position: absolute;
+  left: 24px;
+  // margin-top: 2px;
+  // line-height: 26px;
+  // margin-left: 12px;
+  // font-size: $f14;
+  // margin-top: 6px;
 }
 .list-img {
   width:22px;
