@@ -10,7 +10,12 @@
         </mu-button>
       </mu-appbar>
         <main>
-            <div class="input-box"><label >姓名:</label><input v-model="contacs" placeholder="请填写您的姓名" type="text"></div>
+<!--            <div class="input-box"><label >姓名:</label><input v-model="contacs" placeholder="请填写您的姓名" type="text"></div>-->
+<!--            <div class="input-box"><label >姓名:</label>-->
+<!--                <mu-select v-model="form.select" :active-step="activeStep"  :full-width="true">-->
+<!--                    <mu-option v-for="(option,index) in options" :key="index" :label="option.label" :value="option.id"></mu-option>-->
+<!--                </mu-select></div>-->
+
 
             <section class="details">
                 <div class="rule margin-left">
