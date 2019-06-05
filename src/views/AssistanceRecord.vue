@@ -29,7 +29,7 @@
                 </div>
             <mu-paper v-if="supporlist.length !== 0" :z-depth="1" class="demo-loadmore-wrap">
                 <mu-container ref="container" class="demo-loadmore-content">
-                    <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
+                    <mu-load-more :loading="loading" @load="load">
                         <section v-for="item in supporlist" :key="item.orderNo">
                             <div style="margin: 12px 0px 12px 12px" >
                                 <div style="font-size:9px;  font-weight:bold;color:rgba(112,112,112,1);">{{item.createTime}}</div>
@@ -109,13 +109,13 @@ export default {
             // this.supporlist = res.data.data.list
         })
         },
-        refresh () {
-            this.refreshing = true;
-            this.$refs.container.scrollTop = 0;
-            setTimeout(() => {
-                this.refreshing = false;
-            }, 2000)
-        },
+        // refresh () {
+        //     this.refreshing = true;
+        //     this.$refs.container.scrollTop = 0;
+        //     setTimeout(() => {
+        //         this.refreshing = false;
+        //     }, 2000)
+        // },
         load () {
             this.loading = true;
             this.page++;

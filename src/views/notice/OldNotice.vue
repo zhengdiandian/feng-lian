@@ -5,7 +5,7 @@
     </div>-->
     <mu-paper :z-depth="1" class="demo-loadmore-wrap">
       <mu-container ref="container" class="demo-loadmore-content">
-        <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
+        <mu-load-more  :loading="loading" @load="load">
           <mu-list>
             <div style="padding-top: 20px;">
               <div v-for="(item,index) in niticeList" :key="index">
@@ -68,13 +68,13 @@ export default {
     };
   },
   methods: {
-    refresh () {
-      this.refreshing = true;
-      this.$refs.container.scrollTop = 0;
-      setTimeout(() => {
-        this.refreshing = false;
-      }, 2000)
-    },
+    // refresh () {
+    //   this.refreshing = true;
+    //   this.$refs.container.scrollTop = 0;
+    //   setTimeout(() => {
+    //     this.refreshing = false;
+    //   }, 2000)
+    // },
     load () {
       this.loading = true;
       this.page++;
