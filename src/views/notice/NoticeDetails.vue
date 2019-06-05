@@ -21,7 +21,7 @@
             <div class="xian"></div>
             <div class="footer-text"><span>已加入互助计划{{detaliList.joinDays}}天，共分摊互助金为{{detaliList.totalApportion}}元</span></div>
           </div>
-          <div class="text-info" style="display: flex"><span>上链信息</span><span style="flex: 2; overflow: hidden;text-overflow: ellipsis; white-space: nowrap">{{}}</span> <span class="btn text-blue" @click="$toast.success('复制成功')">点击复制</span></div>
+          <!-- <div class="text-info" style="display: flex"><span>上链信息</span><span style="flex: 2; overflow: hidden;text-overflow: ellipsis; white-space: nowrap">{{}}</span> <span class="btn text-blue" @click="$toast.success('复制成功')">点击复制</span></div> -->
           <section class="info-detalis">
             <div class="detalis">
                 <div>{{detaliList.illnessApply}}</div>

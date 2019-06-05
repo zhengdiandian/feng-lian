@@ -55,8 +55,10 @@
             debugger
             if(this.timeout) {
               this.$toast.success(`需要等待${this.timeout}天`)
+              return
             }else  {
               this.$toast.success('请先加入计划')
+              return
             }
             if (this.timeout > 180) {
               this.$router.push('/myplannews')

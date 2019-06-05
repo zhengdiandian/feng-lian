@@ -37,7 +37,14 @@
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
-                    <span class="width-left">生日：</span><span ><input type="text" v-model="birth"></span>
+                    <!-- <span class="width-left">生日：</span><span ><input type="text" v-model="birth"></span> -->
+                    <div class="input-box" @click="openBotttomSheet">
+                <label >生日:</label>
+                <div class="select"><span class="placeholder-text" v-if="incidentTime===''">请选择事故发生时间</span><span>{{incidentTime}}</span><span class="iconfont iconxiangshangshouqi1"></span>
+                </div>
+<!--                <mu-date-input v-model="value2" label="横屏显示" label-float full-width landscape></mu-date-input>-->
+
+            </div>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <!-- <div class="rule margin-left">
@@ -56,7 +63,11 @@
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left ">
-                    <span class="width-left">收货地址：</span><span><input  type="text" v-model="address"></span>
+                    <!-- <span class="width-left">收货地址：</span><span><input  type="text" v-model="address"></span> -->
+                    <div class="content">
+                        <div class="input-box" @click="showAddress=true"><label >地区:</label><div class="select"><span class="placeholder-text" v-if="province===''">请选择地区</span><span>{{province}}</span><span> {{citys}}</span> <span> {{county}}</span><span class="iconfont iconxiangshangshouqi1"></span></div></div>
+                        <div class="input-box"><label >详细地址:</label><input class="address" v-model="address" placeholder="请填写您的详细地址" type="text"></div>
+                    </div>
                 </div>
                     <!-- <mu-divider></mu-divider> -->
 
@@ -73,10 +84,26 @@
                 </div> -->
             </section>
         </main>
+         <vue-picker
+                :show="showAddress"
+                :columns="3"
+                :link='true'
+                @cancel="showAddress=false"
+                @confirm="confirmFn"
+        ></vue-picker>
+
+        <mu-bottom-sheet :open.sync="open">
+                <mu-paper style="width: 100%"  :z-depth="1" class="demo-date-picker">
+                    <mu-date-picker color="#f8b62d" style="width: 100%"  :date.sync="date"></mu-date-picker>
+                </mu-paper>
+        </mu-bottom-sheet>
+
         <section class="btn-edit"><div class="btn" @click="editdeta">保存</div></section>
     </div>
 </template>
 <script>
+  import vuePicker from "@/components/vuePickers/vuePicker";
+
 export default {
     name: 'editdetails',
     data() {
@@ -101,13 +128,32 @@ export default {
             ],
             form: {
                 select: ''
-            }
+            },
+            showAddress: false,
+            citys: '',
+            county: '',
+            addressFull: '',
+            // incidentTime: '',
+            open: false,
+            date: new Date(),
         }
     },
+    computed: {
+        addresso() {
+          return  this.addressFull + this.address
+        },
+         incidentTime() {
+        if(typeof this.date === 'object'  ){
+            return  this.date.Format("yyyy-MM-dd")
+        }
+            return ''
+        },
+    },
+  components: {vuePicker},
   created() {
       let data = this.$route.params.data
       this.nickname = data.nickname
-      this.address = data.address
+    //   this.address = data.address
       this.city = data.city
       this.email = data.email
       this.obj = data.obj
@@ -116,8 +162,26 @@ export default {
       this.motto = data.motto
   },
     methods:{
+        openBotttomSheet () {
+            this.open = true;
+        },
+         confirmFn(val) {
+        debugger
+        this.addressFull = val.select1.text + val.select2.text + val.select3.text
+        this.showAddress = false;
+        this.province = val.select1.text
+        //   // .substring(0,val.select1.text.length -1)
+        this.citys = val.select2.text
+        //   // .substring(0,val.select2.text.length -1 )
+        this.provinceValue = val.select1.value
+        this.cityValue = val.select2.value
+        // this.countyValue = val.select3.value
+        this.county = val.select3.text
+        // this.defaultData = [val.select1];
+      },
         editdeta() {
           debugger
+          console.log(this.addresso)
         //   if(!this.address || !this.job){
         //     this.$toast.error('请填写完整信息')
         //   }
@@ -138,11 +202,11 @@ export default {
             "nickname":this.nickname,
             "sex":this.form.select,
             "age":this.age,
-            "birth":this.birth,
+            "birth":this.incidentTime,
             "constellation":this.constellation,
             "job": this.job,
             "working_place":this.working_place,
-            "address":this.address,
+            "address": this.addresso,
             "email":this.email,
             "province":this.province,
             "city":this.city,
@@ -165,64 +229,6 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-    .input-box{
-        width: 100%;
-        /*height:36px;*/
-        display: flex;
-        flex-wrap: wrap;
-        &.switch{
-            justify-content: space-between;
-        }
-        .placeholder-text{
-            font-family:SourceHanSansCN-Normal;
-            font-weight:400;
-            color:rgba(112,112,112,1);
-        }
-        &:after{
-            width: 100%;
-            height: 1px;
-            transform: scaleY(0.5);
-            transform-origin: 50% 100%;
-            /*height: .5px;*/
-            content: '';
-            display: block;
-            z-index: 6666;
-            background-color: $c-hui;
-            /*<!--border-bottom: .5px solid $c-hui;-->*/
-        }
-        .select{
-            position: relative;
-            flex: 2;
-            line-height: 36px;
-            height: 36px;
-            .iconfont{
-                position: absolute;
-                bottom: 0px;
-                right: 0px;
-                color: $c-cheng;
-            }
-        }
-        label {
-            white-space: nowrap;
-            display: inline-block;
-            width: 100px;
-            line-height: 36px;
-            height: 36px;
-            background-color: $c-bai;
-        }
-        input{
-            flex: 2;
-            border: none;
-            outline: none;
-            width: auto;
-            height: 36px;
-        }
-
-        .right{
-            /*float: right;*/
-            line-height: 36px;
-        }
-    }
 
     .xin:before{
     /*padding-right: 10px;*/
@@ -239,6 +245,9 @@ export default {
   }
   .xin{
     position: relative;
+  }
+  .iconxiangshangshouqi1 {
+      padding-right: 12px;
   }
 main{
     margin-top: 60px;
@@ -284,7 +293,7 @@ input{
     padding: 0;
     position: absolute;
     top: 10px;
-    padding-left: 10px;
+    // padding-left: 10px;
         font-size: $f14;
 }
 .rule /deep/.mu-item     .mu-option.is-selected .mu-item {
@@ -318,4 +327,64 @@ input{
     display: inline-block;
     width: 80px;
 }
+
+
+.input-box{
+        width: 100%;
+        /*height:36px;*/
+        display: flex;
+        flex-wrap: wrap;
+        &.switch{
+            justify-content: space-between;
+        }
+        .placeholder-text{
+            font-family:SourceHanSansCN-Normal;
+            font-weight:400;
+            color:rgba(112,112,112,1);
+        }
+        &:after{
+            width: 100%;
+            height: 1px;
+            transform: scaleY(0.5);
+            transform-origin: 50% 100%;
+            /*height: .5px;*/
+            content: '';
+            display: block;
+            z-index: 6666;
+            background-color: $c-hui;
+            /*<!--border-bottom: .5px solid $c-hui;-->*/
+        }
+        .select{
+            position: relative;
+            flex: 2;
+            line-height: 36px;
+            height: 36px;
+            .iconfont{
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                color: $c-cheng;
+            }
+        }
+        label {
+            white-space: nowrap;
+            display: inline-block;
+            width: 80px;
+            line-height: 36px;
+            height: 36px;
+            background-color: $c-bai;
+        }
+        input{
+            flex: 2;
+            border: none;
+            outline: none;
+            width: auto;
+            height: 36px;
+        }
+
+        .right{
+            /*float: right;*/
+            line-height: 36px;
+        }
+    }
 </style>
