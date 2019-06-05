@@ -73,7 +73,7 @@
       <div class="yaoQing margin-top wrap">
         <div class="input-wrap">
           <label for>邀请码</label>
-          <input  style="vertical-align: middle" type="text" placeholder="请联系客服获得邀请码" v-model="agentUserCode" >
+          <input  style="vertical-align: middle" type="text"  :disabled="flag" placeholder="请联系客服获得邀请码" v-model="agentUserCode" >
           <span class="" @click="obtain">
             <a :href="'tel:'+CustomerService" class="btn">
             <span>获取邀请码</span>
@@ -162,7 +162,8 @@ export default {
       activeIndex: 0,
       order: [],
       agentUserCode: '',
-      familyList: []
+      familyList: [],
+      flag: false
     }
   },
   computed:{
@@ -249,6 +250,10 @@ export default {
         this.$toast(res.data.data.msg)
       }
       this.agentUserCode = res.data.data.userCode
+      if(this.agentUserCode !== ''){
+        
+        this.flag = true
+      }
 
     })
     this.$axios.post('v1/family/info/familyList').then(res => {
@@ -256,20 +261,20 @@ export default {
         this.$toast(res.data.data.msg)
       }
       this.familyList = res.data.data
-      this.familyList.unshift({
-        relation: 0,
-        relationDesc: '自己',
-        userCode: this.userInfo.userCode
+      // this.familyList.unshift({
+      //   relation: 0,
+      //   relationDesc: '自己',
+      //   userCode: this.userInfo.userCode
 
-      })
+      // })
       console.log('family',res)
     }).catch(e => {
-      this.familyList.unshift({
-        relation: 0,
-        relationDesc: '自己',
-        userCode: this.userInfo.userCode
+      // this.familyList.unshift({
+      //   relation: 0,
+      //   relationDesc: '自己',
+      //   userCode: this.userInfo.userCode
 
-      })
+      // })
     })
   },
   mounted() {

@@ -4,7 +4,7 @@
             <mu-button icon slot="left" @click="$router.go(-1)">
                 <mu-icon value=":iconfont iconfanhui"></mu-icon>
             </mu-button>
-            {{title}}
+            未满18岁家人实名认证
             <mu-button icon slot="right"  :ripple="false">
             </mu-button>
 
@@ -49,7 +49,6 @@
         provinceValue: '',
         city: '',
         cityValue: '',
-        title: '未满18岁家人实名认证',
         showRelation: false,
         relation: '',
         relationValue: '',
@@ -182,14 +181,16 @@
             color:rgba(112,112,112,1);
         }
         &:after{
-            width: 100%;
-            height: 2px;
-            transform: scaleY(0.25);
-            transform-origin: 50% 100%;
-            /*height: .5px;*/
             content: '';
             display: block;
-            z-index: 6666;
+            width: 100%;
+            height: 1px;
+            transform: scaleY(0.5);
+            transform-origin: 50% 100%;
+            /*height: .5px;*/
+
+            /*z-index: 6666;*/
+
             background-color: $c-hui;
             /*<!--border-bottom: .5px solid $c-hui;-->*/
         }
