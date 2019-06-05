@@ -62,7 +62,7 @@
     <mu-container ref="container" class="demo-loadmore-content">
         <mu-load-more  :loading="loading" @load="load">
                 <section  class="card" :class="[activeIndex==i? 'active': '']" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
-                    <div @click="activeIndex=i">
+                    <div @click="clickActiveIndexHangdle(i)">
                         <card
                               :img="myplan.headPortrait"
                               :state="myplan.payState==100?'未实名':'已实名'"
@@ -139,6 +139,13 @@ export default {
         //         query:{planNo: this.planNo , productCode: this.productCode}
         //     })
         // },
+        clickActiveIndexHangdle(index) {
+          if(this.activeIndex === index) {
+            this.activeIndex = undefined
+            return
+          }
+          this.activeIndex= index
+        },
         toComponsate() {
         debugger
             if(this.activeIndex === undefined) {

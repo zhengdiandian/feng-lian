@@ -28,7 +28,7 @@
             </div>
         </main>
         <div class="btn-wrap margin-top" v-if="show">
-          <div class="btn" @click="downloadMyQrcode">保存二维码</div>
+          <div class="btn" @click="downloadMyQrcode" v-promise-btn>保存二维码</div>
           <div class="btn" :data-clipboard-text="userInfo.userCode" @click="$toast.success('复制成功')">复制邀请码</div>
         </div>
         <pop-box v-if="showPop">
@@ -89,15 +89,15 @@ export default {
         let linkDom = document.getElementById('download')
         let contentDom  =document.getElementById('qrContent')
         this.show = 0
-        Html2canvas(contentDom, {dpi: window.devicePixelRatio, useCORS: true}).then(canvas => {
+        return Html2canvas(contentDom, {dpi: window.devicePixelRatio, useCORS: true}).then(canvas => {
           this.imgSrc = canvas.toDataURL('image/png', 1.0)
-          this.$nextTick(() => {
+          // this.$nextTick(() => {
 
-            linkDom.click()
+            // linkDom.click()
             // this.$toast.success('保存成功')
             this.show = 1
             this.showPop = true
-          })
+          // })
         })
       },
         open() {

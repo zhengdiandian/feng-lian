@@ -39,7 +39,7 @@ name: 'selelctAddFamily',
         justify-content: space-around;
         align-items: center;
         flex-direction: column;
-        height:280px;
+        height:250px;
         /*text-align: center;*/
         &-img{
             width: 91px;
