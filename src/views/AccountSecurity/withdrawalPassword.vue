@@ -84,7 +84,7 @@ import { timingSafeEqual } from 'crypto';
             return {
                 inputList: [{val: ""}, {val: ""}, {val: ""}, {val: ""}, {val: ""}, {val: ""}],
                 pwd: false,
-                id: this.$route.params.id,
+                id: this.$route.query.id,
                 newpwd: false, //新密码开关
                 again: false, // 再次输入开关
                 tips: true, // 温馨提示开关

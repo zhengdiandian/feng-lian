@@ -15,7 +15,13 @@
     </header>
     <main class="main">
         <div class="historical-bill">历史账单</div>
-        <mu-paper :z-depth="1" class="demo-loadmore-wrap">
+
+        <!-- <div class="iconkong" v-if=" reward ==  '' || !reward">
+            <img src="../assets/空页面.png" alt="">
+            <span>暂无数据</span>
+        </div> -->
+
+        <mu-paper  :z-depth="1" class="demo-loadmore-wrap">
             <mu-container ref="container" class="demo-loadmore-content">
                 <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
                 <mu-list>
@@ -235,6 +241,23 @@ export default {
   overflow: auto;
   width: 100%;
   // -webkit-overflow-scrolling: touch;
+}
+.iconkong{
+    padding-top: 150px;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    span{
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        color: #707070;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
 }
 .Withdrawable{
     color:rgba(255,255,255,1);
