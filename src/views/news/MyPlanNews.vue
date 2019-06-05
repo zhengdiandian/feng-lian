@@ -256,7 +256,7 @@ main{
 }
 .demo-loadmore-wrap {
   width: 100%;
-  height: 300px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   background-color: $c-bai;

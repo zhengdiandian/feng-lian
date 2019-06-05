@@ -52,6 +52,7 @@
         },
         methods: {
           toast() {
+            // this.$router.push('/myplannews')
             debugger
             if(this.timeout) {
               // this.$toast.success(`需要等待${this.timeout}天`)
