@@ -27,6 +27,7 @@ export default new Router({
       path: '/',
       name: 'home',
       redirect: '/home',
+      meta: {keepAlive: false},
       component: function () {
         return import('./views/Home.vue')
       },
@@ -34,6 +35,7 @@ export default new Router({
         {
           path: 'home', // 首页]
           name: 'homePage',
+          meta: {keepAlive: false},
           component: function () {
             // 首页
             return import('./views/HomePage.vue')
@@ -178,7 +180,8 @@ export default new Router({
         return import('./views/MyPlan.vue')
       },
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        keepAlive: false
       }
     },
     {

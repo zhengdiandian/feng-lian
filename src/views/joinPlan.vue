@@ -493,7 +493,9 @@ main{
       display: flex;
       justify-content: center;
       align-items: center;
+      box-sizing: content-box;
       width: 18%;
+      padding: 6px;
       background-color: $c-hui;
         margin-right: 10px;
         margin-bottom: 10px;

@@ -29,7 +29,7 @@
   </PopBox>
     <mu-appbar style="width: 100%;" color="primary" text-color="#666" z-depth="0">
       <mu-button icon slot="left" @click="$router.push('/home')" >
-        <mu-icon value=":iconfont iconfanhui" size="24" @click.stop="$router.go(-1)"></mu-icon>
+        <mu-icon value=":iconfont iconfanhui" size="24" ></mu-icon>
       </mu-button>
       我的互助计划详情
       <mu-button icon slot="right" :ripple="false" @click="showTui">
