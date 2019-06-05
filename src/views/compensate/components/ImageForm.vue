@@ -4,7 +4,7 @@
         <div class="warning file-box">点击 <span class="iconwenhao iconfont" @click="openBotttomSheet"></span>可查看相应示例图</div>
         <div class="file-box">
             <div class="file-box-title">
-                1、缴费凭证 <span class="iconwenhao iconfont"></span>
+                1、缴费凭证 <span @click="show_pic('PayProve')" class="iconwenhao iconfont"></span>
                 <div class="file-box-content">
                     <ul>
                         <li class="image-box" v-for="(img,i) in payProve"  :key="i"><img :src="img" :key="i" alt=""></li>
@@ -16,7 +16,7 @@
         </div>
         <div class="file-box">
             <div class="file-box-title">
-                2、申请表填写完成后拍照上传 <span class="iconwenhao iconfont"></span>
+                2、申请表填写完成后拍照上传 <span @click="show_pic('ApplyForm')" class="iconwenhao iconfont"></span>
                 <div class="file-box-content">
                     <ul>
                         <li class="image-box" v-for="(img,i) in applyForm" :key="i"><img :src="img" :key="i" alt=""></li>
@@ -27,7 +27,7 @@
         </div>
         <div class="file-box">
             <div class="file-box-title">
-                3、病例报告 <span class="iconwenhao iconfont"></span>
+                3、病例报告 <span @click="show_pic('IllnessInform')" class="iconwenhao iconfont"></span>
                 <div class="file-box-content">
                     <ul>
                         <li class="image-box" v-for="(img,i) in illnessInform" :key="i"><img :src="img" :key="i" alt=""></li>
@@ -38,7 +38,7 @@
         </div>
         <div class="file-box">
             <div class="file-box-title">
-                4、诊断证明 <span class="iconwenhao iconfont"></span>
+                4、诊断证明 <span @click="show_pic('TreatProve')" class="iconwenhao iconfont"></span>
                 <div class="file-box-content">
                     <ul>
                         <li class="image-box" v-for="(img,i) in treatProve" :key="i"><img :src="img" :key="i" alt=""></li>
@@ -49,7 +49,7 @@
         </div>
         <div class="file-box">
             <div class="file-box-title">
-                5、身份证正反面照片 <span class="iconwenhao iconfont"></span>
+                5、身份证正反面照片
                 <div class="file-box-content">
                     <ul>
 <!--                        <li class="image-box" v-for="(img,i) in payProve"><img :src="img" :key="i" alt=""></li>-->
@@ -62,7 +62,7 @@
         </div>
         <div class="file-box">
             <div class="file-box-title">
-                6、上传银行卡照片 <span class="iconwenhao iconfont"></span>
+                6、上传银行卡照片
                 <div class="file-box-content">
                     <ul>
 <!--                        <li class="image-box" v-for="(img,i) in payProve"><img :src="img" :key="i" alt=""></li>-->
@@ -71,9 +71,7 @@
                 </div>
             </div>
         </div>
-        <popbox v-if="showPop" style="z-index: 66666">
-            <div class="pop-box"></div>
-        </popbox>
+
 <!--        <mu-bottom-sheet :open.sync="open">-->
 <!--                <div class="shi-li" style="width: 100%"  :z-depth="1">-->
 <!--                    <img src="https://placehold.it/350x200" alt="">-->
@@ -83,18 +81,24 @@
 <!--&lt;!&ndash;                <mu-date-picker color="#f8b62d" style="width: 100%"  :date.sync="date"></mu-date-picker>&ndash;&gt;-->
 <!--&lt;!&ndash;            </mu-paper>&ndash;&gt;-->
 <!--        </mu-bottom-sheet>-->
+        <PopBox v-if="showPop" style="z-index: 666666;" >
+            <div class="pic_img">
+                <img :src="shiLiImg" alt="">
+                <div class="btn" @click="showPop = false"><i class="iconfont iconcha"></i></div>
+            </div>
+        </PopBox>
         <div class="submit" v-promise-btn @click="submit" >提交资料</div>
     </div>
 </template>
 
 <script>
 import  FileInput from '../../../components/UpLoad/UpLoad'
-import  Popbox from '../../../components/PopBox/PopBox'
+import  PopBox from '../../../components/PopBox/PopBox'
 export default {
     name: 'imageForm',
     components: {
         FileInput,
-        Popbox
+        PopBox
     },
     data() {
         return {
@@ -105,10 +109,25 @@ export default {
         treatProve: [],
         contacsId: [],
         cardImg: '',
-        showPop: false
+        showPop: false,
+          shiLiImg: ''
         }
     },
     methods: {
+        show_pic(keys) {
+          return this.$axios.post('v1/manage/config/getImgList', {
+            keys
+          }).then(res => {
+            if(res.data.code !== 200) {
+              this.$toast.error(res.data.msg)
+              return
+            }
+            debugger
+            this.shiLiImg = res.data.data[keys]
+            this.showPop = true
+
+          })
+        },
         getFile(file, imgUrl,base) {
           debugger
         this.payProve.push(file)
@@ -167,6 +186,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .pic_img{
+        width: 375px;
+        height: 300px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .btn{
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            color: #fff;
+        }
+    }
     ul,li{
         padding: 0px;
         margin: 0px;
