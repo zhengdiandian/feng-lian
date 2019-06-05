@@ -11,7 +11,7 @@
         <main>
             <mu-paper :z-depth="1" class="demo-loadmore-wrap" style="padding-top: 35px;">
             <mu-container ref="container" class="demo-loadmore-content">
-              <mu-load-more  :refreshing="refreshing" :loading="loading" @load="load">
+              <mu-load-more  :loading="loading" @load="load">
                 <mu-list>
                   <!-- <template v-for="(item,i) in num">
                     <mu-list-item :key="i">

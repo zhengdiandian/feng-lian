@@ -65,7 +65,7 @@
 
 <mu-paper  :z-depth="1" class="demo-loadmore-wrap">
     <mu-container ref="container" class="demo-loadmore-content">
-        <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
+        <mu-load-more  :loading="loading" @load="load">
                 <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
                     <card :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
                         :img="myplan.headPortrait"
@@ -165,15 +165,15 @@ export default {
             // this.myplan = res.data.data
         })
         },
-        refresh () {
-            this.refreshing = true;
-            this.$refs.container.scrollTop = 0;
-            setTimeout(() => {
-                this.refreshing = false;
-                // this.text = this.text === 'List' ? 'Menu' : 'List';
-                // this.num = 10;
-            }, 2000)
-        },
+        // refresh () {
+        //     this.refreshing = true;
+        //     this.$refs.container.scrollTop = 0;
+        //     setTimeout(() => {
+        //         this.refreshing = false;
+        //         // this.text = this.text === 'List' ? 'Menu' : 'List';
+        //         // this.num = 10;
+        //     }, 2000)
+        // },
         load () {
             this.loading = true;
             this.page++ 

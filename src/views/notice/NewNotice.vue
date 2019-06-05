@@ -63,9 +63,12 @@
         
         <div class="card-btn" @click="$router.push('/fundsDetails')">点击查看详情</div>
       </div>
-      <div class="contact-wrap">
-        <div class="contact"><span class="iconfont iconlianxikefu"></span>联系客服</div>
-      </div>
+      <footer>
+        <a :href="'tel:'+CustomerService" class="customer">
+            <mu-icon value=":iconfont iconlianxikefu"></mu-icon>
+            <span>联系客服</span>
+        </a>
+    </footer>
     </div>
   </div>
 </template>
@@ -86,6 +89,7 @@ export default {
       acs: {},
       activeIndex: 0,
       index: 0,
+      CustomerService: ''
     }
   },
   methods: {
@@ -110,6 +114,17 @@ export default {
       this.acs = this.list[this.activeIndex]
       // console.log(this.acs)
     })
+
+    this.$axios.post('v1/manage/config/getTextList',{
+            "keys": 'CustomerService'
+            }).then(res=>{
+                if(res.data.code !==200){
+                        this.$toast.error(res.data.msg)
+                        return
+                }
+                this.CustomerService = res.data.data.CustomerService
+            })
+
   }
 };
 </script>
@@ -371,4 +386,29 @@ export default {
     }
     }
   }
+  footer{
+    // position: absolute;
+    // bottom: 0px;
+    width: 100%;
+    margin-bottom: 50px;
+    .customer{
+        display: block;
+        width:123px;
+        height:33px;
+        border:1px solid rgba(239,162,32,1);
+        border-radius:25px;
+        // position: absolute;
+        // bottom: 0px;
+        // left: 113px;
+        margin: 12px auto;
+        text-align: center;
+        line-height: 33px;
+        color: #EFA220;
+        display: flex;
+        justify-content: center;
+        .iconlianxikefu{
+            padding-right: 6px;
+        }
+    }
+}
 </style>
