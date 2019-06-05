@@ -98,8 +98,8 @@
         </main>
 <!--        <footerBtn></footerBtn>-->
         <footer>
-            <div class="ordinary-claims" v-promise-btn @click="toComponsate">申请理赔</div>
-            <div v-if="myplan.list[activeIndex].compensateFlag" class="Second-claims" v-promise-btn>申请秒赔</div>
+            <div class="ordinary-claims" v-promise-btn @click="toComponsate" :style="{backgroundColor: activeIndex===undefined? 'rgba(234,234,234,1)': ''}">申请理赔</div>
+            <div v-if="activeIndex!==undefined &&myplan.list[activeIndex].compensateFlag " class="Second-claims" v-promise-btn>申请秒赔</div>
         </footer>
     </div>
 </template>
@@ -124,7 +124,7 @@ export default {
             activeIndex: null,
             productCode: '',
             relationList: [],
-            activeIndex: 0,
+            activeIndex: undefined,
             refreshing: false,
             loading: false,
             pageSize: 5,
@@ -141,33 +141,38 @@ export default {
         // },
         toComponsate() {
         debugger
-            return this.$axios.post('v1/mutually/compensate/compensateDetail',{
+            if(this.activeIndex === undefined) {
+              return
+            }
+            let plan = this.myplan.list[this.activeIndex]
+            if(plan.state===200 || plan.state === 300) {
+              return this.$axios.post('v1/mutually/compensate/compensateDetail',{
                 orderNo: this.myplan.list[this.activeIndex].planNo
-            }).then(res => {
-              debugger
-                  if(res.data.code === 8888) {
-                    debugger
-                    this.$router.push({
-                      path: '/compensate/inputForm',
-                      query: {
-                        type: 0,
-                        planNo: this.myplan.list[this.activeIndex].planNo,
-                        first: res.data.code
-                      }
-                    })
-                    return
-                  }
+              }).then(res => {
+                debugger
+                if(res.data.code === 8888) {
+                  debugger
+                  this.$router.push({
+                    path: '/compensate/inputForm',
+                    query: {
+                      type: 0,
+                      planNo: this.myplan.list[this.activeIndex].planNo,
+                      first: res.data.code
+                    }
+                  })
+                  return
+                }
                 if(res.data.code !==200){
-                    this.$toast.error(res.data.msg)
-                    return
+                  this.$toast.error(res.data.msg)
+                  return
                 }
                 let state = res.data.data.state
                 if(state==300) {
-                    this.$toast.success('初审审核中')
-                    return
+                  this.$toast.success('初审审核中')
+                  return
                 }
                 if(state ==400) {
-                    //todo  去支付费用
+                  //todo  去支付费用
                   this.$router.push({
                     path: '/compensate/defrayment',
                     query: {
@@ -189,15 +194,35 @@ export default {
                 }
                 if(state == 0) {
                   debugger
-                    this.$router.push({
-                        path: '/compensate/inputForm',
-                        query: {
-                        type: 0,
-                        planNo: this.myplan.list[this.activeIndex].planNo
-                        }
-                     })
+                  this.$router.push({
+                    path: '/compensate/inputForm',
+                    query: {
+                      type: 0,
+                      planNo: this.myplan.list[this.activeIndex].planNo
+                    }
+                  })
                 }
-            })
+              })
+            } else {
+              let errorText = ''
+               switch (plan.state) {
+                 case 0:
+                   errorText = '计划初始化中'
+                   break
+                 case 100:
+                   errorText = '计划还在等待期中'
+                   break
+                 case 400:
+                   errorText = '计划已失效'
+                   break
+                 case 500:
+                   errorText = '计划已退出'
+               }
+               this.$toast.error(errorText)
+              }
+            // }
+
+
 
         },
         refresh () {

@@ -92,7 +92,7 @@
 
       </div>
 
-      <div class="font margin-top">预计使用10个月</div>
+<!--      <div class="font margin-top">预计使用10个月</div>-->
       <!--<mu-slider class="demo-slider" v-model="normal.value1"></mu-slider>-->
       <!--<mu-slider class="demo-slider" :display-value="false" :step="10" v-model="sliderVal"></mu-slider>-->
       <!--<mu-slider class="demo-slider" disabled v-model="normal.value3"></mu-slider>-->
@@ -108,12 +108,12 @@
           <li v-for="sum in sums" :key="sum">{{sum}}元</li>
         </ul>
       </div>
-      <div class="buy-info margin-top" style="position: relative;">
-        使用时间: <span class="margin-left font-min">{{serviceTime}}个月</span>
-        <!-- <div class="estimate"><span style="font-size: 14px;">预计到期时间2020年2月9日</span></div> -->
-        <mu-divider></mu-divider>
-      </div>
-      <div class="buy-info">
+<!--      <div class="buy-info margin-top" style="position: relative;">-->
+<!--        使用时间: <span class="margin-left font-min">{{serviceTime}}个月</span>-->
+<!--        &lt;!&ndash; <div class="estimate"><span style="font-size: 14px;">预计到期时间2020年2月9日</span></div> &ndash;&gt;-->
+<!--        <mu-divider></mu-divider>-->
+<!--      </div>-->
+      <div class="buy-info  margin-top">
         服务费: <span class="margin-left font-min"> &nbsp;&nbsp;{{MutualRule.annualPrice}}</span>
         <mu-divider></mu-divider>
       </div>
@@ -483,7 +483,7 @@ main{
 
 .select-wrap{
   width: 351px;
-  height: 300px;
+  /*height: 300px;*/
   margin: auto;
   .select-items{
     display: flex;
