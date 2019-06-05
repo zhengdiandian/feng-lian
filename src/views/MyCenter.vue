@@ -193,13 +193,11 @@ import {mapState} from 'vuex'
     toast() {
       debugger
       if(this.timeout) {
-        this.$toast.success(`需要等待${this.timeout}天`)
+        this.$toast.success("您暂时还未有申请计划")
       }else  {
-        this.$toast.success('请先加入计划')
-      }
-      if (this.timeout > 180) {
         this.$router.push('myhlepPlan')
-      } 
+      }
+
     },
     jump() {
        this.$router.push('/per')

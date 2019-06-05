@@ -10,7 +10,7 @@
         </mu-appbar>
         <main>
           <div class="tips">为保护个人隐私，公示10日后不在展示用户信息</div>
-          <div class="info">
+          <div class="info" @click="$router.push({name: 'heAssistanceReacord', query: { userCode: detaliList.userCode }})">
             <section class="info-head">
               <div class="info-img"><img :src="detaliList.headPortrait" alt=""></div>
               <div class="info-text">

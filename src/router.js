@@ -216,6 +216,13 @@ export default new Router({
       }
     },
     {
+      path: '/heassis', // 他人互助记录
+      name: 'heAssistanceReacord',
+      component: function () {
+        return import('./views/notice/heAssistanceRecord.vue')
+      }
+    },
+    {
       path: '/palnned', // 计划充值
       component: function () {
         return import('./views/PlannedRecharge.vue')

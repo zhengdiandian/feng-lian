@@ -147,7 +147,9 @@ export default {
   position: absolute;
   bottom: 0px;
   padding: 12px;
-  // color: $c-bai;
+  color: $c-bai;
+  width:351px;
+  background-color: rgba(0, 0, 0, 0.3)
 }
 .postList-img-title{
   width:351px;

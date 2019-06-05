@@ -54,15 +54,16 @@
           toast() {
             debugger
             if(this.timeout) {
-              this.$toast.success(`需要等待${this.timeout}天`)
+              // this.$toast.success(`需要等待${this.timeout}天`)
+              this.$toast.success("您暂时还未有申请计划")
               return
             }else  {
-              this.$toast.success('请先加入计划')
+              this.$router.push('/myplannews')
               return
             }
-            if (this.timeout > 180) {
-              this.$router.push('/myplannews')
-            } 
+            // if (this.timeout > 180) {
+            //   this.$router.push('/myplannews')
+            // } 
           },
         },
         mounted() {
@@ -95,9 +96,9 @@
 </script>
 
 <style lang="scss" scoped>
-// #app>div{
-//   background-color: $c-hui;
-// }
+#app>div{
+  background-color: $c-hui;
+}
 main{
     padding-top: 60px;
 }
