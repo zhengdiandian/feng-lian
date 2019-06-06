@@ -98,8 +98,8 @@
         </main>
 <!--        <footerBtn></footerBtn>-->
         <footer>
-            <div class="ordinary-claims" v-promise-btn @click="toComponsate" :style="{backgroundColor: activeIndex===undefined? 'rgba(234,234,234,1)': ''}">申请理赔</div>
-            <div v-if="activeIndex!==undefined &&myplan.list[activeIndex].compensateFlag " class="Second-claims" v-promise-btn>申请秒赔</div>
+            <div class="ordinary-claims" v-promise-btn @click="toComponsate(0)" :style="{backgroundColor: activeIndex===undefined? 'rgba(234,234,234,1)': ''}">申请理赔</div>
+            <div @click="toComponsate(1)" v-if="activeIndex!==undefined &&myplan.list[activeIndex].compensateFlag " class="Second-claims" v-promise-btn>申请秒赔</div>
         </footer>
     </div>
 </template>
@@ -146,7 +146,7 @@ export default {
           }
           this.activeIndex= index
         },
-        toComponsate() {
+        toComponsate(type) {
         debugger
             if(this.activeIndex === undefined) {
               return
@@ -154,7 +154,8 @@ export default {
             let plan = this.myplan.list[this.activeIndex]
             if(plan.state===200 || plan.state === 300) {
               return this.$axios.post('v1/mutually/compensate/compensateDetail',{
-                orderNo: this.myplan.list[this.activeIndex].planNo
+                orderNo: this.myplan.list[this.activeIndex].planNo,
+
               }).then(res => {
                 debugger
                 if(res.data.code === 8888) {
@@ -162,7 +163,7 @@ export default {
                   this.$router.push({
                     path: '/compensate/inputForm',
                     query: {
-                      type: 0,
+                      type: type,
                       planNo: this.myplan.list[this.activeIndex].planNo,
                       first: res.data.code
                     }
@@ -200,6 +201,7 @@ export default {
                     }
 
                   })
+                  return
                 }
 
                 // this.$toast.warning(errorText)
@@ -221,8 +223,9 @@ export default {
                   this.$router.push({
                     path: '/compensate/inputForm',
                     query: {
-                      type: 0,
-                      planNo: this.myplan.list[this.activeIndex].planNo
+                      type: type,
+                      planNo: this.myplan.list[this.activeIndex].planNo,
+
                     }
                   })
                 }
@@ -230,6 +233,7 @@ export default {
                   path: "/compensateInfo",
                   query: {
                     orderNo:  this.myplan.list[this.activeIndex].planNo,
+                    type: this.myplan.list[this.activeIndex].type
                   }
                 })
                 

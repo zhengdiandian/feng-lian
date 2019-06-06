@@ -14,13 +14,13 @@
         </div>
         <div class="input-box-line"></div>
         <div class="content">
-            <div class="input-box" ><label >地区:</label><div class="select"><span class="placeholder-text" v-if="province===''">请选择地区</span><span>{{province}}</span><span> {{city}}</span> <span> {{county}}</span><span class="iconfont iconxiangshangshouqi1"></span></div></div>
+            <div class="input-box" ><label >地区:</label><div class="select"><span class="placeholder-text" v-if="provinceDesc===''">请选择地区</span><span>{{provinceDesc}}</span><span> {{cityDesc}}</span> <span> {{countyDesc}}</span><span class="iconfont iconxiangshangshouqi1"></span></div></div>
             <div class="input-box"><label >详细地址:</label><input disabled="disabled" v-model="address" placeholder="请填写您的详细地址" type="text"></div>
         </div>
         <div class="input-box-line"></div>
         <div class="content">
             <div class="input-box"><label >疾病名称:</label><input disabled="disabled" v-model="illnessName" placeholder="请填写受助者详细的疾病名称" type="text"></div>
-            <div class="input-box"><label >确诊医院:</label><input disabled="disabled" placeholder="请填写确诊医院" type="text"></div>
+            <div class="input-box"><label >确诊医院:</label><input disabled="disabled" v-model="hospitalName" placeholder="请填写确诊医院" type="text"></div>
             <div class="input-box" >
                 <label >事故发生时间:</label>
                 <div class="select"><span class="placeholder-text" v-if="incidentTime===''">请选择事故发生时间</span><span>{{incidentTime}}</span><span class="iconfont iconxiangshangshouqi1"></span>
@@ -36,7 +36,7 @@
             <!--            <div class="input-box"><label >确诊医院:</label><input placeholder="请填写确诊医院" type="text"></div>-->
             <div class="input-box" >
                 <label >所在地:</label>
-                <div class="select"><span class="placeholder-text" v-if="locationCity===''">请选择社保/新农合所在地</span><span>{{locationProvince}}</span><span> {{locationCity}}</span><span> {{locationCounty}}</span><span class="iconfont iconxiangshangshouqi1"></span>
+                <div class="select"><span class="placeholder-text" v-if="locationCityDesc===''">请选择社保/新农合所在地</span><span>{{locationProvinceDesc}}</span><span> {{locationCityDesc}}</span><span> {{locationCountyDesc}}</span><span class="iconfont iconxiangshangshouqi1"></span>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="input-box"><label >保险公司名称:</label><input disabled="disabled" v-model="insuranceCompany" placeholder="请填写保险公司名称" type="text"></div>
             <div class="input-box" >
                 <label>目前理赔状况:</label>
-                <div class="select"><span class="placeholder-text" v-if="compensateState===''">请选择目前理赔状况</span><span>{{province}}</span><span> {{city}}</span><span class="iconfont iconxiangshangshouqi1"></span>
+                <div class="select"><span class="placeholder-text" v-if="compensateState===''">请选择目前理赔状况</span>{{compensateState}}<span class="iconfont iconxiangshangshouqi1"></span>
                 </div>
             </div>
         </div>
@@ -65,7 +65,8 @@
                 <div><label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"></div><span>我保证以上信息均真实有效，不存在虚拟和隐瞒情形，否则将视为自动放弃申请互助尽权力。</span>
             </div> -->
         </div>
-        <div class="btn" v-if="showBtn" v-promise-btn @click="submit">缴纳调查费用</div>
+        <slot></slot>
+        <div class="btn" v-if="showBtn" v-promise-btn @click="submit">{{btnText}}</div>
 
     </div>
 
@@ -85,10 +86,11 @@ export default {
             address: '',
             illnessName: '',
             incidentTime: '',
+            hospitalName: '',
             // location: '',
-            locationProvince: '',
-            locationCity: '',
-            locationCounty: '',
+            locationProvinceDesc: '',
+            locationCityDesc: '',
+            locationCountyDesc: '',
             locationProvinceValue: '',
             locationCityValue: '',
             locationCountyValue: '',
@@ -98,9 +100,9 @@ export default {
             bodyStatus: '',
             showAddress: false,
             showLocation: false,
-            province: '',
-            city: '',
-            county: '',
+            provinceDesc: '',
+            cityDesc: '',
+            countyDesc: '',
             provinceValue: '',
             cityValue: '',
             countyValue: '',
@@ -121,6 +123,10 @@ export default {
       showBtn: {
         type: Boolean,
         default: true
+      },
+      btnText: {
+        type: String,
+        default: '缴纳调查费用'
       }
     },
     computed: {
@@ -163,11 +169,11 @@ export default {
                 return
             }
              debugger
-          let {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus, hospitalName ,insuranceCompany, compensateState,orderNo } = res.data.data
+          let {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus, hospitalName ,insuranceCompany, compensateState,orderNo,incidentTime } = res.data.data
           contacsIdNo = this.Util.decrypt(contacsIdNo)
           this.orderNo = orderNo
-          this.$data = Object.assign(this.$data, {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus ,hospitalName, insuranceCompany, compensateState})
-          // this.switchData.switchVal = !!res.data.data.socialSecurityFlag
+          this.$data = Object.assign(this.$data, res.data.data)
+          this.switchData.switchVal = !!res.data.data.socialSecurityFlag
           this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
             // this.contacs = data.contacs
             // this.

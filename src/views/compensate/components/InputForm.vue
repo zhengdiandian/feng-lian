@@ -5,7 +5,7 @@
             <div class="input-box"><label >姓名:</label><input v-model="contacs" placeholder="请填写您的姓名" type="text"></div>
             <div class="input-box"><label >身份证号码:</label><input v-model="contacsIdNo" placeholder="请填写您的身份证号码"  @keyup="contacsIdNo=contacsIdNo.replace(/[\W]/g,'')" type="text"></div>
             <div class="input-box"><label >手机号:</label><input v-model="phone" placeholder="请填写您的手机号码" type="number"></div>
-            <div class="input-box"><label >邮箱：</label><input v-model="email" placeholder="请填写您的邮箱地址" @keyup="email=email.replace(/[\W]/g,'')" type="text"></div>
+            <div class="input-box"><label >邮箱：</label><input v-model="email" placeholder="请填写您的邮箱地址"  type="text"></div>
         </div>
         <div class="input-box-line"></div>
         <div class="content">

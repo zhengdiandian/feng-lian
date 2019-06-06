@@ -4,7 +4,7 @@
       <mu-button icon slot="left" @click="$router.go(-1)">
         <mu-icon value=":iconfont iconfanhui" @click="$router.go(-1)"></mu-icon>
       </mu-button>
-        申请秒赔
+        {{title}}
       <mu-button icon slot="right" :ripple="false" >
         <!--<mu-icon value=":iconfont iconshubanshenglvehao" size="24"></mu-icon>-->
       </mu-button>
@@ -12,7 +12,7 @@
     <div class="content  ">
         <div class="step-wrap">
             <mu-stepper :active-step="activeStep" :linear="false">
-                <mu-step v-for="i in 3" :key="i" :class="[  i <=activeStep ? 'active-step': '']" class="">
+                <mu-step v-for="i in num" :key="i" :class="[  i <=activeStep ? 'active-step': '']" class="">
                     <mu-step-label  class="cladsfdasf"> </mu-step-label>
 
                 </mu-step>
@@ -21,7 +21,8 @@
         </div>
         <div class="step-title">
             <span class="title">初审阶段</span>
-            <span class="title">支付费用</span>
+          <span class="title" v-if="$route.query.type ===1">首次划款</span>
+          <span class="title">支付费用</span>
             <span class="title">公示划款</span>
         </div>
 
@@ -60,9 +61,22 @@ export default {
   // },
   data() {
     return {
-      activeStep: 0
+      activeStep: 0,
+      title: ''
     };
 
+  },
+  computed: {
+    num() {
+      if(this.$route.query.type === 1) {
+        this.title = '申请秒赔'
+        return 4
+        
+      }else {
+        this.title = '申请赔付'
+        return 3
+      }
+    }
   },
 };
 </script>

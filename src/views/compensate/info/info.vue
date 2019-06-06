@@ -12,7 +12,7 @@
     <div class="content  ">
       <div class="step-wrap">
         <mu-stepper :active-step="activeStep" :linear="false">
-          <mu-step v-for="i in 4" :key="i" :class="[  i <=activeStep ? 'active-step': '']" class="">
+          <mu-step v-for="i in num" :key="i" :class="[  i <=activeStep ? 'active-step': '']" class="">
             <mu-step-label  class="cladsfdasf"> </mu-step-label>
 
           </mu-step>
@@ -21,14 +21,17 @@
       </div>
       <div class="step-title">
         <span class="title">初审阶段</span>
-        <span class="title">首次划款</span>
+        <span class="title" v-if="$route.query.type ===1">首次划款</span>
         <span class="title">支付费用</span>
         <span class="title">公示划款</span>
       </div>
       <div class="info-step">
         申请进度 <span>{{stepText}}</span>
       </div>
-      <defrayment :show-btn="false"></defrayment>
+      <defrayment :show-btn="flag" btn-text="去支付">
+        <h1>fdsafdasf</h1>
+      </defrayment>
+
 <!--      <router-view></router-view>-->
       <!--        <input-form></input-form>-->
     </div>
@@ -66,9 +69,19 @@
     data() {
       return {
         activeStep: 0,
-        stepText: ''
+        stepText: '',
+        flag: false
       };
 
+    },
+    computed: {
+      num() {
+        if(this.$route.query.type === 1) {
+          return 4
+    }else {
+          return 3
+        }
+      }
     },
     created () {
       this.$axios.post('v1/mutually/compensate/compensateDetail',{
@@ -99,24 +112,58 @@
             this.stepText = ('人工审核中')
             this.activeStep = 1
             break
+          case 400:
+            this.stepText = '等待支付审核费'
+            this.flag = true
+            if(this.$route.query.type){
+              this.activeStep = 2
+
+            }else {
+              this.activeStep =1
+            }
+            break
           case 450:
             this.stepText = ('人工审核已被驳回')
             this.activeStep = 1
             break
           case 500:
             this.stepText = ('待公示')
-            this.activeStep = 3
+            // this.activeStep = 3
+            if(this.$route.query.type){
+              this.activeStep = 3
+
+            }else {
+              this.activeStep =2
+            }
             break
           case 600:
             this.stepText = ('公示期')
-            this.activeStep = 3
+            // this.activeStep = 3
+            if(this.$route.query.type){
+              this.activeStep = 3
+
+            }else {
+              this.activeStep =2
+            }
             break
           case 700:
             this.stepText = ('等待赔付')
-            this.activeStep = 3
+            // this.activeStep = 3
+            if(this.$route.query.type){
+              this.activeStep = 3
+
+            }else {
+              this.activeStep =2
+            }
             break
           case 750:
             this.stepText = ('公示驳回')
+            if(this.$route.query.type){
+              this.activeStep = 3
+
+            }else {
+              this.activeStep =2
+            }
             break
           case 800:
             this.stepText = ('已赔付')
