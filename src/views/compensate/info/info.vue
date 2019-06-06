@@ -66,7 +66,7 @@
     data() {
       return {
         activeStep: 0,
-        stopText: ''
+        stepText: ''
       };
 
     },
@@ -84,47 +84,47 @@
 
         switch (state) {
           case 100:
-            this.stopText = ('初审审核中')
+            this.stepText = ('初审审核中')
             this.activeStep = 0
             break
           case 150:
-            this.stopText = '驳回'
+            this.stepText = '驳回'
             this.activeStep = 0
             break
           case 200:
-            this.stopText = ('等待首次划款中')
+            this.stepText = ('等待首次划款中')
             this.activeStep = 1
             break
           case 300:
-            this.stopText = ('人工审核中')
+            this.stepText = ('人工审核中')
             this.activeStep = 1
             break
           case 450:
-            this.stopText = ('人工审核已被驳回')
+            this.stepText = ('人工审核已被驳回')
             this.activeStep = 1
             break
           case 500:
-            this.stopText = ('待公示')
+            this.stepText = ('待公示')
             this.activeStep = 3
             break
           case 600:
-            this.stopText = ('公示期')
+            this.stepText = ('公示期')
             this.activeStep = 3
             break
           case 700:
-            this.stopText = ('等待赔付')
+            this.stepText = ('等待赔付')
             this.activeStep = 3
             break
           case 750:
-            this.stopText = ('公示驳回')
+            this.stepText = ('公示驳回')
             break
           case 800:
-            this.stopText = ('已赔付')
+            this.stepText = ('已赔付')
             this.activeStep = 3
 
             break
           case  900:
-            this.stopText = ('关闭')
+            this.stepText = ('关闭')
             this.activeStep = 3
 
 

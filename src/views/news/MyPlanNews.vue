@@ -88,7 +88,7 @@
                     </template>
                     <template v-slot:btnOpen>
                         <div class="btn-wrap">
-                            <div class="btn content-center" @click="$router.push({name: 'compensateInfo',query:{planNo: myplan.planNo}})">查看详情</div>
+                            <div class="btn content-center" @click="$router.push({name: 'compensateInfo',query:{orderNo: myplan.planNo}})">查看详情</div>
                         </div>
                     </template>
                     </card>
