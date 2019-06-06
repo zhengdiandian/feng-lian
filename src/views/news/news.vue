@@ -17,6 +17,7 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
+          <!-- <mu-divider style="width: 90%;margin: auto; "></mu-divider> -->
           <div class="list-li" @click="$router.push('/SystemNews')">
             <div class="list-img-text">
               <div class="list-img" ><i class="iconfont icongonggaoxiaoxixitongxiaoxi"></i></div>
@@ -24,6 +25,7 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
+          <!-- <mu-divider style="width: 90%;margin: auto; "></mu-divider> -->
           <div class="list-li" @click="toast">
             <div class="list-img-text" >
               <div class="list-img" ><i class="iconfont iconjihua"></i></div>
@@ -54,14 +56,14 @@
           toast() {
             // this.$router.push('/myplannews')
             debugger
-            if(this.timeout) {
-              this.$toast.success(`需要等待${this.timeout}天`)
-              // this.$toast.success("您暂时还未有申请计划")
-              return
-            }else  {
+            // if(this.timeout) {
+            //   this.$toast.success(`需要等待${this.timeout}天`)
+            //   // this.$toast.success("您暂时还未有申请计划")
+            //   return
+            // }else  {
               this.$router.push('/myplannews')
-              return
-            }
+            //   return
+            // }
             // if (this.timeout > 180) {
             //   this.$router.push('/myplannews')
             // } 
