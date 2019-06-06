@@ -12,7 +12,7 @@
     <div class="content  ">
       <div class="step-wrap">
         <mu-stepper :active-step="activeStep" :linear="false">
-          <mu-step v-for="i in 3" :key="i" :class="[  i <=activeStep ? 'active-step': '']" class="">
+          <mu-step v-for="i in 4" :key="i" :class="[  i <=activeStep ? 'active-step': '']" class="">
             <mu-step-label  class="cladsfdasf"> </mu-step-label>
 
           </mu-step>
@@ -26,7 +26,7 @@
         <span class="title">公示划款</span>
       </div>
       <div class="info-step">
-        申请进度 <span>{stepText}</span>
+        申请进度 <span>{{stepText}}</span>
       </div>
       <defrayment :show-btn="false"></defrayment>
 <!--      <router-view></router-view>-->
@@ -85,16 +85,23 @@
         switch (state) {
           case 100:
             this.stopText = ('初审审核中')
+            this.activeStep = 0
+            break
+          case 150:
+            this.stopText = '驳回'
+            this.activeStep = 0
             break
           case 200:
             this.stopText = ('等待首次划款中')
-
+            this.activeStep = 1
             break
           case 300:
             this.stopText = ('人工审核中')
+            this.activeStep = 1
             break
           case 450:
             this.stopText = ('人工审核已被驳回')
+            this.activeStep = 1
             break
           case 500:
             this.stopText = ('待公示')
@@ -108,7 +115,7 @@
             this.stopText = ('等待赔付')
             this.activeStep = 3
             break
-          case 700:
+          case 750:
             this.stopText = ('公示驳回')
             break
           case 800:
