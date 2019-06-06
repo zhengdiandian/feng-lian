@@ -85,23 +85,16 @@
         switch (state) {
           case 100:
             this.stopText = ('初审审核中')
-            this.activeStep = 0
-            break
-          case 150:
-            this.stopText = '驳回'
-            this.activeStep = 0
             break
           case 200:
             this.stopText = ('等待首次划款中')
-            this.activeStep = 1
+
             break
           case 300:
             this.stopText = ('人工审核中')
-            this.activeStep = 1
             break
           case 450:
             this.stopText = ('人工审核已被驳回')
-            this.activeStep = 1
             break
           case 500:
             this.stopText = ('待公示')
@@ -115,7 +108,7 @@
             this.stopText = ('等待赔付')
             this.activeStep = 3
             break
-          case 750:
+          case 700:
             this.stopText = ('公示驳回')
             break
           case 800:
