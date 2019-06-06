@@ -211,6 +211,7 @@ export default new Router({
     },
     {
       path: '/assis', // 互助记录
+      name: 'assis',
       component: function () {
         return import('./views/AssistanceRecord.vue')
       }

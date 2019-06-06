@@ -56,7 +56,10 @@
             <!-- </div> -->
             <div class="purchase-plan" >
               <div class="apply">我的申请</div>
-              
+              <div class="iconkong" v-if=" myApply.length <= 0 || !myApply">
+                    <img src="@/assets/空页面.png" alt="">
+                    <span>暂无数据</span>
+                </div>
                 <section class="card" v-for="(myplan,i) in myApply" :key="i">
                   <div class="date">{{myplan.createTime}}</div>
                     <card :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
@@ -105,7 +108,10 @@
             <div class="historical-record" >
               <div class="apply">历史记录</div>
               <!-- <div style="padding-left: 12px;">data</div> -->
-
+                <div class="iconkong" v-if=" myplan.historyMsg.length <= 0 || !myplan.historyMsg">
+                    <img src="@/assets/空页面.png" alt="">
+                    <span>暂无数据</span>
+                </div>
               <mu-paper :z-depth="1" class="demo-loadmore-wrap">
                 <mu-container ref="container" class="demo-loadmore-content">
                   <mu-load-more  :loading="loading" @load="load">
@@ -253,6 +259,23 @@ main{
     margin: auto;
     padding-top: 44px;
     position: relative;
+}
+.iconkong{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 25px;
+    span{
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        color: #707070;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
 }
 .demo-loadmore-wrap {
   width: 100%;

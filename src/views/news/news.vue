@@ -55,8 +55,8 @@
             // this.$router.push('/myplannews')
             debugger
             if(this.timeout) {
-              // this.$toast.success(`需要等待${this.timeout}天`)
-              this.$toast.success("您暂时还未有申请计划")
+              this.$toast.success(`需要等待${this.timeout}天`)
+              // this.$toast.success("您暂时还未有申请计划")
               return
             }else  {
               this.$router.push('/myplannews')
