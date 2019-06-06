@@ -96,7 +96,7 @@
           contacsIdNo: this.contacsIdNo,
           province: this.provinceValue,
           city: this.cityValue,
-          relation: this.relation,
+          relation: this.relationValue,
           type: 0,
           fullPath: '/myplan'
         })
@@ -112,6 +112,7 @@
             }
             if(res.data.data.type ==0){
               this.$toast.success('添加成功')
+              this.$router.go(-1)
             }
             this.$axios.post('v1/user/info/personalInfo').then(res => {
               this.$store.commit('set_userInfo',res.data.data)
@@ -140,7 +141,7 @@
         // .substring(0,val.select1.text.length -1)
         // this.city = val.select2.text
         // .substring(0,val.select2.text.length -1 )
-        this.provinceValue = val.select1.value
+        this.relationValue = val.select1.value
         // this.cityValue = val.select2.value
         // this.countyValue = val.select3.value
         // this.county = val.select3.text

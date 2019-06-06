@@ -94,7 +94,7 @@
 
         <mu-bottom-sheet :open.sync="open">
                 <mu-paper style="width: 100%"  :z-depth="1" class="demo-date-picker">
-                    <mu-date-picker color="#f8b62d" style="width: 100%"  :date.sync="date"></mu-date-picker>
+                    <mu-date-picker @change="closeBottomSheet" color="#f8b62d" style="width: 100%"  :date.sync="date"></mu-date-picker>
                 </mu-paper>
         </mu-bottom-sheet>
 
@@ -165,6 +165,9 @@ export default {
         openBotttomSheet () {
             this.open = true;
         },
+        closeBottomSheet () {
+        this.open = false;
+      },
          confirmFn(val) {
         debugger
         this.addressFull = val.select1.text + val.select2.text + val.select3.text

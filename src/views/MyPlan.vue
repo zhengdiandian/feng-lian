@@ -89,7 +89,7 @@
                             </template>
                         </card>
                     </div>
-                    <div v-if="activeIndex===i" class="selected yes " ></div> <div v-else class="selected iconfont iconweixuanzhong"></div>
+                    <div @click.stop="clickActiveIndexHangdle(i)" v-if="activeIndex===i" class="selected yes " ></div> <div @click.stop="clickActiveIndexHangdle(i)" v-else class="selected iconfont iconweixuanzhong"></div>
                 </section>
                 </mu-load-more>
         </mu-container>
@@ -173,12 +173,21 @@ export default {
                   this.$toast.error(res.data.msg)
                   return
                 }
+                
                 let state = res.data.data.state
-                if(state==300) {
-                  this.$toast.success('初审审核中')
+                if(state==100) {
+                  this.$toast.message('初审审核中')
                   return
                 }
-                if(state ==400) {
+                if(state ===200){
+                  this.$toast.message('等待首次划款中')
+                  return
+                }
+                if(state=== 300) {
+                  this.$toast.message('人工审核中')
+                  return
+                }
+                if(state ==400|| state == 900) {
                   //todo  去支付费用
                   this.$router.push({
                     path: '/compensate/defrayment',
@@ -189,16 +198,16 @@ export default {
                   })
                 }
                 debugger
-                if(res.data.code === 8888) {
-                  debugger
-                  this.$router.push({
-                    path: '/compensate/inputForm',
-                    query: {
-                      type: 1,
-                      planNo: this.myplan.list[this.activeIndex].planNo
-                    }
-                  })
-                }
+                // if(res.data.code === 8888) {
+                //   debugger
+                //   this.$router.push({
+                //     path: '/compensate/inputForm',
+                //     query: {
+                //       type: 1,
+                //       planNo: this.myplan.list[this.activeIndex].planNo
+                //     }
+                //   })
+                // }
                 if(state == 0) {
                   debugger
                   this.$router.push({
@@ -209,23 +218,26 @@ export default {
                     }
                   })
                 }
+
+                
               })
             } else {
               let errorText = ''
-               switch (plan.state) {
-                 case 0:
-                   errorText = '计划初始化中'
-                   break
-                 case 100:
-                   errorText = '计划还在等待期中'
-                   break
-                 case 400:
-                   errorText = '计划已失效'
-                   break
-                 case 500:
-                   errorText = '计划已退出'
-               }
-               this.$toast.error(errorText)
+              switch (plan.state) {
+                case 0:
+                  errorText = '计划初始化中'
+                  break
+                case 100:
+                  errorText = '计划还在等待期中'
+                  break
+                case 400:
+                  errorText = '计划已失效'
+                  break
+                case 500:
+                  errorText = '计划已退出'
+              }
+              this.$toast.warning(errorText)
+
               }
             // }
 

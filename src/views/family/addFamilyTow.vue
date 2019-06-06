@@ -124,8 +124,9 @@
         debugger
         this.showRelation = false;
         this.relation = val.select1.text
+        this.relationValue = val.select1.value
 
-        this.provinceValue = val.select1.value
+
 
       },
       showPicker() {
@@ -167,7 +168,7 @@
             contacsIdNo: this.Util.encrypt(this.id),
             province: this.provinceValue,
             city: this.cityValue,
-            type: 2,
+            type: 1,
             relation: this.relationValue,
             fullPath: '/myplan'
           })
@@ -183,6 +184,7 @@
             }
             if(res.data.data.type ==0){
               this.$toast.success('添加成功')
+              this.$router.go(-1)
             }
             this.$axios.post('v1/user/info/personalInfo').then(res => {
               this.$store.commit('set_userInfo',res.data.data)
