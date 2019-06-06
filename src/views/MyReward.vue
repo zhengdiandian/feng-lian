@@ -16,14 +16,14 @@
     <main class="main">
         <div class="historical-bill">历史账单</div>
 
-        <!-- <div class="iconkong" v-if=" reward ==  '' || !reward">
+        <div class="iconkong" v-if=" !flag   ">
             <img src="../assets/空页面.png" alt="">
             <span>暂无数据</span>
-        </div> -->
+        </div>
 
         <mu-paper  :z-depth="1" class="demo-loadmore-wrap">
             <mu-container ref="container" class="demo-loadmore-content">
-                <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load">
+                <mu-load-more  :loading="loading" @load="load">
                 <mu-list>
                     
                     <div v-for="(list,i) in reward.list" :key="i">
@@ -103,6 +103,14 @@ export default {
             pageSize: 8,
         }
     },
+    computed: {
+        flag() {
+        debugger
+           let arr =  Object.keys(this.reward.list)
+           return arr.length
+
+        }
+    },
     methods: {
         openReturn() {
             this.$router.go(-1)
@@ -123,17 +131,17 @@ export default {
         out() {
             this.$router.go(-1)
         },
-        refresh () {
+        // refresh () {
             
-            // this.refreshing = true;
-            // this.page = 1
+        //     // this.refreshing = true;
+        //     // this.page = 1
             
-            // this.$refs.container.scrollTop = 0;
-            // this.get_reward()
-            // setTimeout(() => {
-            //     this.refreshing = false;
-            // }, 2000)
-        },
+        //     // this.$refs.container.scrollTop = 0;
+        //     // this.get_reward()
+        //     // setTimeout(() => {
+        //     //     this.refreshing = false;
+        //     // }, 2000)
+        // },
         load () {
             this.loading = true;
             this.page++
@@ -243,10 +251,11 @@ export default {
   // -webkit-overflow-scrolling: touch;
 }
 .iconkong{
-    padding-top: 150px;
+    // padding-top: 150px;
     width: 100px;
     height: 100px;
     margin: auto;
+    margin-top: 50px;
     span{
         display: inline-block;
         width: 100px;

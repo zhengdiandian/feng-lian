@@ -110,7 +110,7 @@
           </div>
         </div>
 
-        <router-link tag="div" to="/assis">
+        <div @click="toAssis">
           <div class="list-li">
             <div class="list-img-text" >
               <div class="list-img" ><img src="../assets/image/记录.svg" alt=""></div>
@@ -118,7 +118,7 @@
             </div>
             <mu-icon value=":iconfont iconyou1"></mu-icon>
           </div>
-        </router-link>
+        </div>
 
         <router-link tag="div" v-if="preinfo.type && preinfo.type!==100" to="/code">
           <div class="list-li">
@@ -193,13 +193,11 @@ import {mapState} from 'vuex'
     toast() {
       debugger
       if(this.timeout) {
-        this.$toast.success(`需要等待${this.timeout}天`)
+        this.$toast.success("您暂时还未有申请计划")
       }else  {
-        this.$toast.success('请先加入计划')
-      }
-      if (this.timeout > 180) {
         this.$router.push('myhlepPlan')
-      } 
+      }
+
     },
     jump() {
        this.$router.push('/per')
@@ -240,7 +238,16 @@ import {mapState} from 'vuex'
         this.$toast.error('请先完成实名认证')
       }
 
-  }
+  },
+  toAssis() {
+    if (this.userInfo.state == 200) {
+          this.$router.push({
+          name: 'assis',
+          })
+      } else {
+        this.$toast.error('请先完成实名认证')
+      }
+  },
   },
   created() {
     this.$axios.post('v1/user/info/index').then(res => {

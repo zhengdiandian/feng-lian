@@ -10,7 +10,7 @@
         </mu-appbar>
         <main>
           <div class="tips">为保护个人隐私，公示10日后不在展示用户信息</div>
-          <div class="info">
+          <div class="info" @click="$router.push({name: 'heAssistanceReacord', query: { userCode: detaliList.userCode }})">
             <section class="info-head">
               <div class="info-img"><img :src="detaliList.headPortrait" alt=""></div>
               <div class="info-text">
@@ -21,7 +21,11 @@
             <div class="xian"></div>
             <div class="footer-text"><span>已加入互助计划{{detaliList.joinDays}}天，共分摊互助金为{{detaliList.totalApportion}}元</span></div>
           </div>
-          <!-- <div class="text-info" style="display: flex"><span>上链信息</span><span style="flex: 2; overflow: hidden;text-overflow: ellipsis; white-space: nowrap">{{}}</span> <span class="btn text-blue" @click="$toast.success('复制成功')">点击复制</span></div> -->
+          <div class="text-info" style="display: flex">
+            <span>上链信息</span>
+            <span style="flex: 2; overflow: hidden;text-overflow: ellipsis; white-space: nowrap; padding-left: 12px;">{{detaliList.eosLink}}</span> 
+            <span class="text-blue" @click="$toast.success('复制成功')">复制URL</span>
+          </div>
           <section class="info-detalis">
             <div class="detalis">
                 <div>{{detaliList.illnessApply}}</div>
@@ -239,12 +243,13 @@ import PopBox from '../../components/PopBox/PopBox'
       padding: 0 12px;
       width:375px;
       height:50px;
-      line-height: 50px;
-      background: $c-bai;
-      & span:first-child{
-        min-width: 60px;
-        display: inline-block;
-        margin-right: 12px;
+      display: flex;
+      align-items: center;
+      .text-blue{
+        background-color: $c-cheng;
+        color: $c-bai;
+        padding: 5px;
+        border-radius:5px;
       }
     }
 .tips{

@@ -121,7 +121,7 @@ export default {
   height: 800px;
   display: flex;
   flex-direction: column;
-  background-color: $c-hui;
+  background-color: $c-bai;
   .mu-appbar {
     width: 100%;
   }
@@ -147,7 +147,9 @@ export default {
   position: absolute;
   bottom: 0px;
   padding: 12px;
-  // color: $c-bai;
+  width:351px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: $c-bai;
 }
 .postList-img-title{
   width:351px;
