@@ -331,6 +331,7 @@ main{
     // padding-left: 12px;
   }
   .historical-date{
+    // margin-top: 12px;
     padding-left: 5px;
     font-size: $f14;
   }
@@ -339,7 +340,7 @@ main{
     padding-left: 12px;
   }
   .customer {
-    padding-top: 12px;
+    // padding-top: 2px;
     // padding-bottom: 10px;
     padding-left: 12px;
     span{

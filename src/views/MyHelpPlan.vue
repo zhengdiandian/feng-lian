@@ -307,8 +307,6 @@ main{
     padding-bottom: 5px;
   }
   .customer {
-    padding-top: 12px;
-    // padding-bottom: 10px;
     padding-left: 12px;
     span{
       padding-left: 12px;
@@ -337,7 +335,7 @@ main{
     padding-left: 12px;
   }
   .customer {
-    padding-top: 12px;
+    // padding-top: 12px;
     // padding-bottom: 10px;
     padding-left: 12px;
     span{
