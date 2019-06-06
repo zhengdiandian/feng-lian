@@ -19,10 +19,10 @@
   <PopBox v-if="show_compensate" style="z-index: 666666;">
     <div class="compensate-content">
         <div class="title">
-          秒到赔付
+          {{propagandaList[0].name}}
         </div>
         <div class="text">
-          蜂链互助率先实现了秒结机制，符合秒结条件的会员在互助时间发生后的第一时间即可获得约定的互助金。秒结机制可帮助会员第一时间度过难关，能更加高效的帮助会员。
+          {{propagandaList[0].value}}
         </div>
         <div class="btn" @click="show_compensate = false">我知道了</div>
     </div>
@@ -31,10 +31,10 @@
 <PopBox v-if="show_capital" style="z-index: 666666;">
     <div class="compensate-content">
         <div class="title">
-          资金共管
+          {{propagandaList[1].name}}
         </div>
         <div class="text">
-          基于公约，互助资金由所有成员共管，第三方机构托管且账户公开，任何人均可查询账户情况，监督资金流向。
+          {{propagandaList[1].value}}
         </div>
         <div class="btn" @click="show_capital = false">我知道了</div>
     </div>
@@ -44,10 +44,10 @@
   <PopBox v-if="show_community" style="z-index: 666666;">
     <div class="compensate-content">
         <div class="title">
-          社区共建
+          {{propagandaList[2].name}}
         </div>
         <div class="text">
-          蜂链互助社区利用区块链技术实现了社区共建。节点、会员、运营方通过社区共同对平台进行管理。蜂链互助计划的各项操作与管理均向用户公开，既透明又可追溯。
+          {{propagandaList[2].value}}
         </div>
         <div class="btn" @click="show_community = false">我知道了</div>
     </div>
@@ -58,10 +58,10 @@
   <PopBox v-if="show_data" style="z-index: 666666;">
     <div class="compensate-content">
         <div class="title">
-          数据上链
+          {{propagandaList[3].name}}
         </div>
         <div class="text">
-          用户互助合约将实时上传至公有区块链平台，任何人不可篡改。资金流向链上可查，每一笔充值划扣均有迹可循。
+          {{propagandaList[3].value}}
         </div>
         <div class="btn" @click="show_data = false">我知道了</div>
     </div>
@@ -273,6 +273,7 @@ export default {
       videoUrl: '',
       bannerImg: '',
       CustomerService: '',
+      propagandaList: '',
       show_compensate: false,
       show_capital: false,
       show_community: false,
@@ -327,7 +328,7 @@ export default {
       this.bannerlist = res.data.data.bannerList
       this.videoUrl = res.data.data.video
       this.videoImg = res.data.data.videoImg
-
+      this.propagandaList = res.data.data.propagandaList
       debugger
 
       // this.issueList = this.homeinfor.issueList

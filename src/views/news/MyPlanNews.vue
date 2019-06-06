@@ -88,7 +88,7 @@
                     </template>
                     <template v-slot:btnOpen>
                         <div class="btn-wrap">
-                            <div class="btn content-center" @click="$router.push({name: 'planInitial',query:{planNo: myplan.planNo, productCode: myplan.productCode}})">查看计划</div>
+                            <div class="btn content-center" @click="$router.push({name: 'compensateInfo',query:{planNo: myplan.planNo}})">查看详情</div>
                         </div>
                     </template>
                     </card>
@@ -143,7 +143,7 @@
                     </template>
                     <template v-slot:btnOpen>
                         <div class="btn-wrap">
-                            <div class="btn content-center" @click="$router.push({name: 'planInitial',query:{planNo: myplan.planNo, productCode: myplan.productCode}})">查看计划</div>
+                            <div class="btn content-center" @click="$router.push({name: 'compensateInfo',query:{planNo: myplan.planNo}})">查看详情</div>
                         </div>
                     </template>
                     </card>
@@ -279,7 +279,7 @@ main{
 }
 .demo-loadmore-wrap {
   width: 100%;
-  height: 500px;
+  height: 800px;
   display: flex;
   flex-direction: column;
   background-color: $c-bai;
@@ -301,9 +301,11 @@ main{
     padding-left: 12px;
   }
   .date{
+    font-size: $f14;
     padding-left: 12px;
   }
   .apply{
+    
     padding-bottom: 5px;
   }
   .customer {

@@ -191,12 +191,12 @@ import {mapState} from 'vuex'
     computed:mapState(['userInfo']),
   methods: {
     toast() {
-      debugger
-      if(this.timeout) {
-        this.$toast.success("您暂时还未有申请计划")
-      }else  {
+      // debugger
+      // if(this.timeout) {
+      //   this.$toast.success("您暂时还未有申请计划")
+      // }else  {
         this.$router.push('myhlepPlan')
-      }
+      // }
 
     },
     jump() {
