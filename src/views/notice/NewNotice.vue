@@ -299,7 +299,7 @@ export default {
       color: $c-bai;
       border-radius:17px;
       position: relative;
-      top: -85px;
+      top: -55px;
     }
   }
   .contact-wrap{
