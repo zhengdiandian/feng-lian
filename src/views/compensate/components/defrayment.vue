@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="form-content content">
-            <div class="title">请如实填写以下信息</div>
+            <div class="title" v-if="showBtn">请如实填写以下信息</div>
             <div class="input-box"><label >姓名:</label><input disabled="disabled" v-model="contacs" placeholder="请填写您的姓名" type="text"></div>
             <div class="input-box"><label >身份证号码:</label><input disabled="disabled" v-model="contacsIdNo" placeholder="请填写您的身份证号码" type="text"></div>
             <div class="input-box"><label >手机号:</label><input disabled="disabled" v-model="phone" placeholder="请填写您的手机号码" type="text"></div>
@@ -65,7 +65,7 @@
                 <div><label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"></div><span>我保证以上信息均真实有效，不存在虚拟和隐瞒情形，否则将视为自动放弃申请互助尽权力。</span>
             </div> -->
         </div>
-        <div class="btn" v-promise-btn @click="submit">缴纳调查费用</div>
+        <div class="btn" v-if="showBtn" v-promise-btn @click="submit">缴纳调查费用</div>
 
     </div>
 
@@ -115,6 +115,12 @@ export default {
             tongYi: false,
             orderNo: '',
             order: ''
+      }
+    },
+    props:{
+      showBtn: {
+        type: Boolean,
+        default: true
       }
     },
     computed: {

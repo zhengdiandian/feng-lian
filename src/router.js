@@ -547,6 +547,13 @@ export default new Router({
       component: function () {
         return import('./views/notice/yiyi')
       }
+    },
+    {
+      path: '/compensateInfo',
+      name: 'compensateInfo',
+      component: function () {
+        return import('./views/compensate/info/info')
+      }
     }
     // {
     //   path: '*',

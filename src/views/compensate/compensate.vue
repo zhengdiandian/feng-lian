@@ -24,6 +24,7 @@
             <span class="title">支付费用</span>
             <span class="title">公示划款</span>
         </div>
+
         <router-view></router-view>
 <!--        <input-form></input-form>-->
     </div>
@@ -50,13 +51,13 @@
   </div>
 </template>
 <script>
-    import InputForm from './components/InputForm'
+    // import InputForm from '../components/InputForm'
 export default {
   name: "compensate",
-  components: { InputForm },
-  component: {
-    InputForm
-  },
+  // components: { InputForm },
+  // component: {
+  //   InputForm
+  // },
   data() {
     return {
       activeStep: 0
@@ -66,6 +67,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
 .wrap {
     .content{
         /*padding: 12px 12px 6px;*/

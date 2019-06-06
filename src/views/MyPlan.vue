@@ -175,19 +175,23 @@ export default {
                 }
                 
                 let state = res.data.data.state
-                if(state==100) {
-                  this.$toast.message('初审审核中')
-                  return
-                }
-                if(state ===200){
-                  this.$toast.message('等待首次划款中')
-                  return
-                }
-                if(state=== 300) {
-                  this.$toast.message('人工审核中')
-                  return
-                }
-                if(state ==400|| state == 900) {
+                // if(state==100) {
+                //   this.$toast.message('初审审核中')
+                //   return
+                // }
+                // if(state ===200){
+                //   this.$toast.message('等待首次划款中')
+                //   return
+                // }
+                // if(state=== 300) {
+                //   this.$toast.message('人工审核中')
+                //   return
+                // }
+                // if(state===450){
+                //   this.$toast.message('人工审核中')
+                //
+                // }
+                if(state ==400) {
                   //todo  去支付费用
                   this.$router.push({
                     path: '/compensate/defrayment',
@@ -197,6 +201,10 @@ export default {
 
                   })
                 }
+
+                // this.$toast.warning(errorText)
+
+              // }
                 debugger
                 // if(res.data.code === 8888) {
                 //   debugger
@@ -218,7 +226,12 @@ export default {
                     }
                   })
                 }
-
+                this.$router.push({
+                  path: "/compensateInfo",
+                  query: {
+                    orderNo:  this.myplan.list[this.activeIndex].planNo,
+                  }
+                })
                 
               })
             } else {
@@ -235,6 +248,7 @@ export default {
                   break
                 case 500:
                   errorText = '计划已退出'
+                  break
               }
               this.$toast.warning(errorText)
 
@@ -435,6 +449,7 @@ span{
 footer{
     width: 100%;
     height: 49px;
+    z-index: 9999999999;
     // border: 1px solid black;
     position: fixed;
     bottom: 0;
