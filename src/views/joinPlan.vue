@@ -59,11 +59,11 @@
         <span>资料填写</span>
         <div class="input-wrap">
           <label for>姓 &nbsp; 名：</label>
-          <input :disabled="!showPoP" type="text" placeholder="请输入您的姓名" :value="userInfo.contacs ">
+          <input :disabled="!showPoP" type="text" placeholder="请输入您的姓名" :value="contacs ">
         </div>
         <div class="input-wrap">
           <label for>身份证：</label>
-          <input :disabled="!showPoP" type="text" :value="userInfo.contacsIdNo" placeholder="请输入您的身份证号" >
+          <input :disabled="!showPoP" type="text" :value="contacsIdNo" placeholder="请输入您的身份证号" >
         </div>
         <div class="warning">
           <!-- <mu-icon v-show="!ShowID" value=":iconfont icontanhao" size="24"></mu-icon>  <span v-show="!ShowID" style="color: #FF0C0C">身份证信息不可修改, 请正确填写</span> -->
@@ -125,7 +125,7 @@
         <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span @click="$router.push('/AssistanceConvention')"> 《 蜂链互助计划公约》 </span>
       </div>
     </div>
-      <div class="big-btn" :class="{'disable-btn': !tongYi}" @click="btnHandleClick" style="z-index: 888888">去支付</div>
+      <div class="big-btn" v-promise-btn :class="{'disable-btn': !tongYi}" @click="btnHandleClick" style="z-index: 888888">去支付</div>
     </main>
   </div>
 </template>
@@ -142,6 +142,8 @@ export default {
       // showPoP: true,
       name:'',
       ID:'',
+      contacsIdNo: '',
+      contacs: '',
       InvitationCode:'',
       sliderVal: '',
       tongYi: false,
@@ -163,7 +165,7 @@ export default {
       order: [],
       agentUserCode: '',
       familyList: [],
-      flag: false
+      flag: true
     }
   },
   computed:{
@@ -196,7 +198,7 @@ export default {
           return
         }
         debugger
-        this.$axios.post('v1/mutually/plan/checkOrder',{
+        return this.$axios.post('v1/mutually/plan/checkOrder',{
               "contacs": this.userInfo.contacs,
               "contacsIdNo": this.userInfo.contacsIdNo ,
               "inviteCode": this.agentUserCode,
@@ -239,28 +241,41 @@ export default {
             })
       },
   },
+  watch: {
+    activeIndex() {
+      debugger
+      this.contacsIdNo = this.familyList[this.activeIndex].contacsIdNo
+      this.contacs  =  this.familyList[this.activeIndex].contacs
+      this.agentUserCode =  this.familyList[this.activeIndex].userCode
+
+    }
+
+  },
   components: {
     // headpage,
     // popBox
   },
   created() {
-    this.$axios.post('v1/user/info/getCertifyInfo').then(res => {
-      debugger
-      if(res.data.data.code){
-        this.$toast(res.data.data.msg)
-      }
-      this.agentUserCode = res.data.data.userCode
-      if(this.agentUserCode !== ''){
-        
-        this.flag = true
-      }
-
-    })
+    // this.$axios.post('v1/user/info/getCertifyInfo').then(res => {
+    //   debugger
+    //   if(res.data.data.code){
+    //     this.$toast(res.data.data.msg)
+    //   }
+    //   this.agentUserCode = res.data.data.userCode
+    //   if(this.agentUserCode !== ''){
+    //
+    //     this.flag = true
+    //   }
+    //
+    // })
     this.$axios.post('v1/family/info/familyList').then(res => {
       if(res.data.code !== 200){
         this.$toast(res.data.data.msg)
       }
       this.familyList = res.data.data
+      this.contacsIdNo = this.familyList[this.activeIndex].contacsIdNo
+      this.contacs  =  this.familyList[this.activeIndex].contacs
+      this.agentUserCode =  this.familyList[this.activeIndex].userCode
       // this.familyList.unshift({
       //   relation: 0,
       //   relationDesc: '自己',

@@ -29,7 +29,43 @@
         申请进度 <span>{{stepText}}</span>
       </div>
       <defrayment :show-btn="flag" btn-text="去支付">
-        <h1>fdsafdasf</h1>
+        <div>
+          <div class="input-box-line"></div>
+
+          <div class="form-info">
+
+            <div class="title">提交材料</div>
+            <div class="tong">
+              <label class="iconfont iconxuanze"  for="tongYi"></label><input  id="tongYi" type="checkbox"> 1、缴费凭证  <span class="status">已上传</span>
+            </div>
+            <div class="tong">
+              <label class="iconfont iconxuanze"  for="tongYi"></label><input   id="tongYi" type="checkbox"> 2、申请表填写完成后拍照上传  <span class="status">已上传</span>
+            </div>
+
+            <div class="tong">
+              <label class="iconfont iconxuanze"  for="tongYi"></label><input   id="tongYi" type="checkbox"> 3、病例报告  <span class="status">已上传</span>
+            </div>
+            <div class="tong">
+              <label class="iconfont iconxuanze"  for="tongYi"></label><input   id="tongYi" type="checkbox"> 4、诊断证明  <span class="status">已上传</span>
+            </div>
+            <div class="tong">
+              <label class="iconfont iconxuanze"  for="tongYi"></label><input   id="tongYi" type="checkbox"> 5、身份证正反面照片  <span class="status">已上传</span>
+            </div>
+            <div class="tong">
+              <label class="iconfont iconxuanze"  for="tongYi"></label><input   id="tongYi" type="checkbox"> 6、上传银行卡照片  <span class="status">已上传</span>
+            </div>
+
+
+          </div>
+          <div class="help-btn-wrap">
+            <a :href="'tel:'+CustomerService" class="btn">
+              <span class="iconfont iconlianxikefu"></span>
+              <span>联系客服</span>
+            </a>
+
+          </div>
+        </div>
+
       </defrayment>
 
 <!--      <router-view></router-view>-->
@@ -70,7 +106,8 @@
       return {
         activeStep: 0,
         stepText: '',
-        flag: false
+        flag: false,
+        CustomerService: ''
       };
 
     },
@@ -84,6 +121,15 @@
       }
     },
     created () {
+      this.$axios.post('v1/manage/config/getTextList',{
+        "keys": 'CustomerService'
+      }).then(res=>{
+        if(res.data.code !==200){
+          this.$toast.error(res.data.msg)
+          return
+        }
+        this.CustomerService = res.data.data.CustomerService
+      })
       this.$axios.post('v1/mutually/compensate/compensateDetail',{
         orderNo: this.$route.query.orderNo
       }).then(res => {
@@ -181,6 +227,83 @@
   };
 </script>
 <style lang="scss" scoped>
+  .help-btn-wrap{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    a{
+      background-color: #fff;
+      color: $c-cheng;
+      span{
+
+      }
+    }
+    .btn{
+      width:132px;
+      height:35px;
+      border:1px solid $c-cheng;
+      border-radius:17px;
+      text-align: center;
+      line-height: 35px;
+      color: $c-cheng;
+      border-radius: 25px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: center;
+      font-size: 14px;
+      .iconfont{
+        padding-right: 5px;
+      }
+    }
+  }
+  .tong{
+    margin-top: 10px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    /*justify-items: center;*/
+    .iconfont{
+      vertical-align: middle;
+    }
+    input[type=checkbox]{
+      visibility: hidden;
+      /*margin-bottom: 20px;*/
+    }
+    span.status{
+      margin-left: 6px;
+      padding: 2px;
+      vertical-align: middle;
+      border:1px solid rgba(220,220,220,1);
+      font-family:SourceHanSansCN-Normal;
+      font-weight:400;
+      color:rgba(112,112,112,1);
+    }
+    .iconxuanze{
+      color: $c-cheng;
+
+    }
+    span{
+      color: cornflowerblue;
+    }
+  }
+
+  .input-box-line{
+    width: 100%;
+    padding-bottom: 6px;
+    /*height: .5px;*/
+    background-color: $c-hui;
+
+  }
+  .form-info{
+    /*margin-top: 5px;*/
+    padding: 12px;
+    .title{
+      font-size:14px;
+      font-family:SourceHanSansCN-Normal;
+      font-weight:bold;
+      color:rgba(51,51,51,1);
+    }
+  }
   .info-step{
     text-align: center;
     padding: 15px 0px 0px;

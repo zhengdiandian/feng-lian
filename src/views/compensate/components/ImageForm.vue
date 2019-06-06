@@ -154,6 +154,31 @@ export default {
 
         submit() {
           debugger
+          if(!this.payProve.length ){
+            this.$toast.error('请上传缴费凭证')
+            return
+          }
+          if(!this.applyForm.length ){
+            this.$toast.error('请上传申请表')
+            return
+          }
+          if(!this.illnessInform.length ){
+            this.$toast.error('请上传病例报告')
+            return
+          }
+          if(!this.treatProve.length ){
+            this.$toast.error('请上传诊断证明')
+            return
+          }
+          if(!this.contacsId.length ){
+            this.$toast.error('请上传身份证')
+            return
+          }
+          if(!this.cardImg ){
+            this.$toast.error('请上传银行卡照片')
+            return
+          }
+
             return this.$axios.post('v1/mutually/compensate/compensateApplyImg', {
             orderNo: this.$route.query.orderNo,
             payProve: this.payProve.toString(),

@@ -150,7 +150,7 @@ export default {
             if(res.data.code===200){
               debugger
               this.order = res.data.data
-              window.location = `${this.$axios.defaults.baseURL}/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=&type=1`
+              window.location = `${this.$axios.defaults.baseURL}/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=&type=1&&fullPath=${this.$route.fullPath}`
               console.log(res)
             }
 
@@ -170,7 +170,7 @@ export default {
             }
              debugger
           let {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus, hospitalName ,insuranceCompany, compensateState,orderNo,incidentTime } = res.data.data
-          contacsIdNo = this.Util.decrypt(contacsIdNo)
+          // contacsIdNo = this.Util.decrypt(contacsIdNo)
           this.orderNo = orderNo
           this.$data = Object.assign(this.$data, res.data.data)
           this.switchData.switchVal = !!res.data.data.socialSecurityFlag

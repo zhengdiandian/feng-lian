@@ -177,6 +177,7 @@
     },
     created() {
       debugger
+
       if(this.$route.query.first != 8888) {
         this.$axios.post('v1/mutually/compensate/compensateDetail',{
           orderNo: this.$route.query.planNo
@@ -197,6 +198,18 @@
           // this.
         })
       }
+      this.$axios.post('v1/mutually/compensate/compensateUserInfo',{
+        orderNo: this.$route.query.planNo
+
+      }).then(res => {
+          if(res.data.code!==200){
+            this.$toast.error(res.data.msg)
+            return
+          }
+          let data = res.data.data
+          this.contacs = data.contacs
+          this.contacsIdNo = data.contacsIdNo
+      })
     },
     methods: {
       submit() {
