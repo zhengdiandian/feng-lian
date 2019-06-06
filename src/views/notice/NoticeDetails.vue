@@ -233,7 +233,6 @@ import PopBox from '../../components/PopBox/PopBox'
   background:rgba(255,227,179,1);
   border-radius:5px;
   margin: auto;
-  margin-top: 12px;
   padding: 5px 12px;
   &>div{
     padding-bottom: 5px;
