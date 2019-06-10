@@ -222,7 +222,7 @@ export default {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 11px;
     text-align: center;
-    line-height: 21px;
+    line-height: 22px;
     background: rgba(255, 255, 255, 0.2);
   }
   .info-wrap {

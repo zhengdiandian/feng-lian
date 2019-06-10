@@ -29,7 +29,7 @@
                     </div>
                     <div class="postData" v-for="(items,index) in item.message.slice(1)" :key="index" @click="tab(items.id)">
                         <div class="postData-title">{{items.postTitle}}</div>
-                        <img class="postData-img" :src="item.message.img" alt="">
+                        <img class="postData-img" :src="items.img" alt="">
                     </div>
                   </div>
 
@@ -175,7 +175,7 @@ export default {
 .postData-title{
   padding: 12px;
   position: relative;
-  
+  margin-right: 80px;
 }
 .postData-img{
   width: 50px;

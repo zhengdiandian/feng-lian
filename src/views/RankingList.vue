@@ -298,7 +298,7 @@ export default {
 }
   .position-center{
     position: absolute;
-    left: 50%;
+    left: 42%;
     top: 50%;
     transform: translate(-50%, -50%);
   }
