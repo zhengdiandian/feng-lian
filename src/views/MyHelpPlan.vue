@@ -4,7 +4,7 @@
         <mu-button icon slot="left" @click="$router.go(-1)">
           <mu-icon value=":iconfont iconfanhui"></mu-icon>
         </mu-button>
-        我的申请
+        我的计划消息
         <mu-button icon slot="right"  :ripple="false">
         </mu-button>
       </mu-appbar>
@@ -56,10 +56,11 @@
             <!-- </div> -->
             <div class="purchase-plan" >
               <div class="apply">我的申请</div>
-              <div class="iconkong" v-if=" myApply.length <= 0 || !myApply">
+              <!-- <div class="iconkong" v-if=" myApply.length <= 0 || !myApply">
                     <img src="@/assets/空页面.png" alt="">
                     <span>暂无数据</span>
-                </div>
+                </div> -->
+
                 <section class="card" v-for="(myplan,i) in myApply" :key="i">
                   <div class="date">{{myplan.createTime}}</div>
                     <card :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
@@ -68,7 +69,7 @@
                         :productName="myplan.productName"
                         :amount="amount"
                         :amountMoney="myplan.balance"
-                        :waiting="myplan.wattingStage + '天'"
+                        :waiting="myplan.joinDays + '天'"
                         :waitingperiod="waitingperiod"
                         :date=" '：' + ' ' +myplan.joinDate"
                         :name="myplan.contacs"
@@ -93,7 +94,7 @@
                     </template>
                     </card>
                     <div class="text">
-                      {{myApply.content}}
+                      {{myplan.content}}
                     </div>
                     <div class="customer">如有疑问请咨询客服热线 <span>010-56248620</span></div>
                     </section>
@@ -108,13 +109,12 @@
             <div class="historical-record" >
               <div class="apply">历史记录</div>
               <!-- <div style="padding-left: 12px;">data</div> -->
-                <div class="iconkong" v-if=" myplan.historyMsg.length <= 0 || !myplan.historyMsg">
+                <div class="iconkong" v-if=" historyMsg.length <= 0">
                     <img src="@/assets/空页面.png" alt="">
                     <span>暂无数据</span>
                 </div>
-              <mu-paper :z-depth="1" class="demo-loadmore-wrap">
-                <mu-container ref="container" class="demo-loadmore-content">
-                  <mu-load-more  :loading="loading" @load="load">
+
+
                 <section class="card" v-for="(myplan,i) in myplan.historyMsg" :key="i">
                   <div class="historical-date">{{myplan.createTime}}</div>
                     <card
@@ -123,7 +123,7 @@
                         :productName="myplan.productName"
                         :amount="amount"
                         :amountMoney="myplan.balance"
-                        :waiting="myplan.leftWattingDays + '天'"
+                        :waiting="myplan.joinDays + '天'"
                         :waitingperiod="waitingperiod"
                         :date=" '：' + ' ' +myplan.joinDate"
                         :name="myplan.contacs"
@@ -143,7 +143,7 @@
                     </template>
                     <template v-slot:btnOpen>
                         <div class="btn-wrap">
-                            <div class="btn content-center" @click="$router.push({name: 'compensateInfo',query:{orderNo: myplan.planNo,type: myplan.type}})">查看详情</div>
+                            <div class="btn content-center" @click="$router.push({name: 'compensateInfo',query:{planNo: myplan.planNo , type: myplan.type}})">查看详情</div>
                         </div>
                     </template>
                     </card>
@@ -152,9 +152,7 @@
                     </div>
                     <div class="customer">如有疑问请咨询客服热线 <span>010-56248620</span></div>
                     </section>
-                   </mu-load-more>
-                  </mu-container>
-                </mu-paper> 
+
             </div>
         </main>
     </div>
@@ -174,8 +172,9 @@ export default {
             // name: 'Bytan.zZ',
             myplan: [],
             myApply: [],
+            historyMsg: [],
             page: 1,
-            pageSize: 5,
+            pageSize: 99,
             refreshing: false,
             loading: false,
             // planNo: '',
@@ -200,22 +199,21 @@ export default {
               this.$toast.error(res.data.msg)
               return
             }
-            if(flag){
-
-              this.myplan = res.data.data
-
-            }else {
-              res.data.data.historyMsg.forEach(item => {
-                    // debugger
-                    this.myplan.historyMsg.push(item)
-                })
-              // this.myplan = Object.assign({}, this.myplan, res.data.data)
-              // this.myplan = this.myplan.concat(res.data.data)
-              // this.$set(this.myplan , this.myplan.concat(res.data.data))
-            }
-            this.loading = false
-            this.myApply = res.data.data.myApply
-            console.log(this.myApply)
+              let myplan = res.data.data
+              // console.log(myplan)
+              this.myApply = myplan.filter((v,k,a) => {
+                // console.log(v)
+                // console.log(k)
+                console.log(a)
+                return v.msgType == 0
+              })
+              this.historyMsg = myplan.filter((v,k,a) => {
+                // console.log(v)
+                // console.log(k)
+                console.log(a)
+                return v.msgType == 1
+              })
+            
         })
         },
         load () {
@@ -279,7 +277,7 @@ main{
 }
 .demo-loadmore-wrap {
   width: 100%;
-  height: 500px;
+  height: 800px;
   display: flex;
   flex-direction: column;
   background-color: $c-bai;
@@ -301,12 +299,16 @@ main{
     padding-left: 12px;
   }
   .date{
+    font-size: $f14;
     padding-left: 12px;
   }
   .apply{
+    
     padding-bottom: 5px;
   }
   .customer {
+    padding-top: 12px;
+    // padding-bottom: 10px;
     padding-left: 12px;
     span{
       padding-left: 12px;
@@ -314,7 +316,7 @@ main{
     }
   }
   .text{
-    margin-top: -80px;
+    margin-top: -100px;
     padding-left: 12px;
   }
 }
@@ -327,6 +329,7 @@ main{
     // padding-left: 12px;
   }
   .historical-date{
+    // margin-top: 12px;
     padding-left: 5px;
     font-size: $f14;
   }
@@ -335,7 +338,7 @@ main{
     padding-left: 12px;
   }
   .customer {
-    // padding-top: 12px;
+    // padding-top: 2px;
     // padding-bottom: 10px;
     padding-left: 12px;
     span{
@@ -351,10 +354,10 @@ main{
 }
 .card{
   // width: 100%;
-  height: 160px;
+  height: 162px;
   margin: auto;
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 .slot-lable{
     // width: 100px;
