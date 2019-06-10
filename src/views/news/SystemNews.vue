@@ -51,7 +51,7 @@ export default {
       refreshing: false,
       loading: false,
       page: 1,
-      pageSize: 1
+      pageSize: 10
     }
   },
   created () {

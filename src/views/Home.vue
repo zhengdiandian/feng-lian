@@ -5,7 +5,7 @@
     <mu-bottom-nav class="bottom-nav" @change="open" :value.sync="shift" >
 
       <mu-bottom-nav-item value="movies" active-class="active-item" title="首页" to="/home"  icon=":iconfont iconshouye1 " ></mu-bottom-nav-item>
-      <mu-bottom-nav-item value="music"  active-class="active-item" title="公告" to="/notice/newNotice" icon=":iconfont icongonggao"></mu-bottom-nav-item>
+      <mu-bottom-nav-item value="music"  active-class="active-item" title="公告" to="/notice" icon=":iconfont icongonggao"></mu-bottom-nav-item>
       <mu-bottom-nav-item value="my" :class="{'active-item': $route.fullPath == '/my' || $route.fullPath == '/mynot'}" active-class="active-item" @click="open" title="我的" icon=":iconfont iconwode"></mu-bottom-nav-item>
     </mu-bottom-nav>
 

@@ -44,6 +44,7 @@ export default new Router({
         {
           path: '/notice', // 公告
           name: 'notice',
+          redirect: '/notice/newNotice',
           component: function () {
             return import('./views/Notice')
           },
