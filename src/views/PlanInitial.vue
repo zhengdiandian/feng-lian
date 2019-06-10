@@ -46,7 +46,7 @@
           <div class="balance">{{panned.balance}}</div>
           <div class="balance-warning">余额充足</div>
           <div class="btn-wrap" v-if="title">
-            <div class="btn" @click="$router.push('/recharge')">计划充值</div>
+            <div class="btn" @click="rechargeTo">计划充值</div>
             <div class="btn" @click="$router.push('/owe')">感恩有你</div>
           </div>
         </div>

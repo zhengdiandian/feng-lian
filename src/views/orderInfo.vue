@@ -141,16 +141,22 @@ export default {
                   // slef.$toast.error('进入回调')
 
                   if (res.err_msg == "get_brand_wcpay_request:ok") {
-                    alert(JSON.stringify(this.$route.query))
-                    if(this.$route.query.type == 1){
-                      this.$router.push(decodeURI(decodeURI(this.$route.query.fullPath)))
-                      return
-                    }
+                    // alert(typeof slef.$route.query.fullPath)
+                    // alert(0)
+                    // var flag = self.$route.query.fullPath || false
+                    // if(flag){
+                    //   alert('1')
+                    //   slef.$router.push(decodeURI(decodeURI(slef.$route.query.fullPath)))
+
+                    // }else {
+                    //   alert('2')
                       slef.$router.push({name: 'planInitial',query:{
                           planNo: slef.$route.query.planNo,
                           title: '再去看看'
                         }})
-                    // this.$toast.error('get_brand_wcpay_request:ok')
+                    // }
+
+                    this.$toast.error('get_brand_wcpay_request:ok')
 
                     // 使用以上方式判断前端返回,微信团队郑重提示：
                     //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。

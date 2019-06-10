@@ -554,7 +554,15 @@ export default new Router({
       component: function () {
         return import('./views/compensate/info/info')
       }
-    }
+    },
+    {
+      path: '/newOrderInfo', // 订单确认
+      name: 'newOrderInfo',
+      component: function () {
+        return import('./views/newOrderInfo')
+      }
+    },
+
     // {
     //   path: '*',
     //   name: '*',
