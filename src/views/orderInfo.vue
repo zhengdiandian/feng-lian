@@ -141,8 +141,9 @@ export default {
                   // slef.$toast.error('进入回调')
 
                   if (res.err_msg == "get_brand_wcpay_request:ok") {
+                    alert(JSON.stringify(this.$route.query))
                     if(this.$route.query.type == 1){
-                      this.$router.push(decodeURI(this.$route.query.fullPath))
+                      this.$router.push(decodeURI(decodeURI(this.$route.query.fullPath)))
                       return
                     }
                       slef.$router.push({name: 'planInitial',query:{
