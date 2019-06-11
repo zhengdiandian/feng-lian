@@ -16,7 +16,8 @@
                 </section>
                 <section class="datalist" @click="$router.push('/mydetails')">
                     <div class="listtext"><span>个人信息：</span></div>
-                    <div class="listInfo" >{{datalist.personalInfo}}</div>
+                   
+                    <div class="listInfo" ><span>{{datalist.sex == 1 ? '男':'女'}}</span><span style="margin-left: 12px;" v-if="datalist.age">{{datalist.age}}岁</span></div>
                     <span class="info-text">详细信息</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
                 </section>
@@ -131,10 +132,9 @@ header{
         height: 48px;
         align-items: center;
         .listtext{
-            // width:58px;
+            width: 80px;
             height:12px;
             font-size:$f14;
-            width: 80px;
             font-weight:400;
             color:rgba(51,51,51,1);
             display: flex;
@@ -156,4 +156,5 @@ header{
         color: #EF9B1E;
       }
     }
+
 </style>

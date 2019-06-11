@@ -141,4 +141,7 @@ main {
 .mu-input{
   color: #fff;
 }
+.mu-input__focus{
+  color: #fff !important;
+}
 </style>

@@ -11,6 +11,7 @@
                         label="请输入您的手机号码"
                         icon=":iconfont iconzhanghao"
                         :error-text="accountErr"
+                        oninput="value=value.replace(/[^\d]/g,'')"
                 >
                 </mu-text-field>
             </div>
