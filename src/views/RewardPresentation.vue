@@ -78,7 +78,7 @@
                 <div class="money-charge">额外扣除￥5元手续费</div>
                 <div class="input">
                     <div v-for="(item,index) in inputList" :key="index">
-                        <input type="password" v-model="item.val" maxlength="1"  class="border-input" @keyup="nextFocus($event,index)">
+                        <input type="password" v-model="item.val" maxlength="1" @input="item.val=item.val.replace(/[^\d]/g,'')"  class="border-input" @keyup="nextFocus($event,index)">
                     </div>
                 </div>
             </div>
@@ -135,6 +135,10 @@
                     currInput = dom[index],
                     nextInput = dom[index + 1],
                     lastInput = dom[index - 1];
+                    if(el.keyCode != 8&& this.inputList[index].val === '') {
+                            currInput.focus()
+                            return
+                        }
                 /*这里的keyCode 根据不同的平台或许不同,安卓就是不是8*/
                 if (el.keyCode != 8) {
                     if (index < (this.inputList.length - 1)) {
