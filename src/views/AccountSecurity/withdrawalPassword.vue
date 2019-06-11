@@ -107,12 +107,15 @@ import { timingSafeEqual } from 'crypto';
             // },
             nextFocus(el,index) {
                 debugger
-              
+
                 var dom = document.getElementsByClassName("border-input"),
                     currInput = dom[index],
                     nextInput = dom[index + 1],
                     lastInput = dom[index - 1];
-                
+              if(el.keyCode != 8&& this.inputList[index].val === '') {
+                currInput.focus()
+                return
+              }
                 /*这里的keyCode 根据不同的平台或许不同,安卓就是不是8*/
                 if (el.keyCode != 8) {
                     debugger
@@ -126,9 +129,7 @@ import { timingSafeEqual } from 'crypto';
                         lastInput.focus();
                     }
                 }
-            //     if( this.inputList[index].val === '') {
-            //        currInput.focus()
-            //    }
+
 
             },
             NewInputPwd(){ //设置新密码
