@@ -65,6 +65,7 @@ export default {
             }
             this.imgArr = this.urlList = []
             this.$toast.success('上传成功')
+          this.$router.go(-1)
           console.log(res)
           this.$axios.post('v1/user/info/personalInfo').then(res => {
               if(res.data.code!==200){

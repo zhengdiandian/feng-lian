@@ -228,8 +228,8 @@
         width:150px;
         height:33px;
         line-height: 33px;
-        color: $c-lang;
-        border:1px solid $c-lang;
+        color: $c-cheng;
+        border:1px solid $c-cheng;
         border-radius:17px;
       }
     }

@@ -49,10 +49,10 @@
 <!--                        <span style="font-size:12px;">自己</span>-->
 <!--                    </div>-->
                     <div class="list">
-                        <div class="list-img" @click="$router.push('/selectAddFamily')">
+                        <div class="list-img" @click="toAddFamily">
                             <img src="../assets/PNG/添加家人.png" alt="">
                         </div>
-                        <span style="font-size:12px;" @click="$router.push('/selectAddFamily')">添加家人</span>
+                        <span style="font-size:12px;" @click="toAddFamily">添加家人</span>
                     </div>
                 </section>
             </div>
@@ -133,6 +133,14 @@ export default {
         }
     },
     methods: {
+      toAddFamily(){
+        debugger
+        if(this.relationList[0].joinFlag){
+          this.$router.push('/selectAddFamily')
+        }else {
+          this.$toast.error('您还没加入计划')
+        }
+      },
         // open() {
         //     this.$router.push({
         //         name: 'planInitial',
@@ -305,6 +313,7 @@ export default {
         }
     },
     created() {
+      debugger
       // this.$axios.get('/v1/mutually/plan/planList').then(res=>{
       //   if(res.data.code !==200){
       //     this.$toast.error(res.data.msg)

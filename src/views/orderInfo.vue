@@ -82,10 +82,26 @@ export default {
       payment: [],
       planId: "",
       productId: "",
-      pay: []
+      pay: [],
+      flag:false
     };
   },
+  watch: {
+    flag () {
+      if(this.flag) {
+        this.to()
+      }
+    }
+  },
   methods: {
+    to() {
+      this.$router.push({name: 'planInitial',
+        query:{
+          planNo: this.$route.query.planNo,
+          productCode: this.$route.query.productCode,
+          title: '再去看看'
+        }})
+    },
     topay() {
       // this.$axios.post('/v1/mutually/plan/addPayOrder',{
       //   "orderNo":this.order.orderNo,
@@ -150,11 +166,18 @@ export default {
 
                     // }else {
                     //   alert('2')
-                      slef.$router.push({name: 'planInitial',query:{
-                          planNo: slef.$route.query.planNo,
-                          productCode: self.$route.query.productCode,
-                          title: '再去看看'
-                        }})
+                      slef.flag = true
+                      try {
+                        slef.$router.push({name: 'planInitial',
+                          query:{
+                            planNo: slef.$route.query.planNo,
+                            productCode: self.$route.query.productCode,
+                            title: '再去看看'
+                          }})
+                      }catch (e) {
+                        // alert(JSON.stringify(e))
+                      }
+
                     // }
 
                     this.$toast.error('get_brand_wcpay_request:ok')

@@ -206,6 +206,7 @@ export default {
         //         this.$toast.error('请填写所在地')
         //     }
             debugger
+
             this.$axios.post('/v1/user/info/updateInfo',{
             "nickname":this.nickname,
             "sex":this.form.select,
