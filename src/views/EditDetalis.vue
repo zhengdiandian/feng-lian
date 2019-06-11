@@ -33,14 +33,14 @@
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
-                    <span class="width-left">年龄：</span><span ><input type="text" v-model.number="age"></span>
+                    <span class="width-left">年龄：</span><span ><input type="text" @keyup="age=age.replace(/[\D]/g,'')" v-model="age"></span>
                     <!-- <mu-divider></mu-divider> -->
                 </div>
                 <div class="rule margin-left">
                     <!-- <span class="width-left">生日：</span><span ><input type="text" v-model="birth"></span> -->
                     <div class="input-box" @click="openBotttomSheet">
                 <label >生日:</label>
-                <div class="select"><span class="placeholder-text" v-if="incidentTime===''">请选择事故发生时间</span><span>{{incidentTime}}</span><span class="iconfont iconxiangshangshouqi1"></span>
+                <div class="select"><span class="placeholder-text" v-if="incidentTime===''"></span><span>{{incidentTime}}</span><span class="iconfont iconxiangshangshouqi1"></span>
                 </div>
 <!--                <mu-date-input v-model="value2" label="横屏显示" label-float full-width landscape></mu-date-input>-->
 
@@ -136,6 +136,9 @@ export default {
             // incidentTime: '',
             open: false,
             date: new Date(),
+            provinceValue: "",
+            cityValue: '',
+            countyValue: ''
         }
     },
     computed: {
@@ -155,11 +158,13 @@ export default {
       this.nickname = data.nickname
     //   this.address = data.address
       this.city = data.city
+      this.age = data.age
       this.email = data.email
-      this.obj = data.obj
+      this.job = data.job
       this.account = data.account
       this.form.select = data.sex
       this.motto = data.motto
+      this.working_place = data.working_place
   },
     methods:{
         openBotttomSheet () {
@@ -178,7 +183,7 @@ export default {
         //   // .substring(0,val.select2.text.length -1 )
         this.provinceValue = val.select1.value
         this.cityValue = val.select2.value
-        // this.countyValue = val.select3.value
+        this.countyValue = val.select3.value
         this.county = val.select3.text
         // this.defaultData = [val.select1];
       },
@@ -208,12 +213,15 @@ export default {
             "birth":this.incidentTime,
             "constellation":this.constellation,
             "job": this.job,
-            "working_place":this.working_place,
+            "workingPlace":this.working_place,
             "address": this.addresso,
             "email":this.email,
             "province":this.province,
             "city":this.city,
-            "motto": this.motto
+            "motto": this.motto,
+            "province": this.provinceValue,
+            "city": this.cityValue,
+            "county": this.countyValue
         }).then(res=>{
             debugger
               if(res.data.code!==200){
@@ -334,7 +342,7 @@ input{
 
 .input-box{
         width: 100%;
-        /*height:36px;*/
+        /*height:50px;*/
         display: flex;
         flex-wrap: wrap;
         &.switch{
@@ -347,21 +355,23 @@ input{
         }
         &:after{
             width: 100%;
-            height: 1px;
-            transform: scaleY(0.5);
-            transform-origin: 50% 100%;
+            // height: 1px;
+            // transform: scaleY(0.5);
+            // transform-origin: 50% 100%;
             /*height: .5px;*/
             content: '';
             display: block;
             z-index: 6666;
-            background-color: $c-hui;
+            border-bottom: .5px solid $c-hui;
+
+            // background-color: $c-hui;
             /*<!--border-bottom: .5px solid $c-hui;-->*/
         }
         .select{
             position: relative;
             flex: 2;
-            line-height: 36px;
-            height: 36px;
+            line-height: 50px;
+            height: 50px;
             .iconfont{
                 position: absolute;
                 bottom: 0px;
@@ -373,8 +383,8 @@ input{
             white-space: nowrap;
             display: inline-block;
             width: 80px;
-            line-height: 36px;
-            height: 36px;
+            line-height: 50px;
+            height: 50px;
             background-color: $c-bai;
         }
         input{
@@ -382,12 +392,12 @@ input{
             border: none;
             outline: none;
             width: auto;
-            height: 36px;
+            height: 50px;
         }
 
         .right{
             /*float: right;*/
-            line-height: 36px;
+            line-height: 50px;
         }
     }
 </style>

@@ -2,7 +2,7 @@
     <div>
         <header>
             <PerInforHeader :imgUrl="datalist.headPortrait?datalist.headPortrait:'../assets/PNG/avatarDefault.png'"></PerInforHeader>
-            <router-link v-if="userInfo.type>=200" tag="div" to="/code"><mu-icon value=":iconfont iconerweima"></mu-icon></router-link>
+            <router-link v-if="preinfo.type>=200" tag="div" to="/code"><mu-icon value=":iconfont iconerweima"></mu-icon></router-link>
         </header>
         <main>
            <div class="detaInfo">
@@ -53,6 +53,7 @@ export default {
     data() {
         return {
             datalist: [],
+            preinfo: [],
             states: {
                 "upload": "已上传",
                 "atication": "已完成"
@@ -62,7 +63,14 @@ export default {
     },
 
     created(){
-
+         this.$axios.post('/v1/user/info/index').then((res) =>{
+            // debugger
+        debugger
+            this.preinfo = res.data.data
+            // this.type = res.data.data.type
+            console.log(res)
+        })
+    
         this.getlist()
 
     },

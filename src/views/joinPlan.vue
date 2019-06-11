@@ -73,7 +73,7 @@
       <div class="yaoQing margin-top wrap">
         <div class="input-wrap">
           <label for>邀请码</label>
-          <input  style="vertical-align: middle" type="text"  :disabled="flag" placeholder="请联系客服获得邀请码" v-model="agentUserCode" >
+          <input  style="vertical-align: middle" type="text" @keyup="agentUserCode=agentUserCode.replace(/[\W]/g,'')"  :disabled="flag" placeholder="请联系客服获得邀请码" v-model="agentUserCode" >
           <span class="" @click="obtain">
             <a :href="'tel:'+CustomerService" class="btn">
             <span>获取邀请码</span>
@@ -165,7 +165,7 @@ export default {
       order: [],
       agentUserCode: '',
       familyList: [],
-      flag: true
+      flag: false
     }
   },
   computed:{
@@ -250,6 +250,8 @@ export default {
       this.agentUserCode =  this.familyList[this.activeIndex].referCode
       if(!this.agentUserCode){
         this.flag = false
+      }else {
+        this.flag = true
       }
 
 
@@ -281,6 +283,7 @@ export default {
       this.contacsIdNo = this.familyList[this.activeIndex].contacsIdNo
       this.contacs  =  this.familyList[this.activeIndex].contacs
       this.agentUserCode =  this.familyList[this.activeIndex].referCode
+      this.flag = this.agentUserCode ? true : false
       // this.familyList.unshift({
       //   relation: 0,
       //   relationDesc: '自己',

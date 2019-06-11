@@ -37,10 +37,10 @@
                     <span class="width-left">职业：</span><span>{{detalis.job}}</span>
                     <mu-divider></mu-divider>
                 </div>
-                <!-- <div class="rule margin-left">
-                    <span>学校/公司：</span><span style="margin-left: 0px;">{{detalis.workingPlace}}</span>
+                <div class="rule margin-left">
+                    <span class="width-left">学校/公司：</span><span>{{detalis.workingPlace}}</span>
                     <mu-divider></mu-divider>
-                </div> -->
+                </div>
                 <div class="rule margin-left">
                     <span class="width-left">收货地址：</span><span>{{detalis.address}}</span>
                     <mu-divider></mu-divider>

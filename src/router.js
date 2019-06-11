@@ -126,6 +126,9 @@ export default new Router({
     },
     {
       path: '/mydetails', // 我的详细资料
+      meta: {
+        keepAlive: false
+      },
       component: function () {
         return import('./views/MyDetails')
       }
