@@ -122,7 +122,7 @@
               this.$toast.error(res.data.msg)
               return
             }
-            alert(JSON.stringify(res.data.data))
+            // alert(JSON.stringify(res.data.data))
             if (res.data.data.type === 1) {
               debugger;
               window.location = res.data.data.payUrl;
