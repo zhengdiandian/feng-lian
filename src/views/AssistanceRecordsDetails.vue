@@ -4,7 +4,7 @@
           <mu-button icon slot="left" @click="$router.go(-1)">
             <mu-icon value=":iconfont iconfanhui"></mu-icon>
           </mu-button>
-          公示详情
+          互助记录详情
           <mu-button icon slot="right" :ripple="false">
           </mu-button>
         </mu-appbar>
@@ -85,9 +85,9 @@
 </template>
 
 <script>
-import PopBox from '../../components/PopBox/PopBox'
+import PopBox from '@/components/PopBox/PopBox'
     export default {
-        name: 'NoticeDetails',
+        name: 'AssistanceRecordsDetails',
         data () {
           return {
             orderNo: this.$route.query.orderNo,

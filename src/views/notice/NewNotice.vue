@@ -38,7 +38,7 @@
 
           <div class="notice-info">
             
-              <div class="title">{{acs.contacs}}<span>{{acs.state == 200? '已实名': '未实名'}}</span></div>
+              <div class="title">{{acs.contacs}}<span v-if="acs.state">{{acs.state == 200? '已实名': '未实名'}}</span></div>
               <div class="title">{{acs.illnessApply}}</div>
               <div class="text">已加入蜂链互助{{acs.joinDays}}天，参与{{acs.shareTimes}}次分摊，花费{{acs.shareAmount}}元</div>
 

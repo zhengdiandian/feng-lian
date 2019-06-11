@@ -56,10 +56,11 @@
             <!-- </div> -->
             <div class="purchase-plan" >
               <div class="apply">我的申请</div>
-              <!-- <div class="iconkong" v-if=" myApply.length <= 0 || !myApply">
+
+              <div class="iconkong" v-if=" myApply == ''">
                     <img src="@/assets/空页面.png" alt="">
                     <span>暂无数据</span>
-                </div> -->
+                </div>
 
                 <section class="card" v-for="(myplan,i) in myApply" :key="i">
                   <div class="date">{{myplan.createTime}}</div>
@@ -295,15 +296,12 @@ main{
   padding-top: 12px;
   width: 100%;
   // background-color: $c-bai;
-  &>div{
-    padding-left: 12px;
-  }
   .date{
     font-size: $f14;
     padding-left: 12px;
   }
   .apply{
-    
+    padding-left: 12px;
     padding-bottom: 5px;
   }
   .customer {
