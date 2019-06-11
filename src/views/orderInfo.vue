@@ -152,7 +152,7 @@ export default {
                     //   alert('2')
                       slef.$router.push({name: 'planInitial',query:{
                           planNo: slef.$route.query.planNo,
-                          productCode: this.$route.query.productCode,
+                          productCode: self.$route.query.productCode,
                           title: '再去看看'
                         }})
                     // }
