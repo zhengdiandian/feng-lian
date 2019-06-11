@@ -82,11 +82,13 @@
         payment: [],
         planId: "",
         productId: "",
-        pay: []
+        pay: [],
+        flag: false
       };
     },
     methods: {
       to() {
+        debugger
         try {
           this.$router.push({
             name: "compensateInfo",
@@ -120,6 +122,7 @@
               this.$toast.error(res.data.msg)
               return
             }
+            alert(JSON.stringify(res.data.data))
             if (res.data.data.type === 1) {
               debugger;
               window.location = res.data.data.payUrl;
@@ -153,6 +156,7 @@
                     // slef.$toast.error('进入回调')
 
                     if (res.err_msg == "get_brand_wcpay_request:ok") {
+                      self.flag = true
                       // alert(typeof slef.$route.query.fullPath)
                       // alert(0)
                       // var flag = self.$route.query.fullPath || false
@@ -160,21 +164,23 @@
                       //   alert('1')
                       // slef.$router.push(decodeURI(decodeURI(slef.$route.query.fullPath)))
                       try {
-                        self.$router.push({
-                          name: "compensateInfo",
-                          query: {
-                            orderNo: slef.$route.query.planNo
-                          }
-                        })
+                        self.flag = true
+                        slef.to()
+                        // self.$router.push({
+                        //   name: "compensateInfo",
+                        //   query: {
+                        //     orderNo: slef.$route.query.planNo
+                        //   }
+                        // })
                       }catch (e) {
                         alert(JSON.stringify(e))
                       }
-                      self.$router.push({
-                        name: "compensateInfo",
-                        query: {
-                          orderNo: slef.$route.query.planNo
-                        }
-                      })
+                      // self.$router.push({
+                      //   name: "compensateInfo",
+                      //   query: {
+                      //     orderNo: slef.$route.query.planNo
+                      //   }
+                      // })
                       // alert(slef.$route.query.planNo)
                       // self.$router.push('/home')
                       // }else {
@@ -185,7 +191,7 @@
                       //   }})
                       // }
 
-                      this.$toast.error('get_brand_wcpay_request:ok')
+                      // this.$toast.error('get_brand_wcpay_request:ok')
 
                       // 使用以上方式判断前端返回,微信团队郑重提示：
                       //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
@@ -212,7 +218,7 @@
                 // this.$toast.error('ok22222')
               }
             }
-
+            self.to()
             // res.redi
             console.log("zhifu", res.data.data);
           });
@@ -227,8 +233,15 @@
         // })
       }
     },
+    watch: {
+      flag() {
+        if(this.flag = true){
+          this.to()
+        }
+      }
+    },
     mounted() {
-      this.to()
+      // this.to()
       // this.$axios.post('/v1/mutually/plan/checkOrder',{
       //   "contacs": "",  // 姓名
       //   "contacsIdNo": "", // 身份证
