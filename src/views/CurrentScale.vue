@@ -34,7 +34,7 @@
             <div class="margin-top" style="color: #F2B54D;font-size: 13px;">你可以邀请</div>
         </div> -->
         <div class="sharing">
-            <img src="../assets/规模.png" alt="">
+            <img :src="CurruntApportionImg" alt="">
             <footer>
         <!--<button>分享邀请好友</button>-->
         <scale-btn></scale-btn>
@@ -78,13 +78,21 @@
     },
     data() {
         return {
-            name: '张小泉'
+            name: '张小泉',
+            CurruntApportionImg: ''
         }
     },
     methods: {
         openReturn() {
             this.$router.go(-1)
         }
+    },
+    created() {
+        this.$axios.post('/v1/manage/config/getImgList',{
+            "keys": 'CurruntApportionImg'
+        }).then(res=>{
+            this.CurruntApportionImg = res.data.data.CurruntApportionImg
+        })
     }
 }
 </script>
@@ -93,7 +101,7 @@ header{
     // height: 155px;
     background-image: url('../assets/PNG/我的奖励背景.png');
     background-size: 100% 100%;
-    height: 135px;
+    height: 200px;
 }
 nav {
     width: $gw;
@@ -124,7 +132,7 @@ nav {
         flex-direction: column;
         align-items: center;
         color: #ffffff;
-        // margin-top: 10px;
+        margin-top: 30px;
         .reward-money{
             padding-top: 10px;
             font-size: 36px;
@@ -193,7 +201,7 @@ nav {
         justify-content: center;
         // align-items: center;
         width: 100%;
-        height: 100vw;
+        // height: 100vw;
         position: relative;
         img{
             width: 100%;

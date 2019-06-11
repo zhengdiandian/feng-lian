@@ -197,7 +197,7 @@ export default {
     msgLogin() {},
     login() {
       if (!this.account) {
-        this.accountErr = "用户名不能为空";
+        this.accountErr = "手机号不能为空";
         return;
       }
       if (!this.pwd) {

@@ -116,7 +116,7 @@
                 </div>
 
 
-                <section class="card" v-for="(myplan,i) in myplan.historyMsg" :key="i">
+                <section class="card" v-for="(myplan,i) in historyMsg" :key="i">
                   <div class="historical-date">{{myplan.createTime}}</div>
                     <card
                         :img="myplan.headPortrait"
@@ -328,7 +328,7 @@ main{
   }
   .historical-date{
     // margin-top: 12px;
-    padding-left: 5px;
+    padding-left: 12px;
     font-size: $f14;
   }
   .apply{

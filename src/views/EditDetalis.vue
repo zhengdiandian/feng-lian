@@ -164,7 +164,7 @@ export default {
       this.account = data.account
       this.form.select = data.sex
       this.motto = data.motto
-      this.working_place = data.working_place
+      this.working_place = data.workingPlace
   },
     methods:{
         openBotttomSheet () {
