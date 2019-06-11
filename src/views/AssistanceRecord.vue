@@ -44,8 +44,8 @@
                                     :purchase="item.payState==0?'未划款':'已划款'"
                                     >
                                     <template v-slot:btnOpen>
-                                        <div class="btn-wrap">
-                                            <div class="btn content-center">查看详情</div>
+                                        <div class="btn-wrap" >
+                                            <div class="btn content-center" @click="$router.push({name:'AssistanceRecordsDetails', query: {orderNo: item.compensataOrderNo, stage: item.stage}})">查看详情</div>
                                         </div>
                                     </template>
                                 </card>

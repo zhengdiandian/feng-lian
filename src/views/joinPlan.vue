@@ -87,7 +87,7 @@
     <div class="select-wrap">
        <div class="font margin-bottom margin-top">选择关系</div>
       <div class="select-items">
-        <div class="item" v-for="(item, i) in familyList"  :key="i" :class="{'active': activeIndex == i}" @click="activeIndex=i">{{item.relationDesc}}</div>
+        <div class="item" v-for="(item, i) in familyList"  :key="i" :class="{'active': activeIndex == i}" @click="activeIndex=i">{{item.contacs}}</div>
           <div class="item active"  @click="$router.push('/selectAddFamily')" >添加家人</div>
 
       </div>

@@ -5,7 +5,7 @@
       <mu-button icon slot="left" @click="$router.go(-1)">
         <mu-icon value=":iconfont iconfanhui"></mu-icon>
       </mu-button>
-      互助记录
+      {{contacs}}的互助记录
       <mu-button icon slot="right" :ripple="false">
       </mu-button>
     </mu-appbar>
@@ -45,7 +45,7 @@
                                     >
                                     <template v-slot:btnOpen>
                                         <div class="btn-wrap">
-                                            <div class="btn content-center">查看详情</div>
+                                            <div class="btn content-center"  @click="$router.push({name:'AssistanceRecordsDetails', query: {orderNo: item.compensataOrderNo, stage: item.stage}})">查看详情</div>
                                         </div>
                                     </template>
                                 </card>
@@ -83,7 +83,8 @@ export default {
             loading: false,
             page: 1,
             pageSize: 5,
-            userCode: this.$route.query.userCode
+            userCode: this.$route.query.userCode,
+            contacs: this.$route.query.contacs,
         }
     },
     methods: {

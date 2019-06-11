@@ -218,6 +218,13 @@ export default new Router({
       }
     },
     {
+      path: '/AssistanceRecordsDetails', // 互助记录详情
+      name: 'AssistanceRecordsDetails',
+      component: function () {
+        return import('./views/AssistanceRecordsDetails.vue')
+      }
+    },
+    {
       path: '/heassis', // 他人互助记录
       name: 'heAssistanceReacord',
       component: function () {
