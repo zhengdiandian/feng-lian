@@ -90,13 +90,13 @@
     height:33px;
     line-height: 33px;
     text-align: center;
-    text-align: center;
     font-size:$f15;
-
+    
     color: $c-bai;
     background:$c-cheng;
     border-radius:17px;
     margin: auto;
+    margin-top: 20px;
   }
 main{
     padding-top: 12px;
