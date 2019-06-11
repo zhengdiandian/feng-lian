@@ -27,7 +27,7 @@
         </div>
 
         <router-view></router-view>
-<!--        <input-form></input-form>-->
+        <input-form></input-form>
     </div>
 <!--      <div class="form-content">-->
 <!--            <div class="title">请如实填写以下信息</div>-->

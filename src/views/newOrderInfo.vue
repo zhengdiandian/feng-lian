@@ -86,6 +86,18 @@
       };
     },
     methods: {
+      to() {
+        try {
+          this.$router.push({
+            name: "compensateInfo",
+            query: {
+              orderNo: this.$route.query.planNo
+            }
+          })
+        }catch (e) {
+          alert(JSON.stringify(e))
+        }
+      },
       topay() {
         // this.$axios.post('/v1/mutually/plan/addPayOrder',{
         //   "orderNo":this.order.orderNo,
@@ -147,6 +159,16 @@
                       // if(flag){
                       //   alert('1')
                       // slef.$router.push(decodeURI(decodeURI(slef.$route.query.fullPath)))
+                      try {
+                        self.$router.push({
+                          name: "compensateInfo",
+                          query: {
+                            orderNo: slef.$route.query.planNo
+                          }
+                        })
+                      }catch (e) {
+                        alert(JSON.stringify(e))
+                      }
                       self.$router.push({
                         name: "compensateInfo",
                         query: {
@@ -206,6 +228,7 @@
       }
     },
     mounted() {
+      this.to()
       // this.$axios.post('/v1/mutually/plan/checkOrder',{
       //   "contacs": "",  // 姓名
       //   "contacsIdNo": "", // 身份证
