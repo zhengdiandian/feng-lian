@@ -88,7 +88,7 @@
        <div class="font margin-bottom margin-top">选择关系</div>
       <div class="select-items">
         <div class="item" v-for="(item, i) in familyList"  :key="i" :class="{'active': activeIndex == i}" @click="activeIndex=i">{{item.contacs}}</div>
-          <div class="item active"  @click="$router.push('/selectAddFamily')" >添加家人</div>
+          <div class="item active"  @click="toAddFamily" >添加家人</div>
 
       </div>
 
@@ -184,6 +184,14 @@ export default {
     }
   },
   methods: {
+    toAddFamily(){
+      debugger
+      if(this.familyList[0].joinFlag){
+        this.$router.push('/selectAddFamily')
+      }else {
+        this.$toast.error('您还没加入计划')
+      }
+    },
     obtain(){
 
     },
