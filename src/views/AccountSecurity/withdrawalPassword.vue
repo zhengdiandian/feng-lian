@@ -33,7 +33,7 @@
         <!-- <pay></pay> -->
         <div class="input">
             <div v-for="(item,index) in inputList" :key="index">
-                <input type="password" v-model="item.val" maxlength="1"  class="border-input" @keyup="nextFocus($event,index)">
+                <input type="password" v-model="item.val" maxlength="1" @input="item.val=item.val.replace(/[^\d]/g,'')"  class="border-input" @keyup="nextFocus($event,index)">
             </div>
         </div>
 
@@ -106,12 +106,16 @@ import { timingSafeEqual } from 'crypto';
             //     if(inputList[5].val !== '')return
             // },
             nextFocus(el,index) {
+                debugger
+              
                 var dom = document.getElementsByClassName("border-input"),
                     currInput = dom[index],
                     nextInput = dom[index + 1],
                     lastInput = dom[index - 1];
+                
                 /*这里的keyCode 根据不同的平台或许不同,安卓就是不是8*/
                 if (el.keyCode != 8) {
+                    debugger
                     if (index < (this.inputList.length - 1)) {
                         nextInput.focus();
                     } else {
@@ -122,6 +126,10 @@ import { timingSafeEqual } from 'crypto';
                         lastInput.focus();
                     }
                 }
+            //     if( this.inputList[index].val === '') {
+            //        currInput.focus()
+            //    }
+
             },
             NewInputPwd(){ //设置新密码
                 console.log(this.inpuVal)

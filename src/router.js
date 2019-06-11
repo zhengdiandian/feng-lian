@@ -261,6 +261,9 @@ export default new Router({
     },
     {
       path: '/AccountSecurity', // 账号与安全
+      meta: {
+        keepAlive: false
+      },
       component: function () {
         return import('./views/AccountSecurity.vue')
       }
