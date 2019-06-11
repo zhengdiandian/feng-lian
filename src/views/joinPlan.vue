@@ -216,8 +216,8 @@ export default {
                 }
               if(res.data.code===200){
                 debugger
-                this.order = res.data.
-                
+                this.order = res.data.data
+                debugger
                 window.location = `${this.$axios.defaults.baseURL}/v1/mutually/payOrder/orderCheck?orderNo=${this.order.orderNo}&goodsName=${this.order.goodsName}&unitPrice=${this.order.unitPrice}&payAmount=${this.order.payAmount}&bounty=${this.order.bounty}&productCode=${this.$route.params.productCode}`
                 console.log(res)
                 // this.$axios.post('v1/mutually/payOrder/orderCheck',{
@@ -247,7 +247,7 @@ export default {
       debugger
       this.contacsIdNo = this.familyList[this.activeIndex].contacsIdNo
       this.contacs  =  this.familyList[this.activeIndex].contacs
-      this.agentUserCode =  this.familyList[this.activeIndex].userCode
+      this.agentUserCode =  this.familyList[this.activeIndex].referCode
       if(!this.agentUserCode){
         this.flag = false
       }
@@ -280,7 +280,7 @@ export default {
       this.familyList = res.data.data
       this.contacsIdNo = this.familyList[this.activeIndex].contacsIdNo
       this.contacs  =  this.familyList[this.activeIndex].contacs
-      this.agentUserCode =  this.familyList[this.activeIndex].userCode
+      this.agentUserCode =  this.familyList[this.activeIndex].referCode
       // this.familyList.unshift({
       //   relation: 0,
       //   relationDesc: '自己',
