@@ -1,6 +1,17 @@
 <template>
-  <div @click="$router.go(-1)">
-    <a id="fileDownload" @click.stop="() =>{}" :href="url" download="下载申请表">点击下载</a> </div>
+  <div>
+
+    <mu-appbar style="width: 100%;" color="primary" text-color='#666' z-depth="0">
+      <mu-button icon slot="left" @click="$router.push('/my')">
+        <mu-icon value=":iconfont iconfanhui"></mu-icon>
+      </mu-button>
+      下载申请表
+      <mu-button icon slot="right"  :ripple="false">
+      </mu-button>
+    </mu-appbar>
+    <div class="page-margin-top">    <a STYLE="margin-top: 20px" id="fileDownload" @click.stop="() =>{}" :href="url" download="下载申请表">点击下载</a>
+    </div>
+  </div>
 </template>
 
 <script>

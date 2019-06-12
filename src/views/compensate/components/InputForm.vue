@@ -196,6 +196,10 @@
           this.$data = Object.assign(this.$data, res.data.data)
           this.switchData.switchVal = new  Boolean(res.data.data.socialSecurityFlag)
           this.switchData.switchVal1 = new Boolean(res.data.data.businessInsureFlag)
+          let switchData = {}
+          switchData.switchVal = new  Boolean(res.data.data.socialSecurityFlag)
+          switchData.switchVal1 = new Boolean(res.data.data.businessInsureFlag)
+         this.switchData = switchData
           // this.contacs = data.contacs
           // this.
         })

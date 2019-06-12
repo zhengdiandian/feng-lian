@@ -177,8 +177,13 @@ export default {
           this.$nextTick(() => {
             // this.switchData.switchVal = !!res.data.data.socialSecurityFlag
             // this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
-            this.switchData.switchVal = new  Boolean(res.data.data.socialSecurityFlag)
-            this.switchData.switchVal1 = new Boolean(res.data.data.businessInsureFlag)
+            let switchData = {}
+            switchData.switchVal = new  Boolean(res.data.data.socialSecurityFlag)
+            switchData.switchVal1 = new Boolean(res.data.data.businessInsureFlag)
+            // this.$set(this.switchData,switchData)
+            this.switchData = switchData
+
+
           })
 
             // this.contacs = data.contacs
