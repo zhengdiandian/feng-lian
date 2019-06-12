@@ -14,7 +14,7 @@
         </div>
         <div class="input-box-line"></div>
         <div class="content">
-            <div class="input-box" @click="showAddress=true"><label >地区:</label><div class="select"><span class="placeholder-text" v-if="province===''">请选择地区</span><span>{{province}}</span><span> {{city}}</span> <span> {{county}}</span><span class="iconfont iconxiangshangshouqi1"></span></div></div>
+            <div class="input-box" @click="showAddress=true"><label >地区:</label><div class="select"><span class="placeholder-text" v-if="provinceDesc===''">请选择地区</span><span>{{provinceDesc}}</span><span> {{cityDesc}}</span> <span> {{countyDesc}}</span><span class="iconfont iconxiangshangshouqi1"></span></div></div>
             <div class="input-box"><label >详细地址:</label><input v-model="address" placeholder="请填写您的详细地址" type="text"></div>
         </div>
         <div class="input-box-line"></div>
@@ -36,7 +36,7 @@
 <!--            <div class="input-box"><label >确诊医院:</label><input placeholder="请填写确诊医院" type="text"></div>-->
             <div class="input-box" @click="showLocation = true">
                 <label >所在地:</label>
-                <div class="select"><span class="placeholder-text" v-if="locationCity===''">请选择社保/新农合所在地</span><span>{{locationProvince}}</span><span> {{locationCity}}</span><span> {{locationCounty}}</span><span class="iconfont iconxiangshangshouqi1"></span>
+                <div class="select"><span class="placeholder-text" v-if="locationCity===''">请选择社保/新农合所在地</span><span>{{locationProvinceDesc}}</span><span> {{locationCityDesc}}</span><span> {{locationCountyDesc}}</span><span class="iconfont iconxiangshangshouqi1"></span>
                 </div>
             </div>
         </div>
@@ -121,12 +121,12 @@
         // incidentTime: '',
         // location: '',
         hospitalName: '',
+        locationProvinceDesc: '',
+        locationCityDesc: '',
+        locationCountyDesc: '',
         locationProvince: '',
         locationCity: '',
         locationCounty: '',
-        locationProvinceValue: '',
-        locationCityValue: '',
-        locationCountyValue: '',
         insuranceCompany: '',
         compensateState: '',
         incidentDetail: '',
@@ -134,12 +134,12 @@
         showAddress: false,
         showLocation: false,
         showCompensateState: false,
+        provinceDesc: '',
+        cityDesc: '',
+        countyDesc: '',
         province: '',
         city: '',
         county: '',
-        provinceValue: '',
-        cityValue: '',
-        countyValue: '',
         open: false,
         value2: '',
         date: new Date(),
@@ -190,11 +190,12 @@
           let {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus, hospitalName ,insuranceCompany, compensateState } = res.data.data
           // contacsIdNo = this.Util.decrypt(contacsIdNo)
 
-          this.$data = Object.assign(this.$data, {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus ,hospitalName, insuranceCompany, compensateState})
-          // this.switchData.switchVal = !!res.data.data.socialSecurityFlag
+          // this.$data = Object.assign(this.$data, {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus ,hospitalName, insuranceCompany, compensateState})
+          // // this.switchData.switchVal = !!res.data.data.socialSecurityFlag
+          // this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
+          this.$data = Object.assign(this.$data, res.data.data)
+          this.switchData.switchVal = !!res.data.data.socialSecurityFlag
           this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
-          // this.switchData.switchVal
-
           // this.contacs = data.contacs
           // this.
         })
@@ -240,17 +241,17 @@
             email: this.email,
             job: this.job,
             workingPlace: this.workingPlace,
-            province: this.provinceValue,
-            city: this.cityValue,
-            county: this.countyValue,
+            provinceDesc: this.province,
+            city: this.city,
+            county: this.county,
             address: this.address,
             illnessName: this.illnessName,
             incidentTime: this.incidentTime,
             socialSecurityFlag: +this.switchData.switchVal,
             businessInsureFlag: +this.switchData.switchVal1,
-            locationProvince: this.locationProvinceValue,
-            locationCity: this.locationCityValue,
-            locationCounty: this.locationCountyValue,
+            locationProvince: this.locationProvince,
+            locationCity: this.locationCity,
+            locationCounty: this.locationCounty,
             insuranceCompany: this.insuranceCompany,
             compensateState: this.compensateState,
             incidentDetail: this.incidentDetail,
@@ -281,27 +282,27 @@
       confirmFn(val) {
         debugger
         this.showAddress = false;
-        this.province = val.select1.text
+        this.provinceDesc = val.select1.text
           // .substring(0,val.select1.text.length -1)
-        this.city = val.select2.text
+        this.cityDesc = val.select2.text
           // .substring(0,val.select2.text.length -1 )
-        this.provinceValue = val.select1.value
-        this.cityValue = val.select2.value
-        this.countyValue = val.select3.value
-        this.county = val.select3.text
+        this.province = val.select1.value
+        this.city = val.select2.value
+        this.county = val.select3.value
+        this.countyDesc = val.select3.text
         // this.defaultData = [val.select1];
       },
       confirmFn1(val) {
         debugger
         this.showLocation = false;
-        this.locationProvince = val.select1.text
+        this.locationProvinceDesc = val.select1.text
           // .substring(0,val.select1.text.length -1)
-        this.locationCity = val.select2.text
+        this.locationCityDesc = val.select2.text
           // .substring(0,val.select2.text.length -1 )
-        this.locationProvinceValue = val.select1.value
-        this.locationCityValue = val.select2.value
-        this.locationCountyValue = val.select3.value
-        this.locationCounty = val.select3.text
+        this.locationProvince = val.select1.value
+        this.locationCity = val.select2.value
+        this.locationCounty = val.select3.value
+        this.locationCountyDesc = val.select3.text
         // this.defaultData = [val.select1];
       },
       confirmFn2(val) {
