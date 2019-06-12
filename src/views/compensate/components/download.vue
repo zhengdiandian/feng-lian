@@ -28,7 +28,8 @@
           this.url = res.data.data.ApportionApplyForm
           let linkDom = document.getElementById('fileDownload')
           // debugger
-          linkDom.click()
+
+          // linkDom.click()
         })
       let self = this
       function is_weixin() {
