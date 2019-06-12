@@ -97,7 +97,7 @@
                     <div class="text">
                       {{myplan.content}}
                     </div>
-                    <div class="customer">如有疑问请咨询客服热线 <span>010-56248620</span></div>
+                    <div class="customer">如有疑问请咨询客服热线 <span>{{myplan.customerService}}</span></div>
                     </section>
                     
             </div>
@@ -133,7 +133,7 @@
                         <div class="slot-lable">
                             <!-- <img src="../assets/img/审核中.png" alt=""> -->
                             <img v-if="myplan.state == 800" src="@/assets/img/通过.png" alt="">
-                            <img v-if="myplan.state == 150" src="@/assets/img/驳回.png" alt="">
+                            <img v-if="myplan.state == 150 || myplan.state == 450 || myplan.state == 750" src="@/assets/img/驳回.png" alt="">
                             <!-- <img v-if="myplan.state == 500" src="@/assets/img/已退款.png" alt=""> -->
                         </div>
                     </template>
@@ -151,7 +151,7 @@
                     <div class="text">
                       {{myplan.content}}
                     </div>
-                    <div class="customer">如有疑问请咨询客服热线 <span>010-56248620</span></div>
+                    <div class="customer">如有疑问请咨询客服热线 <span>{{myplan.customerService}}</span></div>
                     </section>
 
             </div>
@@ -364,7 +364,7 @@ main{
     img{
         position: absolute;
         right: 0px;
-        top: 5px;
+        top: 6px;
         width: 50px;
         height: 50px;
         z-index: 99;
