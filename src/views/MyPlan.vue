@@ -189,6 +189,10 @@ export default {
 
               }).then(res => {
                 debugger
+                let  data = res.data.data
+                if(!datapayProveFlag){
+                  this.$router.push({path: '/compensate/imageForm', query: {orderNo: res.data.data.orderNo}})
+                }
                 if(res.data.code === 8888) {
                   debugger
                   this.$router.push({
