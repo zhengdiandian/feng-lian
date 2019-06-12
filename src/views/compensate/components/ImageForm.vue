@@ -249,7 +249,6 @@ export default {
         color:rgba(255,0,0,1);
       }
 
-        height: 300px;
         img{
             width: 100%;
             height: 100%;
