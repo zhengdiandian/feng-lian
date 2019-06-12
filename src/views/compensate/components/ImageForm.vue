@@ -82,12 +82,16 @@
 <!--&lt;!&ndash;                <mu-date-picker color="#f8b62d" style="width: 100%"  :date.sync="date"></mu-date-picker>&ndash;&gt;-->
 <!--&lt;!&ndash;            </mu-paper>&ndash;&gt;-->
 <!--        </mu-bottom-sheet>-->
-        <PopBox v-if="showPop" style="z-index: 666666;" >
+        <div v-if="showPop" @click="showPop = false">
+          <PopBox  style="z-index: 666666;"  >
             <div class="pic_img">
-                <img :src="shiLiImg" alt="">
-                <div class="btn" @click="showPop = false"><i class="iconfont iconcha"></i></div>
+              <div class="title">请确保所上传图片内容清晰</div>
+              <div class="red">以下图片为参考模板</div>
+              <img style="max-width: 100% ;height: auto;" :src="shiLiImg" alt="">
+<!--              <div class="btn" @click="showPop = false"><i class="iconfont iconcha"></i></div>-->
             </div>
-        </PopBox>
+          </PopBox>
+        </div>
         <div class="submit" v-promise-btn @click="submit" >提交资料</div>
     </div>
 </template>
@@ -225,7 +229,26 @@ export default {
   img{max-width: 100%; height: auto;}
   .test{height: 600px; max-width: 600px; font-size: 40px;}
     .pic_img{
-        width: 375px;
+        width: 327px;
+      padding: 10px;
+      background-color: #fff;
+        .title{
+          padding-top: 6px;
+          text-align: center;
+          font-size:15px;
+          font-family:SourceHanSansCN-Normal;
+          font-weight:400;
+          color:rgba(0,0,0,1);
+        }
+      .red{
+        text-align: center;
+        padding: 12px 0px;
+        font-size:14px;
+        font-family:SourceHanSansCN-Normal;
+        font-weight:400;
+        color:rgba(255,0,0,1);
+      }
+
         height: 300px;
         img{
             width: 100%;
