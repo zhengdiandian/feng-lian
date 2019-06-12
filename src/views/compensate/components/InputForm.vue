@@ -221,12 +221,12 @@
             this.$toast.error('请输入正确的姓名')
             return
         }
-          var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/;
-          if (!reg.test(this.contacsIdNo)) {
-          this.$toast.error('请输入正确的身份证号码')
-          // this.warnTips({txt:'请输入正确的身份证号码'});
-          return false;
-          }
+          // var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/;
+          // if (!reg.test(this.contacsIdNo)) {
+          // this.$toast.error('请输入正确的身份证号码')
+          // // this.warnTips({txt:'请输入正确的身份证号码'});
+          // return false;
+          // }
           const accountReg = /^1[3456789]\d{9}$/
           if(!accountReg.test(this.phone)) {
           this.$toast.error('请输入正确的手机号码')
@@ -362,6 +362,7 @@
         outline: none;
         resize: none;
         min-height:90px;
+        border: 1px solid black;
     }
     .content{
         padding: 0px 12px 6px;
