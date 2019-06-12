@@ -138,7 +138,8 @@ export default {
             date: new Date(),
             provinceValue: "",
             cityValue: '',
-            countyValue: ''
+            countyValue: '',
+            
         }
     },
     computed: {
@@ -166,7 +167,12 @@ export default {
       this.motto = data.motto
       this.working_place = data.workingPlace
       this.address = data.address
-      
+      this.province = data.provinceDesc
+      this.citys = data.cityDesc
+      this.county = data.countyDesc
+       this.cityValue = data.city
+       this.provinceValue = data.province
+       this.countyValue = data.county
   },
     methods:{
         openBotttomSheet () {
@@ -218,12 +224,10 @@ export default {
             "job": this.job,
             "workingPlace":this.working_place,
             "address": this.address,
-            "province": this.province,
-            "city": this.citys,
-            "county": this.county,
+            "province": this.provinceValue,
+            "city": this.cityValue,
+            "county": this.countyValue,
             "email":this.email,
-            "province":this.province,
-            "city":this.city,
             "motto": this.motto,
             // "province": this.provinceValue,
             // "city": this.cityValue,
