@@ -46,7 +46,11 @@
         div.id = 'weixin-tip';
         div.onclick = function () {
           self.$router.go(-1)
-          document.body.removeChild(div)
+          debugger
+          if(div){
+            document.body.removeChild(div)
+
+          }
         }
         debugger
         div.innerHTML = `<p><img style="max-width: 100%" src="${self.imgSrc}" alt="微信打开"/></p>`
