@@ -62,7 +62,7 @@
             <div class="input-box"><label >加入前身体状况</label></div>
             <textarea   v-model="bodyStatus" placeholder="  如：健康、肢体运动功能障碍、躯体感觉障碍、器官移植、身体残疾、精神异常、智力缺陷、抑郁症等。"></textarea>
             <div class="tongYi">
-                <div><label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"></div><span>我保证以上信息均真实有效，不存在虚拟和隐瞒情形，否则将视为自动放弃申请互助尽权力。</span>
+                <div><label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"></div><span>我保证以上信息均真实有效，不存在虚拟和隐瞒情形，否则将视为自动放弃申请互助金的权力。</span>
             </div>
         </div>
         <div class="btn" @click="submit">提交信息</div>
@@ -194,8 +194,8 @@
           // // this.switchData.switchVal = !!res.data.data.socialSecurityFlag
           // this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
           this.$data = Object.assign(this.$data, res.data.data)
-          this.switchData.switchVal = !!res.data.data.socialSecurityFlag
-          this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
+          this.switchData.switchVal = new  Boolean(res.data.data.socialSecurityFlag)
+          this.switchData.switchVal1 = new Boolean(res.data.data.businessInsureFlag)
           // this.contacs = data.contacs
           // this.
         })

@@ -266,7 +266,7 @@ export default {
         flex-direction: column;
         color: #ccc;
         .img-file{
-            padding: 20px;
+            /*padding: 20px;*/
             width: 100%;
             height: 100%;
             position: absolute;
