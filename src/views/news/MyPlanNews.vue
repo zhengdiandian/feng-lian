@@ -132,8 +132,8 @@
                     <template v-slot:lable >
                         <div class="slot-lable">
                             <!-- <img src="../assets/img/审核中.png" alt=""> -->
-                            <img v-if="myplan.state == 200" src="@/assets/img/通过.png" alt="">
-                            <img v-if="myplan.state == 450" src="@/assets/img/驳回.png" alt="">
+                            <img v-if="myplan.state == 800" src="@/assets/img/通过.png" alt="">
+                            <img v-if="myplan.state == 150" src="@/assets/img/驳回.png" alt="">
                             <!-- <img v-if="myplan.state == 500" src="@/assets/img/已退款.png" alt=""> -->
                         </div>
                     </template>

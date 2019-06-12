@@ -59,7 +59,7 @@
           }
                 this.record = res.data.data
                 // this.record.push(this.record[0]);//test
-                console.log(this.record[0].state)
+                // console.log(this.record[0].state)
             })
         }
     }

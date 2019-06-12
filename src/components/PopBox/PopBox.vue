@@ -49,7 +49,7 @@ export default {
 
     line-height: 20px;
     /*border-radius: 10px;*/
-    border: 1px solid rgba(187, 187, 187, 1);
+    // border: 1px solid rgba(187, 187, 187, 1);
     }
 }
 </style>
