@@ -97,6 +97,11 @@
             </div>
         </main>
 <!--        <footerBtn></footerBtn>-->
+      <mu-dialog title="申请驳回" width="600" max-width="80%" :esc-press-close="false" :overlay-close="false" :open.sync="openAlert">
+        您的申请已被驳回是否重新申请
+        <mu-button slot="actions" style="color: rgba(234,234,234,1)" flat color="rgba(234,234,234,1)" @click="closeAlertDialog">取消</mu-button>
+        <mu-button slot="actions" flat color="#f8b62d" @click="yes">重新申请</mu-button>
+      </mu-dialog>
         <footer>
             <div class="ordinary-claims" v-promise-btn @click="toComponsate(0)" :style="{backgroundColor: activeIndex===undefined? 'rgba(234,234,234,1)': ''}">申请理赔</div>
             <div @click="toComponsate(1)" v-if="activeIndex!==undefined &&myplan.list[activeIndex].compensateFlag " class="Second-claims" v-promise-btn>申请秒赔</div>
@@ -116,6 +121,7 @@ export default {
     },
     data() {
         return {
+            openAlert: false,
             amount: '余额',
             waitingperiod: '等待期:',
             name: 'Bytan.zZ',
@@ -133,6 +139,22 @@ export default {
         }
     },
     methods: {
+      yes() {
+        this.$router.push({
+          path: '/compensate/inputForm',
+          query: {
+            type: type,
+            planNo: this.myplan.list[this.activeIndex].planNo,
+
+          }
+        })
+      },
+      openAlertDialog () {
+        this.openAlert = true;
+      },
+      closeAlertDialog () {
+        this.openAlert = false;
+      },
       toAddFamily(){
         debugger
         if(this.relationList[0].joinFlag){
@@ -184,6 +206,10 @@ export default {
                 }
                 
                 let state = res.data.data.state
+                if (state == 150 || state == 450 || state == 750 || state == 900) {
+                  this.openAlert()
+                  return
+                }
                 // if(state==100) {
                 //   this.$toast.message('初审审核中')
                 //   return

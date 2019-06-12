@@ -1,5 +1,6 @@
 <template>
-  <div><a :href="url">点击下载</a></div>
+  <div @click="$router.go(-1)">
+    <a id="fileDownload" @click.stop="() =>{}" :href="url" download="下载申请表">点击下载</a> <div class="next">点击返回</div></div>
 </template>
 
 <script>
@@ -13,6 +14,7 @@
       }
     },
     created () {
+
       this.$axios.post('v1/manage/config/getTextList', {
         keys: 'ApportionApplyForm'
 
@@ -24,6 +26,9 @@
             return
           }
           this.url = res.data.data.ApportionApplyForm
+          let linkDom = document.getElementById('fileDownload')
+          // debugger
+          linkDom.click()
         })
       let self = this
       function is_weixin() {
@@ -39,6 +44,10 @@
       function loadHtml(){
         var div = document.createElement('div');
         div.id = 'weixin-tip';
+        div.onclick = function () {
+          self.$router.go(-1)
+          document.body.removeChild(div)
+        }
         debugger
         div.innerHTML = `<p><img style="max-width: 100%" src="${self.imgSrc}" alt="微信打开"/></p>`
         document.body.appendChild(div);
@@ -61,13 +70,22 @@
         loadHtml();
         loadStyleText(cssText);
 
+
       }
     }
   }
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  .next{
+    position: fixed;
+    top:50%;
+    font-size: $f16;
+    left: 50%;
+    color: #000000;
+    z-index: 8888888888;
+  }
 a{
   color: #0366d6;
   text-decoration: underline;
