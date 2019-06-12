@@ -1,6 +1,6 @@
 <template>
   <div @click="$router.go(-1)">
-    <a id="fileDownload" @click.stop="() =>{}" :href="url" download="下载申请表">点击下载</a> <div class="next">点击返回</div></div>
+    <a id="fileDownload" @click.stop="() =>{}" :href="url" download="下载申请表">点击下载</a> </div>
 </template>
 
 <script>
@@ -54,7 +54,7 @@
 
         }
         debugger
-        div.innerHTML = `<p><img style="max-width: 100%" src="${self.imgSrc}" alt="微信打开"/></p>`
+        div.innerHTML = `<p><img style="max-width: 100%" src="${self.imgSrc}" alt="微信打开"/></p><div style=" position: fixed;color: red; top:50%; z-index: 8888888888; left: 50%;font-size: 18px;transform: translate(-50%, -50%);" class="next">点击返回</div>`
         document.body.appendChild(div);
       }
 
@@ -86,7 +86,7 @@
   .next{
     position: fixed;
     top:50%;
-    font-size: $f16;
+    font-size: 18px;
     left: 50%;
     transform: translate(-50%, -50%);
     color: red;
