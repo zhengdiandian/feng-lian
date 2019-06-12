@@ -516,6 +516,9 @@ export default new Router({
       path: '/NoticeDetails',
       //  公示详情
       name: 'NoticeDetails',
+      meta: {
+        keepAlive: false
+      },
       component: function () {
         return import('./views/notice/NoticeDetails.vue')
       }
