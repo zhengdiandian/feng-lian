@@ -45,12 +45,13 @@
         var div = document.createElement('div');
         div.id = 'weixin-tip';
         div.onclick = function () {
-          self.$router.go(-1)
           debugger
           if(div){
             document.body.removeChild(div)
 
           }
+          self.$router.go(-1)
+
         }
         debugger
         div.innerHTML = `<p><img style="max-width: 100%" src="${self.imgSrc}" alt="微信打开"/></p>`
@@ -87,7 +88,8 @@
     top:50%;
     font-size: $f16;
     left: 50%;
-    color: #000000;
+    transform: translate(-50%, -50%);
+    color: red;
     z-index: 8888888888;
   }
 a{

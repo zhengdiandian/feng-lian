@@ -207,7 +207,7 @@ export default {
                 
                 let state = res.data.data.state
                 if (state == 150 || state == 450 || state == 750 || state == 900) {
-                  this.openAlert()
+                  this.openAlertDialog()
                   return
                 }
                 // if(state==100) {
