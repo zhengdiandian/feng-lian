@@ -134,7 +134,8 @@ export default {
             refreshing: false,
             loading: false,
             pageSize: 5,
-            page: 1
+            page: 1,
+            type: 0
 
         }
     },
@@ -143,7 +144,7 @@ export default {
         this.$router.push({
           path: '/compensate/inputForm',
           query: {
-            type: type,
+            type: this.type,
             planNo: this.myplan.list[this.activeIndex].planNo,
 
           }
@@ -207,6 +208,7 @@ export default {
                 
                 let state = res.data.data.state
                 if (state == 150 || state == 450 || state == 750 || state == 900) {
+                  this.type = type
                   this.openAlertDialog()
                   return
                 }
