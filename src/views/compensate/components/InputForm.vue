@@ -241,7 +241,7 @@
             email: this.email,
             job: this.job,
             workingPlace: this.workingPlace,
-            provinceDesc: this.province,
+            province: this.province,
             city: this.city,
             county: this.county,
             address: this.address,
