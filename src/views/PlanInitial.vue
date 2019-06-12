@@ -1,13 +1,13 @@
 <template>
   <div class="g-bg">
     <PopBox v-if="showPoP">
-    <div class="pop-content">
+    <!-- <div class="pop-content"> -->
       <div class="pop-btn">
         <!-- <button @click="showPoP = false">帮助中心</button> -->
-        <mu-divider></mu-divider>
+        <!-- <mu-divider></mu-divider> -->
         <button v-if="panned.refundFlag == 1" style="color: rgba(234,234,234,1)" @click="refund">申请退款</button>
       </div>
-    </div>
+    <!-- </div> -->
       <div>
     </div>
   </PopBox>

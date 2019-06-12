@@ -254,6 +254,7 @@ footer{
     // position: absolute;
     // bottom: 0px;
     width: 100%;
+    margin-top: 35px;
     .customer{
         display: block;
         width:123px;
