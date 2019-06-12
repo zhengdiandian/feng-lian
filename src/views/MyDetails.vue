@@ -42,7 +42,11 @@
                     <mu-divider></mu-divider>
                 </div>
                 <div class="rule">
-                    <div><span class="width-left">收货地址：</span><span>{{detalis.address}}</span></div>
+                    <div><span class="width-left">地区：</span><span>{{detalis.hometown}}</span></div>
+                    <mu-divider></mu-divider>
+                </div>
+                <div class="rule">
+                    <div><span class="width-left">详细地址：</span><span>{{detalis.address}}</span></div>
                     <mu-divider></mu-divider>
                 </div>
                 <!-- <div class="rule margin-left">

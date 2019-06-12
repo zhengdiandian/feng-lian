@@ -165,6 +165,8 @@ export default {
       this.form.select = data.sex
       this.motto = data.motto
       this.working_place = data.workingPlace
+      this.address = data.address
+      
   },
     methods:{
         openBotttomSheet () {
@@ -215,14 +217,17 @@ export default {
             "constellation":this.constellation,
             "job": this.job,
             "workingPlace":this.working_place,
-            "address": this.addresso,
+            "address": this.address,
+            "province": this.province,
+            "city": this.citys,
+            "county": this.county,
             "email":this.email,
             "province":this.province,
             "city":this.city,
             "motto": this.motto,
-            "province": this.provinceValue,
-            "city": this.cityValue,
-            "county": this.countyValue
+            // "province": this.provinceValue,
+            // "city": this.cityValue,
+            // "county": this.countyValue
         }).then(res=>{
             debugger
               if(res.data.code!==200){

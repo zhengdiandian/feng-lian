@@ -144,10 +144,10 @@ import PopBox from '../../components/PopBox/PopBox'
 }
 .pic_img{
   width: 375px;
-  height: 300px;
+  // height: 300px;
   img{
     width: 100%;
-    height: 100%;
+    // height: 100%;
   }
   .btn{
     position: absolute;
