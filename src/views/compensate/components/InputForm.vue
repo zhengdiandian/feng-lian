@@ -193,6 +193,7 @@
           this.$data = Object.assign(this.$data, {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus ,hospitalName, insuranceCompany, compensateState})
           // this.switchData.switchVal = !!res.data.data.socialSecurityFlag
           this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
+          // this.switchData.switchVal
 
           // this.contacs = data.contacs
           // this.
