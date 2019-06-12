@@ -77,17 +77,17 @@ export default {
             })
         }
     },
-    mounted() {
-        this.$axios.post('/v1/user/info/infoDetail').then(res=>{
-             if(res.data.code!==200){
-                this.$toast.error(res.data.msg)
-                return
-          }
-            debugger
-            this.detalis = res.data.data
-            console.log(this.detalis)
-        })
-    },
+    created() {
+      this.$axios.post('/v1/user/info/infoDetail').then(res=>{
+        if(res.data.code!==200){
+          this.$toast.error(res.data.msg)
+          return
+        }
+        debugger
+        this.detalis = res.data.data
+        console.log(this.detalis)
+      })
+    }
 }
 </script>
 <style scoped lang="scss">

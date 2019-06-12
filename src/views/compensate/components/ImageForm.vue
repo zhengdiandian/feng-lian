@@ -17,6 +17,7 @@
         <div class="file-box">
             <div class="file-box-title">
                 2、申请表填写完成后拍照上传 <span @click="show_pic('ApplyForm')" class="iconwenhao iconfont"></span>
+              <div class="download" @click="toast">下载申请互助表</div>
                 <div class="file-box-content">
                     <ul>
                         <li class="image-box" v-for="(img,i) in applyForm" :key="i"><img :src="img" :key="i" alt=""></li>
@@ -110,10 +111,15 @@ export default {
         contacsId: [],
         cardImg: '',
         showPop: false,
-          shiLiImg: ''
+          shiLiImg: '',
+          downloadURL: '',
         }
     },
     methods: {
+        toast() {
+          this.$router.push('/download')
+
+        },
         show_pic(keys) {
           return this.$axios.post('v1/manage/config/getImgList', {
             keys
@@ -206,11 +212,18 @@ export default {
         openBotttomSheet () {
         this.open = true;
         },
-    }
+    },
+  created () {
+
+
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+  *{margin:0; padding:0;}
+  img{max-width: 100%; height: auto;}
+  .test{height: 600px; max-width: 600px; font-size: 40px;}
     .pic_img{
         width: 375px;
         height: 300px;
@@ -236,12 +249,18 @@ export default {
         margin: 5px 0px;
     }
     ul{
-        padding: 15px 0px;
+        padding: 5px 0px;
     }
     .file-box{
         padding: 0px 12px;
     }
-
+    .download{
+      font-size:$f14;
+      font-family:SourceHanSansCN-Medium;
+      font-weight:bold;
+      text-decoration:underline;
+      color:$c-cheng;
+    }
     .form-content{
         /*padding-top: 23px;*/
         padding: 23px 0px 0px;

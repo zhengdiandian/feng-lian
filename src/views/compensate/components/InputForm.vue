@@ -199,7 +199,7 @@
         })
       }
       this.$axios.post('v1/mutually/compensate/compensateUserInfo',{
-        orderNo: this.$route.query.planNo
+        planNo: this.$route.query.planNo
 
       }).then(res => {
           if(res.data.code!==200){

@@ -576,6 +576,11 @@ export default new Router({
         return import('./views/newOrderInfo')
       }
     },
+    {
+      path: '/download',
+      component: () => import('./views/compensate/components/download')
+    }
+
 
     // {
     //   path: '*',
