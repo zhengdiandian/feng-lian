@@ -32,7 +32,7 @@
         </div>
         <div class="input-box-line"></div>
         <div class="content">
-            <div class="input-box switch"><label >是否有社保/新农合:</label> <div class="right"><mu-switch disabled="disabled" v-model="switchData.switchVal" color="#f8b62d" :label="switchText.label"></mu-switch></div> </div>
+            <div class="input-box switch"><label >是否有社保/新农合:</label> <div class="right"><mu-switch :disabled="flag" v-model="switchData.switchVal" color="#f8b62d" :label="switchText.label"></mu-switch></div> </div>
             <!--            <div class="input-box"><label >确诊医院:</label><input placeholder="请填写确诊医院" type="text"></div>-->
             <div class="input-box" >
                 <label >所在地:</label>
@@ -42,7 +42,7 @@
         </div>
         <div class="input-box-line"></div>
         <div class="content">
-            <div class="input-box switch"><label >是否有商业保险：:</label> <div class="right"><mu-switch disabled="disabled" v-model="switchData.switchVal1" color="#f8b62d" :label="switchText.label1"></mu-switch></div> </div>
+            <div class="input-box switch"><label >是否有商业保险：:</label> <div class="right"><mu-switch :disabled="flag" v-model="switchData.switchVal1" color="#f8b62d" :label="switchText.label1"></mu-switch></div> </div>
             <div class="input-box"><label >保险公司名称:</label><input disabled="disabled" v-model="insuranceCompany" placeholder="请填写保险公司名称" type="text"></div>
             <div class="input-box" >
                 <label>目前理赔状况:</label>
@@ -116,7 +116,8 @@ export default {
                 },
             tongYi: false,
             orderNo: '',
-            order: ''
+            order: '',
+            flag: false
       }
     },
     props:{
@@ -173,8 +174,18 @@ export default {
           // contacsIdNo = this.Util.decrypt(contacsIdNo)
           this.orderNo = orderNo
           this.$data = Object.assign(this.$data, res.data.data)
-          this.switchData.switchVal = !!res.data.data.socialSecurityFlag
-          this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
+          this.$nextTick(() => {
+            // this.switchData.switchVal = !!res.data.data.socialSecurityFlag
+            // this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
+            let switchData = {}
+            switchData.switchVal = new  Boolean(res.data.data.socialSecurityFlag)
+            switchData.switchVal1 = new Boolean(res.data.data.businessInsureFlag)
+            // this.$set(this.switchData,switchData)
+            this.switchData = switchData
+
+
+          })
+
             // this.contacs = data.contacs
             // this.
         })
