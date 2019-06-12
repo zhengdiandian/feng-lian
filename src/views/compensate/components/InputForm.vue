@@ -188,7 +188,7 @@
           }
           debugger
           let {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus, hospitalName ,insuranceCompany, compensateState } = res.data.data
-          contacsIdNo = this.Util.decrypt(contacsIdNo)
+          // contacsIdNo = this.Util.decrypt(contacsIdNo)
 
           this.$data = Object.assign(this.$data, {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus ,hospitalName, insuranceCompany, compensateState})
           // this.switchData.switchVal = !!res.data.data.socialSecurityFlag

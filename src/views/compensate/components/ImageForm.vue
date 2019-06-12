@@ -176,7 +176,7 @@ export default {
             this.$toast.error('请上传诊断证明')
             return
           }
-          if(!this.contacsId.length ){
+          if(this.contacsId.length !==2 ){
             this.$toast.error('请上传身份证')
             return
           }
@@ -203,7 +203,7 @@ export default {
                     return
                 }
                 this.$toast.success('提交成功等待审核')
-                this.$router.push('/myPlanNews')
+                this.$router.push('/myhlepPlan')
             })
         },
         closeBottomSheet () {

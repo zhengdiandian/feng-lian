@@ -196,10 +196,10 @@
             this.stepText = ('等待赔付')
             // this.activeStep = 3
             if(this.$route.query.type){
-              this.activeStep = 3
+              this.activeStep = 2
 
             }else {
-              this.activeStep =2
+              this.activeStep =1
             }
             break
           case 750:

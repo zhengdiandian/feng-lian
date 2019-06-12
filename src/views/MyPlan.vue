@@ -190,9 +190,8 @@ export default {
               }).then(res => {
                 debugger
                 let  data = res.data.data
-                if(!datapayProveFlag){
-                  this.$router.push({path: '/compensate/imageForm', query: {orderNo: res.data.data.orderNo}})
-                }
+                debugger
+                
                 if(res.data.code === 8888) {
                   debugger
                   this.$router.push({
@@ -205,10 +204,14 @@ export default {
                   })
                   return
                 }
-                if(res.data.code !==200){
-                  this.$toast.error(res.data.msg)
-                  return
-                }
+                // if(!data.payProveFlag){
+                //   this.$router.push({path: '/compensate/imageForm', query: {orderNo: res.data.data.orderNo}})
+                //   return
+                // }
+                // if(res.data.code !==200){
+                //   this.$toast.error(res.data.msg)
+                //   return
+                // }
                 
                 let state = res.data.data.state
                 if (state == 150 || state == 450 || state == 750 || state == 900) {
@@ -268,6 +271,7 @@ export default {
 
                     }
                   })
+                  return
                 }
                 this.$router.push({
                   path: "/compensateInfo",
