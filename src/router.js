@@ -70,7 +70,8 @@ export default new Router({
             return import('./views/MyCenter.vue')
           },
           meta: {
-            requiresAuth: true
+            requiresAuth: true,
+            keepAlive: false
           }
         }
       ]
