@@ -578,7 +578,10 @@ export default new Router({
     },
     {
       path: '/download',
-      component: () => import('./views/compensate/components/download')
+      component: () => import('./views/compensate/components/download'),
+      meta: {
+        keepAlive: false
+      }
     }
 
 
