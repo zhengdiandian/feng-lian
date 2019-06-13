@@ -193,7 +193,10 @@
           // this.$data = Object.assign(this.$data, {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus ,hospitalName, insuranceCompany, compensateState})
           // // this.switchData.switchVal = !!res.data.data.socialSecurityFlag
           // this.switchData.switchVal1 = !!res.data.data.businessInsureFlag
-          this.$data = Object.assign(this.$data, res.data.data)
+          // this.$data = Object.assign(this.$data, res.data.data)
+          Object.keys(res.data.data).forEach((item,index) =>{
+            this[item] = res.data.data[item]
+          })
           this.switchData.switchVal = new  Boolean(res.data.data.socialSecurityFlag)
           this.switchData.switchVal1 = new Boolean(res.data.data.businessInsureFlag)
           let switchData = {}

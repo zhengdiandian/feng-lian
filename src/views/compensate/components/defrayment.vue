@@ -114,7 +114,8 @@ export default {
             tongYi: false,
             orderNo: '',
             order: '',
-            flag: true
+            flag: true,
+
       }
     },
     props:{
@@ -156,7 +157,6 @@ export default {
         }
     },
     mounted() {
-        console.log(this.$data)
       debugger
         this.$axios.post('v1/mutually/compensate/compensateDetail',{
             orderNo: this.$route.query.orderNo
@@ -169,11 +169,23 @@ export default {
              debugger
           let {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus, hospitalName ,insuranceCompany, compensateState,orderNo,incidentTime } = res.data.data
           // contacsIdNo = this.Util.decrypt(contacsIdNo)
+          // alert(JSON.stringify(res.data.data))
+          console.log( res.data.data)
+          Object.keys(res.data.data).forEach((item,index) =>{
+            this[item] = res.data.data[item]
+          })
+          // try {
+          //   // this.$data = Object.assign(this.$data, res.data.data)
+          //
+          //
+          // }catch (e) {
+          //   alert(e)
+          // }
           this.orderNo = orderNo
-          alert(JSON.stringify(res.data.data))
-          this.$data = Object.assign(this.$data, res.data.data)
+
           // this.$nextTick(() => {
-          alert(this.switchVal)
+          // alert(this.switchVal)
+          console.log('dsfdsa', this.switchVal)
 
           this.switchVal = res.data.data.socialSecurityFlag ? true : false
             this.switchVal1 = res.data.data.businessInsureFlag ? true : false
@@ -185,7 +197,7 @@ export default {
 
 
           // })
-          alert(this.switchVal1)
+          // alert(this.switchVal1)
 
             // this.contacs = data.contacs
             // this.
