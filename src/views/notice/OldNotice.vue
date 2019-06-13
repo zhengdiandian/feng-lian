@@ -22,14 +22,14 @@
                     <div class="xian"></div>
                     <div>
                       <div>
-                        <span>{{item.totalAmount}}</span> 人
+                        <span>{{item.totalAmount > 10000 ? (item.totalAmount / 10000).toFixed(2) + '万' : item.totalAmount}}</span> 元
                       </div>
                       <div>预计分摊总额</div>
                     </div>
                     <div class="xian"></div>
                     <div>
                       <div>
-                        <span>{{item.shareCount}}</span> 人
+                        <span>{{item.shareCount > 10000 ? (item.shareCount / 10000).toFixed(2) + '万' : item.shareCount}}</span> 人
                       </div>
                       <div>分摊人数</div>
                     </div>
@@ -67,6 +67,9 @@ export default {
       loading: false,
     };
   },
+  computed: {
+  
+  },
   methods: {
     // refresh () {
     //   this.refreshing = true;
@@ -75,6 +78,7 @@ export default {
     //     this.refreshing = false;
     //   }, 2000)
     // },
+    
     load () {
       this.loading = true;
       this.page++;
