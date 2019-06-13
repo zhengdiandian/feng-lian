@@ -347,8 +347,11 @@ export default new Router({
       }
     },
     {
-      path: '/planInitial', // 计划生成
+      path: '/planInitial', // 计划详情
       name: 'planInitial',
+      meta: {
+        keepAlive: false
+      },
       component: function () {
         return import('./views/PlanInitial')
       }
