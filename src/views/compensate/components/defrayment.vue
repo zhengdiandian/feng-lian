@@ -170,9 +170,12 @@ export default {
           let {contacs, contacsIdNo, phone, email, job, workingPlace, address, illnessName, incidentDetail, bodyStatus, hospitalName ,insuranceCompany, compensateState,orderNo,incidentTime } = res.data.data
           // contacsIdNo = this.Util.decrypt(contacsIdNo)
           this.orderNo = orderNo
+          alert(JSON.stringify(res.data.data))
           this.$data = Object.assign(this.$data, res.data.data)
-          this.$nextTick(() => {
-            this.switchVal = res.data.data.socialSecurityFlag ? true : false
+          // this.$nextTick(() => {
+          alert(this.switchVal)
+
+          this.switchVal = res.data.data.socialSecurityFlag ? true : false
             this.switchVal1 = res.data.data.businessInsureFlag ? true : false
             // let switchData = {}
             // switchData.switchVal = new  Boolean(res.data.data.socialSecurityFlag)
@@ -181,7 +184,8 @@ export default {
             // this.switchData = switchData
 
 
-          })
+          // })
+          alert(this.switchVal1)
 
             // this.contacs = data.contacs
             // this.
