@@ -274,11 +274,12 @@ export default {
                   })
                   return
                 }
+                debugger
                 this.$router.push({
                   path: "/compensateInfo",
                   query: {
                     orderNo:  this.myplan.list[this.activeIndex].planNo,
-                    type: this.myplan.list[this.activeIndex].type
+                    type: res.data.data.type
                   }
                 })
                 

@@ -276,7 +276,7 @@
                 return
             }
             this.$toast.success('提交成功,请继续操作')
-            this.$router.push({path: '/compensate/imageForm', query: {orderNo: res.data.data}})
+            this.$router.push({path: '/compensate/imageForm', query: {orderNo: res.data.data, type: this.$route.query.type}})
 
         })
       },
