@@ -6,6 +6,9 @@
         <!-- <button @click="showPoP = false">帮助中心</button> -->
         <!-- <mu-divider></mu-divider> -->
         <button v-if="panned.refundFlag == 1" style="color: rgba(234,234,234,1)" @click="refund">申请退款</button>
+<!--        <mu-button icon slot="right" :ripple="false">-->
+<!--        </mu-button>-->
+
       </div>
     <!-- </div> -->
       <div>
@@ -163,6 +166,11 @@
       },
       refundSuc() {
         this.showpop = false
+        debugger
+        if(!this.panned.refundFlag){
+          this.$toast.warning('需要购买人才可发起退款')
+          return
+        }
         this.$axios.post('v1/mutually/plan/refund',{
           planNo: this.$route.query.planNo
         }).then(res => {
