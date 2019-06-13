@@ -32,7 +32,7 @@
       <!--</div>-->
     <!--</pop-box>-->
     <main>
-      <div class="page-margin-top mu-header">终身重大疾病互助计划</div>
+      <div class=" mu-header">终身重大疾病互助计划</div>
       <div class="plan-info wrap">
         <li>
           <span>互助内容：{{MutualRule.content}}</span>
@@ -521,6 +521,7 @@ main{
   width: 351px;
   /*height: 300px;*/
   margin: auto;
+  padding-bottom: 50px;
   .select-items{
     display: flex;
       flex-wrap: wrap;
