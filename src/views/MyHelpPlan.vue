@@ -62,7 +62,7 @@
                     <span>暂无数据</span>
                 </div>
 
-                <section class="card" v-for="(myplan,i) in myApply" :key="i">
+                <section class="cards" v-for="(myplan,i) in myApply" :key="i">
                   <div class="date">{{myplan.createTime}}</div>
                     <card :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
                         :img="myplan.headPortrait"
@@ -116,7 +116,7 @@
                 </div>
 
 
-                <section class="card" v-for="(myplan,i) in historyMsg" :key="i">
+                <section class="cards" v-for="(myplan,i) in historyMsg" :key="i">
                   <div class="historical-date">{{myplan.createTime}}</div>
                     <card
                         :img="myplan.headPortrait"
@@ -262,6 +262,9 @@ main{
     padding-top: 44px;
     position: relative;
 }
+.cards{
+  padding-bottom: 20px;
+}
 .iconkong{
     width: 100px;
     height: 100px;
@@ -317,7 +320,6 @@ main{
     }
   }
   .text{
-    margin-top: -100px;
     padding-left: 12px;
   }
 }
@@ -349,16 +351,15 @@ main{
   }
   .text{
     // padding-top: 165px;
-    margin-top: -80px;
+    // margin-top: -80px;
     padding-left: 12px;
+    padding-bottom: 12px;
   }
 }
 .card{
   // width: 100%;
   height: 162px;
   margin: auto;
-  position: relative;
-  margin-bottom: 100px;
 }
 .slot-lable{
     // width: 100px;
