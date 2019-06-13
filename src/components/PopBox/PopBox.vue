@@ -10,20 +10,30 @@
 // import { debug } from 'util';
 export default {
     name: 'popBox',
+    props: {
+      fixed: {
+        type: Boolean,
+        default: false,
+      }
+    },
+
     created() {
-        document.getElementsByTagName('body')[0].setAttribute('style', 'position:fixed; width:100%;')
-        document.documentElement.style.overflow = 'hidden'
+        if(!this.fixed){
+           document.getElementsByTagName('body')[0].setAttribute('style', 'position:fixed; width:100%;')
+
+        }
+        // document.documentElement.style.overflow = 'hidden'
 
     },
     mounted() {
-        document.documentElement.style.overflow = 'hidden'
+        // document.documentElement.style.overflow = 'hidden'
 
         // debugger
         // this.$refs.shadom.style.height = document.documentElement.style.height
 
     },
     beforeDestroy() {
-        document.documentElement.style.overflow = 'auto'
+        // document.documentElement.style.overflow = 'auto'
         document.getElementsByTagName('body')[0].setAttribute('style', 'position:relative;')
     }
 }

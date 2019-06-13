@@ -114,7 +114,7 @@ export default {
             tongYi: false,
             orderNo: '',
             order: '',
-            flag: false
+            flag: true
       }
     },
     props:{
@@ -155,7 +155,7 @@ export default {
           })
         }
     },
-    created() {
+    mounted() {
         console.log(this.$data)
       debugger
         this.$axios.post('v1/mutually/compensate/compensateDetail',{
@@ -172,8 +172,8 @@ export default {
           this.orderNo = orderNo
           this.$data = Object.assign(this.$data, res.data.data)
           this.$nextTick(() => {
-            this.switchVal = !!res.data.data.socialSecurityFlag
-            this.switchVal1 = !!res.data.data.businessInsureFlag
+            this.switchVal = res.data.data.socialSecurityFlag ? true : false
+            this.switchVal1 = res.data.data.businessInsureFlag ? true : false
             // let switchData = {}
             // switchData.switchVal = new  Boolean(res.data.data.socialSecurityFlag)
             // switchData.switchVal1 = new Boolean(res.data.data.businessInsureFlag)

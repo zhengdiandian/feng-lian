@@ -75,10 +75,10 @@
           </div>  
           </section>
         </main>
-        <PopBox v-if="show_pic" style="z-index: 666666;">
+        <PopBox :fixed="true" v-if="show_pic" style="z-index: 666666;">
           <div class="pic_img">
               <img :src="shiLiImg" alt="">
-              <div class="btn" @click="show_pic = false"><i class="iconfont iconcha"></i></div>
+              <div class="btn" @click="close"><i class="iconfont iconcha"></i></div>
           </div>
         </PopBox>
     </div>
@@ -94,13 +94,32 @@ import PopBox from '../../components/PopBox/PopBox'
             stage: this.$route.query.stage,
             detaliList: {},
             show_pic: false,
-            shiLiImg: ''
+            shiLiImg: '',
+            scrollHeight: ''
           }
         },
         components: {
           PopBox
         },
+      watch: {
+
+        show_pic(val){
+          debugger
+          // document.body.scrollTop = 1200
+          // this.scrollHeight = document.body.scrollTop+document.documentElement.scrollTop
+          // document.body.scrollTop = this.scrollHeight
+          // document.documentElement.scrollTop = this.scrollHeight
+        }
+      },
         created() {
+          debugger
+          window.onscroll = function() {
+            //为了保证兼容性，这里取两个值，哪个有值取哪一个
+            //scrollTop就是触发滚轮事件时滚轮的高度
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            console.log("滚动距离" + scrollTop);
+          }
+
           this.$axios.post('/v1/publicity/publicity/userPublicity',{
             "orderNo": this.orderNo,
             "stage": this.stage
@@ -114,6 +133,30 @@ import PopBox from '../../components/PopBox/PopBox'
           })
         },
         methods: {
+          close () {
+            this.scrollHeight = document.body.scrollTop+document.documentElement.scrollTop
+
+            this.show_pic=false
+            document.body.scrollTop = this.scrollHeight
+            document.documentElement.scrollTop = this.scrollHeight
+          },
+          getPagearea(){
+            if (document.compatMode == "BackCompat"){
+              return {
+                width: Math.max(document.body.scrollWidth,
+                  document.body.clientWidth),
+                height: Math.max(document.body.scrollHeight,
+                  document.body.clientHeight)
+              }
+            } else {
+              return {
+                width: Math.max(document.documentElement.scrollWidth,
+                  document.documentElement.clientWidth),
+                height: Math.max(document.documentElement.scrollHeight,
+                  document.documentElement.clientHeight)
+              }
+            }
+},
           show_picture(imgSrc) {
             this.shiLiImg = imgSrc
             // console.log(i)

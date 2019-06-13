@@ -462,18 +462,27 @@ export default new Router({
           path: 'inputForm',
           component: function () {
             return import('./views/compensate/components/InputForm') // 上传文字
+          },
+          meta: {
+            keepAlive: false
           }
         },
         {
           path: 'imageForm',
           component: function () {
             return import('./views/compensate/components/ImageForm')// 上传图片
+          },
+          meta: {
+            keepAlive: false
           }
         },
         {
           path: 'defrayment',
           component: function () {
             return import('./views/compensate/components/defrayment')// 支付
+          },
+          meta: {
+            keepAlive: false
           }
 
         }
@@ -568,6 +577,9 @@ export default new Router({
       name: 'compensateInfo',
       component: function () {
         return import('./views/compensate/info/info')
+      },
+      meta: {
+        keepAlive: false
       }
     },
     {
