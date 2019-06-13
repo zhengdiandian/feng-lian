@@ -24,7 +24,7 @@
           <div class="text-info" style="display: flex">
             <span>上链信息</span>
             <span style="flex: 2; overflow: hidden;text-overflow: ellipsis; white-space: nowrap; padding-left: 12px;">{{detaliList.eosLink}}</span> 
-            <span class="text-blue" @click="$toast.success('复制成功')">复制URL</span>
+            <span class="btn text-blue" :data-clipboard-text="detaliList.eosLink" @click="$toast.success('复制成功')">复制URL</span>
           </div>
           <section class="info-detalis">
             <div class="detalis">
@@ -85,7 +85,8 @@
 </template>
 
 <script>
-import PopBox from '../../components/PopBox/PopBox'
+import PopBox from '@/components/PopBox/PopBox'
+import Clipboard from 'clipboard';
     export default {
         name: 'NoticeDetails',
         data () {
@@ -100,6 +101,9 @@ import PopBox from '../../components/PopBox/PopBox'
         },
         components: {
           PopBox
+        },
+        mounted() {
+          const btnCopy = new Clipboard('.btn');
         },
       watch: {
 

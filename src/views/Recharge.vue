@@ -535,6 +535,7 @@ main{
 .select-wrap{
   width: 351px;
   margin: auto;
+  padding-bottom: 50px;
   .select-items{
     display: flex;
     justify-content: space-between;

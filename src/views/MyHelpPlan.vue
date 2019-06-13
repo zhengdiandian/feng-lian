@@ -131,9 +131,12 @@
                     >
                     <template v-slot:lable >
                         <div class="slot-lable">
-                            <!-- <img src="../assets/img/审核中.png" alt=""> -->
+                          <div class="slot-img">
                             <img v-if="myplan.state == 800" src="@/assets/img/通过.png" alt="">
+                            <!-- <i class="iconfont icontongguo1"></i> -->
                             <img v-if="myplan.state == 150 || myplan.state == 450 || myplan.state == 750" src="@/assets/img/驳回.png" alt="">
+                          </div>
+                            <!-- <img src="../assets/img/审核中.png" alt=""> -->
                             <!-- <img v-if="myplan.state == 500" src="@/assets/img/已退款.png" alt=""> -->
                         </div>
                     </template>
@@ -361,7 +364,7 @@ main{
     // width: 100px;
     // height: 500px;
     // position: relative;
-    img{
+    .slot-img{
         position: absolute;
         right: 0px;
         top: 6px;

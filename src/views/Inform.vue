@@ -10,7 +10,8 @@
     </mu-appbar>
     <div class="page-margin-top">
       <!-- <img :src="this.writingImg" alt=""> -->
-      <img :src="MutualRule.healthyImg" alt="" srcset="">
+      <div class="img"><img :src="MutualRule.healthyImg" alt="" srcset=""></div>
+
       <div class="wrap" style="margin-bottom:50px;">
         <div v-html="MutualRule.healthyText"></div>
         <!--<div class="importance">-->
@@ -197,9 +198,12 @@
       background:rgba(255,255,255,1);
     }
   }
-    img{
+    .img{
       width:100%;
       height:150px;
+      img{
+        width: 100%;
+      }
     }
     .wrap{
       padding: 12px 15px 12px 22px;

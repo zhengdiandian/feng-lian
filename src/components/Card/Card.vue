@@ -141,7 +141,7 @@
       .bottom-content{
         display: flex;
         position: absolute;
-        bottom: 18px;
+        bottom: 12px;
         left: 12px;
         .tow{
           padding-left: 12px;
