@@ -241,7 +241,8 @@ export default {
                   this.$router.push({
                     path: '/compensate/defrayment',
                     query: {
-                      orderNo: this.myplan.list[this.activeIndex].planNo
+                      orderNo: this.myplan.list[this.activeIndex].planNo,
+                      type: type
                     }
 
                   })
