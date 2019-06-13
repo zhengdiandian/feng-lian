@@ -32,7 +32,7 @@
                     <mu-load-more :loading="loading" @load="load">
                         <section v-for="item in supporlist" :key="item.orderNo">
                             <div style="margin: 12px 0px 12px 12px" >
-                                <div style="font-size:9px;  font-weight:bold;color:rgba(112,112,112,1);">{{item.createTime}}</div>
+                                <div style="font-size:9px; font-size: 14px;  font-weight:bold;color:rgba(112,112,112,1);">{{item.createTime}}</div>
                             </div>
                             <section class="card" >
                                 <card
