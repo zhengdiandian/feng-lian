@@ -395,10 +395,10 @@ export default {
     }
   }*/
 main{
-  margin-bottom: 70px;
+  padding-bottom: 70px;
 }
 .mu-header{
-  margin: 56px 0 12px 12px;
+  padding: 56px 0 12px 12px;
   font-size:$f15;
   font-weight:bold;
   color:rgba(51,51,51,1);
@@ -462,6 +462,7 @@ main{
   input {
     border: none;
     padding-left: 20px;
+    line-height: 1;
     outline: none;
     font-size: $f14;
     background-color: #fff;
@@ -521,7 +522,7 @@ main{
   width: 351px;
   /*height: 300px;*/
   margin: auto;
-  padding-bottom: 50px;
+  /*padding-bottom: 50px;*/
   .select-items{
     display: flex;
       flex-wrap: wrap;
