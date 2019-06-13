@@ -48,7 +48,7 @@
 <!--                        <span style="font-size:12px;">{{name}}</span>-->
 <!--                        <span style="font-size:12px;">自己</span>-->
 <!--                    </div>-->
-                    <div class="list">
+                    <div class="list" v-if="addFlag">
                         <div class="list-img" @click="toAddFamily">
                             <img src="../assets/PNG/添加家人.png" alt="">
                         </div>
@@ -135,7 +135,8 @@ export default {
             loading: false,
             pageSize: 5,
             page: 1,
-            type: 0
+            type: 0,
+            addFlag: 0
 
         }
     },
@@ -372,6 +373,7 @@ export default {
           return
         }
         this.relationList = res.data.data
+        this.addFlag = this.relationList[0].addFlag
         // console.log(res)
 
       })

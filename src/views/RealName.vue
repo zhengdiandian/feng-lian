@@ -135,11 +135,21 @@ export default {
             return
           }
           debugger
+          if(res.data.data.type ===0){
+            // this.$toast.success('')
+          }
           if(res.data.data.type ===1){
             document.write(res.data.data.value)
           }
            this.$axios.post('v1/user/info/personalInfo').then(res => {
               this.$store.commit('set_userInfo',res.data.data)
+          })
+          this.$router.push({
+            path: '/impower',
+            query: {
+              state: 200,
+              fullPath: this.$route.fullPath
+            }
           })
           console.log(res);
         });

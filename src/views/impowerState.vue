@@ -6,7 +6,7 @@
         </mu-button>
         授权确认
         <!-- icon slot="right" :ripple="false"> -->
-          <mu-button icon slot="right" @click="$router.push($route.query.fullPath)">
+          <mu-button icon slot="right" @click="close">
           <span >关闭</span>
 
         </mu-button>
@@ -37,15 +37,19 @@
     },
     methods: {
       close() {
-        let path =decodeURI(decodeURI($route.query.fullPath))
+        let path =decodeURI(decodeURI(this.$route.query.fullPath))
         this.$router.replace(path)
+      },
+      go() {
+        debugger
+        this.$router.push(decodeURI(this.$route.query.fullPath))
       }
     },
     created() {
       let state = this.$route.query.state
       this.state = this.imglist[state]
       // this.state =state
-      this.text = state === '200' ? '授权成功': '授权失败'
+      this.text = state == '200' ? '授权成功': '授权失败'
       this.$axios.post('v1/user/info/personalInfo').then(res => {
         debugger
         if(res.data.code !==200){

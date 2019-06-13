@@ -88,7 +88,7 @@
        <div class="font margin-bottom margin-top">选择关系</div>
       <div class="select-items">
         <div class="item" v-for="(item, i) in familyList"  :key="i" :class="{'active': activeIndex == i}" @click="activeIndex=i">{{item.contacs}}</div>
-          <div class="item active"  @click="toAddFamily" >添加家人</div>
+          <div v-if="addFlag" class="item active"  @click="toAddFamily" >添加家人</div>
 
       </div>
 
@@ -165,7 +165,8 @@ export default {
       order: [],
       agentUserCode: '',
       familyList: [],
-      flag: false
+      flag: false,
+      addFlag: 0
     }
   },
   computed:{
@@ -271,6 +272,9 @@ export default {
     // popBox
   },
   created() {
+    this.$axios.post('v1/user/info/personalInfo').then(res => {
+      this.$store.commit('set_userInfo',res.data.data)
+    })
     // this.$axios.post('v1/user/info/getCertifyInfo').then(res => {
     //   debugger
     //   if(res.data.data.code){
@@ -292,6 +296,8 @@ export default {
       this.contacs  =  this.familyList[this.activeIndex].contacs
       this.agentUserCode =  this.familyList[this.activeIndex].referCode
       this.flag = this.agentUserCode ? true : false
+      this.addFlag = this.familyList[0].addFlag
+
       // this.familyList.unshift({
       //   relation: 0,
       //   relationDesc: '自己',
