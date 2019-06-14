@@ -66,7 +66,7 @@
     <!--<img class="margin-left margin-top margin-right" style="width: 20px; height: 20px;" :src="icon.icon" alt=""> 银联支付 <mu-divider></mu-divider>-->
     <!--</li>-->
     <!--</ul>-->
-    <div class="big-btn" @click="topay">去支付</div>
+    <div class="big-btn" @click="topay" v-promise-btn>去支付</div>
   </div>
 </template>
 
@@ -112,7 +112,7 @@ export default {
       //   this.productId = res.data.data.productId
       //   console.log(this.planId)
       debugger;
-      this.$axios
+      return this.$axios
         .get(
           `v1/mutually/payOrder/wxPay?openId=${this.$route.query.openId}&orderNo=${
             this.$route.query.orderNo

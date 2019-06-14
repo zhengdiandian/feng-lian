@@ -94,7 +94,8 @@ export default {
             this.$toast.error(res.data.msg);
             return;
           }
-          this.$store.commit("set_authToken", res.data.auth_token);
+          debugger
+          this.$store.commit("set_authToken", res.data.data.authToken);
           this.$router.replace("/home");
         });
     }

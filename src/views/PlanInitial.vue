@@ -25,7 +25,7 @@
         </div>
       </div>
       <div style="position: absolute;width: 100%;bottom: 0;">
-        <button @click="refundSuc" style="color: #d0d0d0" >退款</button>
+        <button @click="refundSuc" style="color: #d0d0d0"  v-promise-btn>退款</button>
         <button class="btn-join" @click="showpop = false">取消</button>
       </div>
     </div>
@@ -171,7 +171,7 @@
         //   this.$toast.warning('需要购买人才可发起退款')
         //   return
         // }
-        this.$axios.post('v1/mutually/plan/refund',{
+        return this.$axios.post('v1/mutually/plan/refund',{
           planNo: this.$route.query.planNo
         }).then(res => {
           if(res.data.code!==200){
@@ -267,7 +267,7 @@
   .title{
     padding: 12px ;
     font-size:$f15;
-      
+
     font-weight:bold;
     &+.text-info{
       width:375px;

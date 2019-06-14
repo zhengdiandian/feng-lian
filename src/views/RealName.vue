@@ -113,7 +113,7 @@ export default {
       // if(!this.id )
       debugger;
       // console.log('fdsfdas', unit)
-      var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/;
+      var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9X]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/;
       if (!reg.test(this.id)) {
         this.$toast.error('请输入正确的身份证号码')
         // this.warnTips({txt:'请输入正确的身份证号码'});
@@ -137,6 +137,13 @@ export default {
           debugger
           if(res.data.data.type ===0){
             // this.$toast.success('')
+            this.$router.push({
+            path: '/impower',
+            query: {
+              state: 200,
+              fullPath: this.$route.fullPath
+            }
+          })
           }
           if(res.data.data.type ===1){
             document.write(res.data.data.value)
@@ -144,13 +151,7 @@ export default {
            this.$axios.post('v1/user/info/personalInfo').then(res => {
               this.$store.commit('set_userInfo',res.data.data)
           })
-          this.$router.push({
-            path: '/impower',
-            query: {
-              state: 200,
-              fullPath: this.$route.fullPath
-            }
-          })
+          
           console.log(res);
         });
     }

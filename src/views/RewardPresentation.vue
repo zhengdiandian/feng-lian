@@ -106,13 +106,13 @@
             inpuVal() {
                 return this.inputList[0].val + this.inputList[1].val + this.inputList[2].val + this.inputList[3].val + this.inputList[4].val + this.inputList[5].val
             },
-            
+
         },
         methods: {
             get_rewardTition() {
                 // debugger
                 if (this.inpuVal.length == 6) {
-                        this.$axios.post('v1/finance/account/withdraw',{
+                       return  this.$axios.post('v1/finance/account/withdraw',{
                         "amount": this.Amount,
                         "bindedNo": this.Bank.bindedNo,
                         "withdrawPwd": this.inpuVal
@@ -127,7 +127,7 @@
                             this.show_success = true
                             this.show_pwd = false
                         }
-                    })   
+                    })
                 }
             },
             nextFocus(el,index) {
@@ -189,8 +189,8 @@
                     //         this.show_pwd = false
                     //     }
                     // })
-                    
-                
+
+
             },
             watch: {
                 inpuVal() {
@@ -199,7 +199,7 @@
                     }
                 }
             },
-            
+
         created(){
             this.$axios.post('v1/finance/profit/profitList').then(res=>{ //收益列表接口，获取可提现金额
                 if(res.data.code !==200){
@@ -220,7 +220,7 @@
                 }else{
                     this.show_bind_card = true;
                 }
-                
+
             })
         }
     }

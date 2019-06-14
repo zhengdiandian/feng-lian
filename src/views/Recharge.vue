@@ -149,7 +149,7 @@
         <label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"> 我已阅读并同意  <span @click="$router.push('/AssistanceConvention')"> 《 蜂链互助计划公约》 </span>
       </div>
     </div>
-      <div class="big-btn" :class="{'disable-btn': !tongYi}" @click="btnHandleClick" style="z-index: 888888">去支付</div>
+      <div class="big-btn" :class="{'disable-btn': !tongYi}" v-promise-btn @click="btnHandleClick" style="z-index: 888888">去支付</div>
     </main>
   </div>
 </template>
@@ -226,7 +226,7 @@ export default {
           return
         }
         debugger
-        this.$axios.post('/v1/mutually/plan/rechargeOrder',{
+        return this.$axios.post('/v1/mutually/plan/rechargeOrder',{
               // "contacs": this.userInfo.contacs, // 姓名
               // "contacsIdNo": this.userInfo.contacsIdNo , //身份证
               // "inviteCode": this.agentUserCode, //邀请码
@@ -310,7 +310,7 @@ export default {
     //         }
     //         debugger
     //         // console.log(res)
-    //         this.myplan = res.data.data.list.filter( item => { 
+    //         this.myplan = res.data.data.list.filter( item => {
     //           debugger
     //           if(item.planNo === this.$route.params.planNo) {
     //             return item

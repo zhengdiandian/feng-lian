@@ -65,7 +65,7 @@
                 <div><label class="iconfont iconxuanze" :style="tongYiStyle" for="tongYi"></label><input v-model="tongYi"  id="tongYi" type="checkbox"></div><span>我保证以上信息均真实有效，不存在虚拟和隐瞒情形，否则将视为自动放弃申请互助金的权力。</span>
             </div>
         </div>
-        <div class="btn" @click="submit">提交信息</div>
+        <div class="btn" v-promise-btn @click="submit">提交信息</div>
         <vue-picker
                 :show="showAddress"
                 :columns="3"
@@ -241,7 +241,7 @@
           this.$toast.error('请输入正确的手机号码')
           return
           }
-        this.$axios.post('v1/mutually/compensate/compensateApplyText', {
+        return this.$axios.post('v1/mutually/compensate/compensateApplyText', {
             contacs: this.contacs,
             contacsIdNo: this.Util.encrypt(this.contacsIdNo),
             phone: this.phone,
@@ -266,8 +266,8 @@
             type: this.$route.query.type,
             planNo: this.$route.query.planNo,
             hospitalName: this.hospitalName,
-            
-            
+
+
 
 
         }).then(res => {

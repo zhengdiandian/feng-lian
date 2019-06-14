@@ -37,7 +37,7 @@
         <label>短信验证码</label><input v-model="smsCode" placeholder="请输入短信验证码" type="text" > <span class="right" v-if="flag===0" @click="getMsg">获取验证码</span><span class="right timer" v-else>{{flag}}</span>
       </div>
     </div>
-    <div class="btn" @click="addBank">完成</div>
+    <div class="btn" @click="addBank" v-promise-btn>完成</div>
     <vue-picker
             :show="showAddress"
             :columns="2"
@@ -139,7 +139,7 @@
           return
         }
         debugger
-        this.$axios.post('v1/card/debitCard/updateCard',{
+        return this.$axios.post('v1/card/debitCard/updateCard',{
           phone: this.account,
           token: this.token,
           cardNo: this.Util.encrypt(this.cardNo.toString()),

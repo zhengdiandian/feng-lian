@@ -46,7 +46,7 @@
                 </mu-text-field>
             </div>
             <div style="width: 75%" >
-                <mu-button round class="login-btn" @click="setPwd"  color="success" >注&nbsp;册&nbsp;并&nbsp;登&nbsp;陆</mu-button>
+                <mu-button round class="login-btn" v-promise-btn @click="setPwd"  color="success" >注&nbsp;册&nbsp;并&nbsp;登&nbsp;陆</mu-button>
             </div>
         </main>
     </div>
@@ -94,7 +94,7 @@ export default {
         if(this.value13!==this.pwd){
           return  this.err1 = '您两次输入的密码不同，请重新输入'
         }
-         this.$axios.post('/v1/user/login/register',{
+         return this.$axios.post('/v1/user/login/register',{
             "openId": "test",          // 微信appid
             "account": this.account, // 手机
             "smsCode": this.smsCode,  // 短信验证码
@@ -108,7 +108,7 @@ export default {
            }
             // this.token = res.data.data.authToken
             console.log(res)
-            this.$store.commit("set_authToken", res.data.auth_token);
+            this.$store.commit("set_authToken", res.data.data.authToken);
             this.$router.replace('/home')
 
 
@@ -148,7 +148,7 @@ export default {
     /*align-items: center;*/
     text-align: center;
     font-size:16px;
-      
+
     font-weight:400;
     &>div:first-child{
       align-self:center;
