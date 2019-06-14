@@ -83,7 +83,7 @@
 <!--&lt;!&ndash;            </mu-paper>&ndash;&gt;-->
 <!--        </mu-bottom-sheet>-->
         <div v-if="showPop" @click="showPop = false">
-          <PopBox  style="z-index: 666666;"  >
+          <PopBox :fixed="true"  style="z-index: 666666;"  >
             <div class="pic_img">
               <div class="title">请确保所上传图片内容清晰</div>
               <div class="red">以下图片为参考模板</div>

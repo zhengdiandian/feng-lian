@@ -141,12 +141,19 @@
         // debugger
         let state = res.data.data.state
         let stage = res.data.data.stage
+        this.stepText = res.data.data.stateDesc
         switch(stage) {
           case '初审阶段':
             this.activeStep = 0
             break
           case '首次划款':
-            this.activeStep = 1
+            if(this.$route.query.type){
+              this.activeStep = 1
+
+            }else {
+              this.activeStep = 0
+            }
+            // this.activeStep = 1
             break
           case '支付费用':
             if(this.$route.query.type){
@@ -167,88 +174,88 @@
 
 
         }
-        
-        switch (state) {
-          case 100:
-            this.stepText = ('初审审核中')
-            // this.activeStep = 0
-            break
-          case 150:
-            this.stepText = '驳回'
-            // this.activeStep = 0
-            break
-          case 200:
-            this.stepText = ('等待首次划款中')
-            // this.activeStep = 1
-            break
-          case 300:
-            this.stepText = ('人工审核中')
-            this.activeStep = 1
-            break
-          case 400:
-            this.stepText = '等待支付审核费'
-            this.flag = true
-            if(this.$route.query.type){
-              // this.activeStep = 2
 
-            }else {
-              // this.activeStep =1
-            }
-            break
-          case 450:
-            this.stepText = ('人工审核已被驳回')
-            // this.activeStep = 1
-            break
-          case 500:
-            this.stepText = ('待公示')
-            // this.activeStep = 3
-            // if(this.$route.query.type){
-            //   // this.activeStep = 3
-
-            // }else {
-            //   // this.activeStep =2
-            // }
-            break
-          case 600:
-            this.stepText = ('公示期')
-            // this.activeStep = 3
-            // if(this.$route.query.type){
-            //   // this.activeStep = 3
-
-            // }else {
-            //   // this.activeStep =2
-            // }
-            break
-          case 700:
-            this.stepText = ('等待赔付')
-            // // this.activeStep = 3
-            // if(this.$route.query.type){
-            //   this.activeStep = 2
-
-            // }else {
-            //   this.activeStep =1
-            // }
-            break
-          case 750:
-            this.stepText = ('公示驳回')
-            // if(this.$route.query.type){
-            //   this.activeStep = 3
-
-            // }else {
-            //   this.activeStep =2
-            // }
-            break
-          case 800:
-            this.stepText = ('已赔付')
-            // this.activeStep = 3
-
-            break
-          case  900:
-            this.stepText = ('关闭')
-            // this.activeStep = 3
-
-
-        }
+        // switch (state) {
+        //   case 100:
+        //     this.stepText = ('初审审核中')
+        //     // this.activeStep = 0
+        //     break
+        //   case 150:
+        //     this.stepText = '驳回'
+        //     // this.activeStep = 0
+        //     break
+        //   case 200:
+        //     this.stepText = ('等待首次划款中')
+        //     // this.activeStep = 1
+        //     break
+        //   case 300:
+        //     this.stepText = ('人工审核中')
+        //     this.activeStep = 1
+        //     break
+        //   case 400:
+        //     this.stepText = '等待支付审核费'
+        //     this.flag = true
+        //     if(this.$route.query.type){
+        //       // this.activeStep = 2
+        //
+        //     }else {
+        //       // this.activeStep =1
+        //     }
+        //     break
+        //   case 450:
+        //     this.stepText = ('人工审核已被驳回')
+        //     // this.activeStep = 1
+        //     break
+        //   case 500:
+        //     this.stepText = ('待公示')
+        //     // this.activeStep = 3
+        //     // if(this.$route.query.type){
+        //     //   // this.activeStep = 3
+        //
+        //     // }else {
+        //     //   // this.activeStep =2
+        //     // }
+        //     break
+        //   case 600:
+        //     this.stepText = ('公示期')
+        //     // this.activeStep = 3
+        //     // if(this.$route.query.type){
+        //     //   // this.activeStep = 3
+        //
+        //     // }else {
+        //     //   // this.activeStep =2
+        //     // }
+        //     break
+        //   case 700:
+        //     this.stepText = ('等待赔付')
+        //     // // this.activeStep = 3
+        //     // if(this.$route.query.type){
+        //     //   this.activeStep = 2
+        //
+        //     // }else {
+        //     //   this.activeStep =1
+        //     // }
+        //     break
+        //   case 750:
+        //     this.stepText = ('公示驳回')
+        //     // if(this.$route.query.type){
+        //     //   this.activeStep = 3
+        //
+        //     // }else {
+        //     //   this.activeStep =2
+        //     // }
+        //     break
+        //   case 800:
+        //     this.stepText = ('已赔付')
+        //     // this.activeStep = 3
+        //
+        //     break
+        //   case  900:
+        //     this.stepText = ('关闭')
+        //     // this.activeStep = 3
+        //
+        //
+        // }
       })
     }
   };
