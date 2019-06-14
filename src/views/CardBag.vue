@@ -30,18 +30,24 @@
             <!-- <div class="Reminder" >
                 <div>您的绑卡申请已提交</div>
             </div> -->
-          <div class="btn" @click="$router.push('/addBank')">更改银行卡</div>
+          
 
         </main>
-        <div class="none" v-else>
+        <div class="none" v-if="cardList.length>0">
           <div class="Reminder" >
                 <div>温馨提示</div>
                 <span>1、系统只支持添加一张储蓄卡，更换储蓄卡，将添加新的储蓄卡，添加成功后自动替换原储蓄卡</span>
                 <span>2.当您提交绑卡信息后，请刷新页面，如未显示卡片信息，说明绑卡失败，请重新绑卡。</span>
             </div>
-          <div class="btn" @click="$router.push('/addBank')">添加银行卡</div>
+          <div class="Btn">
+            <div class="btn" @click="$router.push('/addBank')">更改银行卡</div>
+          </div>
         </div>
         <!--<div class="issue" @click="$router.push('/bankIssue')">常见问题</div>-->
+        <div class="Btn" v-else>
+          <div class="btn" @click="$router.push('/addBank')">添加银行卡</div>
+        </div>
+        
     </div>
 </template>
 
@@ -85,6 +91,9 @@
     font-weight:500;
     color:rgba(248,182,45,1);
   }
+  .Btn{
+    padding-top: 30px;
+  }
   .btn{
     width:351px;
     height:33px;
@@ -96,7 +105,7 @@
     background:$c-cheng;
     border-radius:17px;
     margin: auto;
-    margin-top: 20px;
+    // margin-top: 50px;
   }
 main{
     padding-top: 12px;
