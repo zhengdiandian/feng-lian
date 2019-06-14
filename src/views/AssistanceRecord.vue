@@ -11,7 +11,7 @@
     </mu-appbar>
     <main class="page-margin-top">
         
-            <mu-paper v-if="supporlist.length !== 0" :z-depth="1" class="demo-loadmore-wrap">
+            <mu-paper  :z-depth="1" class="demo-loadmore-wrap">
                 <mu-container ref="container" class="demo-loadmore-content">
                     <mu-load-more :loading="loading" @load="load">
                         <section class="profit">
