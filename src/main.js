@@ -133,6 +133,10 @@ router.beforeEach((to, from, next) => {
   }
   next()
 })
+debugger
+if(window.localStorage.getItem('token')){
+  Axios.post('v1/user/login/doCountLogin', {type: 0}).then(res => {})
+}
 new Vue({
   router,
   store,

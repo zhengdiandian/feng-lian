@@ -18,6 +18,11 @@
         //  const  url = this.$route.path
 
 
+      },
+      success() {
+        this.$axios.post('v1/user/share/doCountWeChart').then(res =>{
+
+        })
       }
     },
     data() {
@@ -56,7 +61,7 @@
             signature: res.data.data.signature, // 必填，签名
             jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone', 'onMenuShareWeibo', 'hideMenuItems', 'hideAllNonBaseMenuItem'] // 必填，需要使用的JS接口列表
           })
-          
+
           wx.ready(function() {
             const title = '蜂链互助邀您加入';
             const desc = '链接你我他 守护千万家';
@@ -113,7 +118,10 @@
               title: title, // 分享标题
               desc: desc, // 分享描述
               link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: self.imgUrl  // 分享图标
+              imgUrl: self.imgUrl , // 分享图标
+              success : () =>{
+                self.success()
+              },
             });
 
             // 微信朋友
@@ -125,11 +133,7 @@
               type: 'link', // 分享类型,music、video或link，不填默认为link
               dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
               success : () =>{
-                    // 设置成功
-                    // alert('cg')
-                    // console.log('成功')
-                    // self.$toast.success('成功')
-
+                self.success()
               },
               fail: (res) => {
                     // console.log('失败', res)
@@ -143,7 +147,10 @@
               title: title, // 分享标题
               desc: desc, // 分享描述
               link: link, // 分享链接
-              imgUrl: self.imgUrl // 分享图标
+              imgUrl: self.imgUrl ,// 分享图标
+              success : () =>{
+                self.success()
+              },
             });
 
             // qq空间
@@ -151,7 +158,10 @@
               title: title, // 分享标题
               desc: desc, // 分享描述
               link: link, // 分享链接
-              imgUrl: self.imgUrl // 分享图标
+              imgUrl: self.imgUrl, // 分享图标
+              success : () =>{
+                self.success()
+              },
             });
 
             //腾讯微博
@@ -159,7 +169,10 @@
               title: title, // 分享标题
               desc: desc, // 分享描述
               link: link, // 分享链接
-              imgUrl: self.imgUrl // 分享图标
+              imgUrl: self.imgUrl, // 分享图标,
+              success : () =>{
+                self.success()
+              },
             });
           });
           // this.$alert()

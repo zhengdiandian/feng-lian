@@ -182,6 +182,9 @@ export default {
             this.$store.commit('set_userInfo',res.data.data)
           })
           debugger
+          this.$axios.post('v1/user/share/doCountWeChart', {
+            type: 0
+          }).then()
           if(this.$route.query.redirect){
             this.$router.replace(this.$route.query.redirect);
           }else {
