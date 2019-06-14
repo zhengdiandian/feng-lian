@@ -10,26 +10,27 @@
       </mu-button>
     </mu-appbar>
     <main class="page-margin-top">
-        <section class="profit">
-            <div class="users">
-                <span class="number">{{helped.helpedCount}}</span>
-                <span class="numberDay">已帮助人数</span>
-            </div>
-            <div class="xian"></div>
-            <div class="users">
-                <span class="number">{{helped.joinedDays}}</span>
-                <span class="numberDay">已加入蜂链天数</span>
-            </div>
-        </section>
-            <div class="assis-title">链接你我他 &nbsp; &nbsp; 守护千万家</div>
-            <div class="assis-text margin-left">互助记录</div>
-            <div class="iconkong" v-if=" supporlist.length <= 0 || !supporlist">
-                    <img src="@/assets/空页面.png" alt="">
-                    <span>暂无数据</span>
-                </div>
-            <mu-paper v-if="supporlist.length !== 0" :z-depth="1" class="demo-loadmore-wrap">
+        
+            <mu-paper  :z-depth="1" class="demo-loadmore-wrap">
                 <mu-container ref="container" class="demo-loadmore-content">
                     <mu-load-more :loading="loading" @load="load">
+                        <section class="profit">
+                            <div class="users">
+                                <span class="number">{{helped.helpedCount}}</span>
+                                <span class="numberDay">已帮助人数</span>
+                            </div>
+                            <div class="xian"></div>
+                            <div class="users">
+                                <span class="number">{{helped.joinedDays}}</span>
+                                <span class="numberDay">已加入蜂链天数</span>
+                            </div>
+                        </section>
+                            <div class="assis-title">链接你我他 &nbsp; &nbsp; 守护千万家</div>
+                            <div class="assis-text margin-left">互助记录</div>
+                            <div class="iconkong" v-if=" supporlist.length <= 0 || !supporlist">
+                                    <img src="@/assets/空页面.png" alt="">
+                                    <span>暂无数据</span>
+                            </div>
                         <section v-for="item in supporlist" :key="item.orderNo">
                             <div style="margin: 12px 0px 12px 12px" >
                                 <div style="font-size:9px; font-size: 14px;  font-weight:bold;color:rgba(112,112,112,1);">{{item.createTime}}</div>
@@ -161,7 +162,7 @@ export default {
 <style scoped lang="scss">
 .demo-loadmore-wrap {
   width: 100%;
-  height: 550px;
+  max-height: 500px;
   display: flex;
   flex-direction: column;
   background-color: $c-bai;
@@ -250,7 +251,7 @@ export default {
     padding-top: 12px;
 }
 .card{
-    margin: auto;
+    // margin: auto;
     height: 160px;
 }
 footer{
