@@ -102,7 +102,7 @@
     // padding: 12px;
     color:rgba(255,255,255,1);
     position: relative;
-    margin: 0;
+    // margin: 0;
     .top-content{
       display: flex;
       padding-top: 12px;

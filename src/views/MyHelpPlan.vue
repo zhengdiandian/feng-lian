@@ -264,6 +264,8 @@ main{
 }
 .cards{
   padding-bottom: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 .iconkong{
     width: 100px;
@@ -304,7 +306,7 @@ main{
   // background-color: $c-bai;
   .date{
     font-size: $f14;
-    padding-left: 12px;
+    // padding-left: 12px;
   }
   .apply{
     padding-left: 12px;
@@ -313,14 +315,14 @@ main{
   .customer {
     padding-top: 12px;
     // padding-bottom: 10px;
-    padding-left: 12px;
+    // padding-left: 12px;
     span{
       padding-left: 12px;
       color: $c-cheng;
     }
   }
   .text{
-    padding-left: 12px;
+    // padding-left: 12px;
   }
 }
 .historical-record{
@@ -333,7 +335,7 @@ main{
   }
   .historical-date{
     // margin-top: 12px;
-    padding-left: 12px;
+    // padding-left: 12px;
     font-size: $f14;
   }
   .apply{
@@ -343,7 +345,7 @@ main{
   .customer {
     // padding-top: 2px;
     // padding-bottom: 10px;
-    padding-left: 12px;
+    // padding-left: 12px;
     span{
       padding-left: 12px;
       color: $c-cheng;
@@ -352,7 +354,7 @@ main{
   .text{
     // padding-top: 165px;
     // margin-top: -80px;
-    padding-left: 12px;
+    // padding-left: 12px;
     padding-bottom: 12px;
   }
 }
