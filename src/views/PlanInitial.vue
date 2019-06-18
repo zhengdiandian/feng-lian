@@ -35,9 +35,12 @@
         <mu-icon value=":iconfont iconfanhui" size="24" ></mu-icon>
       </mu-button>
       我的互助计划详情
-      <mu-button icon slot="right" :ripple="false" @click="showTui">
+      <mu-button v-if="flag" icon slot="right" :ripple="false" @click="showTui">
         <!-- <img src="../assets/省略号.png" alt=""> -->
         <i class="iconfont iconshubanshenglvehao"></i>
+      </mu-button>
+      <mu-button  v-else icon slot="right" :ripple="false" >
+        <!--<mu-icon value=":iconfont iconshubanshenglvehao" size="24"></mu-icon>-->
       </mu-button>
     </mu-appbar>
     <div class=" xian page-margin-top">
@@ -110,7 +113,8 @@
         successIcon: 'check_circle',      // 成功信息图标
         infoIcon: 'info',                 // 信息信息图标
         warningIcon: 'priority_high',     // 提醒信息图标
-        errorIcon: 'warning'              // 错误信息图标
+        errorIcon: 'warning',              // 错误信息图标,
+        flag: false
       }
     },
     components:{
@@ -140,6 +144,16 @@
         console.log(this.panned)
       })
 
+    },
+    created() {
+      this.$axios.post('v1/user/info/index').then(res => {
+        if(res.data.code !==200){
+          this.$toast.error(res.data.msg)
+          return
+        }
+        debugger
+        this.flag = res.data.data.scoreType === 0 ? true : false
+      })
     },
     methods:{
       open(){

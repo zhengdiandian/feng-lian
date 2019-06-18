@@ -2,7 +2,7 @@
     <div>
         <header>
             <PerInforHeader :imgUrl="datalist.headPortrait?datalist.headPortrait:'../assets/PNG/avatarDefault.png'"></PerInforHeader>
-            <router-link v-if="preinfo.type>=200" tag="div" to="/code"><mu-icon value=":iconfont iconerweima"></mu-icon></router-link>
+            <router-link v-if="preinfo.exitFlag==0" tag="div" to="/code"><mu-icon value=":iconfont iconerweima"></mu-icon></router-link>
         </header>
         <main>
            <div class="detaInfo">
@@ -16,7 +16,7 @@
                 </section>
                 <section class="datalist" @click="$router.push('/mydetails')">
                     <div class="listtext"><span>个人信息：</span></div>
-                   
+
                     <div class="listInfo" ><span>{{datalist.sex == 1 ? '男':'女'}}</span><span style="margin-left: 12px;" v-if="datalist.age">{{datalist.age}}岁</span></div>
                     <span class="info-text">详细信息</span>
                     <mu-icon value=":iconfont iconyou1"></mu-icon>
@@ -70,7 +70,7 @@ export default {
             // this.type = res.data.data.type
             console.log(res)
         })
-    
+
         this.getlist()
 
     },

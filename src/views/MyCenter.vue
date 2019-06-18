@@ -120,7 +120,7 @@
           </div>
         </div>
 
-        <router-link tag="div" v-if="preinfo.type && preinfo.type!==100" to="/code">
+        <router-link tag="div" v-if="flag==0" to="/code">
           <div class="list-li">
             <div class="list-img-text" >
               <div class="list-img" ><img src="../assets/image/邀请.svg" alt=""></div>
@@ -185,7 +185,8 @@ import {mapState} from 'vuex'
       time: 500,
       changeText: '',
       timeout: null,
-      scoreType: ''
+      scoreType: '',
+      isShowQrcode: 0
     }
   },
     computed:mapState(['userInfo']),
@@ -255,7 +256,11 @@ import {mapState} from 'vuex'
         this.$toast.error(res.data.msg)
         return
       }
+      this.preinfo = res.data.data
+
       this.changeText = res.data.data.scoreType === 0 ? '蜂蜜' : '蜜分'
+      this.flag = res.data.data.exitFlag
+
     })
     this.$axios.get('/v1/mutually/plan/planList').then(res=>{
       console.log(res)
@@ -286,15 +291,6 @@ import {mapState} from 'vuex'
     components: {
     PopBox
     },
-    mounted() {
-      this.$axios.post('/v1/user/info/index').then((res) =>{
-            // debugger
-        debugger
-            this.preinfo = res.data.data
-            // this.type = res.data.data.type
-            console.log(res)
-        })
-    }
 }
 </script>
 <style scoped lang="scss">

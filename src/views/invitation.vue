@@ -82,6 +82,21 @@
     debugger
 
     this.user_code = this.$route.query.userCode
+    this.$axios.post('v1/user/info/codeEffective', {
+      userCode: this.user_code
+    }).then(res => {
+      debugger
+      if(res.data.code !==200){
+        this.$toast.error(res.data.msg)
+        return
+      }
+      if(res.data.data ===0){
+        this.$router.push('/InvitationNoMember')
+      }
+      // if(res.data.)
+
+
+    })
   },
   components:{
     PopBox
