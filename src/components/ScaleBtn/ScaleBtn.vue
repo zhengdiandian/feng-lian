@@ -73,9 +73,9 @@
             });
             // wx.hideAllNonBaseMenuItem() //隐藏所有非基础按钮接口
             if(self.userInfo.type ==100) {
-              link = 'http://wx.fenglianhz.com/#/InvitationNoMember'
+              link = 'http://test.wx.fenglianhz.com/#/InvitationNoMember'
             }else {
-              link = 'http://wx.fenglianhz.com/#/invitation?userCode='+ self.userInfo.userCode
+              link = 'http://test.wx.fenglianhz.com/#/invitation?userCode='+ self.userInfo.userCode
 
             }
 

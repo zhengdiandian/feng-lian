@@ -90,6 +90,7 @@
         this.$toast.error(res.data.msg)
         return
       }
+      // alert('ok')
       if(res.data.data ===0){
         this.$router.push('/InvitationNoMember')
       }
