@@ -186,7 +186,8 @@ import {mapState} from 'vuex'
       changeText: '',
       timeout: null,
       scoreType: '',
-      isShowQrcode: 0
+      isShowQrcode: 0,
+      flag: 0
     }
   },
     computed:mapState(['userInfo']),

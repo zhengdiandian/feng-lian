@@ -140,6 +140,7 @@
       registerHandleClick() {
         if(!this.tongYi){
           this.$toast.error('必须阅读并同意才可执行')
+          return
         }
         const accountReg = /^1[3456789]\d{9}$/
         if(!accountReg.test(this.user)) {
