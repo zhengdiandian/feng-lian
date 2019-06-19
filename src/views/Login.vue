@@ -17,12 +17,14 @@
     <div class="content">
       <div class="img"></div>
       <div class="user-wrap">
-        <mu-text-field
+        <mu-text-field type="number"  
+         
           v-model.number="account"
           label-float
           label="请输入您的手机号码"
           icon=":iconfont iconzhanghao"
           :error-text="accountErr"
+          @input="inputChange"
         >
           <div slot="append">
             <div @click="$router.push({name: 'register', query: {openId: $route.query.openId}})" style="color: #fff; font-size: 14px"
@@ -36,6 +38,7 @@
           v-if="codepwd"
           v-model.trim="pwd"
           label="输入6-16位数字+字母的密码"
+          @input="val => pwd=val.slice(0,16)"
           label-float
           icon=":iconfont iconmima"
           :error-text="pwdErr"
@@ -140,6 +143,11 @@ export default {
     },
   },
   methods: {
+    inputChange(vla){ 
+      // debugger
+      console.log(vla)
+      this.account = vla.slice(0,11)
+    },
     toRegister() {
       window.location = `${this.$axios.defaults.baseURL}/v1/user/login/weixinLogin?userCode=""`
     },

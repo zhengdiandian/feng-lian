@@ -6,12 +6,13 @@
         <main class="page-margin-top">
             <div class="user-wrap pwd-wrap">
                 <mu-text-field
+                        type="number"
                         v-model="user"
                         label-float
                         label="请输入您的手机号码"
                         icon=":iconfont iconzhanghao"
                         :error-text="accountErr"
-                        oninput="value=value.replace(/[^\d]/g,'')"
+                        @input="value=> user=value.slice(0,11)"
                 >
                 </mu-text-field>
             </div>
@@ -29,6 +30,7 @@
                         v-model="pwd1"
                         label-float
                         label="设置6-16位数字+字母的密码"
+                        @input="val => pwd1=val.slice(0,16)"
                         icon=":iconfont iconmima"
                         :action-icon="visibility ? 'visibility_off' : 'visibility'" :action-click="() => (visibility = !visibility)" :type="visibility ? 'text' : 'password'"
                         :error-text="err2"
@@ -40,6 +42,7 @@
             </div>
             <div class="pwd-wrap">
                 <mu-text-field v-model="pwd2" label="设置6-16位数字+字母的密码" label-float  icon=":iconfont iconmima"
+                          @input="val => pwd2=val.slice(0,16)"
                           :action-icon="visibility1 ? 'visibility_off' : 'visibility'" :action-click="() => (visibility1 = !visibility1)" :type="visibility1 ? 'text' : 'password'"
                           :error-text="err2"
                 >

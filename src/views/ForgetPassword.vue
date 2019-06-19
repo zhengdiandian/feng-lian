@@ -14,7 +14,9 @@
     <main>
       <mu-text-field
         v-model="account"
+        type="number"
         label="请输入您的手机号码"
+        @input="val => account=val.slice(0,11)"
         label-float
         :error-text="accountErr"
         icon=":iconfont iconzhanghao"

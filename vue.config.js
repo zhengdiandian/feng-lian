@@ -7,10 +7,31 @@ module.exports = {
       }
     }
   },
-  transpileDependencies: ['muse-ui']
-  //   chainWebpack: config => {
-  //   config.module.rule('js').include.add(/node_modules\/(dom7|swiper| muse-ui)\/.*/)
-  // },
+  transpileDependencies: ['muse-ui'],
+    chainWebpack: config => {
+    // config.module.rule('js').include.add(/node_modules\/(dom7|swiper| muse-ui)\/.*/)
+    config.module
+  .rule('js')
+    .test(/\.js$/)
+     .include
+     .add(/.\/node_modules/)
+     .add(/.\/.*\.js/)
+     .add(/\.\/src\/assets\/muse-ui/)
+      .add(/.\/src/)
+      .add(/.\/src\/assets.\/muse-ui/)
+      .add(/.\/src\/assets.\/muse-ui\/*.\/.*/)
+      .add('/test/')
+      .add(/node_modules\/(dom7|swiper)\/.*/)
+      .end()
+    .use('babel')
+      .loader('babel-loader')
+      .options({
+        plugins: ['transform-runtime'],
+        presets: [
+          ['@babel-preset-es2015', { modules: false }]
+        ]
+      });
+  },
   // chainWebpack: config => {
   // config.module
   //   .rule('vue')

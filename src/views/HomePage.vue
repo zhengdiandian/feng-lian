@@ -88,11 +88,11 @@
     </mu-appbar>
     <div class="wrap">
 
-      <mu-carousel class="banner">
+      <!-- <mu-carousel class="banner">
         <mu-carousel-item v-for="(item, i) in bannerlist" :key="i">
           <img :src="item.img">
         </mu-carousel-item>
-      </mu-carousel>
+      </mu-carousel> -->
       <div class="content">
         <div class="btn-wrap">
           <mu-button  class="btn" color="success" @click="$router.push('/owe')">感恩有你</mu-button>
@@ -251,6 +251,7 @@ import PopBox from '../components/PopBox/PopBox'
 import BannerImg from '../components/BannerImg/BannerImg'
 import { debug } from 'util';
 import {mapState} from 'vuex'
+// import  core-js  from 'core'
 export default {
   name: "homePage",
   data() {

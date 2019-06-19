@@ -1,12 +1,12 @@
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 import Button from '../Button';
-import swipe from '../internal/directives/swipe';
+// import swipe from '../internal/directives/swipe';
 
 export default {
   name: 'mu-carousel',
   directives: {
-    swipe: swipe
+    // swipe: swipe
   },
   provide: function provide() {
     return {
