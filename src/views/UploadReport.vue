@@ -98,22 +98,22 @@ export default {
         margin: 12px 0 12px 12px;
     }
 }
-// .img-wrap{
-//   width: 100%;
-//   display: flex;
-//   justify-content: space-around;
-//   flex-wrap: wrap;
-// }
-// .pictures{
-//     width:25%;
-//     height:50px;
-//     border-radius:5px;
-//     margin: 0 12px 12px;
-//     img{
-//       width: 100%;
-//       height: 100%;
-//     }
-// }
+.img-wrap{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.pictures{
+    width:25%;
+    height:50px;
+    border-radius:5px;
+    margin: 0 12px 12px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+}
 .bottom-btn{
   width: 100%;
   height: 50px;
