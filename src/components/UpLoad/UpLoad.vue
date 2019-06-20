@@ -84,7 +84,8 @@ export default {
         document.getElementById('show').src=newsrc;
         },
         uploadIMG(e) {
-      let files = e.target.files || e.dataTransfer.files;
+      try {
+        let files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.picavalue = files[0];
       console.log(this.picavalue.size / 1024);
@@ -96,6 +97,9 @@ export default {
       //   // });
       // } else {
         this.imgPreview(this.picavalue);
+      } catch (error) {
+        alert(JSON.stringify(error))
+      }
       // }
     },
     //获取图片

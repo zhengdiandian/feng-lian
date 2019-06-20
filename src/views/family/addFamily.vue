@@ -93,7 +93,7 @@
         }
         return  this.$axios.post('v1/family/info/addFamily', {
           contacs: this.contacs,
-          contacsIdNo: this.contacsIdNo,
+          contacsIdNo: this.Util.encrypt(this.contacsIdNo),
           province: this.provinceValue,
           city: this.cityValue,
           relation: this.relationValue,

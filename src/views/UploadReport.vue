@@ -38,7 +38,7 @@ export default {
     data() {
         return {
             upload: '上传体检报告',
-          imgArr: [],
+          imgArr: ['https://placehold.it/350'],
           urlList: [],
           file1: '',
 
@@ -46,10 +46,17 @@ export default {
         }
     },
     methods:{
-      getFile(file,img, imgURL) {
-        // this[params] = file
-        this.urlList.push(file)
-        this.imgArr.push(img)
+      getFile(file,img) {
+        debugger
+        // this[params] = file\
+       try {
+         alert('ok')
+         this.urlList.push(file)
+        this.imgArr.push(file)
+       } catch (error) {
+         alert(JSON.stringify(error))
+       }
+        
       },
       submit() {
         debugger
@@ -91,22 +98,22 @@ export default {
         margin: 12px 0 12px 12px;
     }
 }
-.img-wrap{
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-.pictures{
-    width:25%;
-    height:50px;
-    border-radius:5px;
-    margin: 0 12px 12px;
-    img{
-      width: 100%;
-      height: 100%;
-    }
-}
+// .img-wrap{
+//   width: 100%;
+//   display: flex;
+//   justify-content: space-around;
+//   flex-wrap: wrap;
+// }
+// .pictures{
+//     width:25%;
+//     height:50px;
+//     border-radius:5px;
+//     margin: 0 12px 12px;
+//     img{
+//       width: 100%;
+//       height: 100%;
+//     }
+// }
 .bottom-btn{
   width: 100%;
   height: 50px;

@@ -296,19 +296,13 @@ import {mapState} from 'vuex'
 </script>
 <style scoped lang="scss">
 .list-img-text{
-  // text-align: center;
   display: flex;
-  position: absolute;
-  left: 24px;
-  // margin-top: 2px;
-  // line-height: 26px;
-  // margin-left: 12px;
-  // font-size: $f14;
-  // margin-top: 6px;
+  padding-left: 12px;
 }
 .list-img {
   width:22px;
   height:22px;
+  margin-top: 6px;
 }
 .pop{
     width: 300px;
@@ -477,6 +471,10 @@ z-index: 99;
       height:12px;
       position: absolute;
       right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 107px;
+      line-height: 107px;
       color: #EF9B1E;
     }
 }
@@ -548,8 +546,9 @@ z-index: 99;
 }
 .list-li {
       height: 50px;
+      line-height: 50px;
       display: flex;
-      align-items: center;
+      // align-items: center;
       background-color: #fff;
       .iconyou1{
         position: absolute;
