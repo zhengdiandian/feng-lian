@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve --mode production",
     "build": "vue-cli-service build --mode production ",
     "lint": "vue-cli-service lint",
-    "run": "vue-cli-service serve --host 192.168.100.150",
+    "run": "vue-cli-service serve --host 192.168.100.150 ",
     "b": "vue-cli-service build --modern"
   },
   "dependencies": {
@@ -31,14 +31,18 @@
     "wechat-js-sdk": "^1.3.3"
   },
   "devDependencies": {
+    "@babel/plugin-transform-destructuring": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
     "@vue/cli-plugin-eslint": "^3.5.0",
     "@vue/cli-service": "^3.5.0",
     "@vue/eslint-config-standard": "^4.0.0",
-    "babel-core": "^6.26.3",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^7.1.5",
     "babel-plugin-component": "^1.1.1",
     "babel-plugin-import": "^1.11.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",

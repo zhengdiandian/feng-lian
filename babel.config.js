@@ -6,30 +6,30 @@ module.exports = function (api) {
   // const plugins = [ ... ];
 
   return {
-    // "presets": [
-    //   ["env", {
-    //     "modules": true,
-    //     "targets": {
-    //       "browsers": ["> 1%", "last 2 versions", "not ie <= 5", "ios_saf <= 1"]
-    //     }
-    //   }],
-    //   "stage-0"
-    // ],
-    presets: [
-      ["@vue/app", 
-        { useBuiltIns: "entry" }
-      ]
+    "presets": [
+      ["env", {
+        "modules": false,
+        "targets": {
+          "browsers": ["> 1%", "last 2 versions", "not ie <= 5", "ios_saf <= 1"]
+        }
+      }],
+      "stage-2"
     ],
-    "plugins": [
+    // presets: [
+    //   ['@vue/app',
+    //     { useBuiltIns: 'entry' }
+    //   ]
+    // ],
+    'plugins': [
       // eslint-disable-next-line no-sparse-arrays
-      ["import", "component",  {
-        "libraryName": "muse-ui",
-        "libraryDirectory": "lib",
-        "camel2DashComponentName": false,
+      ['import', 'component', {
+        'libraryName': 'muse-ui',
+        'libraryDirectory': 'lib',
+        'camel2DashComponentName': false,
         // eslint-disable-next-line no-dupe-keys
-        "libraryName": "element-ui",
-        "styleLibraryName": "theme-chalk"
-      }, "transform-vue-jsx", "transform-runtime", "transform-es2015-classes",]
+        'libraryName': 'element-ui',
+        'styleLibraryName': 'theme-chalk'
+      }, 'transform-vue-jsx', 'transform-runtime', 'transform-es2015-classes',   ["@babel/plugin-transform-destructuring", { "useBuiltIns": true }]]
     ]
   }
 }

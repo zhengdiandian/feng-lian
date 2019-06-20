@@ -88,16 +88,17 @@ Axios.interceptors.request.use(
     if (xtoken != null) {
       config.headers['authToken'] = xtoken
     }
+    debugger
     if (config.method == 'post') {
-      config.data = qs.stringify({
-        ...config.data
+      config.data = qs.stringify(
+        config.data
         // _t: Date.parse(new Date())/1000,
-      })
+      )
     } else if (config.method == 'get') {
-      config.params = qs.stringify({
+      config.params = qs.stringify(
         // _t: Date.parse(new Date())/1000,
-        ...config.params
-      })
+        config.params
+      )
     }
     return config
   }, function (error) {
