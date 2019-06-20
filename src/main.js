@@ -88,7 +88,6 @@ Axios.interceptors.request.use(
     if (xtoken != null) {
       config.headers['authToken'] = xtoken
     }
-    debugger
     if (config.method == 'post') {
       config.data = qs.stringify(
         config.data
