@@ -247,7 +247,7 @@ export default {
     
   }
   .info-btn {
-    // width: 67px;
+    min-width: 80px;
     height: 25px;
     line-height: 25px;
     text-align: center;
@@ -256,6 +256,8 @@ export default {
     color: $c-cheng;
     /*justify-self: flex-end;*/
     span{
+      box-sizing: content-box;
+      height: 25px;
       padding: 0px 10px 0px 10px;
     }
   }

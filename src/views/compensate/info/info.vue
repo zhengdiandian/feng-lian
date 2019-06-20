@@ -156,6 +156,7 @@
             // this.activeStep = 1
             break
           case '支付费用':
+             this.flag = true
             if(this.$route.query.type){
               this.activeStep = 2
 
