@@ -38,7 +38,7 @@ export default {
     data() {
         return {
             upload: '上传体检报告',
-          imgArr: ['https://placehold.it/350'],
+          imgArr: [],
           urlList: [],
           file1: '',
 
@@ -60,6 +60,7 @@ export default {
       },
       submit() {
         debugger
+        alert(this.urlList.length)
         if(!this.urlList.length)return
         let images = this.urlList.toString()
         this.$axios.post('v1/user/info/uploadHealthyReport',{

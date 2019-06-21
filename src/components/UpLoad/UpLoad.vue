@@ -133,9 +133,10 @@ export default {
             var formData = new FormData();
             formData.append("img", blob);
             console.log("********将blob对象转成formData对象********");
-            console.log(formData.get("file"));
+            // console.log(formData.get("file"));
             // self.file = formData.get("file")
             // self.$emit('getFile', blob)
+
             axios.create({
               baseURL: `${self.$axios.defaults.baseURL}`,
               headers: {
