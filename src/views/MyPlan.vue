@@ -6,13 +6,13 @@
       </mu-button>我的计划
       <mu-button icon slot="right" :ripple="false"></mu-button>
     </mu-appbar>
-    <div class="page-margin-top"></div>
+    <div class=""></div>
     <main>
 
-      <div class="purchase-plan">
+      <div class="purchase-plan page-margin-top">
         <mu-paper :z-depth="1" class="demo-loadmore-wrap">
           <mu-container ref="container" class="demo-loadmore-content">
-            <mu-load-more :loading="loading" @load="load">
+            <mu-load-more :loading="loading" @load="load" :loaded-all="loadedAll" >
                     <div class="add-family">
         <span
           style="font-size:14px;  font-weight:bold;color:rgba(51,51,51,1); margin-left: 12px;"
@@ -114,9 +114,12 @@
             </mu-load-more>
           </mu-container>
         </mu-paper>
+         <div class="LoadingShow" v-if="loadedAll === true">加载完成</div>
       </div>
     </main>
     <!--        <footerBtn></footerBtn>-->
+       
+
     <mu-dialog
       title="申请驳回"
       width="600"
@@ -179,7 +182,8 @@ export default {
       pageSize: 5,
       page: 1,
       type: 0,
-      addFlag: 0
+      addFlag: 0,
+      loadedAll: false
     };
   },
   methods: {
@@ -354,6 +358,7 @@ export default {
     //     }, 2000)
     // },
     load() {
+      debugger;
       this.loading = true;
       this.page++;
       this.get_list();
@@ -363,6 +368,7 @@ export default {
       // }, 2000)
     },
     get_list(flag) {
+      debugger;
       this.$axios
         .post("/v1/mutually/plan/planList", {
           page: this.page,
@@ -380,9 +386,18 @@ export default {
             res.data.data.list.forEach(item => {
               // debugger
               this.myplan.list.push(item);
+              
+              
+              // if (res.data.data.list == []) {
+              //   console.log(132132)
+              // }
             });
           }
           this.loading = false;
+          debugger
+          if (res.data.data.list.length == 0) {
+            this.loadedAll = true;
+          }
         });
     }
   },
@@ -419,7 +434,8 @@ export default {
 <style scoped lang="scss">
 .demo-loadmore-wrap {
   width: 100%;
-  max-height: 800px;
+  height: 800px;
+  // min-height: 500px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -431,8 +447,18 @@ export default {
     width: 100%;
   }
 }
+.LoadingShow{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
 .demo-loadmore-content {
   // flex: 1;
+  // height: 600px;
+
+  min-height: 500px;
+
   overflow: auto;
   width: 100%;
   // -webkit-overflow-scrolling: touch;
