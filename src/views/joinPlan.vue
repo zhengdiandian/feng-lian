@@ -169,8 +169,7 @@ export default {
       addFlag: 0
     }
   },
-  computed:{
-    ...mapState(['userInfo', 'MutualRule']),
+  computed: Object.assign({
     showPoP() {
       return this.userInfo.state === 100
     },
@@ -183,7 +182,8 @@ export default {
     amount() {
       return this.serviceTime * this.MutualRule.suit + this.MutualRule.annualPrice
     }
-  },
+  }, mapState(['userInfo', 'MutualRule'])
+  ),
   methods: {
     toAddFamily(){
       debugger

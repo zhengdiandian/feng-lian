@@ -196,8 +196,7 @@ export default {
       rechargeAnnualAmount: this.$route.query.rechargeAnnualAmount,
     }
   },
-  computed:{
-    ...mapState(['userInfo']),
+  computed: Object.assign({
     showPoP() {
       return this.userInfo.state === 100
     },
@@ -211,6 +210,8 @@ export default {
       return this.serviceTime * this.MutualRule.suit + this.rechargeAnnualAmount
     }
   },
+    mapState(['userInfo'])
+  ),
   methods: {
     obtain(){
 

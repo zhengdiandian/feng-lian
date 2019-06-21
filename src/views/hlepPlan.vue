@@ -149,10 +149,7 @@
       popBox
     },
     // props: ['productCode'],
-    computed: {
-      ...mapState(['userInfo', 'issueList']),
-
-    },
+    computed: mapState(['userInfo', 'issueList']),
     data() {
       return {
         // open: false,
