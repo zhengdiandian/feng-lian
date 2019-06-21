@@ -144,7 +144,6 @@
       },
 
       getFile(file, params) {
-        alert('dsafadsfds')
         this[params] = file;
       },
       submit() {
