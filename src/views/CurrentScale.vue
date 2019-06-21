@@ -8,7 +8,7 @@
         <div class="reward">
             <span >本期总金额（元）</span>
             <span class="reward-money">{{nitice.helpedAmount}}</span>
-            <div style="  color:rgba(255,255,255,1); padding-top: 25px;">
+            <div style="  color:rgba(255,255,255,1); ">
                 共有{{nitice.shareCount}}人参与分摊，人均分摊{{nitice.apportionAverage}}元
             </div>
         </div>
