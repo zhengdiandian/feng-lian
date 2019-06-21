@@ -8,17 +8,17 @@
           <div class="dateInfo">{{nitice.stage}}</div>
           <div class="info-wrap">
             <div>
-              <div><span>{{nitice.publicityCount}}</span> 人</div>
+              <div><span>{{nitice.publicityCount > 10000 ? (nitice.publicityCount / 10000).toFixed(2) + '万' : nitice.publicityCount}}</span> 人</div>
               <div>本期公示人数</div>
             </div>
             <div class="xian"></div>
             <div>
-              <div><span>{{nitice.totalAmount}}</span> 人</div>
+              <div><span>{{nitice.totalAmount > 10000 ? (nitice.totalAmount / 10000).toFixed(2) + '万' : nitice.totalAmount}}</span> 人</div>
               <div>预计分摊总额</div>
             </div>
             <div class="xian"></div>
             <div>
-              <div><span>{{nitice.shareCount}}</span> 人</div>
+              <div><span>{{nitice.shareCount > 10000 ? (nitice.shareCount / 10000).toFixed(2) + '万' : nitice.shareCount}}</span> 人</div>
               <div>分摊人数</div>
             </div>
           </div>
