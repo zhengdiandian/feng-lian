@@ -168,7 +168,6 @@ nav {
 }
 .notice-content{
     border-bottom:1px solid rgba(220,220,220,1);
-    margin-bottom: 25px;
 }
 .parent-list{
     display: flex;
