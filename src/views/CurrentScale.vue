@@ -7,24 +7,29 @@
         </nav>
         <div class="reward">
             <span >本期总金额（元）</span>
-            <span class="reward-money">0</span>
-            <!-- <div style="font-size:12px;  color:rgba(255,255,255,1); padding-top: 25px;">
-                共有{{39003}}人参与分摊，人均分摊{{0.11}}元
-            </div> -->
+            <span class="reward-money">{{nitice.helpedAmount}}</span>
+            <div style="  color:rgba(255,255,255,1); padding-top: 25px;">
+                共有{{nitice.shareCount}}人参与分摊，人均分摊{{nitice.apportionAverage}}元
+            </div>
         </div>
     </header>
     <main>
-        <!-- <div class="notice-content margin-top">
+        <div class="notice-content margin-top">
             <span class="font margin-left">本期互助名单</span>
             <div class="parent-list">
-                <div class="parent-wrap" v-for="i in 6" :key="i">
-                    <div class="img-wrap-head">
-                        <img src="../assets/PNG/公示头像2.png" alt="" />
+                <div class="parent-wrap" v-for="(item,index) in list" :key="index">
+                    
+                    <div class="img-wrap-head" >
+                        <img :src="item.headPortrait" alt="" />
                     </div>
-                    <span class="margin-bottom" style="margin-top: 12px;">{{name}}</span>
+                    <span class="margin-bottom" style="margin-top: 12px;">{{item.contacs}}</span>
+                    <!-- <div class="img-wrap-head" >
+                        <img :src="item.headPortrait" alt="" />
+                    </div>
+                    <span class="margin-bottom" style="margin-top: 12px;">{{name}}</span> -->
                 </div>
             </div>
-        </div> -->
+        </div>
         <!-- <section class="Invitation-welfare">
             <img src="../assets/PNG/邀好友，赚福利.png" alt="">
         </section> -->
@@ -79,7 +84,15 @@
     data() {
         return {
             name: '张小泉',
-            CurruntApportionImg: ''
+            CurruntApportionImg: '',
+             page: 1,
+            pageSize: 50,
+            nitice: [],
+            list: [],
+            acs: {},
+            activeIndex: 0,
+            index: 0,
+            CustomerService: ''
         }
     },
     methods: {
@@ -88,6 +101,19 @@
         }
     },
     created() {
+         this.$axios.post('/v1/publicity/publicity/detail',{
+      "page": this.page,
+      "pageSize": this.pageSize
+    }).then(res=>{
+      if (res.data.code !==200) {
+            this.$toast.error(res.data.msg)
+            return
+        }
+      this.nitice = res.data.data
+      this.list = res.data.data.compensateList
+      this.acs = this.list[this.activeIndex] || {}
+      // console.log(this.acs)
+    })
         this.$axios.post('/v1/manage/config/getImgList',{
             "keys": 'CurruntApportionImg'
         }).then(res=>{
@@ -148,17 +174,28 @@ nav {
     display: flex;
     width: 95%;
     margin: auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     .parent-wrap{
+        margin-right: 5px;
         /*width: 45px;*/
-        margin: auto;
+        // margin: auto;
         // padding: 12px 12px 18px;
         display: flex;
+        
+        justify-content: flex-start;
         flex-direction: column;
+        span{
+            text-align: center;
+        }
         .img-wrap-head{
+               border: 2px solid $c-cheng;
+            border-radius: 50%;
             width: 33px;
             height: 33px;
             margin-left: 5px;
             margin-top: 5px;
+            overflow: hidden;
         }
     }
     .img-wrap{
@@ -251,4 +288,5 @@ nav {
             color: white;
         }
     }
+   
 </style>
