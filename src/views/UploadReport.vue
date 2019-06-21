@@ -47,10 +47,8 @@ export default {
     },
     methods:{
       getFile(file,img) {
-        debugger
         // this[params] = file\
        try {
-         alert('ok')
          this.urlList.push(file)
         this.imgArr.push(file)
        } catch (error) {
@@ -59,8 +57,6 @@ export default {
         
       },
       submit() {
-        debugger
-        alert(this.urlList.length)
         if(!this.urlList.length)return
         let images = this.urlList.toString()
         this.$axios.post('v1/user/info/uploadHealthyReport',{
