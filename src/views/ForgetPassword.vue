@@ -14,6 +14,8 @@
     <main>
       <mu-text-field
         v-model="account"
+        @input="phoneInput"
+        @keydown="phoneKey"
         label="请输入您的手机号码"
         label-float
         :error-text="accountErr"
@@ -70,12 +72,31 @@ export default {
     }
   },
   methods: {
+      phoneInput(e) {
+      this.account = this.account.trim().replace(/[^0-9' ']/g,'').slice(0, 13)
+    },
+     phoneKey(e) {
+      //  alert('dsfa')
+            var phoneNum = this.account.trim();
+           
+            //如果是删除按键，则什么都不做
+            if (e.keyCode === 8) {
+                this.account = phoneNum;
+                return;
+            }
+ 
+            var len = phoneNum.length;
+            if (len === 3 || len === 8) {
+                phoneNum += ' ';
+                this.account = phoneNum;
+            }
+        },
     sendMsg() {
       this.getCode();
       this.$axios
         .post("v1/manage/common/sendMsg", {
           type: 2,
-          account: this.account
+          account: this.account.replace(/[\D]/g,'')
         })
         .then(res => {
           debugger;
@@ -110,8 +131,9 @@ export default {
 
     next() {
       debugger
+      const account = this.account.replace(/[\D]/g, '')
       const accountReg = /^1[3456789]\d{9}$/;
-      if (!accountReg.test(this.account)) {
+      if (!accountReg.test(account)) {
         this.accountErr = "您输入的手机号码有误，请重新输入";
         return;
       }
@@ -120,7 +142,7 @@ export default {
         name: "reset",
         params: {
           token: this.msgToken,
-          account: this.account,
+          account: this.account.replace(/[\D]/g, ''),
           smsCode: this.pwd
           // Token: encodeURIComponent(this.token)
         }

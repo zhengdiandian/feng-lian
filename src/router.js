@@ -541,6 +541,9 @@ export default new Router({
       name: 'fundsDetails',
       component: function () {
         return import('./views/notice/fundsDetails.vue')
+      },
+      meta: {
+        keepAlive: false
       }
     },
     {

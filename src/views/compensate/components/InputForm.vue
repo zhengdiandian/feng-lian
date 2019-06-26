@@ -3,8 +3,8 @@
         <div class="form-content content">
             <div class="title">请如实填写以下信息</div>
             <div class="input-box"><label >姓名:</label><input v-model="contacs" placeholder="请填写您的姓名" type="text"></div>
-            <div class="input-box"><label >身份证号码:</label><input v-model="contacsIdNo" placeholder="请填写您的身份证号码"  @keyup="contacsIdNo=contacsIdNo.replace(/[\W]/g,'')" type="text"></div>
-            <div class="input-box"><label >手机号:</label><input v-model="phone" placeholder="请填写您的手机号码" type="number"></div>
+            <div class="input-box"><label >身份证号码:</label><input v-model="contacsIdNo" placeholder="请填写您的身份证号码" @input="idInput"  @keyup="idKey" type="text"></div>
+            <div class="input-box"><label >手机号:</label><input v-model="phone" placeholder="请填写您的手机号码"  @input="phoneChange" @keydown="phoneKey"></div>
             <div class="input-box"><label >邮箱：</label><input v-model="email" placeholder="请填写您的邮箱地址"  type="text"></div>
         </div>
         <div class="input-box-line"></div>
@@ -221,6 +221,42 @@
       })
     },
     methods: {
+      idInput(e) {
+        this.contacsIdNo = this.contacsIdNo.trim().replace(/[^0-9X\s]/g,'').slice(0, 20)
+      },
+      idKey(e) {
+            var phoneNum = this.contacsIdNo.trim();
+            //如果是删除按键，则什么都不做
+            if (e.keyCode === 8) {
+                this.contacsIdNo = phoneNum;
+                return;
+            }
+ 
+            var len = phoneNum.length;
+            if (len === 6 || len === 15 ) {
+                phoneNum += ' ';
+                this.contacsIdNo = phoneNum;
+            }
+        },
+      phoneChange(e) {
+      this.phone = this.phone.trim().replace(/[^0-9' ']/g,'').slice(0, 13)
+    },
+     phoneKey(e) {
+      //  alert('dsfa')
+            var phoneNum = this.phone.trim();
+           
+            //如果是删除按键，则什么都不做
+            if (e.keyCode === 8) {
+                this.phone = phoneNum;
+                return;
+            }
+ 
+            var len = phoneNum.length;
+            if (len === 3 || len === 8) {
+                phoneNum += ' ';
+                this.phone = phoneNum;
+            }
+        },
       submit() {
         if(!this.tongYi){
             this.$toast.warning('需要确认信息真实有效才能进行')
@@ -236,15 +272,16 @@
           // // this.warnTips({txt:'请输入正确的身份证号码'});
           // return false;
           // }
+          const phone = this.phone.replace(/[\D]/g,'')
           const accountReg = /^1[3456789]\d{9}$/
-          if(!accountReg.test(this.phone)) {
+          if(!accountReg.test(phone)) {
           this.$toast.error('请输入正确的手机号码')
           return
           }
         return this.$axios.post('v1/mutually/compensate/compensateApplyText', {
             contacs: this.contacs,
-            contacsIdNo: this.Util.encrypt(this.contacsIdNo),
-            phone: this.phone,
+            contacsIdNo: this.Util.encrypt(this.contacsIdNo.replace(/[\W]/g,'')),
+            phone: this.phone.replace(/[\D]/g,''),
             email: this.email,
             job: this.job,
             workingPlace: this.workingPlace,

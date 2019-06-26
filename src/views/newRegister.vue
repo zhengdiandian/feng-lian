@@ -8,10 +8,11 @@
                 <mu-text-field
                         v-model="user"
                         label-float
+                        @keydown="phoneKey"
+                        @input="phoneChange"
                         label="请输入您的手机号码"
                         icon=":iconfont iconzhanghao"
                         :error-text="accountErr"
-                        oninput="value=value.replace(/[^\d]/g,'')"
                 >
                 </mu-text-field>
             </div>
@@ -102,7 +103,7 @@
         visibility1: false,
         err2: '',
         code: '',
-        tongYi: true
+        tongYi: false
       }
     },
     computed: {
@@ -132,6 +133,25 @@
       // }
     },
     methods: {
+      phoneChange(e) {
+      this.user = this.user.trim().replace(/[^0-9' ']/g,'').slice(0, 13)
+    },
+     phoneKey(e) {
+      //  alert('dsfa')
+            var phoneNum = this.user.trim();
+           
+            //如果是删除按键，则什么都不做
+            if (e.keyCode === 8) {
+                this.user = phoneNum;
+                return;
+            }
+ 
+            var len = phoneNum.length;
+            if (len === 3 || len === 8) {
+                phoneNum += ' ';
+                this.user = phoneNum;
+            }
+        },
       inputChange(e) {
         // debugger
         this.pwd = e.slice(0,6)
@@ -142,8 +162,10 @@
           this.$toast.error('必须阅读并同意才可执行')
           return
         }
+        debugger
+        const user = this.user.replace(/[\D]/g,'')
         const accountReg = /^1[3456789]\d{9}$/
-        if(!accountReg.test(this.user)) {
+        if(!accountReg.test(user)) {
           this.accountErr = '请输入正确的手机号码'
           return
         }
@@ -156,8 +178,9 @@
           this.err2 = '请输入字母加数字组合6-16的密码'
           return
         }
-        const pwdReg = /^\d*\.?\d+$/;
+        const pwdReg = /[\w]/g;
         if (!pwdReg.test(this.pwd)) {
+          this.$toast.error('请输入正确的验证码')
           return
         }
         if(this.pwd1 !== this.pwd2){
@@ -169,7 +192,7 @@
         debugger
         this.$axios.post('/v1/user/login/register',{
           "openId": this.$route.query.openId ,         // 微信appid
-          "account": this.user, // 手机
+          "account": this.user.replace(/[\D]/g,''), // 手机
           "smsCode": this.pwd,  // 短信验证码
           "token": this.msgToken, // 短信token
           "inviteCode":  this.code,

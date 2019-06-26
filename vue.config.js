@@ -7,7 +7,7 @@ module.exports = {
       }
     }
   },
-  transpileDependencies: ['muse-ui']
+  // transpileDependencies: ['muse-ui', 'vue'],
   //   chainWebpack: config => {
   //   config.module.rule('js').include.add(/node_modules\/(dom7|swiper| muse-ui)\/.*/)
   // },

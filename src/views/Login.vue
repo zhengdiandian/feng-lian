@@ -18,8 +18,10 @@
       <div class="img"></div>
       <div class="user-wrap">
         <mu-text-field
-          v-model.number="account"
+          v-model="account"
           label-float
+          @input="phoneChange"
+           @keydown="phoneKey"
           label="请输入您的手机号码"
           icon=":iconfont iconzhanghao"
           :error-text="accountErr"
@@ -119,6 +121,9 @@ export default {
     };
   },
   watch: {
+    // account(val) {
+    //     console.log(val)
+    // },
     show() {
       if (this.show) {
         setTimeout(() => {
@@ -140,12 +145,30 @@ export default {
     },
   },
   methods: {
+    phoneChange(e) {
+      this.account = this.account.trim().replace(/[^0-9' ']/g,'').slice(0, 13)
+    },
+     phoneKey(e) {
+            var phoneNum = this.account.trim();
+           
+            //如果是删除按键，则什么都不做
+            if (e.keyCode === 8) {
+                this.account = phoneNum;
+                return;
+            }
+ 
+            var len = phoneNum.length;
+            if (len === 3 || len === 8) {
+                phoneNum += ' ';
+                this.account = phoneNum;
+            }
+        },
     toRegister() {
       window.location = `${this.$axios.defaults.baseURL}/v1/user/login/weixinLogin?userCode=""`
     },
     typeLogin(type) {
       var data ={
-        account: this.account, //手机号码
+        account: this.account.replace(/[\D]/g,''), //手机号码
         // "appId": "test",	//appid,用于直接登录
         loginPassword: this.pwd, //登陆密码
         // smsCode:  this.pwd,	//type=0时，短信验证码
@@ -156,7 +179,7 @@ export default {
       debugger
       if(type===0) {
          data = {
-          account: this.account, //手机号码
+          account: this.account.replace(/[\D]/g,''), //手机号码
             // "appId": "test",	//appid,用于直接登录
             // loginPassword: this.pwd, //登陆密码
           smsCode:  this.pwd,	//type=0时，短信验证码
@@ -207,8 +230,10 @@ export default {
         this.pwd = "密码不能为空";
         return;
       }
+      debugger
+      const account = this.account.replace(/[\D]/g,'')
       const accountReg = /^1[3456789]\d{9}$/;
-      if (!accountReg.test(this.account)) {
+      if (!accountReg.test(account)) {
         this.accountErr = "请输入正确的手机号码";
         return;
       }
@@ -236,7 +261,7 @@ export default {
       this.$axios
         .post("/v1/manage/common/sendMsg", {
           type: 1,
-          account: this.account
+          account: this.account.replace(/[\D]/g,'')
         })
         .then(res => {
           if(res.data.code!==200){

@@ -11,7 +11,7 @@
         </mu-appbar>
         <div class="content page-margin-top">
             <div class="input-box"><label >姓名:</label><input v-model="contacs" placeholder="请填写您的姓名" type="text"></div>
-            <div class="input-box"><label >身份证号码:</label><input  v-model="contacsIdNo" placeholder="请填写您的身份证号码" type="text"></div>
+            <div class="input-box"><label >身份证号码:</label><input  v-model="contacsIdNo" @input="idInput" @keydown="idKey" placeholder="请填写您的身份证号码" type="text"></div>
             <div class="input-box" @click="showAddress=true"><label >身份证地址:</label><div class="select"><span class="placeholder-text" v-if="province===''">请选择身份证地址</span><span>{{province}}</span><span> {{city}}</span> <span> </span><span class="iconfont iconyou1"></span></div></div>
             <div class="input-box" @click="showRelation=true"><label >选择关系:</label><div class="select"><span class="placeholder-text" v-if="relation===''">请选择关系</span><span>{{relation}}</span> <span> </span><span class="iconfont iconyou1"></span></div></div>
 
@@ -76,7 +76,25 @@
       vuePicker
     },
     methods: {
+       idInput(e) {
+        this.contacsIdNo = this.contacsIdNo.trim().replace(/[^0-9X\s]/g,'').slice(0, 20)
+      },
+      idKey(e) {
+            var phoneNum = this.contacsIdNo.trim();
+            //如果是删除按键，则什么都不做
+            if (e.keyCode === 8) {
+                this.contacsIdNo = phoneNum;
+                return;
+            }
+ 
+            var len = phoneNum.length;
+            if (len === 6 || len === 15 ) {
+                phoneNum += ' ';
+                this.contacsIdNo = phoneNum;
+            }
+        },
       submit() {
+        debugger
         if(!this.contacs || !this.contacsIdNo || !this.province || !this.relation) {
           this.$toast.error('请填写完整资料')
           return
@@ -85,15 +103,17 @@
           this.$toast.error('请输入正确的姓名')
           return
         }
-        var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/;
-        if (!reg.test(this.contacsIdNo)) {
+        const id = this.contacsIdNo.trim().replace(/[^0-9X]/g,'')
+
+        var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9X]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/;
+        if (!reg.test(id)) {
           this.$toast.error('请输入正确的身份证号码')
           // this.warnTips({txt:'请输入正确的身份证号码'});
           return false;
         }
         return  this.$axios.post('v1/family/info/addFamily', {
           contacs: this.contacs,
-          contacsIdNo: this.contacsIdNo,
+          contacsIdNo:this.Util.encrypt(this.contacsIdNo.replace(/[^0-9X]/g,'')),
           province: this.provinceValue,
           city: this.cityValue,
           relation: this.relationValue,
