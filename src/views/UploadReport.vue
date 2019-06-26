@@ -46,13 +46,17 @@ export default {
         }
     },
     methods:{
-      getFile(file,img, imgURL) {
-        // this[params] = file
-        this.urlList.push(file)
-        this.imgArr.push(img)
+      getFile(file,img) {
+        // this[params] = file\
+       try {
+         this.urlList.push(file)
+        this.imgArr.push(file)
+       } catch (error) {
+         alert(JSON.stringify(error))
+       }
+        
       },
       submit() {
-        debugger
         if(!this.urlList.length)return
         let images = this.urlList.toString()
         this.$axios.post('v1/user/info/uploadHealthyReport',{

@@ -38,6 +38,7 @@
           v-if="codepwd"
           v-model.trim="pwd"
           label="输入6-16位数字+字母的密码"
+          @input="val => pwd=val.slice(0,16)"
           label-float
           icon=":iconfont iconmima"
           :error-text="pwdErr"

@@ -520,6 +520,9 @@ export default new Router({
       path: '/NewsDetail',
       //  消息详情
       name: 'NewsDetail',
+      meta: {
+        keepAlive: false
+      },
       component: function () {
         return import('./views/news/NewsDetail.vue')
       }

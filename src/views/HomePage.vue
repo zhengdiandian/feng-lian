@@ -251,6 +251,7 @@ import PopBox from '../components/PopBox/PopBox'
 import BannerImg from '../components/BannerImg/BannerImg'
 import { debug } from 'util';
 import {mapState} from 'vuex'
+// import  core-js  from 'core'
 export default {
   name: "homePage",
   data() {
@@ -569,6 +570,9 @@ h3{
 .apply {
   display: flex;
   align-items: center;
+  // justify-items: center;
+  // justify-content: center;
+  line-height: 1;
   width: 351px;
   height: 44px;
   background-color: #f9be41;
@@ -601,6 +605,8 @@ h3{
     top: -15px;*/
   }
   .apply-click{
+    height: 44px;
+    line-height: 1;
     display: flex;
     justify-content: center;
     align-items: center;

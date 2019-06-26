@@ -110,6 +110,8 @@ export default {
 .list-state{
     position: absolute;
     right: 65px;
+    height: 50px;
+    line-height: 50px;
     font-size: $f14;
 }
 header{
@@ -161,6 +163,8 @@ header{
         position: absolute;
         right: 20px;
         font-size: 20px;
+        height: 50px;
+        line-height: 50px;
         color: #EF9B1E;
       }
     }

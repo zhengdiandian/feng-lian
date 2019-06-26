@@ -288,12 +288,13 @@ import { timingSafeEqual } from 'crypto';
             },
             
         },
-        computed: {
+        computed: Object.assign( {
             inpuVal() {
                 return this.inputList[0].val + this.inputList[1].val + this.inputList[2].val + this.inputList[3].val + this.inputList[4].val + this.inputList[5].val
-            },
-            ...mapState(['userInfo']),
-        }
+            }
+        }, 
+            mapState(['userInfo'])
+        )
     }
 </script>
 

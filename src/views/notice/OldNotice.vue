@@ -1,5 +1,5 @@
 <template>
-  <div style="padding-top: 80px;">
+  <div >
     <!-- <div class="title-date">
       2019
     </div>-->
@@ -7,7 +7,7 @@
       <mu-container ref="container" class="demo-loadmore-content">
         <mu-load-more  :loading="loading" @load="load">
           <mu-list>
-            <div style="padding-top: 20px;">
+            <div>
               <div v-for="(item,index) in niticeList" :key="index">
                 <div class="card">
                   <div class="title">蜂链互助公示</div>
@@ -121,9 +121,10 @@ export default {
 <style lang="scss" scoped>
 .demo-loadmore-wrap {
   width: 100%;
-  height: 650px;
+  min-height: 650px;
   display: flex;
   flex-direction: column;
+  padding-top: 80px;
   // background-color: $c-hui;
   .mu-appbar {
     width: 100%;
@@ -133,7 +134,7 @@ export default {
   // flex: 1;
   overflow: auto;
   width: 100%;
-  -webkit-overflow-scrolling: touch;
+  // -webkit-overflow-scrolling: touch;
 }
 .title-date {
   padding: 12px;

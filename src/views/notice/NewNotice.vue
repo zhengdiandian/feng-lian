@@ -8,17 +8,17 @@
           <div class="dateInfo">{{nitice.stage}}</div>
           <div class="info-wrap">
             <div>
-              <div><span>{{nitice.publicityCount}}</span> 人</div>
+              <div><span>{{nitice.publicityCount > 10000 ? (nitice.publicityCount / 10000).toFixed(2) + '万' : nitice.publicityCount}}</span> 人</div>
               <div>本期公示人数</div>
             </div>
             <div class="xian"></div>
             <div>
-              <div><span>{{nitice.totalAmount}}</span> 人</div>
+              <div><span>{{nitice.totalAmount > 10000 ? (nitice.totalAmount / 10000).toFixed(2) + '万' : nitice.totalAmount}}</span> 人</div>
               <div>预计分摊总额</div>
             </div>
             <div class="xian"></div>
             <div>
-              <div><span>{{nitice.shareCount}}</span> 人</div>
+              <div><span>{{nitice.shareCount > 10000 ? (nitice.shareCount / 10000).toFixed(2) + '万' : nitice.shareCount}}</span> 人</div>
               <div>分摊人数</div>
             </div>
           </div>
@@ -27,7 +27,7 @@
         <span>本期共{{nitice.helpedCount}}起互助事件，分摊总额（互助金）{{nitice.helpedAmount}}元。共
         {{nitice.joinedCount}}人参与，人均分摊{{nitice.shareCount}}元。</span>
       </div>
-      <div class="notice-content">
+      <div class="notice-content" v-if="acs.contacs">
         <div class="parent-list">
 
             <div class="parent-wrap" :class="[ activeIndex == index ? 'active': '']" v-for="(item,index) in list" :key="index">
@@ -36,7 +36,7 @@
 
         </div>
 
-          <div class="notice-info">
+          <div class="notice-info" >
             
               <div class="title">{{acs.contacs}}<span v-if="acs.state">{{acs.state == 200? '已实名': '未实名'}}</span></div>
               <div class="title">{{acs.illnessApply}}</div>
@@ -74,6 +74,7 @@
 </template>
 
 <script>
+import { debug } from 'util';
 // import Card from "../../components/NoticeCard/NoticeCard";
 export default {
   name: "NewNotice",
@@ -95,8 +96,9 @@ export default {
   methods: {
     listActive(i) {
       this.activeIndex = i
+      debugger
       // console.log(this.activeIndex)
-      this.acs = this.list[i]
+      this.acs = this.list[i] || {}
       console.log(this.acs)
     }
   },
@@ -111,7 +113,7 @@ export default {
         }
       this.nitice = res.data.data
       this.list = res.data.data.compensateList
-      this.acs = this.list[this.activeIndex]
+      this.acs = this.list[this.activeIndex] || {}
       // console.log(this.acs)
     })
 
@@ -247,7 +249,7 @@ export default {
     
   }
   .info-btn {
-    // width: 67px;
+    min-width: 80px;
     height: 25px;
     line-height: 25px;
     text-align: center;
@@ -256,6 +258,8 @@ export default {
     color: $c-cheng;
     /*justify-self: flex-end;*/
     span{
+      box-sizing: content-box;
+      height: 25px;
       padding: 0px 10px 0px 10px;
     }
   }

@@ -84,7 +84,8 @@ export default {
         document.getElementById('show').src=newsrc;
         },
         uploadIMG(e) {
-      let files = e.target.files || e.dataTransfer.files;
+      try {
+        let files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.picavalue = files[0];
       console.log(this.picavalue.size / 1024);
@@ -96,6 +97,9 @@ export default {
       //   // });
       // } else {
         this.imgPreview(this.picavalue);
+      } catch (error) {
+        alert(JSON.stringify(error))
+      }
       // }
     },
     //获取图片
@@ -129,9 +133,10 @@ export default {
             var formData = new FormData();
             formData.append("img", blob);
             console.log("********将blob对象转成formData对象********");
-            console.log(formData.get("file"));
+            // console.log(formData.get("file"));
             // self.file = formData.get("file")
             // self.$emit('getFile', blob)
+
             axios.create({
               baseURL: `${self.$axios.defaults.baseURL}`,
               headers: {

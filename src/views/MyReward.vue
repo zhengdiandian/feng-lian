@@ -320,6 +320,8 @@ export default {
     position: absolute;
     right: 12px;
     font-size: 16px;
+    height: 44px;
+    line-height: 44px;
 }
 header{
     // height: 155px;
@@ -343,6 +345,8 @@ nav {
         margin-left: 5px;
         position: absolute;
         left: 12px;
+        height: 44px;
+        line-height: 44px;
     }
     .title {
         span{

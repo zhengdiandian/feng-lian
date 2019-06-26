@@ -374,7 +374,8 @@ html,body{
   width:75px;height:75px;
     background:rgba(255,255,255,1);border:2px solid rgba(255,255,255,1);border-radius:50%;margin: auto;
     img{
-      width:75px;height:75px;
+      width:100%;
+      height: 100%;
     }
 }
 .head-text{
@@ -413,6 +414,8 @@ nav {
         margin-left: 5px;
         position: absolute;
         left: 12px;
+        height: 44px;
+        line-height: 44px;
     }
     .title {
         span{

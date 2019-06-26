@@ -57,15 +57,16 @@
                 </section>
             </div> -->
             <div class="purchase-plan" >
-                <span  class="plan-text">我的购买计划</span>
-                <div class="iconkong" v-if=" myplan.list.length <= 0 || !myplan.list">
-                    <img src="../assets/空页面.png" alt="">
-                    <span>暂无数据</span>
-                </div>
+                
 
 <mu-paper  :z-depth="1" class="demo-loadmore-wrap">
     <mu-container ref="container" class="demo-loadmore-content">
-        <mu-load-more  :loading="loading" @load="load">
+        <mu-load-more  :loading="loading" @load="load" :loaded-all="loadedAll">
+            <span  class="plan-text">我的购买计划</span>
+                <div class="iconkong" v-if="noData">
+                    <img src="../assets/空页面.png" alt="">
+                    <span>暂无数据</span>
+                </div>
                 <section class="card" style="margin:0;" v-for="(myplan,i) in myplan.list" :key="i">
                     <card :open="() => {$router.push({name: 'planInitial', query:{planNo: myplan.planNo}})}"
                         :img="myplan.headPortrait"
@@ -101,6 +102,7 @@
 
             </div>
         </main>
+        <div class="LoadingShow" v-if="loadedAll === true">加载完成</div>
         <!-- <footerBtn></footerBtn> -->
     </div>
 </template>
@@ -120,13 +122,15 @@ export default {
             amount: '余额',
             waitingperiod: '等待期:',
             name: 'Bytan.zZ',
-            myplan: [],
+            myplan: {list:[]},
             planNo: '',
             productCode: '',
             refreshing: false,
             loading: false,
             page: 1,
-            pageSize: 5
+            pageSize: 5,
+            loadedAll: false,
+            noData: false
         }
     },
     methods:{
@@ -136,6 +140,15 @@ export default {
         //         query:{planNo: this.planNo, productCode: this.productCode}
         //     })
         // }
+        load () {
+            this.loading = true;
+            this.page++ 
+            this.get_myplan()
+            // setTimeout(() => {
+            //     this.loading = false;
+            //     // this.num += 10;
+            // }, 2000)
+        },
         get_myplan(flag){
             this.$axios.post('/v1/mutually/plan/planList',{
                 "page": this.page,
@@ -145,11 +158,13 @@ export default {
               this.$toast.error(res.data.msg)
               return
             }
+
             if(flag){
                 this.myplan = res.data.data
-
+                
             }else {
                 // debugger
+                
                 res.data.data.list.forEach(item => {
                     // debugger
                     this.myplan.list.push(item)
@@ -159,8 +174,12 @@ export default {
               // this.myplan = this.myplan.concat(res.data.data)
               // this.$set(this.myplan , this.myplan.concat(res.data.data))
             }
+            this.noData = this.myplan.list.length ? false: true
             this.loading = false
-            console.log(res)
+            console.log(res.data.data.list.length)
+            if (res.data.data.list.length == 0) {
+                this.loadedAll = true;
+            }
             // console.log(res)
             // this.myplan = res.data.data
         })
@@ -174,15 +193,7 @@ export default {
         //         // this.num = 10;
         //     }, 2000)
         // },
-        load () {
-            this.loading = true;
-            this.page++ 
-            this.get_myplan()
-            // setTimeout(() => {
-            //     this.loading = false;
-            //     // this.num += 10;
-            // }, 2000)
-        }
+        
     },
     created() {
         this.get_myplan(true)
@@ -192,6 +203,12 @@ export default {
 <style scoped lang="scss">
 .card{
     height: 160px;
+}
+.LoadingShow{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
 }
 .demo-loadmore-wrap {
   width: 100%;

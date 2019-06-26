@@ -11,7 +11,7 @@
     </mu-appbar>
     <div class="content">
       <div class="input-wrap">
-        <label>持卡人</label><input placeholder="持卡人姓名" type="text">
+        <label>持卡人</label><input disabled="disabled" placeholder="持卡人姓名" type="text" v-model="cardName">
       </div>
       <div class="input-wrap">
         <label>银行卡号</label><input v-model="cardNo" @input="bankInput" @keydown="bankKey" placeholder="请填写您的银行卡号" >
@@ -84,7 +84,8 @@
         smsCode: '',
         bankName: '',
         province: '',
-        city: ''
+        city: '',
+        cardName: ''
 
       }
     },
@@ -94,6 +95,12 @@
           this.$toast.error(res.data.msg)
         }
         this.bankData.data1= res.data.data
+      })
+      this.$axios.post('/v1/user/info/personalInfo').then(res=>{
+        if(res.data.code !==200){
+          this.$toast.error(res.data.msg)
+        }
+        this.cardName = res.data.data.contacs
       })
     },
     methods: {
@@ -257,6 +264,7 @@
     padding: 0px 12px;
     .input-wrap{
     //  display: flex;
+    
       span.text{
         color: rgba(0, 0, 0, 0.87)!important;
       }
@@ -278,6 +286,7 @@
         height: 44px;
         /*line-height: 44px;*/
         vertical-align: middle;
+        
       }
       span{
         color: $c-cheng;
@@ -295,6 +304,7 @@
         width: auto;
         border: none;
         outline: none;
+        background-color: #fff;
       }
     }
   }
