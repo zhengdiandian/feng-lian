@@ -27,7 +27,7 @@
         </div>
         <div class="infor-name-id">
           身份证号码
-          <input type="text" placeholder="请输入身份证号码" v-model="id" @keyup="id=id.replace(/[\W]/g,'')">
+          <input type="text" placeholder="请输入身份证号码" v-model="id" @keydown="idKey" @input="idInput">
         </div>
         <div class="infor-name-id" @click="showPicker">
           身份证地址
@@ -88,6 +88,23 @@ export default {
     console.log(this.Util);
   },
   methods: {
+     idInput(e) {
+        this.id = this.id.trim().replace(/[^0-9X\s]/g,'').slice(0, 20)
+      },
+      idKey(e) {
+            var phoneNum = this.id.trim();
+            //如果是删除按键，则什么都不做
+            if (e.keyCode === 8) {
+                this.id = phoneNum;
+                return;
+            }
+ 
+            var len = phoneNum.length;
+            if (len === 6 || len === 15 ) {
+                phoneNum += ' ';
+                this.id = phoneNum;
+            }
+        },
     showPicker() {
       this.show = true;
     },
@@ -113,8 +130,9 @@ export default {
       // if(!this.id )
       debugger;
       // console.log('fdsfdas', unit)
+     const id = this.id.replace(/[^0-9X]/g,'')
       var reg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9X]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/;
-      if (!reg.test(this.id)) {
+      if (!reg.test(id)) {
         this.$toast.error('请输入正确的身份证号码')
         // this.warnTips({txt:'请输入正确的身份证号码'});
         return false;
@@ -124,7 +142,7 @@ export default {
           contacs: this.userName,
           contacsBackImg: this.file1,
           contacsFrontImg: this.file2,
-          contacsIdNo: this.Util.encrypt(this.id),
+          contacsIdNo: this.Util.encrypt(this.id.replace(/[\W]/g, '')),
           province: this.provinceValue,
           city: this.cityValue,
           fullPath: this.$route.query.fullPath

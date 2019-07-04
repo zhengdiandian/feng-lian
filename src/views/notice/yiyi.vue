@@ -17,7 +17,7 @@
 
 
         </div>
-        <div class="input-box"><label >手机号:</label><input v-model="phone" placeholder="请填写您的手机号码" type="number"></div>
+        <div class="input-box"><label >手机号:</label><input v-model="phone" placeholder="请填写您的手机号码" @keydown="phoneKey" @input="phoneInput"></div>
 
         <div class="submit" v-promise-btn @click="submit">提交</div>
     </div>
@@ -40,13 +40,33 @@
       }
     },
     methods: {
+        phoneInput(e) {
+      this.phone = this.phone.trim().replace(/[^0-9' ']/g,'').slice(0, 13)
+    },
+     phoneKey(e) {
+      //  alert('dsfa')
+            var phoneNum = this.phone.trim();
+           
+            //如果是删除按键，则什么都不做
+            if (e.keyCode === 8) {
+                this.phone = phoneNum;
+                return;
+            }
+ 
+            var len = phoneNum.length;
+            if (len === 3 || len === 8) {
+                phoneNum += ' ';
+                this.phone = phoneNum;
+            }
+        },
       getFile(imgSrc, imgFile) {
         this.srcArr.push(imgSrc)
         this.imgArr.push(imgFile)
       },
       submit() {
+        const phone = this.phone.replace(/[\D]/g,'')
         const accountReg = /^1[3456789]\d{9}$/
-        if(!accountReg.test(this.phone)) {
+        if(!accountReg.test(phone)) {
           this.$toast.error('请输入正确的手机号码')
           return
         }
@@ -54,7 +74,7 @@
           orderNo: this.$route.query.orderNo,
           content: this.content,
           img: this.srcArr.toString(),
-          phone: this.phone
+          phone: this.phone.replace(/[\D]/g,'')
         }).then(res => {
           if(res.data.code !==200){
             this.$toast.error(res.data.msg)

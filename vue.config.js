@@ -7,6 +7,7 @@ module.exports = {
       }
     }
   },
+  // transpileDependencies: ['muse-ui', 'vue'],
   // transpileDependencies: ['../', './', 'muse-ui', 'axios', 'babel-runtime', 'clipboard', 'crypto-js', 'html2canvas', 'material-design-icons-iconfont', 'muse-ui-carbon-theme', 'muse-ui-message', 'muse-ui-toast', 'qrcodejs2', 'qs', 'vue', 'vue-picture-input', 'vue-router', 'vuex', 'wechat-js-sdk'],
   //   chainWebpack: config => {
   //   // config.module.rule('js').include.add(/node_modules\/(dom7|swiper| muse-ui)\/.*/)

@@ -14,7 +14,7 @@
         <label>持卡人</label><input disabled="disabled" placeholder="持卡人姓名" type="text" v-model="cardName">
       </div>
       <div class="input-wrap">
-        <label>银行卡号</label><input v-model="cardNo" placeholder="请填写您的银行卡号" type="number">
+        <label>银行卡号</label><input v-model="cardNo" @input="bankInput" @keydown="bankKey" placeholder="请填写您的银行卡号" >
       </div>
       <div class="input-wrap" @click="showAddress = true">
         <label>所属地区</label>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="input-wrap">
-        <label>预留手机号</label><input  v-model="account" placeholder="请输入银行预留手机号" type="number">
+        <label>预留手机号</label><input  v-model="account" placeholder="请输入银行预留手机号" @keydown="phoneKey" @input="phoneInput">
       </div>
       <div class="input-wrap">
         <label>短信验证码</label><input v-model="smsCode" placeholder="请输入短信验证码" type="text" > <span class="right" v-if="flag===0" @click="getMsg">获取验证码</span><span class="right timer" v-else>{{flag}}</span>
@@ -104,6 +104,42 @@
       })
     },
     methods: {
+      bankInput() {
+        this.cardNo = this.cardNo.replace(/[^0-9' ']/g, '').slice(0,23)
+      },
+       bankKey (e) {
+            var phoneNum = this.cardNo.trim();
+            //如果是删除按键，则什么都不做
+            if (e.keyCode === 8) {
+                this.cardNo = phoneNum;
+                return;
+            }
+ 
+            var len = phoneNum.length;
+            if (len === 4 || len === 9 || len === 14 || len === 19) {
+                phoneNum += ' ';
+                this.cardNo = phoneNum;
+            }
+        },
+      phoneInput(e) {
+      this.account = this.account.trim().replace(/[^0-9' ']/g,'').slice(0, 13)
+    },
+     phoneKey(e) {
+      //  alert('dsfa')
+            var phoneNum = this.account.trim();
+           
+            //如果是删除按键，则什么都不做
+            if (e.keyCode === 8) {
+                this.account = phoneNum;
+                return;
+            }
+ 
+            var len = phoneNum.length;
+            if (len === 3 || len === 8) {
+                phoneNum += ' ';
+                this.account = phoneNum;
+            }
+        },
       // numberChange() {
       //   debugger
       //   this.account = e.target.value.replace(/[^\d]/g,'')
@@ -147,9 +183,9 @@
         }
         debugger
         return this.$axios.post('v1/card/debitCard/updateCard',{
-          phone: this.account,
+          phone: this.account.replace(/[\D]/g, ''),
           token: this.token,
-          cardNo: this.Util.encrypt(this.cardNo.toString()),
+          cardNo: this.Util.encrypt(this.cardNo.toString().replace(/[\D]/g, '')),
           smsCode: this.smsCode,
           cardProv: this.provinceValue,
           cardCity: this.cityValue,
