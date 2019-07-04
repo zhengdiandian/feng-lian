@@ -122,7 +122,8 @@
     },
     mounted() {
       const btnCopy = new Clipboard('.btn');
-
+    },
+    created() {
       this.$axios.post('/v1/mutually/plan/planDetail',{
         "planNo": this.$route.query.planNo
       }).then((res)=> {
@@ -140,19 +141,12 @@
             return
           }
           this.issue = res.data.data
+          this.$nextTick(() => {
+          this.flag = res.data.data.refundFlag === 0 ? false : true
+          })
         })
+        
         console.log(this.panned)
-      })
-
-    },
-    created() {
-      this.$axios.post('v1/user/info/index').then(res => {
-        if(res.data.code !==200){
-          this.$toast.error(res.data.msg)
-          return
-        }
-        debugger
-        this.flag = res.data.data.scoreType === 0 ? true : false
       })
     },
     methods:{
