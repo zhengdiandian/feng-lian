@@ -604,9 +604,14 @@ export default new Router({
       meta: {
         keepAlive: false
       }
+    },
+    {
+      path: '/orderConfirmation',
+      component: () => import('./views/orderConfirmation'),
+      meta: {
+        keepAlive: false
+      }
     }
-
-
     // {
     //   path: '*',
     //   name: '*',
