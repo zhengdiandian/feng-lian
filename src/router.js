@@ -420,9 +420,6 @@ export default new Router({
       name: 'InvitationNoMember',
       component: function () {
         return import('./views/InvitationNoMember')
-      },
-      meta: {
-        mustAuth: true
       }
     },
     {
