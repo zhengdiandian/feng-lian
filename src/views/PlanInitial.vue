@@ -148,6 +148,7 @@
            this.flag = res.data.data.refundFlag === 0 ? false : true
           })
         })
+        
         console.log(this.panned)
       })
       // this.$axios.post('v1/user/info/index').then(res => {
