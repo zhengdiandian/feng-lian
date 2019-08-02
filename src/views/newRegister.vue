@@ -176,7 +176,7 @@
           this.pwdErr = '请输入验证码'
           return
         }
-        const pwd1Reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/
+        const pwd1Reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/
         if (!pwd1Reg.test(this.pwd1)) {
           this.err2 = '请输入字母加数字组合6-16的密码'
           return
